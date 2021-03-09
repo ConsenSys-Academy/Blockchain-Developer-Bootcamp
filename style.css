@@ -1,0 +1,88 @@
+:root {
+  font-size: 62.5%; /* (62.5/100) * 16px = 10px */
+  --font-size--small: 1.4rem; /* 14px */
+  --font-size--default: 1.6rem; /* 16px */
+  --font-size--large: 2.4rem; /* 24px */
+  --background-color: white;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  padding: 10%;
+  min-height: 100%;
+  font-family:  -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-size: var(--font-size--default);
+
+}
+
+h1 {
+  padding-bottom: 2%;
+  color: rgb(101,112,139);
+  letter-spacing: 0.2px;
+}
+
+h2 {
+  color:rgba(101,112,139,0.7);
+  padding-top: 2%;
+  padding-bottom: 1%;
+  letter-spacing: 0.2px;
+}
+
+p {
+  padding: 10px;
+}
+
+ul {
+  position: relative;
+  
+  list-style: none;
+  padding-left: 1em;
+  text-indent: -1em;
+  margin-left: 3%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+}
+
+p a {
+  position: relative;
+  font-weight: 500;
+  color: rgba(44, 85, 221, 0.9);
+  text-decoration: none;
+}
+
+p a:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -0.5px;
+  left: 0;
+  background-color: rgba(44, 85, 221, 0.9);
+  visibility: hidden;
+  transition: all 0.3s ease-in;
+}
+
+p a:hover:before {
+  visibility: visible;
+  width: 100%;
+}
+
+footer {
+  width: 100%;
+  margin-top: 50px;
+}
+
+footer a {
+  color: grey;
+  float: right;
+
+}
