@@ -1,10 +1,10 @@
-:root {
+/* :root {
   font-size: 62.5%; /* (62.5/100) * 16px = 10px */
-  --font-size--small: 1.4rem; /* 14px */
-  --font-size--default: 1.6rem; /* 16px */
-  --font-size--large: 2.4rem; /* 24px */
-  --background-color: white;
-}
+/*  --font-size--small: 1.4rem; /* 14px */
+/*  --font-size--default: 1.6rem; /* 16px */
+/*  --font-size--large: 2.4rem; /* 24px */
+/*  --background-color: white;
+} */
 
 * {
   padding: 0;
@@ -14,14 +14,10 @@
 
 html {
   min-height: 100%;
-}
-
-body {
   padding: 10%;
   min-height: 100%;
   font-family:  -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-  font-size: var(--font-size--default);
-
+  /* font-size: var(--font-size--default); */
 }
 
 h1 {
@@ -86,6 +82,9 @@ footer a {
   float: right;
 
 }
+
+
+/* currently .column and .row:after are only used for "welcome" section */
 
 .column {
   float: left;
