@@ -26,6 +26,9 @@ h1 {
   letter-spacing: 0.2px;
 }
 
+
+/* NEED TO CHANGE THE COLOR BELOW FOR ACCESSIBILITY */
+
 h2 {
   color:rgba(101,112,139,0.7);
   /* padding-top: 2%; */
@@ -72,12 +75,12 @@ p a:hover:before {
   width: 100%;
 }
 
-footer {
+.footer {
   width: 100%;
   margin-top: 50px;
 }
 
-footer a {
+.footer a {
   color: grey;
   float: right;
 
