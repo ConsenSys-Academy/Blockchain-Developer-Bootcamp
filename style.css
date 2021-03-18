@@ -40,7 +40,7 @@ p {
   /* padding: 10px; */
 }
 
-ul {
+/* ul {
   position: relative;
   
   list-style: none;
@@ -49,16 +49,16 @@ ul {
   margin-left: 3%;
   padding-bottom: 1%;
   padding-top: 1%;
-}
+} */
 
-p a {
+a {
   position: relative;
   font-weight: 500;
   color: rgba(44, 85, 221, 0.9);
   text-decoration: none;
 }
 
-p a:before {
+a:before {
   content: "";
   position: absolute;
   width: 0;
@@ -70,7 +70,7 @@ p a:before {
   transition: all 0.3s ease-in;
 }
 
-p a:hover:before {
+a:hover:before {
   visibility: visible;
   width: 100%;
 }
@@ -86,6 +86,10 @@ p a:hover:before {
 
 }
 
+.footer a:hover:before, .footer a:before {
+  transition: none;
+  width: 0%;
+}
 
 /* currently .column and .row:after are only used for "M0L1" section */
 
