@@ -98,6 +98,16 @@ a:hover:before {
   width: 0%;
 }
 
+.discord {
+  float: left;
+
+}
+
+.discord-logo {
+  width: 30px;
+  padding-right: 8px;
+}
+
 /* currently .column and .row:after are only used for "M0L1" section */
 
 .column {
