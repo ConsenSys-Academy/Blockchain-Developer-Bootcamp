@@ -46,6 +46,10 @@ p {
   /* padding: 10px; */
 }
 
+li {
+  list-style: none;
+}
+
 /* ul {
   position: relative;
   
@@ -62,6 +66,7 @@ a {
   font-weight: 500;
   color: rgba(44, 85, 221, 0.9);
   text-decoration: none;
+  display: inline-block;
 }
 
 a:before {
@@ -119,4 +124,10 @@ a:hover:before {
   content: "";
   display: table;
   clear: both;
+}
+
+details > summary {
+
+  list-style:none;
+
 }
