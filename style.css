@@ -50,16 +50,9 @@ li {
   list-style: none;
 }
 
-/* ul {
-  position: relative;
-  
-  list-style: none;
-  padding-left: 1em;
-  text-indent: -1em;
-  margin-left: 3%;
-  padding-bottom: 1%;
-  padding-top: 1%;
-} */
+
+
+/* link effect */
 
 a {
   position: relative;
@@ -86,6 +79,8 @@ a:hover:before {
   width: 100%;
 }
 
+/* footer discord and github links */
+
 .footer {
   width: 100%;
   margin-top: 50px;
@@ -102,6 +97,7 @@ a:hover:before {
   transition: none;
   width: 0%;
 }
+
 
 .discord {
   float: left;
@@ -130,4 +126,13 @@ details > summary {
 
   list-style:none;
 
+}
+
+.img-wrapper {
+  max-width: 500px;
+}
+
+img {
+  width: 100%;
+  padding: 8px;
 }
