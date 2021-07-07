@@ -130,6 +130,7 @@ details > summary {
 
 .img-wrapper {
   max-width: 500px;
+  margin: auto;
 }
 
 img {
