@@ -28,16 +28,19 @@
 
 
   <h2>Hashing in Blockchains</h2>  
-    <p>In <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">the Bitcoin Whitepaper,</a> Satoshi Nakamoto articulates the <a href="https://en.wikipedia.org/wiki/Double-spending" target="_blank" rel="noopener noreferrer">"double-spend" problem</a> facing digital currencies (added emphasis ours):</p>
+    <p>In <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">the Bitcoin Whitepaper,</a> Satoshi Nakamoto articulates the <a href="https://en.wikipedia.org/wiki/Double-spending" target="_blank" rel="noopener noreferrer">"double-spend" problem</a> facing digital currencies:</p>
 
 
   <blockquote>
-      The problem of course is the payee can't verify that one of the owners did not double-spend
+      <p>
+        The problem of course is the payee can't verify that one of the owners did not double-spend
     the coin. A common solution is to introduce a trusted central authority, or mint, that checks every
     transaction for double spending. After each transaction, the coin must be returned to the mint to
     issue a new coin, and only coins issued directly from the mint are trusted not to be double-spent.
     The problem with this solution is that the fate of the entire money system depends on the
     company running the mint, with every transaction having to go through them, just like a bank.
+      </p>
+    <p>
       <b>
         We need a way for the payee to know that the previous owners did not sign any earlier
             transactions.
@@ -50,9 +53,10 @@
       order in which they were received.
     </b> The payee needs proof that at the time of each transaction, the
     majority of nodes agreed it was the first received.
+    </p>
   </blockquote>
 
-  <p>To restate the problem: How do we know the transaction record is true and hasn't been tampered with? Hashing helps us with this.</p>
+  <p>To restate the problem: How do we know the transaction record is true and hasn't been tampered with? Hashing helps us with this. (The second point, proof of majority node agreement, we'll cover in the next Module on Distributed Consensus)</p>
 
   <p>Nakamoto proposes using hashing to create what they call a "Timestamp Server":
 
@@ -66,7 +70,7 @@
         its hash, forming a chain, with each additional timestamp reinforcing the ones before it.
       </b></blockquote>
 
-    <div class="img-wrapper"><a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer"><img src="../../../img/S1/bitcoin-timestamp-server.png" alt="image of a timestamp server chained together using hashes from bitcoin whitepaper"></a><i style="font-size:0.5em;">From the Bitcoin Whitepaper</i></div>
+    <div class="img-wrapper"><img src="../../../img/S1/bitcoin-timestamp-server.png" alt="image of a timestamp server chained together using hashes from bitcoin whitepaper"><div class="caption"><i style="font-size:0.7em;">from the <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">Bitcoin Whitepaper</a></i></div></div>
   </p>
 
   <p>The timestamp server leverages hash functions in one critical way. It includes the hash of the previous block into the hash of the current block. If any historical data in any of the previous blocks are altered, the changes will cascade throughout all the blocks after it. In this way, blocks of transaction data are <b>chained</b> together to form a blockchain &#x1F92F; &#x1F92F; &#x1F92F;.</p>

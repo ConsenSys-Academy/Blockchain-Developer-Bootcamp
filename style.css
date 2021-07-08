@@ -137,3 +137,34 @@ img {
   width: 100%;
   padding: 8px;
 }
+
+/* from css-tricks https://css-tricks.com/examples/Blockquotes/ */
+
+blockquote {
+  font: 14px/20px italic Times, serif;
+  padding: 8px;
+  background-color: #faebbc;
+  border-top: 1px solid #e1cc89;
+  border-bottom: 1px solid #e1cc89;
+  margin: 5px;
+  background-image: url(images/openquote1.gif);
+  background-position: top left;
+  background-repeat: no-repeat;
+  text-indent: 23px;
+  }
+blockquote span {
+     display: block;
+     background-image: url(images/closequote1.gif);
+     background-repeat: no-repeat;
+     background-position: bottom right;
+   }
+
+   /* caption for things in the img-wrapper */
+.caption {
+  display: block;
+  width:100%;
+  text-align:center;
+  /* this font size doesn't work have to set locally */
+  /* font-size:0.5em;  */
+
+}   
