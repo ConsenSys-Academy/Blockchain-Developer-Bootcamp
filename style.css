@@ -50,16 +50,9 @@ li {
   list-style: none;
 }
 
-/* ul {
-  position: relative;
-  
-  list-style: none;
-  padding-left: 1em;
-  text-indent: -1em;
-  margin-left: 3%;
-  padding-bottom: 1%;
-  padding-top: 1%;
-} */
+
+
+/* link effect */
 
 a {
   position: relative;
@@ -86,6 +79,8 @@ a:hover:before {
   width: 100%;
 }
 
+/* footer discord and github links */
+
 .footer {
   width: 100%;
   margin-top: 50px;
@@ -103,6 +98,7 @@ a:hover:before {
   width: 0%;
 }
 
+
 .discord {
   float: left;
 
@@ -110,7 +106,7 @@ a:hover:before {
 
 .discord-logo {
   width: 30px;
-  padding-right: 8px;
+  padding: 0px 8px;
 }
 
 /* currently .column and .row:after are only used for "M0L1" section */
@@ -131,3 +127,44 @@ details > summary {
   list-style:none;
 
 }
+
+.img-wrapper {
+  max-width: 500px;
+  margin: auto;
+}
+
+img {
+  width: 100%;
+  padding: 8px;
+}
+
+/* from css-tricks https://css-tricks.com/examples/Blockquotes/ */
+
+blockquote {
+  font: 14px/20px italic Times, serif;
+  padding: 8px;
+  background-color: #faebbc;
+  border-top: 1px solid #e1cc89;
+  border-bottom: 1px solid #e1cc89;
+  margin: 5px;
+  background-image: url(images/openquote1.gif);
+  background-position: top left;
+  background-repeat: no-repeat;
+  text-indent: 23px;
+  }
+blockquote span {
+     display: block;
+     background-image: url(images/closequote1.gif);
+     background-repeat: no-repeat;
+     background-position: bottom right;
+   }
+
+   /* caption for things in the img-wrapper */
+.caption {
+  display: block;
+  width:100%;
+  text-align:center;
+  /* this font size doesn't work have to set locally */
+  /* font-size:0.5em;  */
+
+}   
