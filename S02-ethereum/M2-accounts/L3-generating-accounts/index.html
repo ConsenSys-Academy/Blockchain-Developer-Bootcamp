@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Generating Ethereum accounts in Javascript</h1>
+  
+  <!-- Content here: -->
+
+<!-- Note: this content looks different because it was copied from the LMS' HTML, would be great to clean up later -->
+
+	<p>Public key cryptography and digital signatures are a foundational technology that enable blockchains to work. In this project you are going to get your hands dirty and understand how they work at the code level. You will be using JavaScript and a simple web interface to see what is going on.</p>
+
+  <h2>Generate Private Key</h2>
+	<p>First, we are going to generate a private key, derive public keys from the private key and determine the associated accounts.
+
+	To get started <a href="https://github.com/ConsenSys-Academy/ethereum-address-generator-js" target="_blank">clone the project</a> and run:</p>
+
+  <code>$ npm install<br>$ npm run watch # this will watch for updates in main.js and update bundle.js<br>$ npm run reload # this will serve the app @ localhost:8081 and refresh the page when there are updates</code>
+
+  <p>(If you run into any problems while implementing this demo application, try opening the developer tools in the browser (Ctrl + Shift + I or F12) and checking the "Console" tab.)</p>
+
+  <p>In the main.js file include the <a href="https://www.npmjs.com/package/bip39" target="_blank">bip39 package</a>. We will use this to generate random input to generate a private key.</p>
+
+  <code>const BIP39 = require("bip39")</code>
+
+  and directly below that include:
+
+  <pre>// Generate a random mnemonic (uses crypto.randomBytes under the hood), defaults to 128-bits of entropy<br>function generateMnemonic(){<br>  return BIP39.generateMnemonic()<br>}</pre>
+
+  Note: Not all strings of characters are valid mneomics for generating keys. You can check if a mnemonic is valid by running:
+
+  <pre>var isValid = BIP39.validateMnemonic("Enter your mnemonic here")<br>// This will return false because "Enter your mneomnic here" is not a valid phrase</pre>
+
+  <p>
+    With this mnemonic, you can generate a seed from which to generate a private key. Add the following line to <code>main.js</code>:
+  </p>
+
+  <pre><code>
+    function generateSeed(mnemonic){
+      return BIP39.mnemonicToSeed(mnemonic)
+    }
+  </code></pre>
+
+  <h2>Generate a Public / Private Keypair</h2>
+
+  <p>Using this mnemonic as a source of randomness, you can now create signing keypair.</p>
+
+	<p>To generate a private key from the hex seed, we will to use the <a href="https://github.com/ethereumjs/ethereumjs-wallet" target="_blank">ethereumjs-wallet library</a></p>
+
+  <pre><code>const hdkey = require("ethereumjs-wallet/hdkey")
+  </code></pre>
+
+  <strong><em>Explore a much more robust address derivation application at <a href="https://iancoleman.io/bip39/" target="_blank">iancoleman.io</a></em></strong>
+
+  <code>function generatePrivKey(mnemonic){<br>&nbsp; &nbsp; const seed = generateSeed(mnemonic)<br>&nbsp; &nbsp; return hdkey.fromMasterSeed(seed).derivePath(`m/44&#39;/60&#39;/0&#39;/0/0`).getWallet().getPrivateKey()<br>}</code>
+
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S02-ethereum/M1-accounts/L3-generating-accounts/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>
