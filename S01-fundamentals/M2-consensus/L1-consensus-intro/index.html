@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="../../../style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
   <script src="../../../js/text-bounce.js" async></script>
-  <title>Welcome</title>
+  <title>Distributed Coordination: Consensus Protocols</title>
 </head>
 <div class="body">
   
@@ -19,7 +19,7 @@
 
   <p>To understand how all the actors in a network can coordinate and agree about the historical state of a blockchain network we will learn about <b><a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)" target="_blank" rel="noopener noreferrer">consensus</a></b>. Distributed consensus is not only used in blockchain, to be clear. Any internet service that needs to coordinate their servers all over the globe (which is all the major internet services) uses distributed consensus mechanisms to make that happen. Blockchain takes traditional distributed consensus one step further. We'll see what that step is once we understand the historical and fundamental principles of distributed computing.</p>
 
-  <p>(Note: In this section, we will use the terms <b>Distributed Computing</b>, <b>Distributed Systems</b>, <b>Distributed Consensus</b>, and <b>Distributed Coordination</b> interchangeably. We'll also be speaking about consensus strictly in the computer scientific sense. Later in the course, we'll discuss consensus among people in a network, typically called <b>governance</b>.)</p>
+  <p>(Note: In this section, we will use the terms <b>Distributed Computing</b>, <b>Distributed Systems</b>, <b>Distributed Consensus</b>, and <b>Distributed Coordination</b> interchangeably. We'll also be speaking about consensus strictly in the computer scientific sense. Later in the course, we'll discuss consensus among people in a network, typically called <b>governance</b.)</p>
 
   <h2>Development of Distributed Computing </h2>
 
@@ -27,19 +27,46 @@
 
   <p>At the most basic level, "consensus protocols are used to allow computers to work together" and "let different servers agree on the state of a system." (<a href="https://softwareengineeringdaily.com/2018/03/26/consensus-systems-with-ethan-buchman/" target="_blank" rel="noopener noreferrer">Software Engineering Daily</a>). For the airplane manufacturers, a good consensus protocol would continue to function with some errors. This way, if one or two things failed, the entire system wouldn't fail. The ability of a consensus protocol to adapt to failure is called <a href="https://en.wikipedia.org/wiki/Resilience_(network)" target="_blank" rel="noopener noreferrer">resilience.</a> </p> 
 
-  <p>Crucially, early work around distributed computing and consensus protocols dealt with <i>non-adversarial systems</i>. This meant that any of the faults that were happening in a computer network, like an airplane, were the result of natural system errors (power failure, faulty parts, etc), not some sort of active meddling or hacking.</p>
+  <p>Crucially, early work around distributed computing and consensus protocols dealt with <i>non-adversarial systems</i>. This meant that any of the faults that were happening in a computer network, like an airplane, were the result of natural system errors (power failure, faulty parts, etc), not some sort of active meddling or hacking. This has now developed to encompass much more than aerospace technology. As we mentioned before, it now also covers many digital services, such as: 
+    <ul>
+    <li>Any multi-party real-time communication stream (like a social media feed or )</li>
+    <li>An online media streaming service which requires multiple regional servers holding and updating the exact same information on customers</li>
+    <li>A search engine service that needs to maintain and update indexed information across many regions</li>
+  </ul>  
+  </p>
 
-  <p>One of the most important pioneers in the early field of distributed computing and consensus protocols was <a href="https://en.wikipedia.org/wiki/Leslie_Lamport" target="_blank" rel="noopener noreferrer">Leslie Lamport.</a> Lamport developed a series of concepts we still reference today in discussing consensus protocols including:</p>
+  <p>Consensus protocols help these systems maintain historical information also called <b>state.</b> Broadly speaking, state can be defined as a set of variables describing a certain system at a specific time. Let’s describe that in a real-world situation. Take a look around at whatever environment you’re in––bus station, coffee shop, office––and pick out a few variables you could use to describe it. If you’re inside a room, you could describe any number of things:
+
+    <ul>
+      <li>The number of walls</li>
+      <li>The types of furniture</li>
+      <li>The placement of furniture</li>
+      <li>The number of people</li>
+      <li>The kind of light in the room</li>
+    </ul>
+  Taken all together, these variables will paint a picture of the room. And if things change (say, you turn off a light), we'll update "The kind of light in the room" variable, which changes the state. If multiple people needed to maintain a record about the state of our room, we'd have to find a way to communicate this state change. Consensus protocols help us do exactly that: agree on a sequential series of system state which allows all network participants adhering to the consensus protocol to have a similar understanding of the historical changes adding up to the current network state. 
+  </p>
+  
+  <p>For a distributed computer network, state typically involves technical information about critical actors in a system. For a social media site, the state includes when a user logged in, what they did, where they were, etc. For an airplane or spaceship, the state includes current status of different parts of the ship, fuel or energy levels, temperature or atmospheric data, etc. As each individual actor in the networks uses the consensus protocol to propagate the changes they're doing locally and update their own state based on updates their getting from others, a historical understanding of the system begins to <i>emerge</i> from these state changes. This coordination of state among multiple actors in a common system allows for many interesting systems, including many of the digital services we use today.</p>
+
+  <p>Please note that we're using terms like "actors" or "participants" to describe the active parties in a distributed system. Despite the name, these traditionally refer to machines or computers in a network more commonly called <b>nodes</b>. It can be confusing but just try to remember these are general models we're discussing. Once we get into application and practice, it may be easier to understand.</p>
+
+  <p>A distributed system where multiple actors are using a consensus protocol to maintain state can be called a <a href="https://en.wikipedia.org/wiki/Finite-state_machine" target="_blank" rel="noopener noreferrer">state machine or finite state machine.</a> This is fairly technical, but it simply requires us to expand our understanding of a machine beyond a metal box which contains small electronics connected by circuits. </p>
+
+  <p>Distributed computing in a general sense relies on a few concepts, such as:</p>
 
   <ul>
-    <li><b>Clocks</b> The notion of time is very important in a distributed system as it creates a sort of order for the larger system. Ordering events that occur in a system is particularly important. Think about making breakfast, for example. If your mix up the order of a series of actions, like eating your eggs before you cook them, it can create chaos and confusion. <a href="https://dean.eigenmann.me/blog/2020/01/06/time-clocks-and-order/" target="_blank" rel="noopener noreferrer">Here's an article</a> from Dean Eigenmann discussing Lamport's ideas of Time, Clocks and Order.</li>
-    <li><b>Fault Tolerance</b> This is a formal description of resilience: How many mistakes can a system tolerate before it will collapse completely? Lamport proposed a thought experiment to test the limits of fault tolerance called the <a href="https://en.wikipedia.org/wiki/Byzantine_fault" target="_blank" rel="noopener noreferrer">Byzantine General's Problem.</a> We discussed it briefly in the video before. Essentially, the most amount of fault a distributed network can absorb is one-third. So, if 2/3rds of a system are still available and coordinating, the system can still run.</li>
+    <li><b>Message Propagation</b> </li>
+    <li><b>Time</b> The notion of time is very important in a distributed system as it creates a sort of order for the larger system. Ordering events that occur in a system is particularly important. Think about making breakfast, for example. If your mix up the order of a series of actions, like eating your eggs before you cook them, it can create chaos and confusion. <a href="https://dean.eigenmann.me/blog/2020/01/06/time-clocks-and-order/" target="_blank" rel="noopener noreferrer">Here's an article</a> from Dean Eigenmann discussing Lamport's ideas of Time, Clocks and Order.</li>
+    <li><b>Fault Tolerance</b> This is a formal description of resilience: How many mistakes can a system tolerate before it will collapse completely? Lamport proposed a thought experiment to test the limits of fault tolerance called the <a href="https://en.wikipedia.org/wiki/Byzantine_fault" target="_blank" rel="noopener noreferrer">Byzantine General's Problem.</a> We discussed it briefly in the video before. Essentially, the most amount of fault a distributed network can absorb is one-third. So, if 2/3rds of a system are still available and coordinating, the system can still run. Because of this famous thought experiment, you may see fault tolerance referred to as Byzantine fault tolerance. </li>
     <li></li>
   </ul>
 
 
 
   <p>The main takeaway we'd like you to have from this section is distributed consensus originally only dealt systems that were non-adversarial and all the actors trusted each other. Meaning, the only errors or faults that would show up would be from power failures, misbehaving parts, etc. You would not attribute malice to any misbehaving actor. Blockchain's big innovation, which we'll discuss later, was the building of robust consensus protocols in adversarial networks in which you must assume everyone is trying to screw you.</p>
+
+  <p>The next section is an excellent overview of a basic consensus protocol system called <a href="https://en.wikipedia.org/wiki/Raft_(algorithm)" target="_blank" rel="noopener noreferrer">Raft.</a> Raft is a simplified consensus algorithm </p>
 
   <h3>Additional Links</h3>
   <h2>Basic</h2>
@@ -48,6 +75,7 @@
     <li>Article: <a href="https://www.preethikasireddy.com/post/lets-take-a-crack-at-understanding-distributed-consensus" target="_blank" rel="noopener noreferrer">Let's Take a Crack at Understanding Distributed Consensus</a> (Preethi Kasireddy)</li>
     <li><a href="https://distsys.substack.com/" target="_blank" rel="noopener noreferrer">Article Series: Distributed Ssytems Digest</a> (Dean Eigenmann) This is an exellent series of articles discussing distributed systems, in an approachable way. If you click "Let me read it first," you can access the articles.</li>
     <li><a href="https://softwareengineeringdaily.com/2018/03/26/consensus-systems-with-ethan-buchman/" target="_blank" rel="noopener noreferrer">Podcast: Distributed Systems with Ethan Buchman (Software Engineering Daily)</a> An overview on distributed systems, including the history of their development</li>
+    <li><a href="https://consensys.net/blog/blockchain-explained/want-to-really-understand-blockchain-you-need-to-understand-state/" target="_blank" rel="noopener noreferrer">Article: Want to Really Understand Blockchain? You Need to Understand State (ConsenSys)</a></li>
     <li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)" target="_blank" rel="noopener noreferrer">Consensus Methods,</a> <a href="https://en.wikipedia.org/wiki/Distributed_computing" target="_blank" rel="noopener noreferrer">Distributed Computing,</a> <a href="https://en.wikipedia.org/wiki/Resilience_(network)" target="_blank" rel="noopener noreferrer">Network Resilience</a></li>
 
     <li></li>
