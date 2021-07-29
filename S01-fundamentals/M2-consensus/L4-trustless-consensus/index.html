@@ -15,17 +15,67 @@
   
   <!-- Content here: -->
 
-    <p>We've spent the past few sections learning about how consensus protocols work to make peer-to-peer distributed systems maintain state across time despite nodes entering, exiting, and failing in the network. This is a general computer science concept that's used in building distributed networks that may be susceptible to </p>
+    <p>We've spent the past few sections learning about how consensus protocols work to make peer-to-peer distributed systems maintain state across time despite node failure. This is a general computer science concept that's used in building distributed networks that may be susceptible to machine failures, message duplications, message corruptions, etc. Since they are decentralized networks, public blockchains have to deal with this category of problems. But, they are also presented with an entirely new set of issues.</p>
 
-    <h2>Additional Materials</h2>
-    <h3>Introduction</h3>
-    <ul>
+    <p>Public blockchains introduce a specific challenge to agreeing on a state. The state of a blockchain network is, among other things, a list of how much cryptocurrency an individual has (the public, distributed ledger). Therefore, in a public blockchain, everyone is incentivized to lie about the state of the network because it's directly tied to their net worth! Imagine if when you went to the bank, rather than a bank teller telling you your balance, <i>they</i> asked <i>you</i> for <i>your</i> balance. Most people would, at some point, be very tempted to lie and make up a number (Probably a very large number).</p> 
+      
+    <p>In fact, because blockchains are removing trusted intermediaries (like a bank) the only way to make their network state secure is to assume that <i>everyone</i> is lying. With your trust assumptions low (assuming everyone is lying), you're protected against that behavior. How do you create a consensus protocol in these dire circumstances? Well, this is incredible innovations that blockchains, beginning with Bitcoin, created. It not only built the ecosystem of blockchain networks we see in today's world, but it even solved a general distributed computing problem in the process.</p>
+
+  <h2>Double Spend and Byzantine Generals Solution</h2>  
+
+    <p>The biggest issue facing digital money is what is called the <a href="https://www.investopedia.com/terms/d/doublespending.asp" target="_blank" rel="noopener noreferrer">"double spend"</a> problem: Since digital files can be copied endlessly, how can you be sure whatever digital money you're paid with has not been previously spent?</p>
+
+    <p>This is the critical issue Satoshi Nakamoto set out to solve in the Bitcoin whitepaper:
+
+
+      We propose a solution to the double-spending problem using a peer-to-peer network.
+      The network timestamps transactions by hashing them into an ongoing chain of
+      hash-based proof-of-work, forming a record that cannot be changed without redoing
+      the proof-of-work. The longest chain not only serves as proof of the sequence of
+      events witnessed, but proof that it came from the largest pool of CPU power. As
+      long as a majority of CPU power is controlled by nodes that are not cooperating to
+      attack the network, they'll generate the longest chain and outpace attackers. The
+      network itself requires minimal structure. Messages are broadcast on a best effort
+      basis, and nodes can leave and rejoin the network at will, accepting the longest
+      proof-of-work chain as proof of what happened while they were gone.
+
+    </p>
+
+    <p>Nakamoto Consensus, also called Proof of Work, creates a consensus mechanism for a digital money system </p>
+
+    <p>DESCRIBE PROOF OF WORK and how it uses hashing </p>
+
+    <p>DESCRIBE OTHER CONSENSUS PROTOCOLS</p> and how proof of work is lowest trust assumptions, and other systems are more comfortable with a bit more trust.
+
+    concerns of PoW:
+    --forks
+    --51% attacks
+    --MEV
+
+
+    Overall takeaway: the trustless consensus protocols, as kicked off by proof of work, is the last primitive we need in our mental model to complete our blockchain framework. We'll walk through a few more examples of proof of work implementations, then 
+
+    <p></p>
+
+
+  <h2>Additional Materials</h2>
+  <h3>Introduction</h3>
+    
+  https://river.com/learn/what-is-the-byzantine-generals-problem/
+  https://www.capgemini.com/au-en/2018/07/what-is-the-blockchain-solving-the-generals-problem/
+  https://analyticsindiamag.com/how-bitcoin-solved-the-byzantine-generals-problem/
+  https://news.bitcoin.com/triple-entry-bookkeeping-how-satoshi-nakamoto-solved-the-byzantine-generals-problem/
+  
+  <ul>
       <li><a href="https://www.youtube.com/watch?v=c7yvOlwBPoQ&list=PLJz1HruEnenCXH7KW7wBCEBnBLOVkiqIi&index=7" target="_blank" rel="noopener noreferrer">Video & Interactive Code: ETH.Build with Byzantine Generals' Problem</a> Austin Griffith walks through a <a href="https://sandbox.eth.build/build#3f3d25b54ec9fde9b34ba3a8cd505d8306f97eec4537cd707f7e92b5d9226bf4" target="_blank" rel="noopener noreferrer">hands-on implementation</a> of the Byzantine Generals' Problem with his amazing ETH.Build platform</li>
       <li></li>
       <li></li>
       <li></li>
     </ul>
 
+    <h3>Advanced</h3>
+    Proof of work implementations from Kyle
+    Any other exercises from Hatch
   <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
     <div class="footer">
       <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M2-consensus/L4-trustless-consensus/index.html" target="_blank">Edit this page on Github</a>
