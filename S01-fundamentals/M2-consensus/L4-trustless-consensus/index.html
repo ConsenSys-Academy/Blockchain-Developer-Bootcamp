@@ -17,40 +17,60 @@
 
     <p>We've spent the past few sections learning about how consensus protocols work to make peer-to-peer distributed systems maintain state across time despite node failure. This is a general computer science concept that's used in building distributed networks that may be susceptible to machine failures, message duplications, message corruptions, etc. Since they are decentralized networks, public blockchains have to deal with this category of problems. But, they are also presented with an entirely new set of issues.</p>
 
-    <p>Public blockchains introduce a specific challenge to agreeing on a state. The state of a blockchain network is, among other things, a list of how much cryptocurrency an individual has (the public, distributed ledger). Therefore, in a public blockchain, everyone is incentivized to lie about the state of the network because it's directly tied to their net worth! Imagine if when you went to the bank, rather than a bank teller telling you your balance, <i>they</i> asked <i>you</i> for <i>your</i> balance. Most people would, at some point, be very tempted to lie and make up a number (Probably a very large number).</p> 
+    <p>Public blockchains introduce a specific challenge to agreeing on a state. In a non-blockchain distributed network, state is a set of data valuable really only to the private organization running the network. For example, in a digital streaming service, the state might contain where a user stoped watching a previous video. That way, if they start the video again and are served the content from a different network server, their place will be saved.</p>
       
+    <p>The state of a public blockchain network, on the other hand, is the public, distributed ledger which contains the financial balances of everyone in the network. This has enormous value to many different organizations and individuals. In a way, everyone is incentivized to lie about the state of the network because it's directly tied to their net worth. Imagine if when you went to the bank, rather than a bank teller telling you your balance, <i>they</i> asked <i>you</i> for <i>your</i> balance. Most people would, at some point, be very tempted to lie and make up a number (Probably a very large number).</p>
+
+    <p>This is the main element that distinguishes public blockchain networks from traditional distributed networks. The network state of a blockchain is one that contains economic value directly impacting the actors in the network. But, as we've seen studying traditional distributed systems, the blockchain network still needs those nodes (which have competing interests) to update and propagate the state.</p>
+      
+    <p>Enter <b>trustless consensus:</b> Bitcoin solves this issue by creating a consensus mechanism which can operate in an adversarial environment where the nodes have competing interests. Rather than assuming the state they are propagating is correct, Bitcoin's trustless consensus allows each individual node to verify the state themselves using cryptography. We'll walk through how Bitcoin and other proof of work blockchain networks achieve this feat by describing the underlying assumptions and the solutions.</p>
+
+    <quote>Quick aside: What about current traditional banks? Don't they have distributed networks that contain economic value among nodes (customers) with competing interests? Why don't we consider them as solving this issue? Yes, this is true that global financial companies or governments have built distributed networks that have similar conditions to what public blockchains are hoping to achieve. However, these traditional networks separate trust from distributed consensus in their networks. You can imagine it like a castle, with powerful fortifications, that contains a ledger containing all the assets in the kingdom. If you can breach the defenses and get into the castle, you'll have control over that ledger. Blockchain's theoretical innovation is baking the defense <i>into</i> the consensus mechanisms themselves so there are many different castles and, if one falls, it may temporarily impact the network but will not collapse the system. </quote>   
+
+    <h2>Assumptions: Low Trust</h2>
+
     <p>In fact, because blockchains are removing trusted intermediaries (like a bank) the only way to make their network state secure is to assume that <i>everyone</i> is lying. With your trust assumptions low (assuming everyone is lying), you're protected against that behavior. How do you create a consensus protocol in these dire circumstances? Well, this is incredible innovations that blockchains, beginning with Bitcoin, created. It not only built the ecosystem of blockchain networks we see in today's world, but it even solved a general distributed computing problem in the process.</p>
 
   <h2>Double Spend and Byzantine Generals Solution</h2>  
 
     <p>The biggest issue facing digital money is what is called the <a href="https://www.investopedia.com/terms/d/doublespending.asp" target="_blank" rel="noopener noreferrer">"double spend"</a> problem: Since digital files can be copied endlessly, how can you be sure whatever digital money you're paid with has not been previously spent?</p>
 
-    <p>This is the critical issue Satoshi Nakamoto set out to solve in the Bitcoin whitepaper:
+    <p>This is the critical issue Satoshi Nakamoto set out to solve in <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">the Bitcoin whitepaper</a>:
 
 
-      We propose a solution to the double-spending problem using a peer-to-peer network.
-      The network timestamps transactions by hashing them into an ongoing chain of
-      hash-based proof-of-work, forming a record that cannot be changed without redoing
-      the proof-of-work. The longest chain not only serves as proof of the sequence of
-      events witnessed, but proof that it came from the largest pool of CPU power. As
-      long as a majority of CPU power is controlled by nodes that are not cooperating to
-      attack the network, they'll generate the longest chain and outpace attackers. The
-      network itself requires minimal structure. Messages are broadcast on a best effort
-      basis, and nodes can leave and rejoin the network at will, accepting the longest
-      proof-of-work chain as proof of what happened while they were gone.
+      <quote>
+        We propose a solution to the double-spending problem using a peer-to-peer network.
+        The network timestamps transactions by hashing them into an ongoing chain of
+        hash-based proof-of-work, forming a record that cannot be changed without redoing
+        the proof-of-work. The longest chain not only serves as proof of the sequence of
+        events witnessed, but proof that it came from the largest pool of CPU power. As
+        long as a majority of CPU power is controlled by nodes that are not cooperating to
+        attack the network, they'll generate the longest chain and outpace attackers. The
+        network itself requires minimal structure. Messages are broadcast on a best effort
+        basis, and nodes can leave and rejoin the network at will, accepting the longest
+        proof-of-work chain as proof of what happened while they were gone.
+      </quote>
 
     </p>
 
-    <p>Nakamoto Consensus, also called Proof of Work, creates a consensus mechanism for a digital money system </p>
+    <p>Nakamoto Consensus, also called Proof of Work consensus, creates a consensus mechanism for a digital money system where each individual node does not have to blindly accept the network state.</p>
 
-    <p>DESCRIBE PROOF OF WORK and how it uses hashing </p>
+    <h2>Elements of Proof of Work Consensus</h2>
+
+    <p>In discussing the elements comprising Proof of Work consensus, we'll pull from concepts we mentioned previously in discussion traditional distributed networks. Specifically, you'll need to remember the concept of <b>nodes</b> and the <b>roles</b> they play as well as the concept of <b>time</b> and <b>phases</b> in distributed systems.</p> 
+    
+    <p>In Proof of Work consensus, here are the roles nodes play:
+
+      <ul>
+        <li><b>Full Nodes</b> These are the general network nodes which are creating transactions, passing along transactions created by other full nodes in the network, </li>
+        <li><b>Miners</b> These are the nodes which are ordering transactions </li>
+
+        <li><b>Light Nodes</b></li>
+      </ul>
+
+    </p>
 
     <p>DESCRIBE OTHER CONSENSUS PROTOCOLS</p> and how proof of work is lowest trust assumptions, and other systems are more comfortable with a bit more trust.
-
-    concerns of PoW:
-    --forks
-    --51% attacks
-    --MEV
 
 
     Overall takeaway: the trustless consensus protocols, as kicked off by proof of work, is the last primitive we need in our mental model to complete our blockchain framework. We'll walk through a few more examples of proof of work implementations, then 
