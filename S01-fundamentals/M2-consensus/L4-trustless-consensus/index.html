@@ -15,6 +15,8 @@
   
   <!-- Content here: -->
 
+    <i>Note: this section is fairly text heavy and may be difficult to understand at first. Not to worry! The two videos following this section cover similar material in a visual way. We'll also discuss this in our Office Hours or on Discord.</i>
+
     <p>We've spent the past few sections learning about how consensus protocols work to make peer-to-peer distributed systems maintain state across time despite node failure. This is a general computer science concept that's used in building distributed networks that may be susceptible to machine failures, message duplications, message corruptions, etc. Since they are decentralized networks, public blockchains have to deal with this category of problems. But, they are also presented with an entirely new set of issues.</p>
 
     <p>Public blockchains introduce a specific challenge to agreeing on a state. In a non-blockchain distributed network, state is a set of data valuable really only to the private organization running the network. For example, in a digital streaming service, the state might contain where a user stoped watching a previous video. That way, if they start the video again and are served the content from a different network server, their place will be saved.</p>
@@ -57,15 +59,40 @@
 
     <h2>Elements of Proof of Work Consensus</h2>
 
-    <p>In discussing the elements comprising Proof of Work consensus, we'll pull from concepts we mentioned previously in discussion traditional distributed networks. Specifically, you'll need to remember the concept of <b>nodes</b> and the <b>roles</b> they play as well as the concept of <b>time</b> and <b>phases</b> in distributed systems.</p> 
+    <p>In discussing the elements comprising Proof of Work consensus, we'll pull from concepts we mentioned previously in discussion traditional distributed networks. Specifically, you'll need to remember the concept of <b>messages</b>, the concept of <b>nodes</b> and the <b>roles</b> they play as well as the concept of <b>time</b> and <b>periods</b> in distributed systems.</p> 
+  
+
+    <h3>Messages</h3>
+
+    <p>In Proof of Work consensus, the fundamental message is a <b>transaction,</b> constructed using the public key cryptography and digital signatures primitives we discussed previously, "trustlessly" (cryptographically) ensuring the identity and integrity of the message.</p>
     
+    <p>Transactions in Proof of Work consensus are <b><a href="https://en.wikipedia.org/wiki/Atomic_commit" target="_blank" rel="noopener noreferrer">atomic,</a></b> meaning the network either accepts or rejects the transaction, there is no in-between or halfway. If the network accepts the transaction, the network state then advances to incorporate the effects of the transaction.</p> 
+    
+    <p>For example, let's say an imaginary public ledger at <code>State-0</code> says Alejandro has `1 token` and Barbarella has `0 tokens`. Alejandro then submits a transaction to the network saying he would like to pay Barbarella `0.5 tokens`. The network accepts the transaction, which creates a new state, <code>State-1</code> in which the public ledger has been updated to show Alejandro now has `0.5 tokens` and Barbarella has `0.5 tokens`.</p>
+
+    <h3>Nodes and their Roles</h3>
+
     <p>In Proof of Work consensus, here are the roles nodes play:
 
       <ul>
-        <li><b>Full Nodes</b> These are the general network nodes which are creating transactions, passing along transactions created by other full nodes in the network, </li>
-        <li><b>Miners</b> These are the nodes which are ordering transactions </li>
+        <li><b>Miners</b> These are the nodes which are certifying which transactions are valid by including them in blocks. When a miner creates a valid block and propagates it throughout the network, the network state is advanced in a trustless way. (We'll examine in a moment how a miner can create a block in a trustless way.)</li>
+        <li><b>Full Nodes</b> These are the general network nodes which are creating transactions and passing along transactions created by other nodes in the network. They are also maintaining full network state when they receive valid blocks from Miner nodes. Each full node in the network checks the work of a block to ensure its validity.</li>
+        <li><b>Light Nodes</b> These are network nodes which are simply submitting transactions to the network and waiting for them to be accepted by the network. They do not participate in the process of checking the validity of the advancing network state and do not pass along messages.</li>
+      </ul>
 
-        <li><b>Light Nodes</b></li>
+
+      <p><i>Remember from the section on public key cryptography that nodes identify themselves in the network by using the peer-to-peer identity mechanism of public key cryptography.</i></p>
+
+    </p>
+
+    <h3>Periods</h3>
+
+    <p>In Proof of Work consensys, there are two distinct periods in a network:
+
+      <ul>
+        <li><b>Period of Block Propagation</b> This is the period in which </li>
+        <li><b>Period of Block Production</b> This is the period in which miner nodes are competing to produce the next valid block.</li>
+
       </ul>
 
     </p>
