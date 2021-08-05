@@ -129,7 +129,8 @@ details > summary {
 }
 
 .img-wrapper {
-  max-width: 500px;
+  /* changed to percentage from 500px */
+  max-width: 90%;
   margin: auto;
 }
 
