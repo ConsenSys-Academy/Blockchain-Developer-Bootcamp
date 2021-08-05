@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>EIP-1559</h1>
+  
+  <!-- Content here: -->
+
+  <p>We've talked about mining in the Ethereum as the way the network confirms and propagates state changes. However, in August 2021, the Ethereum core developer community, after many years of research, development and testing, released a major change to the mining process in Ethereum known as <a href="https://eips.ethereum.org/EIPS/eip-1559" target="_blank" rel="noopener noreferrer">EIP-1559</a> (remember Ethereum Improvement Proposals or EIPs are the way the Ethereum community incorporates changes to the protocol).</p>
+
+  <p>Before EIP-1559, Ethereum transaction fees were market-driven. Meaning, the gas price, or fee, dictated how quickly a miner would include a transaction in a block. This has led to some dramatic price swings in fees and pushed network developers to find a more stable solution. Enter EIP-1559.</p>
+
+  <p>EIP-1559 replaces the gas fees with a fixed-price sale. Now, people submitting transactions won’t have to guess as much about how much gas is required, as there will be an explicitly ‘base fee’ to be included in the next block. For users or applications that want to prioritize their transaction, they can add a “tip” to pay a miner. The base fee will be "burned," meaning destroyed, while the tip goes to the miner.</p>
+
+  <p>In times of high network activity, the base fee will adjust in a predictable manner to gate the flow of transactions. </p>
+
+  <div class="img-wrapper"><img src="../../../img/S01/1559.png" alt="diagram showing before and after 1559 of network processing transactions"></div>
+
+  <p>As an analogy to explain the base fee and tip, imagine the experience of using a ride sharing service app on your phone (e.g. Uber, Lyft, or Didi). You want to use this app to get a ride to go from A to B. The cost to go from A to B is the same, regardless of which driver picks you up (the base fee in EIP-1559). Now, imagine if you were able to add a tip to your driver, prior to getting on the ride. If your tip is higher than what other people at that time are offering, drivers will be incentivized to pick you up over other potential passengers not offering a tip.</p> 
+
+  <p>This process is similar to your ETH transactions: you can set a tip for miners (the “driver” in the above example) to include your transaction in the next block (the “ride” in the above example). A higher tip means a greater chance of your transaction being included in the next block and therefore being completed.</p>
+
+  <p>Crucially, EIP-1559 makes the gas prices more transparent but it does <b>not</b> lower the prices. This is a common misconception. EIP-1559 may reduce the amount of time the network has high gas prices, but the only way to deal with high gas prices is to improve scalability (which we'll discuss in a later section).</p>
+
+  <p>It's still very early days for 1559 and we'll get to see how it progresses together!</p>
+  
+
+  <h2>Additional Material</h2>
+
+  <ul>
+    <li><a href="https://consensys.net/blog/quorum/what-is-eip-1559-how-will-it-change-ethereum/" target="_blank" rel="noopener noreferrer">Article: What is EIP-1559? (ConsenSys)</a> A great introductory explainer article we used for much of the course material.</li>
+    <li><a href="https://metamask.io/1559" target="_blank" rel="noopener noreferrer">Article: What is EIP-1559? (MetaMask)</a> Another introductory article, this time from the perspective of a MetaMask user</li>
+    <li><a href="https://www.youtube.com/watch?v=gsfJywNxpi4" target="_blank" rel="noopener noreferrer">Video: How To Set Transaction Priority in MetaMask</a> Great video walking through the ways in which MetaMask is adjusting to EIP-1559.</li>
+    <li><a href="https://ultrasound.money/" target="_blank" rel="noopener noreferrer">Interactive: Ultrasound Money</a> The website provides realtime updates on how much ether has been burned as part of EIP-1559</li>
+  </ul>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S02-ethereum/M3-state/L7-1559/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>
