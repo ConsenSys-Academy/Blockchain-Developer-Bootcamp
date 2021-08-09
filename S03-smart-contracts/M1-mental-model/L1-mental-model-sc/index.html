@@ -15,18 +15,60 @@
   
   <!-- Content here: -->
 
-    <p>In this chapter, we're going to dive deeper into <b>smart contracts</b>: What they are, how they work and how you can build with them safely. Before we go into the details, let's review our blockchain mental model to see where smart contracts fit in.</p>
-
-    <p>In the fundamentals section, we worked through the primitives to reach this mental model of a blockchain:</p>
-
+    <p>In this chapter, we're going to dive deeper into <b>smart contracts</b>: What they are, how they work and how you can build with them safely.</p> 
+      
+    <p>First, a general defition. <a href="https://en.wikipedia.org/wiki/Smart_contract" target="_blank" rel="noopener noreferrer">Smart contracts</a> are programs deployed to a blockchain network that automatically execute when triggered by valid transactions. A basic analogy for a smart contract is a vending machine: The customer puts in money, punches in the code of the desired item. Assuming a valid input, the vending machine will release the desired item.</p>  
+      
+    <p>To understand where smart contracts fit into blockchains, let's review the blockchain mental model we constructed in the first chapter.</p>
+  
     <div class="img-wrapper"><img src="../../../img/S01/ag-blockchain-1.png" alt="mental model of a general blockchain"></div>
 
-    <p>To learn where smart contracts fit in, let's zoom into the <b>Network Interface — Consensus Mechanism — Network State</b> elements on the lower left corner. We'll also update the names for the Ethereum network:</p>
+    <p>Let's zoom into the <b>Network Interface — Consensus Mechanism — Network State</b> elements on the lower left corner. We'll also update the names for the Ethereum network:</p>
 
     <div class="img-wrapper"><img src="../../../img/S03/sc-mm.png" alt="diagram showing transaction processing in ethereum network"></div>
 
-    <p></p>
+    <p>The Ethereum Virtual Machine (EVM) is a secure execution environment for smart contracts. EVM bytecode is executed on the Ethereum Virtual Machine and the outcome constitutes the new world state. The EVM is Turing-complete, meaning it can execute more advanced code than the Bitcoin network. However, to make sure transactions don't loop forever, transactions on the Ethereum network also have gas limits, as we've discussed.</p>
 
+    <div class="img-wrapper"><img src="../../../img/S03/state-transition.png" alt="ethereum network as a series of state transitions"></div>
+
+    <p>EVM bytecode is machine code, meaning it's very difficult for humans to read or program in. However, core developers have built higher-order smart contract languages that compile down into EVM bytecode. One well-known higher-order smart contract language that compiles down into EVM bytecode is Solidity.</p>
+
+    <p>Here's a diagram showing how Solidity code compiles down into EVM bytecode which is then deployed to the Ethereum network:</p>
+
+    <div class="img-wrapper"><img src="../../../img/S03/evm-layers" alt="diagram showing how solidity compiles to bytecode"></div>
+
+  <h2>EVM Stack Overview</h2>
+
+    <div class="img-wrapper"><img src="../../../img/S03/evm-contract-accounts.png" alt=""></div>
+
+    <p>Smart contract code deployed to the Ethereum network is EVM bytecode stored under an Ethereum account. While an externally-owned Ethereum account has a balance associated with it in the world state, a smart contract Ethereum account can persist data associated with its code.</p>
+
+    <p>We've talked about how an Ethereum node stores the world state in Patricia Merkle trees. Now, we're going to see how the EVM handles bytecode and data when it executes a transaction's EVM bytecode.</p>
+
+    <div class="img-wrapper"><img src="../../../img/S03/evm-architecture.png" alt="EVM stack architecture"></div>
+
+
+    
+
+  <h2>New Development and Security Considerations</h2>
+
+  Smart contract development is new and it is constantly changing.
+
+  Smart contracts are immutable. They cannot be modified (only re-deployed).
+  
+  High cost of failure. More similar to hardware and financial services programming.
+  
+  Smart contracts information is public and anyone can call your public functions.
+  
+
+  <h2>Additional Material</h2>
+  <ul>
+    <li><a href="https://en.wikipedia.org/wiki/Smart_contract" target="_blank" rel="noopener noreferrer">Wikipedia: Smart Contracts,</a></li>
+    <li><a href="https://www.youtube.com/watch?v=RPQD7-AOjMI" target="_blank" rel="noopener noreferrer">Video: Turing Complete (Computerphile)0</a> Video describing what it means for a language to be Turing complete, the difference between the Bitcoin execution environment and the EVM is the EVM is Turing complete.</li>
+    <li><a href="https://ethereum.org/en/developers/docs/evm/" target="_blank" rel="noopener noreferrer">Wiki: Ethereum Virtual Machine (Ethereum.org)</a> A deep dive describing the EVM</li>
+    <li><a href="https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf" target="_blank" rel="noopener noreferrer">Slides: Ethereum VM Illustrated (Takenobu T.)</a> A slidedeck describing the Ethereum VM.</li>
+    <li><a href="http://" target="_blank" rel="noopener noreferrer"></a></li>
+  </ul>
   <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
     <div class="footer">
       <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/MODULE_NUM/LESSON_NUM/index.html" target="_blank">Edit this page on Github</a>
