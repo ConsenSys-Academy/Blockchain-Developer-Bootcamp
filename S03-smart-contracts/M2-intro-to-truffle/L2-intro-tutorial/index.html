@@ -23,26 +23,86 @@
 
   <h2>Initialize an Empty Project</h2>
 
-  <p>Let’s begin by creating an empty project using the <code>init</code> command. In a new directory (e.g. “SimpleStorage”) and from your terminal, run the following command.</p>
+    <p>Let’s begin by creating an empty project using the <code>init</code> command. In a new directory (e.g. “SimpleStorage”) and from your terminal, run the following command.</p>
 
-  <pre>$ truffle init</pre>
+    <pre>$ truffle init</pre>
 
-  <p>Assuming everything worked successfully you should see the following output and a number of directories (contracts, migrations, etc) created in the current directory.</p>
+    <p>Assuming everything worked successfully you should see the following output and a number of directories (contracts, migrations, etc) created in the current directory.</p>
 
-  <pre>
-    Starting init...
-    ================
+    <pre>
+      Starting init...
+      ================
+      
+      > Copying project files to /Users/bluer/Developer/temp
+      
+      Init successful, sweet!
+      
+      Try our scaffold commands to get started:
+        $ truffle create contract YourContractName # scaffold a contract
+        $ truffle create test YourTestName         # scaffold a test
+      
+      http://trufflesuite.com/docs
+    </pre>
+
+    <p>Congratulations, you now have a bare bones project! Next up, let’s create a contract within which we’ll be able to store our SimpleStorage project’s code.</p>
+
+  <h2>Create a Contract</h2>  
+
+    <p>Truffle provides a create command with which you can achieve this, although as we'll show later it’s often just as easy to create the file via your favorite editor environment.</p>
+
+    <pre>$ truffle create contract SimpleStorage</pre>
+
+
+    <p>This will create a new Solidity (note that this is the default language) file, <code>SimpleStorage.sol</code> within your contracts directory.</p>
+
+    <p>Using a code editor, or using something like <code>nano</code> from the command line, paste the following Solidity code into the <code>SimpleStorage.sol</code> file and save:</p>
+
+    <pre>
+
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.4.21 <0.7.0;
+
+contract SimpleStorage {
+  uint storedData;
+
+  function set(uint x) public {
+    storedData = x;
+  }
+
+  function get() public view returns (uint) {
+    return storedData;
+  }
+}
+      
+    </pre>
+
+    <p>Sweet, your first contract! Now let’s try out the <code>compile</code> command we saw earlier.</p>
+
+  <h2>Compilation, baby!</h2>
+  
+    <p>Running the <code>compile</code> command from your terminal like the following:</p>
+
+    <pre>
+  $ truffle compile
+
+  Compiling your contracts...
+  ===========================
+  > Compiling ./contracts/Migrations.sol
+  > Compiling ./contracts/SimpleStorage.sol
+  > Artifacts written to /Users/bluer/Developer/temp/build/contracts
+  > Compiled successfully using:
+    - solc: 0.5.16+commit.9c3226ce.Emscripten.clang
+    </pre>
+
+    <p>Assuming all went smoothly, Truffle should have compiled your contract and added the resultant output (something referred to as build <b>artifacts</b> that we’ll explore in more detail later) to <code>build/contracts/SimpleStorage.json</code>.</p>
+
+    <p><i>Note that you’ll also likely see some references to <b>Migrations.</b> This is a mechanism used by Truffle to store the details related to the last migration (deployment) on-chain. </i></p>
+
+    <p>Next up we’re going to explore deploying our contract to a simulation of a blockchain network using <a href="https://www.trufflesuite.com/ganache">Ganache.</a></p>
+
     
-    > Copying project files to /Users/bluer/Developer/temp
-    
-    Init successful, sweet!
-    
-    Try our scaffold commands to get started:
-      $ truffle create contract YourContractName # scaffold a contract
-      $ truffle create test YourTestName         # scaffold a test
-    
-    http://trufflesuite.com/docs
-  </pre>
+  
+
 
 
   <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->

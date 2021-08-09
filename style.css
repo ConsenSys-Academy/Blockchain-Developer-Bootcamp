@@ -169,3 +169,11 @@ blockquote span {
   /* font-size:0.5em;  */
 
 }   
+
+/* code styling */
+
+pre {
+  background: black;
+  color: white;
+  padding: 20px;
+}
