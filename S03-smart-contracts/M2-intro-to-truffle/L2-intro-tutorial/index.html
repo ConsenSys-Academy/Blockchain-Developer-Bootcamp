@@ -100,11 +100,145 @@ contract SimpleStorage {
 
     <p>Next up we’re going to explore deploying our contract to a simulation of a blockchain network using <a href="https://www.trufflesuite.com/ganache">Ganache.</a></p>
 
+  <h2>Migrating (or Deploying) Your Contract</h2>
+
+    <p>So we’ve created and compiled a contract, but now we need somewhere to deploy it so we can begin testing. This is where Ganache comes in!</p>
+
+    <p>As alluded to earlier, Ganache comes in a number of different flavors. For ease we’re going to start by using the version built directly into Truffle itself (more on standalone Ganache CLI and Ganache UI shortly).</p>
+
+    <p>To achieve this we can use Truffle’s <code>develop</code> command which both starts up a Ganache instance and provides us with an interactive REPL with which we can actually interact with our contracts.</p>
     
-  
+    <pre>
+  $ truffle develop
+    </pre>
+
+    <p>And you should see this, if successful:</p>
+    <pre>
+  Truffle Develop started at http://127.0.0.1:9545/
+
+  Accounts:
+  (0) 0x5ca1605d4671669b38f7e37c881ed996ede5ac68
+  …
+
+  Private Keys:
+  (0) dd7a8c358901b0f572e461585c9ab27f92b24902c45859114776af12077cb208
+  …
+
+  Mnemonic: cloth either reunion project inflict inside ghost welcome tip lemon again knee
+
+  ⚠️  Important ⚠️  : This mnemonic was created for you by Truffle. It is not secure.
+  Ensure you do not use it on production blockchains, or else you risk losing funds.
+
+  truffle(develop)>
+    </pre>
+
+    <p>We’ll be glossing over the details of the above output for the moment, other than to say it gives us access to 10 pre-funded accounts (as a default) that we can leverage as a means of interacting contracts.</p>
+
+    <p>Before we actually migrate our contract we’ll need to create a <b>migration script.</b> This step enables you to granularly instruct Truffle how to migrate your contracts, including things like constructor arguments.</p>
+
+    <p>In the migrations directory create a file called <code>2_deploy_contracts.js</code> and copy into that file the following:</p>
+
+    <pre>
+
+var SimpleStorage = artifacts.require("./SimpleStorage.sol");
+
+module.exports = function(deployer) {
+  deployer.deploy(SimpleStorage);
+};
+      
+    </pre>
+
+
+    <p>The numerical prefix of <code>2_deploy_contracts.js</code> is actually important for two reasons. First, it dictates the order in which scripts are executed. Second, it’s the index stored on-chain by the <code>Migration.sol</code> to keep track of successful migrations per its <code>last_completed_migration</code> value.</p>
+
+    <p>
+      Now that we have a migration script ready to go we can migrate as follows. Since we’re doing this migration from the Truffle console we started with <code>truffle develop</code>, you can actually omit <code>truffle</code> from your command and just run:
+    
+      <pre>
+$ truffle(develop)> migrate
+      </pre>
+    
+    </p>
+
+    <p>
+      Assuming all goes well, you should see the following:
+
+      <pre>
+2_deploy_contracts.js
+======
+
+   Deploying 'SimpleStorage'
+   -------------------------
+   > transaction hash:    0x172f0cff41ea21a7dbbb52883a7499306f54277120fa89bbc6621c7b7efccb80
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x524B2860a2489E385C5e12537f58d5a09A9d33ab
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:         0.000192354 ETH
 
 
 
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.000767772 ETH
+
+
+- Blocks: 0            Seconds: 0
+- Saving migration to chain.
+- Blocks: 0            Seconds: 0
+- Saving migration to chain.
+
+      </pre>
+    </p>
+
+
+    <p>One of the key output values from the above is the contract address (<code>0x524B2860a2489E385C5e12537f58d5a09A9d33ab</code> in the above example). As the name might suggest, this is the address of the deployed instance of contract and the means with how you’d reference it when sending future transactions.</p>
+    
+    <p>Migrations is definitely more of a deeper topic that we’ll be covering more later. In the interim,  more details on migrations can be found in Truffle’s documentation here.</p>
+
+  <h2>Interacting with SimpleStorage</h2>
+
+    <p>Last but not least, let’s go ahead and actually interact with our freshly deployed <code>SimpleStorage</code> contract.</p>
+
+    <p>Ultimately, there’s a number of ways in which you can interact with on-chain contracts, but for the sake of ease in this instance we’ll be doing it directly from the Truffle console.</p>
+
+    <p>Let’s create an instance of our deployed contract via the following. Note that behind the scenes, Truffle is referencing the build artifacts (which in turn store the aforementioned contract address), that's why this is an async Javascript call.</p>
+
+    <pre>
+$ truffle(develop)> let storage = await SimpleStorage.deployed()
+    </pre>
+
+    <p>You can now interact via the returned <code>storage</code> object, for example. Let's do that now, but calling the <code>set</code> contract method, writing a new value in the contract state. As you’ll see, given this invocation results in a change of on-chain state, we actually get a transaction “receipt” returned.</p> 
+
+    <pre>
+      $ truffle(develop)> storage.set(42)
+      {
+        tx: '0x46e4bb35108e5ecf7ff656008295fda572a753476d5e04c286fcdb7868447dd6',
+        receipt: {
+          transactionHash: '0x46e4bb35108e5ecf7ff656008295fda572a753476d5e04c286fcdb7868447dd6',
+          transactionIndex: 0,
+          blockHash: '0x85dbdf5d71194cb0d841d58bbac283ccf078ce0ebe1c054c6c2ab76442459894',
+          blockNumber: 9,
+          from: '0x5ca1605d4671669b38f7e37c881ed996ede5ac68',
+          to: '0x524b2860a2489e385c5e12537f58d5a09a9d33ab',
+      ...
+      }
+    </pre>
+
+    <p>
+      And a drum roll for this last command! Run the following to get the originally stored number. (We can also explain the syntax a little bit, since it's a bit odd: We're creating a promise to deliver a big number, which will be our stored number.)
+    <pre>
+$ truffle(develop)> (await storage.get()).toNumber()
+42    
+    </pre>
+    
+  Congratulations! You’ve now just created, deployed, and interacted with your very first smart contract using the Truffle Suite. In the next section, we're going to walkthrough how to use Ganache GUI.
+    </p>
+    
   <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
     <div class="footer">
       <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M2-intro-to-truffle/L2-intro-tutorial/index.html" target="_blank">Edit this page on Github</a>
