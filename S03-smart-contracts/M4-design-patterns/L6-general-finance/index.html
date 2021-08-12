@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>General Finance: Multi-Sig</h1>
+  
+  <!-- Content here: -->
+
+    <p>This section is a tutorial setting up a Multi-Sig contract, which functions as a store of value (it's called a "wallet" in the traditional sense of something that holds money, not a crypto-wallet like MetaMask). It is based on <a href="https://github.com/ConsenSys-Academy/multisig-wallet-exercise/blob/master/Multisig_wallet_info.md" target="_blank">this project</a> by Nate Rush.</p>
+
+    <p>The solution is based on <a href="https://github.com/ConsenSys/MultiSigWallet" target="_blank">this MultiSignature Wallet</a> found in the ConsenSys github repository.</p>
+
+    <p>You can find the GitHub repository for this exercise <a href="https://github.com/ConsenSys-Academy/multisig-wallet-exercise" target="[object Object]">here</a>.</p>
+  
+    <h2>What is a Multi-signature wallet?</h2>
+  
+    <p>A multi-signature wallet is an account that requires some <a href="https://www.sunflower-cissp.com/glossary/cissp/3455/m-of-n-control" target="_blank" rel="noopener noreferrer">m-of-n quorum</a> of approved private keys to approve a transaction before it is executed.</p>
+  
+    <p>In Ethereum, multi-signature wallets are implemented as a smart contract, that each of the approved external accounts sends a transaction to in order to &quot;sign&quot; a group transaction.</p>
+  
+    <p>Following this project spec designed by the UPenn Blockchain Club, you will now create your own multisignature wallet contract.</p>
+  
+    <p><strong>Note: It is not suggested that you use this multisignature wallet with any real funds, but rather use a far more deeply audited one such as the <a href="https://gnosis-safe.io/" target="_blank">Gnosis multisignature wallet.</a></strong></p>
+  
+    <h2>Project Setup</h2>
+  
+    <p>Clone this GitHub repository. The <a href="https://github.com/ConsenSys-Academy/multisig-wallet-exercise/blob/master/contracts/MultiSignatureWallet.sol" target="_blank">MultiSignatureWallet.sol</a> file in the contracts directory has the structure of a multisignature wallet that you will be implementing.</p>
+  
+    <h2>Implementing the Contract</h2>
+  
+    <p>Copy the contents of the MultiSignatureWallet.sol file found in the project directory into Remix, Truffle, or whatever smart contract IDE you prefer.</p>
+  
+    <p>Let's review what this contract needs to be able to do before we start writing the code:</p>
+  
+
+      <ul>
+        <li>The contract will have <b>multiple owners</b> that will determine which transactions the contract is allowed to execute.</li>
+        <li>Contract owners need to be able to <b>propose transactions</b> that other owners can either <b>confirm</b> or <b>revoke</b>.</li>
+        <li>If a proposed transaction receives enough support, it will be executed.</li>
+      </ul>
+  
+    <p>Keeping these requirements in mind, let's go through the contract stub and start implementing this functionality.</p>
+  
+  
+    <h2>Constructor</h2>
+  
+    <p>Starting with the constructor, you can see that with the latest solidity compiler version, using the contract name as the constructor name has been deprecated, so let's change it to constructor.</p><pre><code>    constructor(address[] memory _owners, uint _required)
+  </code></pre>
+  
+    <p>We are going to want to check the user inputs to the constructor to make sure that a user does not require more confirmations than there are owners, that the contract requires at least one confirmation before sending a transaction and that the owner array contains at least one address.</p>
+  
+    <p>We can create a modifier that checks these conditions</p><pre><code>    modifier validRequirement(uint ownerCount, uint _required) {
+          if (   _required &gt; ownerCount || _required == 0 || ownerCount == 0)
+              revert();
+          _;
+      }
+  </code></pre>
+  
+    <p>And call it when the constructor runs.</p><pre><code>    constructor(address[] memory _owners, uint _required) public 
+              validRequirement(_owners.length, _required)
+          {...}
+  </code></pre>
+  
+    <p>We are going to want to keep the <code>_owners</code> and <code>_required</code> values for the life of the contract, so we need to declare the variables in storage in order to save them.</p><pre><code>    address[] public owners;
+      uint public required;
+      mapping (address =&gt; bool) public isOwner;
+  </code></pre>
+  
+    <p>We also added a mapping of owner addresses to booleans so that we can quickly reference (without having to loop over the owners array) whether a specific address is an owner or not.</p>
+  
+    <p>All of these variables will be set in the constructor.</p><pre><code>    constructor(address[] memory _owners, uint _required) public 
+          validRequirement(_owners.length, _required)
+      {
+          for (uint i=0; i&lt;_owners.length; i++) {
+              isOwner[_owners[i]] = true;
+          }
+          owners = _owners;
+          required = _required;
+      }
+  </code></pre>
+  
+    <h2>Submit Transaction</h2>
+  
+    <p>The <code>submitTransaction</code> function allows an owner to submit and confirm a transaction.</p>
+  
+    <p>First we need to restrict this function to only be callable by an owner.</p><pre><code>    require(isOwner[msg.sender]);
+  </code></pre>
+  
+    <p>Looking at the rest of the contract stub, you will notice that there are two other functions in the contract that can help you implement this function, one is called <code>addTransaction</code> that takes the same inputs as <code>submitTransaction</code> and returns a <code>uint transactionId</code>. The other is called <code>confirmTransaction</code> that takes a <code>uint transactionId</code>.</p>
+  
+    <p>We can easily implement <code>submitTransaction</code> with the help of these other functions:</p><pre><code>    function submitTransaction(address destination, uint value, bytes memory data) 
+          public 
+          returns (uint transactionId) 
+      {
+          require(isOwner[msg.sender]);
+          transactionId = addTransaction(destination, value, data);
+          confirmTransaction(transactionId);
+      }
+  </code></pre>
+  
+    <h2>Add Transaction</h2>
+  
+    <p>Let's jump to the <code>addTransaction</code> function and implement that. This function adds a new transaction to the transaction mapping (which we are about to create), if the transaction does not exist yet.</p><pre><code>    function addTransaction(address destination, uint value, bytes memory data) internal returns (uint transactionId);
+  </code></pre>
+  
+    <p>A transaction is a data structure that is defined in the contract stub.</p><pre><code>    struct Transaction {
+          address destination;
+          uint value;
+          bytes data;
+          bool executed;
+      }
+  </code></pre>
+  
+    <p>We need to store the inputs to the <code>addTransaction</code> function in a Transaction struct and create a transaction id for the transaction. Let's create two more storage variables to keep track of the transaction ids and transaction mapping.</p><pre><code>    uint public transactionCount;
+      mapping (uint =&gt; Transaction) public transactions;
+  </code></pre>
+  
+    <p>In the <code>addTransaction</code> function we can get the transaction count, store the transaction in the mapping and increment the count. This function modifies the state so it is a good practice to emit an event.</p>
+  
+    <p>We will emit a <code>Submission</code> event that takes a <code>transactionId</code>. Let's define the event first. Events are usually defined at the top of a Solidity contract, so that is what we will do. Add this line just below the contract declaration.</p><pre><code>    event Submission(uint indexed transactionId);
+  </code></pre>
+  
+    <p>The <strong><em>indexed</em></strong> keyword in the event declaration makes the event easily searchable and is useful when building user interfaces that need to parse lots of events.</p>
+  
+    <p>In the function body we can call the event.</p><pre><code>    function addTransaction(address destination, uint value, bytes memory data)
+          internal
+          returns (uint transactionId)
+      {
+          transactionId = transactionCount;
+          transactions[transactionId] = Transaction({
+              destination: destination,
+              value: value,
+              data: data,
+              executed: false
+          });
+          transactionCount += 1;
+          emit Submission(transactionId);
+      }
+  </code></pre>
+  
+    <p>The <code>uint transactionId</code> is returned for the <code>submitTransaction</code> function to hand over to the <code>confirmTransaction</code> function.</p>
+  
+    <h2>Confirm Transaction</h2><pre><code>    function confirmTransaction(uint transactionId) public {}
+  </code></pre>
+  
+    <p>The confirm transaction function allows an owner to confirm an added transaction.</p>
+  
+    <p>This requires another storage variable, a confirmations mapping that stores a mapping of boolean values at owner addresses. This variable keeps track of which owner addresses have confirmed which transactions.</p><pre><code>    mapping (uint =&gt; mapping (address =&gt; bool)) public confirmations;
+  </code></pre>
+  
+    <p>There are several checks that we will want to verify before we execute this transaction. First, only wallet owners should be able to call this function. Second, we will want to verify that a transaction exists at the specified <code>transactionId</code>. Last, we want to verify that the <code>msg.sender</code> has not already confirmed this transaction.</p><pre><code>    require(isOwner[msg.sender]);
+      require(transactions[transactionId].destination != 0);
+      require(confirmations[transactionId][msg.sender] == false);
+  </code></pre>
+  
+    <p>Once the transaction receives the required number of confirmations, the transaction should execute, so once the appropriate boolean is set to true</p><pre><code>    confirmations[transactionId][msg.sender] = true;
+  </code></pre>
+  
+    <p>Since we are modifying the state in this function, it is a good practice to log an event. First, we define the event called <code>Confirmation</code> that logs the confirmers address as well as the <code>transactionId</code> of the transaction that they are confirming.</p><pre><code>    event Confirmation(address indexed sender, uint indexed transactionId);
+  </code></pre>
+  
+    <p>Both of these event parameters are indexed to make the event more easily searchable. Now we can call the event in the function.</p>
+  
+    <p>After logging the event we can attempt to execute the transaction</p><pre><code>    executeTransaction(transactionId);
+  </code></pre>
+  
+    <p>So the entire function should look like this:</p><pre><code>    function confirmTransaction(uint transactionId)
+          public
+      {
+          require(isOwner[msg.sender]);
+          require(transactions[transactionId].destination != address(0));
+          require(confirmations[transactionId][msg.sender] == false);
+          confirmations[transactionId][msg.sender] = true;
+          emit Confirmation(msg.sender, transactionId);
+          executeTransaction(transactionId);
+      }
+  </code></pre>
+  
+    <h2>Execute Transaction</h2>
+  
+    <p>The execute transaction function takes a single parameter, the <code>transactionId</code>.</p>
+  
+    <p>First, we want to make sure that the Transaction at the specified id has not already been executed.</p><pre><code>    require(transactions[trandsactionId].executed == false);
+  </code></pre>
+  
+    <p>Then we want to verify that the transaction has at least the required number of confirmations.</p>
+  
+    <p>To do this we will loop over the owners array and count how many of the owners have confirmed the transaction. If the count reaches the required amount, we can stop counting (save gas) and just say the requirement has been reached.</p>
+  
+    <p>I define the helper function isConfirmed, which we can call from the <code>executeTransaction</code> function.</p><pre><code>    function isConfirmed(uint transactionId)
+          public
+          view
+          returns (bool)
+      {
+          uint count = 0;
+          for (uint i=0; i&lt;owners.length; i++) {
+              if (confirmations[transactionId][owners[i]])
+                  count += 1;
+              if (count == required)
+                  return true;
+          }
+      }
+  </code></pre>
+  
+    <p>It will return true if the transaction is confirmed, so in the <code>executeTransaction</code> function, we can execute the transaction at the specified if it is confirmed, otherwise do not execute it and then update the Transaction struct to reflect the state.</p>
+  
+    <p>We are updating the state, so we should log an event reflecting the change.</p><pre><code>    event Execution(uint indexed transactionId);
+      event ExecutionFailure(uint indexed transactionId);
+  </code></pre>
+  
+    <p>We have two possible outcomes of this function -- the transaction is not guaranteed to successfully execute. We will want to catalog whether the send transaction successfully executes or fails. Notice how the function body handles a failed transaction and tracks it in the contract state.</p><pre><code>    function executeTransaction(uint transactionId)
+          public
+      {
+          require(transactions[transactionId].executed == false);
+          if (isConfirmed(transactionId)) {
+              Transaction storage t = transactions[transactionId];  // using the &quot;storage&quot; keyword makes &quot;t&quot; a pointer to storage 
+              t.executed = true;
+              (bool success, bytes memory returnedData) = t.destination.call.value(t.value)(t.data);
+              if (success)
+                  emit Execution(transactionId);
+              else {
+                  emit ExecutionFailure(transactionId);
+                  t.executed = false;
+              }
+          }
+      }
+  </code></pre>
+  
+    <h2>Additional Functions</h2>
+  
+    <p>So far, we have only covered the core functionality of this MultiSignature Wallet found in the ConsenSys github repository.</p>
+  
+    <p>I will leave it to you to continue the exercise and explore the rest of the contract. The code is well commented and you should be able to determine and explain the purpose of each function in the contract.</p>
+  
+    <p>If you would like a further challenge, continue on to the bottom of the Solidity file and investigate the <a href="https://github.com/ConsenSys/MultiSigWallet/blob/master/MultiSigWalletWithDailyLimit.sol" target="_blank">MultiSigWalletWithDailyLimit contract</a>.</p>
+  
+    <p>Note: If you want to execute a transaction that sends value from the MultiSig contract, you have to make sure that the contract has enough value to make the transfer. You can deposit ether directly to the MultiSig wallet contract using the included fallback function.&nbsp;</p>
+  
+    <h2>Interacting with the Contract</h2>
+  
+    <p>Now that we have a basic MultiSignature Wallet, let's interact with the Multisig Wallet and see how it works.</p>
+  
+    <p>Copy the contract that we developed in Remix into the truffle project directory provided.</p>
+  
+    <p>You can see that the project directory comes with a SimpleStorage.sol contract. This is the contract that we are going to be calling from the Multisig contract.</p>
+  
+    <p>If you look in the migrations directory you will see the deployment script that truffle will use to deploy the SimpleStorage contract as well as the MultiSig Wallet.</p>
+  
+    <p>The truffle deployer allows us to access accounts, which is useful given that the MultiSig contract constructor requires an array of owner addresses as as well as the number of required confirmations to execute a transaction.</p>
+  
+    <p>The owners array and the deployment scripts are already in the file.</p><pre><code>    const owners = [accounts[0], accounts[1]]
+      deployer.deploy(MultiSig, owners, 2)
+  </code></pre>
+  
+    <p>We are only going to require 2 confirmations for the sake of simplicity.</p>
+  
+    <p>To deploy the contracts, start the development environment by running <code>truffle develop</code> in a terminal window at the project directory. The truffle command line will appear</p><pre><code>truffle(develop)&gt;
+  </code></pre>
+  
+    <p>Deploy the contracts</p><pre><code>truffle(develop)&gt; migrate
+  </code></pre>
+  
+    <p>If <code>migrate</code> does not work, try <code>migrate --reset</code>.</p>
+  
+    <p>And then get the deployed instances of the SimpleStorage.sol and MultiSignatureWallet.sol contracts.</p><pre><code>truffle(develop)&gt; var ss = await SimpleStorage.at(SimpleStorage.address)
+  truffle(develop)&gt; var ms = await MultiSignatureWallet.at(MultiSignatureWallet.address)
+  </code></pre>
+  
+    <p>Check the state of the SimpleStorage contract</p><pre><code>truffle(develop)&gt; ss.storedData.call()
+  &lt;BN: 0&gt;
+  </code></pre>
+  
+    <p>This means that it is 0. You can verify by waiting for the promise to resolve and converting the answer to a string. Try it with:</p><pre><code>ss.storedData.call().then(res =&gt; { console.log( res.toString(10) )} )
+  0
+  </code></pre>
+  
+    <p>Let's submit a transaction to update the state of the SimpleStorage contract to the MultiSig contract. <code>SumbitTransaction</code> takes the address of the destination contract, the value to send with the transaction and the transaction data, which includes the encoded function signature and input parameters.</p>
+  
+    <p>If we want to update the SimpleStorage contract data to be 5, the encoded function signature and input parameters would look like this:</p><pre><code>var encoded = &#39;0x60fe47b10000000000000000000000000000000000000000000000000000000000000005&#39;
+  </code></pre>
+  
+    <p>Let&#39;s get the available accounts and then make a call to the MultiSig contract:</p><pre><code>truffle(develop)&gt; var accounts = await web3.eth.getAccounts()
+  truffle(develop)&gt; ms.submitTransaction(ss.address, 0, encoded, {from: accounts[0]})
+  </code></pre>
+  
+    <p>And we see the transaction information printed in the terminal window. In the logs, we can see that a &ldquo;Submission&rdquo; event was fired, as well as a &ldquo;Confirmation&rdquo; event, which is what we expect.</p>
+  
+    <p>The current state of the MultiSig has one transaction that has not been executed and has one confirmation (from the address that submitted it). One more confirmation should cause the transaction to execute. Let's use the second account to confirm it. The <code>confirmTransaction</code> function takes one input, the index of the Transaction to confirm.</p><pre><code>truffle(develop)&gt; ms.confirmTransaction(0, {from: accounts[1]})
+  </code></pre>
+  
+    <p>The transaction information is printed in the terminal. You should see two log events this time as well. A &ldquo;Confirmation&rdquo; event as well as an &ldquo;Execution&rdquo; event. This indicates that the call to SimpleStorage executed successfully. If it didn't execute successfully, we would see an &ldquo;ExecutionFailure&rdquo; event there instead.</p>
+  
+    <p>We can verify that the state of the contract was updated by running</p><pre><code>truffle(develop)&gt; ss.storedData.call()
+  &lt;BN: 5&gt;
+  </code></pre>
+  
+    <p>The <code>storedData</code> is now 5. And we can check that the address that updated the SimpleStorage contract was the MultiSig Wallet.</p><pre><code>truffle(develop)&gt; ss.caller.call()
+  &lsquo;0x855d1c79ad3fb086d516554dc7187e3fdfc1c79a'
+  truffle(develop)&gt; ms.address
+  &lsquo;0x855d1c79ad3fb086d516554dc7187e3fdfc1c79a'
+  </code></pre>
+  
+    <p>The two addresses are the same!</p>
+
+    <p>Congratulations! You've just built a multi-sig wallet that uses basic access control!</p>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M3-design-patterns/L6-general-finance/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>
