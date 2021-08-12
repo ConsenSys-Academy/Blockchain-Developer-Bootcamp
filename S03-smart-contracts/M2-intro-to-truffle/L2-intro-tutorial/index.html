@@ -236,8 +236,117 @@ $ truffle(develop)> (await storage.get()).toNumber()
 42    
     </pre>
     
-  Congratulations! You’ve now just created, deployed, and interacted with your very first smart contract using the Truffle Suite. In the next section, we're going to walkthrough how to use Ganache GUI.
+  Congratulations! You’ve now just created, deployed, and interacted with your very first smart contract using the Truffle Suite. Next, we're going to walkthrough how to use Ganache GUI.
     </p>
+
+  <h2>Ganache GUI</h2>
+  
+    <p>Ganache UI can be really helpful for folks new to smart contract development. Due to its visual nature, it’s a great way to familiarize yourself with all the core constructs of an EVM-based blockchain and help move past that stage of “not knowing what you don’t know”. It’s fully cross-platform and available to download <a href="https://www.trufflesuite.com/ganache" target="_blank" rel="noopener noreferrer">here.</a></p>
+
+    <div class="img-wrapper"><img src="../../../img/S03/ganache-1.png" alt="image of ganache GUI"></div>
+
+    <p>As you can seen in the above screenshot, it has tabs for all the major constructs including accounts, blocks, transactions, contracts, and events. It also starts it’s own chain instance on port <code>7545</code> (note that by default <code>truffle develop</code> starts on <code>9545</code> and ganache-cli on <code>8545</code>).</p>
+
+    <p>To best see Ganache UI in action, let’s try deploying the same SimpleStorage (with a few small enhancements) contract from the previous exercise to the chain instance it instantiates.</p>
+
+    <h3>Creating a Workspace</h3>
+      
+    <p>Upon opening Ganache UI, the first screen you should see is shown below. Select "New Workspace>> Ethereum" (depending on your version you should also see the Corda and Filecoin flavors listed in the dropdown).</p>
+
+      <div class="img-wrapper"><img src="../../../img/S03/ganache-2.png" alt="Workspace section of Ganache"></div>
+
+      <p>From here, you’ll be presented with a file picker wherein you can navigate to the project we created earlier and select the <code>truffle-config.js</code> file.</p>
+
+      <p>All going well you should be presented with the accounts screen we saw earlier. Feel free to take a browse through the tabs to begin familiarizing yourself.</p>
+    
+    <h3>Migrating our contracts to Ganache UI</h3>
+
+      <p>Next up we’re going to migrate our contracts (with a few twists) to the chain instance instantiated by Ganache UI on port <code>7545</code>. This will give us a great way to visually inspect what's happening not only on our testnet, but also with the contract itself, as you'll see in a moment.</p>
+
+      <p>Before we can migrate, we’ll need to update our <code>truffle-config.js</code> file to include the new network as a destination. Because we used <code>truffle init</code> to create our project, it handily includes a number of commented destinations under the <code>networks</code> entry. As such you’ll be able to scroll down and uncomment (currently lines 45-49 at the time of writing). Note that we have to change <code>port</code> to 7545</p>
+
+      <pre>
+  development: {
+  host: "127.0.0.1",
+  port: 7545,
+  network_id: "*",
+  },
+      </pre>
+
+      <p>Awesome, we now have a new network we can migrate to! For reference, this same principle applies when migrating to public networks (such as testnets or mainnet; the Ethereum of equivalent of staging and production environments).</p>
+
+      <p>Go ahead and run the following, noting the use of the <code>--network</code> flag that allows us to specify a given network that we want to target.</p>
+
+      <pre>
+$ truffle migrate --network development
+      </pre>
+
+      <p>Assuming this ran successfully, you’ll now see some corresponding activity in Ganache UI. Of note are the transactions listed under the "Transactions" tab and all the contract information (such as storage, etc) surfaced under the "Contracts" tab. This is a really helpful feature of Truffle and Ganache: the integration of both the testnet environment and smart contract values, updated dynamically. To have all this visually is really powerful for developing and debugging a contract.</p>
+
+      <div class="img-wrapper"><img src="../../../img/S03/ganache-3.png" alt="Transaction information on Ganache GUI"></div>
+
+      <p>Note the <code>Storage</code> (state) section in our "Contracts" section:</p>
+
+      <div class="img-wrapper"><img src="../../../img/S03/ganache-4.png" alt="Contract information on Ganache GUI"></div>
+
+      Last, let’s update our contract to include an event that is emitted every time a new value is set (we'll learn about <a href="https://medium.com/linum-labs/everything-you-ever-wanted-to-know-about-events-and-logs-on-ethereum-fec84ea7d0a5" target="_blank" rel="noopener noreferrer">events</a> in more detail later in this section). Copy and paste the following over your existing SimpleStorage.sol.
+
+      <pre>
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.4.21 <0.7.0;
+
+contract SimpleStorage {
+  uint storedData;
+
+  event setEvent(uint newValue);
+
+  function set(uint x) public {
+    storedData = x;
+    emit setEvent(x);
+  }
+
+  function get() public view returns (uint) {
+    return storedData;
+  }
+}
+      </pre>
+      
+      
+      <p>We’ll now make use of the <code>--reset</code> flag when re-running the migration command to forcibly replace the contract. Note that this will result in a new contract address.</p>
+      
+<pre>$ truffle migrate --network development --reset</pre>
+      
+      
+      <p>Let’s now jump back into the Truffle console, this time using the <code>console</code> command (vs <code>develop</code> which also spins up a ganache instance, which would be redundant this time).</p>
+      
+<pre>$ truffle console --network development</pre>
+      
+      
+      <p>Like earlier, we can now send the following to set the value within our SimpleStorage.</p>
+      
+<pre>
+  $ let contract = await SimpleStorage.deployed()
+  $ contract.set(888)
+</pre>
+
+      <p>If all has been successful, you’ll now see both a reference to <code>setEvent</code> in the logged output. In addition, you’ll also be able to navigate to the events tab within Ganache UI and also see it there.</p> 
+      
+  <h2>Conclusion</h2>
+      <p>Great! You’ve now successfully familiarized yourself with Ganache UI and in doing so hopefully getting a little more comfortable with both some of the core Ethereum constructs and the basic elements in the development lifecycle.</p>
+
+      <p>We know this may be a bit out of your comfort zone, but now that you have a basic understanding of Truffle, you'll be able to start playing around with the Solidity we're going to start learning next!</p>
+
+      <p>After we go through Solidity fundamentals and Security, we're going to dive deeper into elements of development on Truffle so you can feel even more confident and capable as a developer.</p>
+      
+      <p>Before all that, though, we want to introduce one more tool to help you play around with Solidity and other smart contract development languages: <a href="https://remix.ethereum.org" target="_blank" rel="noopener noreferrer">Remix.</a></p>
+      
+
+  <h2>Additional Material</h2>
+  <ul>
+    <li><a href="https://www.trufflesuite.com/docs/truffle/overview" target="_blank" rel="noopener noreferrer">Docs: Truffle Suite</a></li>
+    <li><a href="https://www.trufflesuite.com/tutorial" target="_blank" rel="noopener noreferrer">Tutorial: Petshop</a> A great tutorial which will walk through developing a smart contract and basic frontend interface.</li>
+    <li><a href="https://www.trufflesuite.com/docs/truffle/quickstart" target="_blank" rel="noopener noreferrer">Tutorial: Metacoin</a> Another good starting tutorial walking through building your own ERC-20 token</li>
+  </ul>
     
   <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
     <div class="footer">
