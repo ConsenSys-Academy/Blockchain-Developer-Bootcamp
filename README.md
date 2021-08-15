@@ -34,7 +34,6 @@ We envision this course to grow over time—sections on "contributing to open so
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for how to make a contribution.
 
 An example of this process found below:
-Found in the top right of the repository information ![fork location](./img/readme/fork.png)
 
 1. Fork it (<https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp>)
 2. Create your feature branch (`git checkout -b branchName`)
@@ -49,5 +48,3 @@ Built by [ConsenSys](www.consensys.net/) and
 
 This work is licensed under a
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/) 
-
-[![CC BY-NC-SA 4.0][https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png]][http://creativecommons.org/licenses/by-nc-sa/4.0/]

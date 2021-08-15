@@ -130,4 +130,5 @@ When possible, use pictures or gifs.
 
 Open an [issue](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/issues) or [join our discord](https://bit.ly/ConsenSysDiscord).
 
-Made with ❤️ by ConsenSys and ![GitHub Contributors Image](https://contrib.rocks/image?repo=ConsenSys-Academy/Blockchain-Developer-Bootcamp)
+Made with ❤️ by ConsenSys and 
+![GitHub Contributors Image](https://contrib.rocks/image?repo=ConsenSys-Academy/Blockchain-Developer-Bootcamp)
