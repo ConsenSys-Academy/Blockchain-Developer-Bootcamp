@@ -177,3 +177,11 @@ pre {
   color: white;
   padding: 20px;
 }
+
+pre.right {
+  color: lightgreen;
+}
+
+pre.wrong {
+  color: coral;
+}
