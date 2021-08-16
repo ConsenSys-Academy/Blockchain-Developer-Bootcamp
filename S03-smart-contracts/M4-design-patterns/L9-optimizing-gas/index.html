@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Optimizing Gas</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Optimizing Gas</h1>
+  
+  <!-- Content here: -->
+
+  <div class="fr-view">
+
+    <p>Reducing the gas consumed by a contract is important in two situations:</p>
+  
+    <ul>
+      <li>Cost of deploying a contract</li>
+      <li>Cost to call the contract functions</li>
+    </ul>
+  
+    <p><a href="https://solidity.readthedocs.io/en/v0.7.1/internals/optimiser.html" rel="noopener noreferrer" target="_blank">The Solidity optimizer</a> tries to improve the efficiency of your contract as much as possible during compile time. Feel free to dig into the internals of the optimizer.</p>
+  
+    <p>One of the best ways to optimize your contracts gas usage is to reduce expensive operations in the contract&#39;s functions. Creating and modifying storage variables can be expensive.</p>
+  
+    <p>20,000 gas when a value is set to non-zero from zero; 5,000 gas when writing to existing storage or setting a value to zero; and a 15,000 gas refund when a non-zero value is set to zero.</p>
+  
+    <p><a href="https://docs.google.com/spreadsheets/d/1n6mRqkBz3iWcOlRem_mO09GtSKEKrAsfO7Frgx18pNU/edit#gid=0" rel="noopener noreferrer" target="_blank">Here is a list of OPCODES and their gas costs.</a></p>
+  
+    <h2>Short Circuit Rules</h2>
+  
+    <p>The operators <code>||</code> and <code>&amp;&amp;</code> apply the common short-circuiting rules. This means that in the expression <code>f(x) || g(y)</code>, if <code>f(x)</code> evaluates to true, <code>g(y)</code> will not be evaluated even if it may have side-effects.</p>
+  
+    <p>How can these functions in <a href="https://gist.github.com/ConsenSys-Academy/a61670fd8796d73d8b4b7d5935f9e714" rel="noopener noreferrer" target="_blank">Unoptimized.sol</a> be modified to reduce gas usage?</p><pre><code>function shortCircuit() public view returns(bool){
+      if (oftenFalse || oftenTrue) {
+          return true;
+      }
+  }
+  
+  function shortCircuit2() public view returns(bool){
+      if(oftenTrue &amp;&amp; oftenFalse) {
+          return false;
+      } else {
+          return true;
+      }
+  }
+  </code></pre>
+  
+    <h2>Expensive operations in a loop</h2>
+  
+    <p>Modifying storage variables in a loop can be very expensive and should be avoided unless absolutely necessary.</p>
+  
+    <p>How can this function be improved, given that loop is a storage variable? <a href="https://gist.github.com/ConsenSys-Academy/a61670fd8796d73d8b4b7d5935f9e714#file-unoptimized-sol-L26" rel="noopener noreferrer" target="_blank">Here is the source file.</a></p><pre><code>function looping (uint x) public returns (bool) {
+      for(uint i; i &lt; x; i++){
+          loops += 1;
+      }
+      return true;
+  }
+  </code></pre>
+  
+    <h2>Reduce the number of loops</h2>
+  
+    <p>Zero loops is ideal, but sometimes you just have to loop. Since loops are expensive, can you reduce the number of loops in your functions?</p><pre><code>function looping2 (uint x) public pure returns(bool){
+      uint m = 0;
+      uint v = 0;
+      for(uint i = 0; i &lt; x; i++){
+          m += i;
+      }
+      for(uint j = 0; j &lt; x; j++){
+          v -= j;
+      }
+      return true;
+  }
+  </code></pre>
+  
+    <h2>Fixed size byte arrays</h2>
+  
+    <p><a href="https://solidity.readthedocs.io/en/latest/types.html#fixed-size-byte-arrays" rel="noopener noreferrer" target="_blank">From the Solidity Docs:</a></p>
+  
+    <p>It is possible to use an array of bytes as byte[], but it is wasting a lot of space, 31 bytes every element, to be exact, when passing in calls. It is better to use bytes. As a rule of thumb, use bytes for arbitrary-length raw byte data and string for arbitrary-length string (UTF-8) data. If you can limit the length to a certain number of bytes, always use one of bytes1 to bytes32 because they are much cheaper.</p>
+  
+    <p>How can this function be optimized?</p><pre><code>function byteArray() public returns(uint){
+      byte[] byteArray;
+      return gasleft();
+  }
+  </code></pre>
+  
+    <p>Additional Resources:</p>
+  
+    <ul>
+      <li><a href="https://medium.com/coinmonks/optimizing-your-solidity-contracts-gas-usage-9d65334db6c7">Optimizing Solidity contract&#39;s gas usage</a></li>
+      <li><a href="https://arxiv.org/pdf/1703.03994.pdf">Under Optimized Smart Contracts Devour Your Money</a></li>
+      <li><a href="https://medium.com/better-programming/how-to-write-smart-contracts-that-optimize-gas-spent-on-ethereum-30b5e9c5db85" rel="noopener noreferrer" target="_blank">How to Write Smart Contracts that Optimize Gas</a></li>
+    </ul>
+  </div>
+  
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M4-design-patterns/L9-optimizing-gas/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>
