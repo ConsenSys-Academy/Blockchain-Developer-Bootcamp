@@ -74,11 +74,11 @@
       </ul>
     </p>
 
-    <p>When the EVM wishes to process a transaction, it first takes the input data, fetches the relevant contract bytecode and any world state account storage data. Then, the EVM processes the transaction data through the stack data type. Last, after the EVM has finished processed the transaction, it takes any world state data altered by the transaction and writes those changes to the world state. The d iagram below illustrates this process (note that PC is the Program Counter, essentially keeping track of the steps to measure gas):</p>
+    <p>When the EVM wishes to process a transaction, it first takes the input data, fetches the relevant contract bytecode and any world state account storage data. Then, the EVM processes the transaction data through the stack data type. Last, after the EVM has finished processed the transaction, it takes any world state data altered by the transaction and writes those changes to the world state. The diagram below illustrates this process (note that PC is the Program Counter, essentially keeping track of the steps to measure gas):</p>
 
     <div class="img-wrapper"><img src="../../../img/S03/evm-execution-model.png" alt=""></div>
 
-    <p>The handling of memory and storage in the transaction execution process can be one of the hardest challenges for new developers in the space. We'll go over it more in the Solidity section, but be aware it's a different level of programming than a typical Javascript or Python developer encounters</p>
+    <p>The handling of memory and storage in the transaction execution process can be one of the hardest challenges for new developers in the space. We'll go over it more in the Solidity section, but be aware it's a different level of programming than a typical Javascript or Python developer encounters.</p>
 
   <h2>New Development and Security Considerations</h2>
 
@@ -90,12 +90,12 @@
     <li><b>Smart contracts information is public and anyone can call your public functions</b> Once your code is deployed and particularly if it starts accruing value, it will attract more opportunitie for it to be hacked or misused.</li>
   </ul>
 
-  <p>In this section, we hope to both equip you with the ability to code smart contracts but also protect yourself and anyone interacting with your code. Most of all, we hope to instill in you a healthy sense of paranoid and fear about the code you deploy to public networks. However, we will also show you how to deal with this terror by protecting your code with smart and secure tools.</p>  
+  <p>In this section, we hope to both equip you with the ability to code smart contracts but also protect yourself and anyone interacting with your code. Most of all, we hope to instill in you a healthy sense of paranoia and fear about the code you deploy to public networks. However, we will also show you how to deal with this terror by protecting your code with smart and secure tools.</p>  
 
   <h2>Additional Material</h2>
   <ul>
     <li><a href="https://en.wikipedia.org/wiki/Smart_contract" target="_blank" rel="noopener noreferrer">Wikipedia: Smart Contracts,</a> <a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)" target="_blank" rel="noopener noreferrer">Stack (Abstract data type)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=RPQD7-AOjMI" target="_blank" rel="noopener noreferrer">Video: Turing Complete (Computerphile)0</a> Video describing what it means for a language to be Turing complete, the difference between the Bitcoin execution environment and the EVM is the EVM is Turing complete.</li>
+    <li><a href="https://www.youtube.com/watch?v=RPQD7-AOjMI" target="_blank" rel="noopener noreferrer">Video: Turing Complete (Computerphile)</a> Video describing what it means for a language to be Turing complete, the difference between the Bitcoin execution environment and the EVM is the EVM is Turing complete.</li>
     <li><a href="https://ethereum.org/en/developers/docs/evm/" target="_blank" rel="noopener noreferrer">Wiki: Ethereum Virtual Machine (Ethereum.org)</a> A deep dive describing the EVM</li>
     <li><a href="https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf" target="_blank" rel="noopener noreferrer">Slides: Ethereum VM Illustrated (Takenobu T.)</a> A slidedeck describing the Ethereum VM. Many of the diagrams in this section are from this slidedeck</li>
   </ul>
