@@ -106,7 +106,8 @@ a:hover:before {
 
 .discord-logo {
   width: 30px;
-  padding: 0px 8px;
+  padding: 2px 7px;
+  display: inline;
 }
 
 /* currently .column and .row:after are only used for "M0L1" section */

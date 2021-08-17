@@ -1,27 +1,14 @@
-# Contributing to Basic Training
-
-## Why Contribute
-
-Contributing to Blockchain Developer Bootcamp is a great way to [learn how to work on open source projects](https://opensource.guide/how-to-contribute).
-
-This skill is essential because the overwhelming majority of blockchain-based projects are built via open source. If you can inspect the code, you can trust the code.
-
-Contributing will help you improve:
-
-- the software you use
-- your existing skills
-- your job prospects
-- how you work with a team
-- the chances to find mentors and network.
-- your people skills
-
-Although it may seem challenging, contributing to an open-source project gets easier after doing it the first time.
-
-Stick with it, and you will master these small but essential skills.
-
-Between participating in hackathons and contributing open source projects, they are the best way to land a job in the Ethereum ecosystem.
+# Contributing to Blockchain Developer Bootcamp
 
 ## Background
+
+To lower the barriers to entry, all of our course content is in Markdown located in the `docs` directory. We then use [mkdocs](https://www.mkdocs.org/) to generate the course pages (thank you [Kevin Bluer!](https://github.com/kevinbluer)).
+
+Markdown is what this file and Github README.md files are written in. If you need some help with Markdown, [please see this Markdown cheatsheet.](https://www.markdownguide.org/cheat-sheet/). One note, to make sure links open in a new window, be sure to add `{target=_blank}` at the end of a link. It will look like this:
+
+```
+[Text being linked](www.linkaddresshere.com){target=_blank}
+```
 
 ### Coordination
 
@@ -83,7 +70,7 @@ Learn more on [how to use branches](https://www.atlassian.com/git/tutorials/usin
 4. Write code.
 5. Commit code. See style guide.
 6. Push the branch to `origin`.
-7. Open a pull request with the branch.
+7. Open a pull request against `staging` with the branch. Please note, this is not `main` but `staging` to help us save on Github Action minutes, we're doing our best to batch-committ changes.
 
 ## Style Guide
 
@@ -94,6 +81,7 @@ To keep our commit history clean, we follow these simple rules.
 Types of branches:
 
 1. `main` - main branch that is live.
+2. `staging` - branch you make your PRs against.
 2. `feat/FEATURE` - for features.
 3. `fix/THING1` - hot fixes.
 4. `bug/THING2` - bug fixes.
