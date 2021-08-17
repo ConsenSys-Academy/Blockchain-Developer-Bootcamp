@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+    <link href="{{ 'style.css'|url }}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="{{ 'text-bounce.js'|url }}" async></script>
+  </head>
+  <body>
+    {{ page.content }}
+    <br />
+    {%- include "edit.html" %}
+  </body>
+</html>
