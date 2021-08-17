@@ -1,0 +1,12 @@
+site_name: ConsenSys Academy Developer Bootcamp
+repo_url: https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp
+edit_uri: edit/main/docs/
+theme:
+  name: null
+  custom_dir: 'custom_theme/'
+google_analytics:
+  - UA-262533-24
+  - auto
+markdown_extensions:
+  - attr_list
+  - codehilite
