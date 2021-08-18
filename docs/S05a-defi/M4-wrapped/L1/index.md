@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=">
-  <link rel="stylesheet" href="../../style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
-  <script src="../../../js/text-bounce.js" async></script>
-  <title>Welcome</title>
-</head>
-<div class="body">
-  
-  <!-- Title goes below: -->
-  <h1>Title</h1>
-  
-  <!-- Content here: -->
+X. What are Wrapped Tokens
+Wrapped tokens are a way to bridge cryptocurrencies between blockchains. They are used to represent tokens that are not native to a blockchain network. An example is using Bitcoin or Dogecoin on Ethereum. Wrapped tokens exist because different blockchain networks may offer different features and can’t talk directly to each other. These help increase interoperability and liquidity between networks.
 
-    <p></p>
+Wrapped tokens by work by having a token deposited into an account and is digitally represented on a smart contract platform like Ethereum. The tokens are collateralized with the asset, typically at 1:1. The deposit and issuance happen through a custodian, an entity that holds the assets. The custodian can be a company like Circle/Coinbase (via USDC), a merchant, a multi-signature wallet, a DAO or a smart contract.
 
-  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
-    <div class="footer">
-      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/MODULE_NUM/LESSON_NUM/index.html" target="_blank">Edit this page on Github</a>
-      
-      <div class="discord">
-        <img class="discord-logo" src="../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
-      </div> 
-    </div>
-</div>
+To mint wrapped tokens, the custodian receives the asset and then issues it on the chain. Tokens are burned when the custodian receives a notice to release assets from the reserves. Users would want to have wrapped tokens on Ethereum because the assets could work to earn a yield within DeFi Apps. Instead of your Bitcoin or Dogecoin only gaining value through price appreciation, you can earn a yield by lending it on DeFi platforms. By putting your idle assets to work, you could earn a stream of funds. Also, by using Wrapped Bitcoin on Ethereum, you can settle transactions faster and access markets with deeper liquidity. Since DeFi platforms rely on over-collateralization to assure stability and what is being lent out is not the asset itself, there is less worry about losing your assets.
 
-</html>
+Popular examples of wrapped tokens include [WBTC](https://wbtc.network/), RenBTC, RenDoge, RenFIL, WETH.
+
+[Ren Protocol](https://medium.com/renproject/how-renvm-actually-works-c2f76a2630c4) specializes in wrapped tokens between chains. You can also check out [BadgerDAO](https://badgerdao.medium.com/introducing-badger-dao-ed47a586c619), which is dedicated to creating tools to onboard Bitcoin liquidity onto Ethereum to earn yield.
+
+[WETH (wrapped ETH)](https://weth.io/) is a special case of a wrapped token since it takes native ETH and wraps it in the ERC-20 standard. This [allows ETH to be used in DeFi applications via a common set of rules](https://yos.io/2019/07/13/smart-contract-extensibility-wrapped-tokens/), since ETH was created before the ERC-20 standard emerged. With this, ETH can be used as collateral in the network. Prior to WETH, to use ETH in a DeFi app would require swapping ETH into a token.
+
+As multiple chains emerge for different use cases, inter-blockchain liquidity will be emphasized across networks. Say moving between Polygon and Ethereum. Wrapped Tokens require some level of trust with the custodian. At some point, trustless or trust minimized solutions with no custodians will appear, allowing anyone to move assets between any chain.
+
+## Additional Resources
+
+[What are Wrapped Tokens?](https://academy.binance.com/en/articles/what-are-wrapped-tokens)
+
+[Understanding Wrapped Bitcoin and the Wrapped Tokens Framework](https://medium.com/nerd-for-tech/understanding-wrapped-bitcoin-and-the-wrapped-tokens-framework-6ed45e52acdb)
+
+[Wrapped Crypto Tokens, Explained](https://cointelegraph.com/explained/wrapped-crypto-tokens-explained)
+
+[Poly Network via Rekt.news](https://www.rekt.news/polynetwork-rekt/)
