@@ -23,123 +23,104 @@ The Truffle Suite was built to streamline the smart contract development process
 
 A good example of this is contract compilation (wherein you convert your high-level contract code to something that can be natively understood by an Ethereum-node). As part of this feature, Truffle can also intelligently download the necessary compiler version(s) and even enable you to write your contracts in different language versions.
 
-<p>Additional reasons why developers might Truffle to build their dapps include the following...
+Additional reasons why developers might Truffle to build their dapps include the following...
 
-<ul>
-<li>Built-in support for compiling, deploying and linking your contract</li>
-<li>An automated contract testing framework built on Mocha and Chai</li>
-<li>A built-in console that allows you to directly interact with your compiled contracts</li>
-</ul>
+- Built-in support for compiling, deploying and linking your contract</li>
+- An automated contract testing framework built on Mocha and Chai</li>
+- A built-in console that allows you to directly interact with your compiled contracts</li>
 
 This is just scratching the surface; as you’ll see when we dive-in, the Truffle Suite and the broader tooling ecosystem makes your life as a dapp developer both productive and fun!
-</p>
 
-<h2>Installation</h2>
+## Installation
 
-<p>The following walks you through installation of both Truffle CLI and Ganache.</p>
+The following walks you through installation of both Truffle CLI and Ganache.
 
-<h3>Truffle CLI</h3>
+Truffle CLI
 
-<p>The Truffle Suite requires the following...
+The Truffle Suite requires the following...
 
-<ul>
-  <li>Node.js v8.9.4 or later</li>
-  <li>NPM v5.0.3 or later</li>
-  <li>Windows, Linux or Mac OS X</li>
-</ul>
 
-Truffle also requires that you have a running Ethereum client which supports the standard JSON RPC API (which is nearly all of them). While there are many clients, the Truffle Suite also ships with <a href="https://www.trufflesuite.com/ganache" target="_blank" rel="noopener noreferrer">Ganache,</a> essentially a one-click EVM-based blockchain node for local testing.</p>
+- Node.js v8.9.4 or later
+- NPM v5.0.3 or later
+- Windows, Linux or Mac OS X
 
-<p>Once you have the proper Node and <code>npm</code> installed, please run the following command from your terminal to install Truffle:
 
-<pre>$ npm install -g truffle</pre>
+Truffle also requires that you have a running Ethereum client which supports the standard JSON RPC API (which is nearly all of them). While there are many clients, the Truffle Suite also ships with <a href="https://www.trufflesuite.com/ganache" target="_blank" rel="noopener noreferrer">Ganache,</a> essentially a one-click EVM-based blockchain node for local testing.
+
+Once you have the proper Node and `npm` installed, please run the following command from your terminal to install Truffle:
+
+```bash
+$ npm install -g truffle
+```
 
 Once succesful, this will allow you to run Truffle from your command line anywhere on your machine.
-</p>
 
-<h3>Ganache</h3>
+## Ganache
 
-<p>Ganache has the same requirements as Truffle (as specified above). In addition, it also comes in two flavors, both a standalone CLI for more intermediate-advanced users and a UI version which is great for users that are just starting out. It’s worth noting that a version of Ganache also ships directly with Truffle which can be instantiated with the truffle develop command.</p>  
+Ganache has the same requirements as Truffle (as specified above). In addition, it also comes in two flavors, both a standalone CLI for more intermediate-advanced users and a UI version which is great for users that are just starting out. It’s worth noting that a version of Ganache also ships directly with Truffle which can be instantiated with the truffle develop command.  
 
-<p>Ganache CLI can be installed via the following:
-<pre>$ npm install -g ganache-cli </pre>
+Ganache CLI can be installed via the following:
 
-</p>
+```bash
+$ npm install -g ganache-cli 
+```
 
-<p>Ganache UI is available as download <a href="https://www.trufflesuite.com/ganache" target="_blank" rel="noopener noreferrer">here.</a> You can also install the latest beta (at the time of writing) that includes Filecoin support <a href="https://github.com/trufflesuite/ganache/releases/tag/v2.6.0-beta.3" target="_blank" rel="noopener noreferrer">here.</a></p>
 
-<p>Congratulations! You've just successfully installed Truffle and Ganache and are ready to get started developing.</p>
+Ganache UI is available as download <a href="https://www.trufflesuite.com/ganache" target="_blank" rel="noopener noreferrer">here.</a> You can also install the latest beta (at the time of writing) that includes Filecoin support <a href="https://github.com/trufflesuite/ganache/releases/tag/v2.6.0-beta.3" target="_blank" rel="noopener noreferrer">here.</a>
 
-<h2>Introducing the Truffle Suite</h2>
-<p>Now that we have Truffle (and optionally a standalone Ganache version) installed we’re nearly ready to begin diving in and writing our first smart contract. We'd like to cover a few more things before diving in.
+Congratulations! You've just successfully installed Truffle and Ganache and are ready to get started developing.
 
-<h3>Network Support</h3>  
-<p>As we discussed previously in the course, we are living in an increasingly multi-chain world. There multiple popular public blockchain networks and Truffle Suite aims to serve as many of these as is realistic.</p>
+## Introducing the Truffle Suite
+Now that we have Truffle (and optionally a standalone Ganache version) installed we’re nearly ready to begin diving in and writing our first smart contract. We'd like to cover a few more things before diving in.
 
-<p>
+### Network Support  
+As we discussed previously in the course, we are living in an increasingly multi-chain world. There multiple popular public blockchain networks and Truffle Suite aims to serve as many of these as is realistic.
+
 At the time of writing, Truffle Suite supports development on the following networks:
 
-<ul>
-  <li>Ethereum</li>
-  <li>Quorum</li>
-  <li>Hyperledger Fabric</li>
-  <li>Corda</li>
-  <li>Filecoin</li>
-  <li>Tezos</li>
-  <li>Polygon</li>
-  <li>Arbritrum</li>
-  <li>Optimism PBC</li>
-</ul>
-</p>
 
-<p>That said, Truffle’s richest support is for that of EVM (Ethereum Virtual Machine) based blockchains. This is in part due to Truffle’s lineage and the fact that supporting every blockchain would be futile, particularly given the rapid evolution of the space.</p>
+- Ethereum
+- Quorum
+- Hyperledger Fabric
+- Corda
+- Filecoin
+- Tezos
+- Polygon
+- Arbritrum
+- Optimism PBC
 
-<p>Given the above, the bulk of this section of the course will be specifically focused on EVM based chains (unless specified otherwise).</p>
+That said, Truffle’s richest support is for that of EVM (Ethereum Virtual Machine) based blockchains. This is in part due to Truffle’s lineage and the fact that supporting every blockchain would be futile, particularly given the rapid evolution of the space.
 
-<h3>Language Support</h3>
-<p>As highlighted earlier, amongst many other things, Truffle handles the compilation of your contracts from that of a higher-level language to Ethereum bytecode, which is the language “spoken” by the nodes on the network.</p>
+Given the above, the bulk of this section of the course will be specifically focused on EVM based chains (unless specified otherwise).
 
-<p>
+### Language Support
+As highlighted earlier, amongst many other things, Truffle handles the compilation of your contracts from that of a higher-level language to Ethereum bytecode, which is the language “spoken” by the nodes on the network.
+
 Out of the box, Truffle supports the following:
 
-  <ul>
-    <li>Solidity</li>
-    <li>Vyper</li>
-    <li><a href="https://docs.soliditylang.org/en/v0.8.6/yul.html" target="_blank" rel="noopener noreferrer">Yul</a> (experimental and not for beginners)</li>
-  </ul>
-
+- Solidity
+- Vyper
+- <a href="https://docs.soliditylang.org/en/v0.8.6/yul.html" target="_blank" rel="noopener noreferrer">Yul</a> (experimental and not for beginners)
+  
 At the time of writing, Solidity is by far the most popular language for writing smart contracts, although as with everything in the space, things are moving rapidly and it’s recently there’s been some major projects built using Vyper.
-</p>
 
-<h3>Core Truffle Commands</h3>
-<p>Truffle is built around a large collection of commands that you use as part of your contract development workflow. Examples of these include:</p>
+### Core Truffle Commands
+Truffle is built around a large collection of commands that you use as part of your contract development workflow. Examples of these include:
 
-<ul>
-  <li>
-    <code>truffle init</code>
-  </li>
-  <li>
-    <code>truffle compile</code>
-  </li>
-  <li>
-    <code>truffle test</code>
-  </li>
-  <li>
-    <code>truffle debug</code>
-  </li>
-  <li>
-    <code>truffle migrate</code>
-  </li>
-</ul>
+- `truffle init`
+- `truffle compile`
+- `truffle test`
+- `truffle debug`
+- `truffle migrate`
 
-Note that you can see a complete list of the available commands by running <code>truffle help</code>.</p>
+Note that you can see a complete list of the available commands by running `truffle help`.
 
-<p>As you can likely infer from the commands, they map to key stages of the development lifecycle. More on this in the upcoming section!</p>
+As you can likely infer from the commands, they map to key stages of the development lifecycle. More on this in the upcoming section!
 
-<h3>Truffle Boxes</h3>
+## Truffle Boxes
 
-<p>Truffle also provides Boxes, or pre-built templates and Truffle codebases that allow you to focus on either learning more about smart contract development or building quickly. In addition to Truffle  code, Truffle Boxes can contain other helpful modules, Solidity contracts & libraries, front-end views and more; all the way up to complete example dapps.</p>
+Truffle also provides Boxes, or pre-built templates and Truffle codebases that allow you to focus on either learning more about smart contract development or building quickly. In addition to Truffle  code, Truffle Boxes can contain other helpful modules, Solidity contracts & libraries, front-end views and more; all the way up to complete example dapps.
 
-<p>We'll discuss boxes more when we dive deeper into developer tooling and more advanced Truffle, but feel free to explore available boxes. Two popular boxes to for folks new to Truffle are <a href="https://www.trufflesuite.com/tutorial" target="_blank" rel="noopener noreferrer">Petshop</a> and <a href="https://www.trufflesuite.com/docs/truffle/quickstart" target="_blank" rel="noopener noreferrer">Metacoin.</a></p>
+We'll discuss boxes more when we dive deeper into developer tooling and more advanced Truffle, but feel free to explore available boxes. Two popular boxes to for folks new to Truffle are <a href="https://www.trufflesuite.com/tutorial" target="_blank" rel="noopener noreferrer">Petshop</a> and <a href="https://www.trufflesuite.com/docs/truffle/quickstart" target="_blank" rel="noopener noreferrer">Metacoin.</a>
 
 In the next section, we'll take a simple smart contract and use it to explore the initial commands for developing using Truffle.
