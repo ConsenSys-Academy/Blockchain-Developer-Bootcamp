@@ -1,5 +1,5 @@
-X. What are Wrapped Tokens
-Wrapped tokens are a way to bridge cryptocurrencies between blockchains. They are used to represent tokens that are not native to a blockchain network. An example is using Bitcoin or Dogecoin on Ethereum. Wrapped tokens exist because different blockchain networks may offer different features and can’t talk directly to each other. These help increase interoperability and liquidity between networks.
+# What are Wrapped Tokens?
+Wrapped tokens are a *way to bridge cryptocurrencies between blockchains.* They are used to represent tokens that are not native to a blockchain network. An example is using Bitcoin or Dogecoin on Ethereum. Wrapped tokens exist because different blockchain networks may offer different features and can’t talk directly to each other. These help increase interoperability and liquidity between networks.
 
 Wrapped tokens by work by having a token deposited into an account and is digitally represented on a smart contract platform like Ethereum. The tokens are collateralized with the asset, typically at 1:1. The deposit and issuance happen through a custodian, an entity that holds the assets. The custodian can be a company like Circle/Coinbase (via USDC), a merchant, a multi-signature wallet, a DAO or a smart contract.
 
@@ -15,10 +15,10 @@ As multiple chains emerge for different use cases, inter-blockchain liquidity wi
 
 ## Additional Resources
 
-[What are Wrapped Tokens?](https://academy.binance.com/en/articles/what-are-wrapped-tokens)
+[Article: What are Wrapped Tokens?](https://academy.binance.com/en/articles/what-are-wrapped-tokens)
 
-[Understanding Wrapped Bitcoin and the Wrapped Tokens Framework](https://medium.com/nerd-for-tech/understanding-wrapped-bitcoin-and-the-wrapped-tokens-framework-6ed45e52acdb)
+[Article: Understanding Wrapped Bitcoin and the Wrapped Tokens Framework](https://medium.com/nerd-for-tech/understanding-wrapped-bitcoin-and-the-wrapped-tokens-framework-6ed45e52acdb)
 
-[Wrapped Crypto Tokens, Explained](https://cointelegraph.com/explained/wrapped-crypto-tokens-explained)
+[Article: Wrapped Crypto Tokens, Explained](https://cointelegraph.com/explained/wrapped-crypto-tokens-explained)
 
-[Poly Network via Rekt.news](https://www.rekt.news/polynetwork-rekt/)
+[Analysis: Poly Network via Rekt.news](https://www.rekt.news/polynetwork-rekt/)

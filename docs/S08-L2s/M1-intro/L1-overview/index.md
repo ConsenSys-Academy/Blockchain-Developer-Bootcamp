@@ -1,16 +1,13 @@
 # Intro to L2s and Scalability
 
---reason for needing this (expensive, slow transactions on mainnet)
+Ethereum gas fees have risen astronomically as the network becomes more popular. The ability of retail investors to participate in new Ethereum-based offerings like DeFi is circumscribed by the ever-increasing cost of entry into the space. As a result, some users and products are migrating to other chains that offer lower costs. If Ethereum is to maintain its dominance and network effect, it must scale. 
 
---"galaxy of multichains" theory
 
 ## Terminology
 
---in the following sections, we're going to give a way to gauge any Layer 2, sidechain, crosschain or bridge solution. We're also going to go through some of the _types_ of Layer 2 solutions, then walk through examples of popular Layer 2 solutions.
+In the following sections, we're going to give a way to gauge any Layer 2, sidechain, crosschain or bridge solution. We're also going to go through some of the _types_ of Layer 2 solutions, then walk through examples of popular Layer 2 solutions. We're then going to talk about crosschain and blockchain interoperability. Finally, we're going to have live sessions and presentations based around L2 platforms such as Polygon, Optimism and more.
 
---We're then going to talk about crosschain and blockchain interoperability. 
-
---finally, we're going to have live sessions and presentations based around L2 platforms such as Polygon, NEAR, SKALE and more
+In this section, we'll typically refer to mainnet Ethereum as Layer 1 or L1 and whatever the scaling solution is as a Layer 2 solution (L2), a sidechain, sidechannel or a bridge.
 
 ## Conclusion
 
