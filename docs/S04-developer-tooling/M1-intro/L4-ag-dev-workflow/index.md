@@ -32,6 +32,12 @@ Here we see the developer (you) working mainly from their code editor, in which 
 
 The developer will then having some private testnet tool they're using to deploy the smart contract in the early stages. This will be Ganache for us, since we're using Truffle. As we continue to become more confident in our development process, we may want to deploy to a public testnet. For this, we will use either an Ethereum node we have on our machine or we'll use a gateway service like [Infura](https://infura.io){target=_blank}, which will allow us to easily deploy to an Ethereum testnet, Ethereum mainnet, or even networks like Polygon, Arbitrum or Optimism. (If we're starting to lose you, don't worry we'll cover all these things later in the course!)
 
+## .env File
+
+One thing that seems trivial but is incredibly important is the `.env` file for your project. These are the local environmental variables that allow you to deploy your application to the public blockchain network. It also is the best way to ensure you don't expose your private keys or any other sensitive information when you're developing. Particularly when you're pushing material to a git repository, it's easy for folks to forget they've included sensitive information. There are definitely bots that are continually scanning Github for private keys that will immediately be compromised.
+
+Please read <a href="https://consensys.net/blog/developers/how-to-avoid-uploading-your-private-key-to-github-approaches-to-prevent-making-your-secrets-public/" target="_blank" rel="noopener noreferrer">this article</a> about how to keep your development environment safe by using a `.env` file and other essential techniques!
+
 ## Advanced Developer Tooling
 
 As you become more familiar with blockchain development and as your project grows, so will your toolset and workflow. Below is a diagram showing a more expansive development lifecycle that includes auditing, scaling, monitoring and advanced onboarding of users:
@@ -46,6 +52,7 @@ We'll get into these tools more but it's a bit beyond the scope of this lesson. 
 ## Additional Materials
 - [Remix Interface](https://remix.ethereum.org){target=_blank} The original IDE for Ethereum! Well, probably not the original, but still the best first place to go to start Solidity development.
 - [Basic Training: Code Editors, VSCode Extensions](https://courses.consensys.net/courses/bootcamp-basic-training){target=_blank} I know, I know, you're super sick of hearing about Basic Training. Fair! But you should be sure to install all the VSCode extensions in this section of Basic Training, since it will help with development!
+- <a href="https://consensys.net/blog/developers/how-to-avoid-uploading-your-private-key-to-github-approaches-to-prevent-making-your-secrets-public/" target="_blank" rel="noopener noreferrer">Tutorial: Using an .env file to keep your secrets safe</a> Essential reading!
 - **Good Extensions to Know About** [Hardhat-contract-sizer](https://www.npmjs.com/package/hardhat-contract-sizer){target=_blank}, [hardhat-gas-reporter](https://hardhat.org/plugins/hardhat-gas-reporter.html){target=_blank}
 - [Replit](https://www.replit.com){target=_blank} Still exploring this one, but really good potential for troubleshooting code with friends. Not blockchain specific!
 - [Testing in the Twenties](https://www.tbray.org/ongoing/When/202x/2021/05/15/Testing-in-2021){target=_blank} Really good general advice about testing! 
