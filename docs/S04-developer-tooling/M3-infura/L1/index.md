@@ -79,7 +79,7 @@ To activate this, all we have to do is comment the code back in (`⌘ /` in VSCo
 
 To grab our Infura credentials safely from our `.env` file, you'll include this at the top of `truffle-config.js` (HDWallet is provided, we just need to comment it out):
 
-```
+```javascript
 const HDWallet = require('@truffle/hdwallet-provider');
 const dotenv = require('dotenv');
 dotenv.config();
