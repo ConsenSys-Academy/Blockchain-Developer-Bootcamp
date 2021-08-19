@@ -1,6 +1,8 @@
-There are a variety of common JavaScript libraries that you can use to connect to Ethereum. Many of the libraries serve the same purpose and have the same functionality, but the syntax differs for each.
+# Web 3 Javascript Libraries
 
-The purpose of this lesson is to show the similarities and differences between the libraries so you gain a better understanding of what these libraries do a general level and how each one does it.
+As we mentioned in "Where Do Users Fit in Our Mental Model?" Web 3 Javascript APIs are critical to connecting users to our blockchain applications. There are a variety of common JavaScript libraries that you can use to connect to Ethereum and develop an interface for your users. Many of the libraries serve the same purpose and have the same functionality, but the syntax differs for each.
+
+The purpose of this lesson is to show the similarities and differences between the main two libraries,<a href="https://web3js.readthedocs.io/en/v1.4.0/" target="_blank" rel="noopener noreferrer"> Web3.js</a> and <a href="https://docs.ethers.io/v5/" target="_blank" rel="noopener noreferrer">ethers.js,</a> so you gain a better understanding of what these libraries do a general level and how each one does it.
 
 If you are using the Brave browser, you may encounter conflicts with the built-in Ethereum wallet and Metamask. If this happens, try using a different browser with Metamask installed.
 
