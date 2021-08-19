@@ -12,10 +12,9 @@ As a result, some users and products are migrating to other chains that offer lo
 State advancement (propagating new network state) is 10-100x faster (the rate at which data can be updated on-chain). Reducing user feedback loop from 12s to <1s. High frequency transactions possible (e.g. high-fidelity price oracles, rapid orderbook management)
 
 Transactions are a fraction of the cost. Low or no-value transactions viable
-Support for native gas cost abstraction, meta-transactions, account abstraction. Subsidised gas, or gas cost is paid in relevant tokens. Better native support for smart contract wallets and features like social recovery
+Support for native gas cost abstraction, meta-transactions, account abstraction. Subsidised gas, or gas cost is paid in relevant tokens. Better native support for smart contract wallets and features like social recovery.
 
-
-
+If Ethereum is to maintain its dominance and network effect, it must scale. 
 
 ## Terminology
 

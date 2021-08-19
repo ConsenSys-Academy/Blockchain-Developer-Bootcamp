@@ -29,7 +29,7 @@ Optimistic Rollups use a sidechain that sits in parallel to the mainnet Ethereum
 
 The main mechanism that makes this work are <b>fraud proofs:</b> If someone notices a fraudulent transaction the Optimistic Rollup network will execute a fraud-proof and run the transaction’s computation using the available state data; the gas you need to run a fraud proof is reimbursed.
 
-![diagram showing optimism workflow](../../../img/S08/optimism.png)
+![diagram showing rollup workflow](../../../img/S08/rollup-simple-1.png)
 
 - **Pros** Anything you can do on L1 you can do with Optimistic Rollups because it is EVM and Solidity compatible. All transaction data is stored on the L1 chain, meaning it remains secure and decentralized.
 
@@ -60,6 +60,8 @@ Examples of state channels are <a href="https://connext.network/" target="_blank
 The terminology here can get a little tricky, so bear with us. Sidechains are essentially blockchain networks separate from your Layer 1 (for us, Ethereum). They are connected through a <a href="https://medium.com/@blockchain_simplified/bridging-the-gap-using-blockchain-bridges-26a75a874de3" target="_blank" rel="noopener noreferrer">bridge,</a> which allows state to be conveyed from one chain to the other.
 
 We'll discuss this more in the crosschain and interoperability section, but essentially you'd use a chain that either has a consensus mechanism with a higher trust assumption (such as Proof of Authority) or some increased transaction throughput relative to your Layer 1. You would then be able to conduct transactions on that sidechain and, when you need to update the state (perhaps a user wishes to exit your network but wants to take their tokens), you can release it on your Layer 1.
+
+![Diagram Showing Sidechains](../../../img/S08/sidechain-simple-1.png)
 
 Examples of sidechains are <a href="https://skale.network/" target="_blank" rel="noopener noreferrer">SKALE</a> and <a href="https://www.xdaichain.com/" target="_blank" rel="noopener noreferrer">xDai.</a> 
 
