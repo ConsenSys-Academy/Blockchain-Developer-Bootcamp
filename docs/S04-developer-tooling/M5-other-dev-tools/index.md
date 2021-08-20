@@ -67,5 +67,9 @@ Here are some easy ways to get started using Hardhat to see how you like it:
 
 The Hardhat teams recommends "paying attention to see whether any plugins already solve problems [you] may have."
 
+## Scaffold-Eth
+
+## Brownie
+
 
     
