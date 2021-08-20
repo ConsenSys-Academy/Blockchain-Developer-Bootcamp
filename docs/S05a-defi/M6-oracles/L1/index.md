@@ -25,7 +25,7 @@ Using a more robust decentralized solution like [Chainlink](https://docs.chain.l
 
 ## Additional Resources
 
-[77+ Smart Contract Use Cases Enabled By Chainlink](https://blog.chain.link/44-ways-to-enhance-your-smart-contract-with-chainlink/){target=\_blank}
-[Aave Oracles](https://docs.aave.com/developers/the-core-protocol/price-oracle){target=\_blank}
-[The Importance of Data Quality for DeFi Smart Contracts](https://blog.chain.link/the-importance-of-data-quality-for-defi/){target=\_blank}
-[Flash Loans and Tamper Proof Oracles](https://blog.chain.link/flash-loans-and-the-importance-of-tamper-proof-oracles/){target=\_blank}
+- [77+ Smart Contract Use Cases Enabled By Chainlink](https://blog.chain.link/44-ways-to-enhance-your-smart-contract-with-chainlink/){target=\_blank}
+- [Aave Oracles](https://docs.aave.com/developers/the-core-protocol/price-oracle){target=\_blank}
+- [The Importance of Data Quality for DeFi Smart Contracts](https://blog.chain.link/the-importance-of-data-quality-for-defi/){target=\_blank}
+- [Flash Loans and Tamper Proof Oracles](https://blog.chain.link/flash-loans-and-the-importance-of-tamper-proof-oracles/){target=\_blank}
