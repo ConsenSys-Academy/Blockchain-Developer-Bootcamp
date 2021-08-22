@@ -8,23 +8,23 @@ It’s great for larger trades to protect margins and protect against a kind of 
 
 Need liquidity? Use an Automated Market Maker like UniSwap and go wide.
 
-It’s great for variety and availability. Ideally, aim for smaller trades to anything under 2% of the total supply of an asset, due to how the “Constant Product Formula” used by AMMs is modelled to ensure liquidity.
+It’s great for variety and availability. But, ideally, aim for smaller trades to anything under 2% of the total supply of an asset. This is due to how the “Constant Product Formula” used by AMMs is modelled to ensure liquidity.
 
 **Key Idea**: Use the appropriate tool based on the size of your order.
 
 RFQ facilities direct trade between parties which is:
 
 - Fair - avoids the [mempool](https://decrypt.co/42839/inside-the-mysterious-world-of-bitcoins-mempool){target=\_blank} and issues around Front running, and miner extractable value.
-- Efficient - Eliminates slippage so you get what you paid for.
+- Efficient - Eliminates slippage, so you get what you paid for.
 - Scalable - negotiations happen off-chain (not on Ethereum){target=\_blank} and scales better than relying solely on Ethereum’s throughput.
 
 ![airswap-overview](/docs/img/S05/airswap-rfq-overview.png)
 
 ## Summary
 
-Request for Quote handles trades with off-chain negotiations and on-chain settlement (trades){target=\_blank}. Market makers are called Makers who run servers to fulfill orders. Counterparties to makers are called Takers, who wish to trade tokens.
+Request for Quote handles trades with off-chain negotiations and on-chain settlement (trades){target=\_blank}. Market makers are called Makers who run servers to fulfil orders. Counterparties to makers are called Takers, who wish to trade tokens.
 
-RFQ can be seen as peer-to-peer systems. The protocol’s smart contracts focus on on-chain settlement of trades via [atomic swaps](https://docs.airswap.io/reference/swap){target=\_blank} using smart contracts. Price discovery and negotiation are done off-chain via RPC (remote procedure calls){target=\_blank}, which is scalable and resistant to AMM issues related to front running and miner extractable value.
+RFQ can be seen as a peer-to-peer system. The protocol’s smart contracts focus on on-chain settlement of trades via [atomic swaps](https://docs.airswap.io/reference/swap){target=\_blank} using smart contracts. Price discovery and negotiation are made off-chain via RPC (remote procedure calls){target=\_blank}, which is scalable and resistant to AMM issues related to front running and miner extractable value.
 
 This model exists because of Ethereum’s constraints and the issues around large orders on AMMs mentioned previously.
 
@@ -34,9 +34,9 @@ Liquidity is provided by Makers who run [Servers](https://docs.airswap.io/makers
 
 Makers submit their prices to trade. Takers are counterparties who wish to start a trade.
 
-Instead of talking to each Maker, the Taker sends a request to the Indexer who aggregates the different Makers for Takers.
+Instead of talking to each Maker, the Taker sends a request to the Indexer, who aggregates the different Makers for Takers.
 
-This negotiation is done off-chain via RPC (remote process calls){target=\_blank}, making it resistant to flashbots searching the mempool for front run, Miner Extractable Value and other shenanigans.
+This negotiation is done off-chain via RPC (remote process calls){target=\_blank}, making it resistant to flashbots searching the mempool for frontrunning opportunities, Miner Extractable Value and other shenanigans.
 
 ![airswap-indexer-flow](/docs/img/S05/airswap-indexer-flow.png)
 
@@ -52,7 +52,7 @@ If standing up a Server is too much, a Maker could use [Delegates](https://mediu
 
 ## Orders and Settlement
 
-Once discovery and off-chain negotiation is complete, the orders are settled on-chain.
+Once discovery and off-chain negotiation are complete, the orders are settled on-chain.
 
 This is done via [atomic swaps](https://support.airswap.io/en/articles/2455935-what-is-an-atomic-swap){target=\_blank} using the [Swaps](https://docs.airswap.io/reference/swap){target=\_blank} Contract. They are called atomic because they settle or they don’t.
 

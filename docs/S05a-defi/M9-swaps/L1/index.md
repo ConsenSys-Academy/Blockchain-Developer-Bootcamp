@@ -1,14 +1,14 @@
 # Introduction to MetaMask Swaps
 
-In the previous section, we covered decentralized exchanges and briefly touched upon aggregators, which finds the best price between exchanges. We can go a step further and have aggregators of aggregators. The most popular aggregator of aggregators is MetaMask Swaps.
+The previous section covered decentralized exchanges and briefly touched upon aggregators, which finds the best price between exchanges. We can go a step further and have aggregators of aggregators. The most popular aggregator of aggregators is MetaMask Swaps.
 
 ![metamask-swaps-aggregator](/docs/img/S05/metamask-swaps-aggregator.png)
 
-## MetaMask Swaps addresess five issues
+## MetaMask Swaps addresses five issues
 
 ### 1 | Barrier to entry is high
 
-Before interacting with different defi protocols, users must first familiarize themselves with those platforms and understand the pros-and-cons of each.
+Before interacting with different DeFi protocols, users must first familiarize themselves with those platforms and understand the pros and cons of each.
 
 ### 2 | Rates vary between protocols
 
@@ -34,7 +34,7 @@ When Swapping ERC20 tokens, users must first approve individual tokens on each l
 
 ### 1 | Best rates across DeFi
 
-By requesting prices from all available DEXs, DEX aggregators, and individual market makers, we can guarantee that MetaMask users have access to the deepest liquidity, largest selection of tokens, and the most competitive prices.
+By requesting prices from all available DEXs, DEX aggregators, and individual market makers, we can guarantee that MetaMask users have access to the deepest liquidity, the largest selection of tokens, and the most competitive prices.
 
 ### 2 | Seamless and standardized UX
 
