@@ -71,6 +71,10 @@ The Hardhat teams recommends "paying attention to see whether any plugins alread
 
 ## Brownie
 
+## Tenderly
+
+<a href="https://tenderly.co/pricing" target="_blank" rel="noopener noreferrer">Tenderly</a> provides a way to both be alerted to contract events as well as troubleshoot a contract, including a "Forking Mainnet" feature similar to that of Truffle and Hardhat.
+
 ## Frontend Tools
 
 For your project, we've also discussed frontend interfaces. There are two services you can use for free to create a frontend instance easily:
