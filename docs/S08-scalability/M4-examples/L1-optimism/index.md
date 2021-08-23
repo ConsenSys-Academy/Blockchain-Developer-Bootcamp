@@ -49,7 +49,7 @@ You'll also need to have Kovan test-eth for the project if you'd like to run it 
 
 Once you have Kovan ETH, you'll need to bridge it to Optimism. After getting Kovan ETH, follow these steps:
 
-1. Add Optimism Ethereum as a Custom RPC to your Metamask wallet, using <a href="https://community.optimism.io/docs/developers/metamask.html#connecting-manually" target="_blank" rel="noopener noreferrer">the steps here,</a> except set the RPC URL to <code>https://optimism-kovan.infura.io/v3/" + <infuraKey></code>
+1. Add Optimism Ethereum as a Custom RPC to your Metamask wallet, using <a href="https://community.optimism.io/docs/developers/metamask.html#connecting-manually" target="_blank" rel="noopener noreferrer">the steps here,</a> except set the RPC URL to <code>https://optimism-kovan.infura.io/v3/" + infuraKey</code>
 2. Go to <a href="https://gateway.optimism.io/" target="_blank" rel="noopener noreferrer">this site</a> and bridge your Kovan ETH to Optimism Kovan ETH
 3. Ensure that your <code>optimistic_kovan</code> network in <code>truffle-config.ovm.js</code> is connected to your Optimism Kovan wallet.
 <i>Note: You may get an error about your fee being too low when attempting to deploy to Optimistic Kovan. To bypass this error, you may need to increase the gas value in the optimistic_kovan network configuration in truffle-config.ovm.js to the value the error indicates. Gas price should be set at the transaction level, like so: <code>{ gasPrice: 15000000 }</code>.</i>
