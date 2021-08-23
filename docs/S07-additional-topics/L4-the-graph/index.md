@@ -8,6 +8,6 @@ Why do we care about Subgraphs (dApp perspective)
 
 ## Querying from a Frontend Application 
 
-## API key management
+## API Key Management
 
 ## The Graph Explorer 
