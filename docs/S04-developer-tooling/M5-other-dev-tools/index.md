@@ -71,5 +71,17 @@ The Hardhat teams recommends "paying attention to see whether any plugins alread
 
 ## Brownie
 
+## Frontend Tools
+
+For your project, we've also discussed frontend interfaces. There are two services you can use for free to create a frontend instance easily:
+- <a href="https://devcenter.heroku.com/start" target="_blank" rel="noopener noreferrer">Heroku</a> is a Platform-as-a-Service, providing a quick way to deploy apps in a number of popular languages, such as Node.js (Javascript), Python, Ruby and Go.  You can connect your Github repo to your project for easy deployment. Heroku's basic plan is free and provides basic resources for getting started. <a href="https://www.heroku.com/free" target="_blank" rel="noopener noreferrer">Read more here.</a>
+- <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify</a> also has a Git-based workflow allowing you to deploy your project easily from Github. It is also free and has a getting started manual <a href="https://docs.netlify.com/configure-builds/get-started/" target="_blank" rel="noopener noreferrer">here.</a>
+
+There are other options as well! These are two of the more popular ones we see students using.
+
+## Additional Material
+- <a href="https://medium.com/@shihyuhwang/react-project-setup-using-hardhat-truffle-part-1-20a596865e" target="_blank" rel="noopener noreferrer">Tutorial: React Project Setup Using Hardhat & Truffle Part I</a> From Bootcamp alum and fellow Shih-Yu Hwang
+- 
+
 
     
