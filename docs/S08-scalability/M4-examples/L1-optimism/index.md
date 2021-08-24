@@ -62,7 +62,7 @@ Let's get started! (For more detail, you can find the tutorial this lesson is ba
 
 From a new directory, `unbox` the Optimism box:
 
-<pre>$ truffle unbox optimism</pre>
+<pre>truffle unbox optimism</pre>
 
 You will need at least one mnemonic to use with the network. The <code>.dotenv</code> npm package has been installed for you, and you will need to create a <code>.env</code> file for storing your mnemonic and any other needed private information.
 
@@ -87,7 +87,7 @@ As you develop your project, you can put any other sensitive information in this
 
 You may notice some differences in the workflow from our typical Truffle environment. For example, a new configuration file exists in this project: <code>truffle-config.ovm.js</code>. This file contains a reference to the new file location of the <code>contracts_build_directory</code> and <code>contracts_directory</code> for Optimism contracts and lists several networks for running the Optimism Layer 2 network instance.
 
-Another difference: When you compile or migrate, the resulting <code>json</code> files will be at <code>build/optimism-contracts/</code>. This is to distinguish them from any Ethereum contracts you build, which will live in <code>build/ethereum-contracts</code>. As we have included the appropriate <code>contracts_build_directory</code> in each configuration file, Truffle will know which set of built files to reference!
+Another difference: When you compile or migrate, the resulting <code>json</code> files will be at <code>build/optimism-contracts/</code>. This is to distinguish them from any Ethereum contracts you build, which will live in <code>build/ethereum-contracts</code>. As we have included the appropriate <code>contracts_build_directory</code> in each configuration file, Truffle will know which set of built files to reference.
 
 ## Compiling
 
@@ -113,7 +113,10 @@ Following the above steps should allow you to deploy to the Optimism Layer 2 cha
 
 Furthermore, keep an eye out for new developments in Truffle tooling to assist with bridging L1-L2 data and execution. 
 
+Please note that, at this moment, Optimism has a whitelist of applications that are allowed to go from Optimism to Ethereum mainnet. <a href="https://community.optimism.io/docs/developers/l2/deploy.html" target="_blank" rel="noopener noreferrer">You can learn more about that here.</a>
+
 ## Additional Material
 - <a href="https://optimism.io" target="_blank" rel="noopener noreferrer">Optimism website</a>
 - <a href="https://community.optimism.io/docs/" target="_blank" rel="noopener noreferrer">Docs: Optimism</a> Great documentation for different audiences, whether you want to learn about the infrastructure or deploy dapps.
 - <a href="https://github.com/ethereum-optimism/optimism-tutorial/blob/main/README.md" target="_blank" rel="noopener noreferrer">Tutorial: Optimism Beginner Tutorial</a>
+- <a href="https://community.optimism.io/docs/developers/l2/deploy.html" target="_blank" rel="noopener noreferrer">Docs: Whitelisting on Optimism</a>

@@ -19,7 +19,7 @@ As we mentioned earlier in the section on Zero-Knowledge proofs, ZKPs can compre
 Critically, you don’t need all the data to verify the transactions, just the zero-knowledge proof. Transactions are written to Ethereum as calldata, to reduce gas.
 
 - **Pros** No delay, less vulnerable to economic attacks
-- **Cons** Limited to simple transfers and ZK-Rollup chains not compatible with EVM as validity proofs are intense to compute and have to build their own language to process. 
+- **Cons** Limited to simple transfers and ZK-Rollup chains not compatible with EVM as validity proofs are intense to compute and have to build their own language to process. However, there is some work on building Solidity to ZKP language compilers, like <a href="https://medium.com/nethermind-eth/warp-your-way-to-starknet-ddd6856875e0" target="_blank" rel="noopener noreferrer">this one for Cairo,</a> Starknet's ZKP language.
 
 ZK-Rollups are not worth it for applications with little on-chain activity but are attractive for simple, high-volume exchanges. Currently using this sort of rollup: <a href="https://loopring.io/#/" target="_blank" rel="noopener noreferrer">Loopring</a>, <a href="https://starkware.co/" target="_blank" rel="noopener noreferrer">Starkware,</a> <a href="https://matter-labs.io/" target="_blank" rel="noopener noreferrer">Matter Labs' zkSync,</a> <a href="https://aztec.network/" target="_blank" rel="noopener noreferrer">Aztec's ZK.Money network</a>
 
@@ -85,6 +85,7 @@ This concludes our overview of the kinds of scaling solutions available to us. I
 - <a href="https://research.paradigm.xyz/rollups" target="_blank" rel="noopener noreferrer">Article: (Almost) Everything You Need to Know About Optimistic Rollup (Paradigm)</a> Really good technical overview of optimistic rollup tech
 - <a href="https://tracer.finance/radar/arbitrum-in-under-10/" target="_blank" rel="noopener noreferrer">Artilce: Arbitrum in under 10 minutes</a> An explainer of Arbitrum, an optimistic rollup.
 - <a href="https://www.youtube.com/watch?v=l4jccXoqLGM" target="_blank" rel="noopener noreferrer">Video: Scaling Ethereum with Rollups</a> John Adler from Fuel Labs discusses the concepts behind optimistic rollups
+- <a href="https://medium.com/nethermind-eth/warp-your-way-to-starknet-ddd6856875e0" target="_blank" rel="noopener noreferrer">Article: Warp Your Way to Starknet</a> Early example of a Solidity to Cairo compiler
 
 ### State Channels
 - <a href="https://education.district0x.io/general-topics/understanding-ethereum/basics-state-channels/" target="_blank" rel="noopener noreferrer">Article: State Channel Basics</a>
