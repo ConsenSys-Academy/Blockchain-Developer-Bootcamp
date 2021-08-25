@@ -33,7 +33,7 @@ Merriam is proposing a similar exercise, but for Ethereum Mainnet (the PoW chain
 
 ## Fe
 
-[Fe](https://github.com/ethereum/fe){target=_blank} is "an emerging smart contract language for the Ethereum blockchain." It's influenced both by Python _and_ Rust and was released in January 2021\. You can read more about it [here.](https://snakecharmers.ethereum.org/fe-a-new-language-for-the-ethereum-ecosystem/){target=_blank} To be honest, it looks more like Rust than Python, but that's just our opinion.
+<a href="https://github.com/ethereum/fe" target="_blank" rel="noopener noreferrer">Fe</a> is "an emerging smart contract language for the Ethereum blockchain." It's influenced both by Python _and_ Rust and was released in January 2021. You can read more about it [here.](https://snakecharmers.ethereum.org/fe-a-new-language-for-the-ethereum-ecosystem/){target=_blank} To be honest, it looks more like Rust than Python, but that's just our opinion.
 
 ## Conclusion
 
