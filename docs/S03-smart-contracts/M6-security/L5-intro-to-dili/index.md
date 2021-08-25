@@ -17,7 +17,7 @@ Along with audits, Diligence also provides automated security analysis through t
 
 [MythX](https://mythx.io/) is a smart contract security service for Ethereum built by ConsenSys Diligence. As part of the bootcamp, we have gotten a free month of the developer plan for every student from the ConsenSys Diligence team.
 
-**Promo code** = KVB2XM0M
+**Promo code** = `x9naNrvz`
 
 ## Steps to Get Started
 
@@ -26,7 +26,7 @@ Along with audits, Diligence also provides automated security analysis through t
 3.  Complete the registration form.
 4.  You will then have an option to choose a plan. Please select “**Try MythX & Buy Scans**” This will allow you to set up a MythX account with no charge.
 5.  Go to the dashboard Billing tab click "**Buy a pack of 3 scans today for $9.99**"
-6.  Enter your promo code XXXXXXXX in the box provided and proceed through check with no charge
+6.  Enter your promo code `x9naNrvz` in the box provided and proceed through check with no charge
 
 ## Scribble
 
