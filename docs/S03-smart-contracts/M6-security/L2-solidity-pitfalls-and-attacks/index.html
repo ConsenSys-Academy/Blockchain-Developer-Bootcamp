@@ -24,13 +24,17 @@
       <h3>Use Specific Compiler Pragma</h3>
         <p>A common method is to use the <code>^</code> to indicate the lowest compiler version that your contract will work with. However, if you have a testing suite you've built against your contract, you should not include the <code>^</code> and just list the compiler version.
 
-        <pre class="wrong">
-pragma solidity ^0.4.4; // Possibly dangerous
-        </pre>
+        <div class="wrong">
+          <pre>
+          pragma solidity ^0.4.4; // Possibly dangerous
+          </pre>
+        </div>
 
-        <pre class="right">
-pragma solidity 0.4.4; // Better     
-        </pre>
+        <div class="right">
+          <pre>
+          pragma solidity 0.4.4; // Better
+          </pre>
+        </div>
         </p>
 
       <h3>Built-In Variable Names</h3>
