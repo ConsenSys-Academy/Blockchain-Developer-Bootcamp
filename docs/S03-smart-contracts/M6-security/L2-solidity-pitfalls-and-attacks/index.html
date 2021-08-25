@@ -79,11 +79,11 @@ function myRevert() internal pure {} // Better
       <h3>Use Modifiers Only for Validations</h3>
         <p>Just do validations within modifiers and avoid external calls on them:
           <pre class="wrong">
-modifier partnerShare() {
+modifier partnerShare() {        // Possibly dangerous
 partner.transfer(msg.value / 10); _; }
           </pre>
           <pre class="right">
-modifier onlyOwner() {
+modifier onlyOwner() {             // Better!
 require(msg.sender == owner); _; }
           </pre>
         </p>
@@ -91,7 +91,7 @@ require(msg.sender == owner); _; }
       <h3>Pull Over Push</h3>
         <p>Prioritize <i>receiving</i> contract calls over <i>making</i> contract calls:
           <pre class="wrong">
-function doRefund() external onlyOwner {
+function doRefund() external onlyOwner {      // Possibly dangerous
   uint refund;
   for(uint i = 0; i < refunds.length; i++) {
       refund = refunds[i].value;
@@ -101,7 +101,7 @@ function doRefund() external onlyOwner {
 }          
           </pre>
           <pre class="right">
-function withdrawRefund() external {
+function withdrawRefund() external {      // Better!
   require(refunds[msg.sender] > 0);
   uint refund = refunds[msg.sender];
   refunds[msg.sender] = 0;
@@ -112,12 +112,12 @@ function withdrawRefund() external {
       <h3>Fallback Functions and Data Length</h3>  
         <p>Keep fallback functions simple and check data length:
           <pre class="wrong">
-fallback() payable external {
+fallback() payable external {   // Possibly dangerous
   balances[msg.sender] += msg.value;
 }  
           </pre>
           <pre class="right">
-receive() external {
+receive() external {           // Better!
   balances[msg.sender] += msg.value;
 }
 fallback() external {
@@ -130,14 +130,14 @@ fallback() external {
       <h3>Checks-Effects-Interactions</h3>
       <p>Avoid state changes after external calls, to avoid things like <a href="https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#re-entrancy" target="_blank" rel="noopener noreferrer">the DAO hack:</a>
         <pre class="wrong">
-function withdraw(uint amount) public {
+function withdraw(uint amount) public {       // Possibly dangerous
   require(balances[msg.sender] >= amount);
   msg.sender.call.value(amount)("");
   balances[msg.sender] -= amount;
 }
         </pre>
         <pre class="right">
-function withdraw(uint amount) public {
+function withdraw(uint amount) public {    // Better!
   require(balances[msg.sender] >= amount);
   balances[msg.sender] -= amount;
   msg.sender.call.value(amount)("");
@@ -150,7 +150,7 @@ function withdraw(uint amount) public {
       <p>After the Istanbul hardfork, <a href="https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/" target="_blank" rel="noopener noreferrer">it's recommended</a> not to use <code>send</code> and <code>transfer</code>, and instead use <code>call.value</code>
       
       <pre class="wrong">
-contract Vulnerable {
+contract Vulnerable {         // Possibly dangerous
   function withdraw(uint256 amount) external {
       // This forwards 2300 gas, which may not be enough if the recipient
       // is a contract and gas costs change.
@@ -159,7 +159,7 @@ contract Vulnerable {
 }
       </pre>
       <pre class="right">
-contract Fixed {
+contract Fixed {            // Better!
   function withdraw(uint256 amount) external {
       // This forwards all available gas. Be sure to check the return value!
       (bool success, ) = msg.sender.call.value(amount)("");
