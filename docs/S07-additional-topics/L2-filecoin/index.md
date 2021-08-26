@@ -1,5 +1,8 @@
 # Filecoin
-Using the Filecoin Truffle Box
+
+Protocol Labs, who built IPFS, have developed an entire network for decentralized filesharing called Filecoin. In this section, we'll go through a Truffle Box which sets up a Filecoin environment on your computer.
+
+## Using the Filecoin Truffle Box
 This quick start uses an already-created project to provide the base Truffle project structure and example contracts.
 In your workspace directory, run the following commands:
 
@@ -37,7 +40,7 @@ It also starts the Lotus and IPFS daemons running over http and ws respectively:
 ## Filecoin Ganache GUI
 An alternative to running Filecoin Ganache via the CLI is to use Filecoin Ganche UI. As per the screenshot below, this exposes all the core Filecoin protocol elements as tabs which is particularly useful if you're just starting out.
 
-![Ganache GUI](picture.png)
+![Ganache GUI](../../img/S07/ganache-1.png)
 
 ## Running the Filecoin Network Explorer
         
@@ -101,7 +104,7 @@ Transferring Ownership
     truffle(development)> gallery.transferFrom(accounts[0], accounts[1], 1)
 
 ## Gallery UI
-![Ganache GUI](picture2.png)
+![Ganache GUI](../../img/S07/gallery-1.png)
 
 A sample gallery interface is available here.​​
 You can use the following steps to run this locally...
