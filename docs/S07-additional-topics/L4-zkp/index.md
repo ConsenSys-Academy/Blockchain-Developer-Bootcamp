@@ -1,6 +1,6 @@
 # Zero-Knowledge Proofs
 
-In our section on scalability, we discussed Zero-Knowledge Proof rollups, but we didn't actually go into detail about *what* ZKPs are. In this section, we'll discuss the basics of ZKPs and compare two common implementations of ZKPs you'll see in blockchain.
+In our section on scalability later in the course, we will discuss Zero-Knowledge Proof rollups, but we won't go into detail about *what* ZKPs are. In this section, we'll discuss the basics of ZKPs and compare two common implementations of ZKPs you'll see in blockchain.
 
 Zero-Knowledge Proofs have been researched since the 1980s—the initial researchers of ZKPs [received the Turing Award,](https://amturing.acm.org/award_winners/goldwasser_8627889.cfm){target=_blank} the highest award in computer science, for their work. Their development stems from the field of computational complexity and, while most of the work of ZKPs is very technical, we'll try to provide a broad overview.
 
