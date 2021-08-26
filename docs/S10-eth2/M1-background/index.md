@@ -8,7 +8,7 @@ As we've discussed earlier, Ethereum has been able to regularly update its proto
 
 (With regards to the mental model we've discussed earlier, the Ethereum 2.0 migration is an updating of the consensus mechanism, as circled below:)
 
-![Updating the blockchain mental model to show Ethereum 2.0][../../../S10/ag-blockchain-eth-2.png]
+![Updating the blockchain mental model to show Ethereum 2.0](../../img/S10/ag-blockchain-eth-2.png)
 
 But we have this huge community and entire businesses in the current Ethereum home (called "Ethereum 1.x"). We can't risk moving everyone in to an entirely new house and then discovering a catastrophic error. Therefore, Ethereum 2.0 is being introduced in a series of phases. Imagine the Ethereum 2.0 house being beside the Ethereum 1.x home. At first, there will be a path connecting the two. Ultimately, Ethereum 2.0 will expand to include Ethereum 1.x within it.
 

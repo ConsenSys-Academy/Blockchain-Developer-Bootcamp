@@ -114,6 +114,7 @@ For your project, we've also discussed frontend interfaces. There are two servic
 There are so many more amazing tools that we can't get into now, but if you check out the links in this section, you'll be able to dive deeper and learn more on your own!
 
 ## Additional Material
+- <a href="https://dev.to/dabit3/the-complete-guide-to-full-stack-ethereum-development-3j13" target="_blank" rel="noopener noreferrer">Article: The Complete Guide to Full Stack Ethereum Development</a> An incredibly comprehensive article from Nader Dabit of The Graph.
 - <a href="https://youtu.be/ipFJeK0M5ks?t=89" target="_blank" rel="noopener noreferrer">Ethereum Dev Onboarding (ETHGlobal)</a> Walkthrough of the developer stack from RicMoo, Paul Berg (`create-eth-app`) and Austin Griffith. Great walkthrough of dev environments!
 - <a href="https://github.com/OffcierCia/DeFi-Developer-Road-Map#frameworks" target="_blank" rel="noopener noreferrer">Wiki: DeFi Developer Roadmap: Other Frameworks</a> A series of other frameworks within a larger, excellent repo about Development tools and tips 
 - <a href="https://dev.to/jacobedawson/build-a-web3-dapp-in-react-login-with-metamask-4chp" target="_blank" rel="noopener noreferrer">Article: Build a Web3 Dapp in React Login with MetaMask</a>

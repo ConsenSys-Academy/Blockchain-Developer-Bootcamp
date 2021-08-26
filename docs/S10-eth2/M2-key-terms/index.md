@@ -4,18 +4,19 @@ There are some new terms that might be confusing with Ethereum 2.0, we wanted to
 
 First, we should mention there's a discussion around even the term "Ethereum 2.0." Some folks would like there to just be the "Application Layer" and the "Consensus Layer". Here's the distinction, from Ethereum Foundation's <a href="https://blog.ethereum.org/2021/03/11/finalized-no-23/" target="_blank" rel="noopener noreferrer">Danny Ryan:</a>
 
-> What we call “eth2” is a series of major upgrades to Ethereum’s consensus-layer – to ensure the protocol is secure, sustainable, and scalable – while “eth2 clients” are implementations of this proof-of-stake consensus.
-> 
-> And, what we call “eth1” in this context is Ethereum’s rich application-layer, and similarly, “eth1 clients” (after the upgrade to proof-of-stake) are the software that does the heavy lifting in this layer. Ethereum’s application-layer is currently driven by a proof-of-work consensus algorithm but will soon be driven by the beacon chain – the proof-of-stake consensus mechanism that is currently in production and secured by ~3.5M ETH.
+What we call “eth2” is a series of major upgrades to Ethereum’s consensus-layer – to ensure the protocol is secure, sustainable, and scalable – while “eth2 clients” are implementations of this proof-of-stake consensus.
+
+And, what we call “eth1” in this context is Ethereum’s rich application-layer, and similarly, “eth1 clients” (after the upgrade to proof-of-stake) are the software that does the heavy lifting in this layer. Ethereum’s application-layer is currently driven by a proof-of-work consensus algorithm but will soon be driven by the beacon chain – the proof-of-stake consensus mechanism that is currently in production and secured by ~3.5M ETH.
 
 <a href="https://hackmd.io/@benjaminion/eth2_news/https%3A%2F%2Fhackmd.io%2F%40benjaminion%2Fwnie2_210702" target="_blank" rel="noopener noreferrer">People</a> are still using the term Ethereum 2.0 or Eth2 (like we are in this course), but eventually both chains will just be "Ethereum"!
-Shards (Data Availability and Coordination)
+
+Okay, here are some more Ethereum 2.0 terms and their explanations:
 
 ### Proof of Stake and Validators
 
-<b>Proof of Stake</b> is the new consensus mechanism for Ethereum. It currently is the consensus mechanism for the Beacon chain. Eventually, the Ethereum 1.0 chain will migrate to the Ethereum 2.0, replacing mainnet's consensus mechanism from Proof of Work to Proof of Stake.
+Proof of Stake is the new consensus mechanism for Ethereum. It currently is the consensus mechanism for the Beacon chain. Eventually, the Ethereum 1.0 chain will migrate to the Ethereum 2.0, replacing mainnet's consensus mechanism from Proof of Work to Proof of Stake.
 
-Actors that are validating the network state in the Beacon chain are called <b>validators</b>
+Actors that are validating the network state in the Beacon chain are called validators.
 
 ### Slashing
 
@@ -38,7 +39,7 @@ The Deposit contract is the pivot point from Ethereum mainnet to the Beacon Chai
 (You should not send ETH to this contract directly! You will lose those funds forever!)
 
 ### Finality
-Proof of Stake consensus mechanisms offer <b>finality</b>: After a small period of time, a block is declared final, which means that it can never be changed. All the transactions in that block and all previous transactions are permanent, immutable, and guaranteed forever.
+Proof of Stake consensus mechanisms offer finality: After a small period of time, a block is declared final, which means that it can never be changed. All the transactions in that block and all previous transactions are permanent, immutable, and guaranteed forever.
 
 However, Finality presents some issues around <a href="https://docs.teku.consensys.net/en/latest/Concepts/Weak-Subjectivity/" target="_blank" rel="noopener noreferrer">Weak Subjectivity:</a> If ⅓ of validators withdraw their stake and continue signing blocks and attestations, they can form a chain which conflicts with the finalized state. If your node is far enough behind the chain head to not be aware that they’ve withdrawn their funds, the exited validators can trick you into following the wrong chain. (<a href="https://docs.teku.consensys.net/en/latest/Concepts/Weak-Subjectivity/" target="_blank" rel="noopener noreferrer">source</a>) 
 
