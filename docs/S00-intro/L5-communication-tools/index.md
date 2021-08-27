@@ -1,43 +1,25 @@
+# Communication Tools
 
-<h1>Communication Tools</h1>
-<p>
-You can reach us by e-mailing <b>developer.program@consensys.net</b>
-</p>  
+You can reach us by e-mailing **developer.program@consensys.net**
 
-<h2>Discord</h2>
+## Discord
 
-<p>
-
-Students have access to a chat app called Discord. <a href="https://discord.gg/Nmjbrapxv7" target="_blank">Here is the link to join the ConsenSys Discord channel.</a>
-
-</p>
-
-<p>
+Students have access to a chat app called Discord. [Here is the link to join the ConsenSys Discord channel.](https://discord.gg/Nmjbrapxv7){target=_blank}
 
 We have a channel specific for Bootcamp students and alumni, but there are also channels for you to talk with other developers, product owners, and those interested in the Ethereum ecosystem. As the course progresses, you may want to ask a specific ConsenSys team questions about their specific product. You can do that in this Discord server.
 
-</p>
+## Getting to the Bootcamp Discord Section
 
-<h2>Zoom</h2>
+In the ConsenSys Discord ([invite here](https://discord.gg/Nmjbrapxv7){target=_blank}), go to the Academy channel. There, find the "🌱-bootcamp-welcome-desk-🌱" and type in the command `!role`. You find a window pop up, and you'll select the lightbulb emoji 💡. After that, you'll see the Bootcamp section!
 
-<p>
+Don't hesitate to ask for help. We'll have admins be watching throughout the first week to help people get to the Bootcamp section!
 
-We will be using Zoom for Office Hours and One-on-One meetings. <a href="http://zoom.us" target="_blank" rel="noopener noreferrer">You can download Zoom here.</a>         
+## Zoom
 
-</p>
+We will be using Zoom for Office Hours and One-on-One meetings. [You can download Zoom here.](http://zoom.us){target=_blank}
 
-<h2>Office Hours</h2>
+## Office Hours
 
-<p>
+Attending office hours is a great way to get to know the course mentors and your fellow students. Office hours are for asking questions about the course, discussing anything related Ethereum (news, tools, tweets, blog posts, projects ideas, the future, etc.) and learning about ConsenSys projects (when they come to present). We will make announcements about when ConsenSys projects will come to present during the course.
 
-  Attending office hours is a great way to get to know the course mentors and your fellow students. Office hours are for asking questions about the course, discussing anything related Ethereum (news, tools, tweets, blog posts, projects ideas, the future, etc.) and learning about ConsenSys projects (when they come to present). We will make announcements about when ConsenSys projects will come to present during the course.
-
-</p>
-
-<p>
-
-  <a href="https://calendar.google.com/calendar/embed?src=c_cvice1asl9j2viviu3vo45f49s%40group.calendar.google.com&ctz=America%2FChicago" target="_blank" rel="noopener noreferrer">Check out the Blockchain Developer Bootcamp Google calendar here.</a> You can also add it to your own calendar!
-
-</p>
-
-
+[Check out the Blockchain Developer Bootcamp Google calendar here.](https://calendar.google.com/calendar/embed?src=c_cvice1asl9j2viviu3vo45f49s%40group.calendar.google.com&ctz=America%2FChicago){target=_blank} You can also add it to your own calendar!
