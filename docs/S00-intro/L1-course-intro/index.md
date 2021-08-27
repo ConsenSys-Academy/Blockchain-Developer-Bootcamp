@@ -16,7 +16,7 @@ Next, we'll move on to understanding writing smart contracts.  We introduce you 
 
 After that, we'll introduce you to developer tooling, including Web 3 libraries, and other development frameworks. 
 
-Next, we'll discuss the way in which people are taking blockchain development to the next level, with an introduction to Decentralized Finance (DeFi) and Decentralized Autonomous Organizations (DAOs). While this material may seem a bit overwhelming, it's important to have available to you as you continue to develop in the space. And we won't be testing you on it!
+Next, we'll discuss the way in which people are taking blockchain development to the next level, with an introduction to Decentralized Finance (DeFi) and Decentralized Autonomous Organizations (DAOs). While this material may seem a bit overwhelming, it's important to have available to you as you continue to develop in the space. You can always come back later to reread stuff. And we won't be testing you on it!
 
 Next, we'll touch on scalability: What it is, why it's necessary, and how some folks are proposing we approach it. We'll have a few tutorials allowing you to setup your own development environment for working on some of these scalability solutions.
 
