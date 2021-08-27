@@ -1,6 +1,6 @@
 # Oracles in DeFi
 
-[Oracles](https://ethereum.org/en/developers/docs/oracles/) are an essential part of DeFi, since finance cannot exist in a vacuum without information. Oracles are bridges between a blockchain and the real world. They are used as queriable on-chain APIs to get information into smart contracts. The data could be anything from price information, weather reports, random numbers or more. Oracles can also be bi-directional and can "send" data out to the real world. They are [further described here](https://www.gemini.com/cryptopedia/crypto-oracle-blockchain-overview#section-inbound-versus-outbound-oracles){target=\_blank}.
+[Oracles](https://ethereum.org/en/developers/docs/oracles/) are an essential part of DeFi since finance cannot exist in a vacuum without information. Oracles are bridges between a blockchain and the real world. They are used as queriable on-chain APIs to get information into smart contracts. The data could be anything from price information, weather reports, random numbers or more. Oracles can also be bi-directional and can "send" data out to the real world. They are [further described here](https://www.gemini.com/cryptopedia/crypto-oracle-blockchain-overview#section-inbound-versus-outbound-oracles){target=\_blank}.
 
 Many top DeFi applications by [total value locked](https://coinmarketcap.com/alexandria/glossary/total-value-locked-tvl#:~:text=To%20put%20it%20simply%2C%20total,specific%20application%20by%20DeFi%20completely.){target=\_blank} use oracles in some manner. Some of the most popular use cases are collecting pricing data, event-driven decentralized execution, and random number generation.
 
@@ -41,6 +41,10 @@ Ethereum is a networked decentralized database. Yet to query data, we have to lo
 [GraphQL] allows for an [easier way of querying of data compared to REST APIs](https://www.rubrik.com/blog/technology/19/11/graphql-vs-rest-apis). Instead of getting the whole dataset, GraphQL allows for tailoring. GraphQL enables you to send queries to [get precisely the data you're looking for in one request instead of working with strict server-defined endpoints](https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/){target=\_blank}. Luckily, it builds upon knowledge of REST, and [the basics picked up quickly](https://egghead.io/courses/graphql-query-language){target=\_blank}.
 
 You can [learn how to use TheGraph protocol via their developer docs](https://thegraph.com/docs/){target=\_blank} and [developer academy](https://thegraph.academy/){target=\_blank}.
+
+## Indexers and Oracles
+
+You can use TheGraph and ChainLink described [Chainlink's description](https://www.youtube.com/watch?v=HOS9g0rKP24){target=\_blank}, [EthGlobal's TheGraph Protocol workshop](https://www.youtube.com/watch?v=tvo8WzAkPQc){target=\_blank} and [TheGraph's blog](https://thegraph.com/blog/the-graph-chainlink-oracles){target=\_blank}.
 
 ## Additional Resources
 
