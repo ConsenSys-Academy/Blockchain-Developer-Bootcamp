@@ -16,10 +16,10 @@ As multiple chains emerge for different use cases, inter-blockchain liquidity wi
 
 ## Additional Resources
 
-[Article: What are Wrapped Tokens?](https://academy.binance.com/en/articles/what-are-wrapped-tokens)
+- [Article: What are Wrapped Tokens?](https://academy.binance.com/en/articles/what-are-wrapped-tokens)
 
-[Article: Understanding Wrapped Bitcoin and the Wrapped Tokens Framework](https://medium.com/nerd-for-tech/understanding-wrapped-bitcoin-and-the-wrapped-tokens-framework-6ed45e52acdb)
+- [Article: Understanding Wrapped Bitcoin and the Wrapped Tokens Framework](https://medium.com/nerd-for-tech/understanding-wrapped-bitcoin-and-the-wrapped-tokens-framework-6ed45e52acdb)
 
-[Article: Wrapped Crypto Tokens, Explained](https://cointelegraph.com/explained/wrapped-crypto-tokens-explained)
+- [Article: Wrapped Crypto Tokens, Explained](https://cointelegraph.com/explained/wrapped-crypto-tokens-explained)
 
-[Analysis: Poly Network via Rekt.news](https://www.rekt.news/polynetwork-rekt/)
+- [Analysis: Poly Network via Rekt.news](https://www.rekt.news/polynetwork-rekt/)
