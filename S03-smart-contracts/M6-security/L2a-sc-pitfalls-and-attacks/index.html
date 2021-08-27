@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Smart Contract Pitfalls and Attacks</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Smart Contract Pitfalls and Attacks</h1>
+  
+  <!-- Content here: -->
+
+    <p>Now that we've gone through some of the attack vectors in the language and syntax of Solidity, let's move on to more general smart contract pitfalls and attacks. These are more general attack patterns which involve zooming out from a codeline level to a broader contract workflow view (<i>Call Known Attacks</i>). There are also concerns that come from a protocol level, which will require marrying the information we learned in the first few sections of the course with the smart contract knowledge you gained (Network Known Attacks).</p>
+
+    <p>All these attack vectors (and more) are compiled in the Smart Contract Weakness Classification and Test Cases or <a href="https://swcregistry.io/" target="_blank" rel="noopener noreferrer">SWC Registry</a>, we'll reference attack vectors by their SWC index number:</p>
+
+    <p>Network Known Attacks:
+      <ul>
+        <li>Front-Running (<a href="https://swcregistry.io/docs/SWC-114" target="_blank" rel="noopener noreferrer">SWC-114</a>)</li>
+        <li>Timestamp Dependence (<a href="https://swcregistry.io/docs/SWC-116" target="_blank" rel="noopener noreferrer">SWC-116</a>)</li>
+        <li>Network Stuffing DoS</li>      
+      </ul>
+    </p>
+
+    <p>Call Known Attacks:
+      <ul>
+        <li>Forcibly Sending Ether (<a href="https://swcregistry.io/docs/SWC-132" target="_blank" rel="noopener noreferrer">SWC-132</a>)</li>
+        <li>Block Gas Limit DoS (<a href="https://swcregistry.io/docs/SWC-128" target="_blank" rel="noopener noreferrer">SWC-128</a>)</li>
+        <li>Reentrancy (<a href="https://swcregistry.io/docs/SWC-107" target="_blank" rel="noopener noreferrer">SWC-107</a>)</li>
+        <li>Integer Overflow/Underflow (<a href="https://swcregistry.io/docs/SWC-101" target="_blank" rel="noopener noreferrer">SWC-101</a>)</li>
+        <li>Unexpected Revert DoS (<a href="https://swcregistry.io/docs/SWC-113" target="_blank" rel="noopener noreferrer">SWC-113</a>)</li>
+        <li>Tx.Origin Authentication (<a href="https://swcregistry.io/docs/SWC-115" target="_blank" rel="noopener noreferrer">SWC-115</a>)</li>
+      </ul>
+    </p>
+
+  <h2>Frontrunning</h2>
+  <div class="img-wrapper"><img src="../../../img/S03/swc-1.png" alt="front-running diagram"></div>
+  <p>Frontrunning has become a big issue in the Ethereum community as related to Miner-Extracted Value (MEV), which we discussed earlier. Frontrunning exploits how transactions are included in the blockchain and considerations around the process. Transactions that are broadcast to the network but have not yet been included in a block are in the mempool.</p>
+  <p>Miners choose the order in which to include transactions from the mempool into a block that they are mining. Also, since transactions are in the mempool before they make it into a block, anyone can know what transactions are about to occur on the network.</p>
+  <p>This can be problematic for things like decentralized markets.</p>
+  <p>Protecting against this is difficult and you will likely need to devise contract specific solutions.</p>
+  <p>Decentralized markets can mitigate concerns by implementing batch auctions or using a pre-commit scheme, where the details are submitted after the transaction is committed.</p>
+  <p>More information about Transaction Order Dependence and concrete samples are available in <a href="https://swcregistry.io/docs/SWC-114" target="_blank" rel="noopener noreferrer">the corresponding SWC Registry entry.</a> Due to the increased focus on MEV, we can expect to see a lot more security tips and research around frontrunning.</p>
+
+  <h2>Timestamp Dependence</h2>
+    <div class="img-wrapper"><img src="../../../img/S03/swc-2.png" alt="timestampe dependence"></div>
+    <p>Contracts often need access to time values to perform certain types of functionality. Values such as block.timestamp, and block.number can give you a sense of the current time or a time delta, however, they are not safe to use for most purposes.</p>
+    <p>In the case of block.timestamp, developers often attempt to use it to trigger time-dependent events. As Ethereum is decentralized, nodes can synchronize time only to some degree. Moreover, malicious miners can alter the timestamp of their blocks, especially if they can gain advantages by doing so. (<a href="https://swcregistry.io/docs/SWC-116" target="_blank" rel="noopener noreferrer">source</a>)</p> 
+
+  <h2>Network Stuffing DoS</h2>
+    <div class="img-wrapper"><img src="../../../img/S03/swc-3.png" alt="network stuffing image"></div>
+    <p>This is an attack vector based around time-sensitive operations, such as an auction or a time-locked wallet, or operations requiring user input before committing an irreversible action. Essentially, we need to guard against the fact that, particularly now, there can be moments of high-traffic (not even malicious) where it can be near-impossible to get one's transactions to a smart contract. We hope with EIP-1559 these moments are short, but they may exist. As such, we need to make sure time-sensitive operations have some fallback or failsafe mechanism to guard against network stuffing, malicious or otherwise.</p>
+
+  <h2>Forcibly Sending Ether</h2>
+    <div class="img-wrapper"><img src="../../../img/S03/swc-4.png" alt="forcibly sending ether diagram"></div>
+    <p>Another danger is using logic that depends on the contract balance.</p>
+    <p>Be aware that it is possible to send ether to a contract without triggering its fallback function.</p>
+    <p>Using the selfdestruct function on another contract and using the target contract as the recipient will force the destroyed contract’s funds to be sent to the target.</p>
+    <p>It is also possible to pre-compute a contracts address and send ether to the address before the contract is deployed see (<a href="https://docs.openzeppelin.com/cli/2.8/deploying-with-create2" target="_blank" rel="noopener noreferrer">CREATE2</a>).</p>
+    <p>The contract’s balance will be greater than 0 when it is finally deployed.</p>
+
+  <h2>Block Gas Limit DoS</h2>
+    <div class="img-wrapper"><img src="../../../img/S03/swc-5.png" alt="block gas limit dos diagram"></div>
+
+    <p>There is a limit to how much computation can be included in a single Ethereum block, currently 10,000,000 gas worth. This means that if your smart contract reaches a state where a transaction requires more than 10,000,000 gas to execute, that transaction will never successfully execute (<a href="https://swcregistry.io/docs/SWC-128" target="_blank" rel="noopener noreferrer">SWC-128</a>). It will always reach the block gas limit before finishing.</p>
+    <p>Similarly, if the require gas for the transaction is sub 8,000,000, but close to it, you may have a harder time getting your transaction included in a block by a miner. It is more likely that if you send a transaction to the network with a startGas close to 8,000,000, a miner will not pick the transaction to include in a block. You can find more info about the default mining transaction ordering options in the most popular clients <a href="https://ethereum.stackexchange.com/questions/6107/what-is-the-default-ordering-of-transactions-during-mining-in-e-g-geth/6111#6111" target="_blank" rel="noopener noreferrer">here.</a></p>
+    <p>This situation becomes possible if your contract loops over an array of undetermined size. If the array becomes too large it may never execute. A concrete sample of a dynamic array potentially resulting in a denial of service is available at the <a href="https://swcregistry.io/docs/SWC-128" target="_blank" rel="noopener noreferrer">SWC Registry entry here.</a></p>
+
+  <h2>Reentrancy</h2>
+  <div class="img-wrapper"><img src="../../../img/S03/swc-6.png" alt="reentrancy attack diagram"></div>
+  <p>Reentrancy attacks (<a href="https://swcregistry.io/docs/SWC-107" target="_blank" rel="noopener noreferrer">SWC-107</a>) are very well-known thanks to the infamous DAO hack that happened on the Ethereum network. In a reentrancy attack, a vulnerable contract send ether to an unknown address that contains a fallback function. Then, a malicious code calls back repeatedly a function in the vulnerable contract before the first call be finished.</p> 
+
+  <pre class="wrong">
+// Vulnerable contract
+function withdraw(uint _amount) public {
+    require(balances[msg.sender] >= _amount, "Not enough balance!");
+    msg.sender.call.value(_amount)("");
+    balances[msg.sender] -= _amount;
+}
+
+// Malicious contract
+function () payable external {
+    if(address(vulnerableContract).balance > 1 ether) {
+        vulnerableContract.withdraw(1 ether);
+    }
+}
+    
+  </pre>
+
+  <p>If you can’t remove the external call, the next simplest way to prevent this attack is to do the internal work before making the external function call.</p>
+  
+  <pre class="right">
+mapping (address => uint) private userBalances;     // Better!
+
+function withdrawBalance() public {
+    uint amountToWithdraw = userBalances[msg.sender];
+    userBalances[msg.sender] = 0;
+    require(msg.sender.call.value(amountToWithdraw)()); // The user's balance is already 0, so future invocations won't withdraw anything
+}
+  </pre>
+  <p>Or to use the withdrawal design pattern and separate the contract accounting logic and the transfer logic.</p>
+  <p>Another thing to be aware of is potential cross function re-entrancy. This can be problematic if your contract has multiple functions that modify the same state.</p>
+  
+  <pre class="wrong">
+    // INSECURE
+    mapping (address => uint) private userBalances;
+    
+    function transfer(address to, uint amount) {
+        if (userBalances[msg.sender] >= amount) {
+           userBalances[to] += amount;
+           userBalances[msg.sender] -= amount;
+        }
+    }
+    
+    function withdrawBalance() public {
+        uint amountToWithdraw = userBalances[msg.sender];
+        require(msg.sender.call.value(amountToWithdraw)()); // At this point, the caller's code is executed, and can call transfer()
+        userBalances[msg.sender] = 0;
+    }
+  </pre>
+
+  <p>In this case, the attacker can call transfer() when their code is executed on the external call in withdrawBalance. Since their balance has not yet been set to 0, they are able to transfer the tokens even though they already received the withdrawal. This vulnerability was also used in the DAO attack.</p>
+  <p>There are several ways to mitigate these problems.</p>
+  
+  <p>
+    The first is the Check-Effect-Interaction design pattern we described earlier. It is generally a good idea to handle the flow of a function like so:
+    
+    <ul>
+      <li><b>Check</b> Test condition. eg <code>require</code></li>
+      <li><b>Effect</b> Update state variable (eg update balance)</li>
+      <li><b>Interaction</b> Interact with external contract (eg send ether using <code>call.value</code>)</li>
+    </ul>
+    In short, you handle your internal contract state changes before calling external contracts.
+  </p>
+  
+  <p>A more complex solution could implement mutual exclusion, or a <a href="https://en.wikipedia.org/wiki/Lock_(computer_science)" target="_blank" rel="noopener noreferrer">mutex.</a> This allows you to lock a state and only allow changes by the owner of the lock. You can see an example of a mutex in Solidity <a href="https://medium.com/coinmonks/protect-your-solidity-smart-contracts-from-reentrancy-attacks-9972c3af7c21" target="_blank" rel="noopener noreferrer">here.</a></p>
+  <p>You can dig deeper into known attacks such as these <a href="https://consensys.github.io/smart-contract-best-practices/known_attacks/#race-conditions42" target="_blank" rel="noopener noreferrer">here.</a></p>
+
+  <h2>Integer Under / Overflow</h2>
+    
+    <div class="img-wrapper"><img src="../../../img/S03/swc-7.png" alt="integer under and overflow diagram"></div>
+    <p><b>Note: With the inclusion of SafeMath natively with Solidity 0.8.x, the likelihood of writing an integer under / overflow is unlikely. However, this is still an issue that exists in the wild and there are edge cases in which it could be achieved.</b></p>
+
+    <p>Integers can underflow or overflow in the EVM (<a href="https://swcregistry.io/docs/SWC-101" target="_blank" rel="noopener noreferrer">SWC-101</a>). This happens when an arithmetic value oversteps the minimum or maximum size of a type.</p>
+    <p>The max value for an unsigned integer is 2 ^ 256 - 1, which is roughly 1.15 times 10 ^ 77. If an integer overflows, the value will go back to 0. For example, a variable called score of type uint8 storing a value of 255 that is incremented by 1 will now be storing the value 0.</p>
+    <p>You may or may not have to worry about integer overflow depending on your smart contract.</p>
+    <p>A variable that can be set by user input may need to check against overflow, whereas it is infeasible that a variable that is incremented will ever approach this max value.</p>
+    <p>Underflow is a similar situation, but when a uint goes below its minimum value it will be set to its maximum value.</p>
+    <p>Be careful with smaller data types like uint8, uint16, etc… they can more easily reach their maximum value</p>
+    <p>More information and concrete examples can be found at <a href="https://swcregistry.io/docs/SWC-101" target="_blank" rel="noopener noreferrer">the corresponding SWC Registry entry</a></p>
+
+  <h2>Unexpected Revert DoS</h2>
+    <p>This attack basically consists in make a vulnerable contract inoperable by forcing a failure or an awaiting situation, locking temporarily or permanently the contract execution (<a href="https://swcregistry.io/docs/SWC-113" target="_blank" rel="noopener noreferrer">SWC-113</a>).</p>
+
+
+<pre class="wrong">
+  // INSECURE
+  contract Auction {
+      address currentLeader;
+      uint highestBid;
+  
+      function bid() payable {
+          require(msg.value > highestBid);
+  
+          require(currentLeader.send(highestBid)); // Refund the old leader, if it fails then revert
+  
+          currentLeader = msg.sender;
+          highestBid = msg.value;
+      }
+  }
+</pre>
+
+    <p>In the provided example, the <code>highestBidder</code> could be another contract and transferring funds to the contract triggers the contract’s fallback function. If the contract’s fallback always reverts, the <code>Auction</code> contract’s bid function becomes unusable - it will always revert. The bid function requires the transfer operation to succeed to fully execute.</p>
+    <p>The contract at the provided address throws an exception, execution halts and the exception is passed into the calling contract and prevents further execution.</p>
+    <p>This problem is avoidable using the withdrawal pattern and push-pull. You could also use a multisig contract, expire time or another technique as an emergency plan for possible lock situations.</p>
+
+  <h2><code>tx.origin</code> Authentication</h2>
+
+    <div class="img-wrapper"><img src="../../../img/S03/swc-9.png" alt="tx.origin authentication diagram"></div>
+
+    <p>This kind of attack happens when a vulnerable contract uses <code>tx.origin</code> for authentication. An attacker can induce the owner of the vulnerable contract make a call to a malicious contract. Then, a malicious code calls the vulnerable contract, taking advantage of the owner authorizations.</p>
+
+<pre class="wrong">
+  // Vulnerable contract
+  function withdraw(address payable _recipient) public {
+      require(tx.origin == owner);
+      _recipient.transfer(address(this).balance);
+  }
+  
+  // Malicious contract
+  function() external payable {
+      vulnerableContract.withdraw(attackerAddress);
+  }
+</pre>
+
+    <p>An example of this was the <a href="https://twitter.com/kelvinfichter/status/1425217046636371969" target="_blank" rel="noopener noreferrer">Poly Network hack,</a> although not on the Ethereum network.</p>
+
+  <p>There are always more attack vectors, be sure to look through the SWC registry, <a href="https://twitter.com/ConsenSysAudits" target="_blank" rel="noopener noreferrer"> follow Diligence on Twitter</a>, or whatever source you need to make sure you stay up to date with security on Ethereum.</p>
+
+  <h2>Additional Material</h2>
+    <ul>
+      <li><a href="https://consensys.github.io/smart-contract-best-practices/" target="_blank" rel="noopener noreferrer">Wiki: Smart Contract Best Practices</a> and <a href="https://consensys.github.io/smart-contract-best-practices/recommendations/" target="_blank" rel="noopener noreferrer">Recommendations</a></li>
+      <li><a href="https://medium.com/@danrobinson/ethereum-is-a-dark-forest-ecc5f0505dff" target="_blank" rel="noopener noreferrer">Article: Ethereum is a Dark Forest</a> A long, comprehensive article discussing frontrunning from a first-person perspective. Got a lot of people's attention in the community around the topic.</li>
+      <li><a href="https://github.com/flashbots/pm" target="_blank" rel="noopener noreferrer">Wiki: Flashbots</a> A collection of research and news about Miner Extracted Value and Frontrunning.</li>
+      <li><a href="https://sunnya97.gitbooks.io/a-beginner-s-guide-to-ethereum-and-dapp-developme/smart-contract-best-practices.html" target="_blank" rel="noopener noreferrer">Article: Smart Contract Bugs and Security Best Practices</a></li>
+      <li><a href="http://hackingdistributed.com/2017/08/28/submarine-sends/" target="_blank" rel="noopener noreferrer">Article: To Sink Frontrunners, Send in the Submarines</a> An article discussing a frontrunning defense mechanism</li>
+      <li><a href="https://medium.com/coinmonks/protect-your-solidity-smart-contracts-from-reentrancy-attacks-9972c3af7c21" target="_blank" rel="noopener noreferrer">Article: Protect Your Solidity Smart Contracts from Reentrancy</a> Discusses mutex locks in Solidity.</li>
+    </ul>
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M6-security/L2a-sc-pitfalls-and-attacks/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+
+    <h2>Declaring Events</h2><pre>pragma solidity &gt;= 0.5.0 &lt;= 0.8.0;
+  
+  contract ExampleContract { 
+  <code>
+    event LogReturnValue(address indexed _from, int256 _value);
+  
+    function foo(int256 _value) public returns (int256) {
+       emit LogReturnValue(msg.sender, _value);
+       return _value;
+    }
+  
+  }
+  </code></pre>
+  
+    <p>This is how you declare an event called <code>LogReturnValue</code>. Use the <code>event</code> keyword followed by the event name.</p>
+  
+    <p>A recent update to the Solidity compiler requires the <code>emit</code> keyword before an event is logged. This helps further clarify when events are being logged in the contract code.</p>
+  
+    <p>Declaring events require that you specify the parameter type as well as a name for the parameter. This parameter name is the name that will appear in the log, so make it descriptive and clear.</p>
+  
+    <p>You can add the <strong>indexed</strong> keyword to event parameters. Up to three parameters can receive the indexed attribute. This increases the searchability of events. It is possible to filter for specific values of indexed arguments in the user interface.</p>
+  
+    <p><a href="https://solidity.readthedocs.io/en/latest/contracts.html#events" target="_blank">Here is a link to the solidity documentation on events.</a></p>
+  
+    <h2>Use Cases</h2>
+  
+    <p>The common uses for events can be broken down into three main use cases:</p>
+  
+    <ol>
+      <li>Events can provide smart contract return values for the User Interface</li>
+      <li>They can act as asynchronous triggers with data and</li>
+      <li>They can act a cheaper form of storage.</li>
+    </ol>
+  
+    <h3>Get values when transaction is mined</h3>
+  
+    <p>When a transaction is sent via web3.js, a transaction hash is returned, even if the contract functions specifies a return value. Transactions don&rsquo;t return the contract value because transactions are not immediately mined and included in the blockchain - it takes time (they are asynchronous). You can use an event in the contract function in conjunction with an event watcher in the UI to observe a variable value&nbsp;when the transaction is mined.</p>
+  
+    <h3>Trigger application logic</h3>
+  
+    <p>You can use an event watcher as a trigger for application logic beyond just reading return values. You could take another action, display a message or update the UI when an event is observed.</p>
+  
+    <p>
+      <br>
+    </p>
+  
+    <h3>Events as Data Storage</h3>
+  
+    <p>Logs, which are essentially the same as events (the context dictates which term is more appropriate) can also be used as a cheaper form of storage. Logs cost 8 gas per byte whereas contract storage costs 20,000 per 32 bytes, or 625 gas per byte. Logs are cheaper, but also cannot be accessed from any contracts so their use case as storage objects is much more limited. Even still, logs can be useful for aggregating historical reference data.</p>
+  
+    <p>
+      <br>
+    </p>
+  
+    <p>Events are inheritable members of contracts. You can call events of parent contracts from within child contracts.</p>
+  
+    <p>When called from within a contract, events cause arguments to be stored in the transaction log, a special data structure in the blockchain. The logs are associated with the address of the contract and will be incorporated into the blockchain, persisting as long as a block is accessible.</p>
+  
+    <p>Log and event data are not accessible from within contracts, not even from the contract that created the log. Events are useful when interacting with an application. They can provide notifications and confirmations of transactions happening in the smart contract. They are also useful for debugging purposes during development.</p>
+  
+    <p>Logs are not part of the blockchain per se since they are not required for consensus (they are just historical data), but they are verified by the blockchain as the transaction receipt hashes are stored inside the blocks.</p>
+  
+    <p>Remember that events are not emitted until the transaction has been successfully mined.</p>
+  
+    <h2>When to log events</h2>
+  
+    <p>Logging an event for every state change of the contract is a good heuristic for when you should use events. This allows you to track any and all updates to the state of the contract by setting up event watchers in your javascript files.</p>
+    <hr>
+  
+    <p>Additional Resources:</p>
+  
+    <ul>
+      <li><a href="https://media.consensys.net/technical-introduction-to-events-and-logs-in-ethereum-a074d65dd61e" target="_blank">Technical introduction to Events and Logs in Ethereum (Joseph Chow, Consensys)</a></li>
+      <li><a href="https://solidity.readthedocs.io/en/latest/contracts.html#events" target="_blank">Events - Solidity Docs</a></li>
+      <li><a href="https://web3js.readthedocs.io/en/1.0/web3-eth-subscribe.html?highlight=events#subscribe-logs" target="_blank">Listening to events with web3.js</a> or <a href="https://web3js.readthedocs.io/en/v1.2.0/web3-eth-contract.html#contract-events" target="_blank">via the contract object</a></li>
+      <li><a href="https://codeburst.io/deep-dive-into-ethereum-logs-a8d2047c7371" target="_blank" rel="noopener noreferrer">Article: Deep Dive Into Ethereum Logs</a></li>
+      <li><a href="https://medium.com/linum-labs/everything-you-ever-wanted-to-know-about-events-and-logs-on-ethereum-fec84ea7d0a5" target="_blank" rel="noopener noreferrer">Article: Everything You Ever Wanted to Know About Events and Logs on Ethereum</a></li>
+    </ul>
+    
+</div>
+  
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M2-solidity/L7-events-and-logs/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

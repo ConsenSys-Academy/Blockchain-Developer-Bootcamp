@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Trustless Consensus</h1>
+  
+  <!-- Content here: -->
+
+    <i>Note: this section is fairly text heavy and may be difficult to understand at first. Not to worry! The two videos following this section cover similar material in a visual way. We'll also discuss this in our Office Hours or on Discord.</i>
+
+    <p>We've spent the past few sections learning about how consensus protocols work to make peer-to-peer distributed systems maintain state across time despite node failure. This is a general computer science concept that's used in building distributed networks that may be susceptible to machine failures, message duplications, message corruptions, etc. Since they are decentralized networks, public blockchains have to deal with this category of problems. But, they are also presented with an entirely new set of issues.</p>
+
+    <p>Public blockchains introduce a specific challenge to agreeing on a state. In a non-blockchain distributed network, state is a set of data valuable really only to the private organization running the network. For example, in a digital streaming service, the state might contain where a user stoped watching a previous video. That way, if they start the video again and are served the content from a different network server, their place will be saved.</p>
+      
+    <p>The state of a public blockchain network, on the other hand, is the public, distributed ledger which contains the financial balances of everyone in the network. This has enormous value to many different organizations and individuals. In a way, everyone is incentivized to lie about the state of the network because it's directly tied to their net worth. Imagine if when you went to the bank, rather than a bank teller telling you your balance, <i>they</i> asked <i>you</i> for <i>your</i> balance. Most people would, at some point, be very tempted to lie and make up a number (Probably a very large number).</p>
+
+    <p>This is the main element that distinguishes public blockchain networks from traditional distributed networks. The network state of a blockchain is one that contains economic value directly impacting the actors in the network. But, as we've seen studying traditional distributed systems, the blockchain network still needs those nodes (which have competing interests) to update and propagate the state.</p>
+      
+    <p>Enter <b>trustless consensus:</b> Bitcoin solves this issue by creating a consensus mechanism which can operate in an adversarial environment where the nodes have competing interests. Rather than assuming the state they are propagating is correct, Bitcoin's trustless consensus allows each individual node to verify the state themselves using cryptography. We'll walk through how Bitcoin and other proof of work blockchain networks achieve this feat by describing the underlying assumptions and the solutions.</p>
+
+    <blockquote>Quick aside: What about current traditional banks? Don't they have distributed networks that contain economic value among nodes (customers) with competing interests? Why don't we consider them as solving this issue? Yes, this is true that global financial companies or governments have built distributed networks that have similar conditions to what public blockchains are hoping to achieve. However, these traditional networks separate trust from distributed consensus in their networks. You can imagine it like a castle, with powerful fortifications, that contains a ledger containing all the assets in the kingdom. If you can breach the defenses and get into the castle, you'll have control over that ledger. Blockchain's theoretical innovation is baking the defense <i>into</i> the consensus mechanisms themselves so there are many different castles and, if one falls, it may temporarily impact the network but will not collapse the system. </blockquote>   
+
+    <p>In fact, because blockchains are removing trusted intermediaries (like a bank) the only way to make their network state secure is to assume that <i>everyone</i> is lying. With your trust assumptions low (assuming everyone is lying), you're protected against that behavior. How do you create a consensus protocol in these dire circumstances? Well, this is incredible innovations that blockchains, beginning with Bitcoin, created. It not only built the ecosystem of blockchain networks we see in today's world, but it even solved a general distributed computing problem in the process.</p>
+
+  <h2>Double Spend and Byzantine Generals Solution</h2>  
+
+    <p>The biggest issue facing digital money is what is called the <a href="https://www.investopedia.com/terms/d/doublespending.asp" target="_blank" rel="noopener noreferrer">"double spend"</a> problem: Since digital files can be copied endlessly, how can you be sure whatever digital money you're paid with has not been previously spent?</p>
+
+    <p>This is the critical issue Satoshi Nakamoto set out to solve in <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">the Bitcoin whitepaper</a>:
+
+
+      <blockquote>
+        We propose a solution to the double-spending problem using a peer-to-peer network.
+        The network timestamps transactions by hashing them into an ongoing chain of
+        hash-based proof-of-work, forming a record that cannot be changed without redoing
+        the proof-of-work. The longest chain not only serves as proof of the sequence of
+        events witnessed, but proof that it came from the largest pool of CPU power. As
+        long as a majority of CPU power is controlled by nodes that are not cooperating to
+        attack the network, they'll generate the longest chain and outpace attackers. The
+        network itself requires minimal structure. Messages are broadcast on a best effort
+        basis, and nodes can leave and rejoin the network at will, accepting the longest
+        proof-of-work chain as proof of what happened while they were gone.
+      </blockquote>
+
+    </p>
+
+    <p>Nakamoto Consensus, also called Proof of Work consensus, creates a consensus mechanism for a digital money system where each individual node does not have to blindly accept the network state.</p>
+
+    <h2>Elements of Proof of Work Consensus</h2>
+
+    <p>In discussing the elements comprising Proof of Work consensus, we'll pull from concepts we mentioned previously in discussion traditional distributed networks. Specifically, you'll need to remember the concept of <b>messages</b>, the concept of <b>nodes</b> and the <b>roles</b> they play as well as the concept of <b>time</b> and <b>periods</b> in distributed systems.</p> 
+  
+
+    <h3>Messages</h3>
+
+    <p>In Proof of Work consensus, the fundamental message is a <b>transaction,</b> constructed using the public key cryptography and digital signatures primitives we discussed previously, "trustlessly" (cryptographically) ensuring the identity and integrity of the message.</p>
+    
+    <p>Transactions in Proof of Work consensus are <b><a href="https://en.wikipedia.org/wiki/Atomic_commit" target="_blank" rel="noopener noreferrer">atomic,</a></b> meaning the network either accepts or rejects the transaction, there is no in-between or halfway. If the network accepts the transaction, the network state then advances to incorporate the effects of the transaction.</p> 
+    
+    <p>For example, let's say an imaginary public ledger at <code>State-0</code> says Alejandro has `1 token` and Barbarella has `0 tokens`. Alejandro then submits a transaction to the network saying he would like to pay Barbarella `0.5 tokens`. The network accepts the transaction, which creates a new state, <code>State-1</code> in which the public ledger has been updated to show Alejandro now has `0.5 tokens` and Barbarella has `0.5 tokens`.</p>
+
+    <h3>Nodes and their Roles</h3>
+
+    <p>In Proof of Work consensus, here are the roles nodes play:
+
+      <ul>
+        <li><b>Miners</b> These are the nodes which are certifying which transactions are valid by including them in blocks. When a miner creates a valid block and propagates it throughout the network, the network state is advanced in a trustless way. (We'll examine in a moment how a miner can create a block in a trustless way.)</li>
+        <li><b>Full Nodes</b> These are the general network nodes which are creating transactions and passing along transactions created by other nodes in the network. They are also maintaining full network state when they receive valid blocks from Miner nodes. Each full node in the network checks the work of a block to ensure its validity.</li>
+        <li><b>Light Nodes</b> These are network nodes which are simply submitting transactions to the network and waiting for them to be accepted by the network. They do not participate in the process of checking the validity of the advancing network state and do not pass along messages.</li>
+      </ul>
+
+
+      <p><i>Remember from the section on public key cryptography that nodes identify themselves in the network by using the peer-to-peer identity mechanism of public key cryptography.</i></p>
+
+    </p>
+
+    <h3>Periods and Proof of Work</h3>
+
+    <p>In Proof of Work consensys, there are two distinct periods in a network:
+
+      <ul>
+        <li><b>Period of Block Production</b> This is the period in which Miner nodes validate transactions by bundling them all together and competing to produce a valid the Proof of Work algorithm. It begins when the miner receives the latest valid block and stops when the miner solves their Proof of Work algorithm or receives a valid block from another miner.</li>
+        <li><b>Period of Block Propagation</b> This is the period in which a valid block gradually moves through the network. A full node or miner node will only propagate blocks that are valid, so the process of the network accepting a valid block (and accepted the new network state) is an emergent one. </li>
+
+      </ul>
+
+      <p>
+        The follow section will describe the process of creating a block and how blocks chained together create an immutable ledger that all network participants can validate on their own. This individual validation, without having to rely on trust, is how proof of work consensus maintains state in a distributed and safe way. 
+      </p>
+
+      <h2>Additional Materials</h2>
+      <h3>Introduction</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=c7yvOlwBPoQ&list=PLJz1HruEnenCXH7KW7wBCEBnBLOVkiqIi&index=7" target="_blank" rel="noopener noreferrer">Video & Interactive Code: ETH.Build with Byzantine Generals' Problem</a> Austin Griffith walks through a <a href="https://sandbox.eth.build/build#3f3d25b54ec9fde9b34ba3a8cd505d8306f97eec4537cd707f7e92b5d9226bf4" target="_blank" rel="noopener noreferrer">hands-on implementation</a> of the Byzantine Generals' Problem with his amazing ETH.Build platform</li>
+        <li><a href="https://river.com/learn/what-is-the-byzantine-generals-problem/" target="_blank" rel="noopener noreferrer">Article: What is the Byzantine Generals Problem?</a></li>
+        <li><a href="https://andersbrownworth.com/blockchain/" target="_blank" rel="noopener noreferrer">Interactive Code: Anders Blockchain</a> A great, web-based interactive tutorial going over fundamentals of Proof of Work consensus including <a href="https://andersbrownworth.com/blockchain/block" target="_blank" rel="noopener noreferrer">block production through hashing</a> and <a href="https://andersbrownworth.com/blockchain/distributed" target="_blank" rel="noopener noreferrer">distributed blockchains</a></li>
+        <li><a href="https://news.bitcoin.com/triple-entry-bookkeeping-how-satoshi-nakamoto-solved-the-byzantine-generals-problem/" target="_blank" rel="noopener noreferrer">Article: How Satoshi Nakamoto Solved the Byzantine Generals Problem</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph" target="_blank" rel="noopener noreferrer">Wikipedia: Directed Acyclic Graphs</a> Because each new block embeds the hash of the previous valid block, this creates a computer science data structure known as Directed Acyclic Graphs (similar to the way Git software works!).</li>
+      </ul>
+      <h3>Advanced</h3>
+      <ul>
+        <li><a href="https://github.com/cooganb/bitcoin-whitepaper-exercises/blob/master/pow/README.md" target="_blank" rel="noopener noreferrer">Code: Implementing Proof of Work</a> A continuation of the series from Kyle Simpson</li>
+        <li><a href="https://github.com/cooganb/bitcoin-whitepaper-exercises/blob/master/incentives/README.md" target="_blank" rel="noopener noreferrer">Code: Implementing Mining Protocol</a> A continuation of the series from Kyle Simpson</li>
+      </ul>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M2-consensus/L5-trustless-consensus/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

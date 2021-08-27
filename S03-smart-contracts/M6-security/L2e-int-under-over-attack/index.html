@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <div class="fr-view">
+
+    <h1>Integer Over / Underflow</h1>
+
+    <p><b>Note: Due to SafeMath being included in Solidity 0.8.x, the likelihood of you writing an integer under or overflow is extremely unlikely. However, a number of contracts still exist with this attack vector and it's good to know about. But, again, the inclusion of SafeMath helps significantly protect against this attack vector.</b></p>
+
+    <p>This contract shows what an integer overflow vulnerability (<a href="https://swcregistry.io/docs/SWC-101" target="_blank">SWC-101</a>) looks like.</p>
+  
+    <p>In this VulnerableContract the lockTime is manipulable by the currentInvestor. The maximum value for the lockTime is 4294967295 because it is declared type uint32 (and 2^32 = 4294967296). If the currentInvestor attempts to set the value above&nbsp;4294967295, it will overflow and start counting back at 0.</p>
+    <pre class="wrong">
+pragma solidity ^0.5.0;
+// Example Integer Overflow and Underflow
+  
+contract VulnerableContract {
+    uint MINIMUM_INVESTMENT = 50 ether;
+    uint32 INITIAL_LOCK_TIME = 2592000; // 30 days in seconds
+    address payable currentInvestor;
+    uint investmentTimestamp;
+    uint32 public lockTime = INITIAL_LOCK_TIME;
+  
+    function  increaseLockTime(uint32 _seconds) public {
+        require(msg.sender == currentInvestor);
+        lockTime += _seconds; // uint32 max is 4294967295 seconds. Attack passing 4292375295
+    }
+      
+    function invest() public payable {
+        require(currentInvestor == address(0));
+        require(msg.value &gt;= MINIMUM_INVESTMENT);
+        currentInvestor = msg.sender;
+        investmentTimestamp = now;
+    }
+      
+    function withdrawWithProfit() public {
+        require(msg.sender == currentInvestor);
+        require(now - investmentTimestamp &gt;= lockTime);
+        uint profit = 1 ether + lockTime * 1 wei;
+        currentInvestor.transfer(MINIMUM_INVESTMENT + profit);
+        currentInvestor = address(0);
+        lockTime = INITIAL_LOCK_TIME;
+    }
+      
+    function getBalance() view public returns(uint) {
+        return address(this).balance;
+    }
+      
+    function() external payable {}
+}</pre>
+  
+    <p>
+      <br>This type of attack is easily avoidable by using <a href="https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol" target="_blank">a SafeMath library such as this</a>, that provides safety checks and will revert on error. The SafeMath library <a href="https://blog.soliditylang.org/2020/12/16/solidity-v0.8.0-release-announcement/" target="_blank" rel="noopener noreferrer">now ships</a> with Solidity as of 0.8.x, so you do not have to include it if you're working with a compiler on 0.8.x except in very specific cases mentioned <a href="S03-smart-contracts/M6-security/L2e-int-under-over-attack/index.html" target="_blank" rel="noopener noreferrer">here</a>.</p>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M6-security/L2e-int-under-over-attack/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

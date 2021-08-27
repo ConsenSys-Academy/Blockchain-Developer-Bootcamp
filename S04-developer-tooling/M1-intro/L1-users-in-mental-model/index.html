@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Where Do Users Fit in Our Mental Model?</h1>
+  
+  <!-- Content here: -->
+
+    <p>Now that we've gone through the smart contract section and have a good understanding of how we can deploy self-executing code to a blockchain network, it's time to turn to the users of our applications. In particular, we're going to examine how users that are interacting with our smart contracts deployed on our favorite blockchain fit into the mental model we've been building</p>
+
+    <p>After we've looked at this, we're going to start building an understanding of the smart contract development workflow and how it can be changed or altered based on the kind of application we're developing and the user we're targeting.</p>
+
+    <h2>Users in the Mental Model</h2>
+
+    <p>The users represent a potential new element, that is to say the non-blockchain world. In an ideal world, all your users know how to use blockchain, are loyal <a href="https://www.coingecko.com/en/glossary/degen" target="_blank" rel="noopener noreferrer">degens</a> on <a href="https://www.forbes.com/sites/haileylennon/2021/03/16/are-cryptocurrency-and-twitter-mutually-exclusive/?sh=7a340478614b" target="_blank" rel="noopener noreferrer">Crypto-Twitter,</a> and are already onboarded to the blockchain world. if only it were so easy! In reality, we have users located on a <a href="https://twitter.com/CupOJoseph/status/1413334858143834114  " target="_blank" rel="noopener noreferrer">spectrum</a> of abilities, understanding and desires.</p>  
+
+    <p>We'll build this out more as we go, but for sake of simplicity, in this section we will emphasize how the overwhelming of your blockchain users will interact with your application: through a Javascript API. Below is a diagram illustrating how the typical user interacts with a distributed application (we're using Ethereum as the public blockchain, but you can imagine it to be any general public blockchain):</p>
+    
+    <div class="img-wrapper"><img src="../../../img/S04/users-in-mm-1.png" alt="diagram illustrating how the typical user interacts with a distributed application"></div>
+
+    <p>On the left, we see a user interacting with a frontend interface, usually a website on a traditional web browser their device, either on mobile or desktop. That website is powered primarily by "Web 2.0" technology (browser connects to a server, has responsive layout, has interactive Javascript interface). However, the website has two main elements powered by blockchain. The first is any data the website is reading from the blockchain. This might be recent transactions, current user balance, current block number on the network, etc.</p> 
+    
+    <p>The second is the ability for the user to submit their own transactions to the blockchain from the website ("writing" to the network). This is made possible through a concert of three aspects: 
+      
+      <ul>
+        <li><b>A Web 3 Javascript library</b> (web3.js or ethers.js, for example)</li>
+        <li>A <b>cryptowallet</b> which can safely handle a user's private key, allowing them to sign transactions (MetaMask, in this case)</li>
+        <li><b>Code deployed by you, the developer,</b> to your website which constructs pre-formatted transactions, targeting your deployed smart contract, specifically a function in its ABI.</li>
+      </ul>
+
+      <p>You, the developer of the distributed application, have coded in certain transaction parameters to be filled in by the user. These transactions parameters are targeting a deployed smart contract's ABI. That transaction will then be properly signed by the cryptowallet then submitted to the blockchain network. In this case, MetaMask will submit our transaction using an Infura endpoint. The image below shows a simplified version of the workflow we just described:</p>
+
+      <div class="img-wrapper"><img src="../../../img/S04/users-in-mm-2.png" alt="diagram showing pre-formatted smart contract code"></div>
+
+    <p>Let's return to our blockchain network and our smart contract model to see how this user workflow comes into play. Specifically, let's see how that pre-formatted transaction code is submitted to the network and propagates a new network state.</p>
+
+    <div class="img-wrapper"><img src="../../../img/S04/users-in-mm-3.png" alt="diagram blending the two mental models"></div>
+
+    <p>The image above shows how we are combining the two mental models we've been working with. On the left-hand side, we see the user has their transaction, which has been pre-formatted by the application developer but populated and authorized by the user. To the right, we see the basic blockchain network. Effectively, when the user submits their transaction, they do so as a node in the network broadcasting any other transaction. It will be propagated throughout the network (each node that receives it checks its digital signature validity before passing it on) and eventually become part of the emergent <a href="https://academy.binance.com/en/glossary/mempool" target="_blank" rel="noopener noreferrer">"mempool"</a> of unmined transactions. Once it is mined, we can then see how it will affect global network state.</p>
+    
+    <p>Assuming the user's transaction is valid (including proper gas fees, etc.), it will be included into a block by a miner. That miner will then propagate the block out into the network, requiring all the other nodes in the network to check the block and then incorporate the state changes implied by the transactions included in that block. Below, we see our user's transaction being processed by another node who has received it in a block:</p>  
+
+    <div class="img-wrapper"><img src="../../../img/S04/users-in-mm-4.png" alt="user transaction being incorporated into the network state"></div>
+
+    <p>As each node in the network processes the block containing our user's transaction, the new global network state will begin to emerge that includes the state changes caused by our user's transaction (We're showing that network state change below with a checkmark). Since submitting the transaction, the user's website interface has been using MetaMask as its network gateway. It's looking specifically for the transaction's "confirmation" (both inclusion in a mined block as well as that block's propagation). Once it detects the transactions confirmation, the website interface will be updated to reflect that state change and let the user know their transaction has "gone through".</p>
+
+    <div class="img-wrapper"><img src="../../../img/S04/users-in-mm-5.png" alt="image showing network confirming the transaction and user interface reflecting that state"></div>
+
+    <h2>Conclusion</h2>
+      <p>Now that we have an understanding of where the user sits in our mental model, we're faced with a new set of challenges. Mainly, how do we integrate all these different elements of development so our user's have a seamless exeperience? In the next few sections, we're going to show you how you can begin to approach this. In the process, you will become intimately acquainted with developer tooling that will give you confidence in approaching this tall task.</p>
+
+    <h2>Additional Material</h2>
+      <li><a href="https://blog.ycombinator.com/building-for-the-blockchain/" target="_blank" rel="noopener noreferrer">Article: Building for the Blockchain</a> Dated material but has a nice overview of the paradigm shift taking place between Web 2 and Web 3.</li>
+      <li><a href="https://consensys.net/blog/blockchain-explained/want-to-really-understand-blockchain-you-need-to-understand-state/" target="_blank" rel="noopener noreferrer">Article: Want to Understand Blockchain? You Need to Understand State</a> Overview discussing the integration of state from a Javascript framework perspective to the blockchain public network perspective.</li>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S04-developer-tooling/M1-intro/L1-users-in-mental-model/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

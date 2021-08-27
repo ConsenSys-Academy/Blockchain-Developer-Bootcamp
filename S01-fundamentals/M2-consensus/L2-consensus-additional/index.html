@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Distributed Coordination: Consensus Protocols</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Distributed Coordination: Consensus Protocols</h1>
+  
+  <!-- Content here: -->
+
+  <p>After learning about cryptography, we know how create a identity, how to make sure no one has messed with a file, and how to capture a user's intent all in a decentralized peer-to-peer way. This all well and good for current interactions or things we are doing <i>now</i> on a network, but how do we agree on things that have happened in the past? That is, how do actors in a network we coordinate and agree on the series of events that have led to the current state of the network? How do we know someone really <i>does</i> have digital money they can send to us and are not making it up? How do all the actors in the network then maintain that knowledge in a secure way? This is what we're going to learn in this module.</p>
+
+  <p>To understand how all the actors in a network can coordinate and agree about the historical state of a blockchain network we will learn about <b><a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)" target="_blank" rel="noopener noreferrer">consensus</a></b>. Distributed consensus is not only used in blockchain, to be clear. Any internet service that needs to coordinate their servers all over the globe (which is all the major internet services) uses distributed consensus mechanisms to make that happen. Blockchain takes traditional distributed consensus one step further. We'll see what that step is once we understand the historical and fundamental principles of distributed computing.</p>
+
+  <p>(Note: In this section, we will use the terms <b>Distributed Computing</b>, <b>Distributed Systems</b>, <b>Distributed Consensus</b>, and <b>Distributed Coordination</b> interchangeably. We'll also be speaking about consensus strictly in the computer scientific sense. Later in the course, we'll discuss consensus among people in a network, typically called <b>governance</b>.)</p>
+
+  <h2>Development of Distributed Computing </h2>
+
+  <p><a href="https://en.wikipedia.org/wiki/Distributed_computing" target="_blank" rel="noopener noreferrer">Distributed Computing</a> became an important field of study in the 1970s when airplanes started using electronic control systems. Airline manufacturers wanted to make sure that if an certain part of the electronics gave out while the plane was in the air, the whole plane wouldn't shut down. In the scenario of an airplane, the "bad actor" is not a hacker trying to purposefully disable the entire airplane, but rather a single part that is not behaving as it should. As a result, researchers began researching and developing <b>consensus protocols</b> for the airplane computer systems.</p>
+
+  <p>At the most basic level, "consensus protocols are used to allow computers to work together" and "let different servers agree on the state of a system." (<a href="https://softwareengineeringdaily.com/2018/03/26/consensus-systems-with-ethan-buchman/" target="_blank" rel="noopener noreferrer">Software Engineering Daily</a>). For the airplane manufacturers, a good consensus protocol would continue to function with some errors. This way, if one or two things failed, the entire system wouldn't fail. The ability of a consensus protocol to adapt to failure is called <a href="https://en.wikipedia.org/wiki/Resilience_(network)" target="_blank" rel="noopener noreferrer">resilience.</a> </p> 
+
+  <p>Crucially, early work around distributed computing and consensus protocols dealt with <i>non-adversarial systems</i>. This meant that any of the faults that were happening in a computer network, like an airplane, were the result of natural system errors (power failure, faulty parts, etc), not some sort of active meddling or hacking. This has now developed to encompass much more than aerospace technology. As we mentioned before, it now also covers many digital services, such as: 
+    <ul>
+    <li>Any multi-party real-time communication stream (like a social media feed or )</li>
+    <li>An online media streaming service which requires multiple regional servers holding and updating the exact same information on customers</li>
+    <li>A search engine service that needs to maintain and update indexed information across many regions</li>
+  </ul>  
+  </p>
+
+  <p>Consensus protocols help these systems maintain historical information also called <b>state.</b> Broadly speaking, state can be defined as a set of variables describing a certain system at a specific time. Let’s describe that in a real-world situation. Take a look around at whatever environment you’re in––bus station, coffee shop, office––and pick out a few variables you could use to describe it. If you’re inside a room, you could describe any number of things:
+
+    <ul>
+      <li>The number of walls</li>
+      <li>The types of furniture</li>
+      <li>The placement of furniture</li>
+      <li>The number of people</li>
+      <li>The kind of light in the room</li>
+    </ul>
+  Taken all together, these variables will paint a picture of the room. And if things change (say, you turn off a light), we'll update "The kind of light in the room" variable, which changes the state. If multiple people needed to maintain a record about the state of our room, we'd have to find a way to communicate this state change. Consensus protocols help us do exactly that: agree on a sequential series of system state which allows all network participants adhering to the consensus protocol to have a similar understanding of the historical changes adding up to the current network state. 
+  </p>
+  
+  <p>For a distributed computer network, state typically involves technical information about critical actors in a system. For a social media site, the state includes when a user logged in, what they did, where they were, etc. For an airplane or spaceship, the state includes current status of different parts of the ship, fuel or energy levels, temperature or atmospheric data, etc. As each individual actor in the networks uses the consensus protocol to propagate the changes they're doing locally and update their own state based on updates their getting from others, a historical understanding of the system begins to <i>emerge</i> from these state changes. This coordination of state among multiple actors in a common system allows for many interesting systems, including many of the digital services we use today.</p>
+
+  <p>Please note that we're using terms like "actors" or "participants" to describe the active parties in a distributed system. Despite the name, these traditionally refer to machines or computers in a network more commonly called <b>nodes</b>. It can be confusing but just try to remember these are general models we're discussing. Once we get into application and practice, it may be easier to understand.</p>
+
+  <p>A distributed system where multiple actors are using a consensus protocol to maintain state can be called a <a href="https://en.wikipedia.org/wiki/Finite-state_machine" target="_blank" rel="noopener noreferrer">state machine or finite state machine.</a> This is fairly technical, but it simply requires us to expand our understanding of a machine, which we typically think of as a metal box which containing small electronics connected by circuits. "State machine" allows us to consider larger systems, such as a cellphone network or all the electronic parts comprising an airplane, as themselves being machines comprised of nodes consistently maintaining a global state among themselves without a central point of failure.</p>
+
+  <p>Along with state, distributed consensus relies on a few concepts, such as:</p>
+
+  <ul>
+    <li><b><a href="https://en.wikipedia.org/wiki/Node_(networking)" target="_blank" rel="noopener noreferrer">Nodes</a></b> In a strict technical sense, a node is defined as "an electronic device that is attached to a network, and is capable of creating, receiving, or transmitting information over a communication channel." Distributed systems are comprised of nodes. We also call nodes participants or actors. Nodes typically fall into three categories: Leaders (nodes responsible for proposing values), Acceptors (nodes that receive values from Leader and accept them), Processors (nodes that do some operations or processing on received values) (<a href="https://distsys.substack.com/p/impossibility-of-distributed-consensus" target="_blank" rel="noopener noreferrer">source</a>). These roles are not exclusive, a single node may take on one, two or all three roles.</li>
+    <li><b>Message Propagation</b> A node can update its state in a distributed networks exclusively through messages. How those messages pass or propagate through the network is a critical part of maintainining state. If a node cannot pass a message through a network, there cannot be a unified state that all network nodes agree on. How nodes in a network propagates their messages is known as its <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank" rel="noopener noreferrer">topology.</a> Centralized systems, as shown below, can quickly distribute messages. However, they aren't particularly resilient (if the single central node collapses, so does the network). As a result, distributed systems have developed their own peer-to-peer protocols. Below is a famous diagram showing centralized, decentralized and distributed network topologies:
+    <div class="img-wrapper"><img src="../../../img/S01/network-topology.png" alt="diagram of centralized, decentralized and distributed systems"></div>
+    </li>
+    <li><b>Time</b> The notion of time is very important in a distributed system as it creates a sort of order for the larger system. Ordering events that occur in a system is particularly important. Think about making breakfast, for example. If your mix up the order of a series of actions, like eating your eggs before you cook them, it can create chaos and confusion. <a href="https://dean.eigenmann.me/blog/2020/01/06/time-clocks-and-order/" target="_blank" rel="noopener noreferrer">Here's an article</a> from Dean Eigenmann discussing the concept of Time, Clocks and Order in distributed systems.</li>
+    <li><b>Periods</b> Related to the idea of time, every consensus protocol requires discrete periods of activity. Perhaps a node is waiting to hear from a leader, perhaps a series of transactions are being prepared for a block, perhaps the nodes are passing around the latest agreed-upon state. These periods are critical to any consensus protocol. In blockchain systems, these periods typically revolve around the creation and propagation of transactions in a <i>block.</i></li>
+    <li><b><a href="https://en.wikipedia.org/wiki/Fault_tolerance" target="_blank" rel="noopener noreferrer">Fault Tolerance</a></b> This is a formal description of resilience: How many mistakes can a system tolerate before it will collapse completely? Put another way, how many bad nodes can we have in a system before the system ceases to propogate state? Leslie Lamport proposed a subset of fault tolerance called <a href="https://en.wikipedia.org/wiki/Byzantine_fault" target="_blank" rel="noopener noreferrer">Byzantine Fault Tolerance.</a> We discussed it briefly in the video before. Essentially, the most amount of fault a distributed network can absorb is one-third. So, if 2/3rds of a system are still available and coordinating, the system can still run. Because of this famous thought experiment, you may see fault tolerance referred to as Byzantine Fault tolerance or Practical Byzantine Fault Tolerance. However, it's similar to a rectangle not being a square but a square is a rectangle: Not all fault tolerance is Byzantine fault tolerance. We'll discuss more of this later in the section on trustless consensus.</li>
+  </ul>
+
+  <p>Please note: Distributed consensus outside of blockchain only deals with systems that are non-adversarial meaning all the nodes trust each other. This means the only errors that would show up would be from things like power failures or misbehaving parts, etc. You would not attribute malice to any misbehaving actor. Blockchain's big innovation, which we'll discuss later, was the creation of consensus protocols in adversarial networks in which you <i>must</i> assume everyone is out to get you. This is what we call <b>trustless consensus</b>.</p>
+
+  <h2>Conclusion</h2>
+
+  <p>In our search for the primitives underlying blockchain technology, consensus holds an important piece by allowing a network to have a memory of its own history, which we are calling <i>state.</i> We saw how cryptography allowed us to ensure peer-to-peer authenticity in the moment. Consensus protocols allow us to "save" that authenticity across time by facilitating the coordination of all network nodes around a global state. It also allows new participants (nodes) to enter the system and get "up to date" on what has happened previously in the system.</p>
+
+  <p>The next section is an excellent overview of a basic consensus protocol system called <a href="https://en.wikipedia.org/wiki/Raft_(algorithm)" target="_blank" rel="noopener noreferrer">Raft.</a> Raft is a simplified consensus algorithm which we feel makes it more approachable to understand. However, Raft is production-ready consensus protocol <a href="https://www.dbta.com/Columns/MongoDB-Matters/MongoDB-Matters-MongoDB-Strives-for-a-Perfect-Consensus-132930.aspx" target="_blank" rel="noopener noreferrer">used</a> by such major projects as <a href="https://en.wikipedia.org/wiki/MongoDB" target="_blank" rel="noopener noreferrer">MongoDB.</a> The website The Secret Lives of Data has created an extraordinary walkthrough of Raft, which we hope will illustrate consensus in a concrete way.</p>
+
+  <h2>Additional Links</h2>
+  <h3>Basic</h3>
+  <ul>
+    <li><a href="http://thesecretlivesofdata.com/raft/" target="_blank" rel="noopener noreferrer">Interactive: Raft: Understandable Distributed Consensus</a> A really excellent, interactive walkthrough of the Raft consensus protocol, a basic consensus protocol. The simple and easy way in which the tutorial walks through the consensus mechanism will help you understand how consensus protocols work on a practical level.</li>
+    <li>Article: <a href="https://www.preethikasireddy.com/post/lets-take-a-crack-at-understanding-distributed-consensus" target="_blank" rel="noopener noreferrer">Let's Take a Crack at Understanding Distributed Consensus</a> (Preethi Kasireddy)</li>
+    <li><a href="https://distsys.substack.com/" target="_blank" rel="noopener noreferrer">Article Series: Distributed Ssytems Digest</a> (Dean Eigenmann) This is an exellent series of articles discussing distributed systems, in an approachable way. If you click "Let me read it first," you can access the articles.</li>
+    <li><a href="https://softwareengineeringdaily.com/2018/03/26/consensus-systems-with-ethan-buchman/" target="_blank" rel="noopener noreferrer">Podcast: Distributed Systems with Ethan Buchman (Software Engineering Daily)</a> An overview on distributed systems, including the history of their development</li>
+    <li><a href="https://consensys.net/blog/blockchain-explained/want-to-really-understand-blockchain-you-need-to-understand-state/" target="_blank" rel="noopener noreferrer">Article: Want to Really Understand Blockchain? You Need to Understand State (ConsenSys)</a></li>
+    <li><a href="https://medium.com/coinmonks/a-brief-overview-of-kademlia-and-its-use-in-various-decentralized-platforms-da08a7f72b8f" target="_blank" rel="noopener noreferrer">Article: A Brief Overview of Kademlia and Its Use In Various Decentralized Platforms</a> The Kademlia protocol is a peer-to-peer file sharing system used by many decentralized systems, including Ethereum.</li>
+    <li><a href="https://explained-from-first-principles.com/internet/#nodes-and-links" target="_blank" rel="noopener noreferrer">Article: Nodes and Links (Explained from First Principles)</a></li>
+    <li><a href="http://mg8.org/processing/bt.html" target="_blank" rel="noopener noreferrer">Interactive Code: BitTorrent Simulator</a> A very cool visualization of how files are distributed over BitTorrent, which uses peer-to-peer file sharing</li>
+    <li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)" target="_blank" rel="noopener noreferrer">Consensus Methods,</a> <a href="https://en.wikipedia.org/wiki/Distributed_computing" target="_blank" rel="noopener noreferrer">Distributed Computing,</a> <a href="https://en.wikipedia.org/wiki/Resilience_(network)" target="_blank" rel="noopener noreferrer">Network Resilience,</a> <a href="https://en.wikipedia.org/wiki/Fault_tolerance" target="_blank" rel="noopener noreferrer">Fault Tolerance,</a> <a href="https://en.wikipedia.org/wiki/State_(computer_science)" target="_blank" rel="noopener noreferrer">Network State,</a> <a href="https://en.wikipedia.org/wiki/Byzantine_fault" target="_blank" rel="noopener noreferrer">Byzantine Fault Tolerance</a> <a href="https://en.wikipedia.org/wiki/Finite-state_machine" target="_blank" rel="noopener noreferrer">State Machines,</a> <a href="https://en.wikipedia.org/wiki/List_of_P2P_protocols" target="_blank" rel="noopener noreferrer">Peer-to-Peer Protocols,</a> <a href="https://en.wikipedia.org/wiki/Gossip_protocol" target="_blank" rel="noopener noreferrer">Gossip Protocol</a> </li>
+  </ul>
+  <h3>Advanced</h3>
+  <ul>
+    <li><a href="http://elaineshi.com/docs/blockchain-book.pdf" target="_blank" rel="noopener noreferrer">Textbook: Foundations of Distributed Consensus and Blockchains (Elaine Shi)</a> An advanced and extremely technical but comprehensive view on distributed consensus as it pertains to blockchain development.</li>
+    <li><a href="https://lamport.azurewebsites.net/pubs/byz.pdf" target="_blank" rel="noopener noreferrer">Academic Article: Leslie Lamport's Byzantine Generals Problem</a></li>
+    <li><a href="https://lamport.azurewebsites.net/pubs/time-clocks.pdf" target="_blank" rel="noopener noreferrer">Article: Times, Clocks and Ordering (Leslie Lamport)</a></li>
+    <li><a href="https://github.com/decanus/research/issues/10" target="_blank" rel="noopener noreferrer">
+     Github: Notes for Dean Eigenmann's Article "Times, Clocks and Ordering"
+    </a></li>
+  </ul>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M2-consensus/L2-consensus-additional/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

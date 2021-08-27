@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Solidity Pitfalls and Attacks</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Solidity Pitfalls and Attacks</h1>
+  
+  <!-- Content here: -->
+
+    <p>As we've made clear again and again, smart contract development is potentially very dangerous. This is unlike the vast portion of web development, where environments and code can be torn down, changed, and easily deployed again. Because of this, being a smart contract developer means being acutely aware of the ways in which your code can be exploited and creating safety features to ensure against unforeseen attacks.</p>
+
+    <p>Over the next few sections, we're going to be discussing smart contract security. We'll start by going over some common pitfalls and attacks with Solidity (as a language) and smart contracts generally. We'll then discuss testing as a means to further protect your code. Last, we'll go over some security services you can use when writing and developing smart contracts</p>
+
+    <h2>Solidity Tips</h2>
+
+      <h3>Use Specific Compiler Pragma</h3>
+        <p>A common method is to use the <code>^</code> to indicate the lowest compiler version that your contract will work with. However, if you have a testing suite you've built against your contract, you should not include the <code>^</code> and just list the compiler version.
+
+        <div class="wrong">
+          <pre>
+          pragma solidity ^0.4.4; // Possibly dangerous
+          </pre>
+        </div>
+
+        <div class="right">
+          <pre>
+          pragma solidity 0.4.4; // Better
+          </pre>
+        </div>
+        </p>
+
+      <h3>Built-In Variable Names</h3>
+        <p>Built-in variables can be shadowed, be careful when naming your functions: 
+        <pre class="wrong">
+function revert() internal pure {} // Possibly dangerous
+        </pre>
+
+        <pre class="right">
+function myRevert() internal pure {} // Better    
+        </pre>
+
+        </p>
+      <h3>Proper Use of <code>require</code>, <code>assert</code> and <code>revert</code></h3>
+        <p><b><code>require(msg.sender == owner)</code></b>
+          <ul>
+            <li>Validation of <b>inputs, external call returns and variables</b> before state changes</li>
+            <li><b>Refunds</b> remaining gas when fail</li>
+            <li>Should be used <b>more often</b> and <b>towards the beginning</b> of functions</li>
+          </ul>
+        </p>
+
+        <p>
+          <b><code>assert(age > 100)</code></b>
+          <ul>
+            <li>Validation of <b>invariants</b>, situations that <b>should never happen</b> and variables <b>after state changes</b></li>
+            <li><b>Consumes all gas</b> when fail</li>
+            <li>Should be used <b>less often</b> and <b>towards the end</b> of functions</li>
+          </ul>
+        </p>
+
+        <p>
+          <b><code>revert()</code></b>
+
+          <ul>
+            <li><b>Reverts</b> the current transaction</li>
+            <li><b>Refunds</b> remaining gas when fail</li>
+            <li>Used <b>within if-else</b> statements</li>
+          </ul>
+        </p>
+
+      <h3>Use Modifiers Only for Validations</h3>
+        <p>Just do validations within modifiers and avoid external calls on them:
+          <pre class="wrong">
+modifier partnerShare() {        // Possibly dangerous
+partner.transfer(msg.value / 10); _; }
+          </pre>
+          <pre class="right">
+modifier onlyOwner() {             // Better!
+require(msg.sender == owner); _; }
+          </pre>
+        </p>
+
+      <h3>Pull Over Push</h3>
+        <p>Prioritize <i>receiving</i> contract calls over <i>making</i> contract calls:
+          <pre class="wrong">
+function doRefund() external onlyOwner {      // Possibly dangerous
+  uint refund;
+  for(uint i = 0; i < refunds.length; i++) {
+      refund = refunds[i].value;
+      refunds[i].value = 0;
+      refunds[i].addr.transfer(refund);
+  }
+}          
+          </pre>
+          <pre class="right">
+function withdrawRefund() external {      // Better!
+  require(refunds[msg.sender] > 0);
+  uint refund = refunds[msg.sender];
+  refunds[msg.sender] = 0;
+  msg.sender.transfer(refund);
+}
+          </pre>
+        </p>
+      <h3>Fallback Functions and Data Length</h3>  
+        <p>Keep fallback functions simple and check data length:
+          <pre class="wrong">
+fallback() payable external {   // Possibly dangerous
+  balances[msg.sender] += msg.value;
+}  
+          </pre>
+          <pre class="right">
+receive() external {           // Better!
+  balances[msg.sender] += msg.value;
+}
+fallback() external {
+  require(msg.data.length == 0);
+  emit LogDeposit(msg.sender);
+}
+          </pre>
+        </p>
+
+      <h3>Checks-Effects-Interactions</h3>
+      <p>Avoid state changes after external calls, to avoid things like <a href="https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#re-entrancy" target="_blank" rel="noopener noreferrer">the DAO hack:</a>
+        <pre class="wrong">
+function withdraw(uint amount) public {       // Possibly dangerous
+  require(balances[msg.sender] >= amount);
+  msg.sender.call.value(amount)("");
+  balances[msg.sender] -= amount;
+}
+        </pre>
+        <pre class="right">
+function withdraw(uint amount) public {    // Better!
+  require(balances[msg.sender] >= amount);
+  balances[msg.sender] -= amount;
+  msg.sender.call.value(amount)("");
+}
+        </pre>
+      </p>
+
+    <h3>Proper use of <code>call</code>, <code>delegatecall</code> instead of <code>send</code>, <code>transfer</code></h3>
+
+      <p>After the Istanbul hardfork, <a href="https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/" target="_blank" rel="noopener noreferrer">it's recommended</a> not to use <code>send</code> and <code>transfer</code>, and instead use <code>call.value</code>
+      
+      <pre class="wrong">
+contract Vulnerable {         // Possibly dangerous
+  function withdraw(uint256 amount) external {
+      // This forwards 2300 gas, which may not be enough if the recipient
+      // is a contract and gas costs change.
+      msg.sender.transfer(amount);
+  }
+}
+      </pre>
+      <pre class="right">
+contract Fixed {            // Better!
+  function withdraw(uint256 amount) external {
+      // This forwards all available gas. Be sure to check the return value!
+      (bool success, ) = msg.sender.call.value(amount)("");
+      require(success, "Transfer failed.");
+  }
+}
+      </pre>
+      </p>
+
+      <p>And then proper use of <code>call</code> and <code>delegatecall</code>:
+        <pre>addr.call(abi.encodeWithSignature("f(uint)", a));</pre>
+        <ul>
+          <li>Used to call functions and send ether</li>
+          <li>Allows specify gas</li>
+          <li>Returns boolean</li>
+          <li>Does not propagate exceptions</li>
+        </ul>
+        <pre>addr.delegatecall(abi.encodeWithSignature("f(uint)", a));</pre>
+        <ul>
+          <li>Used to run functions within the caller's context (library feature)</li>
+          <li>Allows specify gas</li>
+          <li>Returns boolean</li>
+          <li>Does not propagate exceptions</li>
+        </ul>
+        
+      </p>
+  
+  <h2>Additional Material</h2>
+  <ul>
+    <li><a href="https://consensys.github.io/smart-contract-best-practices/" target="_blank" rel="noopener noreferrer">Wiki: Smart Contract Best Practices (ConsenSys)</a></li>
+    <li><a href="https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/" target="_blank" rel="noopener noreferrer">Article: Stop Using Solidity's <code>transfer</code></a> Article from ConsenSys Diligence</li>
+    <li><a href="http://" target="_blank" rel="noopener noreferrer"></a></li>
+    <li><a href="http://" target="_blank" rel="noopener noreferrer"></a></li>
+  </ul>
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M6-security/L2-solidity-pitfalls-and-attacks/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

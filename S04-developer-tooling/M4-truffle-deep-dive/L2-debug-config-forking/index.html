@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h2 id="squashing-bugs-with-the-debugger">Squashing Bugs with the Debugger</h2>
+<p>Debugging is an important part of any software development lifecycle and Truffle ships with a full CLI-based, interactive debugger to help you squash those pesky bugs.</p>
+<p>A debug instance is always instantiated off the back of a transaction (tx) hash (as we saw returned when we invoked storage.set(42) in the earlier example). For example:</p>
+<div class="codehilite"><pre><span></span><code>{
+tx: &#39;0x46e4bb35108e5ecf7ff656008295fda572a753476d5e04c286fcdb7868447dd6&#39;,
+receipt: {
+    transactionHash: &#39;0x46e4bb35108e5ecf7ff656008295fda572a753476d5e04c286fcdb7868447dd6&#39;,
+    transactionIndex: 0,
+    blockHash: &#39;0x85dbdf5d71194cb0d841d58bbac283ccf078ce0ebe1c054c6c2ab76442459894&#39;,
+    blockNumber: 9,
+    from: &#39;0x5ca1605d4671669b38f7e37c881ed996ede5ac68&#39;,
+    to: &#39;0x524b2860a2489e385c5e12537f58d5a09a9d33ab&#39;,
+...
+}
+</code></pre></div>
+
+<h1 id="running-the-debugger">Running the Debugger</h1>
+<p>Assuming we have a valid transaction hash the debugger is simply invoked as follows. Note that you’ll need to paste in a hash of a transaction that exists on the chain you’re debugging against.</p>
+<div class="codehilite"><pre><span></span><code>truffle debug 0x4a1dcabb384e6ca1b5091495349603499fc2022e5832efdb53f872b6ff23a1c0
+</code></pre></div>
+
+<p>Assuming all is good, you should now see the following output (note that the full list of commands has been truncated for brevity):</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">Starting</span> <span class="nt">Truffle</span> <span class="nt">Debugger</span><span class="o">...</span>
+
+<span class="nt">Addresses</span> <span class="nt">affected</span><span class="o">:</span>
+<span class="nt">0x6cA2F11a43b2B8f4DCE7De62f8Dc03f8E12BC48F</span> <span class="nt">-</span> <span class="nt">SimpleStorage</span>
+
+<span class="nt">Commands</span><span class="o">:</span>
+<span class="o">(</span><span class="nt">enter</span><span class="o">)</span> <span class="nt">last</span> <span class="nt">command</span> <span class="nt">entered</span> <span class="o">(</span><span class="nt">step</span> <span class="nt">next</span><span class="o">)</span>
+<span class="o">(</span><span class="nt">o</span><span class="o">)</span> <span class="nt">step</span> <span class="nt">over</span><span class="o">,</span> <span class="o">(</span><span class="nt">i</span><span class="o">)</span> <span class="nt">step</span> <span class="nt">into</span><span class="o">,</span> <span class="o">(</span><span class="nt">u</span><span class="o">)</span> <span class="nt">step</span> <span class="nt">out</span><span class="o">,</span> <span class="o">(</span><span class="nt">n</span><span class="o">)</span> <span class="nt">step</span> <span class="nt">next</span>
+<span class="o">(</span><span class="nt">c</span><span class="o">)</span> <span class="nt">continue</span> <span class="nt">until</span> <span class="nt">breakpoint</span><span class="o">,</span> <span class="o">(</span><span class="nt">Y</span><span class="o">)</span> <span class="nt">reset</span> <span class="o">&amp;</span> <span class="nt">continue</span> <span class="nt">to</span> <span class="nt">previous</span> <span class="nt">error</span>
+<span class="o">(</span><span class="nt">y</span><span class="o">)</span> <span class="o">(</span><span class="nt">if</span> <span class="nt">at</span> <span class="nt">end</span><span class="o">)</span> <span class="nt">reset</span> <span class="o">&amp;</span> <span class="nt">continue</span> <span class="nt">to</span> <span class="nt">final</span> <span class="nt">error</span>
+<span class="o">(;)</span> <span class="nt">step</span> <span class="nt">instruction</span> <span class="o">(</span><span class="nt">include</span> <span class="nt">number</span> <span class="nt">to</span> <span class="nt">step</span> <span class="nt">multiple</span><span class="o">)</span>
+
+<span class="nt">SimpleStorage</span><span class="p">.</span><span class="nc">sol</span><span class="o">:</span>
+
+<span class="nt">2</span><span class="o">:</span> <span class="nt">pragma</span> <span class="nt">solidity</span> <span class="o">&gt;=</span><span class="nt">0</span><span class="p">.</span><span class="nc">4</span><span class="p">.</span><span class="nc">21</span> <span class="o">&lt;</span><span class="nt">0</span><span class="p">.</span><span class="nc">7</span><span class="p">.</span><span class="nc">0</span><span class="o">;</span>
+<span class="nt">3</span><span class="o">:</span>
+<span class="nt">4</span><span class="o">:</span> <span class="nt">contract</span> <span class="nt">SimpleStorage</span> <span class="p">{</span>
+ <span class="err">^^^^^^^^^^^^^^^^^^^^^^^^</span>
+</code></pre></div>
+
+<p>You can now start stepping through your code in a manner similar to that of any traditional debugger. As stated in the Truffle docs though it’s worth noting that “you're not running the code in real-time; instead, you're stepping over the historical execution of that transaction, and mapping that execution onto its associated code”.</p>
+<p>In the above example, stepping over a couple of times brings us into our SimpleStorage.sol contract wherein we can see our storedData state variable being assigned its new value.</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">SimpleStorage</span><span class="p">.</span><span class="nc">sol</span><span class="o">:</span>
+
+<span class="nt">7</span><span class="o">:</span>   <span class="nt">event</span> <span class="nt">setEvent</span><span class="o">(</span><span class="nt">uint</span> <span class="nt">newValue</span><span class="o">);</span>
+<span class="nt">8</span><span class="o">:</span>
+<span class="nt">9</span><span class="o">:</span>   <span class="nt">function</span> <span class="nt">set</span><span class="o">(</span><span class="nt">uint</span> <span class="nt">x</span><span class="o">)</span> <span class="nt">public</span> <span class="p">{</span>
+    <span class="err">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+
+<span class="err">debug(</span><span class="n">develop</span><span class="p">:</span><span class="mi">0</span><span class="n">x8bd62b08</span><span class="o">...</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">o</span>
+
+<span class="n">SimpleStorage</span><span class="o">.</span><span class="n">sol</span><span class="o">:</span>
+
+<span class="mi">8</span><span class="o">:</span>
+<span class="mi">9</span><span class="o">:</span>   <span class="n">function</span> <span class="nf">set</span><span class="p">(</span><span class="n">uint</span> <span class="n">x</span><span class="p">)</span> <span class="n">public</span> <span class="err">{</span>
+<span class="mi">10</span><span class="o">:</span>     <span class="n">storedData</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</code></pre></div>
+
+<h1 id="in-test-debugging">In-test Debugging</h1>
+<p>Lastly, a feature available as of Truffle v5.1 is that of in-test debugging. This essentially enables you to interrupt your tests by simply wrapping a given line with await debug(). </p>
+<p>More detail on in-test debugging with a simple example <a href="https://www.trufflesuite.com/docs/truffle/getting-started/debugging-your-contracts#in-test-debugging">here</a>. </p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/docs/S04-developer-tooling/M4-truffle-deep-dive/L2-debug-config-forking/index.md" target="_blank">Edit this page on Github</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

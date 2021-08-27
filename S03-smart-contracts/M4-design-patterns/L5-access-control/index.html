@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Access Control Design Patterns</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Access Control Design Patterns</h1>
+  
+  <!-- Content here: -->
+
+    <p>Access Control is a broad term. Most generally, it means who is allowed to do what on your smart contract. Who is allowed to mint new tokens, create a new pointer contract or release funds, for example.</p>
+
+    <p>We'll be looking at Access Control from a Solidity and coding standpoint, but Access Control is actually a pivot point where the blockchain enters the real world. In the follwoiong examples, we'll write code to allow a certain <code>address</code> to do (or not do) a certain action. However, <code>address</code> may correspond to a user in the real world, granting them certain privileges over the contract. If that contract holds the funds for a group, that person is now the treasurer of the group!</p>
+
+    <p>Something to keep in mind as we go through these different examples and a teaser for our later sections on DAOs.</p>
+
+    <h2>Restricting Access and <code>Ownable</code></h2>
+
+      <p>A very simple form of access control is making contract state private. You cannot prevent people or computer programs from reading your contracts’ state. The state is publicly available information for anyone with access to the blockchain. However, you <i>can</i> restrict other contracts’ access to the state by making state variables private, like in the basic example below:</p>
+    
+<pre>
+contract C1 {
+
+  uint private internalNum;
+
+}
+</pre>
+
+      <p>This simple typing can provide some aspect of security through access control.</p>
+
+      <p>A broader form of access control is the <code>Ownable</code> design pattern, the "Hello, World!" of access control, you might say. It designates a certain address, or addresses, as the "owner" or admin of the contract.</p>
+
+      <p>As we learned earlier, function modifiers allow us to reuse code and increase contract readability. We can also use them to restrict access based on the Ownable model:</p>
+
+      <pre>
+  address owner;
+
+  constructor() payable public {
+      owner = msg.sender;
+  }
+  
+  modifier onlyOwner() {
+      require(msg.sender == owner, "Not authorized.");
+      _;
+  }
+  
+  function withdraw(uint _amount) onlyOwner public {
+      owner.transfer(_amount);
+  }
+      </pre>
+
+      <p>The above code declares the variable <code>owner</code> and assigns that role to whoever is creating the contract, using <code>msg.sender</code> global variable. We then declare a modifier <code>onlyOwner()</code>, which establishes a security check at the top of each function we assign it. Using the modifier syntax, we require a check of the identity of the transaction sender to see if it matches the declared <code>owner</code></p>
+
+      <p>We then place this modifier in front of whichever functions we want to restrict access to. In this case, we're adding it to the <code>withdraw()</code> function (which makes sense, as we don't want anyone to be able to drain our contract of value!). This makes it so that the only user who can access this specific function is <code>owner</code>, all other addresses will fail.</p>
+
+      <p>A common contract used for this is OpenZeppelin's <a href="https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable" target="_blank" rel="noopener noreferrer">Ownable.sol</a>, which also lets you <code>transferOwnership</code> to another user or <code>renounceOwnership</code> if your contract only requires central authority for a certain period of time.</p>
+
+      <p>Please note that the Ownable pattern is a bit fragile: It can become a single point of failure and is not very sophisticated in terms of Access Control.</p>
+
+    <h2>Pausable</h2>
+
+      <p>Another form of access control has to do with turning the smart contract itself into a state machine. As we mentioned earlier in the distributed consensus section, <a href="https://en.wikipedia.org/wiki/Finite-state_machine" target="_blank" rel="noopener noreferrer">a state machine</a> can be in one of a finite number of states at any time.</p>
+
+      <p>To make the smart contract a state machine, we'll use the <code>enum</code> variable type to create a series of possible states. To have access control, we'll then assign only certain functions to run when the contract is in a certain state. Here's what this looks like in Solidity, where the possible states are <code>Deposits</code> and <code>Withdraws</code> and the state changes after a time of 30 days from the contract's <code>creationTime</code>:
+      
+        <pre>
+  enum Stages { Deposits, Withdraws }
+  Stages stage = Stages.Deposits;
+  mapping(address => uint) balances;
+  uint creationTime = now;
+
+  function deposit() payable public {
+      require(stage == Stages.Deposits && msg.value > 0);
+      balances[msg.sender] += msg.value;
+  }
+      
+  function withdraw() public {
+      if(stage != Stages.Withdraws && now >= creationTime + 30 days) {
+          stage = Stages.Withdraws;
+      }
+      require(stage == Stages.Withdraws && balances[msg.sender] > 0);
+      uint amount = balances[msg.sender];
+      balances[msg.sender] = 0;
+      msg.sender.transfer(amount);
+  }
+        </pre>
+
+        The deposit() function can only be called when the <code>stage</code> enum is in <code>Deposits</code>. After 30 days has passed, the contract transitions into <code>Withdraws</code> whenever someone calls <code>withdraw()</code>.
+      </p>
+
+      <p>For an example of this example, <a href="https://github.com/blockchainsllc/DAO" target="_blank" rel="noopener noreferrer">"The DAO"</a> contract required 27 days between a successful request to split the DAO and the ability to do so. This ensured the funds were kept within the contract, increasing the likelihood of recovery.</p>
+
+      <p>We have another example of this form of access control with the Circuit Breaker design pattern, also called Emergency Stop or Pausable. Circuit Breakers are design patterns that allow contract functionality to be stopped. This would be desirable in situations where there is a live contract where a bug has been detected. Freezing the contract would be beneficial for reducing harm before a fix can be implemented. Here's what it looks like in Solidity: </p>
+
+      <pre>
+  contract CircuitBreaker {
+
+    bool public stopped = false;
+
+    modifier stopInEmergency { require(!stopped); _; }
+    modifier onlyInEmergency { require(stopped); _; }
+
+    function deposit() stopInEmergency public { … }
+    function withdraw() onlyInEmergency public { … } 
+  }
+      </pre>
+
+      <p>Circuit breaker contracts can be set up to permit certain functions in certain situations. For example, if you are implementing a withdrawal pattern, you might want to stop people from depositing funds into the contract if a bug has been detected, while still allowing accounts with balances to withdraw their funds. In a situation such as this, you would also want to restrict access to the accounts that can modify the stopped state variable, maybe to the contract owner (such as multisig wallet) or a set of admins.</p>
+
+      <p>Here's another example, with three separate states that dictate certain rules to be followed:
+        <pre>
+bool isStopped = false;
+address owner;
+constructor() payable public {
+    owner = msg.sender;
+}
+
+function stopContract() public {
+    require(msg.sender == owner);
+    isStopped = true;
+}
+
+function resumeContract() public {
+    require(msg.sender == owner)
+    isStopped = false;
+}
+
+function emergencyWithdraw() public {
+    require(msg.sender == owner && isStopped);
+    owner.transfer(this.balance);
+}
+        </pre>
+
+      </p>
+    
+    <h2>Role-Based Access Control</h2>
+
+      <p>Role-based access control is a more layered approach to access control to meet the more varied demands of a smart contract or application. It follows a similar trend in software development access: Certain individuals are administrators, others are contributors, others can just view the code.</p>
+
+      <p>OpenZeppelin advocates using their role-based access control library, <code><a href="https://docs.openzeppelin.com/contracts/2.x/api/access#Roles" target="_blank" rel="noopener noreferrer">Roles.sol,</a></code> instead of <code>Ownable.sol</code>. They've also implemented roles-based access control in contracts, such as ERC20Mintable.sol, which has a <code>MinterRole</code> allowed to create new tokens. You can read more about their approach to role-based access control <a href="https://docs.openzeppelin.com/contracts/2.x/access-control" target="_blank" rel="noopener noreferrer">in this post here.</a></p>
+
+      <p>Role-based access control can be critical to developing code-based governance, such as in a DAO. Keep this design pattern in mind when we discuss DAOs later!</p>
+
+    <h2>Additional Resources</h2>
+      <ul>
+        <li><a href="https://docs.openzeppelin.com/contracts/2.x/access-control" target="_blank" rel="noopener noreferrer">Wiki: Access Control</a> A comprehensive article from OpenZeppelin about Access Control design patterns and how contracts in their repository enacts different patterns.</li>
+        <li><a href="https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable" target="_blank" rel="noopener noreferrer">Code: OpenZeppelin's Ownable.sol</a></li>
+        <li><a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/b0cf6fbb7a70f31527f36579ad644e1cf12fdf4e/contracts/security/Pausable.sol" target="_blank" rel="noopener noreferrer">Code: OpenZeppelin's Pausable.sol</a></li>
+      </ul>
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M3-design-patterns/L5-access-control/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

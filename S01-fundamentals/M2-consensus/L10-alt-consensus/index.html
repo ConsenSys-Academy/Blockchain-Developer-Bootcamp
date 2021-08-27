@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Consensus Conclusion</title>
+</head>
+<div class="body">
+  
+  <h1>More Forms of Consensus</h1>
+
+  <p>Hopefully by now you feel like you have a sense of how distributed consensus works in a traditional network and how blockchains have innovated consensus protocols. While cryptographic primitives allow blockchain users to secure and validate current transactions, trustless consensus allows for a blockchain network to maintain a public ledger (the global state of the blockchain) in a decentralized way.</p>
+
+  <p>We've spoken mainly about Proof of Work, since it's the current consensus mechanism for Bitcoin and Ethereum, as well as other blockchains. However, there are other consensus protocols being used by blockchain networks, such as:
+
+    <ul>
+      <li><b><a href="https://en.wikipedia.org/wiki/Proof_of_stake" target="_blank" rel="noopener noreferrer">Proof of Stake</a></b> A consensus protocol based on financial holdings of validator nodes in the network (similar to miner nodes in Proof of Work). Proof of Stake requires much less energy to run than Proof of Work and, for this reason, Ethereum is currently working towards this consensus mechanism.</li>
+      <li><b><a href="https://en.wikipedia.org/wiki/Proof_of_stake#Variations_of_stake_definition" target="_blank" rel="noopener noreferrer">Delegated Proof of Stake</a></b> This is a variant of the Proof of Stake protocol in which stakeholders can elect validators to represent them in the system.</li>
+      <li><b>Proof of Authority</b> This is a more traditional consensus mechanism like Raft's leader-led consensus in which only certain nodes are allowed to produce blocks at their discretion. It's meant for smaller, perhaps private networks where the participants all know each other or for lower-stake networks such as <a href="https://en.wikipedia.org/wiki/Testnet" target="_blank" rel="noopener noreferrer">testnets</a> or networks securing trivial amounts of value.</li>
+    </ul>
+  </p>
+
+  <p>Why would we need another consensus mechanism for blockchains, if Proof of Work is so innovative? A few reasons:
+
+    <ul>
+      <li><b>Accessibility</b> The barriers to entry to becoming a PoW miner are high. Proof of Work chains require a substantial amount of energy to maintain. A miner must purchase, set up, and maintain all the necessary hardware to run a PoW mining rig. Additionally, PoW mining is extremely energy-intensive.</li>
+      <li><b>Centralization</b> Barriers to entry for mining can have the adverse secondary effect of greater centralization of miners. As it gets more costly and less profitable to become a miner, the network naturally sees a concentration of mining into two categories. First, large mining conglomerates that operate in areas with low electricity costs and cold weather (to reduce the cost of manually cooling mining hardware) such as Mongolia and Siberia. Second, mining power is centralized in the hands of mining pools. As it becomes less profitable for most people to mine individually, they buy hash power from a mining pool, which operates as a single mining entity. By the end of 2019, over 50% of blocks on Ethereum were mined by just two mining pools.</li>
+      <li></li>
+    </ul>      
+  </p>
+
+  <h2>Proof of Stake</h2>
+    <p>Proof of Stake is a different kind of consensus mechanism blockchains can use to agree upon a single true record of data history. Whereas in Proof of Work miners expend energy (electricity) to mine blocks into existence, in Proof of Stake validators commit stake to attest (or ‘validate’) blocks into existence.</p>
+
+    <p><b>Validators</b> are the participants on the network who run nodes (called <b>validator nodes</b>) to propose and attest blocks on a Proof of Stake network. They do so by staking crypto on the network and make themselves available to be randomly selected to propose a block. Other validators then “attest” that they have seen the block. When a sufficient number of attestations for the block has been collected, the block is added to the blockchain. Validators receive rewards both for successfully proposing blocks (just as they do in Proof of Work) and for making attestations about blocks that they have seen.</p>
+
+    <p>The crypto-economic incentives for Proof of Stake are designed to create more compelling rewards for proper behavior and more severe penalties for malicious behavior. The core crypto-economic incentive boils down to the requirement that validators stake their own crypto––i.e. money––on the network. Instead of considering the secondary cost of electricity to run a Proof of Work node, validators on Proof of Stake chains are forced to directly deposit a significant monetary amount onto the network. </p>
+
+    <p>Validators accrue rewards for making blocks and attestations when it is their turn to do so. They are penalized for not following through with their responsibilities when it is their turn to do so – i.e. if they are offline. Penalties for being offline are relatively mild and equate to about the same as the expected rewards over time. So, if a validator is participating correctly more than half the time then her rewards will be net positive. </p>
+
+    <p>Should a validator attempt to attack or compromise the blockchain by trying to propose a new set of data history, however, a different penalty mechanism kicks in: a substantial portion of their staked amount will be slashed (possibly up to the whole amount of stake) and they will be ejected from the network. The result is a tremendous financial risk of a failed attack by a validator. To draw an analogy to Proof of Work, it would be as if a miner who failed an attack on a PoW chain was forced to burn down her entire mining rig instead of just eating the cost of the electricity she spent on a failed attack. Furthermore, this architecture places the security of the network directly in the hands of those maintaining the network and holding its native crypto-asset in the protocol itself.</p>
+
+    <p>Proof of Stake is used most notable in Ethereum 2.0 (more on that later) but other blockchain networks such as <a href="https://www.gemini.com/cryptopedia/cardano-ada-staking-blockchain" target="_blank" rel="noopener noreferrer">Cardano</a>, <a href="https://www.gemini.com/cryptopedia/eos-crypto-enterprise-blockchain-eosio" target="_blank" rel="noopener noreferrer">EOS</a> and <a href="https://www.gemini.com/cryptopedia/polkadot-crypto-dot-coin" target="_blank" rel="noopener noreferrer">PolkaDot</a>. It's also used in Layer 2 solutions such as <a href="https://consensys.net/blog/blockchain-explained/analyzing-polygons-proof-of-stake-network/" target="_blank" rel="noopener noreferrer">Polygon Proof of Stake</a> (we'll discuss Layer 2 solutions later as well)</p>
+
+    <p>It's important to note that a blockchain network does not have to use Proof of Work in their consensus mechanism. Bitcoin and Ethereum currently use it, but that does not mean it's the only game on the block!</p>
+  
+  <h2>Additional Material</h2>
+  <ul>
+    <li><a href="https://ethereum.org/en/developers/docs/consensus-mechanisms/" target="_blank" rel="noopener noreferrer">Wiki: Consensus Mechanisms (Ethereum.org)</a></li>
+    <li><a href="https://consensys.net/blog/blockchain-explained/what-is-proof-of-stake/" target="_blank" rel="noopener noreferrer">Article: What is Proof of Stake (ConsenSys)</a></li>
+    <li><a href="http://" target="_blank" rel="noopener noreferrer"></a></li>
+    <li><a href="http://" target="_blank" rel="noopener noreferrer"></a></li>
+  </ul>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M2-consensus/L10-alt-consensus/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

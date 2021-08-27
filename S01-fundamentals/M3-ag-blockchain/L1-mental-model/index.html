@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Mental Model for Basic Blockchain Architecture</h1>
+  
+  <!-- Content here: -->
+
+    <p>Let's take a look at this diagram of a blockchain node, which is not specific to any particular cryptocurrency and could be on any blockchain network:</p>
+
+    <div class="img-wrapper"><img src="../../../img/S01/ag-blockchain-1.png" alt="basic diagram of blockchain node"></div>
+
+    <p>Above the dotted line is the distributed, peer-to-peer network which the node is interacting with. As we mentioned previously, the fundamental unit of communication is the <b>transaction,</b> (commonly shortened to <i>txn</i>), which the node is both sending and receiving from the network.</p>
+
+    <p>Below the line are all the primitives we have discussed in this section. We have the cryptographic primitives used in the Network Identity and to validate transaction validity. We also have the consensus protocol, which is agreed-upon by the network and the node will use to check the validity of the blocks. If the block is valid, the node will update it's network state with the changes the valid transactions make. If this node is a miner, the consensus mechanism will also work to produce a valid block.</p>
+
+    <p>Let's now zoom out and see a simplified version of the larger network:</p>
+
+    <div class="img-wrapper"><img src="../../../img/S01/ag-blockchain-2.png" alt="basic daigram of a blockchain network"></div>
+
+    <p>The nodes have a different color to show they have unique identities, which are created by the cryptographic keys they use in their network identity. While the nodes have different identities, please note that they all have the same "Consensus Protocol." This is the mechanism they have all agreed to use to maintain and update their network state. However, it's only successful if everyone is using it and coming to agreement about the network state. Luckily, this network we are looking at is all in agreement about the network state.</p>
+
+    <p>Please notice the middle of the diagram, the <b>Emergent Properties</b>. It's easy to forget that the network state and the network consensus are not a set, static property. Instead, they are a constantly evolving and mutating entity that changes with each transaction that is confirmed by the consensus protocol then propagated to the rest of the network.</p>
+
+    <p>In our everyday life, we're more likely to encounter centralized entities attesting to a state. Your bank tells you your balance is a certain number, etc. With distributed networks, the network state is not something that's dictated by one centralized force. Instead, it's something that emerges from all the networks of participants, sometimes millions, passing transactions, valid blocks and gradually shifting from one network state to the next.</p>
+
+    <p>In the next section, we'll talk about how some network configurations change and why. But don't forget that, for every blockchain network, there is a generalizable structure you can isolate and identify what's different or the same. This will help you discern what networks are good for what purpose, how stable a network may be, or what improvements or innovations will change which part of a network.</p>
+
+  <h2>Additional Material</h2>
+  <ul>
+    <li><a href="https://observablehq.com/@consensys-academy/building-a-blockchain" target="_blank" rel="noopener noreferrer">Interactive Code: Building a Blockchain (Josh Crites, ConsenSys Academy)</a> We created an interactive notebook where you can deepen your understanding and experiment to see how their properties are essential for building blockchains</li>
+    <li><a href="https://andersbrownworth.com/blockchain/" target="_blank" rel="noopener noreferrer">Interactive Code: Anders Blockchain</a> A great, web-based interactive tutorial going over fundamentals of Proof of Work consensus including <a href="https://andersbrownworth.com/blockchain/block" target="_blank" rel="noopener noreferrer">block production through hashing</a> and <a href="https://andersbrownworth.com/blockchain/distributed" target="_blank" rel="noopener noreferrer">distributed blockchains</a></li>
+    <li><a href="https://karpathy.github.io/2021/06/21/blockchain/" target="_blank" rel="noopener noreferrer">Code Tutorial: Build Your Own Blockchain</a> Andrej Karpathy, who's done some great machine learning tutorials, built this tutorial walking through building the Bitcoin network using Python.</li>
+  </ul>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M3-ag-blockchain/L1-mental-model/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

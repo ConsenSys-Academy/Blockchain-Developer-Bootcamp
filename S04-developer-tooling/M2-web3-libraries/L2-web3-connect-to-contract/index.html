@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <p>This lesson is meant to directly follow the previous lesson. If you have not gone through that lesson yet, please go back and do that one first to avoid confusion and potential errors.</p>
+<p>In this lesson we are going to use web3.js in the browser console again. This time to connect to a SimpleStorage.sol contract that is deployed on the Rinkeby testnet. You can view the code for the contract <a href="https://gist.github.com/ConsenSys-Academy/6d93a805ce0e90d8a793a4eb6e69b4c5">on GitHub here</a> and on <a href="https://rinkeby.etherscan.io/address/0x49bb098e781ed5c50d85e82d85cba1a6f03fd3e6#code">etherscan here</a>.</p>
+<h2 id="connect-to-the-network">Connect to the network</h2>
+<p>First, make sure that Metamask is connected to the Rinkeby network.</p>
+<p>To use the web3.js 1.x library, we need to initialize it again. We can do that by running <code>web3 = new Web3(web3.givenProvider)</code> in the browser console.</p>
+<h2 id="initialize-the-contract">Initialize the contract</h2>
+<p>Before we can interact with the contract, we need to initialize an instance of the SimpleStorage contract using web3.js. In this step we are going to provide web3.js with the ABI and the contract address, so it knows what functions are available at the address that we provide. The SimpleStorage.sol contract is deployed at address 0x49Bb098E781eD5C50D85E82d85cbA1a6F03FD3e6.   </p>
+<p>Let's set the address in the console: </p>
+<pre>const SSaddress = "0x49Bb098E781eD5C50D85E82d85cbA1a6F03FD3e6"</pre>
+
+<p>Let's set the ABI in the console with:</p>
+<pre>const ABI = [
+        {
+                "constant": false,
+                "inputs": [
+                        {
+                                "internalType": "uint256",
+                                "name": "x",
+                                "type": "uint256"
+                        }
+                ],
+                "name": "set",
+                "outputs": [],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+        },
+        {
+                "anonymous": false,
+                "inputs": [
+                        {
+                                "indexed": false,
+                                "internalType": "uint256",
+                                "name": "newValue",
+                                "type": "uint256"
+                        },
+                        {
+                                "indexed": false,
+                                "internalType": "address",
+                                "name": "updatedBy",
+                                "type": "address"
+                        }
+                ],
+                "name": "storageUpdate",
+                "type": "event"
+        },
+        {
+                "constant": true,
+                "inputs": [],
+                "name": "get",
+                "outputs": [
+                        {
+                                "internalType": "uint256",
+                                "name": "",
+                                "type": "uint256"
+                        }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+        }
+]</pre>
+
+<p>To create a new contract instance we run <code>const simpleStorage = new web3.eth.Contract(ABI, SSaddress)</code>.</p>
+<p>We can see that the simpleStorage contract object now has events, methods and an address that we provided with the ABI and contract address. We just need to set the web3 provider for the contract, which we can do with <code>simpleStorage.setProvider(web3.givenProvider)</code>. Now we can use this contract object to interact with the deployed contract.</p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/c20/2ce/faf/1595392171288.jpg" /></p>
+<p>You will need some Rinkeby ETH to pay for gas to interact with the contract. You can get some via this link: <a href="https://www.rinkeby.io/#faucet">https://www.rinkeby.io/#faucet</a>.</p>
+<h2 id="read-the-contract-state">Read the contract state</h2>
+<p>Let's read the current value of the storedData. Since our contract object is saved as simpleStorage, run <code>simpleStorage.methods.get().call().then(console.log)</code>. This will print the current storedData value of the contract. Since this is just reading the contract, there is no transaction sent to the network and there is no cost associated with this action.</p>
+<h2 id="update-the-contract-state">Update the contract state</h2>
+<p>We update the contract by sending it a transaction to the "set()" function with the desired parameter. This action does cost gas, since we need to update the state of the contract on all of the network nodes. Feel free to update the value to whatever you want. <code>simpleStorage.methods.set(3).send({from: web3.givenProvider.selectedAddress})</code></p>
+<p>Running this code should trigger Metamask to ask you to sign a transaction. </p>
+<p>Once the transaction is mined, you can check for the transaction with simpleStorage.methods.get().call().then(console.log) or you can check the contract on a Rinkeby block explorer like rinkeby.etherscan.io. <a href="https://rinkeby.etherscan.io/address/0x49bb098e781ed5c50d85e82d85cba1a6f03fd3e6">https://rinkeby.etherscan.io/address/0x49bb098e781ed5c50d85e82d85cba1a6f03fd3e6</a></p>
+<h2 id="watch-for-events">Watch for events</h2>
+<p>You can easily subscribe to events with simpleStorage. Notice we have a "storageUpdate" event in the contract.</p>
+<p>To listen for that event, run <code>simpleStorage.events.storageUpdate(function(error, event){console.log(event)})</code></p>
+<p><a href="https://web3js.readthedocs.io/en/v1.2.0/web3-eth-contract.html#contract-events">Here is a link to the relevant web3.js documentation for subscribing to events.</a></p>
+<p>To trigger this event, you will have to call the "set()" function on the contract again. Once the update transaction is mined, the event will fire. This is what it looks like in the browser console.</p>
+<p><img alt="" src="https://files.cdn.thinkific.com/file_uploads/205430/images/964/e04/26d/1595392170831.jpg" /></p>
+<p>This should give you a good overview of how to connect to a contract and interact with it using web3.js</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/docs/S04-developer-tooling/M2-web3-libraries/L2-web3-connect-to-contract/index.md" target="_blank">Edit this page on Github</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

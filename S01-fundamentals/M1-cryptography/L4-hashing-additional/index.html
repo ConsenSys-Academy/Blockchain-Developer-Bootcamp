@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Hashing</h1>
+  
+  <!-- Content here: -->
+
+    <p>Cryptographic hash functions (also called hash functions or just <i>hashes</i>) are essential to us building a decentralized trust protocol by providing three main things (use this <a href="https://emn178.github.io/online-tools/sha256.html" target="_blank" rel="noopener noreferrer">cryptographic hash function sandbox</a> to follow along):</p>
+
+    <ol>
+      <li><b>Uniqueness</b> We can be assured if we put in the string <code>dark wallet puzzle</code> in a cryptographic function, it will always produce the same hash result. This avoids the <a href="https://en.wikipedia.org/wiki/Hash_collision" target="_blank" rel="noopener noreferrer">“hash collision”</a> problem, in that we don’t have to worry about two strings getting the same hash.</li>
+      <li><b>Avalanche Effect</b> Small changes on the target string for a hash function leads to outsized effects. Change one letter in the string you hashed in the above example, maybe capitalizing the "d" in <code>Dark wallet puzzle</code>. You'll see it’s not changed a little bit but a lot. This illustrates the second characteristic of a good hashing function — “The Avalanche Effect”. This says a single change in the string will cause a successive series of changes that compound each other.</li>
+      <li><b>Speed</b> Cryptographic hash functions can also run incredibly fast with little overhead and still maintain their security. This is more of a logistical concern. The hashing function can’t be too slow, otherwise it causes delays. But it also can’t be too fast or it will be easier to find collisions. It needs to be fast for processing but slow for hacking. Cryptographic hash functions speed combined with the difficulty in deriving the target input makes them a one-way or <a href="https://en.wikipedia.org/wiki/Trapdoor_function" target="_blank" rel="noopener noreferrer">"trapdoor" function</a> — easy to go one way, near impossible to go the other.</li>
+    </ol>
+
+
+    <p>These three characteristics combine to help blockchains provide decentralized file integrity. Let's explain how.</p>
+
+
+  <h2>Hashing in Blockchains</h2>  
+    <p>In <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">the Bitcoin Whitepaper,</a> Satoshi Nakamoto articulates the <a href="https://en.wikipedia.org/wiki/Double-spending" target="_blank" rel="noopener noreferrer">"double-spend" problem</a> facing digital currencies:</p>
+
+
+  <blockquote>
+      <p>
+        The problem of course is the payee can't verify that one of the owners did not double-spend
+    the coin. A common solution is to introduce a trusted central authority, or mint, that checks every
+    transaction for double spending. After each transaction, the coin must be returned to the mint to
+    issue a new coin, and only coins issued directly from the mint are trusted not to be double-spent.
+    The problem with this solution is that the fate of the entire money system depends on the
+    company running the mint, with every transaction having to go through them, just like a bank.
+      </p>
+    <p>
+      <b>
+        We need a way for the payee to know that the previous owners did not sign any earlier
+            transactions.
+      </b> For our purposes, the earliest transaction is the one that counts, so we don't care
+    about later attempts to double-spend. The only way to confirm the absence of a transaction is to
+    be aware of all transactions. In the mint based model, the mint was aware of all transactions and
+    decided which arrived first. <b>
+      To accomplish this without a trusted party, transactions must be
+      publicly announced [1], and we need a system for participants to agree on a single history of the
+      order in which they were received.
+    </b> The payee needs proof that at the time of each transaction, the
+    majority of nodes agreed it was the first received.
+    </p>
+  </blockquote>
+
+  <p>To restate the problem: How do we know the transaction record is true and hasn't been tampered with? Hashing helps us with this. (The second point, proof of majority node agreement, we'll cover in the next Module on Distributed Consensus)</p>
+
+  <p>Nakamoto proposes using hashing to create what they call a "Timestamp Server":
+
+    <blockquote>
+      <p>
+        The solution we propose begins with a timestamp server. <b>
+          A timestamp server works by taking a
+            hash of a block of items to be timestamped and widely publishing the hash
+        </b>, such as in a
+          newspaper or Usenet post [2-5]. The timestamp proves that the data must have existed at the
+          time, obviously, in order to get into the hash. <b>
+            Each timestamp includes the previous timestamp in
+            its hash, forming a chain, with each additional timestamp reinforcing the ones before it.
+          </b>
+      </p>
+    </blockquote>
+
+    <div class="img-wrapper"><img src="../../../img/S01/bitcoin-timestamp-server.png" alt="image of a timestamp server chained together using hashes from bitcoin whitepaper"><div class="caption"><i style="font-size:0.7em;">from the <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">Bitcoin Whitepaper</a></i></div></div>
+  </p>
+
+  <p>The timestamp server leverages hash functions in one critical way. It includes the hash of the previous block into the hash of the current block. If any historical data in any of the previous blocks are altered, the changes will cascade throughout all the blocks after it. In this way, blocks of transaction data are <b>chained</b> together to form a blockchain &#x1F92F; &#x1F92F; &#x1F92F;.</p>
+
+  <p>This chaining can only be effective in a large system because of those three characteristics of hash functions we discussed previously: <b>Uniqueness</b> (one string matches one hash), <b>Avalanche Effects</b> (one change in an input string creates outsized effects on the) and <b>Speed</b> (hashes can be securely computed quickly at scale).</p>
+
+
+<h2>Hash Chains as General Data Structures</h2>
+  <p>While Nakamoto's timestamp server uses hash chains, hash chains are found in many different sorts of computer science applications before and beyond blockchain.</p>
+
+  <p>The version control software <b><a href="https://en.wikipedia.org/wiki/Git" target="_blank" rel="noopener noreferrer">Git,</a></b> for example, uses a <a href="https://stackoverflow.com/questions/46192377/why-is-git-not-considered-a-block-chain" target="_blank" rel="noopener noreferrer">hash chain,</a> also called a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph" target="_blank" rel="noopener noreferrer">Directed Acyclic Graph,</a> to track changes of software over time.</p>
+
+  <p><a href="https://en.wikipedia.org/wiki/Hash_chain#Applications" target="_blank" rel="noopener noreferrer">Challenge-Response schemes,</a> used for user validation, also use the concept of a hash chain.</p>
+
+  <p>Learning about hash functions and the associated hash chaining will give you great insights into these power data structures as well as programming data primitives like <a href="https://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="noopener noreferrer">hash tables.</a></p>
+
+<h2>Additional Links for Hashing</h2>  
+  <div class="img-wrapper"><img src="../../../img/S01/hash-all-the-strings.jpeg" alt="hash all the strings using x all the y meme template"></div>
+  <h3>General Hashing Material</h3>
+  <ul>
+    <li><a href="https://emn178.github.io/online-tools/sha256.html" target="_blank" rel="noopener noreferrer">Interactive Code: Cryptographic Hash Function Sandbox</a> A, simple nice way to see the characteristics of hash functions.</li>
+    <li><a href="https://web.archive.org/web/20201026010255/https://privacycanada.net/cryptanalysis/why-is-2-256-secure/" target="_blank" rel="noopener noreferrer">Article: Why is 2^256 Secure?</a> Explanation behind the enormous "numberspace" that virtually guarantees no collisions, and therefore uniqueness, when using hash functions based on large exponents.</li>
+    <li><a href="https://www.youtube.com/watch?v=b4b8ktEV4Bg" target="_blank" rel="noopener noreferrer">Video: Hashing Algorithms and Security (Computerphile)</a></li>
+    <li><a href="https://www.youtube.com/watch?v=DMtFhACPnTY" target="_blank" rel="noopener noreferrer">Video: SHA (Secure Hashing Algorithm) Explained (Computerphile)</a></li>
+    <li><a href="https://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software" target="_blank" rel="noopener noreferrer">Article: How Hash Algorithms Work</a></li>
+    <li><a href="https://simple.wikipedia.org/wiki/Cryptographic_hash_function" target="_blank" rel="noopener noreferrer">Article: Cryptographic Hash Function (Simple Wikipedia)</a></li>
+  </ul>
+  <h3>Blockchain / Ethereum-Specific Hashing Material</h3>
+    <ul>
+      <li><a href="https://youtu.be/QJ010l-pBpE" target="_blank" rel="noopener noreferrer">Interactive Code: ETH.Build</a> Austin Griffith walks through Hash Functions using his <a href="https://sandbox.eth.build/wofCrGxhc3Rfbm9kZV9pZCLEgcSDxIVsaW5rxItkFsKlxIfEiXPClMKKwqLEjCDCpHR5cGXCqklucHV0L1RleHTCo3Bvc8KSZcOMw7_CpHNpemXCksONASwywqVmxIJnc8KAwqVvcsSJcgDCpG3EiGUAwqbEk8SqdHPCkcKDwqRuYW1lwqDEosSkxZPCpMSSxJTDgMKnb8SrxZfFmcWbxZ3Fn8WhxKPEpcKmxIRyxJNnwqXFpmvFmRXCqnByb8SlcnRpZXPChMKrYmxvY2vGhVPEvGUywqtwxIJjZWhvbMWNwq9lbnRlciDGoMSwIGjGoWXCpcaEdGxlwqTErsSwwqV2YWx1xq7GoMSExJ7EjB_FosSlwqtDcsSkdG8vSMSDaMSyxLTEvwHDl8S4xLrGkcKSeB7FhMWGxYjFisWMxqECxZDFksWUxZbEq8WtxZzFnsapx550xr1lwq3FtcW3LG51bWLGocWlxJNrFcWpxavHn8Wax6HFn8KkaMeHx6bFtHTFtm7FuMW6xZkWxb7GgMaCxoTGhsKAxrpkIcemwq1EaXPGlWF5L1dhdGPHiMSzxLXDjQLCs8OMw7XHj8S9xL8DMTzHlGHFh8WJxYvFjQPHm8SJx53Eqce3woTHucWgx6bFj8W6xJjEgsevbMKgx7V0xazCkci3xa_IucWyxZPFuceyc8OAxblhyL_CoMiHxoHGociKc8KBxqppxqzGqciZyJtowojEn8SNyJDIksiUxILIl1TJmsatx4nEtTx4yKXEvsigJgTIq8itx5fFjQHIssWTyZPIicaFc8KHwqhmb8afxpDEvSzGicaLxo3Gj8aRxpPIlcaXxpnGm8ahwqDJmcmbwqXJqMqUxrPGtcenx4ZzaCBGdW5jxoTKgsKqyoHGn0bFnmlsecK8J1J1YmlrIE3Kgm8gT25lJywgc2Fucy1zxqFpZsKlY8aaxYvCpyNky47Lj8mLxJTEtcKWFSAAHwDHqMiAx6rHrMeuxqHClhbLmCEAxZRnxoB1cHPCkMKmy4luZmlnwoDCp3bGocS7yoLDiz_DmcKZy7vLu8Ka" target="_blank" rel="noopener noreferrer">ETH.Build</a> platform (highly recommended).</li>
+      <li><a href="https://medium.com/@ConsenSys/blockchain-underpinnings-hashing-7f4746cbd66b" target="_blank" rel="noopener noreferrer">Article: Blockchain Underpinnings: Hashing (ConsenSys)</a></li>
+      <li><a href="https://observablehq.com/@consensys-academy/cryptographic-hash-functions" target="_blank" rel="noopener noreferrer">Interactive Code: Cryptographic Hash Functions (ConsenSys / Josh Crites)</a> Uses a platform called <a href="https://observablehq.com/@observablehq/five-minute-introduction?collection=@observablehq/introduction" target="_blank" rel="noopener noreferrer">Observable</a> to provide you with code you can run in the article!</li>
+      <li><a href="https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking/bitcoin/v/bitcoin-cryptographic-hash-function" target="_blank" rel="noopener noreferrer">Lesson: Cryptographic Hash Functions (Khan Academy)</a></li>
+    </ul>
+  <h3>Advanced Hashing Resources</h3>
+    <ul>
+      <li><a href="https://github.com/cooganb/bitcoin-whitepaper-exercises/blob/master/hashing/README.md" target="_blank" rel="noopener noreferrer">Coding: Bitcoin Whitepaper Exercises: Hashing</a> This is a Javascript-based exercise implementing the timestamp server outlined in the Bitcoin Whitepaper. It's the first in a <a href="https://github.com/cooganb/bitcoin-whitepaper-exercises" target="_blank" rel="noopener noreferrer">larger problem set</a> we'll also recommend you try later in this section.</li>
+    </ul>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M1-cryptography/L3-hashing-additional/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

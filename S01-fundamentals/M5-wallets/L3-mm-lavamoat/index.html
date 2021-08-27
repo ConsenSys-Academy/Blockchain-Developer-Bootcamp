@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>How Does MetaMask Keep Your Keys Safe?</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>How Does MetaMask Keep Your Keys Safe?</h1>
+  
+  <!-- Content here: -->
+
+    <p>There are more Ethereum wallets available now then, say, a few years ago. What makes MetaMask special? In the next two sections, we're going to prove to you why MetaMask holds a characteristic that raises it above the rest. Namely, MetaMask has taken more steps than any digital cryptocurrency wallet to protect its users. As we hope you realize by now, this is of the utmost importance in the Web 3 paradigm. If we are decentralizing systems, that also means users take on much more security concerns than they are used to having on the web. It's a tall order for users, but even more massive for those building tooling used as extensively as MetaMask.</p>
+
+    <p>Luckily, the MetaMask team is working with engineers in the broader Javascript community who have been focussing on these issues for quite some time. All decentralized systems require a way to safely persist state and capture intent, not just blockchains, and the MetaMask team has been able to draw from decades of experience and contribute their own innovations. All of this helps push us towards a broader decentralized future. At the end of the day, MetaMask, is a <b>user consent tool</b> with a broad impact beyond public blockchains.</p>
+
+    <p>With the user's private keys in the browser, you may assume the private key at some point is passed outside of MetaMask. However, this is <b>never</b> the case. To do so would invite imminent hack. But how to make sure the keys never leave MetaMask? You have to build something very difficult to penetrate around MetaMask. Enter...<a href="https://github.com/LavaMoat/LavaMoat" target="_blank" rel="noopener noreferrer">LavaMoat!</a></p>
+
+    <div class="img-wrapper"><img src="../../../img/S01/lavamoat-logo.png" alt="logo for lavamoat"></div>
+
+    <p>From <a href="https://github.com/LavaMoat/LavaMoat" target="_blank" rel="noopener noreferrer">the repo:</a></p>
+
+    <p><b>LavaMoat</b> is a set of tools for securing JavaScript projects against a category of attacks called software <a href="https://en.wikipedia.org/wiki/Supply_chain_attack" target="_blank" rel="noopener noreferrer">supply chain attacks.</a></p>
+
+    <p>This genre of attack occurs when a malicious dependency makes it way into a developer's application. An attacker could use the vulerable dependency to then steal important secrets like credit card numbers, private keys, or personal data.</p>
+
+    <p>These attacks have occurred in the software system, in part due to a larger phenomenon exemplified by the wide use of <code>npm install</code> when working on projects. Tons of warnings and errors fly by and, while the first few times it may be alarming, it's easy to become used to these warnings and ignore them. However, each of these dependencies can be a potential backdoor!</p>
+
+    <div class="img-wrapper">
+      <img src="../../../img/S01/npm-install.png" alt="screencap of npm install screen">
+      <div class="caption">A common sight</div>
+    </div>
+
+    <p>Major ransomware attacks like <a href="https://en.wikipedia.org/wiki/2020_United_States_federal_government_data_breach" target="_blank" rel="noopener noreferrer">the SolarWinds attack</a> on US Federal Government Systems show us that the supply chain issue is not just restricted to Javascript or cryptocurrency projects.</p>
+
+    <p>Supply chain attacks present a significant risk for the developers and users of wallets and apps. In order to help mitigate the risk of such an attack MetaMask is building a suite of tools that range from a node-based runtime, to plugins for common app bundlers (eg webpack, browserify), to dependecy analysis and visualization tools.</p>
+
+    <p>The goal of LavaMoat is to bring added protections to modern JavaScript apps without having to rewrite them from scratch and automate a good first-start security configuration.</p>
+
+    <p>Learn more about LavaMoat below and, in the next section, we'll hear from MetaMask co-founder Dan Finlay talk about MetaMasks' broader contributions in building a secure, extensible Javascript to power a decentralized future.</p>
+
+    <h2>Additional Material</h2>
+    <li><a href="https://www.youtube.com/watch?v=c-UUfrZTmio" target="_blank" rel="noopener noreferrer">Video: Introduction to LavaMoat (DevCon V)</a></li>
+    <li><a href="https://www.youtube.com/watch?v=iaqe6F4S2tA" target="_blank" rel="noopener noreferrer">Video: LavaMoat: Securing Your Dependency Graph</a></li>
+    <li><a href="https://github.com/LavaMoat/LavaMoat" target="_blank" rel="noopener noreferrer">Code: LavaMoat Github Repo</a></li>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M5-wallets/L3-mm-lavamoat/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

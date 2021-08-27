@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Filecoin - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="filecoin">Filecoin</h1>
+<p>Protocol Labs, who built IPFS, have developed an entire network for decentralized filesharing called Filecoin. In this section, we'll go through a Truffle Box which sets up a Filecoin environment on your computer.</p>
+<h2 id="using-the-filecoin-truffle-box">Using the Filecoin Truffle Box</h2>
+<p>This quick start uses an already-created project to provide the base Truffle project structure and example contracts.
+In your workspace directory, run the following commands:</p>
+<div class="codehilite"><pre><span></span><code>mkdir filecoin-example
+cd filecoin-example
+truffle unbox filecoin
+</code></pre></div>
+
+<h2 id="running-filecoin-ganache">Running Filecoin Ganache</h2>
+<p>Once installed, you can run Filecoin Ganache with the following command:</p>
+<div class="codehilite"><pre><span></span><code>npx ganache filecoin
+</code></pre></div>
+
+<p>This creates 10 accounts, each loaded with 100 FIL, and displays both their account addresses and associated private keys.</p>
+<div class="codehilite"><pre><span></span><code><span class="gh">Available Accounts</span>
+<span class="gh">==================</span>
+<span class="m">(0)</span> t3rvcqmc5otc3sh3cngqg2ttzcu7ezpco466lbafzaoygxvnzsw7e7n2zbjwhiv5fdzhs6uxm2qckwt6lp5wga (100 FIL)
+<span class="m">(1)</span> t3s3la37547tijmoeiep7ktogws3tep2eqrralh7rhi2mpe46q574gceyy467356onblzvwf7ejlelo2rdsg4q (100 FIL)
+<span class="gh">(2) t3wk7a46e2dcqb7qxeuz2zq7wodwycdgtbgdpr37hhvelfilf5yvssg5xbsolgusqsumomtmtqhnobh4carhyq (100 FIL)</span>
+<span class="gh">...</span>
+</code></pre></div>
+
+<p>It also starts the Lotus and IPFS daemons running over http and ws respectively:</p>
+<div class="codehilite"><pre><span></span><code>Lotus RPC listening on 127.0.0.1:7777
+IPFS  RPC listening on 127.0.0.1:5001
+</code></pre></div>
+
+<h2 id="filecoin-ganache-gui">Filecoin Ganache GUI</h2>
+<p>An alternative to running Filecoin Ganache via the CLI is to use Filecoin Ganche UI. As per the screenshot below, this exposes all the core Filecoin protocol elements as tabs which is particularly useful if you're just starting out.</p>
+<p><img alt="Ganache GUI" src="../../img/S07/ganache-1.png" /></p>
+<h2 id="running-the-filecoin-network-explorer">Running the Filecoin Network Explorer</h2>
+<div class="codehilite"><pre><span></span><code>git clone https://github.com/trufflesuite/filecoin-network-inspector
+npm install
+git checkout ganache-changes
+npm run start
+</code></pre></div>
+
+<h2 id="running-ethereum-ganache">Running Ethereum Ganache</h2>
+<div class="codehilite"><pre><span></span><code>npx ganache ethereum
+RPC Listening on 127.0.0.1:8545
+</code></pre></div>
+
+<h2 id="creating-storage-deals">Creating Storage Deals</h2>
+<p>A storage deal is an agreement between a client and a storage miner to store some data in the network for a given duration. Note that while in the case of Filecoin's mainnet, a deal must be secured with a miner before data is stored, in Filecoin Ganache a deal is reached automatically.
+Via the Filecoin Network Explorer</p>
+<ol>
+<li>The simplest way to store data, open the Filecoin Network Explorer and navigate to the "Market" tab.</li>
+<li>From here you can select a file by clicking "Choose File" followed by "Upload to the Filecoin Network".</li>
+</ol>
+
+<h2 id="truffle-preserve">Truffle Preserve</h2>
+<p>Truffle now has a preserve command which allows for the 'preservation' of files directly from the Truffle CLI. This is currently experimental and thus on specific branch; installation details available at here.
+Once installed, you'll be able to preserve your assets via the following command. Note that you'll need to include the environments object in your truffle-config.js to point at the respective node (although these are already preconfigured in the box).</p>
+<div class="codehilite"><pre><span></span><code>truffle preserve --environment development ./assets/ --filecoin
+</code></pre></div>
+
+<p>For broader help with this command run truffle help preserve.</p>
+<p>Via Curl (or equivalent)
+Lastly, you can send the following curl request directly to the Lotus RPC. Note that the you'll need to update both the wallet address (t3s3la3754...) and CID (QmZTR5bcpQ...).</p>
+<div class="codehilite"><pre><span></span><code>curl -X POST \
+ -H &#39;Content-Type: application/json&#39; \
+ -d &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:0,&quot;method&quot;:&quot;Filecoin.ClientStartDeal&quot;,&quot;params&quot;:[{&quot;Data&quot;:{&quot;TransferType&quot;:&quot;graphsync&quot;,&quot;Root&quot;:{&quot;/&quot;:&quot;QmZTR5bcpQD7cFgTorqxZDYaew1Wqgfbd2ud9QqGPAkK2V&quot;},&quot;PieceCid&quot;:null,&quot;PieceSize&quot;:0},&quot;Wallet&quot;:&quot;t3s3la37547tijmoeiep7ktogws3tep2eqrralh7rhi2mpe46q574gceyy467356onblzvwf7ejlelo2rdsg4q&quot;,&quot;Miner&quot;:&quot;t01000&quot;,&quot;EpochPrice&quot;:&quot;2500&quot;,&quot;MinBlocksDuration&quot;:300}]}&#39; \    http://localhost:7777/rpc/v0
+</code></pre></div>
+
+<h2 id="minting-an-nft">Minting an NFT</h2>
+<p>In the example below, we've already created a deal for the 3 assets (metadata, thumbnail, and the original asset respectively) that comprise our NFT. These are as follows, with their corresponding CIDs.</p>
+<ul><li>metadata  <a href="https://ipfs.io/ipfs/QmUWFZQrJHfCVNHXVjjb2zeowVvH7dC6rKpbdHsTdnAgvP">QmS4t7rFPxaaNriXvCmALr5GYRAtya5urrDaZgkfHutdCG</a>
+</li><li>thumbnail -<a href="https://ipfs.io/ipfs/QmbAAMaGWpiSgmMWYTRtGsru382j6qTVQ4FDKX2cRTRso6">QmbAAMaGWpiSgmMWYTRtGsru382j6qTVQ4FDKX2cRTRso6</a></li><li>
+asset - <a href="https://ipfs.io/ipfs/QmS4t7rFPxaaNriXvCmALr5GYRAtya5urrDaZgkfHutdCG">QmbAAMaGWpiSgmMWYTRtGsru382j6qTVQ4FDKX2cRTRso6</a></li></ul>
+
+<p>Assuming the local Ethereum Ganache node is running, you'll be able to open a console and mint a new NFT with the following steps. As the base URL is set to that of an IPFS gateway, we'll just need to pass in the CID to the asset metadata.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">truffle</span> <span class="n">console</span>
+<span class="n">truffle</span><span class="p">(</span><span class="n">development</span><span class="p">)</span><span class="o">&gt;</span> <span class="k">const</span> <span class="n">gallery</span> <span class="o">=</span> <span class="n">await</span> <span class="n">MyGallery</span><span class="o">.</span><span class="n">deployed</span><span class="p">()</span>
+<span class="n">truffle</span><span class="p">(</span><span class="n">development</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">gallery</span><span class="o">.</span><span class="n">mint</span><span class="p">(</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;QmS4t7rFPxaaNriXvCmALr5GYRAtya5urrDaZgkfHutdCG&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>In the above example the owner of the NFT is set (via accounts[0]) to that of the first account generated by the mnemonic. If we want to transfer it to a new owner, we'll be able to do so with the following.
+Transferring Ownership</p>
+<div class="codehilite"><pre><span></span><code>truffle console
+truffle(development)&gt; gallery.transferFrom(accounts[0], accounts[1], 1)
+</code></pre></div>
+
+<h2 id="gallery-ui">Gallery UI</h2>
+<p><img alt="Ganache GUI" src="../../img/S07/gallery-1.png" /></p>
+<p>A sample gallery interface is available here.​​
+You can use the following steps to run this locally...</p>
+<div class="codehilite"><pre><span></span><code>cd ui
+npm install
+npm run start
+</code></pre></div>
+
+<h2 id="off-chain-assets">Off-chain Assets</h2>
+<p>Thus far we’ve been exclusively referring to data that will be stored on-chain. While this is logical for certain types of data in your dapp, what about other facets (such an underlying NFT asset or a web-based front-end)?</p>
+<p>Ideally we can still take advantage of the benefits of decentralization without incurring the cost and performance overhead of trying to store on-chain. This is where services such as IPFS, Arweave, or Textile Buckets come in, along with complimentary storage solutions like Filecoin.</p>
+<h2 id="storing-with-truffle-preserve">Storing with Truffle Preserve</h2>
+<p>Truffle has a built-in command called preserve that supports a number of the aforementioned services right out of the box. An example of it’s usage is follows, with ./path being the path to the directory you want to persist.</p>
+<div class="codehilite"><pre><span></span><code>truffle preserve ./path
+</code></pre></div>
+
+<p>The above example assumes you have a locally running IPFS node, but if not you can leverage Infura’s gateway by adding the following to your truffle-config.js and then appending --environment production to the command.</p>
+<div class="codehilite"><pre><span></span><code>environments: {
+production: {
+  ipfs: {
+    address: &#39;https://ipfs.infura.io:5001&#39;
+  }
+ }
+}
+</code></pre></div>
+
+<p>The resultant content identified (CID) will then be returned for you to then persist with a Filecoin storage deal or pinning service.</p>
+<p>More detail can be found in the Truffle <a href="www.trufflesuite.com/docs/truffle/getting-started/preserving-files-and-content-to-storage-platforms">docs</a>.</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/docs/S07-additional-topics/L2-filecoin/index.md" target="_blank">Edit this page on Github</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

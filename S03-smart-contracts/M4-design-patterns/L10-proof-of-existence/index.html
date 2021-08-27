@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Writing a Smart Contract (Proof of Existence Exercise) - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="writing-a-smart-contract-proof-of-existence-exercise">Writing a Smart Contract (Proof of Existence Exercise)</h1>
+<p>This walkthrough is based on <a href="https://blog.zeppelin.solutions/the-hitchhikers-guide-to-smart-contracts-in-ethereum-848f08001f05">this Medium</a> post by Manuel Araoz.</p>
+<h2 id="what-is-proof-of-existence">What is Proof of Existence?</h2>
+<p>Proof of Existence is a service that verifies the existence of a document or file at a specific time via timestamped transactions. PoE utilizes the one-way nature of cryptographic hash functions to reduce the amount of information that needs to be stored on the blockchain.</p>
+<p>In this walkthrough, we are going to introduce some basic Ethereum smart contract development best practices by creating a simple proof of existence contract and interacting with it on the blockchain.</p>
+<h2 id="set-up-the-environment">Set up the Environment</h2>
+<h3 id="connect-to-a-blockchain">Connect to a Blockchain</h3>
+<p>To develop Ethereum applications, you will need a client to connect to an Ethereum blockchain. You can use <a href="https://geth.ethereum.org/docs/getting-started">Geth</a>, <a href="https://www.parity.io/">Parity</a> or a development blockchain such as <a href="http://truffleframework.com/ganache/">Ganache</a>.</p>
+<p>In this walkthrough we will be using the Ganache command line interface, ganache-cli. You can find the documentation on ganache-cli <a href="https://github.com/trufflesuite/ganache-cli">here</a>.</p>
+<p>You can install ganache-cli with the following command:</p>
+<div class="codehilite"><pre><span></span><code>$ sudo npm install -g ganache-cli
+</code></pre></div>
+
+<p>And start ganache-cli with</p>
+<div class="codehilite"><pre><span></span><code>$ ganache-cli
+</code></pre></div>
+
+<p>When ganache-cli starts, you can see that it starts with 10 accounts. Each of those accounts comes prefunded with Ether so we do not need to mine or acquire funds from a faucet.</p>
+<p>Ganache-cli starts a development blockchain that needs to be running while developing the application so leave it running while we continue working on the application.</p>
+<h3 id="truffle-development-framework">Truffle Development Framework</h3>
+<p>Solidity is the most popular programming language for writing smart contracts in Ethereum. We will be using Solidity throughout this course.</p>
+<p><a href="http://truffleframework.com/">The Truffle development framework</a> is one of the most popular development tools for writing Solidity smart contracts for Ethereum. Truffle will help us compile, deploy and test our smart contracts once they are written.</p>
+<p>To install truffle</p>
+<div class="codehilite"><pre><span></span><code>$ sudo npm install -g truffle
+</code></pre></div>
+
+<p><span style="background-color: rgb(209, 213, 216);"><code>$ sudo npm install -g @truffle/hdwallet-provider</code></span></p>
+<p>Create a project directory and set up truffle</p>
+<div class="codehilite"><pre><span></span><code>$ mkdir proof-of-existence
+$ <span class="nb">cd</span> proof-of-existence/
+$ truffle init
+</code></pre></div>
+
+<p>Truffle sets up a contracts directory where we will write our contracts, a migrations directory where we will write scripts to deploy our contracts along with a test directory where we will write tests to make sure that our contracts work as expected.</p>
+<p>In truffle-config.js we need to specify the network that we will be using.</p>
+<p>In the module.exports object, add the following information:  </p>
+<p><em>Note: This information is cooked in when we initialized truffle, head over the truffle.config.js file, and view the commented out code under networks.</em></p>
+<div class="codehilite"><pre><span></span><code><span class="n">module</span><span class="o">.</span><span class="n">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">networks</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">development</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">host</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+            <span class="n">port</span><span class="p">:</span> <span class="mi">8545</span><span class="p">,</span>
+            <span class="n">network_id</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>We use this information because ganache-cli is running our development blockchain on localhost:8545, and this is what we want to connect to. Specifying <em>network_id</em> as * means that any truffle will deploy to any network running at localhost:8545.</p>
+<p>Truffle comes with a Migrations.sol contract that keeps track of our migrations as well as a 1_initial_migrations.js script to deploy the Migrations.sol contract.</p>
+<p>Run the following command in the terminal in your project directory:</p>
+<div class="codehilite"><pre><span></span><code>$ truffle migrate
+</code></pre></div>
+
+<p>The terminal should print information about the deployment of the Migrations contract.</p>
+<p>This means that your environment is set up correctly and we can move on to writing our smart contracts.</p>
+<h2 id="writing-the-smart-contract">Writing the Smart Contract</h2>
+<p>Run the following command in the terminal in your project directory:</p>
+<div class="codehilite"><pre><span></span><code>$ truffle create contract ProofOfExistence1
+</code></pre></div>
+
+<p>This command will create a Solidity file in the contracts directory called “ProofOfExistence1.sol” and set up the boilerplate code for the contract, a contract definition along with a contract constructor. Open ProofOfExistence.sol in your text editor.</p>
+<p>Update your ProofOfExistence1.sol file so that it looks like <a href="https://github.com/ConsenSys-Academy/proof-of-existence-exercise/blob/master/contracts/ProofOfExistence1.sol">this</a>.</p>
+<p>We are starting with something simple, but incorrect and we are going to work towards a better contract.</p>
+<p>Our contract has a state and two functions. This contract actually has two different kinds of functions, a transactional function (notarize) and a read-only, or <em>view</em>, function (proofFor). Transactional functions can modify state whereas constant functions can only read the state and return values.</p>
+<p>Let’s deploy this contract to our test network.</p>
+<p>Create a new migrations file in the migrations directory called 2_deploy_contracts.js. In this file add the following:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span> <span class="n">ProofOfExistence1</span> <span class="o">=</span> <span class="n">artifacts</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="s1">&#39;./ProofOfExistence1.sol&#39;</span><span class="p">);</span>
+
+<span class="n">module</span><span class="o">.</span><span class="n">exports</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">deployer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">deployer</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="n">ProofOfExistence1</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>This script tells Truffle to get the contract information from ProofOfExitence.sol and deploy it to the specified network. Now we just need to tell Truffle to run the deployment.</p>
+<p>Run the following command in the terminal in your project directory:</p>
+<div class="codehilite"><pre><span></span><code>$ truffle migrate
+</code></pre></div>
+
+<p>In the terminal output you should see that Truffle compiled ProofOfExistence.sol and printed some warning regarding the contract. Then it runs the migrations using the network ‘development’ that we specified in truffle-config.js.</p>
+<p>Truffle remembers which contracts it has migrated to the network, so if we want to run the migration again on the same network, we need to use the --reset option like so:</p>
+<div class="codehilite"><pre><span></span><code>$ truffle migrate --reset
+</code></pre></div>
+
+<p>You can find more information about truffle migrations <a href="https://truffleframework.com/docs/truffle/getting-started/running-migrations">here</a>.</p>
+<h2 id="interacting-with-your-smart-contract">Interacting with your Smart Contract</h2>
+<p>Our contract is now on the development blockchain, so we can interact with it. We can read the contract state from the blockchain and update the state by calling the notarize function. We can do this using the Truffle console.</p>
+<p>Bring up the truffle console with the command:</p>
+<div class="codehilite"><pre><span></span><code>$ truffle console
+</code></pre></div>
+
+<p>You should see</p>
+<div class="codehilite"><pre><span></span><code>truffle(development)&gt;
+</code></pre></div>
+
+<p>On the first line enter:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span> <span class="n">poe</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ProofOfExistence1</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">ProofOfExistence1</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This line says that the variable “poe” is an instance of ProofOfExistence1.sol found at the address that we just deployed.</p>
+<p>You can see the address by entering</p>
+<div class="codehilite"><pre><span></span><code>truffle(development)&gt; poe.address
+&#39;0xc490df1850010ea8146c1dd3e961fedbf6b85bef&#39;
+</code></pre></div>
+
+<p>To call the notarize function, we call it like any other javascript function.</p>
+<div class="codehilite"><pre><span></span><code>truffle(development)&gt; poe.notarize(&#39;Hello World!&#39;)
+{ tx: &#39;0x60ae...2643cbea65&#39;,
+  receipt: …
+}
+</code></pre></div>
+
+<p>This function causes a state change, so it is a transactional function. Transactional functions return a Promise that resolves to a transaction object.</p>
+<p>We can get the proof for the string with</p>
+<div class="codehilite"><pre><span></span><code>truffle(development)&gt; poe.proofFor(&#39;Hello World!&#39;)
+‘0x7f83b...126d9069’
+</code></pre></div>
+
+<p>And check that the contract’s state was correctly changed</p>
+<div class="codehilite"><pre><span></span><code>truffle(development)&gt; poe.proof()
+&#39;0x7f83b...126d9069&#39;
+</code></pre></div>
+
+<p>The hashes match!</p>
+<h2 id="iterating-the-code">Iterating the code</h2>
+<p>Our contract works! But it can only store one proof at a time. Let’s change that.</p>
+<p>Exit the Truffle console and create a new file called ProofOfExistence2.sol:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">truffle</span><span class="ss">(</span><span class="nv">development</span><span class="ss">)</span><span class="o">&gt;</span> .<span class="k">exit</span>
+$ <span class="nv">truffle</span> <span class="nv">create</span> <span class="nv">contract</span> <span class="nv">ProofOfExistence2</span>
+</code></pre></div>
+
+<p>Update the ProofOfExistence2 contract to match <a href="https://github.com/ConsenSys-Academy/proof-of-existence-exercise/blob/master/contracts/ProofOfExistence2.sol">this contract</a>.</p>
+<p>The main changes between the first version and this version are that we changed the “proof” variable to a bytes32 array called “proofs” and made it private. We also added a function called “hasProof” to check if a proof has already been stored in the array.</p>
+<p>Update the migration script 2_deploy_contracts.js to deploy the new contract and deploy it to the development blockchain.</p>
+<div class="codehilite"><pre><span></span><code>$ truffle migrate --reset
+</code></pre></div>
+
+<p>Launch the console to interact with the new contract.</p>
+<div class="codehilite"><pre><span></span><code>$ truffle console
+</code></pre></div>
+
+<p>Save the deployed contract</p>
+<div class="codehilite"><pre><span></span><code><span class="n">truffle</span><span class="p">(</span><span class="n">development</span><span class="p">)</span><span class="o">&gt;</span> <span class="k">const</span> <span class="n">poe</span> <span class="o">=</span> <span class="n">await</span> <span class="n">ProofOfExistence2</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">ProofOfExistence2</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+</code></pre></div>
+
+<p>We can check for a proof.</p>
+<div class="codehilite"><pre><span></span><code>truffle(development)&gt; poe.checkDocument(&#39;Hello World!&#39;)
+false
+</code></pre></div>
+
+<p>It returns false because we haven’t added anything yet. Let’s do that now.</p>
+<div class="codehilite"><pre><span></span><code>truffle(development)&gt; poe.notarize(&#39;Hello World!&#39;)
+{ tx: &#39;0xd6f72...10a6e&#39;,
+  receipt: 
+   { transactionHash: ...
+  logs: [] }
+
+truffle(development)&gt; poe.checkDocument(&#39;Hello World!&#39;)
+true
+</code></pre></div>
+
+<p>We can check to make sure that our contract will store multiple proofs.</p>
+<div class="codehilite"><pre><span></span><code>truffle(development)&gt; poe.notarize(&#39;Hello Consensys!&#39;)
+{ tx: &#39;0x8b566...091ace&#39;,
+  receipt: 
+   { transactionHash: ...
+  logs: [] }
+
+truffle(development)&gt; poe.checkDocument(&#39;Hello Consensys!&#39;)
+True
+</code></pre></div>
+
+<p>Looping over arrays in smart contracts can get expensive as arrays get longer. Using a mapping is a better solution.</p>
+<p>Let’s create a final version in ProofOfExistence3.sol using mappings. You can use <a href="https://github.com/ConsenSys-Academy/proof-of-existence-exercise/blob/master/contracts/ProofOfExistence3.sol">this code</a> for the contract.</p>
+<p>Modify the deployment script to deploy the new contract and test it in the console to make sure that it behaves just like ProofOfExistence2.sol.</p>
+<h2 id="deploying-to-the-testnet">Deploying to the Testnet</h2>
+<p>From here, we are going to deviate from the Zeppelin Solutions walkthrough. If you want to learn how to deploy contracts using the geth console (which requires syncing with the testnet), you can consult the Zeppelin Solutions walkthrough.</p>
+<p>The first step in our alternate deployment method is to get an Ethereum account on Metamask. On the landing page, click “Get Chrome Extension.”</p>
+<p>Once the extension is installed, accept the terms of use and enter a password for your account.</p>
+<p>You will be shown 12 words that can be used to restore your wallet. A word of caution, do <strong>NOT</strong> publish these words anywhere public. Anyone that has these 12 words has access to your wallet.  </p>
+<p>Save these 12 words in a file called '.secret' in your project directory.  </p>
+<p><em>Note: They do not need to be contained within a string when adding to .secret, line 25 in truffle config assists with this detail.</em></p>
+<p>With Truffle version 5, the truffle-config.js file comes populated with a lot of configuration settings that are commented out.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">//</span> <span class="n">truffle</span><span class="o">-</span><span class="n">config</span><span class="o">.</span><span class="n">js</span>
+
+<span class="mi">21</span> <span class="k">const</span> <span class="n">HDWallet</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;@truffle/hdwallet-provider&#39;</span><span class="p">);</span>
+<span class="mi">22</span> <span class="k">const</span> <span class="n">infuraURL</span> <span class="o">=</span> <span class="s1">&#39;https://rinkeby.infura.io/v3/&lt;Project_ID&gt;&#39;</span> <span class="o">&lt;--</span> <span class="n">project</span> <span class="n">id</span> <span class="n">here</span>
+<span class="mi">23</span> 
+<span class="mi">24</span> <span class="k">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+<span class="mi">25</span> <span class="k">const</span> <span class="n">mnemonic</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">readFileSync</span><span class="p">(</span><span class="s1">&#39;.secret&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span><span class="o">.</span><span class="n">trim</span><span class="p">();</span>
+</code></pre></div>
+
+<p>Uncomment lines 21 - 25. Line 21 will import the tool to derive a private key and address from a mnemonic. Entering your Infura API key in line 22 will allow you to easily deploy contracts to Ethereum (we will cover how to get an API key shortly). Lines 24 and 25 will import your seed phrase (from the .secret file) into the file. Truffle will use these words to access your wallet and deploy the contract.</p>
+<p>Deploying the contract requires us to make a transaction on the testnet, so we need some ether to pay for the transaction. You can get free Rinkeby ether by going to <a href="https://faucet.rinkeby.io/">this website</a> and following the instructions. Make sure you enter the Ethereum address for your 1st Metamask account.</p>
+<p>Now that we have a testnet account with Ether, we need to configure Truffle to be able to deploy the contract.</p>
+<p>To deploy contracts to the testnet using Truffle without having to sync a local node, you can use Infura. Infura allows you to access a fully synced Ethereum node via their API. We will use their API to deploy our contracts to the Rinkeby testnet.</p>
+<p>Go to the <a href="https://infura.io/">Infura website</a> and sign up for a free account. Save the Rinkeby test network URL that Infura provides in a variable called <code>infuraURL</code> in truffle-config.js. Your Project ID is a unique code provided by Infura.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">//</span> <span class="n">truffle</span><span class="o">-</span><span class="n">config</span><span class="o">.</span><span class="n">js</span>
+
+<span class="k">const</span> <span class="n">infuraURL</span> <span class="o">=</span> <span class="s1">&#39;https://rinkeby.infura.io/v3/&lt;Project_ID&gt;&#39;</span> <span class="o">&lt;--</span> <span class="n">project</span> <span class="n">id</span> <span class="n">here</span>
+</code></pre></div>
+
+<p>For Truffle to derive our ethereum address from the mnemonic, we need to install the Truffle HD wallet provider. In the terminal located in the proof-of-existence project root run:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@truffle</span><span class="o">/</span><span class="n">hdwallet</span><span class="o">-</span><span class="n">provider</span><span class="w"></span>
+</code></pre></div>
+
+<p>And import the HD wallet provider into your truffle-config.js file, ensure you have the following.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span> <span class="n">HDWallet</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;@truffle/hdwallet-provider&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Now we just need to add the rinkeby network configuration to the networks object in truffle-config.js module.exports.</p>
+<p>Change the module.exports object to resemble this:</p>
+<div class="codehilite"><pre><span></span><code>  networks: {
+      development: {
+          host: &#39;localhost&#39;,
+          port: 8545,
+          network_id: &#39;*&#39;
+      },
+
+      rinkeby: {
+        provider: () =&gt; new HDWalletProvider(mnemonic, infuraURL),
+        network_id: 4,          // Rinkeby&#39;s network id
+        gas: 5500000,        
+      },
+  }
+</code></pre></div>
+
+<p>Where the “mnemonic” variable is the 12 word seed phrase that you saved from metamask and the “infuraKey” variable is your Infura Project ID.</p>
+<p>You just have to run “truffle migrate” for the correct network and your contract will be deployed!</p>
+<div class="codehilite"><pre><span></span><code>$ truffle migrate --network rinkeby
+
+Starting migrations...
+<span class="o">======================</span>
+&gt; Network name:    <span class="s1">&#39;rinkeby&#39;</span>
+&gt; Network id:      <span class="m">4</span>
+&gt; Block gas limit: <span class="m">7602728</span>
+
+1_initial_migration.js
+<span class="o">======================</span>
+
+   Deploying <span class="s1">&#39;Migrations&#39;</span>
+   ----------------------
+   &gt; transaction hash:    0x6c5cc0090db1147dfadfd4a84280715e8e8bb3bb820401e32ea40b4f6e521178
+   &gt; Blocks: <span class="m">0</span>            Seconds: <span class="m">12</span>
+   &gt; contract address:    0x8e8786683C33147dA500c3F54A9690A4f81a3D48
+   &gt; account:             0x196150D99a325f624F7c420Cf80ca6ab9a1BeDBA
+   &gt; balance:             <span class="m">0</span>.987611032134329654
+   &gt; gas used:            <span class="m">284908</span>
+   &gt; gas price:           <span class="m">20</span> gwei
+   &gt; value sent:          <span class="m">0</span> ETH
+   &gt; total cost:          <span class="m">0</span>.00569816 ETH
+
+   &gt; Saving migration to chain.
+   &gt; Saving artifacts
+   -------------------------------------
+   &gt; Total cost:          <span class="m">0</span>.00569816 ETH
+
+2_deploy_contracts.js
+<span class="o">=====================</span>
+
+   Deploying <span class="s1">&#39;ProofOfExistence2&#39;</span>
+   -----------------------------
+   &gt; transaction hash:    0x4692cc0311571c70f7d425f9a89702a355abe8345961c871980a279c8b16e20a
+   &gt; Blocks: <span class="m">1</span>            Seconds: <span class="m">12</span>
+   &gt; contract address:    0x096c0636F39372Fa83EF498bCC5Bce86C8fd1Fb5
+   &gt; account:             0x196150D99a325f624F7c420Cf80ca6ab9a1BeDBA
+   &gt; balance:             <span class="m">0</span>.978713032134329654
+   &gt; gas used:            <span class="m">402866</span>
+   &gt; gas price:           <span class="m">20</span> gwei
+   &gt; value sent:          <span class="m">0</span> ETH
+   &gt; total cost:          <span class="m">0</span>.00805732 ETH
+
+   &gt; Saving migration to chain.
+   &gt; Saving artifacts
+   -------------------------------------
+   &gt; Total cost:          <span class="m">0</span>.00805732 ETH
+
+<span class="nv">Summary</span>
+<span class="o">=======</span>
+&gt; Total deployments:   <span class="m">2</span>
+&gt; Final cost:          <span class="m">0</span>.01375548 ETH
+</code></pre></div>
+
+<p>The terminal prints the addresses of the deployed contracts as well as the transaction hashes of the deployment transactions. This information can also be referenced in the contract artifacts, which are stored in proof-of-existence/build/contracts/. Deployment information is found at the bottom of each JSON file.  </p>
+<p>You can view your deployed contracts at <a href="https://rinkeby.etherscan.io/">https://rinkeby.etherscan.io/</a> and paste in the deployed contract address to have a look you yourself, you can now interact with the deployed contract on the Rinkeby test network!</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/docs/S03-smart-contracts/M4-design-patterns/L10-proof-of-existence/index.md" target="_blank">Edit this page on Github</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

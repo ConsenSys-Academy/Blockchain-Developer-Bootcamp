@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Consensus Conclusion</title>
+</head>
+<div class="body">
+    <!-- Title goes below: -->
+  <h1>Consensus Conclusion</h1>
+
+    <!-- Content here: -->
+  <p>Hopefully by now you feel like you have a sense of how distributed consensus works in a traditional network and how blockchains have innovated consensus protocols. While cryptographic primitives allow blockchain users to secure and validate current transactions, blockchain consensus protocols allow for a blockchain network to maintain a public ledger (the global state of the blockchain) in a decentralized way.</p>
+
+
+  <h2>Challenges of Consensus in Distributed Networks</h2>
+  
+  <p>While blockchain consensus protocols have made great strides in decentralized networks, there are still some unsolved issues they're facing. Some of these (like the CAP theorem and forks) affect all general distributed networks while others, like Miner Extracted Value and 51% attacks, are specific to public blockchains. Here's a sampling and brief description of these challenges.</p>
+
+    <ul>
+      <li><b>Forks</b> As we mentioned in a previous section, Proof of Work and other blockchain consensus mechanisms can lead to network forks (Note: In general computing networking, forks are also called <i>partitions</i>). Some of these forks are voluntary (such as network upgrades), accidental (a node receives two valid but different new blocks) or adversarial (network participants purposefully breakaway from the main network to create a separate chain). While forks are common in all distributed systems, with blockchain networks they can be particuarly painful but are also necessary update mechanisms.</li>
+      <li><b><a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener noreferrer">CAP Theorem</a></b> This is a fairly technical concept and can be challenging to understand. To put it simply, the CAP Theorem states that when a distributed network forks (also called a <i><a href="https://en.wikipedia.org/wiki/Network_partition" target="_blank" rel="noopener noreferrer">partition</a></i>), the network must either sacrifice consistency or availability. For example, if a blockchain network forks / partitions into two separate chains, you cannot expect those chains to both continue to mine new transactions (<i>Availability</i>) and stay consistent (<i>Consistency</i>) with each other. You don't need to be an expert in the CAP theorem, really just be aware of its existence and generally how it affects distributed networks. If you'd like to learn more, please see the links in "Additional Material" below.</li>
+      <li><b>Scalability</b> As we've mentioned before, blockchain consensus mechanisms, particularly Proof of Work, are limited by the amount of transactions they can process. If the block size (the amount of transactions processed) increases, then mining will become more centralized and only available to those with significant resources. However, the current transaction throughput (the amount of transactions processed) is not enough to compete against current mainstream financial payment mechanisms. There are significant challenges, mainly how to make Ethereum more light-client friendly. Meaning: how can we reduce the amount of resources needed to provide decentralized consensus?</li>
+      <li><b>51% attacks</b> In "11. Calculations" of the Bitcoin whitepaper, Nakamoto discusses the possibility of something called a "51% attack". This is the mathematical possibility of a malicious actor, who controls 51% or more of the network's hash rate, to both reorder some recent blocks and create a new, valid block including those tampered transactions. To be clear, this has not happened with Bitcoin or any major network, but it does exist as a possibility. Also, controlling 51% of a network's hash rate is only the entrance fee for doing such an attack. It also requires an enormous amount of coordination and subversion to make sure the attack is not noticed. Last, Proof of Work provides an economic incentive for the malicious actor with over 51% of the mining rate to actually produce <i>valid</i> blocks, rather than trying a re-organization attack.</li>
+      <li><b>Miner Extracted Value</b> This is a more recent concern in the Ethereum community and may be too technical for this part of the course so no worries if you don't get this yet. Put simply, a user may increase the miner's fee of a transaction to entice a miner to include the transaction in a block. That user can use this "frontrunning" effect to target users making sophisticated trades. With the increasing sophistication of Ethereum transactions, many feel MEV poses as serious issue to the ecosystem. Please see links below for more resources if you're interested.</li>
+    </ul>
+
+  <h2>Conclusion</h2>
+
+  <p>Blockchain consensus protocols, as kicked off by Proof of Work but including Proof of Stake and others, are the last primitive we need in our mental model to complete our blockchain framework. Now that we have both cryptography and distributed computing in our toolkit, we will now see how we can build a generalizable framework to understanding almost any blockchain network we encounter.</p> 
+  
+  <h2>Additional Material</h2>
+  <h3>Introductory</h3>
+  <ul>
+    <li><a href="https://medium.com/@VitalikButerin/the-meaning-of-decentralization-a0c92b76a274" target="_blank" rel="noopener noreferrer">Article: The Meaning of Decentralization</a></li>
+    <li><a href="https://dean.eigenmann.me/blog/2020/02/17/cap-theorem/" target="_blank" rel="noopener noreferrer">Article: The CAP Theorem (Dean Eigenmann)</a> Another great post from the Distributed Systems newsletter describing the CAP theorem in a general way. Dean discusses how CAP theorem is particularly important with e-commerce like Amazon.</li>
+    <li><a href="https://www.the-paper-trail.org/page/cap-faq/" target="_blank" rel="noopener noreferrer">Article: The CAP FAQ</a> A nice introductory article requiring some network knowledge.</li>
+    <li><a href="https://ethereum.org/en/eth2/vision/" target="_blank" rel="noopener noreferrer">Article: Eth2 Vision: The Challenge of Decentralized Scaling</a> Scroll down a bit to see a diagram showing the "scalability trilemma"</li>
+    <li><a href="https://www.reddit.com/r/ethereum/comments/m0tqz5/making_the_ecosystem_more_lightclient_friendly/" target="_blank" rel="noopener noreferrer">Forum: How to Make the Ecosystem more Light-Client Friendly</a> A Reddit discussion about Ethereum light-clients from 2021.</li>
+    <li><a href="https://dankradfeist.de/ethereum/2021/05/20/what-everyone-gets-wrong-about-51percent-attacks.html" target="_blank" rel="noopener noreferrer">Article: What Everyone Gets Wrong about 51% Attacks (Dankrad Feist)</a> General discussion around 51% attacks, what they are, what they're not, and how Proof of Stake creates checkpoints which could avoid an adversarial re-organization attack.</li>
+    <li><a href="https://medium.com/flashbots/frontrunning-the-mev-crisis-40629a613752" target="_blank" rel="noopener noreferrer">Article: Flashbots: Frontrunning the MEV Crisis</a> A great introductory discussion by the Flashbots research group dedicated to issue of Miner Extracted Value.</li>
+    <li><a href="https://explore.flashbots.net/" target="_blank" rel="noopener noreferrer">Interactive: Explore MEV in Real-time</a> A visualization put together by Flashbots to document what they call MEV in real-time.</li>
+    <li><a href="https://www.coindesk.com/ethereum-mev-frontrunning-solutions" target="_blank" rel="noopener noreferrer">Article: Why Ethereum’s MEV Problem Is Way Worse Than You Think</a> Opinion article describing the potential future problems facing Ethereum if it doesn't address Miner Extracted Value issues.</li>
+    <li><a href="https://youtu.be/s3nACF7uVZw?t=405" target="_blank" rel="noopener noreferrer">Video: WTF is MEV?</a> Introduction to Miner Extracted Value from Charlie Noyes at a MEV Summit. This video starts at his talk but also includes the rest of the summit, which you don't have to watch!</li>
+    <li><a href="https://www.youtube.com/watch?v=lXq0eU8viFQ" target="_blank" rel="noopener noreferrer">Video: MEV Walkthrough with FlashBots</a> Another walkthrough of MEV from Flashbots</li>
+
+  </ul>
+  <h3>Advanced: Distributed Systems</h3>
+  <ul>
+    <li><a href="https://dancres.github.io/Pages/" target="_blank" rel="noopener noreferrer">Wiki: Distributed Systems Reading List</a> Strong technical and academic discussion around distributed systems</li>
+    <li><a href="https://how.complexsystems.fail/" target="_blank" rel="noopener noreferrer">Article: How Complex Systems Fail</a> A series of simple statements referring to the management of chaos in complex systems. Highly generalized, but still has a number of gems.</li>
+    <li><a href="https://fly.io/blog/building-a-distributed-turn-based-game-system-in-elixir/" target="_blank" rel="noopener noreferrer">Tutorial: Building a Distributed Turn-Based Game System</a> Fun tutorial around using distributed system language Elixir.</li>
+    <li><a href="https://en.wikipedia.org/wiki/Beer_distribution_game" target="_blank" rel="noopener noreferrer">Wikipedia: Beer Distribution Game</a> A cute, general educational game teaching about the challenges of a distributed system using a common supply chain scenario.</li>
+    <li><a href="https://eth.wiki/sharding/Sharding-FAQs" target="_blank" rel="noopener noreferrer">Wiki: Sharding FAQ (Ethereum Foundation)</a> First mention of the "scalability trilemma" a bit technical, however!</li>
+    <li><a href="https://codahale.com/you-cant-sacrifice-partition-tolerance/" target="_blank" rel="noopener noreferrer">Article: You Can't Sacrifice Partition Tolerance</a></li>
+    <li><a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">Code: "11. Calcuations" Bitcoin whitepaper</a> The section where Nakamoto describes the race conditions needed to achieve a 51% attack.</li>
+    <li><a href="https://arxiv.org/abs/1904.05234" target="_blank" rel="noopener noreferrer">Academic Article: Flash Boys 2.0</a> An in-depth discussion of the Miner Extracted Value theory.</li>
+    <li><a href="https://github.com/flashbots/pm#resources" target="_blank" rel="noopener noreferrer">Wiki: Resources from Flashbots about MEV</a></li>
+    <li><a href="https://medium.com/@danrobinson/ethereum-is-a-dark-forest-ecc5f0505dff" target="_blank" rel="noopener noreferrer">Article: Ethereum is a Dark Forest</a> A long narrative account describing white-hat hackers attempt to frontrun the frontrunners. A good primary account of the challenges of Miner Extracted Value.</li>
+  </ul>
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M2-consensus/L11-consensus-conclusion/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

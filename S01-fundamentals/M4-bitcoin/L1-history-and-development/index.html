@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Bitcoin: History and Development</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Bitcoin: History and Development</h1>
+  
+  <!-- Content here: -->
+
+    <p><i>Please note: People have written books about Bitcoin's history and development and this is just a section of our course. We'll be the first to admit that an overview of Bitcoin requires discretion on our part. Opinionated or controversial comments are flagged as best we can but, as always, we're hoping mainly to give a overview of the major points. Inevitably, we'll miss something.</i></p>
+
+    <h2>"Bitcoin is Old Technology"</h2>
+
+      <p>As we've mentioned frequently, Bitcoin relies on decades of technological development. This has led to a meme "Bitcoin is Old Technology":</p>
+
+      <div class="img-wrapper"><img src="../../../img/S01/bitcoin-old-tech.jpeg" alt="diagram showing technical developments over the past 40 years leading to Bitcoin launch"></div>
+
+
+    <p>Satoshi Nakamoto was aware of all these developments, and references them throughout <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">their whitepaper.</a> But Bitcoin actually started on a listserve and with Nakamoto sharing a piece of software they were building. It was initially simply called "Bitcoin" and was built using C++. Nakamoto also encouraged others to run the software and began gathering the early developers who ran the first distributed network.</p>
+
+    <p>Once the software was stable, Nakamoto released a whitepaper describing the concepts underpinning the software and referencing some of the older technologies it drew upon. By the release of the whitepaper, there was a growing community of developers interested in Bitcoin and discussing its future.</p>
+
+    <p>Famously, Nakamoto stepped back from the project in early 2011. In April of that year, Nakamoto posted their last update to <a href="https://en.bitcoin.it/wiki/Bitcoin_Core" target="_blank" rel="noopener noreferrer">Bitcoin Core,</a> as the software was now known and gave developer credentials to the now-lead technical developer, <a href="https://en.wikipedia.org/wiki/Gavin_Andresen" target="_blank" rel="noopener noreferrer">Gavin Andresen. (<a href="https://bitcoinmagazine.com/technical/what-happened-when-bitcoin-creator-satoshi-nakamoto-disappeared" target="_blank" rel="noopener noreferrer">source</a>)</a></p>
+
+    <p>Many have speculated about Satoshi Nakamoto's identity but their identity has never been definitively proven. There is a significant amount of bitcoin (some estimates say around one million bitcoin) Nakamoto mined during their time running the Bitcoin Core software. It's considered to be the best identity test for anyone claiming to be Nakamoto: Sign a cryptographic digital message with the private key associated with this bitcoin. It has never been done! </p>
+
+    <h2>Basic Technical Features</h2>
+
+      <p>We'll briefly touch on two main technical parts of the Bitcoin network: The UTXO transaction model and the Script smart-contract language.</p>
+
+      <p><li>The Unspent Transaction Output or <b><a href="https://en.wikipedia.org/wiki/Unspent_transaction_output" target="_blank" rel="noopener noreferrer">UTXO</a></b> model is the fundamental building block of transactions in the Bitcoin network. Per Wikipedia: "Each UTXO is analogous to a coin, and holds a certain amount of value in its respective currency. Each UTXO represents a chain of ownership implemented as a chain of digital signatures where the owner signs a message (transaction) transferring ownership of their UTXO to the receiver's public key." The UTXO model is in contrast to the <a href="https://ethereum.stackexchange.com/questions/326/what-are-the-pros-and-cons-of-ethereum-balances-vs-utxos" target="_blank" rel="noopener noreferrer">account model</a> that Ethereum tracks value in the network</li> </p>
+
+      <p><li>
+        Many don't realize this, but Bitcoin does actually technically have a programming language it uses, called <a href="https://en.bitcoin.it/wiki/Script" target="_blank" rel="noopener noreferrer">Script,</a> which is based off the <a href="https://en.wikipedia.org/wiki/Forth_(programming_language)
+          " target="_blank" rel="noopener noreferrer">Forth</a> programming language. It's very limited in its capacity, but you can read about some of its capacity in <a href="https://github.com/bitcoinbook/bitcoinbook" target="_blank" rel="noopener noreferrer">Mastering Bitcoin</a> in the <a href="https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch07.asciidoc" target="_blank" rel="noopener noreferrer">"Advanced Transactions and Scripting"</a> chapter.
+      </li></p>
+
+
+    <h2>Conclusion</h2>
+
+    <p>It's sometimes easy for others to find fault with Bitcoin and the Bitcoin community. However, it's important to note Bitcoin's contribution to the world, both specifically to blockchains but also to distributed networks generally. We can't go as deep as we'd like to (we can't, but we'd like to talk about the Segregated Witness development and the more recent Taproot fork), but we'd encourage you to at least checkout the whitepaper. At this point, you should be able to understand all the concepts in it!</p>
+
+    <p>Here are some great resources for reading the whitepaper, which can be intimidating on its own:</p>
+
+    <ul>
+      <li><a href="https://fermatslibrary.com/s/bitcoin" target="_blank" rel="noopener noreferrer">Fermat's Library: Bitcoin Whitepaper Annotated</a></li>
+      <li><a href="https://genius.com/Satoshi-nakamoto-bitcoin-a-peer-to-peer-electronic-cash-system-annotated" target="_blank" rel="noopener noreferrer">Genius.com's Annotation of Bitcoin White Paper</a></li>
+    </ul>
+
+    <h2>Additional Material</h2>
+    <h3>History and Nakamoto</h3>
+    <ul>
+      <li><a href="https://en.wikipedia.org/wiki/Bitcoin" target="_blank" rel="noopener noreferrer">Wikipedia: Bitcoin</a> A general overview of Bitcoin from our favorite hive mind encyclopedia.</li>
+      <li><a href="https://medium.com/coinmonks/exploring-bitcoins-history-ecbf1c59952c" target="_blank" rel="noopener noreferrer">Article: Exploring Bitcoin's History</a> A very long, but thorough, article discussing all the technology building up to Bitcoin, including TCP/IP, Elliptic Curve Cryptography, time-stamp servers, smart contracts and more.</li>
+      <li><a href="https://www.newyorker.com/magazine/2011/10/10/the-crypto-currency" target="_blank" rel="noopener noreferrer">Article: The Crypto-Currency</a> An article discussing Bitcoin and it's mysterious creator Satoshi Nakamoto, from October 2011</li>
+      <li><a href="https://www.technologyreview.com/2011/05/25/194486/what-bitcoin-is-and-why-it-matters/" target="_blank" rel="noopener noreferrer">Article: What Bitcoin Is and Why It Matters (MIT)</a></li>
+      <li><a href="https://bitcoinmagazine.com/technical/what-happened-when-bitcoin-creator-satoshi-nakamoto-disappeared" target="_blank" rel="noopener noreferrer">Article: What Happened When Bitcoin Creator Satoshi Nakamoto Disappeared (Bitcoin Magazine)</a> An article charting the rise of Nakamoto, the community of developers who grew around the project, and the eventual disappearance of Nakamoto from the project in 2011.</li>
+    </ul>
+
+    <h3>Technical Features and Development</h3>
+    <ul>
+      <li><a href="https://github.com/bitcoinbook/bitcoinbook" target="_blank" rel="noopener noreferrer">Book: Mastering Bitcoin</a> Considered to be the best-in-class introduction to Bitcoin development, this e-book is available for free from </li>
+      <li><a href="https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch07.asciidoc" target="_blank" rel="noopener noreferrer">Tutorial: Advanced Transactions</a> Section from "Mastering Bitcoin" about Script's more advanced features.</li>
+
+    </ul>
+
+    <h3>General Resources</h3>
+    <ul>
+      <li><a href="https://berkeley-haas.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c29702dd-1b12-4436-87d4-a87100137a6e" target="_blank" rel="noopener noreferrer">Online Course: What is Money? (UC Berkeley)</a></li>
+      <li><a href="https://medium.com/@mariabustillos/you-dont-understand-bitcoin-because-you-think-money-is-real-5aef45b8e952" target="_blank" rel="noopener noreferrer">Article: You Don't Understand Bitcoin Because You Think Money is Real</a> A favorite article of ours!</li>
+      <li><a href="https://www.lrb.co.uk/v38/n08/john-lanchester/when-bitcoin-grows-up" target="_blank" rel="noopener noreferrer">Article: What is Money? (London Review of Books)</a> Sort-of paywalled, but a think piece about the implications of Bitcoin from April 2016.</li>
+    </ul>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M4-bitcoin/L1-history-and-development/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

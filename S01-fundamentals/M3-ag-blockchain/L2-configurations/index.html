@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=">
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+  <script src="../../../js/text-bounce.js" async></script>
+  <title>Configurations for Different Blockchain Networks</title>
+</head>
+<div class="body">
+  
+  <!-- Title goes below: -->
+  <h1>Configurations for Different Blockchain Networks</h1>
+  
+  <!-- Content here: -->
+
+    <p>Now that we have a general model of a blockchain, when we encounter a new network, we know which questions to ask. Some suggested parts of the model you could build on:</p>
+    <ul>
+      <li><b>Nodes and Roles</b> What are the different roles in the network for nodes? What are the ways the nodes join the network and acquire their different roles?</li>
+      <li><b>Consensus Mechanism</b> Always good to know for a blockchain network, will typically let you know whether a network is public, private or consortium. It typically also lets you know the processing limit for the network. The lower the trust assumptions, usually the more limited the processing limit (To be clear, not always the case).</li>
+      <li><b>Periods</b> We mentioned <i>Block Production</i> and <i>Block Propagation</i> as two general periods in Proof of Work. In any network, what are the different periods the network goes through as it achieves distributed consensus?</li>
+      <li><b>Cryptographic Primitives</b> This is very technical and advanced, but knowing what cryptographic family and implementation the network uses for its hashing and encryption can shed some light on a network. Mainly, if a network is using zero-knowledge proofs (which we'll learn about later) or something dramatically different from another network, that's good to know.</li>
+      <li><b>Level of Decentralization</b> This is a fuzzier variable and may involve on incorporating the above data points to determine the level of decentralization. Or, the network is private or a testnet and will openly state that it's more centralized since that's appropriate for its function.</li>
+      <li><b>Reason for Being</b> Another fuzzy variable but it can be very telling to ask why another blockchain network needs to exist. Not because any are perfect, but rather because the answer will hopefully provide some more context into how the network is different from networks you are more familiar with. That way, you can port over what you already know about your favorite blockchain network to better understand another.</li>
+    </ul>
+
+    <p>Other variables include:
+      <ul>
+        <li>Governance Structure (How does the network community decide on updates, fixes, etc.)</li>
+        <li>Developer community size and support</li>
+        <li>General community size and support</li>
+        <li>Network size (How many nodes are there?)</li>
+        <li>Open or Closed Source (Can anyone view or contribute to the implementation code online?)</li>
+      </ul>
+    </p>
+
+    <p>Below is an image showing a rough comparison of a few popular blockchain networks. Looking over it, you may see the benefit of having a set series of variables to analyze multiple networks. There aren't too many things that can change and those that do should have something to tell you about the purpose of the network and any strengths or weaknesses it might have:</p>
+
+    <div class="img-wrapper"><img src="../../../img/S01/blockchain-config.png" alt=""></div>
+
+
+    <p>The other aspect of comparing blockchains is the concept of <b>crosschain compatibility</b> or <a href="https://101blockchains.com/blockchain-interoperability/" target="_blank" rel="noopener noreferrer">blockchain interoperability.</a> This is the ability of public blockchains to share network data with each other. We're living in an increasingly multi-chain world, where there are many significant blockchain networks. Rather than trying to have one chain monopolize, blockchain interoperability seeks to leverage different strengths and minimize weaknesses of the existing chains. We'll discuss this in more detail in a later section.</p>
+
+  <h2>Additional Materials</h2>
+  <ul>
+    <li><a href="https://river.com/learn/terms/s/secp256k1/" target="_blank" rel="noopener noreferrer">Article: Secp256k1 (River Financial)</a> Description of the Elliptic Curve used by Ethereum and Bitcoin.</li>
+    <li><a href="https://www.susanka.eu/coins-crypto/" target="_blank" rel="noopener noreferrer">Chart: Cryptography Behind Cryptocurrencies</a> A table of which cryptography is used with major blockchain networks.</li>
+    <li><a href="https://101blockchains.com/blockchain-interoperability/" target="_blank" rel="noopener noreferrer">Article: Blockchain Interoperability: Why is Cross Chain Technology Important? (101 Blockchains)</a> A brief introduction to blockchain interoperability.</li>
+    <li><a href="https://academy.ivanontech.com/blog/understanding-cross-chain-communication-examining-blockchain-interoperability-and-why-it-matters" target="_blank" rel="noopener noreferrer">Article: Understanding Cross Chain Communication (Ivan on Tech)</a> Another overview of cross chain communication, including bridges.</li>
+  </ul>
+
+  <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
+    <div class="footer">
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M3-ag-blockchain/L2-configurations/index.html" target="_blank">Edit this page on Github</a>
+      
+      <div class="discord">
+        <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+      </div> 
+    </div>
+</div>
+
+</html>

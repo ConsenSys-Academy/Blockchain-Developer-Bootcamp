@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <p><img alt="Infura logo" src="../../../img/S04/infura-logo.png" /></p>
+<p>In our section on "Development Workflow" and "Users in the Mental Model," we described our interactions with the Ethereum network going through a network gateway. In the "Ethereum Basics" of the course, we talked about Ethereum clients, nodes, and how to interact with the network you need to run a full node.</p>
+<p>However, for developers just starting on Ethereum or users who don't have easy access (or knowledge) of an Ethereum node, you can use an Ethereum gateway service called <a href="https://infura.io" target="_blank" rel="noopener noreferrer">Infura.</a></p>
+<p>Infura provides a simple API access point for not only the Ethereum mainnet and all public testnets, but also for IPFS, the Ethereum 2.0 Beacon Chain, Filecoin, Optimism, Arbitrum and Polygon. Incorporating Infura into your workflow will make deploying much easier. As your project grows, you can absolutely consider other options, but it's a nice, easy onramp to development.</p>
+<p>Follow the steps below to sign up for Infura (there are also great step-by-step instructions on Infura's website <a href="https://blog.infura.io/getting-started-with-infura-28e41844cc89/" target="_blank" rel="noopener noreferrer">here</a>):</p>
+<h2 id="register">Register</h2>
+<p>First thing, register for a free account on <a href="https://infura.io" target="_blank" rel="noopener noreferrer">Infura.</a> For smaller development projects (or even medium-sized ones), Infura's free tier is more than capable of handling your requests. Coogan is currently running an Eth2 validator client on Infura's free tier (you'll see it in the screenshots below!)</p>
+<h2 id="setting-up-your-first-project">Setting Up Your First Project</h2>
+<p>Once you've registered, you'll click the Ethereum logo on the left-hand side. (see below)</p>
+<p><img alt="Selecting Ethereum endpoint on Infura" src="../../../img/S04/infura-1.png" /></p>
+<p>You can also see the other available network endpoints listed here, which will be more since we took the above screenshot!</p>
+<p>Next, click “Create New Project” in upper right hand corner:</p>
+<p><img alt="Selecting Create New Project on Infura" src="../../../img/S04/infura-2.png" /></p>
+<p>Name your project and go to “Settings.” There, you'll be able to access the credentials you'll use in your local environment (either Truffle or some other framework) to help make deployment easy. Again, these are your personal, sensitive credentials so be sure to store them in a .env file that you add to your .gitignore doc! <a href="https://consensys.net/blog/developers/how-to-avoid-uploading-your-private-key-to-github-approaches-to-prevent-making-your-secrets-public/" target="_blank" rel="noopener noreferrer">Read more about that here.</a></p>
+<p>A <code>.env</code> file for our Infura credentials will look something like:</p>
+<div class="codehilite"><pre><span></span><code>MNEMONIC=&quot;Your MNEMONICs&quot; // A wallet with enough ETH
+INFURA_URL=&quot;Your Infura URL with API key&quot;
+</code></pre></div>
+
+<p><a href="https://ethereum.stackexchange.com/questions/96929/infura-io-secret-configuration-in-hdwalletprovider-truffle-config-js" target="_blank" rel="noopener noreferrer">source</a></p>
+<h2 id="incorporating-infura-into-your-development-environment">Incorporating Infura Into Your Development Environment</h2>
+<p>Now let's see how we take our Infura credentials and plug them into a development framework like Truffle. For this, we're going to dive deeper into our <code>truffle-config.js</code> file</p>
+<p>As you might have gathered by now, the Truffle configuration file (<code>truffle-config.js</code>) is the backbone of a Truffle-based project. Thus far we’ve only seen it used to store details of the different networks we’re targeting (e.g. local, testnet, mainet, etc), but it’s actually used for a lot more, such as network configuration.</p>
+<p>To illustrate this, let's look at the <code>networks</code> section of our <code>truffle-config.js</code> from our SimpleStorage example we've been working on in previous lessons. Here's a sample <code>truffle-config.js</code> file that targets the Ganache endpoint we setup earlier:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">networks</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">development</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">host</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+      <span class="nx">port</span><span class="o">:</span> <span class="mf">8545</span><span class="p">,</span>
+      <span class="nx">network_id</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span> <span class="c1">// Match any network id</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">compilers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">solc</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">version</span><span class="o">:</span> <span class="s2">&quot;^0.8.0&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>When we run <code>truffle init</code> earlier, though, the <code>truffle-config.js</code> contains a ton of helpful material that's been commented out. For example, here's a section under <code>networks</code>:</p>
+<div class="codehilite"><pre><span></span><code>    <span class="c1">// Useful for deploying to a public network.</span>
+    <span class="c1">// NB: It&#39;s important to wrap the provider as a function.</span>
+    <span class="c1">// ropsten: {</span>
+    <span class="c1">// provider: () =&gt; new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),</span>
+    <span class="c1">// network_id: 3,       // Ropsten&#39;s id</span>
+    <span class="c1">// gas: 5500000,        // Ropsten has a lower block limit than mainnet</span>
+    <span class="c1">// confirmations: 2,    // # of confs to wait between deployments. (default: 0)</span>
+    <span class="c1">// timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)</span>
+    <span class="c1">// skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )</span>
+    <span class="c1">// },</span>
+</code></pre></div>
+
+<p>To activate this, all we have to do is comment the code back in (<code>⌘ /</code> in VSCode) and substitute in the credentials we got from Infura. Note that you need to change the <code>YOUR-PROJECT-ID</code> and well as whatever subdomain network you'd like to work from. Be sure as well to change the <code>network_id</code> to <a href="https://besu.hyperledger.org/en/stable/Concepts/NetworkID-And-ChainID/" target="_blank" rel="noopener noreferrer">the appropriate one for your network.</a> </p>
+<p>To grab our Infura credentials safely from our <code>.env</code> file, you'll include this at the top of <code>truffle-config.js</code> (HDWallet is provided, we just need to comment it out):</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">HDWallet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@truffle/hdwallet-provider&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">dotenv</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;dotenv&#39;</span><span class="p">);</span>
+<span class="nx">dotenv</span><span class="p">.</span><span class="nx">config</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">mnemonic</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MNEMONIC</span><span class="p">;</span>
+</code></pre></div>
+
+<p>(For reference, in the above snippet we're also using Truffle’s <a href="https://github.com/trufflesuite/truffle/tree/develop/packages/hdwallet-provider" target="_blank" rel="noopener noreferrer">HDWalletProvider library</a> enabling us to use a custom mnemonic as part of the deployment.) </p>
+<p>We can change the name of our testnet to any one we'd like. Here's what it would look like for Rinkeby:</p>
+<div class="codehilite"><pre><span></span><code>    <span class="nx">rinkeby</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">provider</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="ow">new</span> <span class="nx">HDWalletProvider</span><span class="p">(</span><span class="nx">mnemonic</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">INFURA_URL</span><span class="p">),</span>
+      <span class="nx">network_id</span><span class="o">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span>
+      <span class="nx">gas</span><span class="o">:</span> <span class="mf">5500000</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+<p>To migrate SimpleStorage to Rinkeby, we run the following command:</p>
+<div class="codehilite"><pre><span></span><code>$ truffle migrate --network rinkeby
+</code></pre></div>
+
+<p>That's it! If you have enough Rinkeby test Eth in the account associated with your mnemonic phrase, your contract is now deployed to a public testnet using Infura!</p>
+<p>Later in the course, we'll discuss how Truffle and Infura can be used in the <code>truffle-config.js</code> file to deploy to multiple networks, including non-Ethereum networks.</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/docs/S04-developer-tooling/M3-infura/L1/index.md" target="_blank">Edit this page on Github</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>
