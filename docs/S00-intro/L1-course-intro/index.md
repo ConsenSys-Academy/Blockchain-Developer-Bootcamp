@@ -30,5 +30,6 @@ Most modules have graded quizzes at the end of the module.
 
 Throughout the course, you'll see that some of the lessons are "Live Presentations," these are demonstrations and walkthroughs of the concepts we're learning in the course. They will be hosted by wide cast of characters, including Academy staff, ConsenSys engineers, and developers working in the space.
 
+**To help us pick the best time for these sessions, along with the weekly Office Hours and study sessions we hope to setup, <a href="https://doodle.com/poll/z5nqdq25zube8tyt#calendar" target="_blank" rel="noopener noreferrer">please fill out this survey</a> to let us know the best time for you to meet.**
 
 So without further ado, we wish you the best of luck, and let’s get started!
