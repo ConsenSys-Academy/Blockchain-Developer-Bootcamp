@@ -63,7 +63,7 @@ Myths > values > choice > signalling > legitimacy > coordination.
 
 ![myths-quote](/docs/img/S05/myths-quote.png)
 
-[@punk6929 in this tweet thread 🧵 ](https://twitter.com/punk6529/status/1424127515476598796){target=_blank}beautifully sums up the role of NFTs in creating culture, myths and scaling human collaboration.
+[@punk6929 in this tweet thread 🧵 ](https://twitter.com/punk6529/status/1424127515476598796){target=_blank} beautifully sums up the role of NFTs in creating culture, myths and scaling human collaboration.
 
 Myth Building, or "branding and marketing", allows companies to place a logo on an item and charge the idea. It allows celebrities to earn hefty sums of money for a brand's association with them. Myths underpin even cryptocurrencies if we take a look at Bitcoin or Dogecoin.
 
@@ -99,7 +99,7 @@ You can also [explore how to add royalties for various platform secondary sales 
 
 What if you can go beyond NFTs and create in-game assets that can make money?
 
-![|250x249](https://lh5.googleusercontent.com/Z6s1gBKrQnWP1LcqdfkMf342woynzwOcv4krmajmlRWqgXvYf3sOXdE9ajuSfeCJggmdPb3Ac4iCHd3wKiMSG-Vqkn643yNkCoyXnuoJ-XBwCuv_6VMp69JbIouZrGpQ0JSLzskI=s0){target=_blank}
+![|250x249](https://lh5.googleusercontent.com/Z6s1gBKrQnWP1LcqdfkMf342woynzwOcv4krmajmlRWqgXvYf3sOXdE9ajuSfeCJggmdPb3Ac4iCHd3wKiMSG-Vqkn643yNkCoyXnuoJ-XBwCuv_6VMp69JbIouZrGpQ0JSLzskI=s0)
 
 ## The MetaVerse: Gaming and NFTs
 
@@ -107,17 +107,17 @@ Fun fact: the genesis of Ethereum sort of started with games. Vitalik Buterin di
 
 Turns out, [NFTs are a crucial building block](https://www.yahoo.com/now/blockchain-games-nfts-integral-part-153545092.html){target=_blank} to the [metaverse](https://en.wikipedia.org/wiki/Metaverse){target=_blank} and in-game economies. AXIE Infinity is proving to [be the killer app of Gaming and NFTs](https://decrypt.co/76333/crypto-game-axie-infinity-has-generated-84-9m-one-month){target=_blank}, with [more revenue than Uniswap and even Ethereum itself](https://thedefiant.io/axie-infinity-revenue-beats-ethereum/){target=_blank}. Gaming is the best place due to feedback loops and the utility of the NFT. In-game items can be represented as NFTs. A game's feedback loop keeps the users engaged and can give added value to the NFTs. Straight out of the book [Ready Player One](https://en.wikipedia.org/wiki/Ready_Player_One){target=_blank}, play-to-earn is an emerging phenomenon where [people playing games are earning more than the average income in some developing nations](https://www.youtube.com/watch?v=Yo-BrASMHU4){target=_blank}.
 
-![|479x217](https://lh4.googleusercontent.com/8A6Ev7tzhnfhtkQG-dygcY5omyMlkoKY43mQAE7R6woVV0HOhd6GVAVJHxuTUCHo0vMgqj052Dh8b-j8wQoM31Od7f6y8juanQKtmFuF82tOAVz9750gUjU-iBLxsSsmhnQjzzkz=s0){target=_blank}
+![|479x217](https://lh4.googleusercontent.com/8A6Ev7tzhnfhtkQG-dygcY5omyMlkoKY43mQAE7R6woVV0HOhd6GVAVJHxuTUCHo0vMgqj052Dh8b-j8wQoM31Od7f6y8juanQKtmFuF82tOAVz9750gUjU-iBLxsSsmhnQjzzkz=s0)
 
 Massively multiplayer online role-playing games like [Everquest](http://www.todayifoundout.com/index.php/2019/03/that-time-a-video-game-had-an-economy-almost-as-strong-as-russia/){target=_blank}, [World of Warcraft](https://joshkaufman.net/everything-i-know-about-business-i-learned-from-world-of-warcraft/){target=_blank}, [EVE Online](https://www.youtube.com/watch?v=ijhAILUNz_s){target=_blank}, have already had internal game economies for years. [Fortnite](https://www.investopedia.com/tech/how-does-fortnite-make-money/){target=_blank} and [Roblox](https://www.statista.com/statistics/1190638/quarterly-revenue-roblox-corporation/){target=_blank} make massive amounts of money. These game economies can [yield interesting data](https://conf.splunk.com/files/2020/slides/PLA1729C.pdf){target=_blank}. However, centralization plagues the game creators and players themselves. Game developers can act as central banks and skew imperfect "markets". Game developers themselves have to fork over tons of money to app stores. Worst of all, markets don't exist since players can't trade with each other.
 
-![|624x89](https://lh3.googleusercontent.com/XJJ_9gM0HJdRbsLA8TVIgoLQv4dkAsxT3Ashp0I_75FFx_yR0hh_8k4xGDplzStqsLXjZwtV7f4jOkAHsMGO5MCv4d8wBE6_U0kK6yin4ulQ9coZVSDNGh1vunJg8a1PinU5JwWM=s0){target=_blank}
+![|624x89](https://lh3.googleusercontent.com/XJJ_9gM0HJdRbsLA8TVIgoLQv4dkAsxT3Ashp0I_75FFx_yR0hh_8k4xGDplzStqsLXjZwtV7f4jOkAHsMGO5MCv4d8wBE6_U0kK6yin4ulQ9coZVSDNGh1vunJg8a1PinU5JwWM=s0)
 
 ## Blockchains are the new app stores
 
 Fortnite, Roblox, and other games have to pay massive fees to centralized app store providers for all the money they make. [Roblox pays 24%](https://developer.roblox.com/en-us/articles/developer-economics){target=_blank} of all money generated to App Stores. [Fortnite famously sued Google and Apple for the large cut they took](https://www.cnn.com/2021/02/10/tech/tim-sweeney-epic-games-risk-takers/index.html){target=_blank}.
 
-![|624x271](https://lh4.googleusercontent.com/YUjZ2E_LErKoSUdy_sAFcv16vj9FQO34TE1hQZsNExiCY5IpUNrFHryYFjssC-QjXjDB5oQJhd0cQNO8FUGgQf6lJOdn3IBEPs7h6F9mX-oEizHE4cvKma7HW7T6hTbCsYEQevbq=s0){target=_blank}
+![|624x271](https://lh4.googleusercontent.com/YUjZ2E_LErKoSUdy_sAFcv16vj9FQO34TE1hQZsNExiCY5IpUNrFHryYFjssC-QjXjDB5oQJhd0cQNO8FUGgQf6lJOdn3IBEPs7h6F9mX-oEizHE4cvKma7HW7T6hTbCsYEQevbq=s0)
 
 See [Chiris Dixon's thread 🧵](https://twitter.com/cdixon/status/1427452472046493704){target=_blank}
 
