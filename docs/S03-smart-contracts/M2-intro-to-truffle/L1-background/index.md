@@ -121,6 +121,27 @@ As you can likely infer from the commands, they map to key stages of the develop
 
 Truffle also provides Boxes, or pre-built templates and Truffle codebases that allow you to focus on either learning more about smart contract development or building quickly. In addition to Truffle  code, Truffle Boxes can contain other helpful modules, Solidity contracts & libraries, front-end views and more; all the way up to complete example dapps.
 
+## Truffle Boxes
+Up until now we’ve been writing all the code, scripts, and config ourselves and while this follows the mantra of “learning by doing”, there’s another great resource at your disposal and that is Truffle boxes.
+Learning with Truffle boxes
+As per the description, boxes are “helpful boilerplates” that comprise of sample contracts, front-end code (using a variety of different frameworks), and applied boxes that focus on a particular theme or protocol such as L2. From a learning standpoint they’re a useful to way to augment your learning by immediately getting hands-on. 
+
+At the time of writing some of the boxes that would be a great s
+
+Layer 2 (examples targeting Optimism, Arbitrum, and Polygon respectively)
+Filecoin
+Aave Flashloan example
+Oracles with ChainLink
+
+Installing a box is simply a case of using the unbox command, for example:
+
+    $ truffle unbox optimism
+
+
+Beyond this, simply follow along with the [readme](https://github.com/truffle-box/optimism-box)..
+
+
 We'll discuss boxes more when we dive deeper into developer tooling and more advanced Truffle, but feel free to explore available boxes. Two popular boxes to for folks new to Truffle are <a href="https://www.trufflesuite.com/tutorial" target="_blank" rel="noopener noreferrer">Petshop</a> and <a href="https://www.trufflesuite.com/docs/truffle/quickstart" target="_blank" rel="noopener noreferrer">Metacoin.</a>
 
 In the next section, we'll take a simple smart contract and use it to explore the initial commands for developing using Truffle.
+

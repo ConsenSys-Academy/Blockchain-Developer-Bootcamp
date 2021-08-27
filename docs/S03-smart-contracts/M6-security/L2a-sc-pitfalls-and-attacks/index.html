@@ -95,7 +95,7 @@ function () payable external {
   <p>If you can’t remove the external call, the next simplest way to prevent this attack is to do the internal work before making the external function call.</p>
   
   <pre class="right">
-mapping (address => uint) private userBalances;
+mapping (address => uint) private userBalances;     // Better!
 
 function withdrawBalance() public {
     uint amountToWithdraw = userBalances[msg.sender];

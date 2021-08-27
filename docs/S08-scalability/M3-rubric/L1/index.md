@@ -91,3 +91,4 @@ This was a very technical discussion of the rubric for analyzing L2 or scalabili
 
 - <a href="https://consensys.net/blog/blockchain-explained/four-questions-to-judge-any-layer-2-scaling-solution/" target="_blank" rel="noopener noreferrer">Article: For Questions to Judge Any Layer 2 Scaling Solution</a> A less-technical, more general-audience article discussing the same paradigm outlined in this lesson
 - <a href="https://medium.com/matter-labs/evaluating-ethereum-l2-scaling-solutions-a-comparison-framework-b6b2f410f955" target="_blank" rel="noopener noreferrer">Article: Evaluating Ethereum L2 Scaling Solutions: A Comparison Framework</a> Another framework proposal from Matter Labs
+- <a href="https://gourmetcrypto.substack.com/p/layer-2-for-beginners" target="_blank" rel="noopener noreferrer">Article: Layer-2 for Beginners (Ali Atiia)</a> Or How to Spot a Sidechain Charlatan and Keep Your Penny Safe
