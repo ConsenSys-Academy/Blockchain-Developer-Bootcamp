@@ -7,13 +7,13 @@ All your tests live in a dedicated tests directory, which is automatically creat
 
 Go back to the SimpleStorage file directory we created in the previous lesson, “Intro to Truffle -- Part II”. To create your first test for SimpleStorage run the following:
 
-    $ truffle create test SimpleStorage
+    truffle create test SimpleStorage
 
 As with the earlier create command this creates a simple scaffold which includes a reference to the actual underlying contract artifact. 
 
 Following this you can simply run the following to run the test suite.
 
-    $ truffle test
+    truffle test
 
 
 It’s worth noting that the testing framework will temporarily spin up it’s own Ganache with which to run the tests against (which it subsequently tears down), thus ensuring it doesn’t pollute any existing instances you might have running.
@@ -42,4 +42,4 @@ All going well everything should pass again and you’ll see similar output to t
 
 As can be inferred from the above example, tests are typically written using the AAA (Arrange, Act, Assert) pattern. In addition, you can access the accounts array and access to the web3 library.
 
-More detail can be found on tests here.
+More detail can be found on tests [here](https://www.trufflesuite.com/docs/truffle/testing/testing-your-contracts).
