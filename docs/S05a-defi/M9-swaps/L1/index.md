@@ -45,3 +45,6 @@ We’ve abstracted all the complexities, allowing MetaMask users to Swap > 1,000
 No need to approve every token on multiple DEXs and aggregators for each trade. With Swaps, users only need to approve each token once, reducing gas costs and shortening the path to executing their trade.
 
 ![metamask-swaps-order-flow](/docs/img/S05/metamask-swaps-order-flow.png)
+
+## Additional Material
+- [Users Guide to Swaps (Metamask)](https://metamask.zendesk.com/hc/en-us/articles/4405093054363){target=_blank}
