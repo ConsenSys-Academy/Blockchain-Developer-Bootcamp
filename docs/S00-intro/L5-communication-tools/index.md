@@ -1,7 +1,5 @@
 # Communication Tools
 
-You can reach us by e-mailing **developer.program@consensys.net**
-
 ## Discord
 
 Students have access to a chat app called Discord. [Here is the link to join the ConsenSys Discord channel.](https://discord.gg/Nmjbrapxv7){target=_blank}
