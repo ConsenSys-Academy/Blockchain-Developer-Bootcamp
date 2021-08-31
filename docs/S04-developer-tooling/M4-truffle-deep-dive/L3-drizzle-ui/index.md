@@ -1,5 +1,6 @@
 # Wire up the React app with Drizzle
 *Note: Drizzle is no longer maintained by Truffle.
+
 Before we go further, let's start our React app by running the follow command inside our client directory:
 
     npm install @drizzle/store
