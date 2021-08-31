@@ -186,21 +186,19 @@ Now that we have some ether in our account, we can send some to another account.
 
 An ethereum transaction includes the following data:
 
-    {
-      from: String - The address for the sending account. Uses the web3.eth.defaultAccount property, if not specified.
+<code>from:</code> String - The address for the sending account. Uses the web3.eth.defaultAccount property, if not specified.
 
-      to: String - (optional) The destination address of the message, left undefined for a contract-creation transaction.
+<code>to:</code> String - (optional) The destination address of the message, left undefined for a contract-creation transaction.
 
-      value: Number|String|BigNumber - (optional) The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction.
+<code>value:</code> Number|String|BigNumber - (optional) The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction.
 
-      gas: Number|String|BigNumber - (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
+<code>gas:</code> Number|String|BigNumber - (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
 
-      gasPrice: Number|String|BigNumber - (optional, default: To-Be-Determined) The price of gas for this transaction in wei, defaults to the mean network gas price.
+<code>gasPrice:</code> Number|String|BigNumber - (optional, default: To-Be-Determined) The price of gas for this transaction in wei, defaults to the mean network gas price.
 
-      data: String - (optional) Either a byte string containing the associated data of the message, or in the case of a contract-creation transaction, the initialisation code.
+<code>data:</code> String - (optional) Either a byte string containing the associated data of the message, or in the case of a contract-creation transaction, the initialisation code.
 
-      nonce: Number - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
-    }
+<code>nonce:</code> Number - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 
 To send some ether to another account, you just need to specify the send, the recipient and the value.
 
