@@ -20,7 +20,7 @@ The bare minimum that is needed is:
 
 ### DAO Tools and Services
 
-![dao-services.png](/docs/img/S06/dao-services.png){target=\_blank}
+![dao-services.png](../../img/S06/dao-services.png){target=\_blank}
 
 Beyond the basics, developers can build full-featured and more customized DAOs. Here are some of the leading DAO frameworks.
 

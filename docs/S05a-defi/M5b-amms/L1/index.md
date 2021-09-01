@@ -42,7 +42,7 @@ x = supply of asset 1
 y = supply of asset 2
 k = Fixed Size of Pool
 
-![](/docs/img/S05/uniswap-market-graph.png)
+![](../../../img/S05/uniswap-market-graph.png)
 
 The downside:
 
