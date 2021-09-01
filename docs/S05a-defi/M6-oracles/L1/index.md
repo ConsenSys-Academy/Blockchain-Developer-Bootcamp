@@ -4,7 +4,7 @@
 
 Many top DeFi applications by [total value locked](https://coinmarketcap.com/alexandria/glossary/total-value-locked-tvl#:~:text=To%20put%20it%20simply%2C%20total,specific%20application%20by%20DeFi%20completely.){target=\_blank} use oracles in some manner. Some of the most popular use cases are collecting pricing data, event-driven decentralized execution, and random number generation.
 
-Some popular oracle sources are [Chainlink](https://chain.link/){target=\_blank} and [Tellor](https://tellor.io/){target=\_blank}. Chainlink is described [here](https://www.gemini.com/cryptopedia/what-is-chainlink-and-how-does-it-work). Protocols like [Uniswap](https://uniswap.org/){target=\_blank and [Maker](https://makerdao.com/en/){target=\_blank} can also act like oracles, since they can provide data from their feeds. In fact [Compound Finance uses Uniswap v2 data in conjuction with Chainlink](https://compound.finance/docs/prices){target=\_blank}.
+Some popular oracle sources are [Chainlink](https://chain.link/){target=\_blank} and [Tellor](https://tellor.io/){target=\_blank}. Chainlink is described [here](https://www.gemini.com/cryptopedia/what-is-chainlink-and-how-does-it-work). Protocols like [Uniswap](https://uniswap.org/){target=\_blank} and [Maker](https://makerdao.com/en/){target=\_blank} can also act like oracles, since they can provide data from their feeds. In fact [Compound Finance uses Uniswap v2 data in conjuction with Chainlink](https://compound.finance/docs/prices){target=\_blank}.
 
 Oracles in DeFi are used for a wealth of different reasons:
 

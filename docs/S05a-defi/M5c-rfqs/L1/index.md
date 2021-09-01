@@ -16,9 +16,9 @@ RFQ facilities direct trade between parties which is:
 
 - Fair - avoids the [mempool](https://decrypt.co/42839/inside-the-mysterious-world-of-bitcoins-mempool){target=\_blank} and issues around Front running, and miner extractable value.
 - Efficient - Eliminates slippage, so you get what you paid for.
-- Scalable - negotiations happen off-chain (not on Ethereum){target=\_blank} and scales better than relying solely on Ethereum’s throughput.
+- Scalable - negotiations happen off-chain (not on Ethereum) and scales better than relying solely on Ethereum’s throughput.
 
-![airswap-overview](/docs/img/S05/airswap-rfq-overview.png)
+![airswap-overview](/../../img/S05/airswap-rfq-overview.png)
 
 ## Summary
 
@@ -36,7 +36,7 @@ Makers submit their prices to trade. Takers are counterparties who wish to start
 
 Instead of talking to each Maker, the Taker sends a request to the Indexer, who aggregates the different Makers for Takers.
 
-This negotiation is done off-chain via RPC (remote procedure calls){target=\_blank}, making it resistant to flashbots searching the mempool for frontrunning opportunities, Miner Extractable Value and other shenanigans.
+This negotiation is done off-chain via RPC (remote procedure calls), making it resistant to flashbots searching the mempool for frontrunning opportunities, Miner Extractable Value and other shenanigans.
 
 ![airswap-indexer-flow](/docs/img/S05/airswap-indexer-flow.png)
 
