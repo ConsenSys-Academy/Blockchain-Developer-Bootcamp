@@ -25,7 +25,7 @@ As groups start to scale, there will inevitably be issues with certain members. 
 
 Decentralization means clear governance structures. Luckily we have some [prior history with specific DeFi projects](https://www.gemini.com/cryptopedia/defi-solutions-decentralized-governance-meaning){target=\_blank} from which we can learn. For example, yearn Finance, Synthetix, Compound Finance and MakerDAO have great governance models worth studying.
 
-![dao-flow.png](/docs/img/S06/dao-flow.png)
+![dao-flow.png](../../img/S06/dao-flow.png)
 
 ### Improvement Process
 

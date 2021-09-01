@@ -11,7 +11,7 @@ If you want to go far, go together.”
 
 [DAOs or Decentralized Autonomous Organizations](https://ethereum.org/en/dao/){target=\_blank} are member-owned communities with a built-in treasury, no central leadership, and whose rules of engagement are codified into smart contracts. They can be a safe way to collaborate with internet strangers while committing funds towards a specific cause. DAOs are a mechanism for [social scalability](http://unenumerated.blogspot.com/2017/02/money-blockchains-and-social-scalability.html){target=\_blank} since they allow members to organize and direct capital towards goals in a trustless and fluid manner. The use of smart contracts allows for the transparency of funds, the rules of operation, and the creation of incentive mechanisms to provide security guarantees around member actions. Thus the economics and control of an organization are laid out transparently, allowing for “trustless” peer to peer participation in open and insecure networks.
 
-![web-evolution.png](/docs/img/S06/web-evolution.png)
+![web-evolution.png](../../img/S06/web-evolution.png)
 
 [Aragon further explains DAOs,](https://aragon.org/dao){target=\_blank} a DAO framework we will soon explore. An [excellent visual description of DAOs can be found here](https://nirolution.com/decentralized-autonomous-organization/){target=\_blank}. Finally, you can find a list of interesting DAO resources via [DAOtalk.org](https://daotalk.org/){target=\_blank} and [metagame.wtf](https://wiki.metagame.wtf/docs/great-houses/house-of-daos){target=\_blank}.
 
@@ -32,11 +32,11 @@ Pragmatically DAOs have the ability to:
 
 DAOs address the [Principal-Agent Problem](https://www.gemini.com/cryptopedia/decentralized-autonomous-organization-dao#section-da-os-a-solution-to-the-principal-agent-dilemma){target=\_blank}, whereas networks grow members who delegate their power to a representative, concentrating power. This is done to deal with [the complexity costs of dealing with large groups of people](https://en.wikipedia.org/wiki/Dunbar%27s_number){target=\_blank}. This is most pronounced in large centralized institutions. However, due to an asymmetry of power, information and incentives, these agents can serve themselves at the expense of others. Examples of this can be Chief Financial Officer misappropriating funds. Or a charity’s executive board devoting the majority of donations to salaries instead of its stated mission. The root of these issues is due to the general lack of immediate accountability due to poor transparency of rules, incentives, and financial information, the arbitrary execution of policies and poor ability to voice concerns.
 
-![dao-vs-traditional.jpeg](/docs/img/S06/dao-vs-traditional.jpeg)
+![dao-vs-traditional.jpeg](../../img/S06/dao-vs-traditional.jpeg)
 
 Through smart contracts, DAOs provide transparency, self-reinforcing rules, clear incentives and disintermediate control. This allows everyone to have a vote that is enforced. It also provides an open and programmatic means of viewing the community’s finances and voting history. Smart contracts can also be used to design incentives that limit the principal-agent problem, increase security, direct member actions towards a goal, and increase collaboration between members.
 
-![dao-trifecta.png](/docs/img/S06/dao-trifecta.png)
+![dao-trifecta.png](../../img/S06/dao-trifecta.png)
 
 In some ways, DAOs can be seen as an evolution of tokens where they help further coordinate actions between people. The token represents a shared ownership; the DAO helps to coordinate this. One could take this further and anchor a DAO to the real world with a [LAO](https://defirate.com/lao/){target=\_blank}, creating a link between the internet native organization and a local jurisdiction (like Wyoming, which has laws around DAOs){target=\_blank}.
 

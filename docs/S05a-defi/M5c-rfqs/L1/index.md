@@ -18,7 +18,7 @@ RFQ facilities direct trade between parties which is:
 - Efficient - Eliminates slippage, so you get what you paid for.
 - Scalable - negotiations happen off-chain (not on Ethereum) and scales better than relying solely on Ethereum’s throughput.
 
-![airswap-overview](/docs/img/S05/airswap-rfq-overview.png)
+![airswap overview](../../../img/S05/airswap-rfq-overview.png)
 
 ## Summary
 
@@ -38,13 +38,13 @@ Instead of talking to each Maker, the Taker sends a request to the Indexer, who 
 
 This negotiation is done off-chain via RPC (remote procedure calls), making it resistant to flashbots searching the mempool for frontrunning opportunities, Miner Extractable Value and other shenanigans.
 
-![airswap-indexer-flow](/docs/img/S05/airswap-indexer-flow.png)
+![airswap indexer flow](../../../img/S05/airswap-indexer-flow.png)
 
 ## Price Discovery and Verification
 
 Makers can consult with [Oracles](https://ethereum.org/en/developers/docs/oracles/){target=\_blank} to consider a fair price suggestion. Takers can also consult with Oracles to ensure the price given is a good deal.
 
-![airswap-oracle-flow](/docs/img/S05/airswap-oracle-flow.png)
+![airswap-oracle-flow](../../../img/S05/airswap-oracle-flow.png)
 
 ## Liquidity via Delegates
 
@@ -58,4 +58,4 @@ This is done via [atomic swaps](https://support.airswap.io/en/articles/2455935-w
 
 The added benefit of this is that compared to order books, off-chain negotiation makes it more likely that orders will be filled once they are accepted. It helps to eliminate slippage and front running.
 
-![airwap-swap-flow](/docs/img/S05/airwap-swap-flow.png)
+![airwap-swap-flow](../../../img/S05/airwap-swap-flow.png)
