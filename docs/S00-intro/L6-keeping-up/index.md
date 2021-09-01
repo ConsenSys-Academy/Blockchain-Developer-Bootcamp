@@ -41,6 +41,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Basecamp](https://www.notion.so/qtativ/Basecamp-55bd8855ed804a449985a0cec6540ae1){target=_blank} and Basecamp's [Blue Chip Defi Docs and Audits](https://www.notion.so/2438c01d787b4dfd8ba3352011f194ff?v=0e065bfd666b4bc4a27216301faf1de1&p=f0a08659cf81453996f3f1250d3cab53){target=_blank}
 - [Ethereum Stack Exchange](https://ethereum.stackexchange.com/){target=_blank}
 - [Mirror.xyz](https://consensys.net/blog/metamask/mirror-xyz-review-how-to-use-metamask-to-compete-in-the-write-race/){target=_blank} Read about this interesting writing platform here
+- [The Daily Ape](http://thedailyape.com){target=_blank}
 
 
 ## YouTube
