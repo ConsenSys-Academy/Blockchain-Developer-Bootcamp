@@ -24,4 +24,6 @@ As you're going through the course, we recommend you take some time to write dow
 
 It’s impossible to learn these concepts by hearing them once. Instead, you’ll hear concepts multiple times and begin to learn more each time around. Maybe you’ll start programming and it makes some more sense. Finally, you’ll try to explain it to someone, and realize there’s a part you don’t understand, then you have to go back and learn that. 
 
-This is the process of learning blockchain, and if you can accept it, it will take the pressure off trying to perfectly understand something the first time you hear it. Instead, try to let it wash over you, ask questions when they come up, but we’re also going to dunk you in unknown, pull you up to catch your breath, then do it again! 
+This is the process of learning blockchain, and if you can accept it, it will take the pressure off trying to perfectly understand something the first time you hear it. Instead, try to let it wash over you, ask questions when they come up, but we’re also going to dunk you in unknown, pull you up to catch your breath, then do it again!
+
+Always keep in mind, if you find yourself truly stuck and need assistance, post a question into the relevant course chat and someone will be sure to assist. We are all here to learn and grow.
