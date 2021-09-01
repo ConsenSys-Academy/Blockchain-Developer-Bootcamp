@@ -2,7 +2,7 @@
    
   # Why Learn Blockchain?
 
-  Most people in crypto came here initially because of the allure of money. Either we missed an opportunity to buy, are looking for an opportunity to grow our salary, or see an opportunity for a killer app. There's no shame in that! We do hope you come for the money and stay for the paradigm shift, though.
+  Most people in crypto came here initially because of the allure of money. Either we missed an opportunity to buy, are looking for an opportunity to grow our salary, or see an opportunity for a killer app. There's no shame in that! We do hope though, that if you come for the money, you stay for the paradigm shift.
   
   Blockchain promises to upend the current top-down information systems in our world. Currently, most users of the internet surrender their personal data to centralized databases and services.
   
@@ -14,8 +14,8 @@
   
   ## External Resources
   
-  * [Things That Matter Outside DeFi (Vitalik Buterin)](https://www.youtube.com/watch?v=oLsb7clrXMQ){target=_blank}
   * [Y Combinator: Building for the Blockchain (2017)](https://blog.ycombinator.com/building-for-the-blockchain/){target=_blank} Dated but interesting!
   * [Why It's Hard to "Get" Bitcoin: The Blockchain Spectrum](https://unchained-capital.com/blog/blockchain-spectrum/){target=_blank}
   * [The Promise of Blockchain: Vinay Gupta](https://vimeo.com/161183966){target=_blank}
+  * [Things That Matter Outside DeFi (Vitalik Buterin)](https://www.youtube.com/watch?v=oLsb7clrXMQ){target=_blank}
   * [Cryptocurrencies (Last Week Tonight)](https://www.youtube.com/watch?v=g6iDZspbRMg){target=_blank}
