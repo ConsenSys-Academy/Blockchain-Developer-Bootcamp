@@ -27,7 +27,7 @@ ZK-Rollups are not worth it for applications with little on-chain activity but a
 
 Optimistic Rollups use a sidechain that sits in parallel to the mainnet Ethereum chain. They don’t do any computation by default: after a transaction, the Optimistic Rollup L2s proposes a new state to the L1 mainnet, or “notarizes” the transaction. L2 Transactions written to L1 mainnet as <b>calldata</b>.
 
-The main mechanism that makes this work are <b>fraud proofs:</b> If someone notices a fraudulent transaction the Optimistic Rollup network will execute a fraud-proof and run the transaction’s computation using the available state data; the gas you need to run a fraud proof is reimbursed.
+The main mechanism that makes this work are <b>fraud proofs:</b> If a verifier notices a fraudulent transaction the Optimistic Rollup network will execute a fraud-proof and run the transaction’s computation using the available state data; the gas you need to run a fraud proof is reimbursed.
 
 ![diagram showing rollup workflow](../../../img/S08/rollup-simple-1.png)
 
@@ -72,6 +72,7 @@ This concludes our overview of the kinds of scaling solutions available to us. I
 ## Additional Material
 - <a href="https://ethereum.org/en/developers/docs/scaling/" target="_blank" rel="noopener noreferrer">Wiki: Scaling (Ethereum.org)</a> Great overview of the topic, including the "pros and cons" of different solutions
 - <a href="https://youtu.be/BgCgauWVTs0" target="_blank" rel="noopener noreferrer">Video: Layer 2 Scaling Explained (Finematics)</a>
+- <a href="https://l2beat.com/" target="_blank" rel="noopener noreferrer">Dashboard: L2beat</a> A research and network dashboard showing the current level of activity on different networks.
 - <a href="https://blog.infura.io/offchain-protocols-sidechains-and-rollups/" target="_blank" rel="noopener noreferrer">Article: Off-chain protocols: Sidechains and Rollups (Infura)</a>
 - <a href="https://drive.google.com/file/d/1BdVQVX5cEJ2IDbCnfTAsyjlpU7IWUeB1/view" target="_blank" rel="noopener noreferrer">Slide Deck: Scaling Ethereum using Rollups and Sidechains</a> From the <a href="https://www.meetup.com/ethereum-engineering/events/277601273/" target="_blank" rel="noopener noreferrer">Engineering Ethereum meetup</a> and presented by Peter Robinson.
 - <a href="https://forum.makerdao.com/t/a-multichain-strategy-and-roadmap-for-maker/8380" target="_blank" rel="noopener noreferrer">Article: Maker's roadmap for L2s</a> Discusses one major application's understanding and strategy for Layer 2 solutions.

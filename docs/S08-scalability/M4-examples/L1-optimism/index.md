@@ -107,6 +107,8 @@ This may be a bit underwhelming! However, if we have loaded in our Infura Optimi
 
 <pre>npm run migrate:ovm --network=optimistic_kovan</pre>
 
+*Please note: as of early September, the Optimism box is having issues with gas prices on Kovan network. Local or Mainnet Optimism deployment may be better.*
+
 Like standard Truffle, if you would like to migrate previously migrated contracts on the same network, you can run <code>truffle migrate --config truffle-config.ovm.js --network=(ganache | optimistic_ethereum | optimistic_kovan)</code> and add the <code>--reset</code> flag.
 
 Following the above steps should allow you to deploy to the Optimism Layer 2 chain. This is only the first step! Once you are ready to deploy your own contracts to function on Layer 1 Ethereum using Layer 2 Optimism, you will need to be aware of the ways in which <a href="https://community.optimism.io/docs/developers/bridge/standard-bridge.html" target="_blank" rel="noopener noreferrer">Layer 1 and Layer 2 interact in the Optimism ecosystem.</a>
