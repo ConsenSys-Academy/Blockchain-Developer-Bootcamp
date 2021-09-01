@@ -4,7 +4,7 @@ As we mentioned, the blockchain space moves very fast. Courses like this are gre
 
 Luckily, there are plenty of places to read the latest and greatest happening in the space, particularly Ethereum. Here's where we suggest you get started.
 
-_Have suggestions you'd like to see on the list? [Edit this page here!](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S00-intro/L6-keeping-up/index.md){target=_blank}_
+_Have suggestions you'd like to see on the list? [Edit this page here!](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/docs/S00-intro/L6-keeping-up/index.md){target=_blank}_
 
 ## Twitter
 
