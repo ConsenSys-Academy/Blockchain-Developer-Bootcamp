@@ -12,11 +12,11 @@ In this course, we start off by teaching you about the underpinnings of the bloc
 
 We will start with an overview of what we call blockchain primitives: The technology brought together underneath the name blockchain. We'll then dive deeper into the specifics of the Ethereum protocol and learn how those blockchain primitives show up there. 
 
-Next, we'll move on to understanding writing smart contracts.  We introduce you to Solidity, a programming language for Smart Contracts that lets you interact with the Ethereum Virtual Machine. We'll learn about Truffle so you can try out your new Solidity skills! We'll also discuss smart contract design patterns and security for your smart contract.
+Next, we'll move on to understanding how to write smart contracts.  We introduce you to Solidity, a programming language for Smart Contracts that lets you interact with the Ethereum Virtual Machine. We'll learn about Truffle so you can try out your new Solidity skills! We'll also discuss smart contract design patterns and security for your smart contracts.
 
 After that, we'll introduce you to developer tooling, including Web3 libraries, and other development frameworks. 
 
-Next, we'll discuss the way in which people are innovating blockchain development, with an introduction to Decentralized Finance (DeFi) and Decentralized Autonomous Organizations (DAOs). While this material may seem a bit overwhelming, it's important to it have available to you as you continue to develop in the space. You can always come back later to reread stuff. And we won't be testing you on it!
+Next, we'll discuss the way in which people are innovating blockchain development, with an introduction to Decentralized Finance (DeFi) and Decentralized Autonomous Organizations (DAOs). While this material may seem a bit overwhelming, it's important to have it available to you as you continue to develop in the space. You can always come back later to reread stuff. And we won't be testing you on it!
 
 Next, we'll touch on scalability: What it is, why it's necessary, and how some folks are proposing we approach it. We'll have a few tutorials allowing you to setup your own development environment for working on some of these scalability solutions.
 
