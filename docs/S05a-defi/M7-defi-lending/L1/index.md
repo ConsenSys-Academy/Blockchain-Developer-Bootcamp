@@ -16,7 +16,9 @@ Since DeFi protocols are open and pseudonymous, uncollateralized loans are not p
 
 The level of over-collateralization is represented by the loan-to-collateral ratio stated by the protocol. The loan-to-collateral ratio is the percentage you can borrow of an asset relative to the collateral deposited. Other names for the same idea include collateral factor, collateral ratio, cFactor or cRatio. Since we cannot borrow more than we deposit, the cFactor is always below 100%. Depending on the quality of the asset, the collateralization ratio is set.
 
-Borrowed value > collateral value \* cFactor = All good!
+![all-good-no-liquidation.gif](/docs/img/S05/all-good-no-liquidation.gif)
+
+Why collateral?
 
 ![why-collateral.gif](/docs/img/S05/why-collateral.gif)
 
