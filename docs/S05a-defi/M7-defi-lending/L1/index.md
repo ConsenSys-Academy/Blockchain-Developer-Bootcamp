@@ -68,7 +68,9 @@ Lending can occur with variable rate interest based on market demand or fixed in
 
 ![interest-rates.gif](/docs/img/S05/interest-rates.gif)
 
-Lending protocols operate in real-time. Rates are adjusted, and interest is accrued every new Ethereum block. Interest is typically [accrued to the debt token](https://medium.com/compound-finance/faq-1a2636713b69){target=\_blank} or accounts tied to the lending pool. Aave lets users redirect their stream of interest to other contracts.
+Lending protocols operate in real-time. Rates are adjusted, and interest is accrued every new Ethereum block. Interest is typically [accrued to the debt token](https://medium.com/compound-finance/faq-1a2636713b69){target=\_blank} or accounts tied to the lending pool. Aave lets users redirect their stream of interest to other contracts. This allows for interesting applications where pools of money can be programmatically deployed to earn interest. One can seperate the marketing logic form the interest earning logic.
+
+An example of this can be PoolTogether which is a no loss lottery where the winner wins the interest accumulated and doesn't sacrifice the principal. A similar project could focus on the marketing of new application of lending pools, like no loss poker, and leverage Aave's money lego to deal with the interest.
 
 Aave offers a [stable interest rate](https://docs.aave.com/faq/borrowing#:~:text=The%20variable%20rate%20is%20the,rate%20depending%20on%20market%20conditions.){target=\_blank}, which means it's fixed for a short term and can change depending on borrowing and lending dynamics of the pool. [Other platforms](https://messari.io/article/fixed-income-protocols-the-next-wave-of-defi-innovation){target=\_blank} offer fixed interest rates, like [Notional](https://notional.finance/){target=\_blank}, [88mph](https://88mph.app/){target=\_blank} and [Barnbridge](https://barnbridge.com/){target=\_blank}.
 
