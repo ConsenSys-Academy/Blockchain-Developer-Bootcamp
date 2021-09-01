@@ -16,27 +16,27 @@ Once we have money, we want to grow it. This is because [inflation](https://acad
 
 From risk emerges the [risk-return trade off](https://www.investopedia.com/terms/r/riskreturntradeoff.asp){target=\_blank} that states the potential return rises with an increase in risk. Individuals use this to assess an investment and consider many factors, like their overall risk tolerance, the potential to replace lost funds, the investment's return in relation to other assets and more. In simple terms, the riskier the project, the greater the expected. A little more [context can be found here](https://www.khanacademy.org/economics-finance-domain/core-finance/investment-vehicles-tutorial/investment-consumption/v/risk-and-reward-introduction){target=\_blank}.
 
-🖼 Add Risk Reward Line here.
+<!-- 🖼 Add Risk Reward Line here. -->
 
 In the crypto industry and DeFi, one of the main sources of risk is due to [volatility](https://www.investopedia.com/terms/v/volatility.asp){target=\_blank}. Volatility is the unsteady spread of an asset's price movements around its average price. The greater the swings, the more volatile, the riskier the asset is perceived. Volatility can be measured in different ways. You can see volatility in action [here](https://coinmarketcap.com/){target=\_blank}.
 
-🖼 Add Volatility graph.
+<!-- 🖼 Add Volatility graph. -->
 
 This volatility contributes to [exchange rate risk](https://www.investopedia.com/articles/forex/082515/how-avoid-exchange-rate-risk.asp){target=\_blank}, or the risk of devaluation of one currency compared to another. An example can be holding ETH compared to the US dollar, then ETH's price drops 15% in relation to the dollar. This problem is further compounded by holding two volatile currencies in relation to each other.
 
 Volatility emerges from various sources including [market liquidity risk](https://www.investopedia.com/articles/trading/11/understanding-liquidity-risk.asp){target=\_blank}, or the lack of buyers and sellers. [Liquidity](https://coinmarketcap.com/alexandria/glossary/liquidity){target=\_blank} is the ease in which you can buy or sell an asset. The less liquidity an asset has, the greater the volatility of an asset's price when buying or selling. [Liquidity is the lifeblood of DeFi](https://www.gemini.com/cryptopedia/what-is-liquidity-bid-ask-spread-slippage#section-what-is-market-liquidity){target=\_blank}, since large amounts of liquidity also helps to create price stability. [Illiquid assets](https://www.investopedia.com/terms/i/illiquid.asp){target=\_blank} have wilder price swings, making them less predictable, risker for network participants, and contributes to higher [slippage](https://coinmarketcap.com/alexandria/glossary/slippage){target=\_blank}. Slippage occurs when a trade settles for an average price that is different from what was requested.
 
-🖼 Add liquidity
+<!-- 🖼 Add liquidity -->
 
 Think about a market of lots of buyers and sellers for an asset. A deep pool of buyers and sellers results in a narrow [bid-ask spread](https://www.investopedia.com/trading/basics-of-the-bid-ask-spread/){target=\_blank}, since you can find alternative takers if someone quotes a price that deviates from the crowd. In DeFi, slippage is most often seen when trading niche tokens with small networks or limited liquidity on decentralized exchanges, covered in a later section.
 
-🖼 Add Bid-Ask Spread picture
+<!-- 🖼 Add Bid-Ask Spread picture -->
 
 To help reduce volatility and risk in DeFi, [stablecoins](https://www.gemini.com/cryptopedia/what-are-stablecoins-how-do-they-work){target=\_blank} were created. Stablecoins are [fungible](https://www.investopedia.com/terms/f/fungibility.asp){target=\_blank} tokens that mimic a fiat currency’s performance through a [peg](https://academy.binance.com/en/glossary/pegged-currency){target=\_blank}. Fungibility is the ability of a good or asset to be exchanged for another of the same kind, like exchanging two different dollars. A peg is a system by which one currency latches on to another to form a tight correlation. Stablecoins can maintain this peg in a variety of ways discussed in a later section. One method is through the use of collateralization and liquidation.
 
 DeFi protocols rely on collateral to allow for permissionless participation. [Collateral](https://academy.binance.com/en/glossary/collateral){target=\_blank} is an asset a borrower pledges to a lender in case they cannot pay back a loan. In DeFi, collateral is in the form of crypto assets like ETH, other tokens with deep levels of liquidity. Even NFTs, which are non-fungible tokens issued to prove ownership of a unique digital asset, can be staked as collateral. Staking refers to depositing assets into an [escrow contract](https://docs.openzeppelin.com/contracts/2.x/api/payment#Escrow){target=\_blank} thereby passing custody of the collateral to the protocol.
 
-🖼 Add Staking Collateral Visualization
+<!-- 🖼 Add Staking Collateral Visualization -->
 
 Due to the volatility of crypto assets and the lack of decentralized credit systems, most DeFi protocols rely on the [overcollateralization pattern](https://forum.openzeppelin.com/t/introduction-to-the-overcollateralized-loan-pattern-defi-primitive-and-its-security-considerations/2141){target=\_blank} to issue assets. This means requiring to cover over 100% of the loan. For example, say you wish to get $100 in one crypto asset. You will need $100 of collateral value in another asset.
 
@@ -50,7 +50,7 @@ Many protocol developers aim to achieve deep liquidity, broad usage and [network
 
 One method to bootstrap the network is via [liquidity mining](https://medium.com/coinmonks/liquidity-mining-vs-yield-farming-5e68bcb561a9){target=\_blank} programs. These programs can be seen as part of a marketing program to onboard users to engage with protocol. Users engage in [yield farming](https://finematics.com/yield-farming-explained/){target=\_blank} to find the best [APY](https://www.investopedia.com/terms/a/apy.asp){target=\_blank} by shifting capital across various places.
 
-🖼 Add Liquidity Mining Picture
+<!-- 🖼 Add Liquidity Mining Picture -->
 
 There are various protocols like [Yearn.Finance](https://finematics.com/yearn-vaults-eth-vault-explained/){target=\_blank} which help users automate strategies to maximize APY and the lowest cost through the use of [vaults](https://defirating.finance/en/research-center/what-are-defi-vaults-and-how-do-we-use-them-to-farm-profits/){target=\_blank}{target=\_blank}. There are some [indicators that DeFi protocol Devs should know](https://academy.binance.com/en/articles/7-indicators-every-defi-investor-should-know){target=\_blank}{target=\_blank}.
 
