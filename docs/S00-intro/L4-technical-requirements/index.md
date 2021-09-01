@@ -73,7 +73,7 @@ Be sure to read Community Guidelines before contributing to a project. For examp
 
 Even if Javascript is not your first software language, it's really important you be familiar with its basic syntax. [Solidity,](https://docs.soliditylang.org/en/v0.8.2/){target=_blank} the smart contract language you'll learn, is based on [ECMAScript.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources){target=_blank} We recommend [Code Academy's free Intro to Javascript course,](https://www.codecademy.com/learn/introduction-to-javascript){target=_blank} [The Odin Project](https://www.theodinproject.com/courses/foundations/#javascript-basics){target=_blank} or [The Modern Javascript Tutorial](https://javascript.info/){target=_blank}to get the basics. Beyond basic Javascript, students should be familiar with Node and npm. Some advanced students will also be using React in this course. Here are some resources to help familiarize yourself with these:
 
-*   [The Odin Project: Introduction to Node](https://www.codecademy.com/learn/introduction-to-javascript){target=_blank}
+*   [The Odin Project: Introduction to Node](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs){target=_blank}
 *   [Javascript Fundamentals Before Learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements){target=_blank}
 
 ## Code Editor
