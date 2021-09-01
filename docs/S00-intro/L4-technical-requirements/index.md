@@ -53,7 +53,7 @@ Here are some resources to get you started:
 *   [Git and Github for Poets (video)](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV){target=_blank}
 
 
-Not only is git a part of a good coding repertoire, it's also used by many [open-source projects.](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source){target=_blank An essential part of the bootcamp is contributing to open-source projects. It's really important to know how to do proper Pull Requests and other guidelines for contributing to open-source. Here are a few resources to help you with this:
+Not only is git a part of a good coding repertoire, it's also used by many [open-source projects.](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source){target=_blank} An essential part of the bootcamp is contributing to open-source projects. It's really important to know how to do proper Pull Requests and other guidelines for contributing to open-source. Here are a few resources to help you with this:
 
 *   [Github Pull Request Tutorial](https://guides.github.com/activities/hello-world/){target=_blank}
 *   [On undoing, fixing, or removing commits in git](https://sethrobertson.github.io/GitFixUm/fixup.html){target=_blank}
@@ -62,7 +62,7 @@ Not only is git a part of a good coding repertoire, it's also used by many [open
 For those who would like to get a headstart, check out the "Good First Issues" for these open-source Ethereum projects:
 
 *   [MetaMask](https://github.com/MetaMask/metamask-extension/issues?q=is%3Aissue+is%3Aopen+label%3Aux-enhancement+-label%3AN00-needsDesign+label%3Agood-first-issue){target=_blank}
-*   [Truffle](https://github.com/trufflesuite/truffle/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22){target=_blank}{target=_blank
+*   [Truffle](https://github.com/trufflesuite/truffle/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22){target=_blank}{target=_blank}
 *   [Go Ethereum (geth)](https://github.com/ethereum/go-ethereum/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22){target=_blank}
 *   [Web3.js](https://github.com/ChainSafe/web3.js/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Issue%22){target=_blank}
 *   [Prysmatic Labs](https://github.com/prysmaticlabs/prysm/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Issue%22){target=_blank} or [Teku](https://github.com/ConsenSys/teku/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue+%3Araising_hand%3A%22){target=_blank} (Ethereum 2.0 client)
