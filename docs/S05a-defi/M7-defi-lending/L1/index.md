@@ -4,7 +4,7 @@
 
 Lending is a fundamental financial mechanism in finance and DeFi. Lending helps take excess capital from savers and allocates it to borrowers, putting the funds to productive use. This helps create economic growth while generating a return for savers. It's also used for hedging and mitigating risk. On the other hand, lending creates debt, which, if not properly managed, can cause instability to cascade through connected markets, leading to economic and market contractions. These issues are magnified in DeFi because networks are interdependent and open to anyone.
 
-![debt-cycle.gif](/docs/img/S05/debt-cycle.gif)
+![debt-cycle.gif](../../../img/S05/debt-cycle.gif)
 
 [DeFi lending markets](https://www.leewayhertz.com/how-defi-lending-works/){target=\_blank} allow users to become borrowers and lenders in a decentralized way without giving up custody of their funds. It is more efficient since it enables permissionless and programmatic access to capital without a credit check. Being on Ethereum means that any program can access these markets, providing a money lego around lending. Using a peer to contract pattern, lenders and borrowers can interact with the contract and simplify negotiating loan terms or managing counterparty risk themselves. This lowers frictions costs and while being scalable.
 
@@ -12,21 +12,21 @@ Lending is a fundamental financial mechanism in finance and DeFi. Lending helps 
 
 Since DeFi protocols are open and pseudonymous, uncollateralized loans are not possible. You have to put up assets to get funds. Providing collateral ensures the counterparty cannot steal the funds or default on a loan. Due to the volatility risk of crypto assets used as collateral, over-collateralization is required. Issuing [debt via over-collateralization is a typical pattern in DeFi](https://forum.openzeppelin.com/t/introduction-to-the-overcollateralized-loan-pattern-defi-primitive-and-its-security-considerations/2141){target=\_blank}. The pattern can also [help limit the amount of leverage](https://www.steemleo.com/defi/@culgin/overcollateralization-in-defi-is-it-good-or-bad){target=\_blank}, and [control risk for a protocol](https://docs.aave.com/risk/asset-risk/adding-an-asset){target=\_blank} since assets need to be greater than liabilities.
 
-![solvency.gif](/docs/img/S05/solvency.gif)
+![solvency.gif](../../../img/S05/solvency.gif)
 
 The level of over-collateralization is represented by the loan-to-collateral ratio stated by the protocol. The loan-to-collateral ratio is the percentage you can borrow of an asset relative to the collateral deposited. Other names for the same idea include collateral factor, collateral ratio, cFactor or cRatio. Since we cannot borrow more than we deposit, the cFactor is always below 100%. Depending on the quality of the asset, the collateralization ratio is set.
 
-![all-good-no-liquidation.gif](/docs/img/S05/all-good-no-liquidation.gif)
+![all-good-no-liquidation.gif](../../../img/S05/all-good-no-liquidation.gif)
 
 Why collateral?
 
-![why-collateral.gif](/docs/img/S05/why-collateral.gif)
+![why-collateral.gif](../../../img/S05/why-collateral.gif)
 
 ## Debt
 
 The ability to add collateral and adjust a token's supply allows for issuing a debt token backed by collateral. This debt token can represent a utility token like a lending market position from [Compound.finance](https://medium.com/compound-finance/supplying-assets-to-the-compound-protocol-ec2cf5df5aa){target=\_blank} or Aave. For example, in Compound Finance, a DAI debt token would be cDAI, while in Aave aDAI. If DAI's collateral factor is 75%, then with $100 worth of collateral, you can borrow 75 DAI. Other DeFi 101 [lending concepts like the importance of price oracles to update price can be found here](https://forum.openzeppelin.com/t/defi-101-concepts-you-need-to-understand-before-using-a-defi-protocol/2577){target=\_blank}.
 
-![debt-pattern](/docs/img/S05/debt-pattern.gif)
+![debt-pattern](../../../img/S05/debt-pattern.gif)
 
 ## Loans and Incentives
 
@@ -34,17 +34,17 @@ The ability to add collateral and adjust a token's supply allows for issuing a d
 
 A user can profit by leveraging a long position or shorting on an asset through lending markets. Going long means expecting the asset's price to appreciate. If the user expects ETH to go up in value, they can deposit their ETH to borrow USDC. Then use USDC to buy more ETH. The user gets exposure to more ETH minus the interest rate. Say the collateral factor is 50% on a deposit of $1000 worth of ETH. The borrower receives 500 USDC and then can buy more ETH. So they can leverage themselves to $1,500 worth of ETH. To turn a profit, the appreciation of ETH should exceed the interest and gas fees required to pay back the loan.
 
-![going-short.gif](/docs/img/S05/going-long.gif)
+![going-long.gif](../../../img/S05/going-long.gif)
 
 Going short means expecting the asset will lose value in price. If the user expects ETH to depreciate, they can deposit USDC to borrow ETH. Then sell the ETH and repurchase it later at a lower price, making a profit in the difference. Say ETH is at $1000 when the user sells it. Later, they buy the asset back at $300. They get to pocket $700 minus the interest payment and gas fees.
 
-![Going-short.gif](/docs/img/S05/going-short.gif)
+![going-short.gif](../../../img/S05/going-short.gif)
 
 ## Liquidation and Incentives
 
 Liquidation involves a user's position being closed to pay the debt incurred. This happens if the collateral's value drops below the acceptable collateral ratio. Lending protocols often use an Oracle service like [ChainLink](http://chainlink){target=\_blank} and the price feed of a major exchange like Uniswap to provide real-time data about a collateral's value.
 
-![liqudation.png](/docs/img/S05/liqudation.gif)
+![liqudation.png](../../../img/S05/liqudation.gif)
 
 Since smart contracts cannot act without being called, liquidation occurs by offering incentives to an external entity called a "keeper". The keeper can liquidate the position and keep a percentage fee. Then, the collateral is auctioned off or via a decentralized exchange at market price.
 
@@ -52,7 +52,7 @@ Since smart contracts cannot act without being called, liquidation occurs by off
 
 In some protocols, everything is auctioned off. In others, the remaining collateral is left in the original contract. An example can be if the collateralization ratio is 200% and the user only placed the bare minimum. If the asset drops 1%, the protocol will liquidate 2% of the collateral. Since liquidation is costly, some protocols allow users to add additional collateral if needed, similar to a [margin call](https://www.investopedia.com/terms/m/margincall.asp){target=\_blank}. It is wise to add a margin of safety in addition to the collateral ratio.
 
-![volatility-margin-of-safety.gif](/docs/img/S05/volatility-margin-of-safety.gif)
+![volatility-margin-of-safety.gif](../../../img/S05/volatility-margin-of-safety.gif)
 
 Applications: Compound Finance and Aave
 
@@ -66,7 +66,7 @@ Lending requires borrowers and lenders. Borrowers pay interest while lenders ear
 
 Lending can occur with variable rate interest based on market demand or fixed interest rates. Variable interest rates adjust due to the demand and supply for the asset in question. The key to note is that the borrow interest rate is always higher than the supply rate.
 
-![interest-rates.gif](/docs/img/S05/interest-rates.gif)
+![interest-rates.gif](../../../img/S05/interest-rates.gif)
 
 Lending protocols operate in real-time. Rates are adjusted, and interest is accrued every new Ethereum block. Interest is typically [accrued to the debt token](https://medium.com/compound-finance/faq-1a2636713b69){target=\_blank} or accounts tied to the lending pool. Aave lets users redirect their stream of interest to other contracts. This allows for interesting applications where pools of money can be programmatically deployed to earn interest. One can seperate the marketing logic form the interest earning logic.
 
@@ -76,7 +76,7 @@ Aave offers a [stable interest rate](https://docs.aave.com/faq/borrowing#:~:text
 
 Typically, the longer the loan, the higher the risk, the higher the interest rate. On Ethereum, we measure time in blocks. What if we went in reverse? If a loan and a position could be executed in the same block, what happens? We get flash loans!
 
-![flash-loan-interest-risk.gif](/docs/img/S05/flash-loan-interest-risk.gif)
+![flash-loan-interest-risk.gif](../../../img/S05/flash-loan-interest-risk.gif)
 
 ## Flash Loans as a DeFi Primitive
 
