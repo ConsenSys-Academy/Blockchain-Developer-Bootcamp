@@ -18,7 +18,7 @@ RFQ facilities direct trade between parties which is:
 - Efficient - Eliminates slippage, so you get what you paid for.
 - Scalable - negotiations happen off-chain (not on Ethereum) and scales better than relying solely on Ethereum’s throughput.
 
-![airswap-overview](/../../img/S05/airswap-rfq-overview.png)
+![airswap-overview](/docs/img/S05/airswap-rfq-overview.png)
 
 ## Summary
 
