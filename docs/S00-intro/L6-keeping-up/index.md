@@ -58,6 +58,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Zero Knowledge](https://www.zeroknowledge.fm/){target=_blank}
 - [Unchained](https://unchainedpodcast.com/){target=_blank}
 - [Mapping out Eth 2](https://www.coindesk.com/podcasts/mapping-out-eth-2-0/){target=_blank}
+- [Bankless](https://open.spotify.com/show/41TNnXSv5ExcQSzEGLlGhy?si=5FwQQFY1QHyUlaLoN2k-lg){target=_blank}
 
 ## Learning Paths
 - [EthernautDAO](https://forum.ethernautdao.io/){target=_blank} Decentralized organization focussed on training developers to become blockchain developers and get them jobs! [Discord here](https://discord.gg/RQ5WYDxUF3){target=_blank}
