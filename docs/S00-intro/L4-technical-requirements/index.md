@@ -18,7 +18,7 @@ If you'd like to get more familiar with a Linux environment, you can check out t
 
 *   [Ubuntu for Beginners](https://agstakingco.gitbook.io/ethereum-2-0-ubuntu-for-beginners/#linux-terminal-basic-commands){target=_blank}
 
-(Those interested in learning more about the history of Unix can read [this excerpt](https://www.netmeister.org/book/02-unix.pdf){target=_blank} from _Advanced Programming in Unix Environment_ by Stevens and Rago)
+(Those interested in learning more about the history of Unix can read [this excerpt](https://www.netmeister.org/book/02-unix.pdf) from _Advanced Programming in Unix Environment_ by Stevens and Rago)
 
 ## Command Line
 
@@ -62,7 +62,7 @@ Not only is git a part of a good coding repertoire, it's also used by many [open
 For those who would like to get a headstart, check out the "Good First Issues" for these open-source Ethereum projects:
 
 *   [MetaMask](https://github.com/MetaMask/metamask-extension/issues?q=is%3Aissue+is%3Aopen+label%3Aux-enhancement+-label%3AN00-needsDesign+label%3Agood-first-issue){target=_blank}
-*   [Truffle](https://github.com/trufflesuite/truffle/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22){target=_blank}{target=_blank}
+*   [Truffle](https://github.com/trufflesuite/truffle/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22){target=_blank}
 *   [Go Ethereum (geth)](https://github.com/ethereum/go-ethereum/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22){target=_blank}
 *   [Web3.js](https://github.com/ChainSafe/web3.js/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Issue%22){target=_blank}
 *   [Prysmatic Labs](https://github.com/prysmaticlabs/prysm/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Issue%22){target=_blank} or [Teku](https://github.com/ConsenSys/teku/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue+%3Araising_hand%3A%22){target=_blank} (Ethereum 2.0 client)
