@@ -9,10 +9,10 @@
   <title>Welcome</title>
 </head>
 <div class="body">
-  
+
   <!-- Title goes below: -->
   <h1>Hashing</h1>
-  
+
   <!-- Content here: -->
 
     <p>Cryptographic hash functions (also called hash functions or just <i>hashes</i>) are essential to us building a decentralized trust protocol by providing three main things (use this <a href="https://emn178.github.io/online-tools/sha256.html" target="_blank" rel="noopener noreferrer">cryptographic hash function sandbox</a> to follow along):</p>
@@ -27,7 +27,7 @@
     <p>These three characteristics combine to help blockchains provide decentralized file integrity. Let's explain how.</p>
 
 
-  <h2>Hashing in Blockchains</h2>  
+  <h2>Hashing in Blockchains</h2>
     <p>In <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">the Bitcoin Whitepaper,</a> Satoshi Nakamoto articulates the <a href="https://en.wikipedia.org/wiki/Double-spending" target="_blank" rel="noopener noreferrer">"double-spend" problem</a> facing digital currencies:</p>
 
 
@@ -79,7 +79,7 @@
 
   <p>The timestamp server leverages hash functions in one critical way. It includes the hash of the previous block into the hash of the current block. If any historical data in any of the previous blocks are altered, the changes will cascade throughout all the blocks after it. In this way, blocks of transaction data are <b>chained</b> together to form a blockchain &#x1F92F; &#x1F92F; &#x1F92F;.</p>
 
-  <p>This chaining can only be effective in a large system because of those three characteristics of hash functions we discussed previously: <b>Uniqueness</b> (one string matches one hash), <b>Avalanche Effects</b> (one change in an input string creates outsized effects on the) and <b>Speed</b> (hashes can be securely computed quickly at scale).</p>
+  <p>This chaining can only be effective in a large system because of those three characteristics of hash functions we discussed previously: <b>Uniqueness</b> (one string matches one hash), <b>Avalanche Effects</b> (one change in an input string creates outsized effects on the output) and <b>Speed</b> (hashes can be securely computed quickly at scale).</p>
 
 
 <h2>Hash Chains as General Data Structures</h2>
@@ -89,9 +89,9 @@
 
   <p><a href="https://en.wikipedia.org/wiki/Hash_chain#Applications" target="_blank" rel="noopener noreferrer">Challenge-Response schemes,</a> used for user validation, also use the concept of a hash chain.</p>
 
-  <p>Learning about hash functions and the associated hash chaining will give you great insights into these power data structures as well as programming data primitives like <a href="https://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="noopener noreferrer">hash tables.</a></p>
+  <p>Learning about hash functions and the associated hash chaining will give you great insights into these powerful data structures as well as programming data primitives like <a href="https://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="noopener noreferrer">hash tables.</a></p>
 
-<h2>Additional Links for Hashing</h2>  
+<h2>Additional Links for Hashing</h2>
   <div class="img-wrapper"><img src="../../../img/S01/hash-all-the-strings.jpeg" alt="hash all the strings using x all the y meme template"></div>
   <h3>General Hashing Material</h3>
   <ul>
@@ -116,11 +116,11 @@
 
   <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
     <div class="footer">
-      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S01-fundamentals/M1-cryptography/L3-hashing-additional/index.html" target="_blank">Edit this page on Github</a>
-      
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/docs/S01-fundamentals/M1-cryptography/L4-hashing-additional/index.html" target="_blank">Edit this page on Github</a>
+
       <div class="discord">
-        <img class="discord-logo" src="../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
-      </div> 
+        <img class="discord-logo" src="../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>
+      </div>
     </div>
 </div>
 
