@@ -14,8 +14,8 @@
   
   ## External Resources
   
+  * [Things That Matter Outside DeFi (Vitalik Buterin)](https://www.youtube.com/watch?v=oLsb7clrXMQ){target=_blank}
   * [Y Combinator: Building for the Blockchain (2017)](https://blog.ycombinator.com/building-for-the-blockchain/){target=_blank} Dated but interesting!
   * [Why It's Hard to "Get" Bitcoin: The Blockchain Spectrum](https://unchained-capital.com/blog/blockchain-spectrum/){target=_blank}
   * [The Promise of Blockchain: Vinay Gupta](https://vimeo.com/161183966){target=_blank}
-  * [Things That Matter Outside DeFi (Vitalik Buterin)](https://www.youtube.com/watch?v=oLsb7clrXMQ){target=_blank}
   * [Cryptocurrencies (Last Week Tonight)](https://www.youtube.com/watch?v=g6iDZspbRMg){target=_blank}
