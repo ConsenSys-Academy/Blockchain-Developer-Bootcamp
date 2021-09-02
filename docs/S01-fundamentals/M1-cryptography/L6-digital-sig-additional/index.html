@@ -30,7 +30,7 @@
     <p>
       By creating these two successive hashes, we are creating a series of protective wrappings. A message that has a valid digital signature on it provides three different confirmations. It confirms:
       <ul>
-        <li><b>Origin:</b> From what we learned about public key cryptography, we have to assume if a private key digital signature is valid then the signed message really did come from the account associated with the public key.</li>
+        <li><b>Origin:</b> From what we learned about public key cryptography, we can infer that if a private key digital signature is valid then the signed message really did come from the account associated with the public key.</li>
         <li><b>Message Integrity:</b> From what we learned about cryptographic hash functions, we know that the message has not been tampered with by anyone else</li>
         <li><b>Intent:</b> By signing the first hash, the owner of the private key is signalling their intent to execute whatever commands or agreements are contained in the message.</li>
       </ul>
