@@ -1,5 +1,5 @@
 # Wire up the React app with Drizzle
-*Note: Drizzle is no longer maintained by Truffle.
+*Note that Drizzle is currently not actively maintained by Truffle, although the team is always happy to provide best-endeavors support. In addition, ConsenSys is actively hiring for front-end focused roles and/or folks interested in assisting with maintenance. Feel free to reach out if this might of interest!
 
 Before we go further, let's start our React app by running the follow command inside our client directory:
 
