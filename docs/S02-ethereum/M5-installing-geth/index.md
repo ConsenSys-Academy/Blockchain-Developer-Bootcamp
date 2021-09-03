@@ -230,3 +230,7 @@ Check the balance of account 1 again.
     100
 
 It should say 100! You have successfully sent a transaction from one account to another over your single node Ethereum network!
+
+## Additional Materials
+
+- [Running Geth in `dev` Mode](https://geth.ethereum.org/docs/getting-started/dev-mode) - an optimized way to run a single node for developing locally
