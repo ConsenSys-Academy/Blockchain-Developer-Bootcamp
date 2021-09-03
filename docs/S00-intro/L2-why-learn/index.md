@@ -2,6 +2,7 @@
 
 Most people in crypto came here initially because of the allure of money. Either we missed an opportunity to buy, are looking for an opportunity to grow our salary, or see an opportunity for a killer app. There's no shame in that! We do hope you come for the money and stay for the paradigm shift, though.
 
+
 Blockchain promises to upend the current top-down information systems in our world. Currently, most users of the internet surrender their personal data to centralized databases and services.
 
 To achieve this paradigm shift, blockchain relies fundamentally on two fields of computer science: [**Distributed Computing**](https://en.wikipedia.org/wiki/Distributed_computing) and [**Cryptography**](https://en.wikipedia.org/wiki/Cryptography). We will cover these topics in the first section of the course.
@@ -17,3 +18,4 @@ While there's enormous promise with blockchain development, it requires an aware
 - [Why It's Hard to "Get" Bitcoin: The Blockchain Spectrum](https://unchained-capital.com/blog/blockchain-spectrum/){target=\_blank}
 - [The Promise of Blockchain: Vinay Gupta](https://vimeo.com/161183966){target=\_blank}
 - [Cryptocurrencies (Last Week Tonight)](https://www.youtube.com/watch?v=g6iDZspbRMg){target=\_blank}
+
