@@ -5,7 +5,7 @@ Most people in crypto came here initially because of the allure of money. Either
 
 Blockchain promises to upend the current top-down information systems in our world. Currently, most users of the internet surrender their personal data to centralized databases and services.
 
-To achieve this paradigm shift, blockchain relies fundamentally on two fields of computer science: [**Distributed Computing**](https://en.wikipedia.org/wiki/Distributed_computing) and [**Cryptography**](https://en.wikipedia.org/wiki/Cryptography). We will cover these topics in the first section of the course.
+To achieve this paradigm shift, blockchain relies fundamentally on two fields of computer science: [**Distributed Computing**](https://en.wikipedia.org/wiki/Distributed_computing){target=\_blank} and [**Cryptography**](https://en.wikipedia.org/wiki/Cryptography){target=\_blank}. We will cover these topics in the first section of the course.
 
 This paradigm shift requires changes from the developer _and_ the user. In the next section of the course, we'll go over what the protocol-layer changes of blockchain mean for you as a developer. We'll then introduce you to Solidity, the language for developing smart contracts, as well as the tools you'll need to build. We'll also discuss the changes for the user, including how requiring private key signatures dramatically changes user workflow.
 
