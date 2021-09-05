@@ -60,8 +60,8 @@
   </code></pre>
 
   <strong><em>Explore a much more robust address derivation application at <a href="https://iancoleman.io/bip39/" target="_blank">iancoleman.io</a></em></strong>
-
-  <code>function generatePrivKey(mnemonic){<br>&nbsp; &nbsp; const seed = generateSeed(mnemonic)<br>&nbsp; &nbsp; return hdkey.fromMasterSeed(seed).derivePath(`m/44&#39;/60&#39;/0&#39;/0/0`).getWallet().getPrivateKey()<br>}</code>
+  
+  <pre><code>function generatePrivKey(mnemonic){<br>&nbsp; &nbsp; const seed = generateSeed(mnemonic)<br>&nbsp; &nbsp; return hdkey.fromMasterSeed(seed).derivePath(`m/44&#39;/60&#39;/0&#39;/0/0`).getWallet().getPrivateKey()<br>}</code></pre>
 
   <p>With the private key, we can generate the public key. Import the <code>ethereumjs</code> wallet and derive the public key</p>
 
@@ -72,15 +72,15 @@
     function derivePubKey(privKey){
         const wallet = Wallet.fromPrivateKey(privKey)    
         return wallet.getPublicKey()
-    }</code>
+    }</code></pre>
 
-  <p>Generating the private key and public key is the same for both Bitcoin and Ethereum, the both use <a href="https://en.bitcoin.it/wiki/Secp256k1" target="_blank">secp256k1 elliptic curve cryptography</a>. Deriving an account address from the public differs slightly. We will see how to generate an Ethereum address.</p>  
+  <p>Generating the private key and public key is the same for both Bitcoin and Ethereum as both use <a href="https://en.bitcoin.it/wiki/Secp256k1" target="_blank">secp256k1 elliptic curve cryptography</a>. Deriving an account address from the public key differs slightly.</p>  
 
 	<h2>Derive the Ethereum Address From the Keypair</h2>
 
 	<p>Deriving an Ethereum address from a public key requires an additional hashing algorithm. Import it like so:</p>
 
-  <code>const keccak256 = require(&#39;js-sha3&#39;).keccak256;</code>
+	<pre><code>const keccak256 = require(&#39;js-sha3&#39;).keccak256;</code></pre>
 
   <p>Taking the <code>keccak-256</code> hash of the public key will return 32 bytes which you need to trim down to the last 20 bytes (40 characters in hex) to get the address</p>
 
@@ -101,7 +101,7 @@
 
 <p>You can sign transactions in the browser with the <a href="https://github.com/ethereumjs/ethereumjs-tx" target="_blank">ethereumjs-tx library</a>.</p>
 
-<pre>>const EthereumTx = require(&#39;ethereumjs-tx&#39;)<br><br>...<br><br>function signTx(privKey, txData){<br>&nbsp; &nbsp; const tx = new EthereumTx(txData)<br>&nbsp; &nbsp; tx.sign(privKey)<br>&nbsp; &nbsp; return tx<br>}</pre>
+<pre><code>const EthereumTx = require(&#39;ethereumjs-tx&#39;)<br><br>...<br><br>function signTx(privKey, txData){<br>&nbsp; &nbsp; const tx = new EthereumTx(txData)<br>&nbsp; &nbsp; tx.sign(privKey)<br>&nbsp; &nbsp; return tx<br>}<code></pre>
 
 <p>Unsigned Ethereum transactions look something like this:</p>
 
