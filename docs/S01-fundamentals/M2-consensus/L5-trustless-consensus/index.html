@@ -19,7 +19,7 @@
 
     <p>We've spent the past few sections learning about how consensus protocols work to make peer-to-peer distributed systems maintain state across time despite node failure. This is a general computer science concept that's used in building distributed networks that may be susceptible to machine failures, message duplications, message corruptions, etc. Since they are decentralized networks, public blockchains have to deal with this category of problems. But, they are also presented with an entirely new set of issues.</p>
 
-    <p>Public blockchains introduce a specific challenge to agreeing on a state. In a non-blockchain distributed network, state is a set of data valuable really only to the private organization running the network. For example, in a digital streaming service, the state might contain where a user stoped watching a previous video. That way, if they start the video again and are served the content from a different network server, their place will be saved.</p>
+    <p>Public blockchains introduce a specific challenge to agreeing on a state. In a non-blockchain distributed network, state is a set of data valuable really only to the private organization running the network. For example, in a digital streaming service, the state might contain where a user stopped watching a previous video. That way, if they start the video again and are served the content from a different network server, their place will be saved.</p>
       
     <p>The state of a public blockchain network, on the other hand, is the public, distributed ledger which contains the financial balances of everyone in the network. This has enormous value to many different organizations and individuals. In a way, everyone is incentivized to lie about the state of the network because it's directly tied to their net worth. Imagine if when you went to the bank, rather than a bank teller telling you your balance, <i>they</i> asked <i>you</i> for <i>your</i> balance. Most people would, at some point, be very tempted to lie and make up a number (Probably a very large number).</p>
 
@@ -85,16 +85,16 @@
 
     <h3>Periods and Proof of Work</h3>
 
-    <p>In Proof of Work consensys, there are two distinct periods in a network:
+    <p>In Proof of Work consensus, there are two distinct periods in a network:
 
       <ul>
-        <li><b>Period of Block Production</b> This is the period in which Miner nodes validate transactions by bundling them all together and competing to produce a valid the Proof of Work algorithm. It begins when the miner receives the latest valid block and stops when the miner solves their Proof of Work algorithm or receives a valid block from another miner.</li>
+        <li><b>Period of Block Production</b> This is the period in which Miner nodes validate transactions by bundling them all together and competing to produce a valid Proof of Work algorithm. It begins when the miner receives the latest valid block and stops when the miner solves their Proof of Work algorithm or receives a valid block from another miner.</li>
         <li><b>Period of Block Propagation</b> This is the period in which a valid block gradually moves through the network. A full node or miner node will only propagate blocks that are valid, so the process of the network accepting a valid block (and accepted the new network state) is an emergent one. </li>
 
       </ul>
 
       <p>
-        The follow section will describe the process of creating a block and how blocks chained together create an immutable ledger that all network participants can validate on their own. This individual validation, without having to rely on trust, is how proof of work consensus maintains state in a distributed and safe way. 
+        The following section will describe the process of creating a block and how blocks chained together create an immutable ledger that all network participants can validate on their own. This individual validation, without having to rely on trust, is how proof of work consensus maintains state in a distributed and safe way. 
       </p>
 
       <h2>Additional Materials</h2>
