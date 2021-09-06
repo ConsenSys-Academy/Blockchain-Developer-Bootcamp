@@ -19,6 +19,13 @@ For hot fixes, like typos, broken links or recommendations, please use the follo
 3. Please target your PR against the [`staging`](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging) branch rather than `main`. Every few days we'll do a merge from `staging`
  into `main`.
  
+**Please check that your PR doesn't have a conflict! If it does, please:** 
+
+1. On your local machine, add the staging repo as your upstream branch using `git remote add upstream https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging`
+2. Run `git fetch upstream`
+3. Run `git merge upstream/[YOUR BRANCH NAME HERE]`
+4. Then `git push origin [YOUR BRANCH NAME HERE]`
+
 ### Coordination
 
 We use [github issues](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/issues) for our issue tracking and project management.
