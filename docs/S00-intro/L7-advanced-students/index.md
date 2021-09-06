@@ -2,7 +2,7 @@
 
 Some students may find themselves moving through the material faster than others. If that's you and you'd like more advanced work you can pursue on the side, here's what we recommend:
 
-**Write a Blog Post for ConsenSys** We are always looking for content on new and exiciting topics in the space. Reach out to the instructors with any ideas you have or if you'd like some suggestions. It's easier than you think!
+**Write a Blog Post for ConsenSys** We are always looking for content on new and exciting topics in the space. Reach out to the instructors with any ideas you have or if you'd like some suggestions. It's easier than you think!
 
 **Contribute to the "How'd They Build That?" Series** We're starting a series breaking down some of the more popular smart-contract based applications as a resource for other students. The idea would be to explain how the different parts piece together to form the product. First on the list are [MakerDao,](http://makerdao.com){target=_blank} [Yearn Finance,](http://yearn.finance){target=_blank} [Uniswap,](http://uniswap.org){target=_blank} [Compound](https://compound.finance){target=_blank} and [Curve Finance.](http://curve.fi){target=_blank} We're also open to suggestions!
 

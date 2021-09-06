@@ -83,6 +83,7 @@ Also, there are <a href="https://docs.scaffoldeth.io/scaffold-eth/examples-and-t
 
 Last, Austin is an incredibly proflific creator of content, including support videos and walkthroughs of Scaffold-ETH. Below are some recent walkthroughs he's done:
 
+- <a href="https://www.youtube.com/watch?v=zxL9cPysEmQ" target="_blank" rel="noopener noreferrer">Tutorial: Austin walks through Scaffold-Eth during Polygon Hackathon</a>
 - <a href="https://youtu.be/ShJZf5lsXiM" target="_blank" rel="noopener noreferrer">Start Building Today with Scaffold-ETH</a>
 - <a href="https://youtu.be/ipFJeK0M5ks?t=89" target="_blank" rel="noopener noreferrer">Ethereum Dev Onboarding (ETHGlobal)</a> Austin walksthrough Scaffold-ETH after RicMoo and Paul Berg walkthrough their awesome tools
 - <a href="https://youtu.be/mctO5EUx_wI" target="_blank" rel="noopener noreferrer">Web 2 dev to Web 3 dev</a>
