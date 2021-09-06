@@ -30,7 +30,7 @@ Staking as a Service is where you give your (32*n) ETH to a service which handle
 
 For people with less than 32ETH (which has become very expensive now!), there are some interesting options of decentralized pools where you can contribute either validator power or less than 32ETH. The staking pools combine that and distribute the staking rewards accordingly.
 
-A full list of these services can be found <a href="https://stake.fish/en/ethereum/services/" target="_blank" rel="noopener noreferrer">here.</a> The <a href="https://ethddc.org/" target="_blank" rel="noopener noreferrer">Ethereum Due Diligence Committee</a> is doing their best to provide an unbiased assessment of these services.
+A list of these services can be found <a href="https://beaconcha.in/stakingServices/" target="_blank" rel="noopener noreferrer">here.</a>
 
 ### Deposit Contract
 
