@@ -58,6 +58,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 ## Podcasts
 - [Zero Knowledge](https://www.zeroknowledge.fm/){target=_blank}
 - [Unchained](https://unchainedpodcast.com/){target=_blank}
+- [Epicenter](https://epicenter.tv){target=_blank}
 - [Mapping out Eth 2](https://www.coindesk.com/podcasts/mapping-out-eth-2-0/){target=_blank}
 - [Bankless](https://open.spotify.com/show/41TNnXSv5ExcQSzEGLlGhy?si=5FwQQFY1QHyUlaLoN2k-lg){target=_blank}
 
