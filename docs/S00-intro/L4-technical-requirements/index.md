@@ -83,7 +83,7 @@ Even if Javascript is not your first software language, it's really important yo
 *   [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer){target=_blank} which allows you to easily start a server in the directory
 *   [Live Share](https://visualstudio.microsoft.com/services/live-share/){target=_blank} an easy way to share your code with someone for pair programming
 *   [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens){target=_blank} "supercharges the Git capabilities built into Visual Studio Code."
-*   [Solidity Visual Auditor](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor){target=_blank} Built by ConsenSys!
+*   [Solidity Visual Developer](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor){target=_blank} Built by ConsenSys!
 *   [Solidity linter](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity){target=_blank} Checks valid Solidity syntax. Fair warning, can be over-opinionated for folks!
 *   [Solidity Solhint](https://marketplace.visualstudio.com/items?itemName=idrabenia.solidity-solhint){target=_blank}
 *   [Partial Diff](https://marketplace.visualstudio.com/items?itemName=ryu1kn.partial-diff){target=_blank} Compare (diff) text selections within a file, across files, or to the clipboard
