@@ -76,6 +76,7 @@
         <li><b>Miners</b> These are the nodes which are certifying which transactions are valid by including them in blocks and receiving the block reward. When a miner creates a valid block and propagates it throughout the network, the network state is advanced in a trustless way. (We'll examine in a moment how a miner can create a block in a trustless way.)</li>
         <li><b>Full Nodes</b> These are the general network nodes which are creating transactions and passing along transactions created by other nodes in the network. They are also maintaining full network state when they receive valid blocks from Miner nodes. Each full node in the network checks the work of a block to ensure its validity.</li>
         <li><b>Light Nodes</b> These are network nodes which are simply submitting transactions to the network and waiting for them to be accepted by the network. They do not participate in the process of checking the validity of the advancing network state and do not pass along messages.</li>
+        <li><b>Archive Nodes</b> Similar to a full node, it maintains and provides the current state, but also maintains and provides historical states. e.g. balance at x date.</li>
       </ul>
 
 
@@ -90,7 +91,6 @@
       <ul>
         <li><b>Period of Block Production</b> This is the period in which Miner nodes validate transactions by bundling them all together and competing to produce a valid Proof of Work algorithm. It begins when the miner receives the latest valid block and stops when the miner solves their Proof of Work algorithm or receives a valid block from another miner.</li>
         <li><b>Period of Block Propagation</b> This is the period in which a valid block gradually moves through the network. A full node or miner node will only propagate blocks that are valid, so the process of the network accepting a valid block (and accepted the new network state) is an emergent one. </li>
-
       </ul>
 
       <p>
@@ -100,6 +100,7 @@
       <h2>Additional Materials</h2>
       <h3>Introduction</h3>
       <ul>
+        <li><a href="https://ethereum.org/en/developers/docs/nodes-and-clients/#" target="_blank" rel="noopener noreferrer">Ethereum Node Types</>
         <li><a href="https://www.youtube.com/watch?v=c7yvOlwBPoQ&list=PLJz1HruEnenCXH7KW7wBCEBnBLOVkiqIi&index=7" target="_blank" rel="noopener noreferrer">Video & Interactive Code: ETH.Build with Byzantine Generals' Problem</a> Austin Griffith walks through a <a href="https://sandbox.eth.build/build#3f3d25b54ec9fde9b34ba3a8cd505d8306f97eec4537cd707f7e92b5d9226bf4" target="_blank" rel="noopener noreferrer">hands-on implementation</a> of the Byzantine Generals' Problem with his amazing ETH.Build platform</li>
         <li><a href="https://river.com/learn/what-is-the-byzantine-generals-problem/" target="_blank" rel="noopener noreferrer">Article: What is the Byzantine Generals Problem?</a></li>
         <li><a href="https://andersbrownworth.com/blockchain/" target="_blank" rel="noopener noreferrer">Interactive Code: Anders Blockchain</a> A great, web-based interactive tutorial going over fundamentals of Proof of Work consensus including <a href="https://andersbrownworth.com/blockchain/block" target="_blank" rel="noopener noreferrer">block production through hashing</a> and <a href="https://andersbrownworth.com/blockchain/distributed" target="_blank" rel="noopener noreferrer">distributed blockchains</a></li>
