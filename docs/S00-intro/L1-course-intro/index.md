@@ -22,7 +22,7 @@ Next, we'll touch on scalability: What it is, why it's necessary, and how some f
 
 Last, we'll cover Ethereum 2.0, the upgrading of the Ethereum consensus mechanism from Proof of Work to Proof of Stake. We'll touch on some of the key terms and the current roadmap.
 
-As this course is self-paced, you can feel free to jump around between lessons. The earlier modules have more video and provide more of an overview of the relevant technology, while later modules get technical and have more hands on coding exercises and walk-throughs.
+As this course is self-paced, you can feel free to jump around between lessons. The earlier modules have more video and provide more of an overview of the relevant technology, while later modules get technical and have more hands-on coding exercises and walk-throughs.
 
 Most modules have graded quizzes at the end of the module.
 
