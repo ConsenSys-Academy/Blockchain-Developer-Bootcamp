@@ -12,7 +12,7 @@ One way blockchain developers have tried to bridge the gap is through what are c
 
 Please note that DeFi has led to on-chain oracles, particularly dealing with token prices, which we will discuss more in the section on DeFi. Such examples of on-chain oracles are [Chainlink's Data Feeds](https://docs.chain.link/docs/get-the-latest-price/{target=_blank}), Uniswap's [Observations](https://docs.uniswap.org/protocol/concepts/V3-overview/oracle{target=_blank}), and MakerDAO's [Feeds](https://developer.makerdao.com/feeds/{target=_blank}).
 
-A smart contract using oracles in some facet is often referred to as a [Hybrid Smart Contract](https://blog.chain.link/hybrid-smart-contracts-explained/{target=_blank}).
+A smart contract using oracles in some facet is often referred to as a [Hybrid Smart Contract](https://blog.chain.link/hybrid-smart-contracts-explained/){target=_blank}.
 
 ## Trust
 
@@ -22,7 +22,7 @@ Having a single oracle or a single data source delivering your data or executing
 
 It's important to know, that just setting up an oracle service yourself can mean your application is centralized, and possibly doesn't have the highest quality data or execution. So we want to avoid setting these up ourselves, but also do our due diligence to make sure the system we are working with is decentralized. 
 
-Services such as Chainlink have built more decentralized networks to hedge against the centralization of trust, you can read more about how Chainlink does that [here](https://docs.chain.link/docs/architecture-decentralized-model/{target=_blank}) and see an overview of decentralized oracles [here.](https://medium.com/fabric-ventures/decentralised-oracles-a-comprehensive-overview-d3168b9a8841{target=_blank})
+Services such as Chainlink have built more decentralized networks to hedge against the centralization of trust, you can read more about how Chainlink does that [here](https://docs.chain.link/docs/architecture-decentralized-model/){target=_blank} and see an overview of decentralized oracles [here.](https://medium.com/fabric-ventures/decentralised-oracles-a-comprehensive-overview-d3168b9a8841){target=_blank}
 
 ## Basic Oracle Mechanism
 
@@ -31,9 +31,9 @@ At its most basic, a smart contract contract using an oracle needs to implement 
 1.  Make the request to the oracle, and
 2.  Receive the oracle's response from a callback method
 
-This is often known as the [request and receive](https://docs.chain.link/docs/architecture-request-model/{target=_blank}) model of oracles. Unless you've setup the service yourself, external calls to oracles typically require a fee attached to provide the data to your contract.
+This is often known as the [request and receive](https://docs.chain.link/docs/architecture-request-model/){target=_blank} model of oracles. Unless you've setup the service yourself, external calls to oracles typically require a fee attached to provide the data to your contract.
 
-There are multiple ways to achieve this, let's look at one generalized code using [Provable](https://docs.provable.xyz{target=_blank}) below:
+There are multiple ways to achieve this, let's look at one generalized code using [Provable](https://docs.provable.xyz){target=_blank} below:
 
 <pre>import "github.com/oraclize/ethereum-api/provableAPI.sol";
 
