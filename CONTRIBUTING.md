@@ -18,7 +18,18 @@ For hot fixes, like typos, broken links or recommendations, please use the follo
 2. In the subject line of your Pull Request, start with the lesson you're targeting in brackets. For example: `[S01-fundamentals/M2-consensus/L5-trustless-consensus] Fixes typo in Line #87` This will help other folks who have a similar issue see if there's already something open.
 3. Please target your PR against the [`staging`](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging) branch rather than `main`. Every few days we'll do a merge from `staging`
  into `main`.
- 
+
+## Fixing Conflicts
+
+If there have been updates to the `staging` branch since you forked it for your PR, your branch may have a conflict. Doing the following will help with some (not all!) conflicts:
+
+1. In the local version of the branch you're using as your PR, run `git remote add upstream https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging`
+2. Grab the recent changes by running `git fetch upstream`
+3. Merge the recent changes with your branch by running `git merge upstream/YOUR_BRANCH_NAME_HERE`
+4. Push the resolved codebase back to the Github version of your branch with `git push origin YOUR_BRANCH_NAME_HERE`
+  
+Learn more on [how to use branches](https://www.atlassian.com/git/tutorials/using-branches) 🌳.
+
 ### Coordination
 
 We use [github issues](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/issues) for our issue tracking and project management.
@@ -53,22 +64,11 @@ Read the issue. Ask any questions in the issue thread. Mention the issue that yo
 
 Before starting on work on the issue, make sure your code is up to date.
 
-1. Check your branch:  
- `git branch`
-2. Checkout the main branch of your local repo:  
-`git checkout main`
-3. Fetch changes from the `upstream` main repo:  
-`git fetch upstream main`
-4. [Rebase](https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase#:~:text=Rebasing%20is%20the%20process%20of,of%20a%20feature%20branching%20workflow.) the changes from the `upstream` master repository into your local repo:  
-`git rebase upstream/main`
-5. [Re-synchornize](https://www.togaware.com/linux/survivor/Git_Merge_Master_into.html) `main` into `dev` by merging:  
-
-```
-git checkout dev
-git merge origin/main  
-git push
-```
-
+1. In the local version of the branch you're using as your PR, run `git remote add upstream https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging`
+2. Grab the recent changes by running `git fetch upstream`
+3. Merge the recent changes with your branch by running `git merge upstream/YOUR_BRANCH_NAME_HERE`
+4. Push the resolved codebase back to the Github version of your branch with `git push origin YOUR_BRANCH_NAME_HERE`
+  
 Learn more on [how to use branches](https://www.atlassian.com/git/tutorials/using-branches) 🌳.
 
 ### Creating a contribution
