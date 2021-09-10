@@ -10,6 +10,22 @@ Markdown is what this file and Github README.md files are written in. If you nee
 [Text being linked](www.linkaddresshere.com){target=_blank}
 ```
 
+## Steps to Github PRs
+
+For hot fixes, like typos, broken links or recommendations, please use the following steps:
+
+1. Please name your branch `fix/[THING YOU FIXED HERE]`
+2. In the subject line of your Pull Request, start with the lesson you're targeting in brackets. For example: `[S01-fundamentals/M2-consensus/L5-trustless-consensus] Fixes typo in Line #87` This will help other folks who have a similar issue see if there's already something open.
+3. Please target your PR against the [`staging`](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging) branch rather than `main`. Every few days we'll do a merge from `staging`
+ into `main`.
+ 
+**Please check that your PR doesn't have a conflict! If it does, please:** 
+
+1. On your local machine, add the staging repo as your upstream branch using `git remote add upstream https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging`
+2. Run `git fetch upstream`
+3. Run `git merge upstream/[YOUR BRANCH NAME HERE]`
+4. Then `git push origin [YOUR BRANCH NAME HERE]`
+
 ### Coordination
 
 We use [github issues](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/issues) for our issue tracking and project management.

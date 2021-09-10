@@ -71,7 +71,7 @@ Be sure to read Community Guidelines before contributing to a project. For examp
 
 ## Javascript
 
-Even if Javascript is not your first software language, it's really important you be familiar with its basic syntax. [Solidity,](https://docs.soliditylang.org/en/v0.8.2/){target=_blank} the smart contract language you'll learn, is based on [ECMAScript.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources){target=_blank} We recommend [Code Academy's free Intro to Javascript course,](https://www.codecademy.com/learn/introduction-to-javascript){target=_blank} [The Odin Project](https://www.theodinproject.com/courses/foundations/#javascript-basics){target=_blank} or [The Modern Javascript Tutorial](https://javascript.info/){target=_blank}to get the basics. Beyond basic Javascript, students should be familiar with Node and npm. Some advanced students will also be using React in this course. Here are some resources to help familiarize yourself with these:
+Even if Javascript is not your first software language, it's really important you be familiar with its basic syntax. [Solidity,](https://docs.soliditylang.org/en/v0.8.2/){target=_blank} the smart contract language you'll learn, is based on [ECMAScript.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources){target=_blank} We recommend [Code Academy's free Intro to Javascript course,](https://www.codecademy.com/learn/introduction-to-javascript){target=_blank} [The Odin Project](https://www.theodinproject.com/courses/foundations/#javascript-basics){target=_blank} or [The Modern Javascript Tutorial](https://javascript.info/){target=_blank} to get the basics. Beyond basic Javascript, students should be familiar with Node and npm. Some advanced students will also be using React in this course. Here are some resources to help familiarize yourself with these:
 
 *   [The Odin Project: Introduction to Node](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs){target=_blank}
 *   [Javascript Fundamentals Before Learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements){target=_blank}
@@ -83,7 +83,7 @@ Even if Javascript is not your first software language, it's really important yo
 *   [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer){target=_blank} which allows you to easily start a server in the directory
 *   [Live Share](https://visualstudio.microsoft.com/services/live-share/){target=_blank} an easy way to share your code with someone for pair programming
 *   [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens){target=_blank} "supercharges the Git capabilities built into Visual Studio Code."
-*   [Solidity Visual Auditor](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor){target=_blank} Built by ConsenSys!
+*   [Solidity Visual Developer](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor){target=_blank} Built by ConsenSys!
 *   [Solidity linter](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity){target=_blank} Checks valid Solidity syntax. Fair warning, can be over-opinionated for folks!
 *   [Solidity Solhint](https://marketplace.visualstudio.com/items?itemName=idrabenia.solidity-solhint){target=_blank}
 *   [Partial Diff](https://marketplace.visualstudio.com/items?itemName=ryu1kn.partial-diff){target=_blank} Compare (diff) text selections within a file, across files, or to the clipboard

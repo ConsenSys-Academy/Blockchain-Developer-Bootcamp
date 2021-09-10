@@ -18,7 +18,7 @@
     <p>Cryptographic hash functions (also called hash functions or just <i>hashes</i>) are essential to us building a decentralized trust protocol by providing three main things (use this <a href="https://emn178.github.io/online-tools/sha256.html" target="_blank" rel="noopener noreferrer">cryptographic hash function sandbox</a> to follow along):</p>
 
     <ol>
-      <li><b>Uniqueness</b> We can be assured if we put in the string <code>dark wallet puzzle</code> in a cryptographic function, it will always produce the same hash result. This avoids the <a href="https://en.wikipedia.org/wiki/Hash_collision" target="_blank" rel="noopener noreferrer">“hash collision”</a> problem, in that we don’t have to worry about two strings getting the same hash.</li>
+      <li><b>Uniqueness</b> We can be assured if we put in the string <code>dark wallet puzzle</code> in a cryptographic function, it will always produce the same hash result. With a sufficiently large number of possibilities, this avoids the <a href="https://en.wikipedia.org/wiki/Hash_collision" target="_blank" rel="noopener noreferrer">“hash collision”</a> problem, in that we don’t have to worry about two strings getting the same hash.</li>
       <li><b>Avalanche Effect</b> Small changes on the target string for a hash function leads to outsized effects. Change one letter in the string you hashed in the above example, maybe capitalizing the "d" in <code>Dark wallet puzzle</code>. You'll see it’s not changed a little bit but a lot. This illustrates the second characteristic of a good hashing function — “The Avalanche Effect”. This says a single change in the string will cause a successive series of changes that compound each other.</li>
       <li><b>Speed</b> Cryptographic hash functions can also run incredibly fast with little overhead and still maintain their security. This is more of a logistical concern. The hashing function can’t be too slow, otherwise it causes delays. But it also can’t be too fast or it will be easier to find collisions. It needs to be fast for processing but slow for hacking. Cryptographic hash functions speed combined with the difficulty in deriving the target input makes them a one-way or <a href="https://en.wikipedia.org/wiki/Trapdoor_function" target="_blank" rel="noopener noreferrer">"trapdoor" function</a> — easy to go one way, near impossible to go the other.</li>
     </ol>
@@ -116,7 +116,7 @@
 
   <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
     <div class="footer">
-      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/docs/S01-fundamentals/M1-cryptography/L3-hashing-additional/index.html" target="_blank">Edit this page on Github</a>
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/docs/S01-fundamentals/M1-cryptography/L4-hashing-additional/index.html" target="_blank">Edit this page on Github</a>
       
       <div class="discord">
         <img class="discord-logo" src="../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
