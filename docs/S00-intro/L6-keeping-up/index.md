@@ -68,7 +68,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [DeFi Developer Roadmap](https://github.com/OffcierCia/DeFi-Developer-Road-Map){target=_blank}
 - [Ethereum.org's Developer Guide](https://ethereum.org/en/developers/){target=_blank}
 - [BuidlGuidl](https://buidlguidl.com/){target=_blank}
-- [Cloudflare](https://cleverflare.com/#/){target=_blank}
+- [Cleverflare](https://cleverflare.com/#/){target=_blank}
 - [Resources to Learn Web 3](https://twitter.com/wslyvh/status/1405493777347739654){target=_blank}
 - [How to Become a DeFi Developer](https://defiweekly.substack.com/p/how-to-become-a-defi-developer){target=_blank}
 - [Rabbithole.gg](https://rabbithole.gg){target=_blank} Place to learn and earn tokens
