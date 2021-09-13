@@ -19,21 +19,21 @@
 
     <div class="img-wrapper"><img src="../../../img/S01/ag-blockchain-1.png" alt="basic diagram of blockchain node"></div>
 
-    <p>Above the dotted line is the distributed, peer-to-peer network which the node is interacting with. As we mentioned previously, the fundamental unit of communication is the <b>transaction,</b> (commonly shortened to <i>txn</i>), which the node is both sending and receiving from the network.</p>
+    <p>Above the dotted line is the distributed, peer-to-peer network with which the node is interacting. As we mentioned previously, the fundamental unit of communication is the <b>transaction,</b> (commonly shortened to <i>txn</i>), which the node is both sending and receiving from the network.</p>
 
-    <p>Below the line are all the primitives we have discussed in this section. We have the cryptographic primitives used in the Network Identity and to validate transaction validity. We also have the consensus protocol, which is agreed-upon by the network and the node will use to check the validity of the blocks. If the block is valid, the node will update it's network state with the changes the valid transactions make. If this node is a miner, the consensus mechanism will also work to produce a valid block.</p>
+    <p>Below the line are all the primitives we have discussed in this section. We have the cryptographic primitives used in the network identity, and those used to validate transactions. We also have the consensus protocol, which is agreed upon by the network, and which the node will use to check the validity of the blocks. If the block is valid, the node will update its network state with the changes the valid transactions make. If this node is a miner, the consensus mechanism will also work to produce a valid block.</p>
 
     <p>Let's now zoom out and see a simplified version of the larger network:</p>
 
     <div class="img-wrapper"><img src="../../../img/S01/ag-blockchain-2.png" alt="basic daigram of a blockchain network"></div>
 
-    <p>The nodes have a different color to show they have unique identities, which are created by the cryptographic keys they use in their network identity. While the nodes have different identities, please note that they all have the same "Consensus Protocol." This is the mechanism they have all agreed to use to maintain and update their network state. However, it's only successful if everyone is using it and coming to agreement about the network state. Luckily, this network we are looking at is all in agreement about the network state.</p>
+    <p>The nodes have a different color to show they have unique identities, which are created by the cryptographic keys they use in their network identity. While the nodes have different identities, please note that they all have the same "Consensus Protocol." This is the mechanism they have all agreed to use to maintain and update their network state. However, it's only successful if everyone is using it and coming to agreement about the network state. Luckily, this network we are looking at is all in agreement about its state.</p>
 
     <p>Please notice the middle of the diagram, the <b>Emergent Properties</b>. It's easy to forget that the network state and the network consensus are not a set, static property. Instead, they are a constantly evolving and mutating entity that changes with each transaction that is confirmed by the consensus protocol then propagated to the rest of the network.</p>
 
-    <p>In our everyday life, we're more likely to encounter centralized entities attesting to a state. Your bank tells you your balance is a certain number, etc. With distributed networks, the network state is not something that's dictated by one centralized force. Instead, it's something that emerges from all the networks of participants, sometimes millions, passing transactions, valid blocks and gradually shifting from one network state to the next.</p>
+    <p>In our everyday life, we're more likely to encounter centralized entities attesting to a state. Your bank tells you your balance is a certain number, etc. With distributed networks, the network state is not something that's dictated by one centralized force. Instead, it's something that emerges from all the networks of participants, sometimes numbering in the millions, passing transactions, valid blocks and gradually shifting from one network state to the next.</p>
 
-    <p>In the next section, we'll talk about how some network configurations change and why. But don't forget that, for every blockchain network, there is a generalizable structure you can isolate and identify what's different or the same. This will help you discern what networks are good for what purpose, how stable a network may be, or what improvements or innovations will change which part of a network.</p>
+    <p>In the next section, we'll talk about how some network configurations change and why. But don't forget that, for every blockchain network, there is a generalizable structure you can isolate and use to identify what's different or the same. This will help you discern what networks are good for what purpose, how stable a network may be, or what improvements or innovations will change which part of a network.</p>
 
   <h2>Additional Material</h2>
   <ul>

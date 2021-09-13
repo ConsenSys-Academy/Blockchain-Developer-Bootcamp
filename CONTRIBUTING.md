@@ -30,6 +30,13 @@ If there have been updates to the `staging` branch since you forked it for your 
   
 Learn more on [how to use branches](https://www.atlassian.com/git/tutorials/using-branches) 🌳.
 
+**Please check that your PR doesn't have a conflict! If it does, please:** 
+
+1. On your local machine, add the staging repo as your upstream branch using `git remote add upstream https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging`
+2. Run `git fetch upstream`
+3. Run `git merge upstream/[YOUR BRANCH NAME HERE]`
+4. Then `git push origin [YOUR BRANCH NAME HERE]`
+
 ### Coordination
 
 We use [github issues](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/issues) for our issue tracking and project management.
