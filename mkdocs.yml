@@ -1,6 +1,6 @@
 site_name: ConsenSys Academy Developer Bootcamp
 repo_url: https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp
-edit_uri: edit/main/docs/
+edit_uri: edit/staging/docs/
 theme:
   name: null
   custom_dir: 'custom_theme/'
