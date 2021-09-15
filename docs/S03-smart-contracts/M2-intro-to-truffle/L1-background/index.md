@@ -23,7 +23,7 @@ The Truffle Suite was built to streamline the smart contract development process
 
 A good example of this is contract compilation (wherein you convert your high-level contract code to something that can be natively understood by an Ethereum-node). As part of this feature, Truffle can also intelligently download the necessary compiler version(s) and even enable you to write your contracts in different language versions.
 
-Additional reasons why developers might Truffle to build their dapps include the following...
+Additional reasons why developers might use Truffle to build their dapps include the following...
 
 - Built-in support for compiling, deploying and linking your contract</li>
 - An automated contract testing framework built on Mocha and Chai</li>
