@@ -105,7 +105,7 @@ Out of the box, Truffle supports the following:
 At the time of writing, Solidity is by far the most popular language for writing smart contracts, and as with everything in the space, things have been moving rapidly and have now witnessed some major projects built using Vyper.  
 
 ### Core Truffle Commands
-Truffle is built around a large collection of commands that you use as part of your contract development workflow. Examples of these include:
+Truffle is built around a large collection of commands that are used as a part of the contract development workflow. Examples of these include:
 
 - `truffle init`
 - `truffle compile`
