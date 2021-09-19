@@ -109,8 +109,8 @@ Here are some tutorials to introduce you to Brownie:
 ## Frontend Tools
 
 For your project, we've also discussed frontend interfaces. There are two services you can use for free to create a frontend instance easily:
-- <a href="https://devcenter.heroku.com/start" target="_blank" rel="noopener noreferrer">Heroku</a> is a Platform-as-a-Service, providing a quick way to deploy apps in a number of popular languages, such as Node.js (Javascript), Python, Ruby and Go.  You can connect your Github repo to your project for easy deployment. Heroku's basic plan is free and provides basic resources for getting started. <a href="https://www.heroku.com/free" target="_blank" rel="noopener noreferrer">Read more here.</a>
-- <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify</a> also has a Git-based workflow allowing you to deploy your project easily from Github. It is also free and has a getting started manual <a href="https://docs.netlify.com/configure-builds/get-started/" target="_blank" rel="noopener noreferrer">here.</a>
+- <a href="https://devcenter.heroku.com/start" target="_blank" rel="noopener noreferrer">Heroku</a> is a Platform-as-a-Service, providing a quick way to deploy apps in a number of popular languages, such as Node.js (Javascript), Python, Ruby and Go.  You can connect your GitHub repo to your project for easy deployment. Heroku's basic plan is free and provides basic resources for getting started. <a href="https://www.heroku.com/free" target="_blank" rel="noopener noreferrer">Read more here.</a>
+- <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify</a> also has a Git-based workflow allowing you to deploy your project easily from GitHub. It is also free and has a getting started manual <a href="https://docs.netlify.com/configure-builds/get-started/" target="_blank" rel="noopener noreferrer">here.</a>
 
 There are so many more amazing tools that we can't get into now, but if you check out the links in this section, you'll be able to dive deeper and learn more on your own!
 

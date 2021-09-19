@@ -53,7 +53,7 @@ The Ethereum Foundation described the impact of this privacy would have on a blo
 
 * ["Hello World" of zk-SNARKS with Zokrates](https://zokrates.github.io/gettingstarted.html){target=_blank}
 * [Creating a zk-SNARKS version of "Mastermind" in the Browser — Koh Wei Jie](https://medium.com/@weijiek/how-i-learned-zk-snarks-from-scratch-177a01c5514e){target=_blank}
-* [Github Repo for Creating a zk-SNARKS version of "Mastermind" in the Browser](https://github.com/weijiekoh/zkmm){target=_blank}
+* [GitHub Repo for Creating a zk-SNARKS version of "Mastermind" in the Browser](https://github.com/weijiekoh/zkmm){target=_blank}
 * [Developing Confidential Tokens on AZTEC(requires access to Rinkeby Testnet)](https://medium.com/@PaulRBerg/how-to-code-your-own-confidential-token-on-ethereum-4a8c045c8651){target=_blank}
 * [Docs: Cairo — a Turing-complete STARK generation](https://www.cairo-lang.org/) Cairo, Starkware's ZKP language, has a great doc repository here, including a great introductory tutorial.
 * Reddit Scaling Bake-Off ZKP Submissions: [STARKWare](https://www.reddit.com/r/ethereum/comments/i01sjk/starkwares_submission_to_reddits_scaling_bakeoff/){target=_blank}, [Fuel Labs](https://www.reddit.com/r/ethereum/comments/i1cimc/the_great_reddit_scaling_bakeoff_submission_by/){target=_blank}, [AZTEC](https://www.reddit.com/r/ethereum/comments/i1j6ck/the_reddit_bakeoff_zkreddit_by_aztec/){target=_blank}
