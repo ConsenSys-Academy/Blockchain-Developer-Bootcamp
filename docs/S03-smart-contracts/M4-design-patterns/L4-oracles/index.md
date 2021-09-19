@@ -33,12 +33,12 @@ At its most basic, a smart contract contract using an oracle needs to implement 
 
 This is often known as the [request and receive](https://docs.chain.link/docs/architecture-request-model/){target=_blank} model of oracles. Unless you've setup the service yourself, external calls to oracles typically require a fee attached to provide the data to your contract.
 
-There are multiple ways to achieve this, let's look at one generalized code using [Provable](https://docs.provable.xyz){target=_blank} below:
+There are multiple ways to achieve this; let's look at a simplified version of this [example](https://github.com/provable-things/ethereum-examples/blob/c0431a147f24519a135d07f9d5c17db73498e0e7/solidity/DieselPrice.sol){target=_blank} using [Provable](https://docs.provable.xyz){target=_blank} below:
 
-<pre>import "github.com/oraclize/ethereum-api/provableAPI.sol";
+<pre>import "github.com/provable-things/ethereum-api/provableAPI.sol";
 
 contract DieselPrice is usingProvable {
-    uint DieselPriceUSD;
+    uint dieselPriceUSD;
 
     constructor() public {
         provable_query("URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
@@ -46,12 +46,12 @@ contract DieselPrice is usingProvable {
 
     function __callback (bytes32 myid, string result) public {
         require(msg.sender == provable_cbAddress());
-        DieselPriceUSD = parseInt(result);
+        dieselPriceUSD = parseInt(result);
     }
 }
       </pre>
 
-In this code, we're calling the Provable API for the price of diesel when we create the contract. The first query is free, but we'll have to provide ETH to pay for our requests moving forward. The call triggers an event, which lets the Provable contract pull from its off-chain datafeed and provide our contract the result. The contract stores that value in `DieselPriceUSD`.
+In this code, we're calling the Provable API for the price of diesel when we create the contract. The first query is free, but we'll have to provide ETH to pay for our requests moving forward. The call triggers an event, which lets the Provable contract pull from its off-chain datafeed and provide our contract the result. The contract stores that value in `dieselPriceUSD`.
 
 The overall model is for your contract to emit an event, either to another contract or simply in the block its created. The oracle service will detect that event, pull the desired data, and respond back to your contract. The oracle services require you to have a standard method, like `__callback`, that its transaction can target when responding to your oracle query.
 
