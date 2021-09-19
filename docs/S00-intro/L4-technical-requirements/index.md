@@ -42,7 +42,7 @@ To brush up on command line skills, check out:
 
 ## Git
 
-[Git](https://en.wikipedia.org/wiki/Git){target=_blank} is a [version-control system (VCS)](https://en.wikipedia.org/wiki/Version_control){target=_blank} used to track changes made to projects. While git seems simple, it's actually a bit challenging to get comfortable with. (Note that git is a piece of software, on which version control sites like Github or Gitlab are based.)
+[Git](https://en.wikipedia.org/wiki/Git){target=_blank} is a [version-control system (VCS)](https://en.wikipedia.org/wiki/Version_control){target=_blank} used to track changes made to projects. While git seems simple, it's actually a bit challenging to get comfortable with. (Note that git is a piece of software, on which version control sites like Github or GitLab are based.)
 
 Here are some resources to get you started:
 
