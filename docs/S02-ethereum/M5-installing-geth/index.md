@@ -16,7 +16,7 @@ By installing and running geth, you can take part in the Ethereum live network a
 
 Geth has several interfaces through which you can communicate with your Ethereum node.
 
-*   Javascript Console: you can start geth with an interactive console, that provides a javascript runtime environment exposing a javascript API to interact with your node. The [Javascript Console API](https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console){target=_blank} includes the web3 javascript Ðapp API as well as an 'admin' API.
+*   JavaScript Console: you can start geth with an interactive console, that provides a javascript runtime environment exposing a javascript API to interact with your node. The [JavaScript Console API](https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console){target=_blank} includes the web3 javascript Ðapp API as well as an 'admin' API.
 *   JSON-RPC server: you can start geth with a json-rpc server that exposes the [JSON-RPC API](https://github.com/ethereum/wiki/wiki/JSON-RPC){target=_blank}
 *   [Command line options](https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options){target=_blank} documents command line parameters as well as subcommands.
 

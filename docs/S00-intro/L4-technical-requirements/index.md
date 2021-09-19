@@ -5,7 +5,7 @@ This course assumes a baseline of technical knowledge. It is important to make s
 *   [Unix / Linux Environment](#unix-or-linux-environments)
 *   [Command Line](#command-line)
 *   [Git](#git)
-*   [Javascript](#javascript)
+*   [JavaScript](#javascript)
 *   [Code Editor](#code-editor)
 
 ## Unix or Linux Environments
@@ -69,12 +69,12 @@ For those who would like to get a headstart, check out the "Good First Issues" f
 
 Be sure to read Community Guidelines before contributing to a project. For example, here is Geth's [Contributor Guidelines](https://github.com/ethereum/go-ethereum/wiki/Developers'-Guide#contributing){target=_blank} and their [Code Review Guidelines](https://github.com/ethereum/go-ethereum/wiki/Code-Review-Guidelines){target=_blank}
 
-## Javascript
+## JavaScript
 
-Even if Javascript is not your first software language, it's really important you be familiar with its basic syntax. [Solidity,](https://docs.soliditylang.org/en/v0.8.2/){target=_blank} the smart contract language you'll learn, is based on [ECMAScript.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources){target=_blank} We recommend [Code Academy's free Intro to Javascript course,](https://www.codecademy.com/learn/introduction-to-javascript){target=_blank} [The Odin Project](https://www.theodinproject.com/courses/foundations/#javascript-basics){target=_blank} or [The Modern Javascript Tutorial](https://javascript.info/){target=_blank} to get the basics. Beyond basic Javascript, students should be familiar with Node and npm. Some advanced students will also be using React in this course. Here are some resources to help familiarize yourself with these:
+Even if JavaScript is not your first software language, it's really important you be familiar with its basic syntax. [Solidity,](https://docs.soliditylang.org/en/v0.8.2/){target=_blank} the smart contract language you'll learn, is based on [ECMAScript.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources){target=_blank} We recommend [Code Academy's free Intro to JavaScript course,](https://www.codecademy.com/learn/introduction-to-javascript){target=_blank} [The Odin Project](https://www.theodinproject.com/courses/foundations/#javascript-basics){target=_blank} or [The Modern JavaScript Tutorial](https://javascript.info/){target=_blank} to get the basics. Beyond basic JavaScript, students should be familiar with Node and npm. Some advanced students will also be using React in this course. Here are some resources to help familiarize yourself with these:
 
 *   [The Odin Project: Introduction to Node](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs){target=_blank}
-*   [Javascript Fundamentals Before Learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements){target=_blank}
+*   [JavaScript Fundamentals Before Learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements){target=_blank}
 
 ## Code Editor
 

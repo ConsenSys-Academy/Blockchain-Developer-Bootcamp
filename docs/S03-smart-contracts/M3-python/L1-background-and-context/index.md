@@ -1,10 +1,10 @@
 # Python in Ethereum: Background and Context
 
-After going through all this Solidity content, (which _looks_ like Javascript but as you now know is very different from Javascript) we may have some Python developers saying, "What about us?"
+After going through all this Solidity content, (which _looks_ like JavaScript but as you now know is very different from JavaScript) we may have some Python developers saying, "What about us?"
 
-Python is, after all, one of the most popular and accessible programming languages. When people want to start programming, they typically feel they have to decide between Javascript or Python. So, what gives? Where's the Python in Ethereum?
+Python is, after all, one of the most popular and accessible programming languages. When people want to start programming, they typically feel they have to decide between JavaScript or Python. So, what gives? Where's the Python in Ethereum?
 
-While it's not as popular as Solidity and Javascript, there are some exciting ways to build on Ethereum using Python. In this section, we're going to go over a few of those projects. In the following section, we'll go over [Vyper,](https://vyper.readthedocs.io/en/stable/){target=_blank} the programming language whose syntax is a subset of Python's.
+While it's not as popular as Solidity and JavaScript, there are some exciting ways to build on Ethereum using Python. In this section, we're going to go over a few of those projects. In the following section, we'll go over [Vyper,](https://vyper.readthedocs.io/en/stable/){target=_blank} the programming language whose syntax is a subset of Python's.
 
 ## Vyper
 
