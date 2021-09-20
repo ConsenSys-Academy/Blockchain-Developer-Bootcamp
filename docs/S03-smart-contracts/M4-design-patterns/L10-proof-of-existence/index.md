@@ -1,6 +1,6 @@
 # Writing a Smart Contract (Proof of Existence Exercise)
 
-This walkthrough is based on [this Medium](https://blog.zeppelin.solutions/the-hitchhikers-guide-to-smart-contracts-in-ethereum-848f08001f05) post by Manuel Araoz.
+This walkthrough is based on [this Medium](https://blog.zeppelin.solutions/the-hitchhikers-guide-to-smart-contracts-in-ethereum-848f08001f05){target=_blank}{target=_blank} post by Manuel Araoz.
 
 ## What is Proof of Existence?
 
@@ -12,9 +12,9 @@ In this walkthrough, we are going to introduce some basic Ethereum smart contrac
 
 ### Connect to a Blockchain
 
-To develop Ethereum applications, you will need a client to connect to an Ethereum blockchain. You can use [Geth](https://geth.ethereum.org/docs/getting-started), [Parity](https://www.parity.io/) or a development blockchain such as [Ganache](http://truffleframework.com/ganache/).
+To develop Ethereum applications, you will need a client to connect to an Ethereum blockchain. You can use [Geth](https://geth.ethereum.org/docs/getting-started){target=_blank}, [Parity](https://www.parity.io/){target=_blank} or a development blockchain such as [Ganache](http://truffleframework.com/ganache/){target=_blank}.
 
-In this walkthrough we will be using the Ganache command line interface, ganache-cli. You can find the documentation on ganache-cli [here](https://github.com/trufflesuite/ganache-cli).
+In this walkthrough we will be using the Ganache command line interface, ganache-cli. You can find the documentation on ganache-cli [here](https://github.com/trufflesuite/ganache-cli){target=_blank}.
 
 You can install ganache-cli with the following command:
 
@@ -32,7 +32,7 @@ Ganache-cli starts a development blockchain that needs to be running while devel
 
 Solidity is the most popular programming language for writing smart contracts in Ethereum. We will be using Solidity throughout this course.
 
-[The Truffle development framework](http://truffleframework.com/) is one of the most popular development tools for writing Solidity smart contracts for Ethereum. Truffle will help us compile, deploy and test our smart contracts once they are written.
+[The Truffle development framework](http://truffleframework.com/){target=_blank} is one of the most popular development tools for writing Solidity smart contracts for Ethereum. Truffle will help us compile, deploy and test our smart contracts once they are written.
 
 To install truffle
 
@@ -84,7 +84,7 @@ Run the following command in the terminal in your project directory:
 
 This command will create a Solidity file in the contracts directory called “ProofOfExistence1.sol” and set up the boilerplate code for the contract, a contract definition along with a contract constructor. Open ProofOfExistence.sol in your text editor.
 
-Update your ProofOfExistence1.sol file so that it looks like [this](https://github.com/ConsenSys-Academy/proof-of-existence-exercise/blob/master/contracts/ProofOfExistence1.sol).
+Update your ProofOfExistence1.sol file so that it looks like [this](https://github.com/ConsenSys-Academy/proof-of-existence-exercise/blob/master/contracts/ProofOfExistence1.sol){target=_blank}.
 
 We are starting with something simple, but incorrect and we are going to work towards a better contract.
 
@@ -112,7 +112,7 @@ Truffle remembers which contracts it has migrated to the network, so if we want 
 
     $ truffle migrate --reset
 
-You can find more information about truffle migrations [here](https://truffleframework.com/docs/truffle/getting-started/running-migrations).
+You can find more information about truffle migrations [here](https://truffleframework.com/docs/truffle/getting-started/running-migrations){target=_blank}.
 
 ## Interacting with your Smart Contract
 
@@ -167,7 +167,7 @@ Exit the Truffle console and create a new file called ProofOfExistence2.sol:
     truffle(development)> .exit
     $ truffle create contract ProofOfExistence2
 
-Update the ProofOfExistence2 contract to match [this contract](https://github.com/ConsenSys-Academy/proof-of-existence-exercise/blob/master/contracts/ProofOfExistence2.sol).
+Update the ProofOfExistence2 contract to match [this contract](https://github.com/ConsenSys-Academy/proof-of-existence-exercise/blob/master/contracts/ProofOfExistence2.sol){target=_blank}.
 
 The main changes between the first version and this version are that we changed the “proof” variable to a bytes32 array called “proofs” and made it private. We also added a function called “hasProof” to check if a proof has already been stored in the array.
 
@@ -212,7 +212,7 @@ We can check to make sure that our contract will store multiple proofs.
 
 Looping over arrays in smart contracts can get expensive as arrays get longer. Using a mapping is a better solution.
 
-Let’s create a final version in ProofOfExistence3.sol using mappings. You can use [this code](https://github.com/ConsenSys-Academy/proof-of-existence-exercise/blob/master/contracts/ProofOfExistence3.sol) for the contract.
+Let’s create a final version in ProofOfExistence3.sol using mappings. You can use [this code](https://github.com/ConsenSys-Academy/proof-of-existence-exercise/blob/master/contracts/ProofOfExistence3.sol){target=_blank} for the contract.
 
 Modify the deployment script to deploy the new contract and test it in the console to make sure that it behaves just like ProofOfExistence2.sol.
 
@@ -242,13 +242,13 @@ With Truffle version 5, the truffle-config.js file comes populated with a lot of
 
 Uncomment lines 21 - 25\. Line 21 will import the tool to derive a private key and address from a mnemonic. Entering your Infura API key in line 22 will allow you to easily deploy contracts to Ethereum (we will cover how to get an API key shortly). Lines 24 and 25 will import your seed phrase (from the .secret file) into the file. Truffle will use these words to access your wallet and deploy the contract.
 
-Deploying the contract requires us to make a transaction on the testnet, so we need some ether to pay for the transaction. You can get free Rinkeby ether by going to [this website](https://faucet.rinkeby.io/) and following the instructions. Make sure you enter the Ethereum address for your 1st Metamask account.
+Deploying the contract requires us to make a transaction on the testnet, so we need some ether to pay for the transaction. You can get free Rinkeby ether by going to [this website](https://faucet.rinkeby.io/){target=_blank} and following the instructions. Make sure you enter the Ethereum address for your 1st Metamask account.
 
 Now that we have a testnet account with Ether, we need to configure Truffle to be able to deploy the contract.
 
 To deploy contracts to the testnet using Truffle without having to sync a local node, you can use Infura. Infura allows you to access a fully synced Ethereum node via their API. We will use their API to deploy our contracts to the Rinkeby testnet.
 
-Go to the [Infura website](https://infura.io/) and sign up for a free account. Save the Rinkeby test network URL that Infura provides in a variable called `infuraURL` in truffle-config.js. Your Project ID is a unique code provided by Infura.
+Go to the [Infura website](https://infura.io/){target=_blank} and sign up for a free account. Save the Rinkeby test network URL that Infura provides in a variable called `infuraURL` in truffle-config.js. Your Project ID is a unique code provided by Infura.
 
     // truffle-config.js
 
@@ -339,4 +339,4 @@ You just have to run “truffle migrate” for the correct network and your cont
 
 The terminal prints the addresses of the deployed contracts as well as the transaction hashes of the deployment transactions. This information can also be referenced in the contract artifacts, which are stored in proof-of-existence/build/contracts/. Deployment information is found at the bottom of each JSON file.  
 
-You can view your deployed contracts at [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/) and paste in the deployed contract address to have a look you yourself, you can now interact with the deployed contract on the Rinkeby test network!
+You can view your deployed contracts at [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/){target=_blank} and paste in the deployed contract address to have a look you yourself, you can now interact with the deployed contract on the Rinkeby test network!
