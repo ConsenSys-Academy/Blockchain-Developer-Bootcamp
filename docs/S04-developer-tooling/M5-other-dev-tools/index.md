@@ -1,6 +1,6 @@
 # Other Development Tools
   
-<i>Before we dive into these other development frameworks, we wanted to provide an "offramp" to folks who may not be comfortable with Javascript Frameworks. We'd encourage you to check out the sections on Node and Javascript Frameworks in the Basic Training course. People uncomfortable with terminal-based development might be interested in <a href="https://github.com/kitze/JSUI" target="_blank" rel="noopener noreferrer">JSUI,</a> a GUI-based Javascript framework development environment. You can also checkout some frontend boilerplate projects <a href="https://www.smashingmagazine.com/2021/06/useful-frontend-boilerplates-starter-kits/" target="_blank" rel="noopener noreferrer">here.</a></i>
+<i>Before we dive into these other development frameworks, we wanted to provide an "offramp" to folks who may not be comfortable with JavaScript Frameworks. We'd encourage you to check out the sections on Node and JavaScript Frameworks in the Basic Training course. People uncomfortable with terminal-based development might be interested in <a href="https://github.com/kitze/JSUI" target="_blank" rel="noopener noreferrer">JSUI,</a> a GUI-based JavaScript framework development environment. You can also checkout some frontend boilerplate projects <a href="https://www.smashingmagazine.com/2021/06/useful-frontend-boilerplates-starter-kits/" target="_blank" rel="noopener noreferrer">here.</a></i>
 
 ## Hardhat
 
@@ -109,13 +109,14 @@ Here are some tutorials to introduce you to Brownie:
 ## Frontend Tools
 
 For your project, we've also discussed frontend interfaces. There are two services you can use for free to create a frontend instance easily:
-- <a href="https://devcenter.heroku.com/start" target="_blank" rel="noopener noreferrer">Heroku</a> is a Platform-as-a-Service, providing a quick way to deploy apps in a number of popular languages, such as Node.js (Javascript), Python, Ruby and Go.  You can connect your Github repo to your project for easy deployment. Heroku's basic plan is free and provides basic resources for getting started. <a href="https://www.heroku.com/free" target="_blank" rel="noopener noreferrer">Read more here.</a>
-- <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify</a> also has a Git-based workflow allowing you to deploy your project easily from Github. It is also free and has a getting started manual <a href="https://docs.netlify.com/configure-builds/get-started/" target="_blank" rel="noopener noreferrer">here.</a>
+- <a href="https://devcenter.heroku.com/start" target="_blank" rel="noopener noreferrer">Heroku</a> is a Platform-as-a-Service, providing a quick way to deploy apps in a number of popular languages, such as Node.js (JavaScript), Python, Ruby and Go.  You can connect your GitHub repo to your project for easy deployment. Heroku's basic plan is free and provides basic resources for getting started. <a href="https://www.heroku.com/free" target="_blank" rel="noopener noreferrer">Read more here.</a>
+- <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">Netlify</a> also has a Git-based workflow allowing you to deploy your project easily from GitHub. It is also free and has a getting started manual <a href="https://docs.netlify.com/configure-builds/get-started/" target="_blank" rel="noopener noreferrer">here.</a>
 
 There are so many more amazing tools that we can't get into now, but if you check out the links in this section, you'll be able to dive deeper and learn more on your own!
 
 ## Additional Material
 - <a href="https://dev.to/dabit3/the-complete-guide-to-full-stack-ethereum-development-3j13" target="_blank" rel="noopener noreferrer">Article: The Complete Guide to Full Stack Ethereum Development</a> An incredibly comprehensive article from Nader Dabit of The Graph.
+- <a href="https://medium.com/@austin_48503/%EF%B8%8Fethereum-dev-speed-run-bd72bcba6a4c?_branch_match_id=947827671682448762" target="_blank" rel="noopener noreferrer">Article: Ethereum Dev Speed Run (Austin Griffith)</a> Quick start for developers starting on Ethereum.
 - <a href="https://youtu.be/ipFJeK0M5ks?t=89" target="_blank" rel="noopener noreferrer">Ethereum Dev Onboarding (ETHGlobal)</a> Walkthrough of the developer stack from RicMoo, Paul Berg (`create-eth-app`) and Austin Griffith. Great walkthrough of dev environments!
 - <a href="https://github.com/OffcierCia/DeFi-Developer-Road-Map#frameworks" target="_blank" rel="noopener noreferrer">Wiki: DeFi Developer Roadmap: Other Frameworks</a> A series of other frameworks within a larger, excellent repo about Development tools and tips 
 - <a href="https://dev.to/jacobedawson/build-a-web3-dapp-in-react-login-with-metamask-4chp" target="_blank" rel="noopener noreferrer">Article: Build a Web3 Dapp in React Login with MetaMask</a>

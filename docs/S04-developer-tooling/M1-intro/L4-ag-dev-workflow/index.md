@@ -34,7 +34,7 @@ The developer will then having some private testnet tool they're using to deploy
 
 ## .env File
 
-One thing that seems trivial but is incredibly important is the `.env` file for your project. These are the local environmental variables that allow you to deploy your application to the public blockchain network. It also is the best way to ensure you don't expose your private keys or any other sensitive information when you're developing. Particularly when you're pushing material to a git repository, it's easy for folks to forget they've included sensitive information. There are definitely bots that are continually scanning Github for private keys that will immediately be compromised.
+One thing that seems trivial but is incredibly important is the `.env` file for your project. These are the local environmental variables that allow you to deploy your application to the public blockchain network. It also is the best way to ensure you don't expose your private keys or any other sensitive information when you're developing. Particularly when you're pushing material to a git repository, it's easy for folks to forget they've included sensitive information. There are definitely bots that are continually scanning GitHub for private keys that will immediately be compromised.
 
 Please read <a href="https://consensys.net/blog/developers/how-to-avoid-uploading-your-private-key-to-github-approaches-to-prevent-making-your-secrets-public/" target="_blank" rel="noopener noreferrer">this article</a> about how to keep your development environment safe by using a `.env` file and other essential techniques!
 

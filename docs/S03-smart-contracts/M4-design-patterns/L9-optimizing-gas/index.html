@@ -55,7 +55,7 @@
   
     <p>Modifying storage variables in a loop can be very expensive and should be avoided unless absolutely necessary.</p>
   
-    <p>How can this function be improved, given that loop is a storage variable? <a href="https://gist.github.com/ConsenSys-Academy/a61670fd8796d73d8b4b7d5935f9e714#file-unoptimized-sol-L26" rel="noopener noreferrer" target="_blank">Here is the source file.</a></p><pre><code>function looping (uint x) public returns (bool) {
+    <p>How can this function be improved, given that `loops` is a storage variable? <a href="https://gist.github.com/ConsenSys-Academy/a61670fd8796d73d8b4b7d5935f9e714#file-unoptimized-sol-L26" rel="noopener noreferrer" target="_blank">Here is the source file.</a></p><pre><code>function looping (uint x) public returns (bool) {
       for(uint i; i &lt; x; i++){
           loops += 1;
       }
@@ -102,7 +102,7 @@
 
   <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
     <div class="footer">
-      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M4-design-patterns/L9-optimizing-gas/index.html" target="_blank">Edit this page on Github</a>
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M4-design-patterns/L9-optimizing-gas/index.html" target="_blank">Edit this page on GitHub</a>
       
       <div class="discord">
         <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  

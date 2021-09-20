@@ -17,9 +17,9 @@
 
     <p>Access Control is a broad term. Most generally, it means who is allowed to do what on your smart contract. Who is allowed to mint new tokens, create a new pointer contract or release funds, for example.</p>
 
-    <p>We'll be looking at Access Control from a Solidity and coding standpoint, but Access Control is actually a pivot point where the blockchain enters the real world. In the follwoiong examples, we'll write code to allow a certain <code>address</code> to do (or not do) a certain action. However, <code>address</code> may correspond to a user in the real world, granting them certain privileges over the contract. If that contract holds the funds for a group, that person is now the treasurer of the group!</p>
+    <p>We'll be looking at Access Control from a Solidity and coding standpoint, but Access Control is actually a pivot point where the blockchain enters the real world. In the following examples, we'll write code to allow a certain <code>address</code> to do (or not do) a certain action. However, <code>address</code> may correspond to a user in the real world, granting them certain privileges over the contract. If that contract holds the funds for a group, that person is now the treasurer of the group!</p>
 
-    <p>Something to keep in mind as we go through these different examples and a teaser for our later sections on DAOs.</p>
+    <p>Keep this in mind as we go through these different examples and a teaser for our later sections on DAOs.</p>
 
     <h2>Restricting Access and <code>Ownable</code></h2>
 
@@ -56,13 +56,13 @@ contract C1 {
   }
       </pre>
 
-      <p>The above code declares the variable <code>owner</code> and assigns that role to whoever is creating the contract, using <code>msg.sender</code> global variable. We then declare a modifier <code>onlyOwner()</code>, which establishes a security check at the top of each function we assign it. Using the modifier syntax, we require a check of the identity of the transaction sender to see if it matches the declared <code>owner</code></p>
+      <p>The above code declares the variable <code>owner</code> and assigns that role to whoever is creating the contract, using the <code>msg.sender</code> global variable. We then declare a modifier <code>onlyOwner()</code>, which establishes a security check at the top of each function we assign it. Using the modifier syntax, we require a check of the identity of the transaction sender to see if it matches the declared <code>owner</code>.</p>
 
       <p>We then place this modifier in front of whichever functions we want to restrict access to. In this case, we're adding it to the <code>withdraw()</code> function (which makes sense, as we don't want anyone to be able to drain our contract of value!). This makes it so that the only user who can access this specific function is <code>owner</code>, all other addresses will fail.</p>
 
       <p>A common contract used for this is OpenZeppelin's <a href="https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable" target="_blank" rel="noopener noreferrer">Ownable.sol</a>, which also lets you <code>transferOwnership</code> to another user or <code>renounceOwnership</code> if your contract only requires central authority for a certain period of time.</p>
 
-      <p>Please note that the Ownable pattern is a bit fragile: It can become a single point of failure and is not very sophisticated in terms of Access Control.</p>
+      <p>Please note that the Ownable pattern is a bit fragile: it can become a single point of failure and is not very sophisticated in terms of Access Control.</p>
 
     <h2>Pausable</h2>
 
@@ -156,7 +156,7 @@ function emergencyWithdraw() public {
       </ul>
   <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
     <div class="footer">
-      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M3-design-patterns/L5-access-control/index.html" target="_blank">Edit this page on Github</a>
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M3-design-patterns/L5-access-control/index.html" target="_blank">Edit this page on GitHub</a>
       
       <div class="discord">
         <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  

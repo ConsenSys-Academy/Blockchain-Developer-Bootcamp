@@ -32,4 +32,4 @@ DeFi apps aim to increase choice, innovation, access, efficiency, speed, transpa
 - [Academic: Decentralized Finance (Federal Reserve)](https://research.stlouisfed.org/publications/review/2021/02/05/decentralized-finance-on-blockchain-and-smart-contract-based-financial-markets){target=_blank} Yes, *that* Federal Reserve. Like, the real one!
 - [Video: Blockchain@Berkeley: DeFi](https://www.youtube.com/watch?v=9UkjSVbBONs){target=_blank}
 - [Article: Are You Trading or Gambling?](https://investinglessons.substack.com/p/are-you-trading-or-gambling){target=_blank} Important to know the difference before "investing" in DeFi!
-- [Github: DeFi Studies](https://github.com/baraldor/defi/blob/main/README.md){target=_blank} Collection of DeFi articles
+- [GitHub: DeFi Studies](https://github.com/baraldor/defi/blob/main/README.md){target=_blank} Collection of DeFi articles

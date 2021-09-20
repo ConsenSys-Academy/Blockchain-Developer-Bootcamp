@@ -19,6 +19,6 @@ The Rayonism testnet did run for a short period of time. You can checkout the Me
 ## Additional Materials
 - <a href="https://youtu.be/pG8DPW64f-A" target="_blank" rel="noopener noreferrer">Video: What Happens after ETH1 and ETH2 merge? (Vitalik Buterin)</a>
 - <a href="https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698" target="_blank" rel="noopener noreferrer">Forum: A Rollup-centric Ethereum Roadmap</a>
-- <a href="https://github.com/ethereum/pm/blob/master/Merge/mainnet-readiness.md" target="_blank" rel="noopener noreferrer">Github: Mainnet Readiness Checklist</a>
-- <a href="https://github.com/ethereum/consensus-specs/blob/dev/specs/merge/beacon-chain.md" target="_blank" rel="noopener noreferrer">Github: Eth1 and Eth2 Merge spec</a>
+- <a href="https://github.com/ethereum/pm/blob/master/Merge/mainnet-readiness.md" target="_blank" rel="noopener noreferrer">GitHub: Mainnet Readiness Checklist</a>
+- <a href="https://github.com/ethereum/consensus-specs/blob/dev/specs/merge/beacon-chain.md" target="_blank" rel="noopener noreferrer">GitHub: Eth1 and Eth2 Merge spec</a>
 - <a href="https://rayonism.io/" target="_blank" rel="noopener noreferrer"></a>

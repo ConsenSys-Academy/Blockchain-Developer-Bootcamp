@@ -23,7 +23,7 @@ The Truffle Suite was built to streamline the smart contract development process
 
 A good example of this is contract compilation (wherein you convert your high-level contract code to something that can be natively understood by an Ethereum-node). As part of this feature, Truffle can also intelligently download the necessary compiler version(s) and even enable you to write your contracts in different language versions.
 
-Additional reasons why developers might Truffle to build their dapps include the following...
+Additional reasons why developers might use Truffle to build their dapps include the following...
 
 - Built-in support for compiling, deploying and linking your contract</li>
 - An automated contract testing framework built on Mocha and Chai</li>
@@ -102,10 +102,10 @@ Out of the box, Truffle supports the following:
 - Vyper
 - <a href="https://docs.soliditylang.org/en/v0.8.6/yul.html" target="_blank" rel="noopener noreferrer">Yul</a> (experimental and not for beginners)
   
-At the time of writing, Solidity is by far the most popular language for writing smart contracts, although as with everything in the space, things are moving rapidly and it’s recently there’s been some major projects built using Vyper.
+At the time of writing, Solidity is by far the most popular language for writing smart contracts, and as with everything in the space, things have been moving rapidly and have now witnessed some major projects built using Vyper.  
 
 ### Core Truffle Commands
-Truffle is built around a large collection of commands that you use as part of your contract development workflow. Examples of these include:
+Truffle is built around a large collection of commands that are used as a part of the contract development workflow. Examples of these include:
 
 - `truffle init`
 - `truffle compile`
