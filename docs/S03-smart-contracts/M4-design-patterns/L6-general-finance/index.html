@@ -158,7 +158,7 @@
   </code></pre>
   
     <p>There are several checks that we will want to verify before we execute this transaction. First, only wallet owners should be able to call this function. Second, we will want to verify that a transaction exists at the specified <code>transactionId</code>. Last, we want to verify that the <code>msg.sender</code> has not already confirmed this transaction.</p><pre><code>    require(isOwner[msg.sender]);
-      require(transactions[transactionId].destination != 0);
+      require(transactions[transactionId].destination != address(0));
       require(confirmations[transactionId][msg.sender] == false);
   </code></pre>
   
@@ -189,7 +189,7 @@
   
     <p>The execute transaction function takes a single parameter, the <code>transactionId</code>.</p>
   
-    <p>First, we want to make sure that the Transaction at the specified id has not already been executed.</p><pre><code>    require(transactions[trandsactionId].executed == false);
+    <p>First, we want to make sure that the Transaction at the specified id has not already been executed.</p><pre><code>    require(transactions[transactionId].executed == false);
   </code></pre>
   
     <p>Then we want to verify that the transaction has at least the required number of confirmations.</p>
