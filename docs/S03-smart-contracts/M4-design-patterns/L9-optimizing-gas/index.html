@@ -55,7 +55,7 @@
   
     <p>Modifying storage variables in a loop can be very expensive and should be avoided unless absolutely necessary.</p>
   
-    <p>How can this function be improved, given that `loops` is a storage variable? <a href="https://gist.github.com/ConsenSys-Academy/a61670fd8796d73d8b4b7d5935f9e714#file-unoptimized-sol-L26" rel="noopener noreferrer" target="_blank">Here is the source file.</a></p><pre><code>function looping (uint x) public returns (bool) {
+    <p>How can this function be improved, given that <code>loops</code> is a storage variable? <a href="https://gist.github.com/ConsenSys-Academy/a61670fd8796d73d8b4b7d5935f9e714#file-unoptimized-sol-L26" rel="noopener noreferrer" target="_blank">Here is the source file.</a></p><pre><code>function looping (uint x) public returns (bool) {
       for(uint i; i &lt; x; i++){
           loops += 1;
       }
@@ -82,7 +82,7 @@
   
     <p><a href="https://solidity.readthedocs.io/en/latest/types.html#fixed-size-byte-arrays" rel="noopener noreferrer" target="_blank">From the Solidity Docs:</a></p>
   
-    <p>It is possible to use an array of bytes as byte[], but it is wasting a lot of space, 31 bytes every element, to be exact, when passing in calls. It is better to use bytes. As a rule of thumb, use bytes for arbitrary-length raw byte data and string for arbitrary-length string (UTF-8) data. If you can limit the length to a certain number of bytes, always use one of bytes1 to bytes32 because they are much cheaper.</p>
+    <p>It is possible to use an array of bytes as <code>byte[]</code>, but it is wasting a lot of space, 31 bytes every element, to be exact, when passing in calls. It is better to use <code>bytes</code>. As a rule of thumb, use <code>bytes</code> for arbitrary-length raw byte data and <code>string</code> for arbitrary-length string (UTF-8) data. If you can limit the length to a certain number of bytes, always use one of <code>bytes1</code> to <code>bytes32</code> because they are much cheaper.</p>
   
     <p>How can this function be optimized?</p><pre><code>function byteArray() public returns(uint){
       byte[] byteArray;
