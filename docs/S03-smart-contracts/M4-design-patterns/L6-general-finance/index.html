@@ -189,7 +189,7 @@
   
     <p>The execute transaction function takes a single parameter, the <code>transactionId</code>.</p>
   
-    <p>First, we want to make sure that the Transaction at the specified id has not already been executed.</p><pre><code>    require(transactions[trandsactionId].executed == false);
+    <p>First, we want to make sure that the Transaction at the specified id has not already been executed.</p><pre><code>    require(transactions[transactionId].executed == false);
   </code></pre>
   
     <p>Then we want to verify that the transaction has at least the required number of confirmations.</p>
