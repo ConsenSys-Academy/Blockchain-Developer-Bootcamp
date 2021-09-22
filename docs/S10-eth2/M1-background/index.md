@@ -23,7 +23,7 @@ Phase 0 is the phase most public one now, as it's currently undergoing public te
 * [Teku](https://pegasys.tech/teku/) — Java-based client developed by ConsenSys Software
 * [Prysm](https://github.com/prysmaticlabs/prysm) — Go-based client developed by Prysmatic Labs
 * [Lighthouse](https://github.com/sigp/lighthouse) — Rust-based client developed by Sigma Prime
-* [Lodestar](https://github.com/ChainSafeSystems/lodestar_chain) — Javascript-based client
+* [Lodestar](https://github.com/ChainSafeSystems/lodestar_chain) — JavaScript-based client
 * [Nimbus](https://github.com/status-im/nimbus) — Nim-based client developed by Status
 
 The Medalla testnet was the first, public, multi-client testnet available. You can check out its progress [here](https://eth2stats.io/medalla-testnet) and join the testnet [by following these steps.](https://medalla.launchpad.ethereum.org/)

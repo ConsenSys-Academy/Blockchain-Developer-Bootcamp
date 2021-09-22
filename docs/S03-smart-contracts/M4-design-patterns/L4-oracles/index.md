@@ -8,9 +8,9 @@ Additionally, what if we'd like to interact with external computation in the out
 
 Such data and external computation exists but they are beyond the _trust boundary_ established by our blockchain protocols.
 
-One way blockchain developers have tried to bridge the gap is through what are called **off-chain [oracles.](https://en.wikipedia.org/wiki/Blockchain_oracle){target=_blank}** Off-chain oracles are agents that find and verify real-world information and submit them to the blockchain to be used by smart contracts. They can trigger smart contract executions when the data is obtained or predefined conditions are meet (e.g. time, weather, tracking, payments). Off-chain oracles are provided by organizations like [Provable Things,](https://provable.xyz/){target=_blank} [Chainlink Labs,](https://chain.link/){target=_blank} and more.
+One way blockchain developers have tried to bridge the gap is through what are called **off-chain [oracles.](https://en.wikipedia.org/wiki/Blockchain_oracle)** Off-chain oracles are agents that find and verify real-world information and submit them to the blockchain to be used by smart contracts. They can trigger smart contract executions when the data is obtained or predefined conditions are meet (e.g. time, weather, tracking, payments). Off-chain oracles are provided by organizations like [Provable Things](https://provable.xyz/){target=_blank}, [Chainlink Labs,](https://chain.link/){target=_blank} and more.
 
-Please note that DeFi has led to on-chain oracles, particularly dealing with token prices, which we will discuss more in the section on DeFi. Such examples of on-chain oracles are [Chainlink's Data Feeds](https://docs.chain.link/docs/get-the-latest-price/){target=_blank}, Uniswap's `[Observations](https://docs.uniswap.org/protocol/concepts/V3-overview/oracle){target=_blank}`, and MakerDAO's [Feeds](https://developer.makerdao.com/feeds/){target=_blank}.
+Please note that DeFi has led to on-chain oracles, particularly dealing with token prices, which we will discuss more in the section on DeFi. Such examples of on-chain oracles are [Chainlink's Data Feeds](https://docs.chain.link/docs/get-the-latest-price/){target=_blank}, Uniswap's [Observations](https://docs.uniswap.org/protocol/concepts/V3-overview/oracle){target=_blank}, and MakerDAO's [Feeds](https://developer.makerdao.com/feeds/){target=_blank}.
 
 A smart contract using oracles in some facet is often referred to as a [Hybrid Smart Contract](https://blog.chain.link/hybrid-smart-contracts-explained/){target=_blank}.
 
@@ -33,12 +33,12 @@ At its most basic, a smart contract contract using an oracle needs to implement 
 
 This is often known as the [request and receive](https://docs.chain.link/docs/architecture-request-model/){target=_blank} model of oracles. Unless you've setup the service yourself, external calls to oracles typically require a fee attached to provide the data to your contract.
 
-There are multiple ways to achieve this, let's look at one generalized code using [Provable](https://docs.provable.xyz){target=_blank} below:
+There are multiple ways to achieve this; let's look at a simplified version of this [example](https://github.com/provable-things/ethereum-examples/blob/c0431a147f24519a135d07f9d5c17db73498e0e7/solidity/DieselPrice.sol){target=_blank} using [Provable](https://docs.provable.xyz){target=_blank} below:
 
-<pre>import "github.com/oraclize/ethereum-api/provableAPI.sol";
+<pre>import "github.com/provable-things/ethereum-api/provableAPI.sol";
 
 contract DieselPrice is usingProvable {
-    uint DieselPriceUSD;
+    uint dieselPriceUSD;
 
     constructor() public {
         provable_query("URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
@@ -46,12 +46,12 @@ contract DieselPrice is usingProvable {
 
     function __callback (bytes32 myid, string result) public {
         require(msg.sender == provable_cbAddress());
-        DieselPriceUSD = parseInt(result);
+        dieselPriceUSD = parseInt(result);
     }
 }
       </pre>
 
-In this code, we're calling the Provable API for the price of diesel when we create the contract. The first query is free, but we'll have to provide ETH to pay for our requests moving forward. The call triggers an event, which lets the Provable contract pull from its off-chain datafeed and provide our contract the result. The contract stores that value in `DieselPriceUSD`.
+In this code, we're calling the Provable API for the price of diesel when we create the contract. The first query is free, but we'll have to provide ETH to pay for our requests moving forward. The call triggers an event, which lets the Provable contract pull from its off-chain datafeed and provide our contract the result. The contract stores that value in `dieselPriceUSD`.
 
 The overall model is for your contract to emit an event, either to another contract or simply in the block its created. The oracle service will detect that event, pull the desired data, and respond back to your contract. The oracle services require you to have a standard method, like `__callback`, that its transaction can target when responding to your oracle query.
 

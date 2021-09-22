@@ -158,7 +158,7 @@
   </code></pre>
   
     <p>There are several checks that we will want to verify before we execute this transaction. First, only wallet owners should be able to call this function. Second, we will want to verify that a transaction exists at the specified <code>transactionId</code>. Last, we want to verify that the <code>msg.sender</code> has not already confirmed this transaction.</p><pre><code>    require(isOwner[msg.sender]);
-      require(transactions[transactionId].destination != 0);
+      require(transactions[transactionId].destination != address(0));
       require(confirmations[transactionId][msg.sender] == false);
   </code></pre>
   
@@ -189,7 +189,7 @@
   
     <p>The execute transaction function takes a single parameter, the <code>transactionId</code>.</p>
   
-    <p>First, we want to make sure that the Transaction at the specified id has not already been executed.</p><pre><code>    require(transactions[trandsactionId].executed == false);
+    <p>First, we want to make sure that the Transaction at the specified id has not already been executed.</p><pre><code>    require(transactions[transactionId].executed == false);
   </code></pre>
   
     <p>Then we want to verify that the transaction has at least the required number of confirmations.</p>
@@ -315,7 +315,7 @@
 
   <!-- Be sure to alter the link below to add in correct Module and Lesson Number  -->
     <div class="footer">
-      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M3-design-patterns/L6-general-finance/index.html" target="_blank">Edit this page on Github</a>
+      <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M3-design-patterns/L6-general-finance/index.html" target="_blank">Edit this page on GitHub</a>
       
       <div class="discord">
         <img class="discord-logo" src="../../../img/discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
