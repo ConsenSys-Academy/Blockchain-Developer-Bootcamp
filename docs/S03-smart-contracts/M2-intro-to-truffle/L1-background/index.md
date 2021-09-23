@@ -53,7 +53,7 @@ Once you have the proper Node and `npm` installed, please run the following comm
 $ npm install -g truffle
 ```
 
-Once succesful, this will allow you to run Truffle from your command line anywhere on your machine.
+Once successful, this will allow you to run Truffle from your command line anywhere on your machine.
 
 ## Ganache
 
