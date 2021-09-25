@@ -87,3 +87,6 @@ DAOs can emerge around social causes like [Meta Gamma Delta](https://metagammade
 Learn more about the latest DAO developments at [DAOTalk.org](https://daotalk.org/c/ecosystem/16){target=\_blank}, [p2pModels.EU](https://p2pmodels.eu/){target=\_blank} or subscribe to [Boardroom's substack](https://governance.substack.com/){target=\_blank}.
 
 Read more about DAOs [via DAOHaus](https://app.daohaus.club/explore){target=\_blank} or [Aragon's list of DAO in 15 different industries](https://blog.aragon.org/15-ways-the-world-is-being-transformed-by-daos/){target=\_blank}.
+
+## Additional Resources
+- [Article: Organizational Legos, The State of DAO Tooling (Nichanan Kesonpat)](https://medium.com/1kxnetwork/organization-legos-the-state-of-dao-tooling-866b6879e93e){target=_blank} Excellent overview of available tooling for DAOs from Fall 2021
