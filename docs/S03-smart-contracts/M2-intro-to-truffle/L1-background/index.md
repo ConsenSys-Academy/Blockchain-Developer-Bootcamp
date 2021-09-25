@@ -55,6 +55,12 @@ $ npm install -g truffle
 
 Once succesful, this will allow you to run Truffle from your command line anywhere on your machine.
 
+Note: In case you run into errors due to write permission on your local machine, try to run the command preceded by `sudo`:
+
+```bash
+$ sudo npm install -g truffle
+```
+
 ## Ganache
 
 Ganache has the same requirements as Truffle (as specified above). In addition, it also comes in two flavors, both a standalone CLI for more intermediate-advanced users and a UI version which is great for users that are just starting out. It’s worth noting that a version of Ganache also ships directly with Truffle which can be instantiated with the truffle develop command.  
@@ -63,6 +69,12 @@ Ganache CLI can be installed via the following:
 
 ```bash
 $ npm install -g ganache-cli 
+```
+
+Note: In case you run into errors due to write permission on your local machine, try to run the command preceded by `sudo`:
+
+```bash
+$ sudo npm install -g ganache-cli
 ```
 
 
