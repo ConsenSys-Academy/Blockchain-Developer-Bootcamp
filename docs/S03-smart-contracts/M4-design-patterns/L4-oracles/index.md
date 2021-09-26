@@ -26,7 +26,7 @@ Services such as Chainlink have built more decentralized networks to hedge again
 
 ## Basic Oracle Mechanism
 
-At its most basic, a smart contract contract using an oracle needs to implement a method to:
+At its most basic, a smart contract using an oracle needs to implement a method to:
 
 1.  Make the request to the oracle, and
 2.  Receive the oracle's response from a callback method
