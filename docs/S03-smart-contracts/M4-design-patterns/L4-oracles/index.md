@@ -57,7 +57,7 @@ The overall model is for your contract to emit an event, either to another contr
 
 ## Decentralized Oracle Mechanism
 
-In the above example, we looked at pulling data from a single source and provider. Stringing requests like this together can make us have a more decentralized application, but we would still be routing it though the same organization.
+In the above example, we looked at pulling data from a single source and provider. Stringing requests like this together can make us have a more decentralized application, but we would still be routing it through the same organization.
 
 Let's look at another example of pulling data in a decentralized context, for example, from a [Chainlink data feed.](https://docs.chain.link/docs/using-chainlink-reference-contracts/){target=_blank}
 
