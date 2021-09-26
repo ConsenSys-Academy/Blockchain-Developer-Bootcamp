@@ -51,7 +51,7 @@ contract DieselPrice is usingProvable {
 }
       </pre>
 
-In this code, we're calling the Provable API for the price of diesel when we create the contract. The first query is free, but we'll have to provide ETH to pay for our requests moving forward. The call triggers an event, which lets the Provable contract pull from its off-chain datafeed and provide our contract the result. The contract stores that value in `dieselPriceUSD`.
+In this code, we're calling the Provable API for the price of diesel when we create the contract. The first query is free, but we'll have to provide ETH to pay for our requests moving forward. The call triggers an event, which lets the Provable contract pull from its off-chain data feed and provide our contract the result. The contract stores that value in `dieselPriceUSD`.
 
 The overall model is for your contract to emit an event, either to another contract or simply in the block its created. The oracle service will detect that event, pull the desired data, and respond back to your contract. The oracle services require you to have a standard method, like `__callback`, that its transaction can target when responding to your oracle query.
 
