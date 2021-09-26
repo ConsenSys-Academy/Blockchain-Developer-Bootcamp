@@ -6,7 +6,7 @@ However, that network state only holds true within the boundaries of the network
 
 Additionally, what if we'd like to interact with external computation in the outside world? A machine learning algorithm, a random number generator, or an event-driven task automation would all be examples of external computation that would be essential to building feature rich smart contracts. 
 
-Such data and external computation exists but they are beyond the _trust boundary_ established by our blockchain protocols.
+Such data and external computation exist but they are beyond the _trust boundary_ established by our blockchain protocols.
 
 One way blockchain developers have tried to bridge the gap is through what are called **off-chain [oracles.](https://en.wikipedia.org/wiki/Blockchain_oracle)** Off-chain oracles are agents that find and verify real-world information and submit them to the blockchain to be used by smart contracts. They can trigger smart contract executions when the data is obtained or predefined conditions are meet (e.g. time, weather, tracking, payments). Off-chain oracles are provided by organizations like [Provable Things](https://provable.xyz/){target=_blank}, [Chainlink Labs,](https://chain.link/){target=_blank} and more.
 
