@@ -6,7 +6,7 @@ First, we should mention there's a discussion around even the term "Ethereum 2.0
 
 What we call “eth2” is a series of major upgrades to Ethereum’s consensus-layer – to ensure the protocol is secure, sustainable, and scalable – while “eth2 clients” are implementations of this proof-of-stake consensus.
 
-And, what we call “eth1” in this context is Ethereum’s rich application-layer, and similarly, “eth1 clients” (after the upgrade to proof-of-stake) are the software that does the heavy lifting in this layer. Ethereum’s application-layer is currently driven by a proof-of-work consensus algorithm but will soon be driven by the beacon chain – the proof-of-stake consensus mechanism that is currently in production and secured by ~3.5M ETH.
+And, what we call “eth1” in this context is Ethereum’s rich application-layer, and similarly, “eth1 clients” (after the upgrade to proof-of-stake) are the software that does the heavy lifting in this layer. Ethereum’s application-layer is currently driven by a proof-of-work consensus algorithm but will soon be driven by the beacon chain – the proof-of-stake consensus mechanism that is currently in production and secured by ~7.7M ETH.
 
 <a href="https://hackmd.io/@benjaminion/eth2_news/https%3A%2F%2Fhackmd.io%2F%40benjaminion%2Fwnie2_210702" target="_blank" rel="noopener noreferrer">People</a> are still using the term Ethereum 2.0 or Eth2 (like we are in this course), but eventually both chains will just be "Ethereum"!
 

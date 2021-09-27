@@ -12,6 +12,8 @@ Markdown is what this file and GitHub README.md files are written in. If you nee
 
 ## Steps to GitHub PRs
 
+[See a video walking through the steps below here](https://www.loom.com/share/7ffae766cf544d529b21721b1b4e75af)
+
 For hot fixes, like typos, broken links or recommendations, please use the following steps:
 
 1. Please name your branch `fix/[THING YOU FIXED HERE]`

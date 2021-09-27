@@ -52,7 +52,7 @@ One method to bootstrap the network is via [liquidity mining](https://medium.com
 
 <!-- 🖼 Add Liquidity Mining Picture -->
 
-There are various protocols like [Yearn.Finance](https://finematics.com/yearn-vaults-eth-vault-explained/){target=\_blank} which help users automate strategies to maximize APY and the lowest cost through the use of [vaults](https://defirating.finance/en/research-center/what-are-defi-vaults-and-how-do-we-use-them-to-farm-profits/){target=\_blank}{target=\_blank}. There are some [indicators that DeFi protocol Devs should know](https://academy.binance.com/en/articles/7-indicators-every-defi-investor-should-know){target=\_blank}{target=\_blank}.
+There are various protocols like [Yearn.Finance](https://finematics.com/yearn-vaults-eth-vault-explained/){target=\_blank} which help users automate strategies to maximize APY and the lowest cost through the use of [vaults](https://defirating.finance/en/research-center/what-are-defi-vaults-and-how-do-we-use-them-to-farm-profits/){target=\_blank}. There are some [indicators that DeFi protocol Devs should know](https://academy.binance.com/en/articles/7-indicators-every-defi-investor-should-know){target=\_blank}.
 
 ## Additional Resources
 

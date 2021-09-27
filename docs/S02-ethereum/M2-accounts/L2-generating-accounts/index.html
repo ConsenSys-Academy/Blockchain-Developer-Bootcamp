@@ -101,7 +101,7 @@
 
 <p>You can sign transactions in the browser with the <a href="https://github.com/ethereumjs/ethereumjs-tx" target="_blank">ethereumjs-tx library</a>.</p>
 
-<pre><code>const EthereumTx = require(&#39;ethereumjs-tx&#39;)<br><br>...<br><br>function signTx(privKey, txData){<br>&nbsp; &nbsp; const tx = new EthereumTx(txData)<br>&nbsp; &nbsp; tx.sign(privKey)<br>&nbsp; &nbsp; return tx<br>}<code></pre>
+<pre><code>const EthereumTx = require(&#39;ethereumjs-tx&#39;)<br><br>...<br><br>function signTx(privKey, txData){<br>&nbsp; &nbsp; const tx = new EthereumTx(txData)<br>&nbsp; &nbsp; tx.sign(privKey)<br>&nbsp; &nbsp; return tx<br>}</code></pre>
 
 <p>Unsigned Ethereum transactions look something like this:</p>
 

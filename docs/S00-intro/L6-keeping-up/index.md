@@ -65,6 +65,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 ## Learning Paths
 - [EthernautDAO](https://forum.ethernautdao.io/){target=_blank} Decentralized organization focussed on training developers to become blockchain developers and get them jobs! [Discord here](https://discord.gg/RQ5WYDxUF3){target=_blank}
 - [How to Get Into Web 3 as a Developer (Nader Dabit)](https://dev.to/dabit3/how-to-get-into-ethereum-crypto-web3-as-a-developer-9l6){target=_blank}
+- [Anett Rolikova's README for Crypto Beginners](https://github.com/anettrolikova/Crypto/blob/master/README.md){target=_blank}
 - [Learning Resources from EthernautDAO](https://github.com/ethernautdao/resources){target=_blank}
 - [DeFi Developer Roadmap](https://github.com/OffcierCia/DeFi-Developer-Road-Map){target=_blank}
 - [Ethereum.org's Developer Guide](https://ethereum.org/en/developers/){target=_blank}
