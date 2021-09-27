@@ -28,7 +28,9 @@
 > 
 >  
 
- ![image of a timestamp server chained together using hashes from bitcoin whitepaper](../../../img/S01/bitcoin-timestamp-server.png)*from the [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf){target=_blank}* 
+ ![image of a timestamp server chained together using hashes from bitcoin whitepaper](../../../img/S01/bitcoin-timestamp-server.png)
+ 
+ *from the [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf){target=_blank}* 
 
  The timestamp server leverages hash functions in one critical way. It includes the hash of the previous block into the hash of the current block. If any historical data in any of the previous blocks are altered, the changes will cascade throughout all the blocks after it. In this way, blocks of transaction data are **chained** together to form a blockchain 🤯 🤯 🤯.
 
@@ -48,7 +50,9 @@ Hash Chains as General Data Structures
 Additional Links for Hashing
 ----------------------------
 
- ![hash all the strings using x all the y meme template](../../../img/S01/hash-all-the-strings.jpeg) ### General Hashing Material
+ ![hash all the strings using x all the y meme template](../../../img/S01/hash-all-the-strings.jpeg) 
+ 
+ ### General Hashing Material
 
  * [Interactive Code: Cryptographic Hash Function Sandbox](https://emn178.github.io/online-tools/sha256.html){target=_blank} A, simple nice way to see the characteristics of hash functions.
 * [Article: Why is 2^256 Secure?](https://web.archive.org/web/20201026010255/https://privacycanada.net/cryptanalysis/why-is-2-256-secure/){target=_blank} Explanation behind the enormous "numberspace" that virtually guarantees no collisions, and therefore uniqueness, when using hash functions based on large exponents.
