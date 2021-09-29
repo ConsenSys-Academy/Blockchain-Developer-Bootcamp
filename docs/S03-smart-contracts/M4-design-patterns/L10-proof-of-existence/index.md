@@ -14,7 +14,7 @@ In this walkthrough, we are going to introduce some basic Ethereum smart contrac
 
 For this example we need NodeJS installed on your machine. There are several ways to get it, but we recommend using NVM (Node Version Manager). This way we can execute `npm install -g` without needing `sudo`, which can be dangerous. 
 
-[Here are the official instructions for all operating systems](https://github.com/nvm-sh/nvm#install--update-script).
+[Here are the official instructions for all operating systems](https://github.com/nvm-sh/nvm#install--update-script){target=_blank}.
 
 On the other hand, you can install NodeJS via APT, YUM or Homebrew, but will have to run the `npm install -g` scripts below with `sudo`.
 
