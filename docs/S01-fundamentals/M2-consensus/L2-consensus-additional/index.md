@@ -14,13 +14,15 @@
 
  At the most basic level, "consensus protocols are used to allow computers to work together" and "let different servers agree on the state of a system." ([Software Engineering Daily](https://softwareengineeringdaily.com/2018/03/26/consensus-systems-with-ethan-buchman/){target=_blank}). For the airplane manufacturers, a good consensus protocol would continue to function with some errors. This way, if one or two things failed, the entire system wouldn't fail. The ability of a consensus protocol to adapt to failure is called [resilience.](https://en.wikipedia.org/wiki/Resilience_(network){target=_blank}) 
 
- Crucially, early work around distributed computing and consensus protocols dealt with *non-adversarial systems*. This meant that any of the faults that were happening in a computer network, like an airplane, were the result of natural system errors (power failure, faulty parts, etc), not some sort of active meddling or hacking. This has now developed to encompass much more than aerospace technology. As we mentioned before, it now also covers many digital services, such as: * Any multi-party real-time communication stream (like a social media feed)
+ Crucially, early work around distributed computing and consensus protocols dealt with *non-adversarial systems*. This meant that any of the faults that were happening in a computer network, like an airplane, were the result of natural system errors (power failure, faulty parts, etc), not some sort of active meddling or hacking. This has now developed to encompass much more than aerospace technology. As we mentioned before, it now also covers many digital services, such as: 
+* Any multi-party real-time communication stream (like a social media feed)
 * An online media streaming service which requires multiple regional servers holding and updating the exact same information on customers
 * A search engine service that needs to maintain and update indexed information across many regions
 
  
 
- Consensus protocols help these systems maintain historical information also called **state.** Broadly speaking, state can be defined as a set of variables describing a certain system at a specific time. Let’s describe that in a real-world situation. Take a look around at whatever environment you’re in––bus station, coffee shop, office––and pick out a few variables you could use to describe it. If you’re inside a room, you could describe any number of things: * The number of walls
+ Consensus protocols help these systems maintain historical information also called **state.** Broadly speaking, state can be defined as a set of variables describing a certain system at a specific time. Let’s describe that in a real-world situation. Take a look around at whatever environment you’re in––bus station, coffee shop, office––and pick out a few variables you could use to describe it. If you’re inside a room, you could describe any number of things: 
+* The number of walls
 * The types of furniture
 * The placement of furniture
 * The number of people
