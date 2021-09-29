@@ -82,11 +82,11 @@ This script lets Truffle know to use the `truffle-config.arbitrum.js` configurat
 
 Now that we've compiled the contract for Arbitrum, we can migrate it to an Arbitrum Layer 2 network. First, let's just try to our local Ganache, which will be almost similar to a normal Ethereum ganache instance:
 
-<pre>npm run migrate:ovm --network=ganache</pre>
+<pre>npm run migrate:arbitrum --network=ganache</pre>
 
 This may be a bit underwhelming! However, if we have loaded in our Infura Arbitrum Rinkeby network endpoint and have enough Arbitrum Rinkeby ETH in the wallet tied to the `.env` mnemonic, we can also run:
 
-<pre>npm run migrate:ovm --network=arbitrum_testnet</pre>
+<pre>npm run migrate:arbitrum --network=arbitrum_testnet</pre>
 
 Like standard Truffle, if you would like to migrate previously migrated contracts on the same network, you can run `truffle migrate --config truffle-config.arbitrum.js --network=(arbitrum_local | arbitrum_testnet | arbitrum_mainnet)` and add the `--reset` flag.
 
