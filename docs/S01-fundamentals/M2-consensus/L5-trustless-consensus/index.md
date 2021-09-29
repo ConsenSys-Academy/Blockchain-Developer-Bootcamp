@@ -1,7 +1,9 @@
   Trustless Consensus
 ===================
 
-  *Note: this section is fairly text heavy and may be difficult to understand at first. Not to worry! The two videos following this section cover similar material in a visual way. We'll also discuss this in our Office Hours or on Discord.* We've spent the past few sections learning about how consensus protocols work to make peer-to-peer distributed systems maintain state across time despite node failure. This is a general computer science concept that's used in building distributed networks that may be susceptible to machine failures, message duplications, message corruptions, etc. Since they are decentralized networks, public blockchains have to deal with this category of problems. But, they are also presented with an entirely new set of issues.
+  *Note: this section is fairly text heavy and may be difficult to understand at first. Not to worry! The two videos following this section cover similar material in a visual way. We'll also discuss this in our Office Hours or on Discord.* 
+
+We've spent the past few sections learning about how consensus protocols work to make peer-to-peer distributed systems maintain state across time despite node failure. This is a general computer science concept that's used in building distributed networks that may be susceptible to machine failures, message duplications, message corruptions, etc. Since they are decentralized networks, public blockchains have to deal with this category of problems. But, they are also presented with an entirely new set of issues.
 
  Public blockchains introduce a specific challenge to agreeing on a state. In a non-blockchain distributed network, state is a set of data valuable really only to the private organization running the network. For example, in a digital streaming service, the state might contain where a user stopped watching a previous video. That way, if they start the video again and are served the content from a different network server, their place will be saved.
 
@@ -43,7 +45,8 @@
 
  ### Nodes and their Roles
 
- In Proof of Work consensus, here are the roles nodes play: * **Miners** These are the nodes which are certifying which transactions are valid by including them in blocks and receiving the block reward. When a miner creates a valid block and propagates it throughout the network, the network state is advanced in a trustless way. (We'll examine in a moment how a miner can create a block in a trustless way.)
+ In Proof of Work consensus, here are the roles nodes play: 
+* **Miners** These are the nodes which are certifying which transactions are valid by including them in blocks and receiving the block reward. When a miner creates a valid block and propagates it throughout the network, the network state is advanced in a trustless way. (We'll examine in a moment how a miner can create a block in a trustless way.)
 * **Full Nodes** These are the general network nodes which are creating transactions and passing along transactions created by other nodes in the network. They are also maintaining full network state when they receive valid blocks from Miner nodes. Each full node in the network checks the work of a block to ensure its validity.
 * **Light Nodes** These are network nodes which are simply submitting transactions to the network and waiting for them to be accepted by the network. They do not participate in the process of checking the validity of the advancing network state and do not pass along messages.
 * **Archive Nodes** Similar to a full node, it maintains and provides the current state, but also maintains and provides historical states. e.g. balance at x date.
@@ -54,7 +57,8 @@
 
  ### Periods and Proof of Work
 
- In Proof of Work consensus, there are two distinct periods in a network: * **Period of Block Production** This is the period in which Miner nodes validate transactions by bundling them all together and competing to produce a valid Proof of Work algorithm. It begins when the miner receives the latest valid block and stops when the miner solves their Proof of Work algorithm or receives a valid block from another miner.
+ In Proof of Work consensus, there are two distinct periods in a network: 
+* **Period of Block Production** This is the period in which Miner nodes validate transactions by bundling them all together and competing to produce a valid Proof of Work algorithm. It begins when the miner receives the latest valid block and stops when the miner solves their Proof of Work algorithm or receives a valid block from another miner.
 * **Period of Block Propagation** This is the period in which a valid block gradually moves through the network. A full node or miner node will only propagate blocks that are valid, so the process of the network accepting a valid block (and accepted the new network state) is an emergent one.
 
   The following section will describe the process of creating a block and how blocks chained together create an immutable ledger that all network participants can validate on their own. This individual validation, without having to rely on trust, is how proof of work consensus maintains state in a distributed and safe way. 
