@@ -28,7 +28,7 @@ We have included a version of the newer web3.js API in the page as well, so by e
 
 ### A Side note about Metamask
 
-If you are following along in your browser, you will also see that in the "currentProvider" property, the "selectedAddress" is undefined or null. Metamask does not provide access to the account address by default. If you type `ethereum.enable()` in the console, Metamask will pop open asking you if you'd like to connect.
+If you are following along in your browser, you will also see that in the "currentProvider -> [[Target]]" property, the "selectedAddress" is undefined or null. Metamask does not provide access to the account address by default. If you type `ethereum.request({ method: 'eth_requestAccounts' })` in the console, Metamask will pop open asking you if you'd like to connect.
 
 Connecting will make this account information accessible to the current page.
 
@@ -38,7 +38,9 @@ Connect to Ganache GUI
 
 Let's connect to Ganache GUI and send a transaction via the API in the console. Start [Ganache GUI](https://truffleframework.com/docs/ganache/overview) and connect Metamask (Ganache GUI defaults to port 7545). Use the Ganache GUI "Quickstart" option to follow along with the same account addresses that I use in this explanation. To connect to Ganache GUI, click "Custom RPC" in the Network drop down and then enter the network information.
 
-     ![](https://files.cdn.thinkific.com/file_uploads/205430/images/8f5/d67/387/1595392057199.jpg)              ![](https://files.cdn.thinkific.com/file_uploads/205430/images/f10/099/f6c/1595392059118.jpg)
+     ![](https://files.cdn.thinkific.com/file_uploads/205430/images/8f5/d67/387/1595392057199.jpg)
+     ![image](https://user-images.githubusercontent.com/89709023/135047552-0d053a17-193e-4b8b-ad40-814f2183ca1a.png)
+
 
 You can easily import Ganache GUI accounts into Metamask by importing via the private key. Click the key icon on the right side of Ganache GUI to get the associated account private key. To import the account into Metamask, select "Import Account" in the Metamask accounts dropdown, and paste in the private key.
 
@@ -66,7 +68,7 @@ In the console, it look like this:
 
 ![](https://files.cdn.thinkific.com/file_uploads/205430/images/139/18a/245/1595392060307.jpg)
 
-Now sending a transaction is as easy as entering `web3.eth.sendTransaction(transaction)` in the console and Metamask will pop up, asking you to sign the transaction. If you get an error, you may need to reset the web3 provider. You can do that with this line of code `web3.setProvider(web3.currentProvider)`.
+Now sending a transaction is as easy as entering `ethereum.request({ method: 'eth_sendTransaction', params: [transaction]})` in the console and Metamask will pop up, asking you to sign the transaction. If you get an error, you may need to reset the web3 provider. You can do that with this line of code `web3.setProvider(web3.currentProvider)`.
 
 ![](https://files.cdn.thinkific.com/file_uploads/205430/images/9b8/1ea/5f4/1595392060592.jpg)
 
@@ -82,7 +84,7 @@ If this happens, it is a simple fix. Open Metamask and click the account icon on
 
 If you were seeing this error, reset your account and try sending the transaction again. Metamask will get the correct account nonce from the blockchain network. When the transaction succeeds, you should see the new account balances reflected on Ganache GUI.
 
-You can check the balance of these accounts with the line `await web3.eth.getBalance(address)` where address is any Ethereum address. Try it with "`await web3.eth.getBalance(web3.currentProvider.selectedAddress)`".
+You can check the balance of these accounts with the line `let balance = await ethereum.request({ method: 'eth_getBalance', params[web3.currentProvider.selectedAddress, "latest"]})`, this returns the account balance expressed in Wei in hexadecimal format and can be converted to ether like so `parseInt(balance) / 10*18`. 
 
 This is just a quick intro to sending transaction with web3.js v1.0\. You can learn more about how to use it via the docs and specifically about [how to connect to a contract via this section.](https://web3js.readthedocs.io/en/1.0/web3-eth-contract.html#web3-eth-contract) 
 
