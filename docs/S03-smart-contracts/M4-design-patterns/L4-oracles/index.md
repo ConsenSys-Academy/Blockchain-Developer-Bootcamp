@@ -6,7 +6,7 @@ However, that network state only holds true within the boundaries of the network
 
 Additionally, what if we'd like to interact with external computation in the outside world? A machine learning algorithm, a random number generator, or an event-driven task automation would all be examples of external computation that would be essential to building feature rich smart contracts. 
 
-Such data and external computation exists but they are beyond the _trust boundary_ established by our blockchain protocols.
+Such data and external computation exist but they are beyond the _trust boundary_ established by our blockchain protocols.
 
 One way blockchain developers have tried to bridge the gap is through what are called **off-chain [oracles.](https://en.wikipedia.org/wiki/Blockchain_oracle)** Off-chain oracles are agents that find and verify real-world information and submit them to the blockchain to be used by smart contracts. They can trigger smart contract executions when the data is obtained or predefined conditions are meet (e.g. time, weather, tracking, payments). Off-chain oracles are provided by organizations like [Provable Things](https://provable.xyz/){target=_blank}, [Chainlink Labs,](https://chain.link/){target=_blank} and more.
 
@@ -26,7 +26,7 @@ Services such as Chainlink have built more decentralized networks to hedge again
 
 ## Basic Oracle Mechanism
 
-At its most basic, a smart contract contract using an oracle needs to implement a method to:
+At its most basic, a smart contract using an oracle needs to implement a method to:
 
 1.  Make the request to the oracle, and
 2.  Receive the oracle's response from a callback method
@@ -51,13 +51,13 @@ contract DieselPrice is usingProvable {
 }
       </pre>
 
-In this code, we're calling the Provable API for the price of diesel when we create the contract. The first query is free, but we'll have to provide ETH to pay for our requests moving forward. The call triggers an event, which lets the Provable contract pull from its off-chain datafeed and provide our contract the result. The contract stores that value in `dieselPriceUSD`.
+In this code, we're calling the Provable API for the price of diesel when we create the contract. The first query is free, but we'll have to provide ETH to pay for our requests moving forward. The call triggers an event, which lets the Provable contract pull from its off-chain data feed and provide our contract the result. The contract stores that value in `dieselPriceUSD`.
 
 The overall model is for your contract to emit an event, either to another contract or simply in the block its created. The oracle service will detect that event, pull the desired data, and respond back to your contract. The oracle services require you to have a standard method, like `__callback`, that its transaction can target when responding to your oracle query.
 
 ## Decentralized Oracle Mechanism
 
-In the above example, we looked at pulling data from a single source and provider. Stringing requests like this together can make us have a more decentralized application, but we would still be routing it though the same organization.
+In the above example, we looked at pulling data from a single source and provider. Stringing requests like this together can make us have a more decentralized application, but we would still be routing it through the same organization.
 
 Let's look at another example of pulling data in a decentralized context, for example, from a [Chainlink data feed.](https://docs.chain.link/docs/using-chainlink-reference-contracts/){target=_blank}
 
