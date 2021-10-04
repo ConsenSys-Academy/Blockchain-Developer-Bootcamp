@@ -18,7 +18,7 @@ A smart contract using oracles in some facet is often referred to as a [Hybrid S
 
 It's extremely important to understand oracles like the ones we're discussing here can require trust. Understanding where the data is coming from is essential to running a decentralized smart contract. When using oracles, it's important to build in smart contract mechanisms that can anticipate errors or possible corruption, as oracles can succumb to many attack vectors.
 
-Having a single oracle or a single data source delivering your data or executing your computation creates a single source of failure for your smart contract, and means your decentralized application isn't actually decentralized. You'll want to make sure the oracle network you're working with is executing in as decentralized a context as possible. For example, if you want pricing data, you get the pricing data from many exchanges, and many independent blockchain oracles deliver this data. 
+Having a single oracle or a single data source delivering your data or executing your computation creates a single source of failure for your smart contract, and means your decentralized application isn't actually decentralized. You'll want to make sure the oracle network you're working with is executing in a context as decentralized as possible. For example, if you want pricing data, you get the pricing data from many exchanges, and many independent blockchain oracles deliver this data. 
 
 It's important to know, that just setting up an oracle service yourself can mean your application is centralized, and possibly doesn't have the highest quality data or execution. So we want to avoid setting these up ourselves, but also do our due diligence to make sure the system we are working with is decentralized. 
 
