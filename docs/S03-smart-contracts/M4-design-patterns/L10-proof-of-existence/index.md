@@ -10,6 +10,14 @@ In this walkthrough, we are going to introduce some basic Ethereum smart contrac
 
 ## Set up the Environment
 
+### Installing NodeJS
+
+For this example we need NodeJS installed on your machine. There are several ways to get it, but we recommend using NVM (Node Version Manager). This way we can execute `npm install -g` without needing `sudo`, which can be dangerous. 
+
+[Here are the official instructions for all operating systems](https://github.com/nvm-sh/nvm#install--update-script){target=_blank}.
+
+On the other hand, you can install NodeJS via APT, YUM or Homebrew, but will have to run the `npm install -g` scripts below with `sudo`.
+
 ### Connect to a Blockchain
 
 To develop Ethereum applications, you will need a client to connect to an Ethereum blockchain. You can use [Geth](https://geth.ethereum.org/docs/getting-started){target=_blank}, [Parity](https://www.parity.io/){target=_blank} or a development blockchain such as [Ganache](http://truffleframework.com/ganache/){target=_blank}.
@@ -18,7 +26,7 @@ In this walkthrough we will be using the Ganache command line interface, ganache
 
 You can install ganache-cli with the following command:
 
-    $ sudo npm install -g ganache-cli
+    $ npm install -g ganache-cli
 
 And start ganache-cli with
 
@@ -36,7 +44,7 @@ Solidity is the most popular programming language for writing smart contracts in
 
 To install truffle
 
-    $ sudo npm install -g truffle
+    $ npm install -g truffle
 
 <span style="background-color: rgb(209, 213, 216);">`$ sudo npm install -g @truffle/hdwallet-provider`</span>
 
