@@ -73,7 +73,7 @@
 
   <h2>Reentrancy</h2>
   <div class="img-wrapper"><img src="../../../img/S03/swc-6.png" alt="reentrancy attack diagram"></div>
-  <p>Reentrancy attacks (<a href="https://swcregistry.io/docs/SWC-107" target="_blank" rel="noopener noreferrer">SWC-107</a>) are very well-known thanks to the infamous DAO hack that happened on the Ethereum network. In a reentrancy attack, a vulnerable contract send ether to an unknown address that contains a fallback function. Then, a malicious code calls back repeatedly a function in the vulnerable contract before the first call be finished.</p> 
+  <p>Reentrancy attacks (<a href="https://swcregistry.io/docs/SWC-107" target="_blank" rel="noopener noreferrer">SWC-107</a>) are very well-known thanks to the infamous DAO hack that happened on the Ethereum network. In a reentrancy attack, a vulnerable contract sends ether to an unknown address that contains a fallback function. Then, a malicious code calls back repeatedly a function in the vulnerable contract before the first call be finished.</p> 
 
   <pre class="wrong">
 // Vulnerable contract
@@ -155,7 +155,7 @@ function withdrawBalance() public {
     <p>More information and concrete examples can be found at <a href="https://swcregistry.io/docs/SWC-101" target="_blank" rel="noopener noreferrer">the corresponding SWC Registry entry</a></p>
 
   <h2>Unexpected Revert DoS</h2>
-    <p>This attack basically consists in make a vulnerable contract inoperable by forcing a failure or an awaiting situation, locking temporarily or permanently the contract execution (<a href="https://swcregistry.io/docs/SWC-113" target="_blank" rel="noopener noreferrer">SWC-113</a>).</p>
+    <p>This attack basically consists of make a vulnerable contract inoperable by forcing a failure or an awaiting situation, locking temporarily or permanently the contract execution (<a href="https://swcregistry.io/docs/SWC-113" target="_blank" rel="noopener noreferrer">SWC-113</a>).</p>
 
 
 <pre class="wrong">
