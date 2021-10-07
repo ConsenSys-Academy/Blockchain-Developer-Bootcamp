@@ -57,7 +57,7 @@ For a more general guide on how to get started with web3, check out [this guide]
 
 ## Querying from a Frontend Application
 
-Follow [the guide in Gitpod](https://github.com/graphprotocol/full-stack-graph-app) and video below:
+Follow [the guide in Gitpod](https://github.com/graphprotocol/full-stack-graph-app) and [video](https://www.youtube.com/watch?v=PjyKPMpahuc) below:
 
 <!-- blank line -->
 <figure class="video_container">
