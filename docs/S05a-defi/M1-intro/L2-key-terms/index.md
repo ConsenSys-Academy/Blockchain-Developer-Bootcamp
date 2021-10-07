@@ -56,7 +56,7 @@ There are various protocols like [Yearn.Finance](https://finematics.com/yearn-va
 
 ## Additional Resources
 
-[DeFi and the Future of Finance by Campbell R. Harvey (Duke University){target=\_blank}, Ashwin Ramachandran (Dragonfly Capital){target=\_blank} and Joey Santoro (Fei Protocol){target=\_blank}](https://poseidon01.ssrn.com/delivery.php?ID=468065099084001018003001097015123074002033009058089053073089097071090006069068127090056119012045118056006023019023064027115112050004033058059085029023094127080025065057006114025116096023021080002103109117106113005025070080109097094005091097004025&EXT=pdf&INDEX=TRUE){target=\_blank} page 1 - 12
+[DeFi and the Future of Finance by Campbell R. Harvey (Duke University), Ashwin Ramachandran (Dragonfly Capital) and Joey Santoro (Fei Protocol)](https://poseidon01.ssrn.com/delivery.php?ID=468065099084001018003001097015123074002033009058089053073089097071090006069068127090056119012045118056006023019023064027115112050004033058059085029023094127080025065057006114025116096023021080002103109117106113005025070080109097094005091097004025&EXT=pdf&INDEX=TRUE){target=\_blank} page 1 - 12
 
 [DeFi Primitives Via Campbell Harvey - Duke University](https://faculty.fuqua.duke.edu/~charvey/Teaching/562F_2021/Public_Presentations_562F/DeFi_2021_3_Primitives_562F.pdf){target=\_blank}
 
