@@ -116,7 +116,7 @@ If this happens, it is a simple fix. Open Metamask and click the account icon on
 
 If you were seeing this error, reset your account and try sending the transaction again. Metamask will get the correct account nonce from the blockchain network. When the transaction succeeds, you should see the new account balances reflected on Ganache GUI.
 
-You can check the balance of these accounts with the line `let balance = await ethereum.request({ method: 'eth_getBalance', params:[web3.currentProvider.selectedAddress, "latest"]})`, this returns the account balance expressed in Wei in hexadecimal format and can be converted to ether like so `parseInt(balance) / 10*18`. 
+You can check the balance of these accounts with the line `let balance = await ethereum.request({ method: 'eth_getBalance', params:[web3.currentProvider.selectedAddress, "latest"]})`, this returns the account balance expressed in Wei in hexadecimal format and can be converted to ether like so `parseInt(balance) / 10**18`. 
 
 This is just a quick intro to sending transaction with web3.js v1.0\. You can learn more about how to use it via the docs and specifically about [how to connect to a contract via this section.](https://web3js.readthedocs.io/en/1.0/web3-eth-contract.html#web3-eth-contract) 
 
