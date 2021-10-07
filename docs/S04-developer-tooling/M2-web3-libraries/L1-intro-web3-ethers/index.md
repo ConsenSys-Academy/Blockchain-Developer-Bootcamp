@@ -39,9 +39,9 @@ Now, we need to start up a local testnet using Ganache.
 
 Let's connect to Ganache GUI. Start [Ganache GUI](https://truffleframework.com/docs/ganache/overview) and use the gear icon to change the Ganache port to `8545`. 
 
-![finding the gear in ganache GUI](../../../img/s04/ganache-1.png)
+![finding the gear in ganache GUI](../../../img/S04/ganache-1.png)
 
-![changing the port number in ganache GUI](../../../img/s04/ganache-2.png)
+![changing the port number in ganache GUI](../../../img/S04/ganache-2.png)
 
 connect Metamask to `Localhost 8545`
 
