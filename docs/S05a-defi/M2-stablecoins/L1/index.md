@@ -4,7 +4,7 @@ A critical issue in cryptocurrencies is extreme volatility, especially when comp
 
 Stablecoins are cryptocurrencies built using smart contracts on programmatic blockchains, which significantly reduces or eliminates price volatility by aiming to peg to a fiat currency like the US dollar. This gives users a tool for managing risk and allowing them to engage with DeFi protocols reliably. Stablecoins are one of the cornerstones of the DeFi industry, as a user cannot reliably enter or exit a protocol without a stable currency. They also provide access to stable currencies to [unbanked and underbanked people around the world](https://www.worldbank.org/en/news/press-release/2018/04/19/financial-inclusion-on-the-rise-but-gaps-remain-global-findex-database-shows){target=\_blank}, helping people to save, pay, invest and spend in more reliable ways. In addition, Stablecoins allows people to choose their economic policy based on their interests and objectives.
 
-There are four types of stablecoins, each collateralized by different assets and its own complexity/centralization profile.
+There are five types of stablecoins, each collateralized by different assets and its own complexity/centralization profile.
 
 The types are ranked from most centralized/less complex to less centralized/more complex.
 
@@ -12,8 +12,7 @@ The types are ranked from most centralized/less complex to less centralized/more
 2. Commodity backed
 3. Crypto backed
 4. Algorithmic
-5. Fractional
-6. Central Bank Digital Currencies\*
+5. Central Bank Digital Currencies\*
 
 A good mental model for a Stablecoin is the paper money you have in your pocket. Think of it as a programmable IOU that everyone in your community would accept as payment.
 
