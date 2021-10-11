@@ -22,7 +22,7 @@ Simultaneous with an audit, you might be running the next step, *Bug Bounty and 
 
 Last, after all these steps, is the *Launch*. You may have already stealthily deployed your contract, assuming you've done all the testing and auditing, but this is where you announce the interface and let folks know that it's ready to go! As we'll see next, in some ways your work has just begun, but at least you've gotten your project launched into the world!
 
-## Developmer Tooling
+## Developer Tooling
 
 We're now going to drill into the **Development** phase mentioned above. This is probably what we all think of when we think about developing application for the blockchain. Here's a simplified oveview of what a development flow looks like at the beginning of a project:
 
@@ -30,7 +30,7 @@ We're now going to drill into the **Development** phase mentioned above. This is
 
 Here we see the developer (you) working mainly from their code editor, in which they'll have both the smart contracts *and* whatever frontend interface they're working on. The code editor will be stocked with the most helpful general extensions as well as specific smart contract extensions, such as the [Solidity extension](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity){target=_blank} for VSCode as well as tools to help with gas estimation or contract sizing. Next, the developer will have a framework that they're using to deploy the smart contract and interface. In the image above, the developer is using Truffle to build their contracts, hold the build artifacts, run tests and deploy to a testnet. There are other options as well, such as [Hardhat](https://hardhat.org/){target=_blank}, [Scaffold-Eth](https://github.com/austintgriffith/scaffold-eth){target=_blank}, and [Brownie](https://eth-brownie.readthedocs.io/en/stable/){target=_blank}, to name some of the more popular ones.
 
-The developer will then having some private testnet tool they're using to deploy the smart contract in the early stages. This will be Ganache for us, since we're using Truffle. As we continue to become more confident in our development process, we may want to deploy to a public testnet. For this, we will use either an Ethereum node we have on our machine or we'll use a gateway service like [Infura](https://infura.io){target=_blank}, which will allow us to easily deploy to an Ethereum testnet, Ethereum mainnet, or even networks like Polygon, Arbitrum or Optimism. (If we're starting to lose you, don't worry we'll cover all these things later in the course!)
+The developers will be then having some private testnet tool they're using to deploy the smart contract in the early stages. This will be Ganache for us, since we're using Truffle. As we continue to become more confident in our development process, we may want to deploy to a public testnet. For this, we will use either an Ethereum node we have on our machine or we'll use a gateway service like [Infura](https://infura.io){target=_blank}, which will allow us to easily deploy to an Ethereum testnet, Ethereum mainnet, or even networks like Polygon, Arbitrum or Optimism. (If we're starting to lose you, don't worry we'll cover all these things later in the course!)
 
 ## .env File
 
