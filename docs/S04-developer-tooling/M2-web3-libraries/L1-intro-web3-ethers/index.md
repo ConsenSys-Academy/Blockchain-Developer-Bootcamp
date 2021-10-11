@@ -132,7 +132,7 @@ We'll have to follow the same steps to import it as above with Web3.js:
 var script = document.createElement('script');
 script.type = 'text/javascript';
 script.src = 'script.js';
-script.src = 'https://cdn.ethers.io/lib/ethers-5.2.esm.min.js';
+script.src = 'https://cdn.ethers.io/lib/ethers-5.1.umd.min.js';
 document.head.appendChild(script);
 ```
 
