@@ -77,10 +77,19 @@ When we run `truffle init` earlier, though, the `truffle-config.js` contains a t
 
 To activate this, all we have to do is comment the code back in (`⌘ /` in VSCode) and substitute in the credentials we got from Infura. Note that you need to change the `YOUR-PROJECT-ID` and well as whatever subdomain network you'd like to work from. Be sure as well to change the `network_id` to <a href="https://besu.hyperledger.org/en/stable/Concepts/NetworkID-And-ChainID/" target="_blank" rel="noopener noreferrer">the appropriate one for your network.</a> 
 
+Install hdwallet-provider
+```bash
+npm install @truffle/hdwallet-provider
+```
+and dotenv to handle our .env file
+```bash
+npm install dotenv
+```
+
 To grab our Infura credentials safely from our `.env` file, you'll include this at the top of `truffle-config.js` (HDWallet is provided, we just need to comment it out):
 
 ```javascript
-const HDWallet = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 const dotenv = require('dotenv');
 dotenv.config();
 const mnemonic = process.env.MNEMONIC;
