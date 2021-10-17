@@ -10,3 +10,5 @@ google_analytics:
 markdown_extensions:
   - attr_list
   - codehilite
+plugins:
+  - search
