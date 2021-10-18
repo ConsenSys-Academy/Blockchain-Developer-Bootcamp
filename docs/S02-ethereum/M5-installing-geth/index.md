@@ -52,6 +52,13 @@ geth attach ~/.ethereum/geth.ipc
 
 ![](https://learn.consensys.net/images/screenshot2.png)![screenshot2.png](https://files.cdn.thinkific.com/file_uploads/205430/images/582/86a/0d0/1595097114702.jpg)
 
+
+if you are on Windows, you have to access the javascript console using the pipe geth created by typing the following:
+
+```
+geth attach ipc:\\.\pipe\geth.ipc
+```
+
 Or when you start geth, you can type
 
 ```
