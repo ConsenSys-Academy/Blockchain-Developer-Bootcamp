@@ -54,6 +54,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Patrick Collins](https://www.youtube.com/channel/UCn-3f8tw_E1jZvhuHatROwA){target=_blank}
 - [Nader Dabit](https://www.youtube.com/user/boyindasouth){target=_blank}
 - [Dan Finlay on How Ethereum Works](https://www.youtube.com/watch?v=-SMliFtoPn8&list=PLvf2RZCNC-UD2RLRs8jnIkhG8iXiKIH9w){target=_blank}
+- [Coin Bureau](https://www.youtube.com/channel/UCqK_GSMbpiV8spgD3ZGloSw){target=_blank}
 
 ## Podcasts
 - [Zero Knowledge](https://www.zeroknowledge.fm/){target=_blank}
@@ -61,6 +62,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Epicenter](https://epicenter.tv){target=_blank}
 - [Mapping out Eth 2](https://www.coindesk.com/podcasts/mapping-out-eth-2-0/){target=_blank}
 - [Bankless](https://open.spotify.com/show/41TNnXSv5ExcQSzEGLlGhy?si=5FwQQFY1QHyUlaLoN2k-lg){target=_blank}
+- [Uncommon Core](https://uncommoncore.co/podcast/){target=_blank}
 
 ## Learning Paths
 - [EthernautDAO](https://forum.ethernautdao.io/){target=_blank} Decentralized organization focussed on training developers to become blockchain developers and get them jobs! [Discord here](https://discord.gg/RQ5WYDxUF3){target=_blank}
