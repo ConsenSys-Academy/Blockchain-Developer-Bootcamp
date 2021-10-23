@@ -45,6 +45,7 @@ An alternative to running Filecoin Ganache via the CLI is to use Filecoin Ganche
 ## Running the Filecoin Network Explorer
         
     git clone https://github.com/trufflesuite/filecoin-network-inspector
+    cd filecoin-network-inspector
     npm install
     git checkout ganache-changes
     npm run start
