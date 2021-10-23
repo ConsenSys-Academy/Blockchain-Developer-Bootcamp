@@ -1,4 +1,0 @@
-  Secure, Extensible JavaScript
-=============================
-
-   
