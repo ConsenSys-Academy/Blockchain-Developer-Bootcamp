@@ -45,7 +45,7 @@ You'll also need to setup an Optimism project from your Infura account. You don'
 
 ![Setting up an Infura project for Optimism testnet](../../../img/S08/optimism-tutorial-1.png)
 
-You'll also need to have Kovan test-eth for the project if you'd like to run it on a public testnet. Follow the steps on the Kovan testnet faucet <a href="https://github.com/kovan-testnet/faucet" target="_blank" rel="noopener noreferrer">here</a> to get some. You can also request some from MyCrypto <a href="https://app.mycrypto.com/faucet" target="_blank" rel="noopener noreferrer">here.</a>
+You'll also need to have Kovan test ETH for the project if you'd like to run it on a public testnet. You can get some from the <a href="https://github.com/kovan-testnet/faucet" target="_blank" rel="noopener noreferrer">Kovan testnet faucet</a>, the <a href="https://app.mycrypto.com/faucet" target="_blank" rel="noopener noreferrer">MyCrypto faucet</a>, or <a href="https://faucets.chain.link" target="_blank" rel="noopener noreferrer">Chainlink's faucet</a>.
 
 Once you have Kovan ETH, you'll need to bridge it to Optimism. After getting Kovan ETH, follow these steps:
 
