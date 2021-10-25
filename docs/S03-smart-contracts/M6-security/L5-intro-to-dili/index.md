@@ -17,7 +17,7 @@ Along with audits, Diligence also provides automated security analysis through t
 
 [MythX](https://mythx.io/) is a smart contract security service for Ethereum built by ConsenSys Diligence. As part of the bootcamp, we have gotten a free month of the developer plan for every student from the ConsenSys Diligence team.
 
-**Promo code** = `x9naNrvz`
+**Promo code** = `ESvxp6CQ`
 
 ## Steps to Get Started
 
