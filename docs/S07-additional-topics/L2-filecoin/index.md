@@ -45,6 +45,7 @@ An alternative to running Filecoin Ganache via the CLI is to use Filecoin Ganche
 ## Running the Filecoin Network Explorer
         
     git clone https://github.com/trufflesuite/filecoin-network-inspector
+    cd filecoin-network-inspector
     npm install
     git checkout ganache-changes
     npm run start
@@ -141,4 +142,4 @@ The above example assumes you have a locally running IPFS node, but if not you c
 
 The resultant content identified (CID) will then be returned for you to then persist with a Filecoin storage deal or pinning service.
 
-More detail can be found in the Truffle [docs](www.trufflesuite.com/docs/truffle/getting-started/preserving-files-and-content-to-storage-platforms).
+More detail can be found in the Truffle [docs](https://www.trufflesuite.com/docs/truffle/getting-started/preserving-files-and-content-to-storage-platforms).
