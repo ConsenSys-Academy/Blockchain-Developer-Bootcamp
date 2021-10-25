@@ -26,7 +26,7 @@ DeFi also addresses issues in centralized finance related to:
 DeFi apps aim to increase choice, innovation, access, efficiency, speed, transparency, auditability and autonomy while lowering the costs of doing business and reducing systemic risk from too big to fail entities. Anyone with an internet connection can access DeFi Apps and protocols, extending the internet of information to the “internet of value”.
 
 ## Additional Material
-- [Book: How to DeFi from Coin Gecko](https://drive.google.com/drive/folders/10DawFUWJeE9Q7bnT7neaDrYNr67RuaMe){target=_blank}
+- [Book: How to DeFi from Coin Gecko](https://landing.coingecko.com/how-to-defi/){target=_blank}
 - [Article: Defiant: What is Decentralized Finance?](https://thedefiant.io/what-is-decentralized-finance/){target=_blank}
 - [Article: The Defiant’s Definitive Guide to DeFi](https://newsletter.thedefiant.io/p/the-defiants-definitive-guide-to){target=_blank}
 - [Academic: Decentralized Finance (Federal Reserve)](https://research.stlouisfed.org/publications/review/2021/02/05/decentralized-finance-on-blockchain-and-smart-contract-based-financial-markets){target=_blank} Yes, *that* Federal Reserve. Like, the real one!
