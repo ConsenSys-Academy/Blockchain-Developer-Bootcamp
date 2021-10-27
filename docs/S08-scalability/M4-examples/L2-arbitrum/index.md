@@ -20,7 +20,7 @@ The requirements and setup for Arbitrum are very similar to the previous lesson 
 <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener noreferrer">docker-compose</a>, version 1.27.3 or later
 - Recommended Docker memory allocation of >=8 GB.
 
-You'll also need to setup an Arbitrum project on your Infura account. You don't have to update your account, right now access is being offered at the "core" level for free up to 100,000 daily requests. When setting up your project, be sure to select the "Ethereum" network. Then, under settings, select the "Arbitrum Rinkeby" testnet, as shown below:
+You'll also need to setup an Arbitrum project on your Infura account. You don't have to update your account, right now access is being offered at the "core" level for free up to 100,000 daily requests. You must enable the Arbitrum Rollup ADD-ON under the billing section under Manage Add-Ons in your Infura account Settings for the API requests to work properly. When setting up your project, be sure to select the "Ethereum" network. Then, under settings, select the "Arbitrum Rinkeby" testnet, as shown below:
 
 ![Setting up an Infura project for Arbitrum testnet](../../../img/S08/arbitrum-tutorial-1.png)
 
