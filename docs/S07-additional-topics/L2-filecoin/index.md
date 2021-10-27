@@ -46,8 +46,8 @@ An alternative to running Filecoin Ganache via the CLI is to use Filecoin Ganche
         
     git clone https://github.com/trufflesuite/filecoin-network-inspector
     cd filecoin-network-inspector
-    npm install
     git checkout ganache-changes
+    npm install
     npm run start
 
 ## Running Ethereum Ganache
