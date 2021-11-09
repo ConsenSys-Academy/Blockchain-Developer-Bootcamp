@@ -26,25 +26,22 @@
 ```
 transaction fee = baseFee + min(maxFee - baseFee, priorityFee)
 ```
- An explanation of the three variables: * `baseFee` A fee that floats based on the network congestion and the most recent value can be fetched via a new JSON RPC call `eth_feeHistory`
+An explanation of the three variables: 
+* `baseFee` A fee that floats based on the network congestion and the most recent value can be fetched via a new JSON RPC call `eth_feeHistory`
 * `priorityFee` (also called a tip) A fee to entice a block producer to include the transaction.
 * **`maxFee`** The highest network fee the user is willing to pay.
 
- 
+Here are some changes to the [Ethereum JSON-RPC format](https://eth.wiki/json-rpc/API){target=_blank} you will see on the protocol level that may affect the way you develop as well, broken down by part of the Ethereum protocol affected:
 
- Here are some changes to the [Ethereum JSON-RPC format](https://eth.wiki/json-rpc/API){target=_blank} you will see on the protocol level that may affect the way you develop as well, broken down by part of the Ethereum protocol affected:
+### Blocks
 
- ### Blocks
-
-  * `eth_getBlockBy` A new field baseFeePerGas is included for post-London blocks
+* `eth_getBlockBy` A new field baseFeePerGas is included for post-London blocks
 * `eth_getUncleBy*` A new field baseFeePerGas is included for post-London blocks
 * Block header data `baseFeePerGas` is the base fee paid by all transactions in this block. (The field is empty for all blocks before the fork.)
 
- 
+### Transaction Data
 
- ### Transaction Data
-
- * `maxPriorityFeePerGas` specifies the tip (priority fee) to entice a block producer to include your transaction.
+* `maxPriorityFeePerGas` specifies the tip (priority fee) to entice a block producer to include your transaction.
 * `maxFeePerGas` is the maximum fee the user is willing to pay the block producer for including this transaction.
 * Legacy transactions that only include a `gasPrice` are still valid and they will be accepted into the blocks. The user will simply pay the entire proposed network fee and as a result they may pay a premium compared to other users on the network.
 * `eth_gasPrice` is deprecated and replaced with `eth_feeHistory`, which returns transaction fee data for up to 1024 blocks. For each block, `eth_feeHistory` reports the base fee, a percentile list of effective priority fees and the ratio of gas used/limit. Note the required base fee for the next block is returned as well.
