@@ -85,3 +85,4 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Visual Overview of Ethereum in 116 Slides](https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf){target=_blank}
 - [QuestBook-Learn Solidity](https://discord.gg/EwvRjGAS){target=_blank} A Discord server for beginners in Solidity
 - [Chainshot](https://www.chainshot.com/){target=_blank} Educational resources on Solidity
+- [UseWeb3](https://www.useweb3.xyz/){target=_blank} Mega-Aggregator of Ethereum educational resources, including courses, tutorials, newsletters
