@@ -41,15 +41,15 @@ After this example, you will be able to compile, migrate, and test Optimistic So
 <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener noreferrer">docker-compose</a>, version 1.27.3 or later
 - Recommended Docker memory allocation of >=8 GB.
 
-You'll also need to setup an Optimism project from your Infura account. You don't have to update your account, right now access is being offered at the "core" level for free up to 100,000 daily requests. When setting up your project, be sure to select the "Ethereum" network. Then, under settings, select the "Optimism Kovan" testnet, as shown below:
+You'll also need to setup an Optimism project from your Infura account. You don't have to update your account, right now access is being offered at the "core" level for free up to 100,000 daily requests. You must enable the Optimistic Ethereum ADD-ON under the billing section under Manage Add-Ons in your Infura account Settings for the API requests to work properly. When setting up your project, be sure to select the "Ethereum" network. Then, under settings, select the "Optimism Kovan" testnet, as shown below:
 
 ![Setting up an Infura project for Optimism testnet](../../../img/S08/optimism-tutorial-1.png)
 
-You'll also need to have Kovan test-eth for the project if you'd like to run it on a public testnet. Follow the steps on the Kovan testnet faucet <a href="https://github.com/kovan-testnet/faucet" target="_blank" rel="noopener noreferrer">here</a> to get some. You can also request some from MyCrypto <a href="https://app.mycrypto.com/faucet" target="_blank" rel="noopener noreferrer">here.</a>
+You'll also need to have Kovan test ETH for the project if you'd like to run it on a public testnet. You can get some from the <a href="https://github.com/kovan-testnet/faucet" target="_blank" rel="noopener noreferrer">Kovan testnet faucet</a>, the <a href="https://app.mycrypto.com/faucet" target="_blank" rel="noopener noreferrer">MyCrypto faucet</a>, or <a href="https://faucets.chain.link" target="_blank" rel="noopener noreferrer">Chainlink's faucet</a>.
 
 Once you have Kovan ETH, you'll need to bridge it to Optimism. After getting Kovan ETH, follow these steps:
 
-1. Add Optimism Ethereum as a Custom RPC to your Metamask wallet, using <a href="https://community.optimism.io/docs/developers/metamask.html#connecting-manually" target="_blank" rel="noopener noreferrer">the steps here,</a> except set the RPC URL to <code>https://optimism-kovan.infura.io/v3/" + infuraKey</code>
+1. Add Optimism Ethereum as a Custom RPC to your Metamask wallet, using <a href="https://community.optimism.io/docs/users/metamask.html#connecting-manually" target="_blank" rel="noopener noreferrer">the steps here,</a> except set the RPC URL to <code>https://optimism-kovan.infura.io/v3/" + infuraKey</code>
 2. Go to <a href="https://gateway.optimism.io/" target="_blank" rel="noopener noreferrer">this site</a> and bridge your Kovan ETH to Optimism Kovan ETH
 3. Ensure that your <code>optimistic_kovan</code> network in <code>truffle-config.ovm.js</code> is connected to your Optimism Kovan wallet.
 <i>Note: You may get an error about your fee being too low when attempting to deploy to Optimistic Kovan. To bypass this error, you may need to increase the gas value in the optimistic_kovan network configuration in truffle-config.ovm.js to the value the error indicates. Gas price should be set at the transaction level, like so: <code>{ gasPrice: 15000000 }</code>.</i>

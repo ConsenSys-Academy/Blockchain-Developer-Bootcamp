@@ -14,7 +14,7 @@ There are two major kinds of Rollups: ZK-Rollups and Optimistic Rollups.
 
 ### Zero-Knowledge / ZK-Rollups
 
-As we mentioned earlier in the section on Zero-Knowledge proofs, ZKPs can compress a larger amount of computation or verificatio into a single operation. ZK-Rollups bundle hundreds of transfers that occur on the ZKP Rollup L2 into a single L1, mainnet transaction via a smart contract located on L1. From the data submitted the smart contract can verify all the transfers that are included. 
+As we mentioned earlier in the section on Zero-Knowledge proofs, ZKPs can compress a larger amount of computation or verification into a single operation. ZK-Rollups bundle hundreds of transfers that occur on the ZKP Rollup L2 into a single L1, mainnet transaction via a smart contract located on L1. From the data submitted the smart contract can verify all the transfers that are included. 
 
 Critically, you don’t need all the data to verify the transactions, just the zero-knowledge proof. Transactions are written to Ethereum as calldata, to reduce gas.
 
