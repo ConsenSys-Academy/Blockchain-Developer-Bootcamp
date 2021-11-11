@@ -5,7 +5,8 @@
 
  First, a general definition. [Smart contracts](https://en.wikipedia.org/wiki/Smart_contract){target=_blank} are programs deployed to a blockchain network that automatically execute when triggered by valid transactions. A basic analogy for a smart contract is a vending machine: The customer puts in money, punches in the code of the desired item. Assuming a valid input, the vending machine will release the desired item.
 
- The following properties are desired in any smart contract system: - **Trustless** Meaning two or more parties can act on an agreement without relying on any intermediary to facilitate the transaction
+ The following properties are desired in any smart contract system: 
+ - **Trustless** Meaning two or more parties can act on an agreement without relying on any intermediary to facilitate the transaction
  - **Universally Accessible** Meaning every participant must be able to access and use the system. They should not have to rely on anyone’s approval to participate in the network.
  - **Traceable** Contract transactions should be traceable. Data provenance is critical to resolving disputes and for legal compliance.
  - **Immutable transactions** Transactions should be irreversible (atomic). Participants should not be able to revoke their decisions, just as legal contracts are binding, so are smart contracts.
@@ -49,7 +50,8 @@
 
  While there are a lot of elements to this picture, try to keep in mind we are looking at a simple state machine. State is fed into the stack, the EVM processes the stack, and the result is either saved, if it affects the network state, or discarded, if it was only necessary for the transaction execution.
 
- The state in the EVM stack is in three areas: * **Memory** This is *[volatile](https://en.wikipedia.org/wiki/Volatile_memory){target=_blank}* memory, meaning that, unless it is explicitly written back into the network state, will only be accessible during the transaction execution.
+The state in the EVM stack is in three areas: 
+* **Memory** This is *[volatile](https://en.wikipedia.org/wiki/Volatile_memory){target=_blank}* memory, meaning that, unless it is explicitly written back into the network state, will only be accessible during the transaction execution.
 * **Storage** This is persistent memory taken from the network state. Read and writing to the network state is more expensive, gas-wise, than memory, since it affects the global state of the network.
 * **Stack** The information processed by the EVM stack while going through the bytecode. (Stack is a data structure used by all computer processors, you can learn more about it [here](https://en.wikipedia.org/wiki/Stack_(abstract_data_type){target=_blank}))
 
@@ -64,7 +66,8 @@
  New Development and Security Considerations
 -------------------------------------------
 
- The process we've just outlined contains many challenges for developers entering the space, such as: * **Smart contracts are immutable** They cannot be modified (only re-deployed). A common web development mantra is “move fast and break things”. This is not advisable in smart contract development due to this immutability.
+ The process we've just outlined contains many challenges for developers entering the space, such as: 
+ * **Smart contracts are immutable** They cannot be modified (only re-deployed). A common web development mantra is “move fast and break things”. This is not advisable in smart contract development due to this immutability.
 * **High cost of failure** Typical software development that is this accessible does not involve potentially losing tremendous financial value. You're more likely to encounter this level of scrutiny and security in hardware and financial services programming.
 * **Smart contracts information is public and anyone can call your public functions** Once your code is deployed and particularly if it starts accruing value, it will attract more opportunities for it to be hacked or misused.
 
