@@ -20,7 +20,18 @@ $ truffle init
 
  
 ```
-      Starting init...      ================            > Copying project files to /Users/bluer/Developer/temp            Init successful, sweet!            Try our scaffold commands to get started:        $ truffle create contract YourContractName # scaffold a contract        $ truffle create test YourTestName         # scaffold a test            http://trufflesuite.com/docs    
+      Starting init...      
+      ================            
+      
+      > Copying project files to /Users/bluer/Developer/temp            
+      
+      Init successful, sweet!            
+      
+      Try our scaffold commands to get started:        
+        $ truffle create contract YourContractName # scaffold a contract        
+        $ truffle create test YourTestName         # scaffold a test            
+      
+      http://trufflesuite.com/docs    
 ```
  Congratulations, you now have a bare bones project! Next up, let’s create a contract within which we’ll be able to store our SimpleStorage project’s code.
 
@@ -39,7 +50,20 @@ $ truffle create contract SimpleStorage
 
  
 ```
-// SPDX-License-Identifier: MITpragma solidity >=0.4.21 <0.7.0;contract SimpleStorage {  uint storedData;  function set(uint x) public {    storedData = x;  }  function get() public view returns (uint) {    return storedData;  }}          
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.4.21 <0.7.0;
+
+contract SimpleStorage {  
+  uint storedData;  
+  
+  function set(uint x) public {    
+    storedData = x;  
+  }  
+  
+  function get() public view returns (uint) {    
+    return storedData;  
+  }
+}          
 ```
  Sweet, your first contract! Now let’s try out the `compile` command we saw earlier.
 
@@ -50,7 +74,15 @@ $ truffle create contract SimpleStorage
 
  
 ```
-  $ truffle compile  Compiling your contracts...  ===========================  > Compiling ./contracts/Migrations.sol  > Compiling ./contracts/SimpleStorage.sol  > Artifacts written to /Users/bluer/Developer/temp/build/contracts  > Compiled successfully using:    - solc: 0.5.16+commit.9c3226ce.Emscripten.clang    
+  $ truffle compile  
+  
+  Compiling your contracts...  
+  ===========================  
+  > Compiling ./contracts/Migrations.sol  
+  > Compiling ./contracts/SimpleStorage.sol  
+  > Artifacts written to /Users/bluer/Developer/temp/build/contracts  
+  > Compiled successfully using:    
+    - solc: 0.5.16+commit.9c3226ce.Emscripten.clang    
 ```
  Assuming all went smoothly, Truffle should have compiled your contract and added the resultant output (something referred to as build **artifacts** that we’ll explore in more detail later) to `build/contracts/SimpleStorage.json`.
 
@@ -75,7 +107,20 @@ $ truffle create contract SimpleStorage
 
  
 ```
-  Truffle Develop started at http://127.0.0.1:9545/  Accounts:  (0) 0x5ca1605d4671669b38f7e37c881ed996ede5ac68  …  Private Keys:  (0) dd7a8c358901b0f572e461585c9ab27f92b24902c45859114776af12077cb208  …  Mnemonic: cloth either reunion project inflict inside ghost welcome tip lemon again knee  ⚠️  Important ⚠️  : This mnemonic was created for you by Truffle. It is not secure.  Ensure you do not use it on production blockchains, or else you risk losing funds.  truffle(develop)>    
+  Truffle Develop started at http://127.0.0.1:9545/  
+  
+  Accounts:  
+  (0) 0x5ca1605d4671669b38f7e37c881ed996ede5ac68  
+  …  
+  Private Keys:  
+  (0) dd7a8c358901b0f572e461585c9ab27f92b24902c45859114776af12077cb208  
+  …  
+  Mnemonic: cloth either reunion project inflict inside ghost welcome tip lemon again knee  
+  
+  ⚠️  Important ⚠️  : This mnemonic was created for you by Truffle. It is not secure.  
+  Ensure you do not use it on production blockchains, or else you risk losing funds.  
+  
+  truffle(develop)>    
 ```
  We’ll be glossing over the details of the above output for the moment, other than to say it gives us access to 10 pre-funded accounts (as a default) that we can leverage as a means of interacting contracts.
 
@@ -85,7 +130,11 @@ $ truffle create contract SimpleStorage
 
  
 ```
-var SimpleStorage = artifacts.require("./SimpleStorage.sol");module.exports = function(deployer) {  deployer.deploy(SimpleStorage);};          
+var SimpleStorage = artifacts.require("./SimpleStorage.sol");
+
+module.exports = function(deployer) {  
+  deployer.deploy(SimpleStorage);
+};          
 ```
  The numerical prefix of `2_deploy_contracts.js` is actually important for two reasons. First, it dictates the order in which scripts are executed. Second, it’s the index stored on-chain by the `Migration.sol` to keep track of successful migrations per its `last_completed_migration` value.
 
@@ -93,11 +142,30 @@ var SimpleStorage = artifacts.require("./SimpleStorage.sol");module.exports = fu
 ```
 $ truffle(develop)> migrate      
 ```
- 
-
   Assuming all goes well, you should see the following: 
 ```
-2\_deploy\_contracts.js======   Deploying 'SimpleStorage'   -------------------------   > transaction hash:    0x172f0cff41ea21a7dbbb52883a7499306f54277120fa89bbc6621c7b7efccb80   > Blocks: 0            Seconds: 0   > contract address:    0x524B2860a2489E385C5e12537f58d5a09A9d33ab   > Saving migration to chain.   > Saving artifacts   -------------------------------------   > Total cost:         0.000192354 ETHSummary=======> Total deployments:   2> Final cost:          0.000767772 ETH- Blocks: 0            Seconds: 0- Saving migration to chain.- Blocks: 0            Seconds: 0- Saving migration to chain.      
+2_deploy_contracts.js
+======   
+  Deploying 'SimpleStorage'   
+  -------------------------   
+  > transaction hash:    0x172f0cff41ea21a7dbbb52883a7499306f54277120fa89bbc6621c7b7efccb80   
+  > Blocks: 0            Seconds: 0   
+  > contract address:    0x524B2860a2489E385C5e12537f58d5a09A9d33ab   
+  
+  > Saving migration to chain.   
+  > Saving artifacts   
+  -------------------------------------   
+  > Total cost:         0.000192354 ETH
+  
+  Summary
+  =======
+  > Total deployments:   2
+  > Final cost:          0.000767772 ETH
+  
+  - Blocks: 0            Seconds: 0
+  - Saving migration to chain.
+  - Blocks: 0            Seconds: 0
+  - Saving migration to chain.      
 ```
  
 
@@ -122,11 +190,23 @@ $ truffle(develop)> let storage = await SimpleStorage.deployed()
 
  
 ```
-      $ truffle(develop)> storage.set(42)      {        tx: '0x46e4bb35108e5ecf7ff656008295fda572a753476d5e04c286fcdb7868447dd6',        receipt: {          transactionHash: '0x46e4bb35108e5ecf7ff656008295fda572a753476d5e04c286fcdb7868447dd6',          transactionIndex: 0,          blockHash: '0x85dbdf5d71194cb0d841d58bbac283ccf078ce0ebe1c054c6c2ab76442459894',          blockNumber: 9,          from: '0x5ca1605d4671669b38f7e37c881ed996ede5ac68',          to: '0x524b2860a2489e385c5e12537f58d5a09a9d33ab',      ...      }    
+      $ truffle(develop)> storage.set(42)      
+      {        
+        tx: '0x46e4bb35108e5ecf7ff656008295fda572a753476d5e04c286fcdb7868447dd6',        
+        receipt: {          
+          transactionHash: '0x46e4bb35108e5ecf7ff656008295fda572a753476d5e04c286fcdb7868447dd6',          
+          transactionIndex: 0,          
+          blockHash: '0x85dbdf5d71194cb0d841d58bbac283ccf078ce0ebe1c054c6c2ab76442459894',          
+          blockNumber: 9,          
+          from: '0x5ca1605d4671669b38f7e37c881ed996ede5ac68',          
+          to: '0x524b2860a2489e385c5e12537f58d5a09a9d33ab',      
+      ...      
+      }    
 ```
   And a drum roll for this last command! Run the following to get the originally stored number. (We can also explain the syntax a little bit, since it's a bit odd: We're creating a promise to deliver a big number, which will be our stored number.) 
 ```
-$ truffle(develop)> (await storage.get()).toNumber()42        
+$ truffle(develop)> (await storage.get()).toNumber()
+42        
 ```
  Congratulations! You’ve now just created, deployed, and interacted with your very first smart contract using the Truffle Suite. Next, we're going to walkthrough how to use Ganache GUI. 
 
@@ -159,7 +239,11 @@ $ truffle(develop)> (await storage.get()).toNumber()42
 
  
 ```
-  development: {  host: "127.0.0.1",  port: 7545,  network\_id: "*",  },      
+  development: {  
+  host: "127.0.0.1",  
+  port: 7545,  
+  network\_id: "*",  
+  },      
 ```
  Awesome, we now have a new network we can migrate to! For reference, this same principle applies when migrating to public networks (such as testnets or mainnet; the Ethereum of equivalent of staging and production environments).
 
@@ -179,7 +263,23 @@ $ truffle migrate --network development
 
  Last, let’s update our contract to include an event that is emitted every time a new value is set (we'll learn about [events](https://medium.com/linum-labs/everything-you-ever-wanted-to-know-about-events-and-logs-on-ethereum-fec84ea7d0a5){target=_blank} in more detail later in this section). Copy and paste the following over your existing SimpleStorage.sol. 
 ```
-// SPDX-License-Identifier: MITpragma solidity >=0.4.21 <0.7.0;contract SimpleStorage {  uint storedData;  event setEvent(uint newValue);  function set(uint x) public {    storedData = x;    emit setEvent(x);  }  function get() public view returns (uint) {    return storedData;  }}      
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.4.21 <0.7.0;
+
+contract SimpleStorage {  
+  uint storedData;  
+  
+  event setEvent(uint newValue);  
+  
+  function set(uint x) public {    
+    storedData = x;    
+    emit setEvent(x);  
+  }  
+  
+  function get() public view returns (uint) {    
+    return storedData;  
+  }
+}      
 ```
  We’ll now make use of the `--reset` flag when re-running the migration command to forcibly replace the contract. Note that this will result in a new contract address.
 
@@ -197,7 +297,8 @@ $ truffle console --network development
 
  
 ```
-  $ let contract = await SimpleStorage.deployed()  $ contract.set(888)
+  $ let contract = await SimpleStorage.deployed()  
+  $ contract.set(888)
 ```
  If all has been successful, you’ll now see both a reference to `setEvent` in the logged output. In addition, you’ll also be able to navigate to the events tab within Ganache UI and also see it there.
 
