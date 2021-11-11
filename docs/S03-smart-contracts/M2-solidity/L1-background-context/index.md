@@ -7,11 +7,24 @@
 
  As we mentioned earlier, Solidity is a higher-order language meaning that the code deployed with a smart contract is not Solidity, but rather EVM bytecode. Solidity is an abstraction on top of that fundamental language so we don't have to be writing code that looks like this: 
 ```
-  PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0xE PUSH1 0x0   SSTORE CALLVALUE DUP1 ISZERO PUSH1 0x14 JUMPI   PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x35   DUP1 PUSH1 0x22 PUSH1 0x0 CODECOPY PUSH1 0x0   RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1   0x0 DUP1 REVERT INVALID LOG1 PUSH6 0x627A7A723058   KECCAK256 RETURNDATASIZE 0x25 0xb6 0xcf CALLDATALOAD   LOG1 DUP16 PUSH9 0x27AC943141CFD6D0FA MSTORE SHL   DUP6 LOG4 PUSH8 0x7FADA153CC03D771 BLOCKHASH 0xb3   STOP 0x29    
+  PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0xE PUSH1 0x0   
+  SSTORE CALLVALUE DUP1 ISZERO PUSH1 0x14 JUMPI   
+  PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x35   
+  DUP1 PUSH1 0x22 PUSH1 0x0 CODECOPY PUSH1 0x0   
+  RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1   
+  0x0 DUP1 REVERT INVALID LOG1 PUSH6 0x627A7A723058   
+  KECCAK256 RETURNDATASIZE 0x25 0xb6 0xcf CALLDATALOAD   
+  LOG1 DUP16 PUSH9 0x27AC943141CFD6D0FA MSTORE SHL   
+  DUP6 LOG4 PUSH8 0x7FADA153CC03D771 BLOCKHASH 0xb3   
+  STOP 0x29    
 ```
  But, rather code that looks like this: 
 ```
-  pragma solidity >=0.4.0 <0.9.0;  contract MyContract {      uint i = 10 + 2 * 2;  }    
+  pragma solidity >=0.4.0 <0.9.0;  
+  
+  contract MyContract {      
+    uint i = 10 + 2 * 2;  
+  }    
 ```
  While both these blocks of code describe the same operation, the second version (Solidity) is much easier to read and write. 
 
@@ -20,7 +33,8 @@
 
  Solidity uses the [ECMAScript](https://en.wikipedia.org/wiki/ECMAScript){target=_blank} syntax like JavaScript, to make it approachable for web developers. However, do not be lulled into complacency! Solidity is much more demanding in its requirements.
 
- Some of Solidity's basic characteristics: * **Case Sensitive**
+ Some of Solidity's basic characteristics: 
+* **Case Sensitive**
 * **Statement termination via a semicolon `;`**
 * **Files use the `.sol` extension**
 * **Statically typed** Types need to be known at compile time. This makes Solidity more like [TypeScript](https://en.wikipedia.org/wiki/TypeScript){target=_blank} than JavaScript in practice.
