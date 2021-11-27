@@ -14,7 +14,7 @@
 
  Once the software was stable, Nakamoto released a whitepaper describing the concepts underpinning the software and referencing some of the older technologies it drew upon. By the release of the whitepaper, there was a growing community of developers interested in Bitcoin and discussing its future.
 
- Famously, Nakamoto stepped back from the project in early 2011. In April of that year, Nakamoto posted their last update to [Bitcoin Core,](https://en.bitcoin.it/wiki/Bitcoin_Core){target=_blank} as the software was now known and gave developer credentials to the now-lead technical developer, [Gavin Andresen. ([source](https://bitcoinmagazine.com/technical/what-happened-when-bitcoin-creator-satoshi-nakamoto-disappeared){target=_blank})](https://en.wikipedia.org/wiki/Gavin_Andresen)
+ Famously, Nakamoto stepped back from the project in early 2011. In April of that year, Nakamoto posted their last update to [Bitcoin Core,](https://en.bitcoin.it/wiki/Bitcoin_Core){target=_blank} as the software was now known and gave developer credentials to the now-lead technical developer, [Gavin Andresen.](https://en.wikipedia.org/wiki/Gavin_Andresen) ([source](https://bitcoinmagazine.com/technical/what-happened-when-bitcoin-creator-satoshi-nakamoto-disappeared){target=_blank})
 
  Many have speculated about Satoshi Nakamoto's identity but their identity has never been definitively proven. There is a significant amount of bitcoin (some estimates say around one million bitcoin) Nakamoto mined during their time running the Bitcoin Core software. It's considered to be the best identity test for anyone claiming to be Nakamoto: Sign a cryptographic digital message with the private key associated with this bitcoin. It has never been done! 
 
