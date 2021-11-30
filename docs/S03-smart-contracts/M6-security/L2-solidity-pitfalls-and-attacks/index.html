@@ -132,7 +132,7 @@ fallback() external {
         <pre class="wrong">
 function withdraw(uint amount) public {       // Possibly dangerous
   require(balances[msg.sender] >= amount);
-  msg.sender.call.value(amount)("");
+  msg.sender.call{value:amount}("");
   balances[msg.sender] -= amount;
 }
         </pre>
@@ -140,7 +140,7 @@ function withdraw(uint amount) public {       // Possibly dangerous
 function withdraw(uint amount) public {    // Better!
   require(balances[msg.sender] >= amount);
   balances[msg.sender] -= amount;
-  msg.sender.call.value(amount)("");
+  msg.sender.call{value:amount}("");
 }
         </pre>
       </p>
@@ -162,7 +162,7 @@ contract Vulnerable {         // Possibly dangerous
 contract Fixed {            // Better!
   function withdraw(uint256 amount) external {
       // This forwards all available gas. Be sure to check the return value!
-      (bool success, ) = msg.sender.call.value(amount)("");
+      (bool success, ) = msg.sender.call{value:amount}("");
       require(success, "Transfer failed.");
   }
 }
