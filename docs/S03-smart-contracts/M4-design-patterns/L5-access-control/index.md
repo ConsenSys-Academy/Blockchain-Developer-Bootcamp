@@ -33,11 +33,11 @@ constructor() payable public {
 
 modifier onlyOwner() {      
   require(msg.sender == owner, "Not authorized.");      
-  \_;  
+  _;  
 }    
 
-function withdraw(uint \_amount) onlyOwner public {      
-  owner.transfer(\_amount);  
+function withdraw(uint _amount) onlyOwner public {      
+  owner.transfer(_amount);  
 }      
 ```
 
@@ -88,8 +88,8 @@ We have another example of this form of access control with the Circuit Breaker 
 contract CircuitBreaker {    
   bool public stopped = false;    
   
-  modifier stopInEmergency { require(!stopped); \_; }    
-  modifier onlyInEmergency { require(stopped); \_; }    
+  modifier stopInEmergency { require(!stopped); _; }    
+  modifier onlyInEmergency { require(stopped); _; }    
   function deposit() stopInEmergency public { … }    
   function withdraw() onlyInEmergency public { … }   
 }      
