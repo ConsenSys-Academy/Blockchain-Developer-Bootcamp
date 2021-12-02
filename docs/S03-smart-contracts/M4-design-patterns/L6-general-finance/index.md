@@ -61,7 +61,7 @@ And call it when the constructor runs.
 
 ```
 constructor(address[] memory _owners, uint _required) public               
-validRequirement(_owners.length, _required){...}  
+  validRequirement(_owners.length, _required){...}  
 ```
 
 We are going to want to keep the `_owners` and `_required` values for the life of the contract, so we need to declare the variables in storage in order to save them.
