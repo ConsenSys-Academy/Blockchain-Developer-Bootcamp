@@ -12,17 +12,17 @@ pragma solidity 0.8.4;
 contract VulnerableContract {    
   address owner = msg.sender;    
   address payable[] public subscribers;    
-  uint FEE\_COST = 1 ether;          
+  uint FEE_COST = 1 ether;          
   
   function subscribe() public payable {        
-    require(msg.value == FEE\_COST, "Insufficient msg.value");        
+    require(msg.value == FEE_COST, "Insufficient msg.value");        
     subscribers.push(msg.sender);    
   }          
   
   function refundFees() public {        
     require(msg.sender == owner, "msg.sender should be owner");        
     for(uint i = subscribers.length; i > 0; i--) {            
-      subscribers[i - 1].transfer(FEE\_COST);            
+      subscribers[i - 1].transfer(FEE_COST);            
       subscribers.pop();        
     }
   }          
