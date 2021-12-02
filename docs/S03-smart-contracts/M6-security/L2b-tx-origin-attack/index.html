@@ -9,7 +9,7 @@
   <title>Smart Contract Pitfalls and Attacks</title>
 </head>
 <div class="body">
-
+    <!-- Title goes below: -->
     <h2>TxOrigin Attack (SWC-115)</h2>
   
     <p>In this lesson we are going to cover a <code>tx.origin</code> attack. The global variable <code>tx.origin</code> in Solidity always references the address of the original sender of the transaction, of the full call chain. <a href="https://solidity.readthedocs.io/en/latest/units-and-global-variables.html?highlight=tx.origin#block-and-transaction-properties" target="_blank">See the reference in the docs here.</a> This is different than <code>msg.sender</code> in that <code>msg.sender</code> references the address of the sender of the current call.</p>
