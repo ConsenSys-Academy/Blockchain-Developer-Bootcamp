@@ -10,7 +10,7 @@ In the next few lessons, we're going to walk through some examples of how to act
 
 To create a sandboxed environment which guarantees deterministic smart contract execution between L1 and L2, Optimism uses an **Optimism Virtual Machine,** which replaces context-dependent EVM opcodes with their OVM counterparts. See a complete comparison of <a href="https://community.optimism.io/docs/protocol/evm-comparison.html" target="_blank" rel="noopener noreferrer">the OVM vs EVM here.</a>
 
-To accommodate this change, Optimism had to have their own compiler. They ended up forking `solc` and changed ~500 lines. Beward a potential gotcha: a contract compiled with the Optimism Solidity Compiler ends up bigger than it was, meaning that contracts near the 24KB limit must be refactored since they need to be executable on the mainnet as well as Optimism.
+To accommodate this change, Optimism had to have their own compiler. They ended up forking `solc` and changed ~500 lines. Beware a potential gotcha: a contract compiled with the Optimism Solidity Compiler ends up bigger than it was, meaning that contracts near the 24KB limit must be refactored since they need to be executable on the mainnet as well as Optimism.
 
 Accounts on the Optimism Chain "are redeployable contracts layer-2 contracts which can represent a user and provide a form of 'account abstraction'." (<a href="https://community.optimism.io/docs/protocol/protocol.html#account-contracts" target="_blank" rel="noopener noreferrer">source</a>)
 
