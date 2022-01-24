@@ -301,6 +301,32 @@ $ truffle console --network development
   $ contract.set(888)
 ```
  If all has been successful, you’ll now see both a reference to `setEvent` in the logged output. In addition, you’ll also be able to navigate to the events tab within Ganache UI and also see it there.
+ 
+  Ganache CLI
+-----------
+  Ganache CLI is the standalone version of the simulation blockchain built into truffle, it is for folks who are comfortable with the command line and desires full control of thier development blockchain. The latest Ganache CLI version 7 comes with some exiting new features and improvements/bug fixes (discussing these new features and improvements is beyond the scope of this material but if you're curious to dig in, you can start [here](https://trufflesuite.com/blog/introducing-ganache-7).
+  
+  To get started Ganache CLI, you need to have Node.js >= v12.0.0 and NPM >= 6.4.1 installed on your computer. See [here](https://nodejs.org/en/download) to download the latest version for your operating system. With the supported versions of Node.js and NPM installed, you can install Ganache CLI by running `npm install ganache --global`.
+  
+  Once installed, start Ganache CLI with the command `ganache`, this is similar to running `truffle develop`. Your command line should look like this:
+  
+  ![image](https://user-images.githubusercontent.com/89709023/150743445-7154ab34-ebe0-45f6-a268-fde80f539557.png)
+  
+  As usual, you are provided with 10 pre-funded account for interacting with your smart contracts.
+  
+  ### Migrating our contracts to Ganache CLI
+  Migrating contracts to Ganache CLI is very similar to how its done using Ganache GUI as explained above, the only difference is you will have to update the network in `truffle-config.js` to use port `8545` instead.
+  
+  ```javascript
+    development: {  
+  host: "127.0.0.1",  
+  port: 8545,  
+  network\_id: "*",  
+  },      
+```
+
+Now run `$ truffle migrate --network development` to start the migration process.
+
 
  Conclusion
 ----------
