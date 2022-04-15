@@ -207,7 +207,11 @@ An ethereum transaction includes the following data:
 
 <code>nonce:</code> Number - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 
-To send some ether to another account, you just need to specify the send, the recipient and the value.
+To send some ether to another account, first create another account.
+
+    > personal.newAccount()
+
+Next initiate the transaction by specifying the to, the from and the value.
 
     > eth.sendTransaction({to: eth.accounts[1], from: eth.accounts[0], value: 100})
 
