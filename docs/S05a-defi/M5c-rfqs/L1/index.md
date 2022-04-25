@@ -18,13 +18,14 @@ RFQ facilities direct trade between parties which is:
 - Efficient - Eliminates slippage, so you get what you paid for.
 - Scalable - negotiations happen off-chain (not on Ethereum) and scales better than relying solely on Ethereum’s throughput.
 
-![airswap overview](../../../img/S05/airswap-rfq-overview.png)
+![
+overview](../../../img/S05/airswap-rfq-overview.png)
 
 ## Summary
 
-Request for Quote handles trades with off-chain negotiations and on-chain settlement (trades){target=\_blank}. Market makers are called Makers who run servers to fulfil orders. Counterparties to makers are called Takers, who wish to trade tokens.
+Request for Quote handles trades with off-chain negotiations and on-chain settlement ([trades](https://about.airswap.io/technology/request-for-quote){target=\_blank}). Market makers are called Makers who run servers to fulfil orders. Counterparties to makers are called Takers, who wish to trade tokens.
 
-RFQ can be seen as a peer-to-peer system. The protocol’s smart contracts focus on on-chain settlement of trades via "atomic" swaps using smart contracts. Price discovery and negotiation are made off-chain via RPC (remote procedure calls){target=\_blank}, which is scalable and resistant to AMM issues related to front running and miner extractable value.
+RFQ can be seen as a peer-to-peer system. The protocol’s smart contracts focus on on-chain settlement of trades via "atomic" swaps using smart contracts. Price discovery and negotiation are made off-chain via RPC ([remote procedure call](https://en.wikipedia.org/wiki/Remote_procedure_call){target=\_blank}), which is scalable and resistant to AMM issues related to front running and miner extractable value.
 
 This model exists because of Ethereum’s constraints and the issues around large orders on AMMs mentioned previously.
 

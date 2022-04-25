@@ -66,4 +66,4 @@ In the above example, stepping over a couple of times brings us into our SimpleS
 # In-test Debugging
 Lastly, a feature available as of Truffle v5.1 is that of in-test debugging. This essentially enables you to interrupt your tests by simply wrapping a given line with await debug(). 
 
-More detail on in-test debugging with a simple example [here](https://www.trufflesuite.com/docs/truffle/getting-started/debugging-your-contracts#in-test-debugging). 
+More detail on in-test debugging with a simple example [here](https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-debugger/#in-test-debugging). 

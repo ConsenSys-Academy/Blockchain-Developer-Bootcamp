@@ -115,7 +115,7 @@ You can easily subscribe to events with simpleStorage. Notice we have a "storage
 
 To listen for that event, run `simpleStorage.events.storageUpdate(function(error, event){console.log(event)})`
 
-[Here is a link to the relevant web3.js documentation for subscribing to events.](https://web3js.readthedocs.io/en/latest/web3-eth-contract.html#contract-events){target=_blank}
+[Here is a link to the relevant web3.js documentation for subscribing to events.](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-contract.html#events){target=_blank}
 
 To trigger this event, you will have to call the "set()" function on the contract again. Once the update transaction is mined, the event will fire. This is what it looks like in the browser console.
 
