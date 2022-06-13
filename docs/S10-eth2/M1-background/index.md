@@ -48,3 +48,4 @@ You can read the entire Ethereum 2.0 spec, including phases 0, 1 and 2 [here.](h
 - <a href="https://messari.io/pdf/messari-report-eth2-the-next-evolution-of-cryptoeconomy.pdf" target="_blank" rel="noopener noreferrer">Report: ETH2, The Next Evolution of Cryptoeconomy (Messari)</a>
 - <a href="https://consensys.net/blog/blockchain-explained/my-journey-to-becoming-a-validator-on-ethereum-2-0/" target="_blank" rel="noopener noreferrer">My Journey to Becoming a Validator on Ethereum 2.0 — Part 1</a> Coogan walks through a four-part series of becoming a validator on Ethereum 2.0. Started before the Beacon Chain launched!
 - To follow the progress of Ethereum 2.0, subscribe to [What's New in Eth2,](https://hackmd.io/@benjaminion/eth2_news/https%3A%2F%2Fhackmd.io%2F%40benjaminion%2Fwnie2_200822){target=_blank} which sends weekly updates.
+- [A Merge Timeline from AllCoreDevs (Tim Beiko)](https://tim.mirror.xyz/sR23jU02we6zXRgsF_oTUkttL83S3vyn05vJWnnp-Lc){target=_blank} 
