@@ -3,7 +3,7 @@
 
   If you've gotten this far, you've learned the basic cryptographic fundamentals underpinning blockchain generally. We still need to learn about decentralized consensus, and we'll do that in the next module, but we wanted to let you interact with public key cryptography, hash functions and digital signing in a tangible way.
 
- We'll have a live presentation where we walk through playing with cryptographic keys and generating accounts. In the meanwhile, please check out the resources below. These are advanced exercises, but we hope you will at least take a look. If these look too intense, that's also okay.
+ We'll have a live presentation where we walk through playing with cryptographic keys and generating accounts. In the meantime, please check out the resources below. These are advanced exercises, but we hope you will at least take a look. If these look too intense, that's also okay.
 
    Additional Resources (Advanced)
 -------------------------------
