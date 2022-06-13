@@ -23,7 +23,7 @@
 
  ![private all the keys meme, x all the y meme template](../../../img/S01/private-all-the-keys.jpeg) There are a ton of additional resources for public key cryptography, so we're going to break them up into different sections: **General Public Key Cryptography Resources**, **Blockchain / Ethereum-Specific Public Key Cryptography Resources** and **Advanced Public Key Cryptography Resources**.
 
- ### General Public Key Cryptography Resources
+### General Public Key Cryptography Resources
 
  Know that in these examples, you will meet some lifetime friends, Alice and Bob. They are the most absolutely unimaginatively, Eurocentric named parties in every cryptographic key exchange (rather than using A and B). Please, *please* if you're ever teaching this to someone else use a more interesting name than Alice and Bob, like Akash and Basilia. But, it is the common way to discuss it and perhaps there's value in that commonality across cultures.
 
@@ -37,14 +37,14 @@
 * [Video: Elliptic Curves — Computerphile](https://www.youtube.com/watch?v=NF1pwjL9-DE){target=_blank} Going deeper into the Elliptic Curve encryption behind public key cryptography.
 * [Mini-Course: Basic Key Exchange](https://www.coursera.org/learn/crypto/home/week/5){target=_blank} Requires a free Coursera registration, but this is another general overview on the mechanics of key exchanges (not RSA encryption specifically) from Dan Boneh's [Cryptography I course](https://www.coursera.org/learn/crypto){target=_blank} from Stanford University.
 
- ### Blockchain / Ethereum-Specific Public Key Cryptography Resources
+### Blockchain / Ethereum-Specific Public Key Cryptography Resources
 
  Now that you have an understanding of public key cryptography generally, let's dive into how it is used in blockchains, specifically Ethereum. The following links will mainly show how private keys are used to generate Ethereum accounts, which then become a stand-in for identity on the Ethereum network. Note that all Ethereum addresses start with the first two characters `0x`, which is not actually part of the address but rather a prefix used to let programs know the address is coded in hexadecimal format.
 
  * [Book Excerpt: Keys and Addresses (Mastering Ethereum)](https://github.com/ethereumbook/ethereumbook/blob/develop/04keys-addresses.asciidoc){target=_blank} Excerpt from Andreas Antonopoulos and Gavin Wood's excellent book, *Mastering Ethereum* available for free as an e-book through [this GitHub repo.](https://github.com/ethereumbook/ethereumbook){target=_blank}
 * [Article: How are Ethereum Addresses Generated? (Stack Overflow)](https://ethereum.stackexchange.com/questions/3542/how-are-ethereum-addresses-generated){target=_blank} A nice, thorough answer walking through the process of generating a private key to having an Ethereum address linked to that private key
 
- ### Advanced Public Key Cryptography Resources
+### Advanced Public Key Cryptography Resources
 
  * [Coding Problem Set: Cryptopals](https://cryptopals.com/){target=_blank} This is an extremely advanced problem set series discussing applied cryptography generally. Not for the faint of heart!
 

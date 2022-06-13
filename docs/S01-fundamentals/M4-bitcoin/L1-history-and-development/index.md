@@ -42,7 +42,7 @@
  Additional Material
 -------------------
 
- ### History and Nakamoto
+### History and Nakamoto
 
  * [Wikipedia: Bitcoin](https://en.wikipedia.org/wiki/Bitcoin){target=_blank} A general overview of Bitcoin from our favorite hive mind encyclopedia.
 * [Article: Exploring Bitcoin's History](https://medium.com/coinmonks/exploring-bitcoins-history-ecbf1c59952c){target=_blank} A very long, but thorough, article discussing all the technology building up to Bitcoin, including TCP/IP, Elliptic Curve Cryptography, time-stamp servers, smart contracts and more.
@@ -50,12 +50,12 @@
 * [Article: What Bitcoin Is and Why It Matters (MIT)](https://www.technologyreview.com/2011/05/25/194486/what-bitcoin-is-and-why-it-matters/){target=_blank}
 * [Article: What Happened When Bitcoin Creator Satoshi Nakamoto Disappeared (Bitcoin Magazine)](https://bitcoinmagazine.com/technical/what-happened-when-bitcoin-creator-satoshi-nakamoto-disappeared){target=_blank} An article charting the rise of Nakamoto, the community of developers who grew around the project, and the eventual disappearance of Nakamoto from the project in 2011.
 
- ### Technical Features and Development
+### Technical Features and Development
 
  * [Book: Mastering Bitcoin](https://github.com/bitcoinbook/bitcoinbook){target=_blank} Considered to be the best-in-class introduction to Bitcoin development.
 * [Tutorial: Advanced Transactions](https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch07.asciidoc){target=_blank} Section from "Mastering Bitcoin" about Script's more advanced features.
 
- ### General Resources
+### General Resources
 
  * [Online Course: What is Money? (UC Berkeley)](https://berkeley-haas.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c29702dd-1b12-4436-87d4-a87100137a6e){target=_blank}
 * [Article: You Don't Understand Bitcoin Because You Think Money is Real](https://medium.com/@mariabustillos/you-dont-understand-bitcoin-because-you-think-money-is-real-5aef45b8e952){target=_blank} A favorite article of ours!

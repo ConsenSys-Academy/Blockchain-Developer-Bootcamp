@@ -23,7 +23,7 @@
  Additional Material
 -------------------
 
- ### Introductory
+### Introductory
 
  * [Article: The Meaning of Decentralization](https://medium.com/@VitalikButerin/the-meaning-of-decentralization-a0c92b76a274){target=_blank}
 * [Article: Sharding](https://vitalik.ca/general/2021/04/07/sharding.html){target=_blank} Discusses the scalability trilemma
@@ -40,7 +40,7 @@
 * [Video: WTF is MEV?](https://youtu.be/s3nACF7uVZw?t=405){target=_blank} Introduction to Miner Extracted Value from Charlie Noyes at a MEV Summit. This video starts at his talk but also includes the rest of the summit, which you don't have to watch!
 * [Video: MEV Walkthrough with FlashBots](https://www.youtube.com/watch?v=lXq0eU8viFQ){target=_blank} Another walkthrough of MEV from Flashbots
 
- ### Advanced: Distributed Systems
+### Advanced: Distributed Systems
 
  * [Wiki: Distributed Systems Reading List](https://dancres.github.io/Pages/){target=_blank} Strong technical and academic discussion around distributed systems
 * [Article: How Complex Systems Fail](https://how.complexsystems.fail/){target=_blank} A series of simple statements referring to the management of chaos in complex systems. Highly generalized, but still has a number of gems.

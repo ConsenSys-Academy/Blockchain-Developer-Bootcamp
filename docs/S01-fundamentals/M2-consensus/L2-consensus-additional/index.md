@@ -56,7 +56,7 @@
  Additional Links
 ----------------
 
- ### Basic
+### Basic
 
  * [Interactive: Raft: Understandable Distributed Consensus](http://thesecretlivesofdata.com/raft/){target=_blank} A really excellent, interactive walkthrough of the Raft consensus protocol, a basic consensus protocol. The simple and easy way in which the tutorial walks through the consensus mechanism will help you understand how consensus protocols work on a practical level.
 * Article: [Let's Take a Crack at Understanding Distributed Consensus](https://www.preethikasireddy.com/post/lets-take-a-crack-at-understanding-distributed-consensus){target=_blank} (Preethi Kasireddy)
@@ -68,7 +68,7 @@
 * [Interactive Code: BitTorrent Simulator](http://mg8.org/processing/bt.html){target=_blank} A very cool visualization of how files are distributed over BitTorrent, which uses peer-to-peer file sharing
 * Wikipedia: [Consensus Methods,](https://en.wikipedia.org/wiki/Consensus_(computer_science){target=_blank}) [Distributed Computing,](https://en.wikipedia.org/wiki/Distributed_computing){target=_blank} [Network Resilience,](https://en.wikipedia.org/wiki/Resilience_(network){target=_blank}) [Fault Tolerance,](https://en.wikipedia.org/wiki/Fault_tolerance){target=_blank} [Network State,](https://en.wikipedia.org/wiki/State_(computer_science){target=_blank}) [Byzantine Fault Tolerance](https://en.wikipedia.org/wiki/Byzantine_fault){target=_blank} [State Machines,](https://en.wikipedia.org/wiki/Finite-state_machine){target=_blank} [Peer-to-Peer Protocols,](https://en.wikipedia.org/wiki/List_of_P2P_protocols){target=_blank} [Gossip Protocol](https://en.wikipedia.org/wiki/Gossip_protocol){target=_blank}
 
- ### Advanced
+### Advanced
 
  * [Course: Distributed Systems](http://www.distributedsystemscourse.com/){target=_blank}
 * [Textbook: Foundations of Distributed Consensus and Blockchains (Elaine Shi)](http://elaineshi.com/docs/blockchain-book.pdf){target=_blank} An advanced and extremely technical but comprehensive view on distributed consensus as it pertains to blockchain development.
