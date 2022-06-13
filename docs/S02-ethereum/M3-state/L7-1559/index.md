@@ -46,7 +46,7 @@ Here are some changes to the [Ethereum JSON-RPC format](https://eth.wiki/json-rp
 * Legacy transactions that only include a `gasPrice` are still valid and they will be accepted into the blocks. The user will simply pay the entire proposed network fee and as a result they may pay a premium compared to other users on the network.
 * `eth_gasPrice` is deprecated and replaced with `eth_feeHistory`, which returns transaction fee data for up to 1024 blocks. For each block, `eth_feeHistory` reports the base fee, a percentile list of effective priority fees and the ratio of gas used/limit. Note the required base fee for the next block is returned as well.
 
- ### Transaction Simulation
+### Transaction Simulation
 
  * `eth_call` May require the developer to specify the gas price or new 1559 gas pricing to reflect true execution of a transaction. The Go-Ethereum (geth) developer team has more about the changes to `eth_call` [here.](https://github.com/ethereum/go-ethereum/pull/23027){target=_blank}
 * `eth_estimateGas` May fail to estimate the gas if the gas price or new 1559 gas pricing is not filled in (i.e., greater than 0).
