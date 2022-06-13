@@ -35,18 +35,18 @@ contract ExampleContract {
 2. They can act as asynchronous triggers with data and
 3. They can act as a cheaper form of storage.
 
- ### Get values when transaction is mined
+### Get values when transaction is mined
 
  When a transaction is sent via web3.js, a transaction hash is returned, even if the contract functions specifies a return value. Transactions don’t return the contract value because transactions are not immediately mined and included in the blockchain - it takes time (they are asynchronous). You can use an event in the contract function in conjunction with an event watcher in the UI to observe a variable value when the transaction is mined.
 
- ### Trigger application logic
+### Trigger application logic
 
  You can use an event watcher as a trigger for application logic beyond just reading return values. You could take another action, display a message or update the UI when an event is observed.
 
     
  
 
- ### Events as Data Storage
+### Events as Data Storage
 
  Logs, which are essentially the same as events (the context dictates which term is more appropriate) can also be used as a cheaper form of storage. Logs cost 8 gas per byte whereas contract storage costs 20,000 per 32 bytes, or 625 gas per byte. Logs are cheaper, but also cannot be accessed from any contracts so their use case as storage objects is much more limited. Even still, logs can be useful for aggregating historical reference data.
 
