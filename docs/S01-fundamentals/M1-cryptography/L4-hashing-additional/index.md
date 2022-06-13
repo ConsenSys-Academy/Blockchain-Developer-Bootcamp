@@ -61,14 +61,14 @@ Additional Links for Hashing
 * [Article: How Hash Algorithms Work](https://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software){target=_blank}
 * [Article: Cryptographic Hash Function (Simple Wikipedia)](https://simple.wikipedia.org/wiki/Cryptographic_hash_function){target=_blank}
 
- ### Blockchain / Ethereum-Specific Hashing Material
+### Blockchain / Ethereum-Specific Hashing Material
 
  * [Interactive Code: ETH.Build](https://youtu.be/QJ010l-pBpE){target=_blank} Austin Griffith walks through Hash Functions using his [ETH.Build](https://sandbox.eth.build/wofCrGxhc3Rfbm9kZV9pZCLEgcSDxIVsaW5rxItkFsKlxIfEiXPClMKKwqLEjCDCpHR5cGXCqklucHV0L1RleHTCo3Bvc8KSZcOMw7_CpHNpemXCksONASwywqVmxIJnc8KAwqVvcsSJcgDCpG3EiGUAwqbEk8SqdHPCkcKDwqRuYW1lwqDEosSkxZPCpMSSxJTDgMKnb8SrxZfFmcWbxZ3Fn8WhxKPEpcKmxIRyxJNnwqXFpmvFmRXCqnByb8SlcnRpZXPChMKrYmxvY2vGhVPEvGUywqtwxIJjZWhvbMWNwq9lbnRlciDGoMSwIGjGoWXCpcaEdGxlwqTErsSwwqV2YWx1xq7GoMSExJ7EjB_FosSlwqtDcsSkdG8vSMSDaMSyxLTEvwHDl8S4xLrGkcKSeB7FhMWGxYjFisWMxqECxZDFksWUxZbEq8WtxZzFnsapx550xr1lwq3FtcW3LG51bWLGocWlxJNrFcWpxavHn8Wax6HFn8KkaMeHx6bFtHTFtm7FuMW6xZkWxb7GgMaCxoTGhsKAxrpkIcemwq1EaXPGlWF5L1dhdGPHiMSzxLXDjQLCs8OMw7XHj8S9xL8DMTzHlGHFh8WJxYvFjQPHm8SJx53Eqce3woTHucWgx6bFj8W6xJjEgsevbMKgx7V0xazCkci3xa_IucWyxZPFuceyc8OAxblhyL_CoMiHxoHGociKc8KBxqppxqzGqciZyJtowojEn8SNyJDIksiUxILIl1TJmsatx4nEtTx4yKXEvsigJgTIq8itx5fFjQHIssWTyZPIicaFc8KHwqhmb8afxpDEvSzGicaLxo3Gj8aRxpPIlcaXxpnGm8ahwqDJmcmbwqXJqMqUxrPGtcenx4ZzaCBGdW5jxoTKgsKqyoHGn0bFnmlsecK8J1J1YmlrIE3Kgm8gT25lJywgc2Fucy1zxqFpZsKlY8aaxYvCpyNky47Lj8mLxJTEtcKWFSAAHwDHqMiAx6rHrMeuxqHClhbLmCEAxZRnxoB1cHPCkMKmy4luZmlnwoDCp3bGocS7yoLDiz_DmcKZy7vLu8Ka){target=_blank} platform (highly recommended).
 * [Article: Blockchain Underpinnings: Hashing (ConsenSys)](https://medium.com/@ConsenSys/blockchain-underpinnings-hashing-7f4746cbd66b){target=_blank}
 * [Interactive Code: Cryptographic Hash Functions (ConsenSys / Josh Crites)](https://observablehq.com/@consensys-academy/cryptographic-hash-functions){target=_blank} Uses a platform called [Observable](https://observablehq.com/@observablehq/five-minute-introduction?collection=@observablehq/introduction){target=_blank} to provide you with code you can run in the article!
 * [Lesson: Cryptographic Hash Functions (Khan Academy)](https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking/bitcoin/v/bitcoin-cryptographic-hash-function){target=_blank}
 
- ### Advanced Hashing Resources
+### Advanced Hashing Resources
 
  * [Coding: Bitcoin Whitepaper Exercises: Hashing](https://github.com/cooganb/bitcoin-whitepaper-exercises/blob/master/hashing/README.md){target=_blank} This is a JavaScript-based exercise implementing the timestamp server outlined in the Bitcoin Whitepaper. It's the first in a [larger problem set](https://github.com/cooganb/bitcoin-whitepaper-exercises){target=_blank} we'll also recommend you try later in this section.
 
