@@ -2,8 +2,8 @@ More Forms of Consensus
 =======================
 
 We've spoken mainly about Proof of Work, since it's the current consensus mechanism for Bitcoin and Ethereum, as well as other blockchains. However, there are other consensus protocols being used by blockchain networks, such as: 
-* **[Proof of Stake](https://en.wikipedia.org/wiki/Proof_of_stake){target=_blank}** A consensus protocol based on financial holdings of validator nodes in the network (similar to miner nodes in Proof of Work). Proof of Stake requires much less energy to run than Proof of Work and, for this reason, Ethereum is currently working towards this consensus mechanism.
-* **[Delegated Proof of Stake](https://en.wikipedia.org/wiki/Proof_of_stake#Variations_of_stake_definition){target=_blank}** This is a variant of the Proof of Stake protocol in which stakeholders can elect validators to represent them in the system.
+* **[Proof of Stake](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/){target=_blank}** A consensus protocol based on financial holdings of validator nodes in the network (similar to miner nodes in Proof of Work). Proof of Stake requires much less energy to run than Proof of Work and, for this reason, Ethereum is currently working towards this consensus mechanism.
+* **[Delegated Proof of Stake](https://www.gemini.com/cryptopedia/proof-of-stake-delegated-pos-dpos#section-delegated-proof-of-stake){target=_blank}** This is a variant of the Proof of Stake protocol in which stakeholders can elect validators to represent them in the system.
 * **Proof of Authority** This is a more traditional consensus mechanism like Raft's leader-led consensus in which only certain nodes are allowed to produce blocks at their discretion. It's meant for smaller, perhaps private networks where the participants all know each other or for lower-stake networks such as [testnets](https://en.wikipedia.org/wiki/Testnet){target=_blank} or networks securing trivial amounts of value.
 
  
