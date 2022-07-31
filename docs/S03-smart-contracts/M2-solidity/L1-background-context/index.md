@@ -47,7 +47,7 @@
 
  In this section, we're going to go over the basic conventions of Solidity. We're also going to start building smart contracts and discussing their general structure and design patterns.
 
- We can't emphasize this enough: smart contract coding is both really exciting and really dangerous! We see smart contracts `[rekt](https://rekt.news/){target=_blank}` every day! We want to both give you all the tools to both build with creativity *and* confidence. Let's go!
+ We can't emphasize this enough: smart contract coding is both really exciting and really dangerous! We see smart contracts [rekt](https://rekt.news/){target=_blank} every day! We want to both give you all the tools to both build with creativity *and* confidence. Let's go!
 
  Additional Material
 -------------------
