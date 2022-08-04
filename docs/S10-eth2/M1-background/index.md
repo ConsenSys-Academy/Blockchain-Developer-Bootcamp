@@ -36,6 +36,13 @@ On November 24, 2020, the minimum amount of ETH needed to start the Beacon Chain
 
 On December 1st at 12pm UTC, the Beacon chain’s first blocks were validated. The first block came from <a href="https://beaconcha.in/validator/19026" target="_blank" rel="noopener noreferrer">Validator 19026,</a> with the enigmatic graffiti, “Mr F was here.” Twelve seconds later came the next block, graffiti indicating the validator might be located in <a href="https://beaconcha.in/blocks?q=BTCS+Zug+validator" target="_blank" rel="noopener noreferrer">Zug, Switzerland.</a> The Eth2 Beacon Chain grew steadily, block by block every 12 seconds. Then came the next hurdle: would enough validators be online to finalize the first Epoch? Yes! 82.27% of the validators attested to the validity of the Epoch 0, the proverbial ground floor of the Beacon Chain. You can see the latest blocks from the Beacon Chain on <a href="https://beaconcha.in/" target="_blank" rel="noopener noreferrer">Beaconcha.in.</a>
 
+
+### Webinar Series About the Ethereum Merge to Proof-of-Stake from a Solo Stakers and DApp Developers Perspective
+
+In July / August 2022 the Infura team hosted a series of workshops explaining the impact the Merge will have on Solo Stakers and DApp Developers. The recordings, with a brief description are as follows:
+
+* [The Merge Overview: Where We Are and Where We're Going](https://www.crowdcast.io/e/the-merge-weekly/1): The first session in the series, giving an overview of the Merge, general instructions about what Solo Stakers and DApp Developers must do in order to prepare for the Merge.
+
 ## Additional Material
 
 Ethereum 2.0 development develops and matures day-by-day. It can be challenging to keep up with the bleeding edge of this exciting new network. Here are some resources below to help:
