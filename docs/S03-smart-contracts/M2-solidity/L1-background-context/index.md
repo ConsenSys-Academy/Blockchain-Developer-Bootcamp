@@ -66,4 +66,7 @@
 * [Thread: What Does Ethereum Development Look Like Today?](https://twitter.com/smpalladino/status/1421901085279756300){target=_blank} Santiago Palladino, who wrote [Ethereum for Web Developers,](https://www.apress.com/gp/book/9781484252772){target=_blank} updates parts of his book for the current Ethereum ecosystem.
 * [Article: Learn X in Y Minutes (Solidity)](https://learnxinyminutes.com/docs/solidity/){target=_blank} A bit long and rough, but a comprehensive overview of learning Solidity
 
- 
+Advanced Material
+-------------------
+* [Twitter Thread: Resource You Need to Know to Become a Solidity Dev ](https://twitter.com/bensparks_/status/1513238520575537162)
+* [Series: EVM Deep Dive](https://noxx.substack.com/p/evm-deep-dives-the-path-to-shadowy)
