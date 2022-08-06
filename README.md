@@ -20,7 +20,7 @@
 <div align="center">
   <sub>Created by
   <a href="https://www.consensys.net" target="_blank">ConsenSys</a> and
-  <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-**Bootcamp**/graphs/contributors">contributors</a>
+  <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/graphs/contributors">contributors</a>
 </div>
 
 ---
