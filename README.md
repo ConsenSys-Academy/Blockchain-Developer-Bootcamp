@@ -116,10 +116,10 @@
 <details>
 <summary> Additional Topics (S07) </summary>
 
-- #### [M1-understand](docs/S07-additional-topics/L1-ipfs/index.md)
-- #### [M1-understand](docs/S07-additional-topics/L2-filecoin/index.md)
-- #### [M1-understand](docs/S07-additional-topics/L3-the-graph/index.md)
-- #### [M1-understand](docs/S07-additional-topics/L4-zkp/index.md)
+- #### [L1-ipfs](docs/S07-additional-topics/L1-ipfs/index.md)
+- #### [L2-filecoin](docs/S07-additional-topics/L2-filecoin/index.md)
+- #### [L3-the-graph](docs/S07-additional-topics/L3-the-graph/index.md)
+- #### [L4-zkp](docs/S07-additional-topics/L4-zkp/index.md)
 
 </details>
 
@@ -138,9 +138,9 @@
 <summary>Beyond Code (S09) </summary>
 
 - #### [M1-EIPs](docs/S09-beyond-code/M1-EIPs/index.md)
-- #### [M1-intro/L1-overview](docs/S09-beyond-code/M2-ethics/index.md)
-- #### [M1-intro/L1-overview](docs/S09-beyond-code/M3-continuing-ed/index.md)
-- #### [M1-intro/L1-overview](docs/S09-beyond-code/M4-spirit/index.md)
+- #### [M2-ethics](docs/S09-beyond-code/M2-ethics/index.md)
+- #### [M3-continuing-ed](docs/S09-beyond-code/M3-continuing-ed/index.md)
+- #### [M4-spirit](docs/S09-beyond-code/M4-spirit/index.md)
 
 </details>
 
