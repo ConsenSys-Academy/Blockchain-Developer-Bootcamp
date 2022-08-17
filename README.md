@@ -80,7 +80,8 @@
 
 - #### [M1-intro](docs/S04-developer-tooling/M1-intro/index.md)
 - #### [M2-web3-libraries](docs/S04-developer-tooling/M2-web3-libraries/index.md)
-- #### [M3-infura](docs/S04-developer-tooling/M3-infura/index.md)
+- #### [M3-infura-L1](docs/S04-developer-tooling/M3-infura/L1/index.md)
+- #### [M3-infura-L2](docs/S04-developer-tooling/M3-infura/L2/index.md)
 - #### [M4-truffle-deep-dive](docs/S04-developer-tooling/M4-truffle-deep-dive/index.md)
 - #### [M5-other-dev-tools](docs/S04-developer-tooling/M5-other-dev-tools/index.md)
 - #### [M6-exercise](docs/S04-developer-tooling/M6-exercise/index.md)
