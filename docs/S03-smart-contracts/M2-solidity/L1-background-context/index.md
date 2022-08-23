@@ -56,8 +56,9 @@
 * [Docs: Official Solidity Documentation](https://docs.soliditylang.org/en/latest/){target=_blank}
 
  If you'd like some other places to learn Solidity, you can also check out these great resources. To be clear, we'll definitely be teaching you Solidity along with how to develop dapps. We also want to provide any external help we can as well!
-
- * [Course: CryptoZombies](https://cryptozombies.io/){target=_blank} One of the most well-known introductions to Solidity
+ 
+* [Bootcamp:Learn Blockchain, Solidity and Full Stack JavaScript Development:](https://www.freecodecamp.org/news/learn-blockchain-solidity-full-stack-javascript-development/){target=_blank} A 32 hour long comprehensive Blockchain Development Bootcamp by Patrick Collins
+* [Course: CryptoZombies](https://cryptozombies.io/){target=_blank} One of the most well-known introductions to Solidity
 * [Course: Ethernaut (OpenZeppelin)](https://ethernaut.openzeppelin.com/){target=_blank} An excellent in-browser "game" teaching Solidity from a security perspective.
 * [Course: Intro to Solidity (Chainshot)](https://www.chainshot.com/learn/solidity){target=_blank} Chainshot uses a very cool interactive platform to teach Solidity
 * [Wiki: Solidity by Example](https://www.solidity-by-example.org){target=_blank} A bunch of great examples of Solidity, including excellent design patterns, hacks and security tips.
