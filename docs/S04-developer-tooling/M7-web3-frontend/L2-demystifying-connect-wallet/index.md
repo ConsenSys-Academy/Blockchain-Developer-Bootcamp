@@ -1,6 +1,6 @@
 # A Demystification of “Connect Wallet”
 
-[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=forthebadge-square&logo=codesandbox)](https://githubbox.com/dferber90/githubbox)
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=forthebadge-square&logo=codesandbox)](https://codesandbox.io/s/0x0-metamask-connect-start-8csed1)
 
 We’re going to start out with one of the first things you’ll want to tackle when developing your frontend alpha: The user’s ability to connect their wallet.
 
@@ -31,7 +31,7 @@ When we begin building, we want to assume our user doesn’t have MetaMask insta
 
 ## How Buidl?
 
-[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=forthebadge-square&logo=codesandbox)](https://githubbox.com/dferber90/githubbox)
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=forthebadge-square&logo=codesandbox)](https://codesandbox.io/s/0x0-metamask-connect-start-8csed1)
 
 If you take a look at `[App.js](https://codesandbox.io/s/0x0-metamask-connect-start-8csed1?file=/src/App.js)`, you’ll see it’s been purged of the boilerplate that `yarn create react-app` generates. There are styled components and a sprinkle of Framer Motion for animations. But we don’t have any other Web3 dependencies. In the `/components` directory, there are, however, three specifically named components, and they are the only ones you’ll be using for this activity. You won’t need to create anymore.
 
