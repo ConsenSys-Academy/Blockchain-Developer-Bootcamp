@@ -55,6 +55,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Nader Dabit](https://www.youtube.com/user/boyindasouth){target=_blank}
 - [Dan Finlay on How Ethereum Works](https://www.youtube.com/watch?v=-SMliFtoPn8&list=PLvf2RZCNC-UD2RLRs8jnIkhG8iXiKIH9w){target=_blank}
 - [Coin Bureau](https://www.youtube.com/channel/UCqK_GSMbpiV8spgD3ZGloSw){target=_blank}
+- [Xcoderse](https://www.youtube.com/channel/UCStJJmtgJnLoTKBRi9cOQSg){target=_blank}
 
 ## Podcasts
 - [Zero Knowledge](https://www.zeroknowledge.fm/){target=_blank}
