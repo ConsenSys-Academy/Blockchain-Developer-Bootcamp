@@ -186,7 +186,7 @@ An example of this process found below:
 4. Push to the branch (`git push origin branchName`)
 5. Create a new Pull Request
 
-Built by [ConsenSys](www.consensys.net/) and
+Built by [ConsenSys](https://consensys.net/) and
 
 ![GitHub Contributors Image](https://contrib.rocks/image?repo=ConsenSys-Academy/Blockchain-Developer-Bootcamp)
 
