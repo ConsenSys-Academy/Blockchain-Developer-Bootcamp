@@ -15,6 +15,9 @@
   <a href="https://twitter.com/ConsenSysAcad" target="_blank">
     <img src="https://img.shields.io/twitter/follow/ConsenSysAcad.svg?logo=twitter">
   </a>
+  <a href="https://discord.com/invite/consensys" target="_blank">
+    <img src="https://img.shields.io/discord/697535391594446898?color=green&label=discord&logo=discord">
+  </a>
 </p>
 
 <div align="center">
