@@ -20,7 +20,7 @@ Geth has several interfaces through which you can communicate with your Ethereum
 *   JSON-RPC server: you can start geth with a json-rpc server that exposes the [JSON-RPC API](https://github.com/ethereum/wiki/wiki/JSON-RPC){target=_blank}
 *   [Command line options](https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options){target=_blank} documents command line parameters as well as subcommands.
 
-[See this page](https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum){target=_blank} for instructions on how to install geth for your platform.
+[See this page](https://geth.ethereum.org/docs/install-and-build/installing-geth){target=_blank} for instructions on how to install geth for your platform.
 
 Install geth and start interacting with our node.
 
@@ -230,3 +230,7 @@ Check the balance of account 1 again.
     100
 
 It should say 100! You have successfully sent a transaction from one account to another over your single node Ethereum network!
+
+## Additional Materials
+
+- [Running Geth in `dev` Mode](https://geth.ethereum.org/docs/getting-started/dev-mode) - an optimized way to run a single node for developing locally

@@ -4,7 +4,7 @@ As we mentioned, the blockchain space moves very fast. Courses like this are gre
 
 Luckily, there are plenty of places to read the latest and greatest happening in the space, particularly Ethereum. Here's where we suggest you get started.
 
-_Have suggestions you'd like to see on the list? [Edit this page here!](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/main/S00-intro/L6-keeping-up/index.md){target=_blank}_
+_Have suggestions you'd like to see on the list? [Edit this page here!](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S00-intro/L6-keeping-up/index.md){target=_blank}_
 
 ## Twitter
 
@@ -58,6 +58,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 ## Podcasts
 - [Zero Knowledge](https://www.zeroknowledge.fm/){target=_blank}
 - [Unchained](https://unchainedpodcast.com/){target=_blank}
+- [Epicenter](https://epicenter.tv){target=_blank}
 - [Mapping out Eth 2](https://www.coindesk.com/podcasts/mapping-out-eth-2-0/){target=_blank}
 - [Bankless](https://open.spotify.com/show/41TNnXSv5ExcQSzEGLlGhy?si=5FwQQFY1QHyUlaLoN2k-lg){target=_blank}
 
@@ -68,7 +69,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [DeFi Developer Roadmap](https://github.com/OffcierCia/DeFi-Developer-Road-Map){target=_blank}
 - [Ethereum.org's Developer Guide](https://ethereum.org/en/developers/){target=_blank}
 - [BuidlGuidl](https://buidlguidl.com/){target=_blank}
-- [Cloudflare](https://cleverflare.com/#/){target=_blank}
+- [Cleverflare](https://cleverflare.com/#/){target=_blank}
 - [Resources to Learn Web 3](https://twitter.com/wslyvh/status/1405493777347739654){target=_blank}
 - [How to Become a DeFi Developer](https://defiweekly.substack.com/p/how-to-become-a-defi-developer){target=_blank}
 - [Rabbithole.gg](https://rabbithole.gg){target=_blank} Place to learn and earn tokens
@@ -79,3 +80,5 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Comprehensive Solidity Tutorials](https://github.com/willitscale/learning-solidity){target=_blank}
 - [CryptoZombies](https://cryptozombies.io/){target=_blank}
 - [Visual Overview of Ethereum in 116 Slides](https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf){target=_blank}
+- [QuestBook-Learn Solidity](https://discord.gg/EwvRjGAS){target=_blank} A Discord server for beginners in Solidity
+- [Chainshot](https://www.chainshot.com/){target=_blank} Educational resources on Solidity
