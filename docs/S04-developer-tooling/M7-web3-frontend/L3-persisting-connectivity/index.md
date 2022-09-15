@@ -8,13 +8,13 @@ The year is 2006. You’ve just spent the last three hours fine-tuning the spagh
 
 Life is good until you receive a seemingly innocuous email prompting you to visit MySpace with a strange URL. On login, the site looks a little different. By the way, you did log in. It didn’t take you back to MySpace, so you open up a new window and see that now your whole bulletin board is flooded with spam from your account. The credentials you used to log in don’t work anymore. Your layout is broken now and your profile photo has changed.
 
-You were the victim of a [phishing attack](https://www.computerworld.com/article/2815426/myspace-again-under-phishing-attack.html). It happens all too often, unfortunately. [You get emails telling you that something completely out of your control, and sometimes beyond your comprehension, has happened to your account, here’s how you can fix it](https://www.fbi.gov/scams-and-safety/common-scams-and-crimes/spoofing-and-phishing). Phishing attacks have bamboozled users online since the time [you were able to get a 30-day free trial of ✨the internet✨from an AOL floppy disk](https://cofense.com/knowledge-center/history-of-phishing/). We can try to rely on a site logging us in automatically to circumvent this attack because when a site logs us in automatically, it does us a few favors. It reduces the password fatigue that has already burnt us out. And it reminds us to take a step back from this email and visit the site with a URL we know and trust to make sure everything is okay. If the site remembers us, we should be okay, right?
+You were the victim of a [phishing attack](https://www.computerworld.com/article/2815426/myspace-again-under-phishing-attack.html){target=\_blank}. It happens all too often, unfortunately. [You get emails telling you that something completely out of your control, and sometimes beyond your comprehension, has happened to your account, here’s how you can fix it](https://www.fbi.gov/scams-and-safety/common-scams-and-crimes/spoofing-and-phishing){target=\_blank}. Phishing attacks have bamboozled users online since the time [you were able to get a 30-day free trial of ✨the internet✨from an AOL floppy disk](https://cofense.com/knowledge-center/history-of-phishing/){target=\_blank}. We can try to rely on a site logging us in automatically to circumvent this attack because when a site logs us in automatically, it does us a few favors. It reduces the password fatigue that has already burnt us out. And it reminds us to take a step back from this email and visit the site with a URL we know and trust to make sure everything is okay. If the site remembers us, we should be okay, right?
 
 Just because we can try to rely on auto-login doesn’t mean we should. We’re really relying on the possibility a site may allow for that. That our browser data wasn’t purged. The problem is that it’s not set in stone, we don’t know if we’ll always be logged in. But wait, it can get worse. Auto-login is not entirely a good thing to rely on. If your device ends up in the wrong hands, now whoever has it can also access the same sites that promised to remember you. It’s no longer a convenience at that point, but an attack vector.
 
 ## Why do you stay connected?
 
-Phishing never really went away. [It just got smarter](https://twitter.com/troyhunt/status/1508184697070780418). Now the stakes are higher because real assets are involved.
+Phishing never really went away. [It just got smarter](https://twitter.com/troyhunt/status/1508184697070780418){target=\_blank}. Now the stakes are higher because real assets are involved.
 
 If you force quit and restart your browser. Notice how the button still says ‘Connect’. Click it and it should open MetaMask, now you have to enter your password for MetaMask because you were logged out. But, do you notice how you’ve connected to the dApp again, and you didn’t have to select an account to connect with? If you don’t remember disconnecting or logging out, *it’s because you didn’t.*
 
@@ -23,7 +23,7 @@ Your session wasn’t retained in local storage, but after restarting your brows
 But wait, there’s more! The only reason why you will ever need to use your private key or mnemonic phrase is if you’re importing accounts from other wallets. You don’t use it often like regular credentials and are encouraged to store it in some place like a safety deposit box, *(or entombed in concrete)*. In the meantime, here’s what your junk mailbox can get filled with.
 
 ![https://dev-to-uploads.s3.amazonaws.com/uploads/articles/srpl360r83f2craj9wrh.png](../../img/S04/../../../img/S04/persisting-connectivity-inbox.png)
-<p style='font-style: italic' align=center><a href="https://www.youtube.com/watch?v=MK6TXMsvgQg">*Benny Hill theme intensifies*</a></p style='italic'>
+<p style='font-style: italic' align=center><a href="https://www.youtube.com/watch?v=MK6TXMsvgQg">*Benny Hill theme intensifies*</a></p style='italic'>{target=\_blank}
 
 
 By default, you’ll always be connected because you didn’t need to verify your identity for authentication. The mere fact that your account was generated from a number so large that it could not be manmade is proof enough that your account is authentic. The reason why you stay connected is that you granted this dApp permission to view your accounts, and your assets and suggest transactions on your behalf. Restarting your browser, clearing your session, and clearing your cookies and cache doesn’t disconnect you. Because MetaMask and other browser wallets act as this bridge between you and dApps, it supplies the functionality for dApps to check if you have granted permissions with your account with the Ethereum Provider API.
@@ -34,7 +34,7 @@ This is why connectivity and permissions in Web3.0 is a paradigm shift from trad
 
 ## Showing your user’s connectivity
 
-To display this persistent connectivity with React, we’ll need to make a few more tweaks. For this, we can use the [Effect](https://reactjs.org/docs/hooks-effect.html) hook. React components are dynamic because of their ability to go through different [lifecycles](https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class). You'll commonly see the phrase "side effect" used in explanations for `useEffect`, so a side effect of the Ethereum Provider API being present in the `window` results in either the ‘Connect’ button or the ‘Address’ component being rendered.
+To display this persistent connectivity with React, we’ll need to make a few more tweaks. For this, we can use the [Effect](https://reactjs.org/docs/hooks-effect.html){target=\_blank} hook. React components are dynamic because of their ability to go through different [lifecycles](https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class){target=\_blank}. You'll commonly see the phrase "side effect" used in explanations for `useEffect`, so a side effect of the Ethereum Provider API being present in the `window` results in either the ‘Connect’ button or the ‘Address’ component being rendered.
 
 In `App.js` you’ll see we’re already importing `useEffect` from React. Now we can define it right beneath our `useState` hook like this:
 
@@ -100,7 +100,7 @@ useEffect(() => {
 }, [ethereum])
 ```
 
-This looks the way it does because it is an async IIFE, an [immediately invoked function expression](https://developer.mozilla.org/en-US/docs/Glossary/IIFE). The parentheses have a job title now as a ‘grouping operator’, and this is where we throw in our logic. Then the second set of parentheses at the end is where we immediately call that anonymous function. Because we aren’t reusing this function anywhere else at the moment, we don’t need to explicitly name it.
+This looks the way it does because it is an async IIFE, an [immediately invoked function expression](https://developer.mozilla.org/en-US/docs/Glossary/IIFE){target=\_blank}. The parentheses have a job title now as a ‘grouping operator’, and this is where we throw in our logic. Then the second set of parentheses at the end is where we immediately call that anonymous function. Because we aren’t reusing this function anywhere else at the moment, we don’t need to explicitly name it.
 
 Inside our IIFE, we can throw in a `try/catch` block.
 
@@ -136,6 +136,6 @@ This might be confusing for your users who are expecting a ‘Disconnect’ butt
 If your user takes a certain action like disconnecting, and they’re doing that through MetaMask, the dApp frontend needs to know what just occurred, and what to do next. In the next lesson, we’ll cover event listeners with the Ethereum Provider API.
 
 ## Additional Reading (or just references)
-- [Ethereum Provider API](https://docs.metamask.io/guide/ethereum-provider.html)
-- [A Guide to React's `useEffect` hook](https://blog.logrocket.com/guide-to-react-useeffect-hook/) 
-- [A Complete Guide to `useEffect`](https://overreacted.io/a-complete-guide-to-useeffect/)
+- [Ethereum Provider API](https://docs.metamask.io/guide/ethereum-provider.html){target=\_blank}
+- [A Guide to React's `useEffect` hook](https://blog.logrocket.com/guide-to-react-useeffect-hook/){target=\_blank}
+- [A Complete Guide to `useEffect`](https://overreacted.io/a-complete-guide-to-useeffect/){target=\_blank}
