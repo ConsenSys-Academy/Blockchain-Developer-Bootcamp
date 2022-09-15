@@ -54,6 +54,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Patrick Collins](https://www.youtube.com/channel/UCn-3f8tw_E1jZvhuHatROwA){target=_blank}
 - [Nader Dabit](https://www.youtube.com/user/boyindasouth){target=_blank}
 - [Dan Finlay on How Ethereum Works](https://www.youtube.com/watch?v=-SMliFtoPn8&list=PLvf2RZCNC-UD2RLRs8jnIkhG8iXiKIH9w){target=_blank}
+- [Coin Bureau](https://www.youtube.com/channel/UCqK_GSMbpiV8spgD3ZGloSw){target=_blank}
 
 ## Podcasts
 - [Zero Knowledge](https://www.zeroknowledge.fm/){target=_blank}
@@ -61,16 +62,19 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Epicenter](https://epicenter.tv){target=_blank}
 - [Mapping out Eth 2](https://www.coindesk.com/podcasts/mapping-out-eth-2-0/){target=_blank}
 - [Bankless](https://open.spotify.com/show/41TNnXSv5ExcQSzEGLlGhy?si=5FwQQFY1QHyUlaLoN2k-lg){target=_blank}
+- [Uncommon Core](https://uncommoncore.co/podcast/){target=_blank}
 
 ## Learning Paths
 - [EthernautDAO](https://forum.ethernautdao.io/){target=_blank} Decentralized organization focussed on training developers to become blockchain developers and get them jobs! [Discord here](https://discord.gg/RQ5WYDxUF3){target=_blank}
 - [How to Get Into Web 3 as a Developer (Nader Dabit)](https://dev.to/dabit3/how-to-get-into-ethereum-crypto-web3-as-a-developer-9l6){target=_blank}
+- [Anett Rolikova's README for Crypto Beginners](https://github.com/anettrolikova/Crypto/blob/master/README.md){target=_blank}
 - [Learning Resources from EthernautDAO](https://github.com/ethernautdao/resources){target=_blank}
 - [DeFi Developer Roadmap](https://github.com/OffcierCia/DeFi-Developer-Road-Map){target=_blank}
 - [Ethereum.org's Developer Guide](https://ethereum.org/en/developers/){target=_blank}
 - [BuidlGuidl](https://buidlguidl.com/){target=_blank}
 - [Cleverflare](https://cleverflare.com/#/){target=_blank}
 - [Resources to Learn Web 3](https://twitter.com/wslyvh/status/1405493777347739654){target=_blank}
+- [Learn Blockchain, Solidity, and Full Stack Javascript Development](https://www.freecodecamp.org/news/learn-blockchain-solidity-full-stack-javascript-development/){target=_blank}
 - [How to Become a DeFi Developer](https://defiweekly.substack.com/p/how-to-become-a-defi-developer){target=_blank}
 - [Rabbithole.gg](https://rabbithole.gg){target=_blank} Place to learn and earn tokens
 - [Zapper Learn](https://learn.zapper.fi/){target=_blank} Educational resources around DeFi
@@ -82,3 +86,4 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Visual Overview of Ethereum in 116 Slides](https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf){target=_blank}
 - [QuestBook-Learn Solidity](https://discord.gg/EwvRjGAS){target=_blank} A Discord server for beginners in Solidity
 - [Chainshot](https://www.chainshot.com/){target=_blank} Educational resources on Solidity
+- [UseWeb3](https://www.useweb3.xyz/){target=_blank} Mega-Aggregator of Ethereum educational resources, including courses, tutorials, newsletters

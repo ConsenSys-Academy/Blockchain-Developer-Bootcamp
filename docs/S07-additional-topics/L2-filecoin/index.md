@@ -45,8 +45,9 @@ An alternative to running Filecoin Ganache via the CLI is to use Filecoin Ganche
 ## Running the Filecoin Network Explorer
         
     git clone https://github.com/trufflesuite/filecoin-network-inspector
-    npm install
+    cd filecoin-network-inspector
     git checkout ganache-changes
+    npm install
     npm run start
 
 ## Running Ethereum Ganache
@@ -91,6 +92,7 @@ asset - <a href="https://ipfs.io/ipfs/QmS4t7rFPxaaNriXvCmALr5GYRAtya5urrDaZgkfHu
 Assuming the local Ethereum Ganache node is running, you'll be able to open a console and mint a new NFT with the following steps. As the base URL is set to that of an IPFS gateway, we'll just need to pass in the CID to the asset metadata.
  
 
+    truffle migrate
     truffle console
     truffle(development)> const gallery = await MyGallery.deployed()
     truffle(development)> gallery.mint(accounts[0], "QmS4t7rFPxaaNriXvCmALr5GYRAtya5urrDaZgkfHutdCG")
@@ -141,4 +143,4 @@ The above example assumes you have a locally running IPFS node, but if not you c
 
 The resultant content identified (CID) will then be returned for you to then persist with a Filecoin storage deal or pinning service.
 
-More detail can be found in the Truffle [docs](www.trufflesuite.com/docs/truffle/getting-started/preserving-files-and-content-to-storage-platforms).
+More detail can be found in the Truffle [docs](https://www.trufflesuite.com/docs/truffle/getting-started/preserving-files-and-content-to-storage-platforms).

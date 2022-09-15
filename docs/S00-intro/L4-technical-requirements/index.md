@@ -5,7 +5,7 @@ This course assumes a baseline of technical knowledge. It is important to make s
 *   [Unix / Linux Environment](#unix-or-linux-environments)
 *   [Command Line](#command-line)
 *   [Git](#git)
-*   [Javascript](#javascript)
+*   [JavaScript](#javascript)
 *   [Code Editor](#code-editor)
 
 ## Unix or Linux Environments
@@ -42,7 +42,7 @@ To brush up on command line skills, check out:
 
 ## Git
 
-[Git](https://en.wikipedia.org/wiki/Git){target=_blank} is a [version-control system (VCS)](https://en.wikipedia.org/wiki/Version_control){target=_blank} used to track changes made to projects. While git seems simple, it's actually a bit challenging to get comfortable with. (Note that git is a piece of software, on which version control sites like Github or Gitlab are based.)
+[Git](https://en.wikipedia.org/wiki/Git){target=_blank} is a [version-control system (VCS)](https://en.wikipedia.org/wiki/Version_control){target=_blank} used to track changes made to projects. While git seems simple, it's actually a bit challenging to get comfortable with. (Note that git is a piece of software, on which version control sites like GitHub or GitLab are based.)
 
 Here are some resources to get you started:
 
@@ -50,12 +50,12 @@ Here are some resources to get you started:
 *   [The Odin Project: Setting Up Git](https://www.theodinproject.com/courses/foundations/lessons/setting-up-git){target=_blank}
 *   [The Odin Project: Git Basics](https://www.theodinproject.com/courses/foundations/#git-basics){target=_blank}
 *   [MIT Missing CS Semester: Version Control (git)](https://missing.csail.mit.edu/2020/version-control/){target=_blank}
-*   [Git and Github for Poets (video)](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV){target=_blank}
+*   [Git and GitHub for Poets (video)](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV){target=_blank}
 
 
 Not only is git a part of a good coding repertoire, it's also used by many [open-source projects.](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source){target=_blank} An essential part of the bootcamp is contributing to open-source projects. It's really important to know how to do proper Pull Requests and other guidelines for contributing to open-source. Here are a few resources to help you with this:
 
-*   [Github Pull Request Tutorial](https://guides.github.com/activities/hello-world/){target=_blank}
+*   [GitHub Pull Request Tutorial](https://guides.github.com/activities/hello-world/){target=_blank}
 *   [On undoing, fixing, or removing commits in git](https://sethrobertson.github.io/GitFixUm/fixup.html){target=_blank}
 *   [How to Teach Git](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html){target=_blank}
 
@@ -69,12 +69,12 @@ For those who would like to get a headstart, check out the "Good First Issues" f
 
 Be sure to read Community Guidelines before contributing to a project. For example, here is Geth's [Contributor Guidelines](https://github.com/ethereum/go-ethereum/wiki/Developers'-Guide#contributing){target=_blank} and their [Code Review Guidelines](https://github.com/ethereum/go-ethereum/wiki/Code-Review-Guidelines){target=_blank}
 
-## Javascript
+## JavaScript
 
-Even if Javascript is not your first software language, it's really important you be familiar with its basic syntax. [Solidity,](https://docs.soliditylang.org/en/v0.8.2/){target=_blank} the smart contract language you'll learn, is based on [ECMAScript.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources){target=_blank} We recommend [Code Academy's free Intro to Javascript course,](https://www.codecademy.com/learn/introduction-to-javascript){target=_blank} [The Odin Project](https://www.theodinproject.com/courses/foundations/#javascript-basics){target=_blank} or [The Modern Javascript Tutorial](https://javascript.info/){target=_blank} to get the basics. Beyond basic Javascript, students should be familiar with Node and npm. Some advanced students will also be using React in this course. Here are some resources to help familiarize yourself with these:
+Even if JavaScript is not your first software language, it's really important you be familiar with its basic syntax. [Solidity,](https://docs.soliditylang.org/en/v0.8.2/){target=_blank} the smart contract language you'll learn, is based on [ECMAScript.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources){target=_blank} We recommend [Code Academy's free Intro to JavaScript course,](https://www.codecademy.com/learn/introduction-to-javascript){target=_blank} [The Odin Project](https://www.theodinproject.com/courses/foundations/#javascript-basics){target=_blank} or [The Modern JavaScript Tutorial](https://javascript.info/){target=_blank} to get the basics. Beyond basic JavaScript, students should be familiar with Node and npm. Some advanced students will also be using React in this course. Here are some resources to help familiarize yourself with these:
 
 *   [The Odin Project: Introduction to Node](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs){target=_blank}
-*   [Javascript Fundamentals Before Learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements){target=_blank}
+*   [JavaScript Fundamentals Before Learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements){target=_blank}
 
 ## Code Editor
 
@@ -88,7 +88,7 @@ Even if Javascript is not your first software language, it's really important yo
 *   [Solidity Solhint](https://marketplace.visualstudio.com/items?itemName=idrabenia.solidity-solhint){target=_blank}
 *   [Partial Diff](https://marketplace.visualstudio.com/items?itemName=ryu1kn.partial-diff){target=_blank} Compare (diff) text selections within a file, across files, or to the clipboard
 *   [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one){target=_blank} All you need to write Markdown
-*   [Github Linker](https://marketplace.visualstudio.com/items?itemName=gimenete.github-linker){target=_blank} Create links to fragments of code in GitHub
+*   [GitHub Linker](https://marketplace.visualstudio.com/items?itemName=gimenete.github-linker){target=_blank} Create links to fragments of code in GitHub
 
 We strongly recommend using VSCode in this course, particularly if you're new to coding, due to its extensive plugins. Other popular editors include [Atom,](https://atom.io/){target=_blank} [Sublime Text,](https://www.sublimetext.com/){target=_blank} and [IDEA](https://www.jetbrains.com/idea/){target=_blank} (written originally for Java but now supports many languages).
 

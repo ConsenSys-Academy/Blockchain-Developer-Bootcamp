@@ -1,10 +1,10 @@
 # Python in Ethereum: Background and Context
 
-After going through all this Solidity content, (which _looks_ like Javascript but as you now know is very different from Javascript) we may have some Python developers saying, "What about us?"
+After going through all this Solidity content, (which _looks_ like JavaScript but as you now know is very different from JavaScript) we may have some Python developers saying, "What about us?"
 
-Python is, after all, one of the most popular and accessible programming languages. When people want to start programming, they typically feel they have to decide between Javascript or Python. So, what gives? Where's the Python in Ethereum?
+Python is, after all, one of the most popular and accessible programming languages. When people want to start programming, they typically feel they have to decide between JavaScript or Python. So, what gives? Where's the Python in Ethereum?
 
-While it's not as popular as Solidity and Javascript, there are some exciting ways to build on Ethereum using Python. In this section, we're going to go over a few of those projects. In the following section, we'll go over [Vyper,](https://vyper.readthedocs.io/en/stable/){target=_blank} the programming language whose syntax is a subset of Python's.
+While it's not as popular as Solidity and JavaScript, there are some exciting ways to build on Ethereum using Python. In this section, we're going to go over a few of those projects. In the following section, we'll go over [Vyper,](https://vyper.readthedocs.io/en/stable/){target=_blank} the programming language whose syntax is a subset of Python's.
 
 ## Vyper
 
@@ -18,7 +18,7 @@ Note that you can use Vyper with a number of development frameworks, including [
 
 [Brownie](https://github.com/eth-brownie/brownie){target=_blank} is a Python-based development and testing framework for smart contracts running on the EVM. It uses [Web3.py](https://web3py.readthedocs.io/en/stable/){target=_blank} as well as Solidity. It is most well-known for being the development framework the [Yearn.Finance](https://yearn.finance){target=_blank} team uses to build their powerful DeFi platform and [CRV.](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/curve-dao-token--crv-){target=_blank}
 
-Brownie definitely takes some notes from Truffle (they are both "sweet"){target=_blank}, including having a `brownie init` command and their equivalent of Truffle boxes, ["Brownie Mixes."](https://github.com/brownie-mix){target=_blank} This makes it an easy tool for a lot of Truffle developers familiar with Truffle.
+Brownie definitely takes some notes from Truffle [(they are both "sweet")](https://www.youtube.com/watch?v=R8lcy0JnEt8){target=_blank}, including having a `brownie init` command and their equivalent of Truffle boxes, ["Brownie Mixes."](https://github.com/brownie-mix){target=_blank} This makes it an easy tool for a lot of Truffle developers familiar with Truffle.
 
 Here are some tutorials to introduce you to Brownie:
 
@@ -29,7 +29,7 @@ Here are some tutorials to introduce you to Brownie:
 
 [Piper Merriam](https://twitter.com/pipermerriam){target=_blank} is a Python-based Ethereum developer who works for the Ethereum Foundation. They have proposed an [interesting project](https://ethereum-magicians.org/t/replace-the-yellow-paper-with-executable-markdown-specification/6430){target=_blank}: Replacing [Ethereum's yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf){target=_blank} (which we studied earlier) with executable markdown. This was inspired by Ethereum 2.0's [Beacon chain specifications.](https://github.com/ethereum/eth2.0-specs){target=_blank} Rather than writing a document of specifications, the Ethereum 2.0 developer teams built a series of tests based on the spec conditions of a theoretical Beacon chain. Then, Ethereum 2.0 software clients only had to make sure they passed those tests.
 
-Merriam is proposing a similar exercise, but for Ethereum Mainnet (the PoW chain), based in Python. The goal would be to replace the yellow paper, which can be very challenging to read. It would rely heavily on [py-EVM](https://py-evm.readthedocs.io/en/latest/){target=_blank} (a Python implementation of the EVM). The whole project is very new and you can check [it's Github repository](https://github.com/ethereum/eth1.0-specs){target=_blank} for updates. Maybe you can even get involved!
+Merriam is proposing a similar exercise, but for Ethereum Mainnet (the PoW chain), based in Python. The goal would be to replace the yellow paper, which can be very challenging to read. It would rely heavily on [py-EVM](https://py-evm.readthedocs.io/en/latest/){target=_blank} (a Python implementation of the EVM). The whole project is very new and you can check [it's GitHub repository](https://github.com/ethereum/eth1.0-specs){target=_blank} for updates. Maybe you can even get involved!
 
 ## Fe
 

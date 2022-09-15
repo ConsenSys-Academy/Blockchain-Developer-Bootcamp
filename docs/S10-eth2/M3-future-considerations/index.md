@@ -18,7 +18,8 @@ The Rayonism testnet did run for a short period of time. You can checkout the Me
 
 ## Additional Materials
 - <a href="https://youtu.be/pG8DPW64f-A" target="_blank" rel="noopener noreferrer">Video: What Happens after ETH1 and ETH2 merge? (Vitalik Buterin)</a>
+- [Write-up from Merge Workshop in October 2021](https://consensys.net/blog/ethereum-2-0/an-update-on-the-merge-after-the-amphora-interop-event-in-greece/){target=_blank}
 - <a href="https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698" target="_blank" rel="noopener noreferrer">Forum: A Rollup-centric Ethereum Roadmap</a>
-- <a href="https://github.com/ethereum/pm/blob/master/Merge/mainnet-readiness.md" target="_blank" rel="noopener noreferrer">Github: Mainnet Readiness Checklist</a>
-- <a href="https://github.com/ethereum/consensus-specs/blob/dev/specs/merge/beacon-chain.md" target="_blank" rel="noopener noreferrer">Github: Eth1 and Eth2 Merge spec</a>
-- <a href="https://rayonism.io/" target="_blank" rel="noopener noreferrer"></a>
+- <a href="https://github.com/ethereum/pm/blob/master/Merge/mainnet-readiness.md" target="_blank" rel="noopener noreferrer">GitHub: Mainnet Readiness Checklist</a>
+- <a href="https://github.com/ethereum/consensus-specs/blob/dev/specs/merge/beacon-chain.md" target="_blank" rel="noopener noreferrer">GitHub: Eth1 and Eth2 Merge spec</a>
+- <a href="https://rayonism.io/" target="_blank" rel="noopener noreferrer">Rayonism: a research and engineering testnet that combines Eth1-Eth2 Merge and Sharding</a>

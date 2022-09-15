@@ -20,7 +20,7 @@ The requirements and setup for Arbitrum are very similar to the previous lesson 
 <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener noreferrer">docker-compose</a>, version 1.27.3 or later
 - Recommended Docker memory allocation of >=8 GB.
 
-You'll also need to setup an Arbitrum project on your Infura account. You don't have to update your account, right now access is being offered at the "core" level for free up to 100,000 daily requests. When setting up your project, be sure to select the "Ethereum" network. Then, under settings, select the "Arbitrum Rinkeby" testnet, as shown below:
+You'll also need to setup an Arbitrum project on your Infura account. You don't have to update your account, right now access is being offered at the "core" level for free up to 100,000 daily requests. You must enable the Arbitrum Rollup ADD-ON under the billing section under Manage Add-Ons in your Infura account Settings for the API requests to work properly. When setting up your project, be sure to select the "Ethereum" network. Then, under settings, select the "Arbitrum Rinkeby" testnet, as shown below:
 
 ![Setting up an Infura project for Arbitrum testnet](../../../img/S08/arbitrum-tutorial-1.png)
 
@@ -82,11 +82,11 @@ This script lets Truffle know to use the `truffle-config.arbitrum.js` configurat
 
 Now that we've compiled the contract for Arbitrum, we can migrate it to an Arbitrum Layer 2 network. First, let's just try to our local Ganache, which will be almost similar to a normal Ethereum ganache instance:
 
-<pre>npm run migrate:ovm --network=ganache</pre>
+<pre>npm run migrate:arbitrum --network=ganache</pre>
 
 This may be a bit underwhelming! However, if we have loaded in our Infura Arbitrum Rinkeby network endpoint and have enough Arbitrum Rinkeby ETH in the wallet tied to the `.env` mnemonic, we can also run:
 
-<pre>npm run migrate:ovm --network=arbitrum_testnet</pre>
+<pre>npm run migrate:arbitrum --network=arbitrum_testnet</pre>
 
 Like standard Truffle, if you would like to migrate previously migrated contracts on the same network, you can run `truffle migrate --config truffle-config.arbitrum.js --network=(arbitrum_local | arbitrum_testnet | arbitrum_mainnet)` and add the `--reset` flag.
 

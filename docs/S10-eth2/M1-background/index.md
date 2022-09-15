@@ -23,7 +23,7 @@ Phase 0 is the phase most public one now, as it's currently undergoing public te
 * [Teku](https://pegasys.tech/teku/) — Java-based client developed by ConsenSys Software
 * [Prysm](https://github.com/prysmaticlabs/prysm) — Go-based client developed by Prysmatic Labs
 * [Lighthouse](https://github.com/sigp/lighthouse) — Rust-based client developed by Sigma Prime
-* [Lodestar](https://github.com/ChainSafeSystems/lodestar_chain) — Javascript-based client
+* [Lodestar](https://github.com/ChainSafeSystems/lodestar_chain) — JavaScript-based client
 * [Nimbus](https://github.com/status-im/nimbus) — Nim-based client developed by Status
 
 The Medalla testnet was the first, public, multi-client testnet available. You can check out its progress [here](https://eth2stats.io/medalla-testnet) and join the testnet [by following these steps.](https://medalla.launchpad.ethereum.org/)
@@ -36,6 +36,13 @@ On November 24, 2020, the minimum amount of ETH needed to start the Beacon Chain
 
 On December 1st at 12pm UTC, the Beacon chain’s first blocks were validated. The first block came from <a href="https://beaconcha.in/validator/19026" target="_blank" rel="noopener noreferrer">Validator 19026,</a> with the enigmatic graffiti, “Mr F was here.” Twelve seconds later came the next block, graffiti indicating the validator might be located in <a href="https://beaconcha.in/blocks?q=BTCS+Zug+validator" target="_blank" rel="noopener noreferrer">Zug, Switzerland.</a> The Eth2 Beacon Chain grew steadily, block by block every 12 seconds. Then came the next hurdle: would enough validators be online to finalize the first Epoch? Yes! 82.27% of the validators attested to the validity of the Epoch 0, the proverbial ground floor of the Beacon Chain. You can see the latest blocks from the Beacon Chain on <a href="https://beaconcha.in/" target="_blank" rel="noopener noreferrer">Beaconcha.in.</a>
 
+
+### Webinar Series About the Ethereum Merge to Proof-of-Stake from a Solo Stakers and DApp Developers Perspective
+
+In July / August 2022 the Infura team hosted a series of workshops explaining the impact the Merge will have on Solo Stakers and DApp Developers. The recordings, with a brief description are as follows:
+
+* [The Merge Overview: Where We Are and Where We're Going](https://www.crowdcast.io/e/the-merge-weekly/1): The first session in the series, giving an overview of the Merge, general instructions about what Solo Stakers and DApp Developers must do in order to prepare for the Merge.
+
 ## Additional Material
 
 Ethereum 2.0 development develops and matures day-by-day. It can be challenging to keep up with the bleeding edge of this exciting new network. Here are some resources below to help:
@@ -45,5 +52,8 @@ You can read the entire Ethereum 2.0 spec, including phases 0, 1 and 2 [here.](h
 - <a href="https://consensys.net/knowledge-base/ethereum-2/glossary/" target="_blank" rel="noopener noreferrer">Ethereum 2.0 Glossary (ConsenSys)</a>
 - [Ethereum 2.0 Terms Demystified](https://medium.com/alethio/ethereum-2-0-terms-demystified-8398357429d7){target=_blank}
 - <a href="https://consensys.net/knowledge-base/ethereum-2/" target="_blank" rel="noopener noreferrer">Ethereum 2.0 Knowledge Base</a>
+- <a href="https://messari.io/pdf/messari-report-eth2-the-next-evolution-of-cryptoeconomy.pdf" target="_blank" rel="noopener noreferrer">Report: ETH2, The Next Evolution of Cryptoeconomy (Messari)</a>
 - <a href="https://consensys.net/blog/blockchain-explained/my-journey-to-becoming-a-validator-on-ethereum-2-0/" target="_blank" rel="noopener noreferrer">My Journey to Becoming a Validator on Ethereum 2.0 — Part 1</a> Coogan walks through a four-part series of becoming a validator on Ethereum 2.0. Started before the Beacon Chain launched!
 - To follow the progress of Ethereum 2.0, subscribe to [What's New in Eth2,](https://hackmd.io/@benjaminion/eth2_news/https%3A%2F%2Fhackmd.io%2F%40benjaminion%2Fwnie2_200822){target=_blank} which sends weekly updates.
+- [A Merge Timeline from AllCoreDevs (Tim Beiko)](https://tim.mirror.xyz/sR23jU02we6zXRgsF_oTUkttL83S3vyn05vJWnnp-Lc){target=_blank} 
+- [Ethereum’s Merge Upgrade Goes Live Today on Ropsten Testnet](https://decrypt.co/102320/ethereum-merge-ropsten-live)

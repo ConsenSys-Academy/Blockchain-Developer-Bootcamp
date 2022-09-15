@@ -4,13 +4,15 @@
 
 To lower the barriers to entry, all of our course content is in Markdown located in the `docs` directory. We then use [mkdocs](https://www.mkdocs.org/) to generate the course pages (thank you [Kevin Bluer!](https://github.com/kevinbluer)).
 
-Markdown is what this file and Github README.md files are written in. If you need some help with Markdown, [please see this Markdown cheatsheet.](https://www.markdownguide.org/cheat-sheet/). One note, to make sure links open in a new window, be sure to add `{target=_blank}` at the end of a link. It will look like this:
+Markdown is what this file and GitHub README.md files are written in. If you need some help with Markdown, [please see this Markdown cheatsheet.](https://www.markdownguide.org/cheat-sheet/). One note, to make sure links open in a new window, be sure to add `{target=_blank}` at the end of a link. It will look like this:
 
 ```
 [Text being linked](www.linkaddresshere.com){target=_blank}
 ```
 
-## Steps to Github PRs
+## Steps to GitHub PRs
+
+[See a video walking through the steps below here](https://www.loom.com/share/7ffae766cf544d529b21721b1b4e75af)
 
 For hot fixes, like typos, broken links or recommendations, please use the following steps:
 
@@ -26,7 +28,7 @@ If there have been updates to the `staging` branch since you forked it for your 
 1. In the local version of the branch you're using as your PR, run `git remote add upstream https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging`
 2. Grab the recent changes by running `git fetch upstream`
 3. Merge the recent changes with your branch by running `git merge upstream/YOUR_BRANCH_NAME_HERE`
-4. Push the resolved codebase back to the Github version of your branch with `git push origin YOUR_BRANCH_NAME_HERE`
+4. Push the resolved codebase back to the GitHub version of your branch with `git push origin YOUR_BRANCH_NAME_HERE`
   
 Learn more on [how to use branches](https://www.atlassian.com/git/tutorials/using-branches) 🌳.
 
@@ -39,7 +41,7 @@ Learn more on [how to use branches](https://www.atlassian.com/git/tutorials/usin
 
 ### Coordination
 
-We use [github issues](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/issues) for our issue tracking and project management.
+We use [GitHub issues](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/issues) for our issue tracking and project management.
 
 ### Overview
 
@@ -74,7 +76,7 @@ Before starting on work on the issue, make sure your code is up to date.
 1. In the local version of the branch you're using as your PR, run `git remote add upstream https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging`
 2. Grab the recent changes by running `git fetch upstream`
 3. Merge the recent changes with your branch by running `git merge upstream/YOUR_BRANCH_NAME_HERE`
-4. Push the resolved codebase back to the Github version of your branch with `git push origin YOUR_BRANCH_NAME_HERE`
+4. Push the resolved codebase back to the GitHub version of your branch with `git push origin YOUR_BRANCH_NAME_HERE`
   
 Learn more on [how to use branches](https://www.atlassian.com/git/tutorials/using-branches) 🌳.
 
@@ -86,7 +88,7 @@ Learn more on [how to use branches](https://www.atlassian.com/git/tutorials/usin
 4. Write code.
 5. Commit code. See style guide.
 6. Push the branch to `origin`.
-7. Open a pull request against `staging` with the branch. Please note, this is not `main` but `staging` to help us save on Github Action minutes, we're doing our best to batch-committ changes.
+7. Open a pull request against `staging` with the branch. Please note, this is not `main` but `staging` to help us save on GitHub Action minutes, we're doing our best to batch-committ changes.
 
 ## Style Guide
 
