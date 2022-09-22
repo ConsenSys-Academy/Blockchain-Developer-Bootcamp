@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="integer-over-underflow">Integer Over / Underflow</h1>
+<p><strong>Note: Due to SafeMath being included in Solidity 0.8.x, the likelihood of you writing an integer under or overflow is extremely unlikely. However, a number of contracts still exist with this attack vector and it's good to know about. But, again, the inclusion of SafeMath helps significantly protect against this attack vector.</strong></p>
+<p>This contract shows what an integer overflow vulnerability (<a href="https://swcregistry.io/docs/SWC-101" target="_blank">SWC-101</a>) looks like.</p>
+<p>In this VulnerableContract the lockTime is manipulable by the currentInvestor. The maximum value for the lockTime is 4294967295 because it is declared type uint32 (and 2^32 = 4294967296). If the currentInvestor attempts to set the value above 4294967295, it will overflow and start counting back at 0.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">pragma</span><span class="w"> </span><span class="nv">solidity</span><span class="w"> </span><span class="o">^</span><span class="mi">0</span>.<span class="mi">5</span>.<span class="mi">0</span><span class="c1">;</span><span class="w"></span>
+
+<span class="o">//</span><span class="w"> </span><span class="nv">Example</span><span class="w"> </span><span class="nv">Integer</span><span class="w"> </span><span class="nv">Overflow</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">Underflow</span><span class="w">  </span>
+
+<span class="nv">contract</span><span class="w"> </span><span class="nv">VulnerableContract</span><span class="w"> </span>{<span class="w">    </span>
+<span class="w">  </span><span class="nv">uint</span><span class="w"> </span><span class="nv">MINIMUM_INVESTMENT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="nv">ether</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span><span class="nv">uint32</span><span class="w"> </span><span class="nv">INITIAL_LOCK_TIME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2592000</span><span class="c1">; // 30 days in seconds    </span><span class="w"></span>
+<span class="w">  </span><span class="nv">address</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span><span class="nv">currentInvestor</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span><span class="nv">uint</span><span class="w"> </span><span class="nv">investmentTimestamp</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span><span class="nv">uint32</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span><span class="nv">lockTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">INITIAL_LOCK_TIME</span><span class="c1">;      </span><span class="w"></span>
+
+<span class="w">  </span><span class="nv">function</span><span class="w">  </span><span class="nv">increaseLockTime</span><span class="ss">(</span><span class="nv">uint32</span><span class="w"> </span><span class="nv">_seconds</span><span class="ss">)</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="nv">require</span><span class="ss">(</span><span class="nv">msg</span>.<span class="nv">sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">currentInvestor</span><span class="ss">)</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="nv">uint32</span><span class="w"> </span><span class="nv">max</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="mi">4294967295</span><span class="w"> </span><span class="nv">seconds</span>.<span class="w"> </span><span class="nv">Attack</span><span class="w"> </span><span class="nv">passing</span><span class="w"> </span><span class="mi">4292375295</span><span class="w"></span>
+<span class="w">    </span><span class="nv">lockTime</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nv">_seconds</span><span class="c1">;     </span><span class="w"></span>
+<span class="w">  </span>}<span class="w">          </span>
+
+<span class="w">  </span><span class="nv">function</span><span class="w"> </span><span class="nv">invest</span><span class="ss">()</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="nv">require</span><span class="ss">(</span><span class="nv">currentInvestor</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">address</span><span class="ss">(</span><span class="mi">0</span><span class="ss">))</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">require</span><span class="ss">(</span><span class="nv">msg</span>.<span class="nv">value</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">MINIMUM_INVESTMENT</span><span class="ss">)</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">currentInvestor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">msg</span>.<span class="nv">sender</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">investmentTimestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">now</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span>}<span class="w">          </span>
+
+<span class="w">  </span><span class="nv">function</span><span class="w"> </span><span class="nv">withdrawWithProfit</span><span class="ss">()</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="nv">require</span><span class="ss">(</span><span class="nv">msg</span>.<span class="nv">sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">currentInvestor</span><span class="ss">)</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">require</span><span class="ss">(</span><span class="nv">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">investmentTimestamp</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">lockTime</span><span class="ss">)</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">uint</span><span class="w"> </span><span class="nv">profit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nv">ether</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">lockTime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nv">wei</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">currentInvestor</span>.<span class="nv">transfer</span><span class="ss">(</span><span class="nv">MINIMUM_INVESTMENT</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">profit</span><span class="ss">)</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">currentInvestor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">address</span><span class="ss">(</span><span class="mi">0</span><span class="ss">)</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">lockTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">INITIAL_LOCK_TIME</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span>}<span class="w">          </span>
+
+<span class="w">  </span><span class="nv">function</span><span class="w"> </span><span class="nv">getBalance</span><span class="ss">()</span><span class="w"> </span><span class="nv">view</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span><span class="nv">returns</span><span class="ss">(</span><span class="nv">uint</span><span class="ss">)</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">address</span><span class="ss">(</span><span class="nv">this</span><span class="ss">)</span>.<span class="nv">balance</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span>}<span class="w">          </span>
+
+<span class="w">  </span><span class="nv">function</span><span class="ss">()</span><span class="w"> </span><span class="nv">external</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span>{}<span class="w"></span>
+}<span class="w"></span>
+</code></pre></div>
+
+<p>This type of attack is easily avoidable by using <a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol" target="_blank">a SafeMath library such as this</a>, that provides safety checks and will revert on error. The SafeMath library <a href="https://blog.soliditylang.org/2020/12/16/solidity-v0.8.0-release-announcement/" target="_blank">now ships</a> with Solidity as of 0.8.x, so you do not have to include it if you're working with a compiler on 0.8.x except in very specific cases mentioned <a href="S03-smart-contracts/M6-security/L2e-int-under-over-attack/index.html" target="_blank">here</a>.</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M6-security/L2e-int-under-over-attack/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

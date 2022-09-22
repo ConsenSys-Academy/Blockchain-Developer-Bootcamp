@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="truffle-suite-deep-dive">Truffle Suite Deep Dive</h1>
+<p>As with most things, the best way to learn is by doing, so without further ado let’s dive into a hands on example of using Truffle.</p>
+<p>In this example we’ll be leveraging some of the core Truffle commands to build the decentralized equivalent of a <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program" target="_blank">“Hello World!” program,</a> “SimpleStorage”. As the name suggests, this example will provide a means of both storing some on-chain data (essentially state stored indefinitely on the blockchain) and subsequently retrieving this state.</p>
+<p><em>Note: If you’re going to be following along, this example assumes you followed the steps last lesson to successfully install Truffle</em></p>
+<h2 id="initialize-an-empty-project">Initialize an Empty Project</h2>
+<p>Let’s begin by creating an empty project using the <code>init</code> command. In a new directory (e.g. “SimpleStorage”) and from your terminal, run the following command.</p>
+<div class="codehilite"><pre><span></span><code>$ truffle init
+</code></pre></div>
+
+<p>Assuming everything worked successfully you should see the following output and a number of directories (contracts, migrations, etc) created in the current directory.</p>
+<div class="codehilite"><pre><span></span><code>      Starting init...      
+      ================            
+
+      &gt; Copying project files to /Users/bluer/Developer/temp            
+
+      Init successful, sweet!            
+
+      Try our scaffold commands to get started:        
+        $ truffle create contract YourContractName # scaffold a contract        
+        $ truffle create test YourTestName         # scaffold a test            
+
+      http://trufflesuite.com/docs    
+</code></pre></div>
+
+<p>Congratulations, you now have a bare bones project! Next up, let’s create a contract within which we’ll be able to store our SimpleStorage project’s code.</p>
+<h2 id="create-a-contract">Create a Contract</h2>
+<p>Truffle provides a create command with which you can achieve this, although as we'll show later it’s often just as easy to create the file via your favorite editor environment.</p>
+<div class="codehilite"><pre><span></span><code>$ truffle create contract SimpleStorage
+</code></pre></div>
+
+<p>This will create a new Solidity (note that this is the default language) file, <code>SimpleStorage.sol</code> within your contracts directory.</p>
+<p>Using a code editor, or using something like <code>nano</code> from the command line, paste the following Solidity code into the <code>SimpleStorage.sol</code> file and save:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">//</span><span class="w"> </span><span class="nt">SPDX-License-Identifier</span><span class="o">:</span><span class="w"> </span><span class="nt">MIT</span><span class="w"></span>
+<span class="nt">pragma</span><span class="w"> </span><span class="nt">solidity</span><span class="w"> </span><span class="o">&gt;=</span><span class="nt">0</span><span class="p">.</span><span class="nc">4</span><span class="p">.</span><span class="nc">21</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">0</span><span class="p">.</span><span class="nc">7</span><span class="p">.</span><span class="nc">0</span><span class="o">;</span><span class="w"></span>
+
+<span class="nt">contract</span><span class="w"> </span><span class="nt">SimpleStorage</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">  </span><span class="err">uint</span><span class="w"> </span><span class="err">storedData</span><span class="p">;</span><span class="w">  </span>
+
+<span class="w">  </span><span class="err">function</span><span class="w"> </span><span class="err">set(uint</span><span class="w"> </span><span class="err">x)</span><span class="w"> </span><span class="err">public</span><span class="w"> </span><span class="err">{</span><span class="w">    </span>
+<span class="w">    </span><span class="err">storedData</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">x</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+
+<span class="w">  </span><span class="nt">function</span><span class="w"> </span><span class="nt">get</span><span class="o">()</span><span class="w"> </span><span class="nt">public</span><span class="w"> </span><span class="nt">view</span><span class="w"> </span><span class="nt">returns</span><span class="w"> </span><span class="o">(</span><span class="nt">uint</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
+<span class="w">    </span><span class="err">return</span><span class="w"> </span><span class="err">storedData</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="err">}</span><span class="w">          </span>
+</code></pre></div>
+
+<p>Sweet, your first contract! Now let’s try out the <code>compile</code> command we saw earlier.</p>
+<h2 id="compilation-baby">Compilation, baby!</h2>
+<p>Running the <code>compile</code> command from your terminal like the following:</p>
+<div class="codehilite"><pre><span></span><code>  $ truffle compile  
+
+  Compiling your contracts...  
+  ===========================  
+  &gt; Compiling ./contracts/Migrations.sol  
+  &gt; Compiling ./contracts/SimpleStorage.sol  
+  &gt; Artifacts written to /Users/bluer/Developer/temp/build/contracts  
+  &gt; Compiled successfully using:    
+    - solc: 0.5.16+commit.9c3226ce.Emscripten.clang    
+</code></pre></div>
+
+<p>Assuming all went smoothly, Truffle should have compiled your contract and added the resultant output (something referred to as build <strong>artifacts</strong> that we’ll explore in more detail later) to <code>build/contracts/SimpleStorage.json</code>.</p>
+<p><em>Note that you’ll also likely see some references to </em><em>Migrations.</em><em> This is a mechanism used by Truffle to store the details related to the last migration (deployment) on-chain.</em> </p>
+<p>Next up we’re going to explore deploying our contract to a simulation of a blockchain network using <a href="https://www.trufflesuite.com/ganache" target="_blank">Ganache.</a></p>
+<h2 id="migrating-or-deploying-your-contract">Migrating (or Deploying) Your Contract</h2>
+<p>So we’ve created and compiled a contract, but now we need somewhere to deploy it so we can begin testing. This is where Ganache comes in!</p>
+<p>As alluded to earlier, Ganache comes in a number of different flavors. For ease we’re going to start by using the version built directly into Truffle itself (more on standalone Ganache CLI and Ganache UI shortly).</p>
+<p>To achieve this we can use Truffle’s <code>develop</code> command which both starts up a Ganache instance and provides us with an interactive REPL with which we can actually interact with our contracts.</p>
+<div class="codehilite"><pre><span></span><code>  $ truffle develop    
+</code></pre></div>
+
+<p>And you should see this, if successful:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">Truffle</span><span class="w"> </span><span class="nv">Develop</span><span class="w"> </span><span class="nv">started</span><span class="w"> </span><span class="nv">at</span><span class="w"> </span><span class="nv">http</span>:<span class="o">//</span><span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">1</span>:<span class="mi">9545</span><span class="o">/</span><span class="w">  </span>
+
+<span class="w">  </span><span class="nv">Accounts</span>:<span class="w">  </span>
+<span class="w">  </span><span class="ss">(</span><span class="mi">0</span><span class="ss">)</span><span class="w"> </span><span class="mi">0</span><span class="nv">x5ca1605d4671669b38f7e37c881ed996ede5ac68</span><span class="w">  </span>
+<span class="w">  </span>…<span class="w">  </span>
+<span class="w">  </span><span class="nv">Private</span><span class="w"> </span><span class="nv">Keys</span>:<span class="w">  </span>
+<span class="w">  </span><span class="ss">(</span><span class="mi">0</span><span class="ss">)</span><span class="w"> </span><span class="nv">dd7a8c358901b0f572e461585c9ab27f92b24902c45859114776af12077cb208</span><span class="w">  </span>
+<span class="w">  </span>…<span class="w">  </span>
+<span class="w">  </span><span class="nv">Mnemonic</span>:<span class="w"> </span><span class="nv">cloth</span><span class="w"> </span><span class="nv">either</span><span class="w"> </span><span class="nv">reunion</span><span class="w"> </span><span class="nv">project</span><span class="w"> </span><span class="nv">inflict</span><span class="w"> </span><span class="nv">inside</span><span class="w"> </span><span class="nv">ghost</span><span class="w"> </span><span class="nv">welcome</span><span class="w"> </span><span class="nv">tip</span><span class="w"> </span><span class="nv">lemon</span><span class="w"> </span><span class="nv">again</span><span class="w"> </span><span class="nv">knee</span><span class="w">  </span>
+
+<span class="w">  </span>⚠️<span class="w">  </span><span class="nv">Important</span><span class="w"> </span>⚠️<span class="w">  </span>:<span class="w"> </span><span class="nv">This</span><span class="w"> </span><span class="nv">mnemonic</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">created</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">Truffle</span>.<span class="w"> </span><span class="nv">It</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">secure</span>.<span class="w">  </span>
+<span class="w">  </span><span class="nv">Ensure</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">production</span><span class="w"> </span><span class="nv">blockchains</span>,<span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">risk</span><span class="w"> </span><span class="nv">losing</span><span class="w"> </span><span class="nv">funds</span>.<span class="w">  </span>
+
+<span class="w">  </span><span class="nv">truffle</span><span class="ss">(</span><span class="nv">develop</span><span class="ss">)</span><span class="o">&gt;</span><span class="w">    </span>
+</code></pre></div>
+
+<p>We’ll be glossing over the details of the above output for the moment, other than to say it gives us access to 10 pre-funded accounts (as a default) that we can leverage as a means of interacting contracts.</p>
+<p>Before we actually migrate our contract we’ll need to create a <strong>migration script.</strong> This step enables you to granularly instruct Truffle how to migrate your contracts, including things like constructor arguments.</p>
+<p>In the migrations directory create a file called <code>2_deploy_contracts.js</code> and copy into that file the following:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">var</span><span class="w"> </span><span class="n">SimpleStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">artifacts</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="s2">&quot;./SimpleStorage.sol&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">module</span><span class="o">.</span><span class="n">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">function</span><span class="p">(</span><span class="n">deployer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">  </span><span class="n">deployer</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="n">SimpleStorage</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w">          </span>
+</code></pre></div>
+
+<p>The numerical prefix of <code>2_deploy_contracts.js</code> is actually important for two reasons. First, it dictates the order in which scripts are executed. Second, it’s the index stored on-chain by the <code>Migration.sol</code> to keep track of successful migrations per its <code>last_completed_migration</code> value.</p>
+<p>Now that we have a migration script ready to go we can migrate as follows. Since we’re doing this migration from the Truffle console we started with <code>truffle develop</code>, you can actually omit <code>truffle</code> from your command and just run: </p>
+<div class="codehilite"><pre><span></span><code>$ truffle<span class="o">(</span>develop<span class="o">)</span>&gt; migrate      
+</code></pre></div>
+
+<p>Assuming all goes well, you should see the following: </p>
+<div class="codehilite"><pre><span></span><code><span class="mf">2</span><span class="n">_deploy_contracts</span><span class="mf">.</span><span class="n">js</span><span class="w"></span>
+<span class="o">======</span><span class="w">   </span>
+<span class="w">  </span><span class="n">Deploying</span><span class="w"> </span><span class="err">&#39;</span><span class="n">SimpleStorage</span><span class="err">&#39;</span><span class="w">   </span>
+<span class="w">  </span><span class="o">-------------------------</span><span class="w">   </span>
+<span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="n">hash</span><span class="p">:</span><span class="w">    </span><span class="mf">0</span><span class="n">x172f0cff41ea21a7dbbb52883a7499306f54277120fa89bbc6621c7b7efccb80</span><span class="w">   </span>
+<span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Blocks</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="w">            </span><span class="n">Seconds</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="w">   </span>
+<span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="kr">cont</span><span class="n">ract</span><span class="w"> </span><span class="n">address</span><span class="p">:</span><span class="w">    </span><span class="mf">0</span><span class="n">x524B2860a2489E385C5e12537f58d5a09A9d33ab</span><span class="w">   </span>
+
+<span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Saving</span><span class="w"> </span><span class="n">migration</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">chain</span><span class="mf">.</span><span class="w">   </span>
+<span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Saving</span><span class="w"> </span><span class="n">artifacts</span><span class="w">   </span>
+<span class="w">  </span><span class="o">-------------------------------------</span><span class="w">   </span>
+<span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="kr">To</span><span class="n">tal</span><span class="w"> </span><span class="nb">cos</span><span class="n">t</span><span class="p">:</span><span class="w">         </span><span class="mf">0.000192354</span><span class="w"> </span><span class="n">ETH</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">Summary</span><span class="w"></span>
+<span class="w">  </span><span class="o">=======</span><span class="w"></span>
+<span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="kr">To</span><span class="n">tal</span><span class="w"> </span><span class="n">deployments</span><span class="p">:</span><span class="w">   </span><span class="mf">2</span><span class="w"></span>
+<span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Final</span><span class="w"> </span><span class="nb">cos</span><span class="n">t</span><span class="p">:</span><span class="w">          </span><span class="mf">0.000767772</span><span class="w"> </span><span class="n">ETH</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Blocks</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="w">            </span><span class="n">Seconds</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Saving</span><span class="w"> </span><span class="n">migration</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">chain</span><span class="mf">.</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Blocks</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="w">            </span><span class="n">Seconds</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Saving</span><span class="w"> </span><span class="n">migration</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">chain</span><span class="mf">.</span><span class="w">      </span>
+</code></pre></div>
+
+<p>One of the key output values from the above is the contract address (<code>0x524B2860a2489E385C5e12537f58d5a09A9d33ab</code> in the above example). As the name might suggest, this is the address of the deployed instance of contract and the means with how you’d reference it when sending future transactions.</p>
+<p>Migrations is definitely more of a deeper topic that we’ll be covering more later. In the interim, more details on migrations can be found in Truffle’s documentation <a href="https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations" target="_blank">here.</a></p>
+<h2 id="interacting-with-simplestorage">Interacting with SimpleStorage</h2>
+<p>Last but not least, let’s go ahead and actually interact with our freshly deployed <code>SimpleStorage</code> contract.</p>
+<p>Ultimately, there’s a number of ways in which you can interact with on-chain contracts, but for the sake of ease in this instance we’ll be doing it directly from the Truffle console.</p>
+<p>Let’s create an instance of our deployed contract via the following. Note that behind the scenes, Truffle is referencing the build artifacts (which in turn store the aforementioned contract address), that's why this is an async JavaScript call.</p>
+<div class="codehilite"><pre><span></span><code>$ truffle<span class="o">(</span>develop<span class="o">)</span>&gt; <span class="nb">let</span> <span class="nv">storage</span> <span class="o">=</span> await SimpleStorage.deployed<span class="o">()</span>    
+</code></pre></div>
+
+<p>You can now interact via the returned <code>storage</code> object, for example. Let's do that now, but calling the <code>set</code> contract method, writing a new value in the contract state. As you’ll see, given this invocation results in a change of on-chain state, we actually get a transaction “receipt” returned.</p>
+<div class="codehilite"><pre><span></span><code>      $ truffle(develop)&gt; storage.set(42)      
+      {        
+        tx: &#39;0x46e4bb35108e5ecf7ff656008295fda572a753476d5e04c286fcdb7868447dd6&#39;,        
+        receipt: {          
+          transactionHash: &#39;0x46e4bb35108e5ecf7ff656008295fda572a753476d5e04c286fcdb7868447dd6&#39;,          
+          transactionIndex: 0,          
+          blockHash: &#39;0x85dbdf5d71194cb0d841d58bbac283ccf078ce0ebe1c054c6c2ab76442459894&#39;,          
+          blockNumber: 9,          
+          from: &#39;0x5ca1605d4671669b38f7e37c881ed996ede5ac68&#39;,          
+          to: &#39;0x524b2860a2489e385c5e12537f58d5a09a9d33ab&#39;,      
+      ...      
+      }    
+</code></pre></div>
+
+<p>And a drum roll for this last command! Run the following to get the originally stored number. (We can also explain the syntax a little bit, since it's a bit odd: We're creating a promise to deliver a big number, which will be our stored number.) </p>
+<div class="codehilite"><pre><span></span><code>$ truffle<span class="o">(</span>develop<span class="o">)</span>&gt; <span class="o">(</span>await storage.get<span class="o">())</span>.toNumber<span class="o">()</span>
+<span class="m">42</span>        
+</code></pre></div>
+
+<p>Congratulations! You’ve now just created, deployed, and interacted with your very first smart contract using the Truffle Suite. Next, we're going to walkthrough how to use Ganache GUI. </p>
+<h2 id="ganache-gui">Ganache GUI</h2>
+<p>Ganache UI can be really helpful for folks new to smart contract development. Due to its visual nature, it’s a great way to familiarize yourself with all the core constructs of an EVM-based blockchain and help move past that stage of “not knowing what you don’t know”. It’s fully cross-platform and available to download <a href="https://www.trufflesuite.com/ganache" target="_blank">here.</a></p>
+<p><img alt="image of ganache GUI" src="../../../img/S03/ganache-1.png" /></p>
+<p>As you can seen in the above screenshot, it has tabs for all the major constructs including accounts, blocks, transactions, contracts, and events. It also starts it’s own chain instance on port <code>7545</code> (note that by default <code>truffle develop</code> starts on <code>9545</code> and ganache-cli on <code>8545</code>).</p>
+<p>To best see Ganache UI in action, let’s try deploying the same SimpleStorage (with a few small enhancements) contract from the previous exercise to the chain instance it instantiates.</p>
+<p>### Creating a Workspace</p>
+<p>Upon opening Ganache UI, the first screen you should see is shown below. Select "New Workspace&gt;&gt; Ethereum" (depending on your version you should also see the Corda and Filecoin flavors listed in the dropdown).</p>
+<p><img alt="Workspace section of Ganache" src="../../../img/S03/ganache-2.png" /></p>
+<p>From here, you’ll be presented with a file picker wherein you can navigate to the project we created earlier and select the <code>truffle-config.js</code> file.</p>
+<p>All going well you should be presented with the accounts screen we saw earlier. Feel free to take a browse through the tabs to begin familiarizing yourself.</p>
+<p>### Migrating our contracts to Ganache UI</p>
+<p>Next up we’re going to migrate our contracts (with a few twists) to the chain instance instantiated by Ganache UI on port <code>7545</code>. This will give us a great way to visually inspect what's happening not only on our testnet, but also with the contract itself, as you'll see in a moment.</p>
+<p>Before we can migrate, we’ll need to update our <code>truffle-config.js</code> file to include the new network as a destination. Because we used <code>truffle init</code> to create our project, it handily includes a number of commented destinations under the <code>networks</code> entry. As such you’ll be able to scroll down and uncomment (currently lines 45-49 at the time of writing). Note that we have to change <code>port</code> to 7545</p>
+<div class="codehilite"><pre><span></span><code>  development: {  
+  host: &quot;127.0.0.1&quot;,  
+  port: 7545,  
+  network\_id: &quot;*&quot;,  
+  },      
+</code></pre></div>
+
+<p>Awesome, we now have a new network we can migrate to! For reference, this same principle applies when migrating to public networks (such as testnets or mainnet; the Ethereum of equivalent of staging and production environments).</p>
+<p>Go ahead and run the following, noting the use of the <code>--network</code> flag that allows us to specify a given network that we want to target.</p>
+<div class="codehilite"><pre><span></span><code>$ truffle migrate --network development      
+</code></pre></div>
+
+<p>Assuming this ran successfully, you’ll now see some corresponding activity in Ganache UI. Of note are the transactions listed under the "Transactions" tab and all the contract information (such as storage, etc) surfaced under the "Contracts" tab. This is a really helpful feature of Truffle and Ganache: the integration of both the testnet environment and smart contract values, updated dynamically. To have all this visually is really powerful for developing and debugging a contract.</p>
+<p><img alt="Transaction information on Ganache GUI" src="../../../img/S03/ganache-3.png" /></p>
+<p>Note the <code>Storage</code> (state) section in our "Contracts" section:</p>
+<p><img alt="Contract information on Ganache GUI" src="../../../img/S03/ganache-4.png" /></p>
+<p>Last, let’s update our contract to include an event that is emitted every time a new value is set (we'll learn about <a href="https://medium.com/linum-labs/everything-you-ever-wanted-to-know-about-events-and-logs-on-ethereum-fec84ea7d0a5" target="_blank">events</a> in more detail later in this section). Copy and paste the following over your existing SimpleStorage.sol. </p>
+<div class="codehilite"><pre><span></span><code><span class="o">//</span><span class="w"> </span><span class="nt">SPDX-License-Identifier</span><span class="o">:</span><span class="w"> </span><span class="nt">MIT</span><span class="w"></span>
+<span class="nt">pragma</span><span class="w"> </span><span class="nt">solidity</span><span class="w"> </span><span class="o">&gt;=</span><span class="nt">0</span><span class="p">.</span><span class="nc">4</span><span class="p">.</span><span class="nc">21</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">0</span><span class="p">.</span><span class="nc">7</span><span class="p">.</span><span class="nc">0</span><span class="o">;</span><span class="w"></span>
+
+<span class="nt">contract</span><span class="w"> </span><span class="nt">SimpleStorage</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">  </span><span class="err">uint</span><span class="w"> </span><span class="err">storedData</span><span class="p">;</span><span class="w">  </span>
+
+<span class="w">  </span><span class="err">event</span><span class="w"> </span><span class="err">setEvent(uint</span><span class="w"> </span><span class="err">newValue)</span><span class="p">;</span><span class="w">  </span>
+
+<span class="w">  </span><span class="err">function</span><span class="w"> </span><span class="err">set(uint</span><span class="w"> </span><span class="err">x)</span><span class="w"> </span><span class="err">public</span><span class="w"> </span><span class="err">{</span><span class="w">    </span>
+<span class="w">    </span><span class="err">storedData</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">x</span><span class="p">;</span><span class="w">    </span>
+<span class="w">    </span><span class="err">emit</span><span class="w"> </span><span class="err">setEvent(x)</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+
+<span class="w">  </span><span class="nt">function</span><span class="w"> </span><span class="nt">get</span><span class="o">()</span><span class="w"> </span><span class="nt">public</span><span class="w"> </span><span class="nt">view</span><span class="w"> </span><span class="nt">returns</span><span class="w"> </span><span class="o">(</span><span class="nt">uint</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
+<span class="w">    </span><span class="err">return</span><span class="w"> </span><span class="err">storedData</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="err">}</span><span class="w">      </span>
+</code></pre></div>
+
+<p>We’ll now make use of the <code>--reset</code> flag when re-running the migration command to forcibly replace the contract. Note that this will result in a new contract address.</p>
+<div class="codehilite"><pre><span></span><code>$ truffle migrate --network development --reset
+</code></pre></div>
+
+<p>Let’s now jump back into the Truffle console, this time using the <code>console</code> command (vs <code>develop</code> which also spins up a ganache instance, which would be redundant this time).</p>
+<div class="codehilite"><pre><span></span><code>$ truffle console --network development
+</code></pre></div>
+
+<p>Like earlier, we can now send the following to set the value within our SimpleStorage.</p>
+<div class="codehilite"><pre><span></span><code>  $ let contract = await SimpleStorage.deployed()  
+  $ contract.set(888)
+</code></pre></div>
+
+<p>If all has been successful, you’ll now see both a reference to <code>setEvent</code> in the logged output. In addition, you’ll also be able to navigate to the events tab within Ganache UI and also see it there.</p>
+<h2 id="ganache-cli">Ganache CLI</h2>
+<p>Ganache CLI is the standalone version of the simulation blockchain built into truffle, it is for folks who are comfortable with the command line and desires full control of thier development blockchain. The latest Ganache CLI version 7 comes with some exiting new features and improvements/bug fixes (discussing these new features and improvements is beyond the scope of this material but if you're curious to dig in, you can start <a href="https://trufflesuite.com/blog/introducing-ganache-7">here</a>.</p>
+<p>To get started Ganache CLI, you need to have Node.js &gt;= v12.0.0 and NPM &gt;= 6.4.1 installed on your computer. See <a href="https://nodejs.org/en/download">here</a> to download the latest version for your operating system. With the supported versions of Node.js and NPM installed, you can install Ganache CLI by running <code>npm install ganache --global</code>.</p>
+<p>Once installed, start Ganache CLI with the command <code>ganache</code>, this is similar to running <code>truffle develop</code>. Your command line should look like this:</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/89709023/150743445-7154ab34-ebe0-45f6-a268-fde80f539557.png" /></p>
+<p>As usual, you are provided with 10 pre-funded account for interacting with your smart contracts.</p>
+<p>### Migrating our contracts to Ganache CLI
+  Migrating contracts to Ganache CLI is very similar to how its done using Ganache GUI as explained above, the only difference is you will have to update the network in <code>truffle-config.js</code> to use port <code>8545</code> instead.</p>
+<p><code>javascript
+    development: {  
+  host: "127.0.0.1",  
+  port: 8545,  
+  network\_id: "*",  
+  },</code></p>
+<p>Now run <code>$ truffle migrate --network development</code> to start the migration process.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Great! You’ve now successfully familiarized yourself with Ganache UI and in doing so hopefully getting a little more comfortable with both some of the core Ethereum constructs and the basic elements in the development lifecycle.</p>
+<p>We know this may be a bit out of your comfort zone, but now that you have a basic understanding of Truffle, you'll be able to start playing around with the Solidity we're going to start learning next!</p>
+<p>After we go through Solidity fundamentals and Security, we're going to dive deeper into elements of development on Truffle so you can feel even more confident and capable as a developer.</p>
+<p>Before all that, though, we want to introduce one more tool to help you play around with Solidity and other smart contract development languages: <a href="https://remix.ethereum.org" target="_blank">Remix.</a></p>
+<h2 id="additional-material">Additional Material</h2>
+<ul>
+<li><a href="https://www.trufflesuite.com/docs/truffle/overview" target="_blank">Docs: Truffle Suite</a></li>
+<li><a href="https://www.trufflesuite.com/tutorial" target="_blank">Tutorial: Petshop</a> A great tutorial which will walk through developing a smart contract and basic frontend interface.</li>
+<li><a href="https://www.trufflesuite.com/docs/truffle/quickstart" target="_blank">Tutorial: Metacoin</a> Another good starting tutorial walking through building your own ERC-20 token</li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M2-intro-to-truffle/L2-intro-tutorial/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

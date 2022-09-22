@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oracles - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="oracles">Oracles</h1>
+<p>In our discussion blockchain primitives, we discussed how public blockchain networks coordinate these powerful tools to create a network state that can be established and maintained by network participants.</p>
+<p>However, that network state only holds true within the boundaries of the network itself. We can only guarantee the state transitions of the network participants running our blockchain client software. What about data that exists outside this network, specifically what about "real world" data, such as weather reports, incident details or stock prices? </p>
+<p>Additionally, what if we'd like to interact with external computation in the outside world? A machine learning algorithm, a random number generator, or an event-driven task automation would all be examples of external computation that would be essential to building feature rich smart contracts. </p>
+<p>Such data and external computation exist but they are beyond the <em>trust boundary</em> established by our blockchain protocols.</p>
+<p>One way blockchain developers have tried to bridge the gap is through what are called <strong>off-chain <a href="https://en.wikipedia.org/wiki/Blockchain_oracle">oracles.</a></strong> Off-chain oracles are agents that find and verify real-world information and submit them to the blockchain to be used by smart contracts. They can trigger smart contract executions when the data is obtained or predefined conditions are meet (e.g. time, weather, tracking, payments). Off-chain oracles are provided by organizations like <a href="https://provable.xyz/" target="_blank">Provable Things</a>, <a href="https://chain.link/" target="_blank">Chainlink Labs,</a> and more.</p>
+<p>Please note that DeFi has led to on-chain oracles, particularly dealing with token prices, which we will discuss more in the section on DeFi. Such examples of on-chain oracles are <a href="https://docs.chain.link/docs/get-the-latest-price/" target="_blank">Chainlink's Data Feeds</a>, Uniswap's <a href="https://docs.uniswap.org/protocol/concepts/V3-overview/oracle" target="_blank">Observations</a>, and MakerDAO's <a href="https://developer.makerdao.com/feeds/" target="_blank">Feeds</a>.</p>
+<p>A smart contract using oracles in some facet is often referred to as a <a href="https://blog.chain.link/hybrid-smart-contracts-explained/" target="_blank">Hybrid Smart Contract</a>.</p>
+<h2 id="trust">Trust</h2>
+<p>It's extremely important to understand oracles like the ones we're discussing here can require trust. Understanding where the data is coming from is essential to running a decentralized smart contract. When using oracles, it's important to build in smart contract mechanisms that can anticipate errors or possible corruption, as oracles can succumb to many attack vectors.</p>
+<p>Having a single oracle or a single data source delivering your data or executing your computation creates a single source of failure for your smart contract, and means your decentralized application isn't actually decentralized. You'll want to make sure the oracle network you're working with is executing in a context as decentralized as possible. For example, if you want pricing data, you get the pricing data from many exchanges, and many independent blockchain oracles deliver this data. </p>
+<p>It's important to know, that just setting up an oracle service yourself can mean your application is centralized, and possibly doesn't have the highest quality data or execution. So we want to avoid setting these up ourselves, but also do our due diligence to make sure the system we are working with is decentralized. </p>
+<p>Services such as Chainlink have built more decentralized networks to hedge against the centralization of trust, you can read more about how Chainlink does that <a href="https://docs.chain.link/docs/architecture-decentralized-model/" target="_blank">here</a> and see an overview of decentralized oracles <a href="https://medium.com/fabric-ventures/decentralised-oracles-a-comprehensive-overview-d3168b9a8841" target="_blank">here.</a></p>
+<h2 id="basic-oracle-mechanism">Basic Oracle Mechanism</h2>
+<p>At its most basic, a smart contract using an oracle needs to implement a method to:</p>
+<ol>
+<li>Make the request to the oracle, and</li>
+<li>Receive the oracle's response from a callback method</li>
+</ol>
+<p>This is often known as the <a href="https://docs.chain.link/docs/architecture-request-model/" target="_blank">request and receive</a> model of oracles. Unless you've setup the service yourself, external calls to oracles typically require a fee attached to provide the data to your contract.</p>
+<p>There are multiple ways to achieve this; let's look at a simplified version of this <a href="https://github.com/provable-things/ethereum-examples/blob/c0431a147f24519a135d07f9d5c17db73498e0e7/solidity/DieselPrice.sol" target="_blank">example</a> using <a href="https://docs.provable.xyz" target="_blank">Provable</a> below:</p>
+<pre>import "github.com/provable-things/ethereum-api/provableAPI.sol";
+
+contract DieselPrice is usingProvable {
+    uint dieselPriceUSD;
+
+    constructor() public {
+        provable_query("URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
+    }
+
+    function __callback (bytes32 myid, string result) public {
+        require(msg.sender == provable_cbAddress());
+        dieselPriceUSD = parseInt(result);
+    }
+}
+      </pre>
+
+<p>In this code, we're calling the Provable API for the price of diesel when we create the contract. The first query is free, but we'll have to provide ETH to pay for our requests moving forward. The call triggers an event, which lets the Provable contract pull from its off-chain data feed and provide our contract the result. The contract stores that value in <code>dieselPriceUSD</code>.</p>
+<p>The overall model is for your contract to emit an event, either to another contract or simply in the block its created. The oracle service will detect that event, pull the desired data, and respond back to your contract. The oracle services require you to have a standard method, like <code>__callback</code>, that its transaction can target when responding to your oracle query.</p>
+<h2 id="decentralized-oracle-mechanism">Decentralized Oracle Mechanism</h2>
+<p>In the above example, we looked at pulling data from a single source and provider. Stringing requests like this together can make us have a more decentralized application, but we would still be routing it through the same organization.</p>
+<p>Let's look at another example of pulling data in a decentralized context, for example, from a <a href="https://docs.chain.link/docs/using-chainlink-reference-contracts/" target="_blank">Chainlink data feed.</a></p>
+<p>You can see the most up to date version of this code in the <a href="https://docs.chain.link/docs/get-the-latest-price/" target="_blank">Chainlink documentation.</a></p>
+<pre>
+
+pragma solidity ^0.6.7;
+
+import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+
+contract PriceConsumerV3 {
+
+    AggregatorV3Interface internal priceFeed;
+
+    /**
+     * Network: Kovan
+     * Aggregator: ETH/USD
+     * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
+     */
+    constructor() public {
+        priceFeed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
+    }
+
+    /**
+     * Returns the latest price
+     */
+    function getThePrice() public view returns (int) {
+        (
+            uint80 roundID, 
+            int price,
+            uint startedAt,
+            uint timeStamp,
+            uint80 answeredInRound
+        ) = priceFeed.latestRoundData();
+        return price;
+    }
+}
+
+</pre>
+
+<p>In this example, we are pulling the price of Ethereum in terms of the United States Dollar into our smart contract. We do this by querying another contract that has already followed the basic request model among many different oracles and data providers. It's important that the network is using different data providers and oracles so that there is never a single authority point. </p>
+<p>You can see a visualization of this contract and the different nodes gathering the data for them at <a href="https://data.chain.link/ethereum/mainnet/crypto-usd/eth-usd" target="_blank">data.chain.link.</a></p>
+<h2 id="summary">Summary</h2>
+<p>The oracle ecosystem is growing as fast as blockchain, and we'll touch on it more later in the course. For now, it's important to see how oracles allow us to cross the "trust boundary" of blockchains, what trust assumptions that requires, and the basic design pattern for incorporating this data stream.</p>
+<h2 id="additional-material">Additional Material</h2>
+<p><em><a href="https://ethereum.org/en/developers/docs/oracles/" target="_blank">Wiki: Oracles (Ethereum.org)</a> A great overview of oracles on Ethereum with demo code for Chainlink
+</em><a href="https://en.wikipedia.org/wiki/Blockchain_oracle" target="_blank">Wikipedia: Blockchain Oracle</a>
+<em><a href="https://docs.chain.link/" target="_blank">Docs: Chainlink</a> A really well-curated series of docs outline how to get started with Chainlink and the different services and networks available.
+</em><a href="https://medium.com/@pedrodc/implementing-a-blockchain-oracle-on-ethereum-cedc7e26b49e" target="_blank">Tutorial: Implementing a Blockchain Oracle on Ethereum</a>
+* <a href="https://github.com/provable-things/ethereum-examples/tree/master/solidity" target="_blank">Code: Provable Things Ethereum Examples</a> A collection of examples from Provable Things, a bit dated but can still provide a source of reference.
+* <a href="https://arxiv.org/pdf/2004.07140.pdf" target="_blank">Academic Article: A Study of Blockchain Oracles</a> A technical examination of blockchain oracles referenced in the blockchain oracles Wikipedia page.
+*<a href="https://samczsun.com/so-you-want-to-use-a-price-oracle/" target="_blank">Article: So You Want to Use a Price Oracle</a> Interesting article (albeit about on-chain oracles) discussing attack vectors.</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M4-design-patterns/L4-oracles/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

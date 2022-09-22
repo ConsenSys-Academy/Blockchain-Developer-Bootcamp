@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing, 1, 2, 3 - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="testing-1-2-3">Testing, 1, 2, 3</h1>
+<p>A comprehensive suite of tests adds robustness to your code as it evolves and Truffle provides an automated testing framework that makes adding this to your project a breeze.</p>
+<p>In the following examples, we’ll be writing our tests in JavaScript, although Truffle also supports Solidity based tests too. Check out the following for when you might use one over the other.</p>
+<p>All your tests live in a dedicated tests directory, which is automatically created if you used truffle init to initialize your project, although you can of course create one after the fact. </p>
+<p>Go back to the SimpleStorage file directory we created in the previous lesson, “Intro to Truffle -- Part II”. To create your first test for SimpleStorage run the following:</p>
+<div class="codehilite"><pre><span></span><code>truffle create test SimpleStorage
+</code></pre></div>
+
+<p>As with the earlier create command this creates a simple scaffold which includes a reference to the actual underlying contract artifact. </p>
+<p>Following this you can simply run the following to run the test suite.</p>
+<div class="codehilite"><pre><span></span><code>truffle test
+</code></pre></div>
+
+<p>It’s worth noting that the testing framework will temporarily spin up it’s own Ganache with which to run the tests against (which it subsequently tears down), thus ensuring it doesn’t pollute any existing instances you might have running.</p>
+<p>Let’s try running it again with a more meaningful test. Feel free to copy and paste the following into your own test and try running truffle test again.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">contract</span><span class="p">(</span><span class="s2">&quot;SimpleStorage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="p">(</span><span class="o">/*</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="o">*/</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">it</span><span class="p">(</span><span class="s2">&quot;should assert true&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">simpleStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">SimpleStorage</span><span class="o">.</span><span class="n">deployed</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">simpleStorage</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">return</span><span class="w"> </span><span class="nb">assert</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">simpleStorage</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span><span class="w"></span>
+<span class="w">  </span><span class="mi">42</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+
+<p>All going well everything should pass again and you’ll see similar output to the following:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Contract</span><span class="o">:</span><span class="w"> </span><span class="n">SimpleStorage</span><span class="w"></span>
+<span class="err">✓</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">assert</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="o">(</span><span class="mi">132</span><span class="n">ms</span><span class="o">)</span><span class="w"></span>
+<span class="mi">1</span><span class="w"> </span><span class="n">passing</span><span class="w"> </span><span class="o">(</span><span class="mi">167</span><span class="n">ms</span><span class="o">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>As can be inferred from the above example, tests are typically written using the AAA (Arrange, Act, Assert) pattern. In addition, you can access the accounts array and access to the web3 library.</p>
+<p>More detail can be found on tests <a href="https://www.trufflesuite.com/docs/truffle/testing/testing-your-contracts">here</a>.</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S04-developer-tooling/M4-truffle-deep-dive/L1-truffle-tests/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

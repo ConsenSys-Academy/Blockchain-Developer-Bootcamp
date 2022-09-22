@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="solidity-background-and-context">Solidity Background and Context</h1>
+<p><img alt="solidity logo" src="../../../img/S03/solidity-logo-2.png" /></p>
+<p>Solidity is "an object-oriented, high-level language for implementing smart contracts...programs which govern the behaviour of accounts within the Ethereum state” (<a href="https://docs.soliditylang.org/en/latest/" target="_blank">source</a>). While a few smart contract programming languages have developed over the years, Solidity remains the most dominant one.</p>
+<p>As we mentioned earlier, Solidity is a higher-order language meaning that the code deployed with a smart contract is not Solidity, but rather EVM bytecode. Solidity is an abstraction on top of that fundamental language so we don't have to be writing code that looks like this: </p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x80</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x40</span><span class="w"> </span><span class="nv">MSTORE</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">xE</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x0</span><span class="w">   </span>
+<span class="w">  </span><span class="nv">SSTORE</span><span class="w"> </span><span class="nv">CALLVALUE</span><span class="w"> </span><span class="nv">DUP1</span><span class="w"> </span><span class="nv">ISZERO</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x14</span><span class="w"> </span><span class="nv">JUMPI</span><span class="w">   </span>
+<span class="w">  </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x0</span><span class="w"> </span><span class="nv">DUP1</span><span class="w"> </span><span class="nv">REVERT</span><span class="w"> </span><span class="nv">JUMPDEST</span><span class="w"> </span><span class="nv">POP</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x35</span><span class="w">   </span>
+<span class="w">  </span><span class="nv">DUP1</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x22</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x0</span><span class="w"> </span><span class="nv">CODECOPY</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x0</span><span class="w">   </span>
+<span class="w">  </span><span class="k">RETURN</span><span class="w"> </span><span class="nv">INVALID</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x80</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w"> </span><span class="mi">0</span><span class="nv">x40</span><span class="w"> </span><span class="nv">MSTORE</span><span class="w"> </span><span class="nv">PUSH1</span><span class="w">   </span>
+<span class="w">  </span><span class="mi">0</span><span class="nv">x0</span><span class="w"> </span><span class="nv">DUP1</span><span class="w"> </span><span class="nv">REVERT</span><span class="w"> </span><span class="nv">INVALID</span><span class="w"> </span><span class="nv">LOG1</span><span class="w"> </span><span class="nv">PUSH6</span><span class="w"> </span><span class="mi">0</span><span class="nv">x627A7A723058</span><span class="w">   </span>
+<span class="w">  </span><span class="nv">KECCAK256</span><span class="w"> </span><span class="nv">RETURNDATASIZE</span><span class="w"> </span><span class="mi">0</span><span class="nv">x25</span><span class="w"> </span><span class="mi">0</span><span class="nv">xb6</span><span class="w"> </span><span class="mi">0</span><span class="nv">xcf</span><span class="w"> </span><span class="nv">CALLDATALOAD</span><span class="w">   </span>
+<span class="w">  </span><span class="nv">LOG1</span><span class="w"> </span><span class="nv">DUP16</span><span class="w"> </span><span class="nv">PUSH9</span><span class="w"> </span><span class="mi">0</span><span class="nv">x27AC943141CFD6D0FA</span><span class="w"> </span><span class="nv">MSTORE</span><span class="w"> </span><span class="nv">SHL</span><span class="w">   </span>
+<span class="w">  </span><span class="nv">DUP6</span><span class="w"> </span><span class="nv">LOG4</span><span class="w"> </span><span class="nv">PUSH8</span><span class="w"> </span><span class="mi">0</span><span class="nv">x7FADA153CC03D771</span><span class="w"> </span><span class="nv">BLOCKHASH</span><span class="w"> </span><span class="mi">0</span><span class="nv">xb3</span><span class="w">   </span>
+<span class="w">  </span><span class="nv">STOP</span><span class="w"> </span><span class="mi">0</span><span class="nv">x29</span><span class="w">    </span>
+</code></pre></div>
+
+<p>But, rather code that looks like this: </p>
+<div class="codehilite"><pre><span></span><code>  pragma solidity &gt;=0.4.0 &lt;0.9.0;  
+
+  contract MyContract {      
+    uint i = 10 + 2 * 2;  
+  }    
+</code></pre></div>
+
+<p>While both these blocks of code describe the same operation, the second version (Solidity) is much easier to read and write. </p>
+<h2 id="general-characteristics-of-solidity">General Characteristics of Solidity</h2>
+<p>Solidity uses the <a href="https://en.wikipedia.org/wiki/ECMAScript" target="_blank">ECMAScript</a> syntax like JavaScript, to make it approachable for web developers. However, do not be lulled into complacency! Solidity is much more demanding in its requirements.</p>
+<p>Some of Solidity's basic characteristics: 
+* <strong>Case Sensitive</strong>
+* <strong>Statement termination via a semicolon <code>;</code></strong>
+* <strong>Files use the <code>.sol</code> extension</strong>
+* <strong>Statically typed</strong> Types need to be known at compile time. This makes Solidity more like <a href="https://en.wikipedia.org/wiki/TypeScript" target="_blank">TypeScript</a> than JavaScript in practice.
+* <strong>Various compilation options</strong> Solidity compiling can be done on the command line by <a href="https://docs.soliditylang.org/en/latest/installing-solidity.html" target="_blank">Solc</a>, you can compile it in a web-browser using <a href="http://remix.ethereum.org/" target="_blank">Remix,</a> or compile it as part of a smart contract development framework like <a href="https://www.trufflesuite.com/" target="_blank">Truffle</a> or <a href="https://www.hardhat.org" target="_blank">Hardhat</a>.
+* <strong>Compiles down to EVM bytecode</strong> Which then runs within the Ethereum Virtual Machine when deployed to a network</p>
+<p>Overall, the Solidity workflow can be illustrated as follows: <img alt="graphic showing workflow of solidity to EVM" src="../../../img/S03/solidity-workflow.png" /></p>
+<p>In this section, we're going to go over the basic conventions of Solidity. We're also going to start building smart contracts and discussing their general structure and design patterns.</p>
+<p>We can't emphasize this enough: smart contract coding is both really exciting and really dangerous! We see smart contracts <a href="https://rekt.news/" target="_blank">rekt</a> every day! We want to both give you all the tools to both build with creativity <em>and</em> confidence. Let's go!</p>
+<h2 id="additional-material">Additional Material</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Solidity" target="_blank">Wikipedia: Solidity</a></li>
+<li><a href="https://docs.soliditylang.org/en/latest/" target="_blank">Docs: Official Solidity Documentation</a></li>
+</ul>
+<p>If you'd like some other places to learn Solidity, you can also check out these great resources. To be clear, we'll definitely be teaching you Solidity along with how to develop dapps. We also want to provide any external help we can as well!</p>
+<ul>
+<li><a href="https://www.freecodecamp.org/news/learn-blockchain-solidity-full-stack-javascript-development/" target="_blank">Bootcamp:Learn Blockchain, Solidity and Full Stack JavaScript Development:</a> A 32 hour long comprehensive Blockchain Development Bootcamp by Patrick Collins</li>
+<li><a href="https://cryptozombies.io/" target="_blank">Course: CryptoZombies</a> One of the most well-known introductions to Solidity</li>
+<li><a href="https://ethernaut.openzeppelin.com/" target="_blank">Course: Ethernaut (OpenZeppelin)</a> An excellent in-browser "game" teaching Solidity from a security perspective.</li>
+<li><a href="https://www.chainshot.com/learn/solidity" target="_blank">Course: Intro to Solidity (Chainshot)</a> Chainshot uses a very cool interactive platform to teach Solidity</li>
+<li><a href="https://www.solidity-by-example.org" target="_blank">Wiki: Solidity by Example</a> A bunch of great examples of Solidity, including excellent design patterns, hacks and security tips.</li>
+<li><a href="https://useweb3.xyz/" target="_blank">Wiki: Use Web3</a> Another good collection of learning resources</li>
+<li><a href="https://michalzalecki.com/ethereum-test-driven-introduction-to-solidity/" target="_blank">Article: Test Driven Introduction to Solidity</a> From an older pragma version of Solidity, but might be interesting to check out! Repo accompanying the article <a href="https://github.com/MichalZalecki/tdd-solidity-intro" target="_blank">here.</a></li>
+<li><a href="https://twitter.com/smpalladino/status/1421901085279756300" target="_blank">Thread: What Does Ethereum Development Look Like Today?</a> Santiago Palladino, who wrote <a href="https://www.apress.com/gp/book/9781484252772" target="_blank">Ethereum for Web Developers,</a> updates parts of his book for the current Ethereum ecosystem.</li>
+<li><a href="https://learnxinyminutes.com/docs/solidity/" target="_blank">Article: Learn X in Y Minutes (Solidity)</a> A bit long and rough, but a comprehensive overview of learning Solidity</li>
+</ul>
+<h2 id="advanced-material">Advanced Material</h2>
+<ul>
+<li><a href="https://twitter.com/bensparks_/status/1513238520575537162">Twitter Thread: Resource You Need to Know to Become a Solidity Dev </a></li>
+<li><a href="https://noxx.substack.com/p/evm-deep-dives-the-path-to-shadowy">Series: EVM Deep Dive</a></li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M2-solidity/L1-background-context/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

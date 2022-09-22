@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Technical Requirements - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="technical-requirements">Technical Requirements</h1>
+<p>This course assumes a baseline of technical knowledge. It is important to make sure you are comfortable with the following tech. If you are not, we are providing links to excellent resources you can use to get up to speed! Please note that you can learn all these things in our free <a href="https://courses.consensys.net/courses/bootcamp-basic-training" target="_blank">Basic Training course.</a></p>
+<ul>
+<li><a href="#unix-or-linux-environments">Unix / Linux Environment</a></li>
+<li><a href="#command-line">Command Line</a></li>
+<li><a href="#git">Git</a></li>
+<li><a href="#javascript">JavaScript</a></li>
+<li><a href="#code-editor">Code Editor</a></li>
+</ul>
+<h2 id="unix-or-linux-environments">Unix or Linux Environments</h2>
+<p>To be successful in this course you must have access to a Unix or Linux based operating system. MacOS is based on Unix and if you're running Ubuntu, that's a Linux distribution.</p>
+<p><strong>If you are on a Windows 10 machine, <a href="https://consensys.net/blog/developers/ethereum-developers-guide-to-setting-up-windows-subsystem-for-linux/" target="_blank">follow this guide to installing a Linux environment</a> before starting the course.</strong></p>
+<p>If you'd like to get more familiar with a Linux environment, you can check out this Ubuntu for beginners, targeting Ethereum Developers specifically:</p>
+<ul>
+<li><a href="https://agstakingco.gitbook.io/ethereum-2-0-ubuntu-for-beginners/#linux-terminal-basic-commands" target="_blank">Ubuntu for Beginners</a></li>
+</ul>
+<p>(Those interested in learning more about the history of Unix can read <a href="https://www.netmeister.org/book/02-unix.pdf">this excerpt</a> from <em>Advanced Programming in Unix Environment</em> by Stevens and Rago)</p>
+<h2 id="command-line">Command Line</h2>
+<p>The command line is the basic non-graphic interface for your computer. It is most commonly called the <strong>terminal</strong> or the <strong>shell</strong>.</p>
+<p>To be successful in this course, you should be comfortable using the command line. Among other things, you should be very comfortable changing directories using <code>cd</code>, deleting files with <code>rm</code>, installing files with <code>curl</code>, and running programs from the command line.</p>
+<p>We would also recommend becoming familiar with command line shortcuts, such as:</p>
+<ul>
+<li><strong>CTRL + C</strong> Interrupts and quits the process currently running. Crucial in stopping terminal line programs</li>
+<li><strong>CTRL + A</strong> Moves your cursor to the beginning of the line</li>
+<li><strong>CTRL + E</strong> Moves your cursor to the end of the line</li>
+</ul>
+<p>Sometimes it's helpful to remap your caps lock key to become CTRL. Find out how to do that <a href="https://www.howtogeek.com/194705/how-to-disable-or-reassign-the-caps-lock-key-on-any-operating-system/" target="_blank">here.</a></p>
+<p>To brush up on command line skills, check out:</p>
+<ul>
+<li><a href="https://missing.csail.mit.edu/2020/course-shell/" target="_blank">MIT: Your Missing CS Semester: The Shell</a> and <a href="https://missing.csail.mit.edu/2020/shell-tools/" target="_blank">Shell Tools</a></li>
+<li><a href="https://www.theodinproject.com/courses/foundations/lessons/command-line-basics-web-development-101" target="_blank">The Odin Project: Command Line Basics</a></li>
+<li><a href="https://agstakingco.gitbook.io/ethereum-2-0-ubuntu-for-beginners/#linux-terminal-basic-commands" target="_blank">Ubuntu for Beginners</a></li>
+</ul>
+<h2 id="git">Git</h2>
+<p><a href="https://en.wikipedia.org/wiki/Git" target="_blank">Git</a> is a <a href="https://en.wikipedia.org/wiki/Version_control" target="_blank">version-control system (VCS)</a> used to track changes made to projects. While git seems simple, it's actually a bit challenging to get comfortable with. (Note that git is a piece of software, on which version control sites like GitHub or GitLab are based.)</p>
+<p>Here are some resources to get you started:</p>
+<ul>
+<li><a href="https://git-scm.com/doc" target="_blank">Git: Docs</a></li>
+<li><a href="https://www.theodinproject.com/courses/foundations/lessons/setting-up-git" target="_blank">The Odin Project: Setting Up Git</a></li>
+<li><a href="https://www.theodinproject.com/courses/foundations/#git-basics" target="_blank">The Odin Project: Git Basics</a></li>
+<li><a href="https://missing.csail.mit.edu/2020/version-control/" target="_blank">MIT Missing CS Semester: Version Control (git)</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV" target="_blank">Git and GitHub for Poets (video)</a></li>
+</ul>
+<p>Not only is git a part of a good coding repertoire, it's also used by many <a href="https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source" target="_blank">open-source projects.</a> An essential part of the bootcamp is contributing to open-source projects. It's really important to know how to do proper Pull Requests and other guidelines for contributing to open-source. Here are a few resources to help you with this:</p>
+<ul>
+<li><a href="https://guides.github.com/activities/hello-world/" target="_blank">GitHub Pull Request Tutorial</a></li>
+<li><a href="https://sethrobertson.github.io/GitFixUm/fixup.html" target="_blank">On undoing, fixing, or removing commits in git</a></li>
+<li><a href="https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html" target="_blank">How to Teach Git</a></li>
+</ul>
+<p>For those who would like to get a headstart, check out the "Good First Issues" for these open-source Ethereum projects:</p>
+<ul>
+<li><a href="https://github.com/MetaMask/metamask-extension/issues?q=is%3Aissue+is%3Aopen+label%3Aux-enhancement+-label%3AN00-needsDesign+label%3Agood-first-issue" target="_blank">MetaMask</a></li>
+<li><a href="https://github.com/trufflesuite/truffle/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22" target="_blank">Truffle</a></li>
+<li><a href="https://github.com/ethereum/go-ethereum/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22" target="_blank">Go Ethereum (geth)</a></li>
+<li><a href="https://github.com/ChainSafe/web3.js/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Issue%22" target="_blank">Web3.js</a></li>
+<li><a href="https://github.com/prysmaticlabs/prysm/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Issue%22" target="_blank">Prysmatic Labs</a> or <a href="https://github.com/ConsenSys/teku/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue+%3Araising_hand%3A%22" target="_blank">Teku</a> (Ethereum 2.0 client)</li>
+</ul>
+<p>Be sure to read Community Guidelines before contributing to a project. For example, here is Geth's <a href="https://github.com/ethereum/go-ethereum/wiki/Developers'-Guide#contributing" target="_blank">Contributor Guidelines</a> and their <a href="https://github.com/ethereum/go-ethereum/wiki/Code-Review-Guidelines" target="_blank">Code Review Guidelines</a></p>
+<h2 id="javascript">JavaScript</h2>
+<p>Even if JavaScript is not your first software language, it's really important you be familiar with its basic syntax. <a href="https://docs.soliditylang.org/en/v0.8.2/" target="_blank">Solidity,</a> the smart contract language you'll learn, is based on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources" target="_blank">ECMAScript.</a> We recommend <a href="https://www.codecademy.com/learn/introduction-to-javascript" target="_blank">Code Academy's free Intro to JavaScript course,</a> <a href="https://www.theodinproject.com/courses/foundations/#javascript-basics" target="_blank">The Odin Project</a> or <a href="https://javascript.info/" target="_blank">The Modern JavaScript Tutorial</a> to get the basics. Beyond basic JavaScript, students should be familiar with Node and npm. Some advanced students will also be using React in this course. Here are some resources to help familiarize yourself with these:</p>
+<ul>
+<li><a href="https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs" target="_blank">The Odin Project: Introduction to Node</a></li>
+<li><a href="https://www.robinwieruch.de/javascript-fundamentals-react-requirements" target="_blank">JavaScript Fundamentals Before Learning React</a></li>
+</ul>
+<h2 id="code-editor">Code Editor</h2>
+<p><a href="https://code.visualstudio.com/download" target="_blank">VSCode</a> is a very popular editor with developers due to the plug-ins and extensions it makes available. We would recommend getting started with it and the following plug-ins / features:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="_blank">Live Server</a> which allows you to easily start a server in the directory</li>
+<li><a href="https://visualstudio.microsoft.com/services/live-share/" target="_blank">Live Share</a> an easy way to share your code with someone for pair programming</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens" target="_blank">Gitlens</a> "supercharges the Git capabilities built into Visual Studio Code."</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor" target="_blank">Solidity Visual Developer</a> Built by ConsenSys!</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity" target="_blank">Solidity linter</a> Checks valid Solidity syntax. Fair warning, can be over-opinionated for folks!</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=idrabenia.solidity-solhint" target="_blank">Solidity Solhint</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ryu1kn.partial-diff" target="_blank">Partial Diff</a> Compare (diff) text selections within a file, across files, or to the clipboard</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" target="_blank">Markdown All in One</a> All you need to write Markdown</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=gimenete.github-linker" target="_blank">GitHub Linker</a> Create links to fragments of code in GitHub</li>
+</ul>
+<p>We strongly recommend using VSCode in this course, particularly if you're new to coding, due to its extensive plugins. Other popular editors include <a href="https://atom.io/" target="_blank">Atom,</a> <a href="https://www.sublimetext.com/" target="_blank">Sublime Text,</a> and <a href="https://www.jetbrains.com/idea/" target="_blank">IDEA</a> (written originally for Java but now supports many languages).</p>
+<p>There is also the option of text-only editors. Many developers find them extremely productive and, while challenging to learn, make their job much easier. We'll address one here, vim, by providing this series of tutorials:</p>
+<ul>
+<li><a href="https://begriffs.com/posts/2019-07-19-history-use-vim.html" target="_blank">History and Effective Use of Vim</a></li>
+<li><a href="https://thevaluable.dev/vim-beginner/" target="_blank">Vim for Beginners</a></li>
+<li><a href="https://thevaluable.dev/vim-intermediate/" target="_blank">Vim for Intermediate Users</a></li>
+<li><a href="https://thevaluable.dev/vim-advanced/" target="_blank">Vim for Advanced Users</a></li>
+</ul>
+<p>If you'll be using text-only editors, or simply using the command line for your development environment, you'll want to get familiar with <code>tmux</code>: <a href="https://sunainapai.in/blog/get-started-with-tmux/" target="_blank">Getting Started with Tmux</a></p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S00-intro/L4-technical-requirements/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

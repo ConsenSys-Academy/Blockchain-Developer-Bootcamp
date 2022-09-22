@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Install a Full Besu Node using Bonsai Storage on Ubuntu Server - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="install-a-full-besu-node-using-bonsai-storage-on-ubuntu-server">Install a Full Besu Node using Bonsai Storage on Ubuntu Server</h1>
+<h2 id="who-is-this-guide-for">Who is this guide for</h2>
+<p>This guide is geared toward those who wish to set up an Ethereum Layer-1 node on a dedicated machine. This guide does not discuss using Docker or running this in a virtual machine.</p>
+<p>The example node software here is using <a href="https://besu.hyperledger.org/en/stable/" target="_blank">Besu</a>, however, installating other clients such as Erigon, Geth, OpenEthereum or others will utilise a lot of the same concepts. Future material may cover specific setups for the other clients.</p>
+<p>Something important to consider when running a node is <a href="https://ethereum.org/en/developers/docs/nodes-and-clients/client-diversity/#client-diversity-importance" target="_blank">client diversity</a>. Having diversity is important for stability of the network, specifically in the event a flaw is found in one of the clients. If those nodes had to go offline to prevent exploits, the others can continue unaffected. To see a breakdown of known clients (not all nodes appear here, but it illustrates diversity) go to <a href="https://ethernodes.org/" target="_blank">etherenodes.org</a>.</p>
+<h3 id="why-run-a-node">Why run a node?</h3>
+<ul>
+<li>Contribute to the network and broader ecosystem</li>
+<li>Be your own bank</li>
+<li>send your own transactions via your node</li>
+<li>validate your account state is correct - trustless</li>
+<li>not be concerned with DNS exploited RPC urls</li>
+<li>Gain insight into what it takes learning something along the way (hopefully)</li>
+</ul>
+<hr />
+<h3 id="tldr">TL;DR</h3>
+<ul>
+<li>Prerequisites</li>
+<li>Install the Operating system</li>
+<li>Configure drives (and possibly mount)</li>
+<li>Install software ( Java and Besu )</li>
+<li>Create a service file (stop start and enable)</li>
+<li>Monitor and be patient</li>
+</ul>
+<hr />
+<h2 id="hardware-requirements-and-future-thoughts">Hardware requirements and future thoughts</h2>
+<p>When considering hardware, there are a number of important factors:</p>
+<ol>
+<li>Minimum requirements for syncing and maintaining sync.</li>
+<li>How soon do you want the node to be up and running? ( Faster storage and CPU )</li>
+<li>How long do you intend on running the node for?</li>
+<li>What kind of node you are running <a href="https://besu.hyperledger.org/en/stable/Concepts/Node-Types/" target="_blank">Besu Node Types</a>. Note: Other clients (e.g. Geth) may have similar and additional options.</li>
+<li>How much traffic are you personally/or your business intending on sending to the node? (can the node support many concurrent users)</li>
+<li>With everything cost is always a factor. Please consider these questions carefully weighing up future extension, whether it be storage space or CPU speed. Disk space upgrades will more than likely be the only real concern if the CPU is able to process transactions fast enough.</li>
+<li>Do you have internet speed/data allowance concerns?</li>
+</ol>
+<p>All of the considerations above will affect your choice in hardware and if you are able to successfully run a node.</p>
+<ol>
+<li>
+<p>You will need at least 8GB of RAM and a fast hard drive <a href="https://www.kingston.com/unitedkingdom/en/community/articledetail/articleid/48543" target="_blank">SSD/mSATA/NVME</a> - Sata HDDs are too slow to maintain and get to sync. Depending on your storage configuration, swap space/virtual memory may be on the same disk making HDDs even less of an option. External USB3.x SSDs have also been used to sync. Weigh up disk speed, cost, longevity, and size. At end of June 2022, a currently sync'd node with fast sync Bonsai storage is using 611GB and a Full non-Bonsai fast sync node is 980GB and growing.</p>
+</li>
+<li>
+<p>CPU is a bottlenecking factor - As an example, A Raspberry PI 4 overclocked to 2.147ghz sat at 100% for +-4 weeks syncing, whereas a Celeron G3930 took 10 days to sync. While it is possible to sync with a Raspberry PI, a vast amount of patience is required. As the chain grows in size, this time will increase, so depending on your timelines and usage, a Raspberry Pi may not be for you. <strong>Note:</strong> When rollups and sharding come into play, this may require a rethink, as CPU may need to be faster to keep up when processing rollups.</p>
+</li>
+<li>
+<p>With <a href="https://blog.developerdao.com/eip-4844-and-its-impact-on-ethereum-scalability" target="_blank">EIP-4844</a> coming down the track (eta unknown), an installation may run out of storage space where you will require easily an additional 2.2TB (+-) of storage (<code>10mb * 5 blocks per min * 60 mins per hour * 24hrs a day * 30 days</code>) - you can get away with a 2TB disk to start, but will/may need more when it eventually happens depending on implementation. <strong>Note:</strong> the estimates here and implementation is speculative.</p>
+</li>
+<li>
+<p><strong>Note</strong> If you run something like Geth, you can also run a "light node" <a href="https://ethereum.org/en/developers/docs/nodes-and-clients/" target="_blank">All node types</a> vs. a Full or Archive Node</p>
+</li>
+</ol>
+<h2 id="5-if-you-are-expecting-many-users-to-access-your-node-through-metamask-or-other-wallets-vs-just-a-few-home-users-more-resources-are-recommended-for-processing-and-data-access">5. If you are expecting many users to access your node through MetaMask or other wallets vs. just a few home users, more resources are recommended for processing and data access.</h2>
+<h2 id="installation">Installation</h2>
+<h3 id="toolssoftware">Tools/Software</h3>
+<ul>
+<li>Storage drive for installation of operating system ( MicroSD for a Raspberry PI )</li>
+<li>Optional drive for Node data</li>
+<li>USB stick for installing</li>
+<li>Software for creating a bootable USB <a href="https://www.balena.io/etcher/" target="_blank">Balena Etcher</a> (Cross platform) or if you prefer <a href="https://rufus.ie/" target="_blank">Rufus</a> (Windows only)</li>
+</ul>
+<h2 id="operating-system">Operating System</h2>
+<ul>
+<li>
+<p>Download an appropriate server install image <a href="https://ubuntu.com/download/server" target="_blank">Ubuntu Downloads</a> with the matching architecture (ARM is available as another option).</p>
+</li>
+<li>
+<p>If you do decide to try it on a Raspberry Pi, the images can be found at <a href="https://ubuntu.com/download/raspberry-pi" target="_blank">Ubuntu for Raspberry Pi</a> and the install process for ARM will need to be used.</p>
+</li>
+</ul>
+<h3 id="installing-on-a-raspberry-pi"><strong>Installing on a Raspberry Pi</strong></h3>
+<ul>
+<li>burn the image to the MicroSD</li>
+<li>put it in the Pi</li>
+<li>start the Pi and follow any configuration steps</li>
+</ul>
+<h3 id="installing-on-a-dedicated-non-pi-machine"><strong>Installing on a dedicated non-Pi machine</strong></h3>
+<ul>
+<li>Create a bootable USB stick with the operating system</li>
+<li><a href="https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview" target="_blank">Mac</a></li>
+<li><a href="https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#3-launch-startup-disk-creator" target="_blank">Ubuntu</a></li>
+<li><a href="https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview" target="_blank">Windows</a></li>
+<li>Set your machine's BIOS to boot from the USB</li>
+<li>Boot from the USB</li>
+<li>Install the operating system enabling SSH <a href="https://ubuntu.com/server/docs/install/step-by-step" target="_blank">Install Step by Step</a>. You won't need to install any snaps.</li>
+<li>The default file format is <code>ext4</code>, if you prefer <code>xfs</code> works as well</li>
+<li>When creating a user, this will be your admin user, once installation is complete and the server rebooted, a specific user will be created to run Besu with.</li>
+</ul>
+<hr />
+<h2 id="initial-os-post-installation-steps-both-pi-and-non-pi"><strong>Initial OS Post-Installation Steps (both Pi and Non-Pi)</strong></h2>
+<h2 id="upgrades">Upgrades</h2>
+<h2 id="-update-and-upgrade-to-make-sure-you-have-the-latest-packages-sudo-apt-update-sudo-apt-upgrade-y-sudo-reboot">- Update and upgrade to make sure you have the latest packages (<code>sudo apt update &amp;&amp; sudo apt upgrade -y &amp;&amp; sudo reboot</code>)</h2>
+<h2 id="utilities">Utilities</h2>
+<ul>
+<li>Install some basic utilities for networking and disk monitoring (<code>sudo apt install net-tools dstat jq -y</code>)</li>
+<li>net-tools (for basic networking tools)</li>
+<li>dstat (to monitor disk usage)</li>
+<li>jq for nicely formatting RPC responses </li>
+</ul>
+<hr />
+<h2 id="networking">Networking</h2>
+<p><strong>This assumes a wired network connection</strong></p>
+<p>In order to make life easier when accessing your node/machine from other machines in the network or via SSH, it is advisable to set up a static IP Address. 
+- Configure a static IP on your router for the MAC address if you are able to
+  - To see your current IP address type in <code>ifconfig</code>
+    - you should see something like <code>eth0</code> or <code>enp0s31f6</code> and a value next to <code>inet</code> for your IP
+    - your MAC should be next to <code>ether</code>
+     <code>inet 192.168.85.6  netmask 255.255.255.0  broadcast 192.168.85.255
+     inet6 fe23::7223:c2ff:fe69:81aa  prefixlen 64  scopeid 0x20&lt;link&gt;
+     ether 50:a5:c2:6a:81:12  txqueuelen 1000  (Ethernet)</code>
+- Assign a static private IP address to your node with netplan ( see example below )
+  - Edit your network configuration file (your name may differ) to create a static address for easy access (<code>sudo nano /etc/netplan/</code>) - <strong>note</strong> the spacing is critical. If done, and using nano press <code>control-o</code> and then after, press <code>enter</code> to save, followed by <code>control-x</code> to exit
+  - see <a href="https://netplan.io/examples/" target="_blank">netplan</a> for more instructions if you get stuck or want to know about wireless configuration</p>
+<p><strong>An example:</strong></p>
+<p>In <code>/etc/netplan/50-cloud-init.yaml</code> (your name may be different - check <code>ls /etc/netplan</code> to find yours)</p>
+<p><strong>Note:</strong> spacing in the yaml file is critical and needs to be maintained, else you might encounter errors such as</p>
+<p><code>Invalid YAML at /etc/netplan/50-cloud-init.yaml line 7 column 6: did not find expected key</code></p>
+<div class="codehilite"><pre><span></span><code><span class="n">network</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="w">  </span><span class="n">ethernets</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">enp0s31f6</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">addresses</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="o">-</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">50.18</span><span class="o">/</span><span class="mi">24</span><span class="w"></span>
+<span class="w">      </span><span class="n">nameservers</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">addresses</span><span class="o">:</span><span class="w"> </span><span class="o">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">50.1</span><span class="o">]</span><span class="w"></span>
+<span class="w">      </span><span class="n">routes</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="o">-</span><span class="w"> </span><span class="n">to</span><span class="o">:</span><span class="w"> </span><span class="k">default</span><span class="w"></span>
+<span class="w">          </span><span class="n">via</span><span class="o">:</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">50.1</span><span class="w"></span>
+</code></pre></div>
+
+<ul>
+<li>Press <code>sudo netplan apply</code> to set the changes immediately (you may be disconnected if you are on another address)</li>
+<li>These changes should persist post reboot</li>
+</ul>
+<hr />
+<h2 id="disk-management">Disk management</h2>
+<p><strong>Disk allocation</strong>
+- If you are using an internal SSD, check all the space on the disk has been allocated ( <code>df -ha</code>)</p>
+<p>You should see something like</p>
+<div class="codehilite"><pre><span></span><code>/dev/mapper/ubuntu--vg-ubuntu--lv  109G  7.8G   96G   8% /
+</code></pre></div>
+
+<p>If this does not match your drive size, you might consider extending the space: <strong>USE WITH CAUTION</strong> <a href="https://packetpushers.net/ubuntu-extend-your-default-lvm-space/" target="_blank">Extend your lvm space</a></p>
+<h3 id="if-using-an-internal-disk">If using an internal disk</h3>
+<ul>
+<li>add a folder to contain node data (<code>sudo mkdir /besu</code>)</li>
+</ul>
+<h3 id="if-using-an-external-disk">If using an external disk</h3>
+<p><strong>Format and mount an external drive</strong></p>
+<p>The main steps for this
+- Plug the external drive in
+- Type <code>sudo fdisk -l</code> - this should show you a list of devices - e.g.</p>
+<div class="codehilite"><pre><span></span><code>Disk /dev/sdb: 1.82 TiB, 2000398934016 bytes, 3907029168 sectors
+Disk model: Portable SSD T5
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 33553920 bytes
+</code></pre></div>
+
+<p>Once worked out which is your disk (e.g. <code>/dev/sdb</code> here)
+- <code>sudo mkfs.xfs /dev/sdb</code> <a href="https://linux.die.net/man/8/mkfs.xfs" target="_blank">see all formatting options</a>
+- follow the prompts pressing yes where you need to (<strong>be sure it is the correct drive</strong>)</p>
+<p>You should see output similar to:</p>
+<div class="codehilite"><pre><span></span><code>mkfs.xfs /dev/sdb
+meta-data=/dev/sdb               isize=512    agcount=4, agsize=5242880 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=20971520, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=10240, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+</code></pre></div>
+
+<ul>
+<li>add a <code>ssd</code> mount directory to the system <code>sudo mkdir /mnt/ssd</code></li>
+<li>mount the drive to the folder <code>sudo mount /dev/sdb /mnt/ssd</code></li>
+<li>add a folder to contain node data (<code>sudo mkdir /mnt/ssd/besu</code>)</li>
+</ul>
+<p>To make this mounting will persist on reboot:</p>
+<ul>
+<li>type <code>sudo blkid</code>- you should see entries similar to:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>/dev/sdb: UUID=&quot;b8222ca7-29dd-44c0-be50-7ffcc3348c14&quot; TYPE=&quot;LVM2_member&quot; PARTUUID=&quot;1e95b59d-4481-4e04-a016-24a099e7ae64&quot; or
+/dev/sdb: UUID=&quot;b8222ca7-29dd-44c0-be50-7ffcc3348c14&quot; PARTUUID=&quot;1e95b59d-4481-4e04-a016-24a099e7ae64&quot;
+</code></pre></div>
+
+<ul>
+<li>find the UUID that matches your device and <code>copy the UUID (not quotes)</code></li>
+<li>type <code>sudo nano /etc/fstab</code> where you will store the reboot settings</li>
+<li>add a line at the bottom <code>UUID=b8222ca7-29dd-44c0-be50-7ffcc3348c14 /mnt/ssd xfs defaults 0 0</code> replacing the UUID with yours</li>
+<li>press <code>control-o</code> and then after, press <code>enter</code> to save, followed by <code>control-x</code> to exit</li>
+<li>reboot to confirm changes and auto-mounting <code>sudo reboot</code></li>
+<li>when rebooted and logged in type <code>df -ha</code> and you should see entries similar to the following ( last line )</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>Filesystem                         Size  Used Avail Use% Mounted on
+sysfs                                 0     0     0    - /sys
+proc                                  0     0     0    - /proc
+udev                               5.7G     0  5.7G   0% /dev
+devpts                                0     0     0    - /dev/pts
+/dev/sdb                           1.9T    0G  1.9T   0% /mnt/ssd
+</code></pre></div>
+
+<p><strong>Adjusting Swap space</strong></p>
+<p>Depending on how many disks you have installed and if they are internal/external, the pathing instructions below would need to be adjusted <a href="https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-20-04/" target="_blank">see full instructions</a>
+- Swap space on some installs are added by default ( not on the Pi ), follow this if you want extra swap space 
+- Replace <code>/swapfile</code> below with <code>/mnt/ssd/swapfile</code> if you want to use the external drive - i.e if the Pi is using a slower MicroSD
+- Add swap space (generally a 1:1 with physical memory depending on how much you have) <code>sudo fallocate -l 8G /swapfile</code> (or <code>sudo fallocate -l 8G /swapfile</code>)
+- Set permissions <code>sudo chmod 600 /swapfile</code> or  <code>/mnt/ssd/swapfile</code>
+- Convert the file to swap <code>sudo mkswap /swapfile</code> or  <code>/mnt/ssd/swapfile</code>
+- Turn it on <code>sudo swapon /swapfile</code> or  <code>/mnt/ssd/swapfile</code>
+- Open the boot file to turn it on at reboot <code>sudo nano /etc/fstab</code> ( you may notice an existing <code>swap.img</code> file already created matching your memory)
+- Add an entry at the bottom <code>/swapfile swap swap defaults 0 0</code> - then <code>Control-o</code>, <code>Enter</code> and <code>Control-x</code> to save and quit
+- Show the swap space available <code>sudo swapon --show</code></p>
+<hr />
+<h2 id="besu-build-and-install-steps">BESU BUILD AND INSTALL STEPS</h2>
+<p>At this point, you should have an updated machine with swap space, a custom user to run the process under and a disk that is ready to go. </p>
+<ul>
+<li>check for java (<code>java --version</code>) - this should either give you a version or tell what versions are available to install</li>
+<li>install java with a current version (<code>sudo apt install openjdk-17-jre-headless -y</code>) ( or a higher version )</li>
+</ul>
+<p>For Raspberry Pi see:</p>
+<ul>
+<li>Oracle and Java.net</li>
+<li><a href="https://sdkman.io/" target="_blank">sdkman</a> </li>
+<li><a href="https://adoptium.net/temurin/releases/" target="_blank">adoptium</a></li>
+<li>Follow the instructions there </li>
+</ul>
+<p>Once installed
+- check for java (<code>java --version</code>) to make sure it installed </p>
+<h3 id="summarised-build-steps">Summarised build steps</h3>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="w"> </span><span class="nv">install</span><span class="w"> </span><span class="nv">dependencies</span>:<span class="w"> </span><span class="nv">sudo</span><span class="w"> </span><span class="nv">apt</span><span class="w"> </span><span class="nv">install</span><span class="w"> </span><span class="nv">libsodium23</span><span class="w"> </span><span class="nv">libnss3</span><span class="w"> </span><span class="o">-</span><span class="nv">y</span><span class="w"></span>
+<span class="o">-</span><span class="w"> </span><span class="nv">make</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">folder</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">code</span>:<span class="w"> </span><span class="nv">mkdir</span><span class="w"> </span><span class="o">~/</span><span class="nv">code</span><span class="w"></span>
+<span class="o">-</span><span class="w"> </span><span class="nv">navigate</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">folder</span>:<span class="w"> </span><span class="nv">cd</span><span class="w"> </span><span class="o">~/</span><span class="nv">code</span><span class="w"></span>
+<span class="o">-</span><span class="w"> </span><span class="nv">clone</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">source</span><span class="w"> </span><span class="nv">code</span>:<span class="w"> </span><span class="nv">git</span><span class="w"> </span><span class="nv">clone</span><span class="w"> </span><span class="o">--</span><span class="nv">recursive</span><span class="w"> </span><span class="nv">https</span>:<span class="o">//</span><span class="nv">github</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">hyperledger</span><span class="o">/</span><span class="nv">besu</span><span class="w"></span>
+<span class="o">-</span><span class="w"> </span><span class="nv">navigate</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">source</span>:<span class="w"> </span><span class="nv">cd</span><span class="w"> </span><span class="nv">besu</span><span class="w"></span>
+<span class="o">-</span><span class="w"> </span><span class="nv">switch</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">release</span><span class="w"> </span><span class="nv">branch</span><span class="w"> </span><span class="ss">(</span><span class="nv">to</span><span class="w"> </span><span class="nv">find</span><span class="w"> </span><span class="nv">these</span><span class="w"> </span><span class="nv">type</span>:<span class="w"> </span><span class="nv">git</span><span class="w"> </span><span class="nv">branch</span><span class="w"> </span><span class="o">-</span><span class="nv">r</span><span class="ss">)</span><span class="w"> </span><span class="nv">e</span>.<span class="nv">g</span>.<span class="w"> </span><span class="nv">git</span><span class="w"> </span><span class="nv">checkout</span><span class="w"> </span><span class="nv">release</span><span class="o">-</span><span class="mi">22</span>.<span class="mi">4</span>.<span class="mi">0</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">stay</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">latest</span><span class="w"></span>
+<span class="nv">To</span><span class="w"> </span><span class="nv">see</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">gradle</span><span class="w"> </span><span class="nv">tasks</span><span class="w"> </span><span class="nv">that</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">available</span><span class="w"> </span><span class="ss">(</span><span class="nv">or</span><span class="w"> </span><span class="nv">just</span><span class="w"> </span><span class="nv">skip</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">installDist</span><span class="ss">)</span><span class="w"></span>
+
+<span class="nv">cd</span><span class="w"> </span><span class="nv">besu</span><span class="w"> </span><span class="ss">(</span><span class="k">if</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">already</span><span class="ss">)</span><span class="w"></span>
+.<span class="o">/</span><span class="nv">gradlew</span><span class="w"> </span><span class="nv">installDist</span><span class="w"> </span><span class="ss">(</span><span class="k">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">complete</span><span class="ss">)</span><span class="w"></span>
+</code></pre></div>
+
+<h3 id="install-steps">Install Steps</h3>
+<ul>
+<li>Once the build steps are complete</li>
+<li>Copy the <code>besu</code> folder from the build folder to <code>/usr/bin/</code> e.g. <code>sudo cp -r ~/code/besu/build/install/besu  /usr/bin/besu</code></li>
+<li>Check your besu version <code>/usr/bin/besu/bin/besu --version</code></li>
+<li>Add user to run the process under e.g. <code>sudo useradd username</code> ( e.g. <code>sudo useradd eth</code>) - for more in depth options on users: <a href="https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/" target="_blank">Creating users with useradd</a></li>
+</ul>
+<p><strong>If using an internal disk</strong>
+- Assign ownership of the besu folder <code>sudo chown -R eth:eth /besu</code> (replace <code>eth</code> with your chosen username) - this is needed to create and maintain files</p>
+<p><strong>If using a mounted disk</strong>
+- Assign ownership of the besu folder <code>sudo chown -R eth:eth /mnt/ssd/besu</code> - this is needed to create and maintain files</p>
+<p><strong>Create a Service/Unit File</strong></p>
+<ul>
+<li>type in <code>sudo nano /etc/systemd/system/besu.service</code></li>
+<li>paste in the below after changing the following values:</li>
+<li><code>--sync-mode=FAST</code> will create a non-archive node - use <code>--sync-mode=FULL</code> if you want the archive option</li>
+<li>change <code>192.168.50.18</code> to the earlier set IP in order to use it in your local network</li>
+<li>change <code>YourIdentity</code> to something that you want to use to identify your node</li>
+<li><code>--p2p-host</code> can be changed to an external IP if fixed for discovery - default is 0.0.0.0</li>
+<li><code>--data-path=</code> should point to where you want to store the data ( <code>/besu</code> or <code>/mnt/ssd/besu</code>)</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="k">[Unit]</span><span class="w"></span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Besu daemon</span><span class="w"></span>
+<span class="na">After</span><span class="o">=</span><span class="s">network-online.target</span><span class="w"></span>
+<span class="na">Wants</span><span class="o">=</span><span class="s">network-online.target</span><span class="w"></span>
+
+<span class="k">[Service]</span><span class="w"></span>
+<span class="na">PermissionsStartOnly</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/besu/bin/besu --host-allowlist=&quot;*&quot; --data-storage-format=BONSAI --sync-mode=FAST --identity=YourIdentity --data-path=/mnt/ssd/besu --rpc-http-enabled --rpc-http-host=192.168.50.18 --rpc-http-port=8545 --rpc-http-cors-origins=&quot;*&quot; --nat-method=NONE --p2p-host=0.0.0.0</span><span class="w"></span>
+
+<span class="na">Restart</span><span class="o">=</span><span class="s">on-failure</span><span class="w"></span>
+<span class="na">TimeoutStopSec</span><span class="o">=</span><span class="s">600</span><span class="w"></span>
+
+<span class="c1"># Directory creation and permissions</span><span class="w"></span>
+<span class="c1">####################################</span><span class="w"></span>
+<span class="na">User</span><span class="o">=</span><span class="s">eth</span><span class="w"></span>
+<span class="na">Group</span><span class="o">=</span><span class="s">eth</span><span class="w"></span>
+
+<span class="na">PrivateTmp</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+
+<span class="c1"># Mount /usr, /boot/ and /etc read-only for the process.</span><span class="w"></span>
+<span class="na">ProtectSystem</span><span class="o">=</span><span class="s">full</span><span class="w"></span>
+
+<span class="c1"># Deny access to /home, /root and /run/user</span><span class="w"></span>
+<span class="na">ProtectHome</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+
+<span class="c1"># Disallow the process and all of its children to gain new privileges</span><span class="w"></span>
+<span class="c1"># through execve().</span><span class="w"></span>
+<span class="na">NoNewPrivileges</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+
+<span class="c1"># Use a new /dev namespace only populated with API pseudo devices such as</span><span class="w"></span>
+<span class="c1"># /dev/null, /dev/zero and /dev/random.</span><span class="w"></span>
+<span class="na">PrivateDevices</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+
+<span class="k">[Install]</span><span class="w"></span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span><span class="w"></span>
+</code></pre></div>
+
+<ul>
+<li>press <code>control-o</code> and then after, press <code>enter</code> to save, followed by <code>control-x</code> to exit</li>
+<li>type <code>sudo systemctl start besu</code> - this should start the service</li>
+<li>type <code>sudo systemctl status besu</code> - this should show you the status - similar to:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">●</span><span class="w"> </span><span class="n">besu</span><span class="o">.</span><span class="n">service</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Besu</span><span class="w"> </span><span class="n">daemon</span><span class="w"></span>
+<span class="w">     </span><span class="n">Loaded</span><span class="p">:</span><span class="w"> </span><span class="n">loaded</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">besu</span><span class="o">.</span><span class="n">service</span><span class="p">;</span><span class="w"> </span><span class="n">enabled</span><span class="p">;</span><span class="w"> </span><span class="n">vendor</span><span class="w"> </span><span class="n">preset</span><span class="p">:</span><span class="w"> </span><span class="n">enabled</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="n">Active</span><span class="p">:</span><span class="w"> </span><span class="n">active</span><span class="w"> </span><span class="p">(</span><span class="n">running</span><span class="p">)</span><span class="w"> </span><span class="n">since</span><span class="w"> </span><span class="n">Sun</span><span class="w"> </span><span class="mi">2022</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">26</span><span class="w"> </span><span class="mi">19</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">21</span><span class="w"> </span><span class="n">UTC</span><span class="p">;</span><span class="w"> </span><span class="mi">15</span><span class="n">h</span><span class="w"> </span><span class="n">ago</span><span class="w"></span>
+<span class="w">   </span><span class="n">Main</span><span class="w"> </span><span class="n">PID</span><span class="p">:</span><span class="w"> </span><span class="mi">726</span><span class="w"> </span><span class="p">(</span><span class="n">java</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">Tasks</span><span class="p">:</span><span class="w"> </span><span class="mi">78</span><span class="w"> </span><span class="p">(</span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">13869</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="n">Memory</span><span class="p">:</span><span class="w"> </span><span class="mf">10.6</span><span class="n">G</span><span class="w"></span>
+<span class="w">        </span><span class="n">CPU</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="n">h</span><span class="w"> </span><span class="mi">5</span><span class="nb">min</span><span class="w"> </span><span class="mf">48.784</span><span class="n">s</span><span class="w"></span>
+<span class="w">     </span><span class="n">CGroup</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">system</span><span class="o">.</span><span class="n">slice</span><span class="o">/</span><span class="n">besu</span><span class="o">.</span><span class="n">service</span><span class="w"></span>
+<span class="w">             </span><span class="err">└─</span><span class="mi">726</span><span class="w"> </span><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">Dvertx</span><span class="o">.</span><span class="n">disableFileCPResolving</span><span class="o">=</span><span class="bp">true</span><span class="w"> </span><span class="o">-</span><span class="n">Dbesu</span><span class="o">.</span><span class="n">home</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">besu</span><span class="w"> </span><span class="o">-</span><span class="n">Dlog4j</span><span class="o">.</span><span class="n">shutdownHookEnabled</span><span class="o">=</span><span class="bp">false</span><span class="w"> </span><span class="o">-</span><span class="n">Dlog4j2</span><span class="o">.</span><span class="n">formatMsgNoLookups</span><span class="o">=</span><span class="bp">true</span><span class="w"> </span><span class="o">-</span><span class="n">Djava</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">manager</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">log4j</span><span class="o">.</span><span class="n">jul</span><span class="o">.</span><span class="n">LogManager</span><span class="w"> </span><span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">opens</span><span class="w"> </span><span class="n">java</span><span class="o">.</span><span class="n">base</span><span class="o">/</span><span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">provider</span><span class="o">=</span><span class="n">ALL</span><span class="o">-</span><span class="n">UNNAMED</span><span class="w"> </span><span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">opens</span><span class="w"> </span><span class="n">java</span><span class="o">.</span><span class="n">base</span><span class="o">/</span><span class="n">java</span><span class="o">.</span><span class="n">util</span><span class="o">=</span><span class="n">ALL</span><span class="o">-</span><span class="n">UNNAMED</span><span class="w"> </span><span class="o">-</span><span class="n">Dio</span><span class="o">.</span><span class="n">netty</span><span class="o">.</span><span class="n">tryReflectionSetAccessible</span><span class="o">=</span><span class="bp">true</span><span class="w"> </span><span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">exports</span><span class="w"> </span><span class="n">java</span><span class="o">.</span><span class="n">base</span><span class="o">/</span><span class="n">jdk</span><span class="o">.</span><span class="n">internal</span><span class="o">.</span><span class="n">misc</span><span class="o">=</span><span class="n">ALL</span><span class="o">-</span><span class="n">UNNAMED</span><span class="w"> </span><span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">ope</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<ul>
+<li>type <code>sudo systemctl enable besu</code> - this will let it start on reboot</li>
+</ul>
+<p><strong>Monitoring the service</strong>
+- type <code>tail -f /var/log/syslog</code> to follow the logs <code>control-c</code> to exit
+- type <code>sudo systemctl status besu</code> to see if it is running
+- type <code>dstat</code> to see the disk usage - if it sits at 0 for a long time it may be stalled
+  - create a get block script
+  - type <code>sudo nano getBlock.sh</code>
+  - paste in the following changing the IP address (192.168.50.18) to your server IP</p>
+<div class="codehilite"><pre><span></span><code>```
+#!/bin/bash
+val=$(curl -X POST --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_blockNumber&quot;,&quot;params&quot;:[],&quot;id&quot;:51}&#39; http://192.168.50.18:8545 --silent | jq -r &#39;.result&#39;)
+echo $(($val))
+```
+</code></pre></div>
+
+<ul>
+<li>press <code>control-o</code> and then after, press <code>enter</code> to save, followed by <code>control-x</code> to exit</li>
+<li>type <code>sudo chmod +x getBlock.sh</code> to allow it to be executed</li>
+<li>to run it type <code>./getBlock.sh</code> - this will tell you how far it has gotten</li>
+<li>additional commands you can create scripts with (e.g. <a href="https://besu.hyperledger.org/en/stable/Reference/API-Methods/#eth_syncing" target="_blank">eth_syncing</a>) - see <a href="https://besu.hyperledger.org/en/stable/Reference/API-Methods/" target="_blank">API</a></li>
+</ul>
+<h3 id="connecting-to-your-node-with-metamask">Connecting to your node with Metamask</h3>
+<p>You should, once your node has synced (you should be seeing lines like the below one) be able to connect to Metamask locally:</p>
+<div class="codehilite"><pre><span></span><code>Jul  6 00:15:37 besutestbed besu[124324]: 2022-07-06 00:15:37.663+00:00 | EthScheduler-Workers-2 | INFO  | PersistBlockTask | Imported #15,085,695 / 17 tx / 0 om / 1,828,694 (6.1%) gas / (0x22135e43ea450cf089fe8d0916a82a3598516badc9363df7bc8e86b1dfbf71da) in 0.289s. Peers: 54
+</code></pre></div>
+
+<p>Create a new connection under settings, give the ChainId as 1, node address as <code>http://YOURIP:8545</code> and a name. You can also add the Symbol as ETH.</p>
+<p>Android Metamask Mobile requires an <code>https</code> site - another article will show you how to create a reverse proxy to your node. All other Metamask mobile and desktop ones work without the https.</p>
+<h2 id="final-thoughts-and-security-considerations">Final thoughts and security considerations</h2>
+<h3 id="ports-and-port-forwarding">Ports and port forwarding</h3>
+<p>It is possible to sync without opening external ports into your network, however this means all peer initiation and finding will purely be from your node, which potentially will be slower. If you do decided to open a port and forward it into your network, <code>it should only ever be port 30303 for peering</code>. As with any port opening and forwarding, do so with caution. <a href="https://cybernews.com/what-is-vpn/port-forwarding/" target="_blank">What is port forwarding</a>. You might consider adding in a firewall to be more secure.</p>
+<h3 id="segementing-internal-networks">Segementing internal networks</h3>
+<p>If you are up for more advanced networking and your hardware supports it, you could consider creating different VLANs on your network disallowing the node to talk out to your internal network, but you can talk into it to use it as your RPC endpoint for your wallet (e.g. Metamask).</p>
+<h3 id="publicly-exposed-ip-addresses">Publicly exposed IP Addresses</h3>
+<p>If you are a home user running a node, please keep in mind that your IP address will be visible to other node operators giving them a rough idea of your geolocation. Additionally, if your port forwarding is open, sites such as <a href="https://ethernodes.org/" target="_blank">ethernodes</a> will index your IP. From a privacy perspective, you may want to run your node over a dedicated IP VPN. Keep in mind this may require other hardware and technical skill.</p>
+<h3 id="outdate-software-and-operating-system">Outdate software and operating system</h3>
+<ul>
+<li>always check for and apply updates <code>sudo apt update &amp;&amp; sudo apt upgrade -y</code></li>
+</ul>
+<h3 id="future-considerations">Future Considerations</h3>
+<ul>
+<li>EIP-4844 - 30 days worth of 10mb rolled up data</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li>https://consensys.net/blog/news/bonsai-tries-a-big-update-for-small-state-storage-in-hyperledger-besu/</li>
+<li>https://besu.hyperledger.org/en/stable/HowTo/Get-Started/Installation-Options/Options/</li>
+<li>https://wiki.hyperledger.org/display/BESU/Building+from+source</li>
+<li>https://blog.developerdao.com/eip-4844-and-its-impact-on-ethereum-scalability</li>
+<li>https://www.freedesktop.org/software/systemd/man/systemd.exec.html</li>
+<li>https://netplan.io/examples/</li>
+<li>https://ubuntu.com/server/docs/install/step-by-step</li>
+<li>https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-20-04/</li>
+<li>https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/</li>
+<li>https://cybernews.com/what-is-vpn/port-forwarding/</li>
+<li>https://ethernodes.org/</li>
+<li>https://besu.hyperledger.org/en/stable/Reference/API-Methods/</li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S02-ethereum/M6-Installing-besu/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

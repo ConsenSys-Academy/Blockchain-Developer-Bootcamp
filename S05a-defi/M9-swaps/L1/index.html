@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to MetaMask Swaps - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="introduction-to-metamask-swaps">Introduction to MetaMask Swaps</h1>
+<p>The previous section covered decentralized exchanges and briefly touched upon aggregators, which finds the best price between exchanges. We can go a step further and have aggregators of aggregators. The most popular aggregator of aggregators is MetaMask Swaps.</p>
+<p><img alt="metamask-swaps-aggregator" src="/docs/img/S05/metamask-swaps-aggregator.png" /></p>
+<h2 id="metamask-swaps-addresses-five-issues">MetaMask Swaps addresses five issues</h2>
+<h3 id="1-barrier-to-entry-is-high">1 | Barrier to entry is high</h3>
+<p>Before interacting with different DeFi protocols, users must first familiarize themselves with those platforms and understand the pros and cons of each.</p>
+<h3 id="2-rates-vary-between-protocols">2 | Rates vary between protocols</h3>
+<p>Not all liquidity sources (DEX, DEX aggregators, and PMMs) are created equal. The rate that each protocol provides may depend on liquidity depth, pricing mechanism, and type of tokens.</p>
+<h3 id="3-gas-usage-differs-between-sources">3 | Gas usage differs between sources</h3>
+<p>The route and complexity of each Swap may differ, depending on the liquidity source. Some sources will require less gas, depending on the route.</p>
+<h3 id="4-liquidity-is-fragmented">4 | Liquidity is fragmented</h3>
+<p>Decentralization leads to liquidity fragmentation.</p>
+<p>For some trades, splitting a Swap between multiple sources can result in the most favorable trade.</p>
+<h3 id="5-token-approvals-are-messy-and-expensive">5 | Token approvals are messy and expensive</h3>
+<p>When Swapping ERC20 tokens, users must first approve individual tokens on each liquidity source.</p>
+<p><img alt="metamask-flow-cycle" src="/docs/img/S05/metamask-flow-cycle.png" /></p>
+<h2 id="metamask-swaps-solves-these-issues-with-three-things">MetaMask Swaps solves these issues with three things</h2>
+<h3 id="1-best-rates-across-defi">1 | Best rates across DeFi</h3>
+<p>By requesting prices from all available DEXs, DEX aggregators, and individual market makers, we can guarantee that MetaMask users have access to the deepest liquidity, the largest selection of tokens, and the most competitive prices.</p>
+<h3 id="2-seamless-and-standardized-ux">2 | Seamless and standardized UX</h3>
+<p>We’ve abstracted all the complexities, allowing MetaMask users to Swap &gt; 1,000 unique tokens in three clicks.</p>
+<h3 id="3-approve-once-swap-anywhere">3 | Approve once, Swap anywhere</h3>
+<p>No need to approve every token on multiple DEXs and aggregators for each trade. With Swaps, users only need to approve each token once, reducing gas costs and shortening the path to executing their trade.</p>
+<p><img alt="metamask-swaps-order-flow" src="/docs/img/S05/metamask-swaps-order-flow.png" /></p>
+<h2 id="additional-material">Additional Material</h2>
+<ul>
+<li><a href="https://metamask.zendesk.com/hc/en-us/articles/4405093054363" target="_blank">Users Guide to Swaps (Metamask)</a></li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S05a-defi/M9-swaps/L1/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

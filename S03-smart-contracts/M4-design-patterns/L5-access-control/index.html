@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="access-control-design-patterns">Access Control Design Patterns</h1>
+<p>Access Control is a broad term. Most generally, it means who is allowed to do what on your smart contract. Who is allowed to mint new tokens, create a new pointer contract or release funds, for example.</p>
+<p>We'll be looking at Access Control from a Solidity and coding standpoint, but Access Control is actually a pivot point where the blockchain enters the real world. In the following examples, we'll write code to allow a certain <code>address</code> to do (or not do) a certain action. However, <code>address</code> may correspond to a user in the real world, granting them certain privileges over the contract. If that contract holds the funds for a group, that person is now the treasurer of the group!</p>
+<p>Keep this in mind as we go through these different examples and a teaser for our later sections on DAOs.</p>
+<h2 id="restricting-access-and-ownable">Restricting Access and <code>Ownable</code></h2>
+<p>A very simple form of access control is making contract state private. You cannot prevent people or computer programs from reading your contracts’ state. The state is publicly available information for anyone with access to the blockchain. However, you <em>can</em> restrict other contracts’ access to the state by making state variables private, like in the basic example below:</p>
+<div class="codehilite"><pre><span></span><code>contract C1 {  
+  uint private internalNum;
+}
+</code></pre></div>
+
+<p>This simple typing can provide some aspect of security through access control.</p>
+<p>A broader form of access control is the <code>Ownable</code> design pattern, the "Hello, World!" of access control, you might say. It designates a certain address, or addresses, as the "owner" or admin of the contract.</p>
+<p>As we learned earlier, function modifiers allow us to reuse code and increase contract readability. We can also use them to restrict access based on the Ownable model:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">address</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span><span class="w">  </span>
+
+<span class="n">constructor</span><span class="p">()</span><span class="w"> </span><span class="n">payable</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
+<span class="w">  </span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">;</span><span class="w">  </span>
+<span class="p">}</span><span class="w">    </span>
+
+<span class="n">modifier</span><span class="w"> </span><span class="n">onlyOwner</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
+<span class="w">  </span><span class="n">require</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">owner</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Not authorized.&quot;</span><span class="p">);</span><span class="w">      </span>
+<span class="w">  </span><span class="n">_</span><span class="p">;</span><span class="w">  </span>
+<span class="p">}</span><span class="w">    </span>
+
+<span class="n">function</span><span class="w"> </span><span class="n">withdraw</span><span class="p">(</span><span class="n">uint</span><span class="w"> </span><span class="n">_amount</span><span class="p">)</span><span class="w"> </span><span class="n">onlyOwner</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
+<span class="w">  </span><span class="n">owner</span><span class="o">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">_amount</span><span class="p">);</span><span class="w">  </span>
+<span class="p">}</span><span class="w">      </span>
+</code></pre></div>
+
+<p>The above code declares the variable <code>owner</code> and assigns that role to whoever is creating the contract, using the <code>msg.sender</code> global variable. We then declare a modifier <code>onlyOwner()</code>, which establishes a security check at the top of each function we assign it. Using the modifier syntax, we require a check of the identity of the transaction sender to see if it matches the declared <code>owner</code>.</p>
+<p>We then place this modifier in front of whichever functions we want to restrict access to. In this case, we're adding it to the <code>withdraw()</code> function (which makes sense, as we don't want anyone to be able to drain our contract of value!). This makes it so that the only user who can access this specific function is <code>owner</code>, all other addresses will fail.</p>
+<p>A common contract used for this is OpenZeppelin's <a href="https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable" target="_blank">Ownable.sol</a>, which also lets you <code>transferOwnership</code> to another user or <code>renounceOwnership</code> if your contract only requires central authority for a certain period of time.</p>
+<p>Please note that the Ownable pattern is a bit fragile: it can become a single point of failure and is not very sophisticated in terms of Access Control.</p>
+<h2 id="pausable">Pausable</h2>
+<p>Another form of access control has to do with turning the smart contract itself into a state machine. As we mentioned earlier in the distributed consensus section, <a href="https://en.wikipedia.org/wiki/Finite-state_machine" target="_blank">a state machine</a> can be in one of a finite number of states at any time.</p>
+<p>To make the smart contract a state machine, we'll use the <code>enum</code> variable type to create a series of possible states. To have access control, we'll then assign only certain functions to run when the contract is in a certain state. Here's what this looks like in Solidity, where the possible states are <code>Deposits</code> and <code>Withdraws</code> and the state changes after a time of 30 days from the contract's <code>creationTime</code>: </p>
+<div class="codehilite"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="n">Stages</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Deposits</span><span class="p">,</span><span class="w"> </span><span class="n">Withdraws</span><span class="w"> </span><span class="p">}</span><span class="w">  </span>
+<span class="n">Stages</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stages</span><span class="o">.</span><span class="n">Deposits</span><span class="p">;</span><span class="w">  </span>
+<span class="n">mapping</span><span class="p">(</span><span class="n">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">uint</span><span class="p">)</span><span class="w"> </span><span class="n">balances</span><span class="p">;</span><span class="w">  </span>
+<span class="n">uint</span><span class="w"> </span><span class="n">creationTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">;</span><span class="w">  </span>
+
+<span class="n">function</span><span class="w"> </span><span class="n">deposit</span><span class="p">()</span><span class="w"> </span><span class="n">payable</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
+<span class="w">  </span><span class="n">require</span><span class="p">(</span><span class="n">stage</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Stages</span><span class="o">.</span><span class="n">Deposits</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">msg</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">      </span>
+<span class="w">  </span><span class="n">balances</span><span class="p">[</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">msg</span><span class="o">.</span><span class="n">value</span><span class="p">;</span><span class="w">  </span>
+<span class="p">}</span><span class="w">        </span>
+
+<span class="n">function</span><span class="w"> </span><span class="n">withdraw</span><span class="p">()</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">stage</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Stages</span><span class="o">.</span><span class="n">Withdraws</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">creationTime</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="n">days</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">          </span>
+<span class="w">    </span><span class="n">stage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stages</span><span class="o">.</span><span class="n">Withdraws</span><span class="p">;</span><span class="w">      </span>
+<span class="w">  </span><span class="p">}</span><span class="w">      </span>
+<span class="w">  </span><span class="n">require</span><span class="p">(</span><span class="n">stage</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Stages</span><span class="o">.</span><span class="n">Withdraws</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">balances</span><span class="p">[</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">      </span>
+<span class="w">  </span><span class="n">uint</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balances</span><span class="p">[</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">];</span><span class="w">      </span>
+<span class="w">  </span><span class="n">balances</span><span class="p">[</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">      </span>
+<span class="w">  </span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="o">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">amount</span><span class="p">);</span><span class="w">  </span>
+<span class="p">}</span><span class="w">        </span>
+</code></pre></div>
+
+<p>The deposit() function can only be called when the <code>stage</code> enum is in <code>Deposits</code>. After 30 days has passed, the contract transitions into <code>Withdraws</code> whenever someone calls <code>withdraw()</code>. </p>
+<p>For an example of this example, <a href="https://github.com/blockchainsllc/DAO" target="_blank">"The DAO"</a> contract required 27 days between a successful request to split the DAO and the ability to do so. This ensured the funds were kept within the contract, increasing the likelihood of recovery.</p>
+<p>We have another example of this form of access control with the Circuit Breaker design pattern, also called Emergency Stop or Pausable. Circuit Breakers are design patterns that allow contract functionality to be stopped. This would be desirable in situations where there is a live contract where a bug has been detected. Freezing the contract would be beneficial for reducing harm before a fix can be implemented. Here's what it looks like in Solidity: </p>
+<div class="codehilite"><pre><span></span><code>contract CircuitBreaker {    
+  bool public stopped = false;    
+
+  modifier stopInEmergency { require(!stopped); _; }    
+  modifier onlyInEmergency { require(stopped); _; }    
+  function deposit() stopInEmergency public { … }    
+  function withdraw() onlyInEmergency public { … }   
+}      
+</code></pre></div>
+
+<p>Circuit breaker contracts can be set up to permit certain functions in certain situations. For example, if you are implementing a withdrawal pattern, you might want to stop people from depositing funds into the contract if a bug has been detected, while still allowing accounts with balances to withdraw their funds. In a situation such as this, you would also want to restrict access to the accounts that can modify the stopped state variable, maybe to the contract owner (such as multisig wallet) or a set of admins.</p>
+<p>Here's another example, with three separate states that dictate certain rules to be followed: </p>
+<div class="codehilite"><pre><span></span><code><span class="nb nb-Type">bool</span><span class="w"> </span><span class="n">isStopped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span><span class="w"></span>
+<span class="n">address</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span><span class="w"></span>
+<span class="n">constructor</span><span class="p">()</span><span class="w"> </span><span class="n">payable</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
+<span class="w">  </span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">function</span><span class="w"> </span><span class="n">stopContract</span><span class="p">()</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
+<span class="w">  </span><span class="n">require</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">owner</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">isStopped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">function</span><span class="w"> </span><span class="n">resumeContract</span><span class="p">()</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
+<span class="w">  </span><span class="n">require</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">owner</span><span class="p">)</span><span class="w">    </span>
+<span class="w">  </span><span class="n">isStopped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">function</span><span class="w"> </span><span class="n">emergencyWithdraw</span><span class="p">()</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
+<span class="w">  </span><span class="n">require</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">owner</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isStopped</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">owner</span><span class="o">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">balance</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="role-based-access-control">Role-Based Access Control</h2>
+<p>Role-based access control is a more layered approach to access control to meet the more varied demands of a smart contract or application. It follows a similar trend in software development access: Certain individuals are administrators, others are contributors, others can just view the code.</p>
+<p>OpenZeppelin advocates using their role-based access control library, <code>[Roles.sol,](https://docs.openzeppelin.com/contracts/2.x/api/access#Roles){target=_blank}</code> instead of <code>Ownable.sol</code>. They've also implemented roles-based access control in contracts, such as ERC20Mintable.sol, which has a <code>MinterRole</code> allowed to create new tokens. You can read more about their approach to role-based access control <a href="https://docs.openzeppelin.com/contracts/2.x/access-control" target="_blank">in this post here.</a></p>
+<p>Role-based access control can be critical to developing code-based governance, such as in a DAO. Keep this design pattern in mind when we discuss DAOs later!</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://docs.openzeppelin.com/contracts/2.x/access-control" target="_blank">Wiki: Access Control</a> A comprehensive article from OpenZeppelin about Access Control design patterns and how contracts in their repository enacts different patterns.</li>
+<li><a href="https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable" target="_blank">Code: OpenZeppelin's Ownable.sol</a></li>
+<li><a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/b0cf6fbb7a70f31527f36579ad644e1cf12fdf4e/contracts/security/Pausable.sol" target="_blank">Code: OpenZeppelin's Pausable.sol</a></li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M4-design-patterns/L5-access-control/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

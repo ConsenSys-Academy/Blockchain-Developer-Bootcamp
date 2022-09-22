@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oracles in DeFi - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="oracles-in-defi">Oracles in DeFi</h1>
+<p><a href="https://ethereum.org/en/developers/docs/oracles/">Oracles</a> are an essential part of DeFi since finance cannot exist in a vacuum without information. Oracles are bridges between a blockchain and the real world. They are used as queriable on-chain APIs to get information into smart contracts. The data could be anything from price information, weather reports, random numbers or more. Oracles can also be bi-directional and can "send" data out to the real world. They are <a href="https://www.gemini.com/cryptopedia/crypto-oracle-blockchain-overview#section-inbound-versus-outbound-oracles" target="_blank">further described here</a>.</p>
+<p>Many top DeFi applications by <a href="https://coinmarketcap.com/alexandria/glossary/total-value-locked-tvl#:~:text=To%20put%20it%20simply%2C%20total,specific%20application%20by%20DeFi%20completely." target="_blank">total value locked</a> use oracles in some manner. Some of the most popular use cases are collecting pricing data, event-driven decentralized execution, and random number generation.</p>
+<p>Some popular oracle sources are <a href="https://chain.link/" target="_blank">Chainlink</a> and <a href="https://tellor.io/" target="_blank">Tellor</a>. Chainlink is described <a href="https://www.gemini.com/cryptopedia/what-is-chainlink-and-how-does-it-work">here</a>. Protocols like <a href="https://uniswap.org/" target="_blank">Uniswap</a> and <a href="https://makerdao.com/en/" target="_blank">Maker</a> can also act like oracles, since they can provide data from their feeds. In fact <a href="https://compound.finance/docs/prices" target="_blank">Compound Finance uses Uniswap v2 data in conjuction with Chainlink</a>.</p>
+<p>Oracles in DeFi are used for a wealth of different reasons:</p>
+<ol>
+<li>To get the value of underlying collateral (such as <a href="https://aave.substack.com/p/pop-the-champagne-aave-protocol-is" target="_blank">Aave</a>, <a href="alendar.google.com/calendar/u/0/r/week/2021/7/15?tab=mc&amp;pli=1" target="_blank">Synthetix</a>, <a href="https://compound.finance/governance/proposals/47" target="_blank">Compound</a>)</li>
+<li>To generate a random lottery winner (such as <a href="https://medium.com/pooltogether/improving-pooltogether-with-chainlink-vrf-dcf1a3d6ea" target="_blank">PoolTogether</a></li>
+<li>Margin Trading (such as <a href="https://medium.com/sushiswap-org/sushi-integrates-chainlink-price-feeds-to-secure-kashi-lending-and-margin-trading-markets-c1bdfc83b623" target="_blank">SushiSwap</a></li>
+<li><a href="https://chain.link/solutions/keepers">Execute decentralized event-driven tasks, so that your contracts react to events</a>! The oracle can execute your contracts if a certain event happens.</li>
+<li><a href="https://blog.chain.link/verify-stablecoin-collateral-with-chainlink-proof-of-reserve/?_ga=2.24406969.244707306.1629653336-101434453.1626273933" target="_blank">Verify a stablecoin's collateral</a></li>
+<li><a href="https://blog.chain.link/fetch-current-crypto-price-data-solidity/?_ga=2.24406969.244707306.1629653336-101434453.1626273933" target="_blank">Fetch Cryptocurrency prices</a></li>
+<li>And more.</li>
+</ol>
+<p>For many of these DeFi services to work and not be exploited, they need to be connected to the real world to operate correctly. As a result, oracles are used within the popular lending or swaps protocol infrastructure—for example, Bancor <a href="https://finematics.com/bancor-v2-explained/">uses Chainlink to mitigate impermanent loss</a>.</p>
+<h2 id="oracle-attacks-in-defi">Oracle Attacks in DeFi</h2>
+<p>When looking to get the price of assets, many DeFi users mistake using their own liquidity pools to price an asset or using a poor oracle source. An architecture where a protocol relies on itself to get the value of an underlying asset is a target for attack. Attackers can use <a href="https://insights.glassnode.com/defi-attacks-flash-loans-centralized-price-oracles/">flash loans to manipulate the price in their liquidity pools</a>, and therefore ruin any computation using the liquidity pools for pricing. Flash loans are discussed later in the DeFi Lending lesson.</p>
+<p>Decentralized exchange data can be manipulated, so they are not good decentralized data sources and don't work as decentralized oracles. However, there are exceptions. For example, Uniswap takes the average price across a time period of around 30 minutes and uses that as the price. This is known as getting the TWAP (Time Weighted Average Price).</p>
+<p>Using a more robust decentralized solution like <a href="https://docs.chain.link/docs/get-the-latest-price/" target="_blank">Chainlink</a> will protect you from these oracle manipulation / flash loan attacks.</p>
+<h2 id="a-further-look-into-oracles">A further look into Oracles</h2>
+<p>You can <a href="https://cryptozombies.io/en/course/" target="_blank">create your own oracles</a>. To understand how to use oracles in general, <a href="https://www.toptal.com/ethereum/ethereum-oracle-contracts-tutorial-pt1" target="_blank">here is a good starter tutorial</a>. Check out <a href="understand and use" target="_blank">Chainlink's tutorial for a deeper dive</a> and <a href="https://www.youtube.com/watch?v=K4MP-HSUa74" target="_blank">their video walk through</a>.</p>
+<p>Creating a highly robust oracle requires much thought because oracle data inputs directly determine the consuming smart contracts' outputs. This leads to the <a href="https://docs.ethhub.io/built-on-ethereum/oracles/what-are-oracles/">Oracle Problem</a>. Hence, oracles need to be as decentralized, secure and reliable as the blockchain networks that run them. If not, it's pointless to use a blockchain network. Single centralized nodes are subject to single points of failure if a node becomes corrupted or goes offline. Decentralization and [having multiple data providers is essential since it's difficult to know if a provider is trustworthy, introducing risk. The data source could go offline or deliver bad data. You can get <a href="https://medium.com/fabric-ventures/decentralised-oracles-a-comprehensive-overview-d3168b9a8841" target="_blank">a pretty comprehensive look into decentralized oracles here</a>.</p>
+<h2 id="indexers">Indexers</h2>
+<p>As mentioned, Oracles can provide data about the real world. Yet smart contracts can create data themselves, which may be important to a protocol. With all this internal chain data, how do you organize and find it? We use Indexers, which are decentralized methods to collect, organize and query information. Think of them as what Google does for information, but for on-chain data. This allows for the easy querying of data.</p>
+<p>Ethereum is a networked decentralized database. Yet to query data, we have to look at event logs. Wouldn't it be better if we had a language we could query data with easier? We can now use <a href="https://thegraph.com/" target="_blank">TheGraph Protocol</a>, a decentralized protocol for indexing and querying blockchain data that uses GraphQL as query language. Think of it as the "Google of blockchains" since indexing and sorting are what search engines do. TheGraph <a href="https://ethereum.org/en/developers/tutorials/the-graph-fixing-web3-data-querying/#the-decentralized-future" target="_blank">solves the problem of querying on-chain data as dapps grow in size</a>. TheGraph Protocol <a href="https://www.youtube.com/watch?v=7gC7xJ_98r8" target="_blank">is explained very well here</a>.</p>
+<p>[GraphQL] allows for an <a href="https://www.rubrik.com/blog/technology/19/11/graphql-vs-rest-apis">easier way of querying of data compared to REST APIs</a>. Instead of getting the whole dataset, GraphQL allows for tailoring. GraphQL enables you to send queries to <a href="https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/" target="_blank">get precisely the data you're looking for in one request instead of working with strict server-defined endpoints</a>. Luckily, it builds upon knowledge of REST, and <a href="https://egghead.io/courses/graphql-query-language" target="_blank">the basics picked up quickly</a>.</p>
+<p>You can <a href="https://thegraph.com/docs/" target="_blank">learn how to use TheGraph protocol via their developer docs</a> and <a href="https://thegraph.academy/" target="_blank">developer academy</a>.</p>
+<h2 id="indexers-and-oracles">Indexers and Oracles</h2>
+<p>You can use TheGraph and ChainLink described <a href="https://www.youtube.com/watch?v=HOS9g0rKP24" target="_blank">Chainlink's description</a>, <a href="https://www.youtube.com/watch?v=tvo8WzAkPQc" target="_blank">EthGlobal's TheGraph Protocol workshop</a> and <a href="https://thegraph.com/blog/the-graph-chainlink-oracles" target="_blank">TheGraph's blog</a>.</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://blog.chain.link/44-ways-to-enhance-your-smart-contract-with-chainlink/" target="_blank">77+ Smart Contract Use Cases Enabled By Chainlink</a></li>
+<li><a href="https://docs.aave.com/developers/the-core-protocol/price-oracle" target="_blank">Aave Oracles</a></li>
+<li><a href="https://blog.chain.link/the-importance-of-data-quality-for-defi/" target="_blank">The Importance of Data Quality for DeFi Smart Contracts</a></li>
+<li><a href="https://blog.chain.link/flash-loans-and-the-importance-of-tamper-proof-oracles/" target="_blank">Flash Loans and Tamper Proof Oracles</a></li>
+<li><a href="https://thegraph.academy/" target="_blank">TheGraph Academy</a> -<a href="https://egghead.io/q/graphql" target="_blank">GraphQL tutorial via EggHead.io</a></li>
+<li><a href="https://igudar.medium.com/chainlink-local-development-truffle-ganache-kubernetes-185a8cc2fda0" target="_blank">Article: Chainlink basic request model tutorial</a> Tutorial demonstrating Chainlink basic request model locally using truffle,ganache , solidity and kubernetes.</li>
+<li><a href="https://igudar.medium.com/chainlink-decentralized-data-model-truffle-rinkeby-kubernetes-ec90802bd259" target="_blank">Article: Chainlink decentralized data model tutorial</a> Deep dive tutorial on Chainlink decentralized data feed.</li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S05a-defi/M6-oracles/L1/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

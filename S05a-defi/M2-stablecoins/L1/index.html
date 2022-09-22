@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>What are Stablecoins - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="what-are-stablecoins">What are Stablecoins</h1>
+<p>A critical issue in cryptocurrencies is extreme volatility, especially when compared to fiat currencies. It’s hard to enter into any profitable financial agreement when prices can fluctuate wildly. Stablecoins were created to fix this issue.</p>
+<p>Stablecoins are cryptocurrencies built using smart contracts on programmatic blockchains, which significantly reduces or eliminates price volatility by aiming to peg to a fiat currency like the US dollar. This gives users a tool for managing risk and allowing them to engage with DeFi protocols reliably. Stablecoins are one of the cornerstones of the DeFi industry, as a user cannot reliably enter or exit a protocol without a stable currency. They also provide access to stable currencies to <a href="https://www.worldbank.org/en/news/press-release/2018/04/19/financial-inclusion-on-the-rise-but-gaps-remain-global-findex-database-shows" target="_blank">unbanked and underbanked people around the world</a>, helping people to save, pay, invest and spend in more reliable ways. In addition, Stablecoins allows people to choose their economic policy based on their interests and objectives.</p>
+<p>There are five types of stablecoins, each collateralized by different assets and its own complexity/centralization profile.</p>
+<p>The types are ranked from most centralized/less complex to less centralized/more complex.</p>
+<ol>
+<li>Fiat backed</li>
+<li>Commodity backed</li>
+<li>Crypto backed</li>
+<li>Algorithmic</li>
+<li>Central Bank Digital Currencies*</li>
+</ol>
+<p>A good mental model for a Stablecoin is the paper money you have in your pocket. Think of it as a programmable IOU that everyone in your community would accept as payment.</p>
+<p>There are three things to consider when looking at stablecoins:</p>
+<ul>
+<li>Type of collateral</li>
+<li>Collateralization ratio</li>
+<li>Degree of centralization</li>
+</ul>
+<p>A general mental model could be that the simpler the stablecoin is to understand, the more centralized it is. The exception would be Central Bank Digital Currencies which could be complex, opaque, and highly centralized due to political issues.</p>
+<h2 id="fiat-backed-stablecoins">Fiat Backed Stablecoins</h2>
+<p>These are backed by US dollars or a government currency in a bank account. These stablecoins are collateralized by US Dollars in bank accounts and are audited periodically to maintain their assurances. Examples include <a href="https://tether.to/" target="_blank">Tether’s USDT</a> and <a href="https://www.circle.com/en/usdc" target="_blank">Circle’s USDC</a>.</p>
+<p>Fiat backed stablecoins are collateralized at 100% with dollars. In the case of Tether, it is collateralized with dollar and dollar equivalents (financial instruments that can be quickly turned to cash without losing much value). These are the simplest to understand since, from a technical perspective, the issuance is very simple. There is one dollar in a bank account for every token on the network. <a href="https://dune.xyz/phabc/usdt---banned-addresses" target="_blank">USDT</a> and <a href="https://www.theblockcrypto.com/linked/102761/centre-consortium-blacklisted-seven-usdc-addresses-wednesday" target="_blank">USDC</a> are by far the most popular stablecoins for their ease of use.</p>
+<p>However, with this simplicity comes the centralization and the possibility of censorship. Both USDT and USDC can add users to blocklists and freeze their assets.</p>
+<h2 id="commodity-backed-stablecoins">Commodity backed Stablecoins</h2>
+<p>Backed by gold or another asset. An example includes <a href="https://www.paxos.com/paxgold/" target="_blank">Paxos Gold</a>. Every PAX Gold token is backed by an ounce of allocated gold. This type functions similar to fiat-backed stablecoins, including the ability for the issuer to place users on a blocklist.</p>
+<p>Furthermore, there is the additional complexity of the volatility of the price of gold which is higher than the fiat currencies.</p>
+<h2 id="crypto-collateralized">Crypto Collateralized</h2>
+<p>Backed by crypto assets like ETH or other tokens as collateral. Due to the cryptocurrency’s volatility, these assets need over 150% collateral (250% recommended) to deal with volatility. The prominent example is <a href="https://thedefiant.io/what-is-makerdao-and-how-does-dai-work/" target="_blank">MakerDAO’s DAI</a>. Best known for introducing the <a href="https://coinmarketcap.com/alexandria/glossary/collateralized-debt-position-cdp" target="_blank">Collateralized Debt Position (CDP)</a>.</p>
+<p>There are many advantages to crypto collateralized stablecoins. Because the asset lives on-chain, the <a href="https://daistats.com/#/overview" target="_blank">stablecoin can be audited by anyone at any time without permission</a>. Furthermore, DAI is an actual <a href="https://future.a16z.com/how-composability-unlocks-crypto-and-everything-else/" target="_blank">money lego</a> and can be built upon and easily integrated into any project. It can also generate interest. Along with transparency into its financial status, MakerDAO, the entity behind DAI, has a transparent governance system that allows the community members who hold MAKER tokens to vote on the management of the stablecoin. It’s also a <a href="https://blog.makerdao.com/makerdao-has-come-full-circle/" target="_blank">fully decentralized DAO</a>, short for <a href="https://ethereum.org/en/dao/" target="_blank">decentralized autonomous organization</a>.</p>
+<h2 id="algorithmic">Algorithmic</h2>
+<h3 id="rebase-tokens">Rebase Tokens</h3>
+<p>Self-balancing through incentives and algorithms and non-collateralized. These use smart contract logic to expand and contract the supply of tokens to maintain their peg. Examples include <a href="https://www.ampleforth.org/" target="_blank">AmpleForth’s AMPL</a> &amp; <a href="https://www.baseprotocol.org/" target="_blank">Base Protocol's BASE</a>.</p>
+<p>One can get a <a href="https://medium.com/dragonfly-research/a-visual-explanation-of-algorithmic-stablecoins-9a0c1f0f51a0" target="_blank">A Visual Explanation of Algorithmic Stablecoins by Haseeb Qureshi</a>.</p>
+<h3 id="fractional-stablecoins">Fractional Stablecoins</h3>
+<p>Partially backed by collateral at 100% or less and partially stabilized algorithmically. The purpose is to improve capital efficiency. Examples include <a href="https://frax.finance/" target="_blank">FRAX</a> and <a href="https://frax.finance/" target="_blank">Iron Finance’s IRON</a>. You can get a feeling for these via <a href="https://medium.com/dragonfly-research/a-visual-explanation-of-frax-bcce72c1730f" target="_blank">A Visual Explanation of FRAX by Haseeb Qureshi</a>.</p>
+<p>Fractional stablecoins are a work in progress and have suffered from <a href="https://cointelegraph.com/news/iron-finance-bank-run-stings-investors-a-lesson-for-all-stablecoins" target="_blank">“run on the bank”</a>, shakes the market’s confidence. This causes a self-fulfilling prophecy of capital withdrawals at the same time. Like a game of musical chairs, someone will be left standing.</p>
+<h3 id="seigniorage">Seigniorage</h3>
+<p><a href="https://www.investopedia.com/terms/s/seigniorage.asp" target="_blank">Seigniorage</a> typically involves at least two tokens. One representing the stable token. While the other attempts to stabilize the token through actively adjusting the stables supply. The volatility, either through profit or loss, is passed on to the other token(s). A few examples of Seigniorage Stablecoins are Empty Set Dollar, Basis, and Terra. Out of these, Terra is the only one who has maintained its peg.</p>
+<p>A typical, and often short-lived, mechanism employed is in the use of <a href="https://smithandcrown.com/research/the-cryptoeconomics-of-seigniorage-shares-stablecoins-basis-and-carbon/" target="_blank">Seigniorage Shares</a>. Often recognizable by the Stable Token and Bond Token.</p>
+<h2 id="central-bank-digital-currencies-cbdcs">Central Bank Digital Currencies - CBDCs</h2>
+<p>These are government-issued fiat currencies that utilize distributed ledger technology like Ethereum. As of 2021, <a href="https://www.cnbc.com/2021/03/05/chinas-digital-yuan-what-is-it-and-how-does-it-work.html" target="_blank">China has begun to pilots for its Digital Yuan</a> and <a href="https://www.crowdfundinsider.com/2021/08/178917-cbdcs-china-seems-intent-on-creating-digital-yuan-for-local-use-and-potential-global-transactions-report-reveals/" target="_blank">five countries in the Caribbean have already launched them</a>. There are also currently CBDC pilots in 14 countries including Sweden, South Korea and China. You can see up to date information on CBDC’s via the <a href="https://www.atlanticcouncil.org/cbdctracker/" target="_blank">Atlantic Council’s CBDC tracker</a>.</p>
+<p>There are some interesting DeFi primitives that make this technology possible. The first is the <a href="https://docs.openzeppelin.com/contracts/2.x/erc20" target="_blank">ERC-20 standard</a>, which standardizes fungible tokens. Next, the possibility of <a href="https://docs.openzeppelin.com/contracts/2.x/api/payment#Escrow" target="_blank">escrow contracts</a> allows for collateral to be deposited into a protocol, giving the protocol custody over those funds. Next, the ability to alter the supply is necessary. To expand the supply the protocol needs to <a href="https://docs.openzeppelin.com/contracts/2.x/api/token/erc20#ERC20Mintable" target="_blank">mint</a> tokens. To contract the supply, it needs to <a href="https://docs.openzeppelin.com/contracts/2.x/api/token/erc20#ERC20Burnable" target="_blank">burn</a> tokens.</p>
+<p>An interesting DeFi primitive that has evolved from algorithmic stablecoins is the concept of <a href="https://www.ampleforth.org/technology/" target="_blank">rebasing</a>. The peg adjusts by expanding or contracting the supply of tokens depending on the price. For example, if the price goes up or down 10%, the supply will expand or contract 10%. Rebasing makes possible an <a href="https://academy.binance.com/en/articles/elastic-supply-tokens-explained" target="_blank">elastic supply of tokens</a> that change based on any condition, in this case, it being the market price.</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S05a-defi/M2-stablecoins/L1/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

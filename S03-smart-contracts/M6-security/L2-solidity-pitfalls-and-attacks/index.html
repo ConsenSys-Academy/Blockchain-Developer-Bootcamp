@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="solidity-pitfalls-and-attacks">Solidity Pitfalls and Attacks</h1>
+<p>As we've made clear again and again, smart contract development is potentially very dangerous. This is unlike the vast portion of web development, where environments and code can be torn down, changed, and easily deployed again. Because of this, being a smart contract developer means being acutely aware of the ways in which your code can be exploited and creating safety features to ensure against unforeseen attacks.</p>
+<p>Over the next few sections, we're going to be discussing smart contract security. We'll start by going over some common pitfalls and attacks with Solidity (as a language) and smart contracts generally. We'll then discuss testing as a means to further protect your code. Last, we'll go over some security services you can use when writing and developing smart contracts</p>
+<h2 id="solidity-tips">Solidity Tips</h2>
+<h3 id="use-specific-compiler-pragma">Use Specific Compiler Pragma</h3>
+<p>A common method is to use the <code>^</code> to indicate the lowest compiler version that your contract will work with. However, if you have a testing suite you've built against your contract, you should not include the <code>^</code> and just list the compiler version.  </p>
+<div class="codehilite"><pre><span></span><code>pragma solidity ^0.4.4; // Possibly dangerous          
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>pragma solidity 0.4.4; // Better          
+</code></pre></div>
+
+<h3 id="built-in-variable-names">Built-In Variable Names</h3>
+<p>Built-in variables can be shadowed, be careful when naming your functions: </p>
+<div class="codehilite"><pre><span></span><code>function revert() internal pure {} // Possibly dangerous        
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>function myRevert() internal pure {} // Better            
+</code></pre></div>
+
+<h3 id="proper-use-of-require-assert-and-revert">Proper Use of <code>require</code>, <code>assert</code> and <code>revert</code></h3>
+<p><strong><code>require(msg.sender == owner)</code></strong> 
+* Validation of <strong>inputs, external call returns and variables</strong> before state changes
+* <strong>Refunds</strong> remaining gas when fail
+* Should be used <strong>more often</strong> and <strong>towards the beginning</strong> of functions</p>
+<p><strong><code>assert(age &gt; 100)</code></strong> 
+* Validation of <strong>invariants</strong>, situations that <strong>should never happen</strong> and variables <strong>after state changes</strong>
+* <strong>Consumes all gas</strong> when fail
+* Should be used <strong>less often</strong> and <strong>towards the end</strong> of functions</p>
+<p><strong><code>revert()</code></strong> 
+* <strong>Reverts</strong> the current transaction
+* <strong>Refunds</strong> remaining gas when fail
+* Used <strong>within if-else</strong> statements</p>
+<h3 id="use-modifiers-only-for-validations">Use Modifiers Only for Validations</h3>
+<p>Just do validations within modifiers and avoid external calls on them: </p>
+<div class="codehilite"><pre><span></span><code>modifier partnerShare() { // Possibly dangerous
+  partner.transfer(msg.value / 10); 
+  _; 
+}          
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>modifier onlyOwner() { // Better!
+  require(msg.sender == owner); 
+  _; 
+}          
+</code></pre></div>
+
+<h3 id="pull-over-push">Pull Over Push</h3>
+<p>Prioritize <em>receiving</em> contract calls over <em>making</em> contract calls: </p>
+<div class="codehilite"><pre><span></span><code><span class="k">function</span><span class="w"> </span><span class="n">doRefund</span><span class="p">()</span><span class="w"> </span><span class="k">external</span><span class="w"> </span><span class="n">onlyOwner</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Possibly</span><span class="w"> </span><span class="n">dangerous</span><span class="w">  </span>
+<span class="w">  </span><span class="n">uint</span><span class="w"> </span><span class="n">refund</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="n">uint</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">refunds</span><span class="p">.</span><span class="n">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w">      </span>
+<span class="w">    </span><span class="n">refund</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">refunds</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="k">value</span><span class="p">;</span><span class="w">      </span>
+<span class="w">    </span><span class="n">refunds</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">      </span>
+<span class="w">    </span><span class="n">refunds</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="n">addr</span><span class="p">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">refund</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w">                    </span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>function withdrawRefund() external { // Better!  
+  require(refunds[msg.sender] &gt; 0);  
+  uint refund = refunds[msg.sender];  
+  refunds[msg.sender] = 0;  
+  msg.sender.transfer(refund);
+}          
+</code></pre></div>
+
+<h3 id="fallback-functions-and-data-length">Fallback Functions and Data Length</h3>
+<p>Keep fallback functions simple and check data length: </p>
+<div class="codehilite"><pre><span></span><code>fallback() payable external { // Possibly dangerous  
+  balances[msg.sender] += msg.value;
+}            
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>receive() external { // Better!  
+  balances[msg.sender] += msg.value;
+}
+
+fallback() external {  
+  require(msg.data.length == 0);  
+  emit LogDeposit(msg.sender);
+}          
+</code></pre></div>
+
+<h3 id="checks-effects-interactions">Checks-Effects-Interactions</h3>
+<p>Avoid state changes after external calls, to avoid things like <a href="https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#re-entrancy" target="_blank">the DAO hack:</a> </p>
+<div class="codehilite"><pre><span></span><code><span class="nt">function</span><span class="w"> </span><span class="nt">withdraw</span><span class="o">(</span><span class="nt">uint</span><span class="w"> </span><span class="nt">amount</span><span class="o">)</span><span class="w"> </span><span class="nt">public</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Possibly</span><span class="w"> </span><span class="err">dangerous</span><span class="w">  </span>
+<span class="w">  </span><span class="err">require(balances</span><span class="cp">[</span><span class="nx">msg.sender</span><span class="cp">]</span><span class="w"> </span><span class="err">&gt;=</span><span class="w"> </span><span class="err">amount)</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="err">msg.sender.call{</span><span class="n">value</span><span class="p">:</span><span class="n">amount</span><span class="p">}</span><span class="o">(</span><span class="s2">&quot;&quot;</span><span class="o">);</span><span class="w">  </span>
+<span class="w">  </span><span class="nt">balances</span><span class="cp">[</span><span class="nx">msg.sender</span><span class="cp">]</span><span class="w"> </span><span class="nt">-</span><span class="o">=</span><span class="w"> </span><span class="nt">amount</span><span class="o">;</span><span class="w"></span>
+<span class="err">}</span><span class="w">        </span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nt">function</span><span class="w"> </span><span class="nt">withdraw</span><span class="o">(</span><span class="nt">uint</span><span class="w"> </span><span class="nt">amount</span><span class="o">)</span><span class="w"> </span><span class="nt">public</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Better!</span><span class="w">  </span>
+<span class="w">  </span><span class="err">require(balances</span><span class="cp">[</span><span class="nx">msg.sender</span><span class="cp">]</span><span class="w"> </span><span class="err">&gt;=</span><span class="w"> </span><span class="err">amount)</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="err">balances</span><span class="cp">[</span><span class="nx">msg.sender</span><span class="cp">]</span><span class="w"> </span><span class="err">-=</span><span class="w"> </span><span class="err">amount</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="err">msg.sender.call{</span><span class="n">value</span><span class="p">:</span><span class="n">amount</span><span class="p">}</span><span class="o">(</span><span class="s2">&quot;&quot;</span><span class="o">);</span><span class="w"></span>
+<span class="err">}</span><span class="w">        </span>
+</code></pre></div>
+
+<h3 id="proper-use-of-call-delegatecall-instead-of-send-transfer">Proper use of <code>call</code>, <code>delegatecall</code> instead of <code>send</code>, <code>transfer</code></h3>
+<p>After the Istanbul hardfork, <a href="https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/" target="_blank">it's recommended</a> not to use <code>send</code> and <code>transfer</code>, and instead use <code>call.value</code> </p>
+<div class="codehilite"><pre><span></span><code><span class="nv">contract</span><span class="w"> </span><span class="nv">Vulnerable</span><span class="w"> </span>{<span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nv">Possibly</span><span class="w"> </span><span class="nv">dangerous</span><span class="w">  </span>
+<span class="w">  </span><span class="nv">function</span><span class="w"> </span><span class="nv">withdraw</span><span class="ss">(</span><span class="nv">uint256</span><span class="w"> </span><span class="nv">amount</span><span class="ss">)</span><span class="w"> </span><span class="nv">external</span><span class="w"> </span>{<span class="w">      </span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="nv">This</span><span class="w"> </span><span class="nv">forwards</span><span class="w"> </span><span class="mi">2300</span><span class="w"> </span><span class="nv">gas</span>,<span class="w"> </span><span class="nv">which</span><span class="w"> </span><span class="nv">may</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">enough</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">recipient</span><span class="w">      </span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">contract</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">gas</span><span class="w"> </span><span class="nv">costs</span><span class="w"> </span><span class="nv">change</span>.<span class="w">      </span>
+<span class="w">    </span><span class="nv">msg</span>.<span class="nv">sender</span>.<span class="nv">transfer</span><span class="ss">(</span><span class="nv">amount</span><span class="ss">)</span><span class="c1">;  </span><span class="w"></span>
+<span class="w">  </span>}<span class="w"></span>
+}<span class="w">      </span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nt">contract</span><span class="w"> </span><span class="nt">Fixed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Better!</span><span class="w">  </span>
+<span class="w">  </span><span class="err">function</span><span class="w"> </span><span class="err">withdraw(uint256</span><span class="w"> </span><span class="err">amount)</span><span class="w"> </span><span class="err">external</span><span class="w"> </span><span class="err">{</span><span class="w">      </span>
+<span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">This</span><span class="w"> </span><span class="err">forwards</span><span class="w"> </span><span class="err">all</span><span class="w"> </span><span class="err">available</span><span class="w"> </span><span class="err">gas.</span><span class="w"> </span><span class="err">Be</span><span class="w"> </span><span class="err">sure</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">check</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">return</span><span class="w"> </span><span class="err">value!</span><span class="w">      </span>
+<span class="w">    </span><span class="err">(bool</span><span class="w"> </span><span class="err">success,</span><span class="w"> </span><span class="err">)</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">msg.sender.call{</span><span class="n">value</span><span class="p">:</span><span class="n">amount</span><span class="p">}</span><span class="o">(</span><span class="s2">&quot;&quot;</span><span class="o">);</span><span class="w">      </span>
+<span class="w">    </span><span class="nt">require</span><span class="o">(</span><span class="nt">success</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;Transfer failed.&quot;</span><span class="o">);</span><span class="w">  </span>
+<span class="w">  </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w">      </span>
+</code></pre></div>
+
+<p>And then proper use of <code>call</code> and <code>delegatecall</code>: </p>
+<div class="codehilite"><pre><span></span><code>addr.call(abi.encodeWithSignature(&quot;f(uint)&quot;, a));
+</code></pre></div>
+
+<ul>
+<li>Used to call functions and send ether</li>
+<li>Allows specify gas</li>
+<li>Returns boolean</li>
+<li>Does not propagate exceptions</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>addr.delegatecall(abi.encodeWithSignature(&quot;f(uint)&quot;, a));
+</code></pre></div>
+
+<ul>
+<li>Used to run functions within the caller's context (library feature)</li>
+<li>Allows specify gas</li>
+<li>Returns boolean</li>
+<li>Does not propagate exceptions</li>
+</ul>
+<h2 id="additional-material">Additional Material</h2>
+<ul>
+<li><a href="https://consensys.github.io/smart-contract-best-practices/" target="_blank">Wiki: Smart Contract Best Practices (ConsenSys)</a></li>
+<li><a href="https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/" target="_blank">Article: Stop Using Solidity's <code>transfer</code></a> Article from ConsenSys Diligence</li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M6-security/L2-solidity-pitfalls-and-attacks/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

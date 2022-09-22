@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h2 id="using-infura-to-access-ethereum-archive-data-tutorial">Using Infura to Access Ethereum Archive Data (Tutorial)</h2>
+<p>This is a full-stack application that provides a reference implementation and proof-of-concept for
+various use cases that are enabled by access to Ethereum archive data.</p>
+<p>Check out the repo here:  https://github.com/anataliocs/Archive-Data-Playground</p>
+<p>Technologies Used:</p>
+<ul>
+<li>Java 11</li>
+<li>Spring Boot</li>
+<li>Gradle</li>
+<li>Typescript</li>
+<li>React/Redux</li>
+<li>node/npm</li>
+</ul>
+<h3 id="setup-and-configuration">Setup and Configuration</h3>
+<p>The project is built with a Java/Spring Boot backend and a React front-end.
+You will need to install the following dependencies locally to run this project:</p>
+<ul>
+<li><a href="https://infura.io/register">An Infura account</a></li>
+<li>Git</li>
+<li>Node / npm</li>
+<li>Java 11</li>
+<li>An IDE</li>
+</ul>
+<p><strong>Get your API endpoint URL and Project ID</strong></p>
+<p>Head to https://infura.io/ and go to your project settings page:</p>
+<p><img alt="Infura Dashboard" src="https://raw.githubusercontent.com/anataliocs/Archive-Data-Playground/main/static/Infura-ui.jpeg" /></p>
+<p>Now let’s set up our externalized configuration so that we can use our project ID without exposing those details on Github.
+The Spring Boot app uses Spring Dev Tools when running locally so we can use a <code>.spring-boot-devtools.properties</code> file for
+configuration properties.</p>
+<p><strong>Configuration for MacOS users:</strong></p>
+<p>Create the properties file:</p>
+<p><code>touch ~/.spring-boot-devtools.properties</code></p>
+<p>Open the properties file:</p>
+<p><code>vi ~/.spring-boot-devtools.properties</code></p>
+<p>Add the following line to properties file:</p>
+<p><code>infura.projectid=[YOUR_PROJECT_ID]</code></p>
+<p><strong>Running the application:</strong></p>
+<p>Pull down the source code:</p>
+<p><code>git clone git@github.com:anataliocs/Archive-Data-Playground.git</code></p>
+<p>Import the project into your IDE and it should build automatically.
+Our project uses gradle to build the back-end and npm/webpack for the front-end UI.</p>
+<p>Change directory into the project folder:</p>
+<p><code>cd archivedataplayground/</code></p>
+<p>Then to run the full stack, invoke the Gradle wrapper:</p>
+<p><code>./gradlew</code></p>
+<p>This command will start up the Spring Boot backend in dev mode and also the React front-end all in one command!</p>
+<p>After the application starts up you should see the following:</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">2022</span><span class="o">-</span><span class="mf">05</span><span class="o">-</span><span class="mf">31</span><span class="w"> </span><span class="mf">11</span><span class="p">:</span><span class="mf">21</span><span class="p">:</span><span class="mf">45.262</span><span class="w">  </span><span class="n">INFO</span><span class="w"> </span><span class="mf">83493</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="err">[</span><span class="w">  </span><span class="n">restartedMain</span><span class="err">]</span><span class="w"> </span><span class="n">i</span><span class="mf">.</span><span class="n">i</span><span class="mf">.</span><span class="n">a</span><span class="mf">.</span><span class="n">ArchiveDataPlaygroundApp</span><span class="w">           </span><span class="p">:</span><span class="w"> </span><span class="n">Started</span><span class="w"> </span><span class="n">ArchiveDataPlaygroundApp</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="mf">3.709</span><span class="w"> </span><span class="n">seconds</span><span class="w"> </span><span class="p">(</span><span class="n">JVM</span><span class="w"> </span><span class="kr">run</span><span class="n">ning</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="mf">3.924</span><span class="p">)</span><span class="w"></span>
+<span class="mf">2022</span><span class="o">-</span><span class="mf">05</span><span class="o">-</span><span class="mf">31</span><span class="w"> </span><span class="mf">11</span><span class="p">:</span><span class="mf">21</span><span class="p">:</span><span class="mf">45.264</span><span class="w">  </span><span class="n">INFO</span><span class="w"> </span><span class="mf">83493</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="err">[</span><span class="w">  </span><span class="n">restartedMain</span><span class="err">]</span><span class="w"> </span><span class="n">i</span><span class="mf">.</span><span class="n">i</span><span class="mf">.</span><span class="n">a</span><span class="mf">.</span><span class="n">ArchiveDataPlaygroundApp</span><span class="w">           </span><span class="p">:</span><span class="w"></span>
+<span class="o">----------------------------------------------------------</span><span class="w"></span>
+<span class="w">        </span><span class="n">Application</span><span class="w"> </span><span class="err">&#39;</span><span class="n">archivedataplayground</span><span class="err">&#39;</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="kr">run</span><span class="n">ning</span><span class="err">!</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="n">URLs</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">Local</span><span class="p">:</span><span class="w">          </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mf">8080</span><span class="o">/</span><span class="w"></span>
+<span class="w">        </span><span class="n">External</span><span class="p">:</span><span class="w">       </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.0.37</span><span class="p">:</span><span class="mf">8080</span><span class="o">/</span><span class="w"></span>
+<span class="w">        </span><span class="n">Profile</span><span class="p">(</span><span class="n">s</span><span class="p">):</span><span class="w">     </span><span class="err">[</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">api</span><span class="o">-</span><span class="n">docs</span><span class="err">]</span><span class="w"></span>
+<span class="o">----------------------------------------------------------</span><span class="w"></span>
+<span class="o">&lt;============-&gt;</span><span class="w"> </span><span class="mf">92</span><span class="err">%</span><span class="w"> </span><span class="n">EXECUTING</span><span class="w"> </span><span class="err">[</span><span class="mf">2</span><span class="n">m</span><span class="w"> </span><span class="mf">15</span><span class="n">s</span><span class="err">]</span><span class="w"></span>
+</code></pre></div>
+
+<p>Navigate to the local server in a browser at http://localhost:8080/
+<img alt="App UI" src="https://raw.githubusercontent.com/anataliocs/Archive-Data-Playground/main/static/app-UI-1.png" /></p>
+<p>On the right-hand corner click account -&gt; Sign-in and use the canned login and password “admin/admin”
+<img alt="App UI" src="https://raw.githubusercontent.com/anataliocs/Archive-Data-Playground/main/static/app-ui-2.png" /></p>
+<p>You will then have access to the application.  The login flow comes from the base Jhipster project scaffolding tool that
+was used to create the basic project skeleton.</p>
+<p>You can directly query Infura JSON-RPC endpoints if you navigate to
+http://localhost:8080/admin/docs or click Administration -&gt; API</p>
+<p>This will bring you to the Swagger UI interface where you can call JSON-RPC endpoints such as getting blocks older than
+128 blocks which are available via Archive nodes with hydrated transactions.  These calls can then be used in Block Explorer style
+applications or other use cases.</p>
+<p><img alt="Swagger UI" src="https://raw.githubusercontent.com/anataliocs/Archive-Data-Playground/main/static/swagger-ui-1.png" /></p>
+<p>Some specific blocks of code that help enable this functionality include:</p>
+<p>https://github.com/anataliocs/Archive-Data-Playground/blob/main/src/main/java/io/infura/archivedataplayground/config/InfuraConfig.java</p>
+<p><strong>InfuraConfig.java</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">@Configuration</span><span class="w"></span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">InfuraConfig</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+
+<span class="w">   </span><span class="nv">@Bean</span><span class="w"></span>
+<span class="w">   </span><span class="k">public</span><span class="w"> </span><span class="n">RestTemplate</span><span class="w"> </span><span class="n">restTemplate</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RestTemplate</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>This code provides a “RestTemplate” singleton which can be injected in classes where it’s needed and helps abstract away the complexity of making JSON-RPC calls to Infura.</p>
+<p>The <code>dto.infura</code> package contains POJO objects representing request and response JSONs used in Infura RPC calls.</p>
+<p>https://github.com/anataliocs/Archive-Data-Playground/tree/main/src/main/java/io/infura/archivedataplayground/service/dto/infura</p>
+<p>For instance, the following 3 DTO objects contain the block and hydrated transactions response from
+an <code>eth_getBlockByNumber</code> JSON-RPC call which can be used to get archive blocks from Ethereum’s history.</p>
+<p><strong>GetBlockByNumberResponse.java</strong></p>
+<div class="codehilite"><pre><span></span><code>public class GetBlockByNumberResponse {
+   private String jsonrpc;
+   private String id;
+   private GetBlockByNumberResult result;
+
+   // Getters and setters
+}
+</code></pre></div>
+
+<p>Infura POJO response to de-serialize JSON</p>
+<p><strong>GetBlockByNumberResult.java</strong></p>
+<div class="codehilite"><pre><span></span><code>public class GetBlockByNumberResult {
+   private String difficulty;
+   private String extraData;
+   private String gasLimit;
+   private String gasUsed;
+   private String hash;
+   private String logsBloom;
+   private String miner;
+   private String mixHash;
+   private String nonce;
+   private String number;
+   private String parentHash;
+   private String receiptsRoot;
+   private String sha3Uncles;
+   private String size;
+   private String stateRoot;
+   private String timestamp;
+   private String totalDifficulty;
+   private Transaction[] transactions; //Hydrated Transactions
+
+   // Getters and setters
+}
+</code></pre></div>
+
+<p>Infura POJO response to de-serialize JSON</p>
+<p><strong>Transaction.java</strong></p>
+<div class="codehilite"><pre><span></span><code>public class Transaction {
+
+   private String blockHash;
+   private String blockNumber;
+   private String from;
+   private String gas;
+   private String gasPrice;
+   private String hash;
+   private String input;
+   private String nonce;
+   private String r;
+   private String s;
+   private String to;
+   private String transactionIndex;
+   private String type;
+   private String v;
+   private String value;
+}
+</code></pre></div>
+
+<p>The included “RestTemplate” will automatically marshal/unmarshal responses into these Object types.</p>
+<p>You could also consider using https://github.com/web3j/web3j to help facilitate Infura JSON–RPC calls made using the Spring Boot
+backend but this is a more heavyweight solution that contains a lot of stuff you might not need.</p>
+<h4 id="the-front-end">The Front-end</h4>
+<p>One feature that archive data enables is Block Exploration.</p>
+<p><img alt="Swagger UI" src="https://raw.githubusercontent.com/anataliocs/Archive-Data-Playground/main/static/app-ui-3.png" /></p>
+<p>This block explorer displays information about about famous blocks in Ethereum history such as:</p>
+<p>Frontier
+- Block height: 0
+- Genesis block
+- Jul 30 2015</p>
+<p>Frontier Thawing
+- Block height: 200000
+- Ethereum price: $1.24 USD
+- Sep 07 2015</p>
+<p>Homestead
+- Block height: 1,150,000
+- Ethereum price: $12.50 USD
+- Mar 14 2016</p>
+<p>The front-end is implemented using React and Typescript.  This form allows you to submit a block number and look up that block’s data
+and hydrated transactions.</p>
+<p><strong>infura.tsx</strong></p>
+<div class="codehilite"><pre><span></span><code>…
+
+<span class="nt">&lt;p</span> <span class="na">className=</span><span class="s">&quot;lead&quot;</span><span class="nt">&gt;</span>Explore historical Ethereum Data<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;Form</span> <span class="na">onSubmit=</span><span class="s">{handleBlockByNumberSubmit}</span><span class="nt">&gt;</span>
+
+   <span class="nt">&lt;ValidatedField</span>
+   <span class="na">name=</span><span class="s">&quot;blockNumber&quot;</span>
+   <span class="na">label=</span><span class="s">&quot;Block Number&quot;</span>
+   <span class="na">placeholder=</span><span class="s">&quot;Block Number in hex&quot;</span>
+   <span class="err">required</span>
+   <span class="err">autoFocus</span>
+   <span class="na">data-cy=</span><span class="s">&quot;blockNumber&quot;</span>
+   <span class="na">validate=</span><span class="cp">{{</span><span class="nv">required</span><span class="o">:</span> <span class="s1">&#39;Block Number cannot be empty!&#39;</span><span class="cp">}}</span>
+   <span class="s">error={errors.blockNumber}</span>
+   <span class="na">isTouched=</span><span class="s">{touchedFields.blockNumber}</span>
+   <span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;Button</span> <span class="na">color=</span><span class="s">&quot;primary&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">data-cy=</span><span class="s">&quot;submit&quot;</span><span class="nt">&gt;</span>
+     Search
+   <span class="nt">&lt;/Button&gt;&lt;br/&gt;</span>
+<span class="nt">&lt;/Form&gt;</span>
+
+…
+</code></pre></div>
+
+<p>Submitting the form dispatches a request to the Spring Boot API and uses a reducer to parse the JSON returned from the backend and stores
+that state in Redux.</p>
+<p><strong>infura.reducer.tsx</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="err">…</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">getInfura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createAsyncThunk</span><span class="p">(</span><span class="s1">&#39;infura/get_json&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">(</span><span class="n">blocknumber</span><span class="p">:</span><span class="w"> </span><span class="n">string</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">axios</span><span class="o">.</span><span class="n">get</span><span class="o">&lt;</span><span class="n">any</span><span class="o">&gt;</span><span class="p">(</span><span class="err">`</span><span class="n">api</span><span class="o">/</span><span class="n">infura</span><span class="o">/$</span><span class="p">{</span><span class="n">blocknumber</span><span class="p">}</span><span class="err">`</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="n">serializeError</span><span class="p">:</span><span class="w"> </span><span class="n">serializeAxiosError</span><span class="p">,</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+
+<span class="err">…</span><span class="w"></span>
+</code></pre></div>
+
+<p>This is only a simple example of functionality that access to archive data enables.  Using this basic framework, you could create
+Ethereum block analytics, more detailed Block Explorers, back testing for trading algorithms and Blockchain forensics applications!</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S04-developer-tooling/M3-infura/L2/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

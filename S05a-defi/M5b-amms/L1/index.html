@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Automated Market Makers - AMM - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="automated-market-makers-amm">Automated Market Makers - AMM</h1>
+<p>An <a href="https://academy.binance.com/en/articles/what-is-an-automated-market-maker-amm">automated market maker (AMM)</a> is a smart contract that holds assets and is always willing to quote you a price between two assets. You can trade against the AMM's capital in the smart contract instead of between peers. It uses the trades to update the size of the assets and update their price accordingly. The AMM can always guarantee liquidity by raising the price for an asset according to market demand.</p>
+<p>There are <a href="https://cipher.substack.com/p/an-introduction-to-automated-market" target="_blank">various ones</a>, however we will focus on the most important features popularized by UniSwap. <a href="https://medium.com/dragonfly-research/what-explains-the-rise-of-amms-7d008af1c399" target="_blank">Haseeb Qureshi explains UniSwap</a> well here. We will cover another type of DEX protocol in a later section.</p>
+<p>This section will give an overview of two key concepts that make AMMs possible.</p>
+<h2 id="liquidity-pools">Liquidity Pools</h2>
+<p>Automated Market Makers rely on <a href="https://finematics.com/liquidity-pools-explained/" target="_blank">liquidity pools</a> to source capital. Liquidity pools are collections of tokens locked into a smart contract. This allows for decentralized capital formation. They are used to facilitate trading by providing liquidity, defined as the ability to convert an asset into cash or its equivalents without greatly affecting its market price. This is important because an asset's value is determined by what others are willing to pay for it and how easily it can be bought or sold.</p>
+<p>The main ideas behind liquidity pools are:</p>
+<ul>
+<li>They are used to source capital which is used to provide liquidity.</li>
+<li>Liquidity is the ability to convert an asset into cash without affecting its price.</li>
+<li>They are useful because <a href="https://www.investopedia.com/terms/o/order-book.asp" target="_blank">order book models</a> are not feasible on-chain completely since market makers cannot update prices all the time due to gas fees and Ethereum's throughput being too slow.</li>
+<li>Liquidity pools source capital from anyone and are used to allow anyone to trade against the smart contract. Liquidity providers earn a fee for doing so in the proportion of capital they provide to the pool.</li>
+<li>To become a liquidity provider, users must deposit equal amounts of token based on their price into a pool. If they don't, they risk being arbitraged by traders who find a good deal.
+  -AMMs like UniSwap hold liquidity pools in token pairs. An example can be the ETH - DAI or CRV - COMP (Curve to Compound Finance).</li>
+</ul>
+<p><strong>The downside</strong>:</p>
+<ul>
+<li>Because trades happen on-chain, bots can <a href="https://coinmarketcap.com/alexandria/glossary/front-running" target="_blank">front-run transactions and attempt other sorts of attacks</a>. This results in a user paying more than they intended.</li>
+<li><a href="https://www.youtube.com/watch?v=Wd0at2Pu6xY" target="_blank">Front running</a> occurs when bots read Ethereum's current set of unprocessed pending transactions called <a href="https://www.blocknative.com/blog/mempool-intro" target="_blank">the mempool</a> and find an opportunity to outbid a transaction to be processed by the network miner (or validator after ETH 2.0). The bots get ahead of the line, which results in a better price for them at the expense of the other traders.
+  -This stems from the <a href="https://research.paradigm.xyz/MEV" target="_blank">Miner Extractable Value</a>, where a miner can dictate when, how and where a transaction will go into an Etheruem block. When a transaction large enough to create slippage is sent to the network, bots will notice and set off a bidding war to capture the stop and front-run.</li>
+</ul>
+<h2 id="bonding-curves">Bonding Curves</h2>
+<p>The other key to Automated Market Makers is the bonding curve. A <a href="https://yos.io/2018/11/10/bonding-curves/" target="_blank">bonding curve</a> is a mathematical formula used to describe the relationship between the price and the supply of an asset. This can be thought of as a deterministic pricing formula. This formula is called the <a href="https://medium.com/bollinger-investment-group/constant-function-market-makers-defis-zero-to-one-innovation-968f77022159" target="_blank"><strong>Constant Product Formula</strong></a> in UniSwap. This curve can be represented in a smart contract that can buy or sell the underlying token. Bonding Curves emerge out of the ability to escrow funds in a smart contract.</p>
+<p>The main ideas behind the Constant Product Formula are:
+-To always ensure liquidity for any asset by modelling the demand curve in the smart contract.</p>
+<ul>
+<li>Users trade against the smart contract, not between each other.
+  k always has to stay the same number, no matter what x or y does. The price quoted is directly dependent on the size of the order.</li>
+<li>The trade-off for assured liquidity is slippage, also known as getting less for more.</li>
+</ul>
+<p>x * y = k</p>
+<p>x = supply of asset 1
+y = supply of asset 2
+k = Fixed Size of Pool</p>
+<p><img alt="" src="../../../img/S05/uniswap-market-graph.png" /></p>
+<p>The downside:</p>
+<ul>
+<li>Note that the further one moves along the curve, the less they get.</li>
+<li>In UniSwap, the slippage starts to seriously affect orders; around 2% of the liquidity of a token is traded against. A good description of this can be found via <a href="https://medium.com/scalar-capital/uniswap-a-unique-exchange-f4ef44f807bf" target="_blank">this article</a> and most recently <a href="https://research.paradigm.xyz/amm-price-impact" target="_blank">here</a>.</li>
+</ul>
+<p>Different AMMs have variations of this deterministic pricing formula depending on their need. <a href="https://curve.readthedocs.io/exchange-overview.html" target="_blank">Curve</a> implements a special formula to allow stablecoins trades for assets that are a stable representation of each other, which results in a narrow trading band. An example of this is trading between ETH and sETH (synthetic ETH) or USDC and DAI, which should both be pegged close to the US Dollar.</p>
+<h2 id="synching-prices-across-markets">Synching Prices Across Markets</h2>
+<p>With Automated Market Makers similar to UniSwap v2, prices are synched with outside markets via arbitrageurs who spot price differences between exchanges. These exchanges can be other DEXes or centralized exchanges. Arbitrageurs capture the profit, which is the difference in price between the two markets.</p>
+<p>A consequence of this is <a href="https://coinmarketcap.com/alexandria/glossary/impermanent-loss" target="_blank">impermanent loss</a> for liquidity providers, the difference between holding an asset and providing liquidity. This is similar to an opportunity cost which if realized turns into a real loss. Impermanent loss is also described in <a href="https://finematics.com/impermanent-loss-explained/" target="_blank">this animated video</a> and article and <a href="https://academy.binance.com/en/articles/impermanent-loss-explained" target="_blank">here</a>.</p>
+<p><a href="https://finematics.com/uniswap-v3-explained/" target="_blank">Uniswap V3</a> has other features like Range Orders and Limit Orders which you can explore. Some AMMs can hold more than two assets, namely Balancer, but these are more sophisticated and rely on <a href="https://medium.com/balancer-protocol/bonding-surfaces-balancer-protocol-ff6d3d05d577" target="_blank">Bonding Surfaces</a>.</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<p><a href="https://poseidon01.ssrn.com/delivery.php?ID=468065099084001018003001097015123074002033009058089053073089097071090006069068127090056119012045118056006023019023064027115112050004033058059085029023094127080025065057006114025116096023021080002103109117106113005025070080109097094005091097004025&amp;EXT=pdf&amp;INDEX=TRUE" target="_blank">DeFi and the Future of Finance</a> (section 4.7.2)
+<a href="https://poseidon01.ssrn.com/delivery.php?ID=468065099084001018003001097015123074002033009058089053073089097071090006069068127090056119012045118056006023019023064027115112050004033058059085029023094127080025065057006114025116096023021080002103109117106113005025070080109097094005091097004025&amp;EXT=pdf&amp;INDEX=TRUE" target="_blank">DeFi and the Future of Finance</a> (section 6.2)
+<a href="https://docs.ethhub.io/guides/graphical-guide-for-understanding-uniswap/" target="_blank">Graphical Guide for Understanding Uniswap via EthHub</a></p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S05a-defi/M5b-amms/L1/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

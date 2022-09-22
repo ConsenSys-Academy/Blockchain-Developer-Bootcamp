@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="raft-consensus-tutorial">Raft Consensus Tutorial</h1>
+<p>Please go to the <a href="http://thesecretlivesofdata.com/raft/" target="_blank">Secret Lives of Data</a> website to learn about the basic mechanics of the <a href="https://en.wikipedia.org/wiki/Raft_(algorithm){target=_blank}">Raft consensus protocol.</a> While Raft is a production-ready consensus protocol, we are mainly using it here to show you a concrete example of a distributed system maintaining state across different nodes in a network.</p>
+<p>Please note, Raft is <strong>not</strong> a Byzantine fault tolerant consensus protocol. Instead, Raft is a <strong>leader-led</strong> consensus protocol, meaning all the nodes blindly trust whatever state the leader sends to them. However, in Raft, if the leader fails in some way and stops sending state, the other nodes in the network are able to identify the failure and re-elect another leader in a distributed way. In this way, the Raft consensus mechanism shows how a distributed system can replicate state in a resilient way.</p>
+<p>Even if you never see it or use it again, we hope learning about Raft will give you a better sense of how a distributed system can use a consensus protocol to adapt to node failures. </p>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Raft_(algorithm){target=_blank}">Wikipedia: Raft</a></li>
+<li><a href="https://raft.github.io/raft.pdf" target="_blank">Article: In Search of an Understandable Consensus Algorithm</a></li>
+<li>The Raft consensus protocol was developed as a simpler alternative to the <a href="https://en.wikipedia.org/wiki/Paxos_(computer_science){target=_blank}">Paxos consensus algorithm</a> developed by Leslie Lamport.</li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S01-fundamentals/M2-consensus/L3-raft/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

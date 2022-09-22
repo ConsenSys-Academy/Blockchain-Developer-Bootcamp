@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wire up the React app with Drizzle - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="wire-up-the-react-app-with-drizzle">Wire up the React app with Drizzle</h1>
+<p>*Note that Drizzle is currently not actively maintained by Truffle, although the team is always happy to provide best-endeavors support. In addition, ConsenSys is actively hiring for front-end focused roles and/or folks interested in assisting with maintenance. Feel free to reach out if this might of interest!</p>
+<p>Before we go further, let's start our React app by running the follow command inside our client directory:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@drizzle</span><span class="o">/</span><span class="n">store</span><span class="w"></span>
+
+<span class="n">npm</span><span class="w"> </span><span class="k">start</span><span class="w"></span>
+</code></pre></div>
+
+<p>This will serve the front-end under <code>localhost:3000</code> so open that up in your browser.</p>
+<p>Note: Make sure to use an incognito window if you already have MetaMask installed (or disable MetaMask for now). Otherwise, the app will try to use the network specified in MetaMask rather than the develop network under <code>localhost:9545</code>.</p>
+<p>If the default Create-React-App page loaded without any issues, you may proceed.</p>
+<h2 id="setup-the-store">Setup the store</h2>
+<p>The first thing we need to do is to setup and instantiate the Drizzle store. We are going add the following code to client/src/index.js:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">drizzle</span> <span class="n">functions</span> <span class="ow">and</span> <span class="n">contract</span> <span class="n">artifact</span>
+<span class="kn">import</span> <span class="p">{</span> <span class="n">Drizzle</span> <span class="p">}</span> <span class="kn">from</span> <span class="s2">&quot;@drizzle/store&quot;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">MyStringStore</span> <span class="kn">from</span> <span class="s2">&quot;./contracts/MyStringStore.json&quot;</span><span class="p">;</span>
+
+<span class="n">let</span> <span class="n">drizzle</span> <span class="n">know</span> <span class="n">what</span> <span class="n">contracts</span> <span class="n">we</span> <span class="n">want</span> <span class="ow">and</span> <span class="n">how</span> <span class="n">to</span> <span class="n">access</span> <span class="n">our</span> <span class="n">test</span> <span class="n">blockchain</span>
+<span class="n">const</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">contracts</span><span class="p">:</span> <span class="p">[</span><span class="n">MyStringStore</span><span class="p">],</span>
+<span class="n">web3</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">fallback</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;ws&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">:</span> <span class="s2">&quot;ws://127.0.0.1:9545&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">},</span>
+<span class="p">};</span>
+<span class="n">setup</span> <span class="n">drizzle</span>
+<span class="n">const</span> <span class="n">drizzle</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Drizzle</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
+</code></pre></div>
+
+<p>First, we imported the tools from Drizzle as well as the contract definition.</p>
+<p>We then built our options object for Drizzle, which in this case is just specifying the specific contract we want to be loaded by passing in the JSON build artifact.</p>
+<p>And finally, we created the drizzleStore and used that to create our drizzle instance which we will pass in as a prop to our App component.</p>
+<p>Once that is complete, your index.js should look something like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">React</span> <span class="kn">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">ReactDOM</span> <span class="kn">from</span> <span class="s1">&#39;react-dom&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="s1">&#39;./index.css&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">App</span> <span class="kn">from</span> <span class="s1">&#39;./App&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="o">*</span> <span class="k">as</span> <span class="n">serviceWorker</span> <span class="kn">from</span> <span class="s1">&#39;./serviceWorker&#39;</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">drizzle</span> <span class="n">functions</span> <span class="ow">and</span> <span class="n">contract</span> <span class="n">artifact</span>
+<span class="kn">import</span> <span class="p">{</span> <span class="n">Drizzle</span><span class="p">,</span> <span class="n">generateStore</span> <span class="p">}</span> <span class="kn">from</span> <span class="s2">&quot;@drizzle/store&quot;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">MyStringStore</span> <span class="kn">from</span> <span class="s2">&quot;./contracts/MyStringStore.json&quot;</span><span class="p">;</span>
+
+<span class="n">let</span> <span class="n">drizzle</span> <span class="n">know</span> <span class="n">what</span> <span class="n">contracts</span> <span class="n">we</span> <span class="n">want</span> <span class="ow">and</span> <span class="n">how</span> <span class="n">to</span> <span class="n">access</span> <span class="n">our</span> <span class="n">test</span> <span class="n">blockchain</span>
+<span class="n">const</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">contracts</span><span class="p">:</span> <span class="p">[</span><span class="n">MyStringStore</span><span class="p">],</span>
+<span class="n">web3</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">fallback</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;ws&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">:</span> <span class="s2">&quot;ws://127.0.0.1:9545&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">},</span>
+<span class="p">};</span>
+<span class="n">setup</span> <span class="n">the</span> <span class="n">drizzle</span> <span class="n">store</span> <span class="ow">and</span> <span class="n">drizzle</span>
+<span class="n">const</span> <span class="n">drizzle</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Drizzle</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
+<span class="n">ReactDOM</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="o">&lt;</span><span class="n">App</span> <span class="n">drizzle</span><span class="o">=</span><span class="p">{</span><span class="n">drizzle</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">));</span>
+</code></pre></div>
+
+<p>Note again that the drizzle instance is passed into the App component as props.</p>
+<h1 id="drizzle-components">Drizzle Components</h1>
+<p>Drizzle maintains a library of React components for commonly used dapp functions. For example, generating input forms for contracts.
+Components</p>
+<h2 id="loadingcontainer">LoadingContainer</h2>
+<p>This components wraps your entire app (but within the DrizzleProvider) and will show a loading screen until Drizzle, and therefore web3 and your contracts, are initialized.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">loadingComp</span><span class="w"> </span><span class="p">(</span><span class="n">component</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>The component displayed while Drizzle intializes.</p>
+<div class="codehilite"><pre><span></span><code>errorComp (component)
+</code></pre></div>
+
+<p>The component displayed if Drizzle initialization fails.</p>
+<h2 id="contractdata">ContractData</h2>
+<div class="codehilite"><pre><span></span><code>contract(string, required)
+</code></pre></div>
+
+<p>Name of the contract to call.</p>
+<div class="codehilite"><pre><span></span><code>method (string, required
+</code></pre></div>
+
+<p>Method of the contract to call.</p>
+<div class="codehilite"><pre><span></span><code>methodArgs (array)
+</code></pre></div>
+
+<p>Arguments for the contract method call. EX: The address for an ERC20 balanceOf() function. The last argument can optionally be an options object with the typical from, gas and gasPrice keys.</p>
+<div class="codehilite"><pre><span></span><code>hideIndicator(boolean)
+</code></pre></div>
+
+<p>If true, hides the loading indicator during contract state updates. Useful for things like ERC20 token symbols which do not change.</p>
+<div class="codehilite"><pre><span></span><code>toUtf8 (boolean)
+</code></pre></div>
+
+<p>Converts the return value to a UTF-8 string before display.</p>
+<div class="codehilite"><pre><span></span><code>toAscii (boolean)
+</code></pre></div>
+
+<p>Converts the return value to an Ascii string before display.</p>
+<h2 id="contractform">ContractForm</h2>
+<div class="codehilite"><pre><span></span><code>contract (string, required
+</code></pre></div>
+
+<p>Name of the contract whose method will be the basis the form.</p>
+<div class="codehilite"><pre><span></span><code>method (string, required)
+</code></pre></div>
+
+<p>Method whose inputs will be used to create corresponding form fields.</p>
+<div class="codehilite"><pre><span></span><code>sendArgs (object)
+</code></pre></div>
+
+<p>An object specifying options for the transaction to be sent; namely: from, gasPrice, gas and value. Further explanation of these parameters can be found here in the web3 documentation.</p>
+<div class="codehilite"><pre><span></span><code>labels (array)
+</code></pre></div>
+
+<p>Custom labels; will follow ABI input ordering. Useful for friendlier names. For example "_to" becoming "Recipient Address".</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S04-developer-tooling/M4-truffle-deep-dive/L3-drizzle-ui/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

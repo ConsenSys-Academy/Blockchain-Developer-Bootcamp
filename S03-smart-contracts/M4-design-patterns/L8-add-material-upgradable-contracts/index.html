@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="additional-material-upgradable-contracts">Additional Material: Upgradable Contracts</h1>
+<p>We wanted to provide another example of an upgradable contract pattern. This pattern uses a separate contract to act as storage to another contract that contains the logic, also known as a "proxy delegate pattern". When you upgrade a contract, all your state is still in the old contract address. Therefore, we say the contract has "Eternal Storage."</p>
+<p>To avoid upgrades to the storage contract it should be as flexible as possible, by using several mappings for each data type where hashes are used as keys (only <code>uint</code> is shown in the example below):</p>
+<div class="codehilite"><pre><span></span><code><span class="n">address</span><span class="w"> </span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">sender</span><span class="p">;</span><span class="w"></span>
+<span class="n">address</span><span class="w"> </span><span class="n">latestVersion</span><span class="p">;</span><span class="w"></span>
+<span class="n">mapping</span><span class="p">(</span><span class="n">bytes32</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">uint</span><span class="p">)</span><span class="w"> </span><span class="n">uIntStorage</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">upgradeVersion</span><span class="p">(</span><span class="n">address</span><span class="w"> </span><span class="n">_newVersion</span><span class="p">)</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="err">{</span><span class="w">    </span>
+<span class="w">  </span><span class="n">require</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">owner</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">latestVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_newVersion</span><span class="p">;</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">getUint</span><span class="p">(</span><span class="n">bytes32</span><span class="w"> </span><span class="n">_key</span><span class="p">)</span><span class="w"> </span><span class="k">external</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="k">returns</span><span class="p">(</span><span class="n">uint</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w">    </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">uIntStorage</span><span class="o">[</span><span class="n">_key</span><span class="o">]</span><span class="p">;</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">setUint</span><span class="p">(</span><span class="n">bytes32</span><span class="w"> </span><span class="n">_key</span><span class="p">,</span><span class="w"> </span><span class="n">uint</span><span class="w"> </span><span class="n">_value</span><span class="p">)</span><span class="w"> </span><span class="k">external</span><span class="w"> </span><span class="err">{</span><span class="w">    </span>
+<span class="w">  </span><span class="n">require</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">latestVersion</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">uIntStorage</span><span class="o">[</span><span class="n">_key</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_value</span><span class="p">;</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">deleteUint</span><span class="p">(</span><span class="n">bytes32</span><span class="w"> </span><span class="n">_key</span><span class="p">)</span><span class="w"> </span><span class="k">external</span><span class="w"> </span><span class="err">{</span><span class="w">    </span>
+<span class="w">  </span><span class="n">require</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">latestVersion</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">uIntStorage</span><span class="o">[</span><span class="n">_key</span><span class="o">]</span><span class="p">;</span><span class="w"></span>
+<span class="err">}</span><span class="w">    </span>
+</code></pre></div>
+
+<p>Each mapping should be manipulated by three functions: store, retrieve and delete. Use the access control pattern to allow only the most recent version of the logic contract to use the "eternal storage."</p>
+<h2 id="additional-material">Additional Material</h2>
+<ul>
+<li><a href="https://blog.indorse.io/ethereum-upgradeable-smart-contract-strategies-456350d0557c" target="_blank">Article Series: Summary of Ethereum Upgradeable Smart Contract R&amp;D, Part I</a> and  <a href="https://medium.com/coinmonks/summary-of-ethereum-upgradeable-smart-contract-r-d-part-2-2020-db141af915a0" target="_blank">Part II</a> Great overview of upgradability patterns.</li>
+<li><a href="https://consensys.github.io/smart-contract-best-practices/software_engineering/#upgrading-broken-contracts" target="_blank">Tutorial: Upgrading Broken Contracts (ConsenSys)</a></li>
+<li><a href="https://dev.to/mudgen/ethereum-s-maximum-contract-size-limit-is-solved-with-the-diamond-standard-2189" target="_blank">Tutorial: Diamond Standard</a> An interesting variation on upgradability patterns. We don't see it out a lot in the wild, but an interesting development!</li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M4-design-patterns/L8-add-material-upgradable-contracts/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

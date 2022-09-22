@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Persisting Connectivity in Web3 with useEffect - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="persisting-connectivity-in-web3-with-useeffect">Persisting Connectivity in Web3 with useEffect</h1>
+<p><em>This lesson builds on the CodeSandbox example from “A Demystification of “Connect Wallet”</em></p>
+<p>What actually happens when you leave a dApp and why are you still connected? For this, let’s hop in a time machine.</p>
+<p>The year is 2006. You’ve just spent the last three hours fine-tuning the spaghetti code that makes up your MySpace layout to show off to all the new frens you got from that bulletin board S4S. You’re good at this, way ahead of your time. You do this all in Notepad— in plain text with no syntax highlighting. </p>
+<p>Life is good until you receive a seemingly innocuous email prompting you to visit MySpace with a strange URL. On login, the site looks a little different. By the way, you did log in. It didn’t take you back to MySpace, so you open up a new window and see that now your whole bulletin board is flooded with spam from your account. The credentials you used to log in don’t work anymore. Your layout is broken now and your profile photo has changed.</p>
+<p>You were the victim of a <a href="https://www.computerworld.com/article/2815426/myspace-again-under-phishing-attack.html" target="_blank">phishing attack</a>. It happens all too often, unfortunately. <a href="https://www.fbi.gov/scams-and-safety/common-scams-and-crimes/spoofing-and-phishing" target="_blank">You get emails telling you that something completely out of your control, and sometimes beyond your comprehension, has happened to your account, here’s how you can fix it</a>. Phishing attacks have bamboozled users online since the time <a href="https://cofense.com/knowledge-center/history-of-phishing/" target="_blank">you were able to get a 30-day free trial of ✨the internet✨from an AOL floppy disk</a>. We can try to rely on a site logging us in automatically to circumvent this attack because when a site logs us in automatically, it does us a few favors. It reduces the password fatigue that has already burnt us out. And it reminds us to take a step back from this email and visit the site with a URL we know and trust to make sure everything is okay. If the site remembers us, we should be okay, right?</p>
+<p>Just because we can try to rely on auto-login doesn’t mean we should. We’re really relying on the possibility a site may allow for that. That our browser data wasn’t purged. The problem is that it’s not set in stone, we don’t know if we’ll always be logged in. But wait, it can get worse. Auto-login is not entirely a good thing to rely on. If your device ends up in the wrong hands, now whoever has it can also access the same sites that promised to remember you. It’s no longer a convenience at that point, but an attack vector.</p>
+<h2 id="why-do-you-stay-connected">Why do you stay connected?</h2>
+<p>Phishing never really went away. <a href="https://twitter.com/troyhunt/status/1508184697070780418" target="_blank">It just got smarter</a>. Now the stakes are higher because real assets are involved.</p>
+<p>If you force quit and restart your browser. Notice how the button still says ‘Connect’. Click it and it should open MetaMask, now you have to enter your password for MetaMask because you were logged out. But, do you notice how you’ve connected to the dApp again, and you didn’t have to select an account to connect with? If you don’t remember disconnecting or logging out, <em>it’s because you didn’t.</em></p>
+<p>Your session wasn’t retained in local storage, but after restarting your browser, you were logged out of MetaMask— this is by design. Your device can fall into the wrong hands, but unless they know your password for MetaMask, your private key, or your mnemonic phrase, they can’t do anything. They can’t even get your private key or mnemonic phrase from MetaMask because they need your password!</p>
+<p>But wait, there’s more! The only reason why you will ever need to use your private key or mnemonic phrase is if you’re importing accounts from other wallets. You don’t use it often like regular credentials and are encouraged to store it in some place like a safety deposit box, <em>(or entombed in concrete)</em>. In the meantime, here’s what your junk mailbox can get filled with.</p>
+<p><img alt="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/srpl360r83f2craj9wrh.png" src="../../../img/S04/persisting-connectivity-inbox.png" /></p>
+<p style='font-style: italic' align=center><a href="https://www.youtube.com/watch?v=MK6TXMsvgQg">*Benny Hill theme intensifies*</a></p style='italic'>
+<p>{target=_blank}</p>
+<p>By default, you’ll always be connected because you didn’t need to verify your identity for authentication. The mere fact that your account was generated from a number so large that it could not be manmade is proof enough that your account is authentic. The reason why you stay connected is that you granted this dApp permission to view your accounts, and your assets and suggest transactions on your behalf. Restarting your browser, clearing your session, and clearing your cookies and cache doesn’t disconnect you. Because MetaMask and other browser wallets act as this bridge between you and dApps, it supplies the functionality for dApps to check if you have granted permissions with your account with the Ethereum Provider API.</p>
+<p>Malicious actors can then fork popular protocols and spin up their own versions and deceive you into thinking you might be interacting with the real protocol, but you’re greeted with a new user flow as if permissions only you could grant and revoke were automatically granted and revoked for you, without your explicit consent.</p>
+<p>This is why connectivity and permissions in Web3.0 is a paradigm shift from traditional authentication flows in Web2.0.</p>
+<h2 id="showing-your-users-connectivity">Showing your user’s connectivity</h2>
+<p>To display this persistent connectivity with React, we’ll need to make a few more tweaks. For this, we can use the <a href="https://reactjs.org/docs/hooks-effect.html" target="_blank">Effect</a> hook. React components are dynamic because of their ability to go through different <a href="https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class" target="_blank">lifecycles</a>. You'll commonly see the phrase "side effect" used in explanations for <code>useEffect</code>, so a side effect of the Ethereum Provider API being present in the <code>window</code> results in either the ‘Connect’ button or the ‘Address’ component being rendered.</p>
+<p>In <code>App.js</code> you’ll see we’re already importing <code>useEffect</code> from React. Now we can define it right beneath our <code>useState</code> hook like this:</p>
+<div class="codehilite"><pre><span></span><code>useEffect(() =&gt; {
+  // Callback function
+}, []) // Dependency array
+</code></pre></div>
+
+<p>Logic can fire off in a component where we’re using <code>useEffect</code> and it can change state, and ultimately how our components and our app look. That array is where you have a variable that needs to change before the callback function can fire off. So perhaps we’re waiting on something to exist, like say… an Ethereum provider, we can then fire off a callback function in our <code>useEffect</code> to show the address that a user has connected with.</p>
+<p>First, you’ll need to destructure the <code>window</code> object to unpack the <code>ethereum</code> property and define it as its own variable like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ethereum</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="w"></span>
+</code></pre></div>
+
+<p>And then let’s quickly change wherever we have <code>window.ethereum</code>  to <code>ethereum</code>, like in our connect function:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">ethereum</span><span class="o">.</span><span class="n">request</span><span class="p">({</span><span class="w"> </span><span class="n">method</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_requestAccounts&quot;</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">window</span><span class="o">.</span><span class="n">ethereum</span><span class="o">.</span><span class="n">request</span><span class="p">({</span><span class="w"> </span><span class="n">method</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_requestAccounts&quot;</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
+<span class="p">)[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+</code></pre></div>
+
+<p>And also in our <code>&lt;main&gt;</code> element:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;main&gt;</span>
+  {account 
+        ? <span class="nt">&lt;Account</span> <span class="na">address=</span><span class="s">{account}</span> <span class="nt">/&gt;</span>
+        : ethereum
+        ? <span class="nt">&lt;ConnectButton</span> <span class="na">connect=</span><span class="s">{connect}</span> <span class="nt">/&gt;</span>
+      : <span class="nt">&lt;InstallMetaMask</span> <span class="nt">/&gt;</span>
+  )}
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div>
+
+<p>Now let’s go back to the <code>useEffect</code>. We know at some point, on load, the Ethereum Provider in our window will return an object, but until it does, we want to hold off on firing any logic. So now we can throw that into our dependency array like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">Logic</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">fire</span><span class="w"> </span><span class="k">off</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">Ethereum</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">undefined</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">defined</span><span class="p">.</span><span class="w"></span>
+<span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="n">ethereum</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="why-did-we-unpack-ethereum-from-window">Why did we unpack <code>ethereum</code> from <code>window</code>?</h2>
+<p>Using <code>window.ethereum</code> in our dependency array would break one of the rules of React Hooks. This would trigger the <code>react-hooks/exhaustive-deps</code> warning that tells us that <code>window.ethereum</code> is an outer scope value, and that changing it will not re-render the component.</p>
+<p>For a while, we were checking if <code>window.ethereum</code> existed, if console logging it would return a truthy value. If it doesn’t exist, the value returned will be false. But we were never checking if it changed while it was in the <code>window</code>, or if the <code>window</code> as a whole changed.</p>
+<p>What if <code>window</code> does change, but <code>ethereum</code> doesn’t? This is where the issue of it being an outer scope value comes into play because we’re relying on <code>ethereum</code> while it’s <strong>inside</strong> <code>window</code>, instead of <code>ethereum</code> when it’s defined on its own. We’ll see a scenario where a side effect turns into a butterfly effect as one rabid dependency triggers a series of unfortunate re-renders. We don’t want this, so <code>react-hooks/exhaustive-deps</code> fire off to let us know we may end up with this kind of behavior.</p>
+<p>Next, we can call the JSON-RPC method: <code>eth_accounts</code>. We don’t have to request accounts from a user because they already granted our dApp permission. We instead get to see if they’ve connected with the account they are currently using. This is another promise that returns an array. So we’ll have to use the same syntax with <code>await</code> that we used with our connect function, like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">(</span><span class="n">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="n">Why</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">look</span><span class="w"> </span><span class="ow">like</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">ser</span><span class="vm">?</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">)()</span><span class="w"></span>
+<span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="n">ethereum</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>This looks the way it does because it is an async IIFE, an <a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE" target="_blank">immediately invoked function expression</a>. The parentheses have a job title now as a ‘grouping operator’, and this is where we throw in our logic. Then the second set of parentheses at the end is where we immediately call that anonymous function. Because we aren’t reusing this function anywhere else at the moment, we don’t need to explicitly name it.</p>
+<p>Inside our IIFE, we can throw in a <code>try/catch</code> block.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">(</span><span class="n">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">//</span><span class="w"> </span><span class="n">You</span><span class="err">&#39;</span><span class="n">ve</span><span class="w"> </span><span class="n">done</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">before</span><span class="w"></span>
+<span class="w">        </span><span class="err">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="err">{}</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">)()</span><span class="w"></span>
+<span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="n">ethereum</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>And now we can make that API call:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">(</span><span class="n">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">const</span><span class="w"> </span><span class="n">connectedAccount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">await</span><span class="w"> </span><span class="n">ethereum</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="err">{</span><span class="k">method</span><span class="err">:</span><span class="w"> </span><span class="s1">&#39;eth_accounts&#39;</span><span class="err">}</span><span class="p">)</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"></span>
+<span class="w">            </span><span class="n">setAccount</span><span class="p">(</span><span class="n">connectedAccount</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="err">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="err">}</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">)()</span><span class="w"></span>
+<span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="n">ethereum</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>As long as you haven’t revoked permissions, you should see immediately that the <code>&lt;Account /&gt;</code> component with your address is present. On refresh, it’ll still be there. All up until you manually disconnect with MetaMask— and then strangely, notice how the <code>&lt;Account /&gt;</code> component is still present?</p>
+<p>This might be confusing for your users who are expecting a ‘Disconnect’ button to replace a logout button. But if you look for it in components, there isn’t one there. We simply don’t have one. This is also by design, you see, a dApp can’t facilitate this request to just revoke the permissions you granted. It doesn’t have permission to do so because it’s not you. You can stay connected, but even then transactions cannot be approved and messages cannot be signed without you, as the private key holder, confirming them.</p>
+<p>If your user takes a certain action like disconnecting, and they’re doing that through MetaMask, the dApp frontend needs to know what just occurred, and what to do next. In the next lesson, we’ll cover event listeners with the Ethereum Provider API.</p>
+<h2 id="additional-reading-or-just-references">Additional Reading (or just references)</h2>
+<ul>
+<li><a href="https://docs.metamask.io/guide/ethereum-provider.html" target="_blank">Ethereum Provider API</a></li>
+<li><a href="https://blog.logrocket.com/guide-to-react-useeffect-hook/" target="_blank">A Guide to React's <code>useEffect</code> hook</a></li>
+<li><a href="https://overreacted.io/a-complete-guide-to-useeffect/" target="_blank">A Complete Guide to <code>useEffect</code></a></li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S04-developer-tooling/M7-web3-frontend/L3-persisting-connectivity/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

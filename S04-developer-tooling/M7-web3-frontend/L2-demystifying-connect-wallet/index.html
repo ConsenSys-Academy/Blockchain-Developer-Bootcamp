@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A Demystification of “Connect Wallet” - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="a-demystification-of-connect-wallet">A Demystification of “Connect Wallet”</h1>
+<p><a href="https://codesandbox.io/s/0x0-metamask-connect-start-8csed1" target="_blank"><img alt="Open in CodeSandbox" src="https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=forthebadge-square&amp;logo=codesandbox" /></a></p>
+<p>We’re going to start out with one of the first things you’ll want to tackle when developing your frontend alpha: The user’s ability to connect their wallet.</p>
+<p>This presents Web3 developers with a user experience (UX) quandary because <a href="https://www.nngroup.com/videos/jakobs-law-internet-ux/" target="_blank">Jakob’s Law of the Internet User Experience</a>  dictates that people “prefer your site to work the same way as all the other sites they already know.” You’ll know you’re on a Web3-enabled frontend when you see a button in a site’s header prompting you to <em>connect</em>. This is the button you’ll be rendering in your dApp if <code>window.ethereum</code> was detected. This call to action might come as a shock to your users who are accustomed to input fields for their credentials to log in.</p>
+<p><img alt="https://twitter.com/tommyk_eth/status/1481464394139815937" src="../../../img/S04/connect-wallet-tweet.png" /></p>
+<p>You know how, on a traditional website, you can’t take certain actions until you’ve logged in? You need to verify who you are initially. And the logic to log yourself in involves <code>fetch()</code> and how that queries a database to confirm if the inputted credentials match the ones stored after some cryptographic black magic, like <a href="https://auth0.com/blog/adding-salt-to-hashing-a-better-way-to-store-passwords/" target="_blank">salting</a>, has been applied?</p>
+<p>Well, “Connect Wallet” is the equivalent for Web3. You won’t be able to execute writable functionality until you've connected with your wallet. The calls you make to those smart contracts require a sender to initiate and fulfill them. After all, someone has to pay the gas needed for that transaction.</p>
+<p>When you click “Connect Wallet,” MetaMask will trigger a pop-up asking you to grant that dApp permission to view your accounts, your balances, and your activity, and initiate transactions on your behalf. </p>
+<p>The transactions you make will be public, but you can remain pseudonymous. You don’t exchange doxxable information. You’re able to own your data, you never surrender your private key for a database to manage. The wallet proves your identity by proving you own the accounts associated with it because all of your accounts are derived from your seed phrase. Interactions with public blockchains are intended to be permissionless and trustless. <strong><em>On Web3, your word is only as good as how much ether you have for gas.</em></strong></p>
+<blockquote>
+<p>📕 <em>But what does it </em><em>actually</em><em> mean to connect a wallet?</em> If the pop-up from MetaMask tells you that you’re granting this dApp permission to view publicly available information that is on a WHOLE blockchain for everyone to see, what’s the difference between that and someone viewing your account history on Etherscan? It comes down to trust. You can remain pseudonymous in both cases, yes. However, that person viewing your account history on Etherscan can’t initiate a contract call on your behalf, nor can they suggest one. The idea of permissions here can be reduced to a single question: <em>Do I trust this dApp to let me call smart contract functions in a way that is safe for me?</em></p>
+</blockquote>
+<h2 id="onboarding">Onboarding</h2>
+<p><a href="https://uxdesign.cc/15-rules-of-user-sign-in-experience-ae9011d04ee3" target="_blank">Websites on Web2 require onboarding of their own, but as end users, we don’t pay much mind to it because it’s something we’ve always been used to doing</a>. On Web2, it starts with providing contextual information like our email address, and our names that we enter into input fields. Oh, and our phone numbers too. We play <a href="https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s19.html" target="_blank">regex gymnastics</a> to generate secure passwords. These personally identifying tidbits of data are managed by a centralized entity that’ll only interact with us if it knows who we are. Sometimes, however, they need to know too much. <a href="https://www.notion.so/forbes.com/sites/marketshare/2012/03/05/if-youre-not-paying-for-it-you-become-the-product/?sh=35b534ce5d6e" target="_blank">And we don’t always know how our data is being managed</a>. </p>
+<p>Web3 comes with an onboarding process of its own, but it <em>delegates the task of identity management to applied cryptography and the Ethereum blockchain</em>, not just a single database managed by one big tech giant. Instead of your user creating an account from their credentials, they’ll need to have a browser wallet like MetaMask to derive an account from their private key.</p>
+<p>When we begin building, we want to assume our user doesn’t have MetaMask installed, therefore the Provider Interface is non-existent, and we can’t execute any Web3 functionalities. So we want to prompt them to install it. If they do have MetaMask installed, we want to offer them the ability to connect. If they approve that request, we want to show the address of the account they’re connected with. </p>
+<p><img alt="Connect Wallet Flow" src="../../../img/S04/connect-wallet-flow.png" /></p>
+<h2 id="how-buidl">How Buidl?</h2>
+<p><a href="https://codesandbox.io/s/0x0-metamask-connect-start-8csed1" target="_blank"><img alt="Open in CodeSandbox" src="https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=forthebadge-square&amp;logo=codesandbox" /></a></p>
+<p>If you take a look at <code>[App.js](https://codesandbox.io/s/0x0-metamask-connect-start-8csed1?file=/src/App.js)</code>, you’ll see it’s been purged of the boilerplate that <code>yarn create react-app</code> generates. There are styled components and a sprinkle of Framer Motion for animations. But we don’t have any other Web3 dependencies. In the <code>/components</code> directory, there are, however, three specifically named components, and they are the only ones you’ll be using for this activity. You won’t need to create anymore.</p>
+<p>What is important for us to have is a browser wallet like MetaMask. This is where it all begins.</p>
+<p>The first objective here is to <strong><em>conditionally render</em></strong> a button that prompts your user to <strong>Install MetaMask</strong> if <code>window.ethereum</code> does not exist. And we can achieve this using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator" target="_blank">ternary operators</a> in our JSX. We can then *<a href="https://reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx" target="_blank">embed* JavaScript expressions in our JSX</a> very easily, so long as we wrap the logic in curly braces.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;&gt;</span><span class="w"></span>
+<span class="w">  </span>{<span class="nv">condition</span><span class="w"></span>
+<span class="w">    </span>?<span class="w"> </span><span class="o">&lt;</span><span class="nv">Element</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">render</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">condition</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">true</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">Element</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">render</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">condition</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">false</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span>}<span class="w"></span>
+<span class="o">&lt;/&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<p>Open up <code>App.js</code> and you’ll see the components <code>InstallMetaMask</code>, <code>ConnectButton</code>, and <code>Account</code> are imported, but they’re commented out. Using ternary operators, go inside <code>&lt;main&gt;&lt;/main&gt;</code>, get <code>ConnectButton</code> to show up if <code>window.ethereum</code> is defined. If it is not defined, render <code>InstallMetaMask</code>. Now open the code sandbox in two windows— one where you have MetaMask installed, and one where you don’t. See how on one browser there’s a call to action to install MetaMask, and the other has a call to action to ✨ <em>Connect</em> ✨?</p>
+<div class="codehilite"><pre><span></span><code> <span class="nt">&lt;main&gt;</span>
+  {window.ethereum
+    ? <span class="nt">&lt;ConnectButton</span> <span class="nt">/&gt;</span>
+    : <span class="nt">&lt;InstallMetaMask</span> <span class="nt">/&gt;</span>
+  }
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div>
+
+<h3 id="state">State</h3>
+<p>To get users connecting to your dApp, we’ll need to call the <code>[eth_requestAccounts](https://docs.metamask.io/guide/rpc-api.html#restricted-methods)</code> JSON-RPC method from <code>window.ethereum</code>. In <code>App.js</code>, we’re importing <code>useState</code> from React. The <code>eth_requestAccounts</code> method returns a promise. When that promise to grab a user’s accounts resolves to an array, we’ll need to hold onto it with the <a href="https://reactjs.org/docs/hooks-state.html" target="_blank">state hook</a>. <code>useState</code> accepts an initial state but returns two values: the current state, and a function to update the state.</p>
+<p>Because our user hasn’t connected yet, our initial state would be an empty string. The first value will be <code>account</code>, and the second will be <code>setAccount</code>. We can define this hook in <code>App.js</code>. When the promise resolves, we get the array, we’ll want to <em>hold it in state</em>, which we’ll achieve by calling <code>setAccount</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="p">[</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="n">setAccount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">useState</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>Now that we have that setup, we can 👀 define the function to connect 👀.</p>
+<h3 id="asyncawait">Async/Await</h3>
+<p>We’ll need to define our function to connect <a href="https://www.freecodecamp.org/news/synchronous-vs-asynchronous-in-javascript/" target="_blank">asynchronously, rather than synchronously</a>, because of the way functions in JavaScript behave. If <code>eth_requestAccounts</code> returns a promise, we’ll want to wait for that promise to resolve before any other action in that function can be executed. We need to wait for our request to be sent to the blockchain through the nodes, then back to us to consume.</p>
+<p>Inside the function body, we can throw in a <code>try/catch</code> block. See the code below:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">connect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="n">eth_requestAccounts</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>We can see here the connect function will now <em>attempt</em> to ask a user to connect, but anticipate failure. In the event of a failure, <a href="https://docs.metamask.io/guide/ethereum-provider.html#errors" target="_blank">it will spit out an error code</a> that can then be used to give feedback— in this case, we can prompt a user to retry connecting. If a user rejects the request to connect, this is where the <code>catch</code> will be triggered letting them know that they didn’t approve the request.</p>
+<p>Next step is to create a variable and assign the <code>eth_requestAccounts</code> method to it. See the code below:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">await</span><span class="w"> </span><span class="n">window</span><span class="o">.</span><span class="n">ethereum</span><span class="o">.</span><span class="n">request</span><span class="p">({</span><span class="w"> </span><span class="n">method</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;eth_requestAccounts&#39;</span><span class="w"> </span><span class="p">})[</span><span class="mi">0</span><span class="p">]</span><span class="err">`</span><span class="w"></span>
+</code></pre></div>
+
+<p>This is where we can tie up our connect functionality. Because we have an <code>async</code> function, we’ll get to use the <code>await</code> statement on the method we’ll want to wait for. The parentheses around the <code>await</code> statement followed by the <code>[0]</code> means once this promise is resolved and we get an array, we’ll only want the first account. That’s what our <code>accounts</code> variable will return, and that’s what we’ll use the  <code>setAccount</code>  function on.</p>
+<p>Your function should look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">connect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">await</span><span class="w"> </span><span class="n">window</span><span class="o">.</span><span class="n">ethereum</span><span class="o">.</span><span class="n">request</span><span class="p">({</span><span class="w"> </span><span class="n">method</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_requestAccounts&quot;</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
+<span class="w">      </span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="n">setAccount</span><span class="p">(</span><span class="n">accounts</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+
+<p>Once the function is defined, switch over to <code>ConnectButton</code>. As a React functional component, it takes the prop of <code>connect</code>. The next place you’ll see <code>connect</code> being used in <code>ConnectButton</code> is in the return block, in <code>&lt;Button&gt;</code>, where it’s being passed into <code>handleClick</code>. <code>ConnectButton</code> will be expecting the connect function that we can pass into it when we render it in <code>&lt;main&gt;&lt;/main&gt;</code> like so:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="nv">ConnectButton</span><span class="w"> </span><span class="k">connect</span><span class="o">=</span>{<span class="k">connect</span>}<span class="w"> </span><span class="o">/&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<p>The updated expression will look like this:</p>
+<div class="codehilite"><pre><span></span><code> <span class="nt">&lt;main&gt;</span>
+  {window.ethereum
+    ? <span class="nt">&lt;ConnectButton</span> <span class="na">connect=</span><span class="s">{connect}</span> <span class="nt">/&gt;</span>
+    : <span class="nt">&lt;InstallMetaMask</span> <span class="nt">/&gt;</span>
+  }
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div>
+
+<h3 id="showing-the-account">Showing the account</h3>
+<p><img alt="Gru Connect Wallet Meme" src="../../../img/s04/connect-wallet-gru.png" /></p>
+<p>Tried to click connect, connected successfully, and noticed you’re still seeing the connect button? We’re going to have to tweak our logic in the <code>&lt;main&gt;&lt;/main&gt;</code> element to reflect what sorcery we have going on in our app state right now.</p>
+<p>Up until this point, we had a binary condition to check for: if <code>window.ethereum</code> was injected into the browser. If you look back on <code>account</code>, it initially started as an empty string— one of the six <a href="freecodecamp.org/news/falsy-values-in-javascript/" target="_blank">falsy values</a> in JavaScript. If a user has connected, it has a value as a 42-character long hexadecimal string. Ternary operators come in handy here because we can chain them.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;&gt;</span><span class="w"></span>
+<span class="w">  </span>{<span class="nv">firstCondition</span><span class="w"></span>
+<span class="w">    </span>?<span class="w"> </span><span class="o">&lt;</span><span class="nv">Element</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">render</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">firstCondition</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">true</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span>:<span class="w"> </span><span class="nv">secondCondition</span><span class="w"></span>
+<span class="w">      </span>?<span class="w"> </span><span class="o">&lt;</span><span class="nv">Element</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">render</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">secondCondition</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">true</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">      </span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">Element</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">render</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">secondCondition</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">false</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span>}<span class="w"></span>
+<span class="o">&lt;/&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<p>The first condition to check for can be <code>account</code>. If that is no longer an empty string, then we can render a <code>&lt;p&gt;</code> tag with the content of <code>account</code>. If it is still an empty string, we can check for <code>window.ethereum</code>. Perhaps the user doesn’t have MetaMask installed, and that’s why <code>account</code> is an empty string. So we can go show them <code>ConnectButton</code> if it was detected, and <code>InstallMetaMask</code> if it wasn’t.</p>
+<p>Your updated expression should look like this:</p>
+<div class="codehilite"><pre><span></span><code>{account
+  ? <span class="nt">&lt;p&gt;</span>{account}<span class="nt">&lt;/p&gt;</span>
+  : window.ethereum
+  ? <span class="nt">&lt;ConnectButton</span> <span class="na">connect=</span><span class="s">{connect}</span> <span class="nt">/&gt;</span>
+    : <span class="nt">&lt;InstallMetaMask</span> <span class="nt">/&gt;</span>
+)}
+</code></pre></div>
+
+<p>And now you should be able to see your address in its full glory. All 42 characters of it. This is great, but it feels a bit excessive, no?</p>
+<h3 id="an-externally-owned-account-by-any-other-formatting-would-still-be-you">An externally owned account by any other formatting… would still be you.</h3>
+<p>We’re not displaying embarrassing usernames or email addresses anymore. There’s no longer a limit to how long your username can be. I mean, we’re at 42 WHOLE characters long. Imagine displaying that on a mobile browser 😅. Thanks, but no thanks. As developers architecting a user experience in uncharted territory, we have to ask ourselves if we’re overloading the user cognitively by displaying their address in its entirety.</p>
+<p>Consider the <a href="https://medium.com/@coffeeandjunk/design-psychology-serial-position-effect-ca0e4cf299cb" target="_blank">Serial Position Effect</a>. Looking at your address, try to read out the characters before you lose your position. But you know you connected, if you check MetaMask, you’ll see the first and last few digits are identical. The code you wrote helped connect a user. Is it really necessary to show the whole address? No. Not really. Ideally, you don’t want a user spending too much time confirming that their address on a dApp matches what they know connected with. But you do want to show a portion of their address.</p>
+<p>Before you do anything, in <code>&lt;main&gt;</code>, let’s swap the <code>&lt;p&gt;{account}&lt;/p&gt;</code> for <code>&lt;Account account={account} /&gt;</code>.</p>
+<p>Now open up <code>Account.js</code>. The return block has a <code>&lt;Wrap&gt;</code> element, but <code>&lt;Blockie /&gt;</code> is commented out. Without uncommenting <code>&lt;Blockie /&gt;</code>, add <code>{account}</code> inside <code>&lt;Wrap&gt;</code>. You’ll still see the whole address, but we have some styling. So we have that going for us, which is nice. But it doesn’t fix our problem of how to display an address. What we need to do is… truncate it. Just a smidge. To the first six and last four characters, to be more specific. The first six account for the leading <code>0x</code>, which is the hash prefix, plus the next four characters.</p>
+<p>We can define a function called <code>formatAddress</code> that takes the argument of a user’s address. Because the address is a string, we can use the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr" target="_blank"><code>substr()</code> method</a> to return portions of it. BUT… we need to separate those portions too. What we’ll return is a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank">template literal</a> with the first substring, followed by ellipses, and then the second substring.</p>
+<p>Your function should look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">formatAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">addr</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="err">`</span><span class="o">$</span><span class="p">{</span><span class="n">addr</span><span class="o">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)}</span><span class="o">...$</span><span class="p">{</span><span class="n">addr</span><span class="o">.</span><span class="n">substr</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)}</span><span class="err">`</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+
+<p>Now you can add a <code>&lt;p&gt;</code> tag inside <code>Wrap</code>, and inside that <code>&lt;p&gt;</code> tag, you can add <code>{formatAddress(address)}</code>. Looks a lot better, right? But we’re not done yet. There’s something even cooler we can add.</p>
+<h3 id="identicon">Identicon</h3>
+<p>If you open up MetaMask and look on the right, you’ll see a little pixelated icon. Depending on your settings, you might be seeing a <a href="https://www.npmjs.com/package/jazzicon" target="_blank">Jazzicon</a> or a <a href="https://www.npmjs.com/package/ethereum-blockies" target="_blank">Blockie</a>. If you change accounts on MetaMask, it also changes. That’s because it’s unique to you. It was generated from your address. There can be as many variations of Jazzicons or Blockies as there can be addresses. So now it can be used as a digital representation of your address. When a user sees what their identicon looks like on MetaMask, it would be helpful to see what it would also look like on your dApp as a subtle visual confirmation that they are using the correct account.</p>
+<p>Take a look at <code>&lt;Blockie /&gt;</code>. Right now it takes the props of <code>size</code> and <code>scale</code>, but those are just for styling. What we’ll want to pass in is a <code>seed</code>, which will determine how our blockie is generated. All we need to do is pass in our address as the seed. Hit save. I know. Cool, right? That simple.</p>
+<p>Here’s what your <code>Account.js</code> should look like:</p>
+<div class="codehilite"><pre><span></span><code>const Account = ({ account }) =&gt; {
+  const formatAddress = (addr) =&gt; {
+    return `<span class="cp">${</span><span class="n">addr</span><span class="o">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span><span class="cp">}</span>...<span class="cp">${</span><span class="n">addr</span><span class="o">.</span><span class="n">substr</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="cp">}</span>`;
+  };
+
+  return (
+    <span class="nt">&lt;Wrap&gt;</span>
+      <span class="nt">&lt;Blockies</span> <span class="na">seed=</span><span class="s">{account}</span> <span class="na">size=</span><span class="s">{10}</span> <span class="na">scale=</span><span class="s">{3}</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;p&gt;</span>{formatAddress(account)}<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/Wrap&gt;</span>
+  );
+};
+</code></pre></div>
+
+<h2 id="you-can-disconnect-but-you-can-never-leave-maybe">You can disconnect, but you can never leave… Maybe</h2>
+<p>So far, the bases you’ve covered include onboarding a user. Allowing them to connect. And showing that they’ve connected. But what about when they leave your dApp? Go ahead and refresh the page. See how it doesn’t show your address anymore? Now click connect. Notice now how MetaMask didn’t even popup, but your address shows up right away? But wait, get this. Open up MetaMask. We’re still connected?</p>
+<p><img alt="Screenshot showing MetaMask is still connected" src="../../../img/s04/connect-wallet-connectivity.png" /></p>
+<p>Try connecting to a known dApp. Now refresh. Address still there? Let’s dig around a bit, <em>some</em> of these dApps will let you disconnect. Re-read that sentence. Now try to disconnect, if there’s a button for it. You won’t see your address anymore, great. But go check MetaMask. You’re <strong>still</strong> connected. I know. <em>I know.</em></p>
+<p>Your users will be expecting a button to log out, it seems only rational. And you have to look them in the eyes, wistfully, and say, no… no, I’m sorry, things work a bit differently in the wonderland that is Web3. Go look in <code>/components</code>, there’s no component for a button to log out. Not only that but your users will remain connected and you have to explain this to them because this is unlike any good experience they ever had on an application before. So what is actually going on?</p>
+<p>Your users are connected until they’re not— even if they refresh their browser, clear their cache, cookies and browser data. In the next lesson we’ll cover why your user stays connected.</p>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S04-developer-tooling/M7-web3-frontend/L2-demystifying-connect-wallet/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

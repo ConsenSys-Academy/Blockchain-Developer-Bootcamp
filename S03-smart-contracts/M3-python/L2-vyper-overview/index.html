@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index - ConsenSys Academy Developer Bootcamp</title>
+    <link href="../../../style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" async></script>
+    <script src="../../../text-bounce.js" async></script>
+  </head>
+  <body>
+    <h1 id="vyper-overview">Vyper Overview</h1>
+<p>Despite there being <a href="https://consensys.net/diligence/audits/2019/10/vyper/" target="_blank">concerns about its compiler</a> and the slower rate of development compared to Solidity, there are still many resources and ways to build smart contracts using <a href="https://vyper.readthedocs.io/en/latest/" target="_blank">Vyper.</a> In this section, we'll discuss more about the Vyper language and provide resources where you can learn more about the language. Please note, Vyper is still considered somewhat experimental.</p>
+<h2 id="vyper-design-principles">Vyper Design Principles</h2>
+<p>Vyper has a few principles and goals that aim to make it a language that is ideal for programming smart contracts. From <a href="https://vyper.readthedocs.io/en/latest/" target="_blank">its docs</a> (which we quote extensively in this section):</p>
+<ul>
+<li><strong>Security</strong> is a primary focus for any smart contract language and Vyper maintains that “it should be possible and natural to build secure smart contracts in Vyper.”</li>
+<li>Vyper code should be not just human readable, but make it difficult to write misleading code. This directive is aimed at <strong>making contract audits as successful as possible.</strong></li>
+<li>Striving for language and compiler <strong>simplicity</strong> support the other goals by keeping confusing complexity under control.</li>
+</ul>
+<p>To achieve these goals, Vyper implements the following features: </p>
+<ul>
+<li>Bounds and overflow checking</li>
+<li>Support for signed integers and decimal fixed point numbers</li>
+<li>Decidability - Reliably compute upper bounds for gas consumption of any function call</li>
+<li>Strong typing</li>
+<li>Small and understandable compiler code</li>
+<li>Limited support for pure functions</li>
+</ul>
+<p>There is a notable lack of the following features that are present in Solidity: </p>
+<ul>
+<li><strong>Modifiers</strong> Modifiers make it easier to write misleading code. It encourages writing code where execution jumps around the source file, making audits more difficult. Vyper encourages inline checks in each function to improve clarity.</li>
+<li><strong>Class Inheritance</strong> Inheritance also makes it easier to write misleading code. Contracts’ logic is spread across multiple files, decreasing readability and requires additional understanding about how inheritance works in case of conflicts.</li>
+<li><strong>Inline Assembly</strong> Inline assembly makes it possible to manipulate variables without referencing it directly by name. This makes development and auditing more difficult and can obfuscate bugs.</li>
+<li><strong>Function overloading</strong> Contracts with overloaded functions can be confusing. It may not be clear which function is being called in specific situations.</li>
+<li><strong>Operator overloading</strong></li>
+<li><strong>Recursive calling</strong> It is not possible to set an upper bound on gas limits in contracts with recursive calling</li>
+<li><strong>Infinite-length loops</strong> It is not possible to set an upper bound on gas limits in contracts with infinite length loops</li>
+<li><strong>Binary fixed point</strong> In binary fixed point, approximations are required (e.g. in Python 0.3 + 0.3 + 0.3 + 0.1 != 1).</li>
+</ul>
+<p>As you can see in the list of features that Vyper is lacking, writing clear, understandable code is of primary importance.</p>
+<p>Vyper is not trying to be a replacement for Solidity. It is meant to be a more security focused smart contract programming language and will likely not be able to do everything that Solidity can.</p>
+<h2 id="additional-links">Additional Links</h2>
+<ul>
+<li><a href="https://github.com/ConsenSys-Academy/simple-bank-vyper" target="_blank">Code: Simple Bank in Vyper (ConsenSys Academy)</a> This is a Vyper version of our Simple Bank exercise (normally in Solidity) you'll encounter later in this section.</li>
+<li><a href="https://www.youtube.com/watch?v=-kZpEmNnzyE&amp;list=PLO5VPQH6OWdWOd-IJTfIzlM2a1yv1rSN-" target="_blank">Course: Learn Vyper (0.2)</a> A comprehensive series of videos that covers Data Types, Functions, Variables, Logic Control, Errors, Interfaces and much more.</li>
+<li><a href="https://blog.chain.link/develop-python-defi-project/" target="_blank">Tutorial: Develop a DeFi Project using Python (Chainlink)</a></li>
+<li><a href="https://medium.com/ethereum-classic/vyper-and-brownie-contract-development-on-evm-chains-85ba7fa2feef" target="_blank">Tutorial: Vyper and Brownie Contract Development on EVM Chains</a> An interesting tutorial walking through developing a contract using Vyper and Brownie.</li>
+<li><a href="https://vyper.readthedocs.io/en/stable/vyper-by-example.html" target="_blank">Docs: Vyper by Example</a> From the Vyper documentation, a walkthrough of common development patterns in Vyper.</li>
+</ul>
+    <br /><div class="footer">
+    <a href="https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/edit/staging/docs/S03-smart-contracts/M3-python/L2-vyper-overview/index.md" target="_blank">Edit this page on GitHub</a>
+    
+    <div class="discord">
+        <img class="discord-logo" src="../../../discord.svg" alt="Discord logo" ><a href="https://discord.gg/FrHSjSn9dX" target="_blank" >Questions? Ask on Discord! </a>  
+    </div> 
+</div>
+  </body>
+</html>

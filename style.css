@@ -1,0 +1,176 @@
+/* :root {
+  font-size: 62.5%; /* (62.5/100) * 16px = 10px */
+/*  --font-size--small: 1.4rem; /* 14px */
+/*  --font-size--default: 1.6rem; /* 16px */
+/*  --font-size--large: 2.4rem; /* 24px */
+/*  --background-color: white;
+} */
+/* 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  padding: 10%;
+  min-height: 100%;
+  font-family:  -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  /* font-size: var(--font-size--default); */
+}
+
+h1 {
+  /* padding-bottom: 2%; */
+  color: rgb(101,112,139);
+  letter-spacing: 0.2px;
+}
+
+
+/* NEED TO CHANGE THE COLOR BELOW FOR ACCESSIBILITY */
+
+h2 {
+  color:rgba(101,112,139,0.7);
+  /* padding-top: 2%; */
+  /* padding-bottom: 1%; */
+  letter-spacing: 0.2px;
+}
+
+p {
+  /* padding: 10px; */
+}
+
+li {
+  /* list-style: none; */
+}
+
+
+
+/* link effect */
+
+a {
+  position: relative;
+  font-weight: 500;
+  color: rgba(44, 85, 221, 0.9);
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -0.5px;
+  left: 0;
+  background-color: rgba(44, 85, 221, 0.9);
+  visibility: hidden;
+  transition: all 0.3s ease-in;
+}
+
+a:hover:before {
+  visibility: visible;
+  width: 100%;
+}
+
+/* footer discord and github links */
+
+.footer {
+  width: 100%;
+  margin-top: 50px;
+
+}
+
+.footer a {
+  color: grey;
+  float: right;
+
+}
+
+.footer a:hover:before, .footer a:before {
+  transition: none;
+  width: 0%;
+}
+
+
+.discord {
+  float: left;
+
+}
+
+.discord-logo {
+  width: 30px;
+  padding: 2px 7px;
+  display: inline;
+}
+
+/* currently .column and .row:after are only used for "M0L1" section */
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+details > summary {
+
+  list-style:none;
+
+}
+
+img {
+  max-width: 90%;
+  margin: auto;
+  padding: 8px;
+  display: block;
+}
+
+/* from css-tricks https://css-tricks.com/examples/Blockquotes/ */
+
+blockquote {
+  font: 14px/20px italic Times, serif;
+  padding: 8px;
+  background-color: #faebbc;
+  border-top: 1px solid #e1cc89;
+  border-bottom: 1px solid #e1cc89;
+  margin: 5px;
+  background-image: url(images/openquote1.gif);
+  background-position: top left;
+  background-repeat: no-repeat;
+  text-indent: 23px;
+  }
+blockquote span {
+     display: block;
+     background-image: url(images/closequote1.gif);
+     background-repeat: no-repeat;
+     background-position: bottom right;
+   }
+
+   /* caption for things in the img-wrapper */
+.caption {
+  display: block;
+  width:100%;
+  text-align:center;
+  /* this font size doesn't work have to set locally */
+  /* font-size:0.5em;  */
+
+}   
+
+/* code styling */
+
+pre {
+  background: black;
+  color: white;
+  padding: 20px;
+}
