@@ -15,6 +15,9 @@
   <a href="https://twitter.com/ConsenSysAcad" target="_blank">
     <img src="https://img.shields.io/twitter/follow/ConsenSysAcad.svg?logo=twitter">
   </a>
+  <a href="https://discord.com/invite/consensys" target="_blank">
+    <img src="https://img.shields.io/discord/697535391594446898?color=green&label=discord&logo=discord">
+  </a>
 </p>
 
 <div align="center">
@@ -186,7 +189,7 @@ An example of this process found below:
 4. Push to the branch (`git push origin branchName`)
 5. Create a new Pull Request
 
-Built by [ConsenSys](www.consensys.net/) and
+Built by [ConsenSys](https://consensys.net/) and
 
 ![GitHub Contributors Image](https://contrib.rocks/image?repo=ConsenSys-Academy/Blockchain-Developer-Bootcamp)
 

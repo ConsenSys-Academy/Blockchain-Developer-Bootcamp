@@ -74,6 +74,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [BuidlGuidl](https://buidlguidl.com/){target=_blank}
 - [Cleverflare](https://cleverflare.com/#/){target=_blank}
 - [Resources to Learn Web 3](https://twitter.com/wslyvh/status/1405493777347739654){target=_blank}
+- [Learn Blockchain, Solidity, and Full Stack Javascript Development](https://www.freecodecamp.org/news/learn-blockchain-solidity-full-stack-javascript-development/){target=_blank}
 - [How to Become a DeFi Developer](https://defiweekly.substack.com/p/how-to-become-a-defi-developer){target=_blank}
 - [Rabbithole.gg](https://rabbithole.gg){target=_blank} Place to learn and earn tokens
 - [Zapper Learn](https://learn.zapper.fi/){target=_blank} Educational resources around DeFi
