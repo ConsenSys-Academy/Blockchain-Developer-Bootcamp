@@ -90,3 +90,6 @@ Read more about DAOs [via DAOHaus](https://app.daohaus.club/explore){target=\_bl
 
 ## Additional Resources
 - [Article: Organizational Legos, The State of DAO Tooling (Nichanan Kesonpat)](https://medium.com/1kxnetwork/organization-legos-the-state-of-dao-tooling-866b6879e93e){target=_blank} Excellent overview of available tooling for DAOs from Fall 2021
+
+- [Whitepaper: Decentralized Autonomous Organizations: Beyond the Hype (World Economic Forum)](https://www3.weforum.org/docs/WEF_Decentralized_Autonomous_Organizations_Beyond_the_Hype_2022.pdf){target_blank}A comprehnisve resource to learn everything in depth  about DAO's, right from understanding what is a DAO and how it works to its legal and regulatory challenges.
+
