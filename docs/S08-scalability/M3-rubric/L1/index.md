@@ -1,6 +1,6 @@
 ## Rubric for Analyzing Scalability Solutions
 
-The challenge with understanding Layer 2 and scaling solutions is a common challenge for The explosion in demand for sophisticated, bleeding-edge cryptographic products leads to a common predicament in blockchain. For those not deeply familiar with these projects and their associated tech, it’s extremely difficult—if not intimidating—to decide which is best and safest to use. Not to mention the rate of change of L2 documentation and the L2 frameworks themselves.
+The explosion in demand for sophisticated, bleeding-edge cryptographic products leads to a common predicament in blockchain. For those not deeply familiar with these projects and their associated tech, it’s extremely difficult—if not intimidating—to decide which is best and safest to use. Not to mention the rate of change of L2 documentation and the L2 frameworks themselves.
 
 However, there are trade-offs to using scalability solutions. Trade-offs to the blockchain primitives we discussed earlier in the course. With this section, we will continue propose a framework to assist the analysis of L2 projects. It’s meant to help the reader develop an intuition for approaching a possible L2 solution for their various needs and circumstances. But it's also meant to highlight the trade-offs a scalability approach requires against our main blockchain network layer.
 
@@ -52,15 +52,15 @@ Economic Security refers to the operational security that upholds the financial 
 Stack Security is more of a passive security that comes from having a battle-hardened software stack. It includes aspects like:
 
 - <b>Shared Cryptographic Primitives</b> Or primitives developed and hardened over decades of research and application. Compare this with newer cryptographic features that may not currently enjoy widespread adoption. For example, Elliptic Curve Cryptography versus newer ZKP methods.
-- <b>Shared Technology Stack Shared</b> Investments into core technology stack and open-source network effects. Examples include the Go-Ethereum implementation, Solidity compiler and EVM runtime maintained by hundreds of contributors over time.
-- <b>Shared Ancillary Tooling</b> Mature development environments and workflows, such as Truffle as well as security tooling, such as EVM bytecode formal verification, Solidity static analysis and fuzzers.
+- <b>Shared Technology Stack</b> Investments into core technology stack and open-source network effects. Examples include the Go-Ethereum implementation, Solidity compiler and EVM runtime maintained by hundreds of contributors over time.
+- <b>Shared Ancillary Tooling</b> Mature development environments and workflows, such as Truffle, as well as security tooling, such as EVM bytecode formal verification, Solidity static analysis and fuzzers.
 - <b>Shared ecosystem and aligned security objectives</b> The powerful network effects delivered by open-source development and the community that forms around it. Includes security gathered from audits, formal verification development, and institutional knowledge of attack vectors and history.
 
 ## Capital Efficiency
 This refers to the cost and utility of capital held in an L2 network over time. L2 capital efficiency points that should be considered include:
 
-1. Capital must be locked into an L1 contract in order to move into the L2 Locking capital can come at high opportunity cost depending on the lockup times. Some systems require a lockup time of minutes, others require weeks. 
-2. The real cost of capital can be discounted depending on the utility available within the network If the user can access great utility, the opportunity costs of lockup can be lower even if their capital is locked up. 
+1. Capital must be locked into an L1 contract in order to move into the L2. Locking capital can come at high opportunity cost depending on the lockup times. Some systems require a lockup time of minutes, others require weeks. 
+2. The real cost of capital can be discounted depending on the utility available within the network. If the user can access great utility, the opportunity costs of lockup can be lower even if their capital is locked up. 
 3. Fees for rapid exits, facilitated by liquidity providers (LPs), will be determined by real cost of capital. We'll discuss this more in our live session, "Problems Still to Be Solved in Scalability."
 
 ## Transaction Finality
@@ -92,3 +92,4 @@ This was a very technical discussion of the rubric for analyzing L2 or scalabili
 - <a href="https://consensys.net/blog/blockchain-explained/four-questions-to-judge-any-layer-2-scaling-solution/" target="_blank" rel="noopener noreferrer">Article: For Questions to Judge Any Layer 2 Scaling Solution</a> A less-technical, more general-audience article discussing the same paradigm outlined in this lesson
 - <a href="https://medium.com/matter-labs/evaluating-ethereum-l2-scaling-solutions-a-comparison-framework-b6b2f410f955" target="_blank" rel="noopener noreferrer">Article: Evaluating Ethereum L2 Scaling Solutions: A Comparison Framework</a> Another framework proposal from Matter Labs
 - <a href="https://gourmetcrypto.substack.com/p/layer-2-for-beginners" target="_blank" rel="noopener noreferrer">Article: Layer-2 for Beginners (Ali Atiia)</a> Or How to Spot a Sidechain Charlatan and Keep Your Penny Safe
+- <a href="https://l2beat.com/scaling/tvl/" target="_blank" rel="noopener noreferrer"> L2Beat's Website Allows Deeper Dives Into Many Layer 2 Protocols</a>
