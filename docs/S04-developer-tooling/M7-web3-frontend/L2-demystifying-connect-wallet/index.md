@@ -93,7 +93,7 @@ We can see here the connect function will now *attempt* to ask a user to connect
 Next step is to create a variable and assign the `eth_requestAccounts` method to it. See the code below:
 
 ```jsx
-const accounts = (await window.ethereum.request({ method: 'eth_requestAccounts' })[0]`
+const account = (await window.ethereum.request({ method: 'eth_requestAccounts' })[0]`
 ```
 
 This is where we can tie up our connect functionality. Because we have an `async` function, we’ll get to use the `await` statement on the method we’ll want to wait for. The parentheses around the `await` statement followed by the `[0]` means once this promise is resolved and we get an array, we’ll only want the first account. That’s what our `accounts` variable will return, and that’s what we’ll use the  `setAccount`  function on.
@@ -103,10 +103,10 @@ Your function should look like this:
 ```jsx
   const connect = async () => {
     try {
-      const accounts = (
+      const account = (
         await window.ethereum.request({ method: "eth_requestAccounts" })
       )[0];
-      setAccount(accounts);
+      setAccount(account);
     } catch (e) {
       console.log(e);
     }
@@ -122,7 +122,9 @@ Once the function is defined, switch over to `ConnectButton`. As a React functio
 The updated expression will look like this:
 
 ```jsx
+// in a server-side framework like Next.js or Vite SSR you might have to do a check to see if window is defined like typeof window !== 'undefined' && window.ethereum
  <main>
+ 
   {window.ethereum
     ? <ConnectButton connect={connect} />
     : <InstallMetaMask />
@@ -136,7 +138,7 @@ The updated expression will look like this:
 
 Tried to click connect, connected successfully, and noticed you’re still seeing the connect button? We’re going to have to tweak our logic in the `<main></main>` element to reflect what sorcery we have going on in our app state right now.
 
-Up until this point, we had a binary condition to check for: if `window.ethereum` was injected into the browser. If you look back on `account`, it initially started as an empty string— one of the six [falsy values](freecodecamp.org/news/falsy-values-in-javascript/){target=\_blank} in JavaScript. If a user has connected, it has a value as a 42-character long hexadecimal string. Ternary operators come in handy here because we can chain them.
+Up until this point, we had a binary condition to check for: if `window.ethereum` was injected into the browser. If you look back on `account`, it initially started as an empty string— one of the six [falsy values](freecodecamp.org/news/falsy-values-in-javascript/){target=\_blank} in JavaScript. If a user has connected, it has a value as a 42-character long hexadecimal string. Ternary operators come in handy here because we can chain them (but not much or they get hard to read 😅).
 
 ```jsx
 <>

@@ -17,7 +17,7 @@
  On the left, we see a user interacting with a frontend interface, usually a website on a traditional web browser their device, either on mobile or desktop. That website is powered primarily by "Web 2.0" technology (browser connects to a server, has responsive layout, has interactive JavaScript interface). However, the website has two main elements powered by blockchain. The first is any data the website is reading from the blockchain. This might be recent transactions, current user balance, current block number on the network, etc.
 
  The second is the ability for the user to submit their own transactions to the blockchain from the website ("writing" to the network). This is made possible through a concert of three aspects: 
-* **A Web 3 JavaScript library** (web3.js or ethers.js, for example)
+* **A Ethereum Provider JavaScript library** These libraries (web3.js or ethers.js, for example) have all the tooling needed to simplify communication between your website and the Ethereum network 
 * A **cryptowallet** which can safely handle a user's private key, allowing them to sign transactions (MetaMask, in this case)
 * **Code deployed by you, the developer,** to your website which constructs pre-formatted transactions, targeting your deployed smart contract, specifically a function in its ABI.
 
