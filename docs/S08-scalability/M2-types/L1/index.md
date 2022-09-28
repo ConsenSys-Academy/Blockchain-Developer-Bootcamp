@@ -6,22 +6,11 @@ Several options have been proposed and worked on for scaling Ethereum on a short
 
 ## Rollups
 
-In general, on Rollup Layer 2 solutions,  transactions are submitted to L2 nodes instead of L1, and batched. Eventually they are put on L1 and no longer mutable. L2 nodes are Ethereum compatible, independent blockchains. All state and execution is handled in L2: Signature verification, Contract execution, etc. The L1 only stores transaction data
+In general, on Rollup Layer 2 solutions,  transactions are submitted to L2 nodes instead of L1, and batched. Eventually they are put on L1 and no longer mutable. L2 nodes are Ethereum compatible, independent blockchains. All state and execution is handled in L2: Signature verification, Contract execution, etc. The L1 only stores transaction data. 
 
 Note: the terminology here can be challenging but Pranay Mohan of Celo Network <a href="https://mobile.twitter.com/pranaymohan/status/1409195144360992773" target="_blank" rel="noopener noreferrer">proposes</a> we think of rollups as shard clients and the rollup contracts as on-chain light clients.
 
-There are two major kinds of Rollups: ZK-Rollups and Optimistic Rollups.
-
-### Zero-Knowledge / ZK-Rollups
-
-As we mentioned earlier in the section on Zero-Knowledge proofs, ZKPs can compress a larger amount of computation or verification into a single operation. ZK-Rollups bundle hundreds of transfers that occur on the ZKP Rollup L2 into a single L1, mainnet transaction via a smart contract located on L1. From the data submitted the smart contract can verify all the transfers that are included. 
-
-Critically, you don’t need all the data to verify the transactions, just the zero-knowledge proof. Transactions are written to Ethereum as calldata, to reduce gas.
-
-- **Pros** No delay, less vulnerable to economic attacks
-- **Cons** Limited to simple transfers and ZK-Rollup chains not compatible with EVM as validity proofs are intense to compute and have to build their own language to process. However, there is some work on building Solidity to ZKP language compilers, like <a href="https://medium.com/nethermind-eth/warp-your-way-to-starknet-ddd6856875e0" target="_blank" rel="noopener noreferrer">this one for Cairo,</a> Starknet's ZKP language.
-
-ZK-Rollups are not worth it for applications with little on-chain activity but are attractive for simple, high-volume exchanges. Currently using this sort of rollup: <a href="https://loopring.io/#/" target="_blank" rel="noopener noreferrer">Loopring</a>, <a href="https://starkware.co/" target="_blank" rel="noopener noreferrer">Starkware,</a> <a href="https://matter-labs.io/" target="_blank" rel="noopener noreferrer">Matter Labs' zkSync,</a> <a href="https://aztec.network/" target="_blank" rel="noopener noreferrer">Aztec's ZK.Money network</a>
+There are two major kinds of Rollups: Optimistic Rollups and ZK-Rollups.
 
 ### Optimistic Rollups
 
@@ -36,6 +25,50 @@ The main mechanism that makes this work are <b>fraud proofs:</b> If a verifier n
 - **Cons** Long wait times for on-chain transactions due to potential fraud challenges. Potentially vulnerable to attacks if the value in an optimistic rollup exceeds the amount in an operator’s bond.
 
 Optimistic Roll-ups are currently being built by <a href="https://optimism.io/" target="_blank" rel="noopener noreferrer">Optimistic PBC,</a> <a href="https://offchainlabs.com/" target="_blank" rel="noopener noreferrer">Arbitrum,</a> <a href="https://fuel.sh/" target="_blank" rel="noopener noreferrer">Fuel Network,</a> <a href="https://www.immutable.com/" target="_blank" rel="noopener noreferrer">ImmutableX,</a> <a href="https://www.deversifi.com/" target="_blank" rel="noopener noreferrer">Deversifi</a> and <a href="https://cartesi.io/" target="_blank" rel="noopener noreferrer">Cartesi</a>
+
+### Zero-Knowledge / ZK-Rollups
+
+As we mentioned earlier in the section on Zero-Knowledge proofs, ZKPs can compress a larger amount of computation or verification into a single operation. ZK-Rollups bundle hundreds of transfers that occur on the ZKP Rollup L2 into a single L1, mainnet transaction via a smart contract located on L1. From the data submitted the smart contract can verify all the transfers that are included. 
+
+The main benefit over an Optimistic rollup is that you get finality much faster, usually within a couple of hours though it could be made faster still at an increased gas price.
+
+Critically, you don’t need all the data to verify the transactions, just the zero-knowledge proof. Transactions are written to Ethereum as calldata, to reduce gas.
+
+- **Pros** Minimal delay, less vulnerable to economic attacks
+- **Cons** Currently available ZK-Rollup chains are not compatible with the EVM as validity proofs are intense to compute and have to build their own language to process. However, there is some work on building Solidity to ZKP language transpilers, like <a href="https://medium.com/nethermind-eth/warp-your-way-to-starknet-ddd6856875e0" target="_blank" rel="noopener noreferrer">this one for Cairo,</a> Starknet's ZKP language. There is also ongoing work to create EVM-compatible Zk-Rollups.
+
+We're seeing the emergence of two major types of ZK Rollups: Those that run their own VM (virtual machine) and those that are EVM compatible. 
+
+#### Non-EVM ZK-Rollups
+
+<a href="https://starknet.io/" target="_blank" rel="noopener noreferrer">StarkNet</a> is the best example of a ZK Rollup that uses its own virtual machine, called the StarkNet OS. StarkNet uses the Cairo programming language both for its infrastructure and for writing StarkNet contracts.
+
+- **Pros** 
+  - Cairo language logic is converted to STARK proofs, enabling a significant increase of throughput. 
+  - Cairo also allows for a new paradigm, "provable computation" , allowing programs to prove they have been executed without having to be re-run. *This is a key technological advancement in the blockchain space and allows for really interesting applications like private transactions or complicated logic that doesn't need to be re-run in full to update the Ethereum state).* 
+  - StarkNet is efficient, fast, and very scalable. 
+  - StarkNet is already live on mainnet and the ecosystem is growing quickly. <a href="https://blog.infura.io/post/starknet-now-available-to-all-infura-users" target="_blank" rel="noopener noreferrer"> Infura recently released initial StarkNet support </a>
+- **Cons**
+  - Learning a new smart contract language can be challenging.
+  - Ecosystem tools are still maturing to help developers get started.
+  - Existing tooling either does not work or needs significant finessing to get to a point where it is compatible
+
+Luckily, it is also possible to use StarkNet with Solidity, by employing a <a href="https://medium.com/nethermind-eth/warp-your-way-to-starknet-ddd6856875e0" target="_blank" rel="noopener noreferrer">transpiler</a>.
+
+#### EVM Compatible ZK-Rollups: The Elusive zkEVM
+
+ZK Rollups that are EVM compatible are a complicated effort, largely because the Ethereum Virtual Machine was built to optimize bytecode manipulation, while ZK proofs require mathematical manipulation to perform their function. 
+
+Over the past several months multiple zkEVM solutions have made headway but we are still waiting to see one on mainnet. The most notable zkEVM projects at this time are <a href="https://scroll.io/" target="_blank" rel="noopener noreferrer"> Scroll </a>, <a href="https://zksync.io/" target="_blank" rel="noopener noreferrer">zkSync </a> (going live Oct 2022), and <a href="https://polygon.technology/solutions/polygon-hermez/" target="_blank" rel="noopener noreferrer"> Polygon Hermez</a>. 
+
+- **Pros** 
+  - Once live, zkEVM solutions will allow the best of all worlds: Zero-Knowledge proofs and Ethereum/Solidity compatibility.
+- **Cons**
+  - There are currently no live solutions on mainnet. zkSync seems as though it will be first to mainnet but it is unlikely that it will be a fully EVM-compatible solution initially. Be wary of marketing gimmicks around EVM compatibility!
+
+For a detailed discussion of the different types of zkEVMs we are likely to see soon, take a look at <a href="https://vitalik.ca/general/2022/08/04/zkevm.html" target="_blank" rel="noopener noreferrer"> Vitalik's article about this topic. </a>
+
+ZK-Rollups are attractive for simple, high-volume exchanges. As the ecosystem grows, we are likely to see a lot of innovation around the types of blockchain applications that can be served via ZK-Rollups. Currently using this sort of rollup: <a href="https://loopring.io/#/" target="_blank" rel="noopener noreferrer">Loopring</a>, <a href="https://starkware.co/" target="_blank" rel="noopener noreferrer">Starkware,</a> <a href="https://matter-labs.io/" target="_blank" rel="noopener noreferrer">Matter Labs' zkSync,</a> <a href="https://aztec.network/" target="_blank" rel="noopener noreferrer">Aztec's ZK.Money network</a>
 
 ## Channels
 
@@ -87,6 +120,11 @@ This concludes our overview of the kinds of scaling solutions available to us. I
 - <a href="https://tracer.finance/radar/arbitrum-in-under-10/" target="_blank" rel="noopener noreferrer">Artilce: Arbitrum in under 10 minutes</a> An explainer of Arbitrum, an optimistic rollup.
 - <a href="https://www.youtube.com/watch?v=l4jccXoqLGM" target="_blank" rel="noopener noreferrer">Video: Scaling Ethereum with Rollups</a> John Adler from Fuel Labs discusses the concepts behind optimistic rollups
 - <a href="https://medium.com/nethermind-eth/warp-your-way-to-starknet-ddd6856875e0" target="_blank" rel="noopener noreferrer">Article: Warp Your Way to Starknet</a> Early example of a Solidity to Cairo compiler
+- <a href="https://medium.com/yagi-fi/provable-vs-composable-computation-or-why-cairo-will-supersede-solidity-6b00e69bfc9e" target="_blank" rel="noopener noreferrer"> Article: Provable computation and the Cairo Language </a>
+- <a href="https://starkware.co/tech-stack/" target="_blank" rel="noopener noreferrer"> StarkWare Website With Details on StarkNet and Cairo </a>
+- <a href="https://l2beat.com/scaling/tvl/" target="_blank" rel="noopener noreferrer"> Website Providing Details On Currently Available Rollup Solutions</a>
+- <a href="https://vitalik.ca/general/2022/08/04/zkevm.html" target="_blank" rel="noopener noreferrer"> Article: Vitalik on zkEVMs </a>
+    
 
 ### State Channels
 - <a href="https://education.district0x.io/general-topics/understanding-ethereum/basics-state-channels/" target="_blank" rel="noopener noreferrer">Article: State Channel Basics</a>
