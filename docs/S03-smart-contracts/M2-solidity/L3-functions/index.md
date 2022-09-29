@@ -1,0 +1,4 @@
+**Please note that as of Solidity 0.6.0, fallback functions must be explicitly called and have been divided into two:**
+
+1. **`[fallback()](https://docs.soliditylang.org/en/latest/contracts.html#fallback-function)`** called when no other function matches (if the receive ether function does not exist then this includes calls with empty call data). You can make this function `payable` or not. If it is not `payable` then transactions not matching any other function which send value will revert. You should only need to implement the new fallback function if you are following an upgrade or proxy pattern.
+2. **`[receive()](https://docs.soliditylang.org/en/latest/contracts.html#receive-ether-function)`** called whenever the call data is empty (whether or not ether is received). This function is implicitly `payable`.
