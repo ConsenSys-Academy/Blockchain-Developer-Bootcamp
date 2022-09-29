@@ -50,6 +50,6 @@
  Additional Resources:
 ---------------------
 
- * [Article: Manage several contracts with factories](https://ethereumdev.io/manage-several-contracts-with-factories/){target=_blank}
+ * [Article: Manage several contracts with factories](https://ethereum.org/en/developers/tutorials/interact-with-other-contracts-from-solidity/){target=_blank}
 
  

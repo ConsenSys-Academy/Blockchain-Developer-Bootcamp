@@ -336,7 +336,7 @@ Now run `truffle migrate` to start the migration process.
  Additional Material
 -------------------
 
-* [Docs: Truffle Suite](https://www.trufflesuite.com/docs/truffle/overview)
+* [Docs: Truffle Suite](https://trufflesuite.com/docs/truffle/)
 * [Web3 Unleashed](https://trufflesuite.com/unleashed/) is a series dedicated towards building various dapps and talking with industry experts about the latest in web3 development.
 
  

@@ -148,9 +148,9 @@ The first is the Check-Effect-Interaction design pattern we described earlier. I
 
 In short, you handle your internal contract state changes before calling external contracts. 
 
-A more complex solution could implement mutual exclusion, or a [mutex.](https://en.wikipedia.org/wiki/Lock_(computer_science){target=_blank}) This allows you to lock a state and only allow changes by the owner of the lock. You can see an example of a mutex in Solidity [here.](https://medium.com/coinmonks/protect-your-solidity-smart-contracts-from-reentrancy-attacks-9972c3af7c21){target=_blank}
+A more complex solution could implement mutual exclusion, or a [mutex.](https://en.wikipedia.org/wiki/Lock_(computer_science)){target=_blank} This allows you to lock a state and only allow changes by the owner of the lock. You can see an example of a mutex in Solidity [here.](https://medium.com/coinmonks/protect-your-solidity-smart-contracts-from-reentrancy-attacks-9972c3af7c21){target=_blank}
 
-You can dig deeper into known attacks such as these [here.](https://consensys.github.io/smart-contract-best-practices/known_attacks/#race-conditions42){target=_blank}
+You can dig deeper into known attacks such as these [here.](https://ethereum-contract-security-techniques-and-tips.readthedocs.io/en/latest/known_attacks/#race-conditions42){target=_blank}
 
 Integer Under / Overflow
 ------------------------
@@ -228,7 +228,7 @@ There are always more attack vectors, be sure to look through the SWC registry, 
 Additional Material
 -------------------
 
-* [Wiki: Smart Contract Best Practices](https://consensys.github.io/smart-contract-best-practices/){target=_blank} and [Recommendations](https://consensys.github.io/smart-contract-best-practices/recommendations/){target=_blank}
+* [Wiki: Smart Contract Best Practices](https://consensys.github.io/smart-contract-best-practices/){target=_blank} and [Recommendations](https://ethereum-contract-security-techniques-and-tips.readthedocs.io/en/latest/recommendations/){target=_blank}
 * [Article: Ethereum is a Dark Forest](https://medium.com/@danrobinson/ethereum-is-a-dark-forest-ecc5f0505dff){target=_blank} A long, comprehensive article discussing frontrunning from a first-person perspective. Got a lot of people's attention in the community around the topic.
 * [Wiki: Flashbots](https://github.com/flashbots/pm){target=_blank} A collection of research and news about Miner Extracted Value and Frontrunning.
 * [Article: Smart Contract Bugs and Security Best Practices](https://sunnya97.gitbooks.io/a-beginner-s-guide-to-ethereum-and-dapp-developme/smart-contract-best-practices.html){target=_blank}

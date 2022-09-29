@@ -26,7 +26,7 @@
  Development of the Network: EIPs, ERCs
 --------------------------------------
 
- The Ethereum community has a series of governing bodies that coordinate the maintenance and updating of the protocol. [Ethereum Core Developers](https://github.com/ethereum/pm){target=_blank} hold monthly calls, which are open to viewing by the public. There is also a group called [Ethereum Cat Herders,](https://ethereumcatherders.com/){target=_blank} which is dedicated to "decentralized project management to support the Ethereum network."
+ The Ethereum community has a series of governing bodies that coordinate the maintenance and updating of the protocol. [Ethereum Core Developers](https://github.com/ethereum/pm){target=_blank} hold monthly calls, which are open to viewing by the public. There is also a group called [Ethereum Cat Herders,](https://www.ethereumcatherders.com/){target=_blank} which is dedicated to "decentralized project management to support the Ethereum network."
 
  Changes to the Ethereum network begin as [Ethereum Improvement Proposals (EIPs)](https://eips.ethereum.org/){target=_blank}. The EIP process is a well-defined system where anyone can submit ideas to improve the network. It will require a lot of effort and dedication, but EIPs are essential to the network's well-being. Related are Ethereum Request for Comments (or ERCs). ERCs are standards that have been agreed upon by the community. A well-known example are community standards for common smart contracts, like the ERC-20 and ERC-721 (also known as an NFT!). More on this later!
 

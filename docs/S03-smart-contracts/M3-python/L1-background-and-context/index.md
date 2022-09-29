@@ -16,7 +16,7 @@ Note that you can use Vyper with a number of development frameworks, including [
 
 ## Brownie and Web3.py
 
-[Brownie](https://github.com/eth-brownie/brownie){target=_blank} is a Python-based development and testing framework for smart contracts running on the EVM. It uses [Web3.py](https://web3py.readthedocs.io/en/stable/){target=_blank} as well as Solidity. It is most well-known for being the development framework the [Yearn.Finance](https://yearn.finance){target=_blank} team uses to build their powerful DeFi platform and [CRV.](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/curve-dao-token--crv-){target=_blank}
+[Brownie](https://github.com/eth-brownie/brownie){target=_blank} is a Python-based development and testing framework for smart contracts running on the EVM. It uses [Web3.py](https://web3py.readthedocs.io/en/stable/){target=_blank} as well as Solidity. It is most well-known for being the development framework the [Yearn.Finance](https://yearn.finance){target=_blank} team uses to build their powerful DeFi platform and [CRV.](https://www.coinbase.com/price/curve-dao-token#AboutSection){target=_blank}
 
 Brownie definitely takes some notes from Truffle [(they are both "sweet")](https://www.youtube.com/watch?v=R8lcy0JnEt8){target=_blank}, including having a `brownie init` command and their equivalent of Truffle boxes, ["Brownie Mixes."](https://github.com/brownie-mix){target=_blank} This makes it an easy tool for a lot of Truffle developers familiar with Truffle.
 
