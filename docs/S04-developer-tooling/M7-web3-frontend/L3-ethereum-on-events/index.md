@@ -4,7 +4,7 @@
 
 So… million dollar question: How does a user disconnect? It has to happen through MetaMask or whichever browser wallet they use. All they need to do is open MetaMask and click `Disconnect`. And just like that, they’ve revoked permissions that they initially granted to that dApp.
 
-![disconnect-flow.png](../../img/../../img/S04/disconnect-flow.png)
+![disconnect-flow.png](../../../img/S04/disconnect-flow.png)
 
 <blockquote>
 ⛓️ We’re not logging in and out of a dApp, we’re simply granting and revoking permissions with MetaMask, and the dApp frontend needs to reflect that after the fact. But notice how there’s a louder call to action to ‘Connect’ than there is to ‘Disconnect’?

@@ -14,7 +14,7 @@ In Web3, this is less common. While we can interact with third party services, m
 
 On a browser where you have MetaMask installed, open up Chrome Devtools, navigate to **Sources**, and then look at the **Page** panel. If you expand MetaMask, there’s a resource that loads with the page, in the screenshot, it’s `inpage.js`. 
 
-![Chrome Devtools showing ](../../img/../../img/S04/eth-provider-1.png)
+![Chrome Devtools showing ](../../../img/S04/eth-provider-1.png)
 
 `[inpage.js](https://github.com/MetaMask/metamask-extension/blob/43c33b676fe1ecece3e0543eb6ca64d3ae9aa9af/app/scripts/inpage.js){target=\_blank}` is a script that tries to declare an object globally in the browser window. If it’s successful, it’ll create a communication stream to 👀 initialize a provider 👀. Once that runs, `[contentscript.js](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js){target=\_blank}` is executed. And here’s where things get tricky but interesting. On [line 45](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js#L45){target=\_blank}, there’s an else-if statement that calls a function, seen on [line 272](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js#L272){target=\_blank}, to check if a provider should be 👀 injected 👀. 
 
@@ -40,13 +40,13 @@ The thing to take away here is that we as developers aren’t supplying that API
 
 When you switch to the Console tab, type in `window.ethereum` to see the Ethereum API methods and properties like `isMetaMask`, `chainId` or `request()`, to name a few.
 
-![Ethereum Provider API methods and properties](../../img/s04/../../../img/S04/eth-provider-2.png)
+![Ethereum Provider API methods and properties](../../../img/S04/eth-provider-2.png)
 
 When we call these methods, we submit a “Remote Procedure Call” request to a particular blockchain network. We need to connect to the nodes on a particular network where the target smart contract is deployed, so we’ll need a network RPC endpoint. 
 
 For us, it’s an endpoint we can supply to MetaMask to request blockchain data. Does that sound a bit familiar? If you look at the RPC URL I have for Ethereum Mainnet, I’m connected to the Mainnet nodes that are hosted by Infura, who is the default node provider for MetaMask.
 
-![MetaMask Network Settings](../../img/s04/../../../img/S04/eth-provider-3.png)
+![MetaMask Network Settings](../../../img/S04/eth-provider-3.png)
 
 Instead, we use the `request()` and `send()` methods. From there, we pass in arguments to determine what we’d like to request. We can use `request` to:
 
