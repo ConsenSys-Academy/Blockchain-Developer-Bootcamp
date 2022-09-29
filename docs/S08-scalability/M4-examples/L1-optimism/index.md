@@ -47,9 +47,9 @@ You'll also need to have Goerli test ETH for the project if you'd like to run it
 
 Once you have Goerli ETH, you'll need to bridge it to Optimism. After getting Goerli ETH, follow these steps:
 
-1. Add Optimism Ethereum as a Custom RPC to your Metamask wallet, using <a href="https://help.optimism.io/hc/en-us/articles/6223777057179-Getting-started-with-MetaMask-and-Optimism" target="_blank" rel="noopener noreferrer">the steps here,</a> except set the RPC URL to <code>https://optimism-kovan.infura.io/v3/" + infuraKey</code>
+1. Add Optimism Ethereum as a Custom RPC to your Metamask wallet, using <a href="https://help.optimism.io/hc/en-us/articles/6223777057179-Getting-started-with-MetaMask-and-Optimism" target="_blank" rel="noopener noreferrer">the steps here,</a> except set the RPC URL to <code>https://optimism-goerli.infura.io/v3/" + infuraKey</code>
 2. Go to <a href="https://gateway.optimism.io/" target="_blank" rel="noopener noreferrer">this site</a> and bridge your Goerli ETH to Optimism Goerli ETH
-3. Ensure that your <code>optimistic_kovan</code> network in <code>truffle-config.ovm.js</code> is connected to your Optimism Kovan wallet.
+3. Ensure that your <code>optimistic_goerli</code> network in <code>truffle-config.ovm.js</code> is connected to your Optimism Goerli wallet.
 <i>Note: You may get an error about your fee being too low when attempting to deploy to Optimistic Goerli. To bypass this error, you may need to increase the gas value in the optimistic_goerli network configuration in truffle-config.ovm.js to the value the error indicates. Gas price should be set at the transaction level, like so: <code>{ gasPrice: 15000000 }</code>.</i>
 
 Note, we'll also be building it locally so if you're having trouble finding Goerli ETH, you can start by running it locally.
@@ -75,7 +75,7 @@ Add the following, filling in your own Infura project key and mnemonics:
 MNEMONIC="candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
 INFURA_KEY="<Your Infura Project ID>"
 GANACHE_MNEMONIC="<Your Ganache Mnemonic>"
-KOVAN_MNEMONIC="<Your Kovan Mnemonic>"
+GOERLI_MNEMONIC="<Your GOERLI Mnemonic>"
 </pre>
 <i>Note: the value for the <code>MNEMONIC</code> above is the one you should use, as it is expected within the local Optimism Ethereum network we will run in this Truffle Box.</i>
 
@@ -101,11 +101,11 @@ Now that we've compiled the contract for Optimism, we can migrate it to an Optim
 
 <pre>npm run migrate:ovm --network=ganache</pre>
 
-This may be a bit underwhelming! However, if we have loaded in our Infura Optimism Goerli network endpoint and have enough Optimism Kovan eth in the wallet tied to the `.env` mnemonic, we can also run:
+This may be a bit underwhelming! However, if we have loaded in our Infura Optimism Goerli network endpoint and have enough Optimism Goerli eth in the wallet tied to the `.env` mnemonic, we can also run:
 
 <pre>npm run migrate:ovm --network=optimistic_kovan</pre>
 
-Like standard Truffle, if you would like to migrate previously migrated contracts on the same network, you can run <code>truffle migrate --config truffle-config.ovm.js --network=(ganache | optimistic_ethereum | optimistic_kovan)</code> and add the <code>--reset</code> flag.
+Like standard Truffle, if you would like to migrate previously migrated contracts on the same network, you can run <code>truffle migrate --config truffle-config.ovm.js --network=(ganache | optimistic_ethereum | optimistic_goerli)</code> and add the <code>--reset</code> flag.
 
 Following the above steps should allow you to deploy to the Optimism Layer 2 chain. This is only the first step! Once you are ready to deploy your own contracts to function on Layer 1 Ethereum using Layer 2 Optimism, you will need to be aware of the ways in which <a href="https://community.optimism.io/docs/developers/bridge/basics/" target="_blank" rel="noopener noreferrer">Layer 1 and Layer 2 interact in the Optimism ecosystem.</a>
 
