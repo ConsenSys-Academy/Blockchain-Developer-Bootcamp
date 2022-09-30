@@ -2,11 +2,12 @@
 
 This course assumes a baseline of technical knowledge. It is important to make sure you are comfortable with the following tech. If you are not, we are providing links to excellent resources you can use to get up to speed! Please note that you can learn all these things in our free [Basic Training course.](https://courses.consensys.net/courses/bootcamp-basic-training){target=_blank}
 
-*   [Unix / Linux Environment](#unix-or-linux-environments)
-*   [Command Line](#command-line)
-*   [Git](#git)
-*   [JavaScript](#javascript)
-*   [Code Editor](#code-editor)
+- [Technical Requirements](#technical-requirements)
+  - [Unix or Linux Environments](#unix-or-linux-environments)
+  - [Command Line](#command-line)
+  - [Git](#git)
+  - [JavaScript](#javascript)
+  - [Code Editor](#code-editor)
 
 ## Unix or Linux Environments
 
@@ -37,7 +38,7 @@ Sometimes it's helpful to remap your caps lock key to become CTRL. Find out how 
 To brush up on command line skills, check out:
 
 *   [MIT: Your Missing CS Semester: The Shell](https://missing.csail.mit.edu/2020/course-shell/){target=_blank} and [Shell Tools](https://missing.csail.mit.edu/2020/shell-tools/){target=_blank}
-*   [The Odin Project: Command Line Basics](https://www.theodinproject.com/courses/foundations/lessons/command-line-basics-web-development-101){target=_blank}
+*   [The Odin Project: Command Line Basics](https://www.theodinproject.com/lessons/foundations-command-line-basics){target=_blank}
 *   [Ubuntu for Beginners](https://agstakingco.gitbook.io/ethereum-2-0-ubuntu-for-beginners/#linux-terminal-basic-commands){target=_blank}
 
 ## Git
@@ -47,8 +48,8 @@ To brush up on command line skills, check out:
 Here are some resources to get you started:
 
 * [Git: Docs](https://git-scm.com/doc){target=_blank}
-*   [The Odin Project: Setting Up Git](https://www.theodinproject.com/courses/foundations/lessons/setting-up-git){target=_blank}
-*   [The Odin Project: Git Basics](https://www.theodinproject.com/courses/foundations/#git-basics){target=_blank}
+*   [The Odin Project: Setting Up Git](https://www.theodinproject.com/lessons/foundations-setting-up-git){target=_blank}
+*   [The Odin Project: Git Basics](https://www.theodinproject.com/lessons/foundations-git-basics){target=_blank}
 *   [MIT Missing CS Semester: Version Control (git)](https://missing.csail.mit.edu/2020/version-control/){target=_blank}
 *   [Git and GitHub for Poets (video)](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV){target=_blank}
 
@@ -71,7 +72,7 @@ Be sure to read Community Guidelines before contributing to a project. For examp
 
 ## JavaScript
 
-Even if JavaScript is not your first software language, it's really important you be familiar with its basic syntax. [Solidity,](https://docs.soliditylang.org/en/v0.8.2/){target=_blank} the smart contract language you'll learn, is based on [ECMAScript.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources){target=_blank} We recommend [Code Academy's free Intro to JavaScript course,](https://www.codecademy.com/learn/introduction-to-javascript){target=_blank} [The Odin Project](https://www.theodinproject.com/courses/foundations/#javascript-basics){target=_blank} or [The Modern JavaScript Tutorial](https://javascript.info/){target=_blank} to get the basics. Beyond basic JavaScript, students should be familiar with Node and npm. Some advanced students will also be using React in this course. Here are some resources to help familiarize yourself with these:
+Even if JavaScript is not your first software language, it's really important you be familiar with its basic syntax. [Solidity,](https://docs.soliditylang.org/en/v0.8.2/){target=_blank} the smart contract language you'll learn, is based on [ECMAScript.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources){target=_blank} We recommend [Code Academy's free Intro to JavaScript course,](https://www.codecademy.com/learn/introduction-to-javascript){target=_blank} [The Odin Project](https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-basics){target=_blank} or [The Modern JavaScript Tutorial](https://javascript.info/){target=_blank} to get the basics. Beyond basic JavaScript, students should be familiar with Node and npm. Some advanced students will also be using React in this course. Here are some resources to help familiarize yourself with these:
 
 *   [The Odin Project: Introduction to Node](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs){target=_blank}
 *   [JavaScript Fundamentals Before Learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements){target=_blank}
@@ -90,7 +91,7 @@ Even if JavaScript is not your first software language, it's really important yo
 *   [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one){target=_blank} All you need to write Markdown
 *   [GitHub Linker](https://marketplace.visualstudio.com/items?itemName=gimenete.github-linker){target=_blank} Create links to fragments of code in GitHub
 
-We strongly recommend using VSCode in this course, particularly if you're new to coding, due to its extensive plugins. Other popular editors include [Atom,](https://atom.io/){target=_blank} [Sublime Text,](https://www.sublimetext.com/){target=_blank} and [IDEA](https://www.jetbrains.com/idea/){target=_blank} (written originally for Java but now supports many languages).
+We strongly recommend using VSCode in this course, particularly if you're new to coding, due to its extensive plugins. Other popular editors include [Sublime Text,](https://www.sublimetext.com/){target=_blank} and [IDEA](https://www.jetbrains.com/idea/){target=_blank} (written originally for Java but now supports many languages).
 
 There is also the option of text-only editors. Many developers find them extremely productive and, while challenging to learn, make their job much easier. We'll address one here, vim, by providing this series of tutorials:
 
