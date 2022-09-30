@@ -9,13 +9,14 @@ If you want to go far, go together.”
 
 Like building a website, you can create a DAO with easy-to-spin-up tools or customizable frameworks. If you want to start quickly, you can use DAOHaus.
 
-DAOHaus has a [great general guideline on the basics you need to start a DAO](https://daohaus.substack.com/p/four-and-a-half-steps-to-start-a){target=\_blank}. Here is another guide on [an overview of how DAOs work](https://www.gemini.com/cryptopedia/decentralized-autonomous-organization-dao#section-how-do-da-os-work){target=\_blank}.
+DAOHaus has a [great general guideline on the basics you need to start a DAO](https://daohaus.club/docs/users/summon){target=\_blank}. Here is another guide and [an overview of how DAOs work](https://www.gemini.com/cryptopedia/decentralized-autonomous-organization-dao#section-how-do-da-os-work){target=\_blank}.
 
 The bare minimum that is needed is:
 
-- A mission statement
-- A place to hang and meet
+- A mission statement, and a plan why are you strating a DAO
+- A place to hang and meet, and people who will join you
 - A regular community call or meeting
+- Some basic rules on how the DAO will operate
 - The DAO Smart Contracts
 
 ### DAO Tools and Services
@@ -28,11 +29,11 @@ Beyond the basics, developers can build full-featured and more customized DAOs. 
 
 Moloch (via DAOHaus)
 
-[Moloch](https://medium.com/raid-guild/moloch-evolved-v2-primer-25c9cdeab455){target=\_blank} is a governance framework that allows a creator to spin up a DAO via DAOHaus easily. Their contracts are very minimal to avoid bugs and were used to spin up various DAOs early on. The project is named after the Canaanite god of child sacrifice to refer to the suboptimal outcomes due to poor group coordination. Groups can suffer from poor judgement, misaligned incentives and wrong goals. Moloch was created to help solve the incentive and coordination problems in funding public goods open-source protocols. Circa 2021, they also have lots of funding available for promising DAOs. You can learn more about them [here](https://www.molochdao.com/){target=\_blank} and get an excellent overview [here](https://messari.io/asset/molochdao/profile){target=\_blank}. [Their GitHub](https://github.com/MolochVentures/moloch){target=\_blank} and their [hackMD](https://hackmd.io/@daohaus){target=\_blank} also have interesting resources to learn more.
+[Moloch](https://medium.com/raid-guild/moloch-evolved-v2-primer-25c9cdeab455){target=\_blank} is a governance framework that allows a creator to spin up a DAO via DAOHaus easily. Their contracts are very minimal to avoid bugs and were used to spin up various DAOs early on. The project is named after the Canaanite god of child sacrifice to refer to the suboptimal outcomes due to poor group coordination. Groups can suffer from poor judgement, misaligned incentives and wrong goals. Moloch was created to help solve the incentive and coordination problems in funding public goods open-source protocols. Circa 2022, they also have lots of funding available for promising DAOs. You can learn more about them [here](https://www.molochdao.com/){target=\_blank} and get an excellent overview [here](https://messari.io/asset/molochdao/profile){target=\_blank}. [Their GitHub](https://github.com/MolochVentures/moloch){target=\_blank} and their [hackMD](https://hackmd.io/@daohaus){target=\_blank} also have interesting resources to learn more.
 
 #### Aragon
 
-[Aragon](https://aragon.org/){target=\_blank} offers a full suite of tools to create and manage your DAO. They have [an easy way to spin up your DAO via their site](https://client.aragon.org/#/){target=\_blank}. Aragon client lets you spin up the DAO. [Aragon Govern](https://aragon.org/aragon-govern){target=\_blank} is a tool for on-chain voting. [Aragon Court](https://aragon.org/aragon-court){target=\_blank} is for dispute resolution that is Sybil resistant, similar to [Kleros Court](https://kleros.io/){target=\_blank}. [Aragon Voice](https://aragon.org/){target=\_blank} helps DAOs with submitting proposals similar to [Discourse](https://www.discourse.org/){target=\_blank}. [Finally, Vocdoni](https://aragon.org/vocdoni){target=\_blank} focuses on digital voting solutions for organizations.
+[Aragon](https://aragon.org/){target=\_blank} offers a full suite of tools to create and manage your DAO. They have [an easy way to spin up your DAO via their site](https://client.aragon.org/#/){target=\_blank}. Aragon client lets you spin up the DAO. [Aragon Govern](https://aragon.org/aragon-govern){target=\_blank} is a tool for on-chain voting. [Aragon Court](https://aragon.org/aragon-court){target=\_blank} is for dispute resolution that is Sybil resistant, similar to [Kleros Court](https://kleros.io/){target=\_blank}. [Aragon Voice](https://aragon.org/aragon-voice){target=\_blank} helps DAOs with submitting proposals similar to [Discourse](https://www.discourse.org/){target=\_blank}. [Finally, Vocdoni](https://aragon.org/vocdoni){target=\_blank} focuses on digital voting solutions for organizations.
 
 #### OpenZeppelin
 
@@ -48,11 +49,11 @@ Coordination goes beyond having a suite of smart contracts. DAO typically have v
 
 #### Authority
 
-The industry is fast coalescing to using [Multi-Signature wallets](https://academy.binance.com/en/articles/what-is-a-multisig-wallet){target=\_blank} to decentralize the control of contracts and increase security. [Gnosis Wallet](https://gnosis-safe.io/){target=\_blank} is the leader in this space, being used by Synthetix, SushiSwap, Balance, Ethereum Name Service and more. [Multi-sigs](https://medium.com/gauntlet-networks/multisig-transactions-with-gnosis-safe-f5dbe67c1c2d){target=\_blank} are essentially smart contracts that hold assets, thereby having extensible logic which can help with security. Synthetix is a good case study to [outline their use of multisig](https://sips.synthetix.io/sips/sip-141/){target=\_blank} within [their governance system](https://docs.synthetix.io/governance/#ambassador-dao-adao){target=\_blank}.
+The industry is fast coalescing to using [Multi-Signature wallets](https://academy.binance.com/en/articles/what-is-a-multisig-wallet){target=\_blank} to decentralize the control of contracts and increase security. [Gnosis Wallet](https://gnosis-safe.io/){target=\_blank} is the leader in this space, being used by Synthetix, SushiSwap, Balance, Ethereum Name Service and more. [Multi-sigs](https://medium.com/gauntlet-networks/multisig-transactions-with-gnosis-safe-f5dbe67c1c2d){target=\_blank} are essentially smart contracts that hold assets, thereby having extensible logic which can help with security. Synthetix is a good case study to [outline their use of multisig](https://sips.synthetix.io/sips/sip-141/){target=\_blank} within [their governance system](https://docs.synthetix.io/governance/#ambassador-dao-adao){target=\_blank}. Finally, [Metamask Institutional](https://metamask.io/institutions/){target=\_blank} was created to support biger, more complex organizations to deliver a wallet with institution-required security, operational efficiency, and compliance.
 
 #### Chat Platforms
 
-Most DAOs chat via Discord, a popular gaming platform due to its free and powerful paid features. DiscordJS allows for the creation of bots that can be integrated into the server. However, Discord is a centralized service. Using them creates centralization risk, and they would be able to shut down your server as they did to [Wall St. Bets](https://www.theverge.com/2021/1/27/22253251/discord-bans-the-r-wallstreetbets-server){target=\_blank}. Open source decentralized solutions exist like [Matrix Protocol](https://matrix.org/){target=\_blank}, a decentralized conversation store with no central point of failure. There are [various user-friendly clients](https://matrix.org/clients){target=\_blank} for both mobile and desktop that support Matrix Protocol like [Element](https://element.io/){target=\_blank}. [Mastodon](https://joinmastodon.org/){target=\_blank} is another open-source and user-friendly project. Think of it as a decentralized Twitter meets Reddit.
+Most DAOs chat via Discord, a popular gaming platform due to its free and powerful paid features. DiscordJS allows for the creation of bots that can be integrated into the server. However, Discord is a centralized service. Using them creates centralization risk, and they would be able to shut down your server as they did to [Wall St. Bets](https://www.theverge.com/2021/1/27/22253251/discord-bans-the-r-wallstreetbets-server){target=\_blank}. Open source decentralized solutions exist like [Matrix Protocol](https://matrix.org/){target=\_blank}, a decentralized conversation store with no central point of failure. There are [various user-friendly clients](https://matrix.org/clients){target=\_blank} for both mobile and desktop that support Matrix Protocol like [Element](https://element.io/){target=\_blank}. [Mastodon](https://joinmastodon.org/){target=\_blank} is another open-source and user-friendly project. Think of it as a decentralized Twitter meets Reddit. Lately [Commonground](https://www.commonground.cg){target=\_blank} and [Console](https://blog.console.xyz/p/secure-web3-chat-and-decentralized-identity){target=\_blank} are growing in popularity as well. 
 
 User onboarding is essential to a community. This can happen on a Chat Platform. A great example is how BanklessDAO does it. Check them out and [see how they approach their website and discord onboarding](https://www.bankless.community/){target=\_blank}.
 
@@ -70,7 +71,7 @@ Hackathon idea: Create an open-source Discourse plug-in that reads from the chai
 
 #### Voting and Vesting
 
-Voting can happen on-chain or off-chain. Before Layer-2 solutions, on-chain voting was expensive. So tools like SnapShot were created to allow off-chain voting by allowing users to sign for or against a proposal. Boardroom and Tally also aim to help with this.
+Voting can happen on-chain or off-chain. Before Layer-2 solutions, on-chain voting was expensive. So tools like [SnapShot](https://snapshot.org/#/){target=\_blank} were created to allow off-chain voting by allowing users to sign for or against a proposal. Boardroom and Tally also aim to help with this.
 
 Although people can vote, it doesn't mean that they will. Or that they would hold on to the governance token. DeFi projects like [Curve](https://github.com/curvefi/curve-veBoost){target=\_blank} and [SushiSwap](https://forum.sushi.com/t/sushinomics-introducing-osushi/4055){target=\_blank} are looking to use a vote locking mechanism to boost yields to those who stake their tokens long term vs others who don't.
 
@@ -88,7 +89,7 @@ Another identity solution is [3Box](https://3boxlabs.com/){target=\_blank} which
 
 #### Identity
 
-With [Serto](https://www.serto.id/){target=\_blank} can issue a [verifiable credential](https://decentralized-id.com/web-standards/w3c/wg/vc/verifiable-credentials/){target=\_blank}, aka "Crypto Cookies, " a building block for decentralized identity. They are tamper-resistant cryptographic signatures issued by one entity to a receiver to establish a relationship. And the work off-chain!
+With [Serto](https://www.serto.id/){target=\_blank} can issue a [verifiable credential](https://decentralized-id.com/web-standards/w3c/wg/vc/verifiable-credentials/){target=\_blank}, aka "Crypto Cookies", a building block for decentralized identity. They are tamper-resistant cryptographic signatures issued by one entity to a receiver to establish a relationship. And the work off-chain!
 
 Why use these over NFTs? An NFT is on-chain and is like a commendation, while verifiable credentials are like recommendations and work on or off-chain. They establish a relationship between entities, say like a club and its members or a college and a graduate. These relationships are important because people's recommendations and references help make up our external identities and reputations.
 
