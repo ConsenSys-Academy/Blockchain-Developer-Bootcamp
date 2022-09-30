@@ -11,7 +11,7 @@ If you want to go far, go together.”
 
 Decentralization doesn’t just have smart contracts. DAO are about people, and thus soft skills are essential. Jono Bacon has written the best book on community management called [“The Art of Community”](https://www.amazon.com/Art-Community-Building-New-Participation/dp/1449312063){target=\_blank}. It is HIGHLY recommended to read. A great way to get the soft skills to manage a DAO is to join a meetup and perhaps co-organize an event. You can find Ethereum meetups with like-minded individuals around the world via the [ConsenSys BUDIL Network](https://www.meetup.com/pro/BUIDL/){target=\_blank}. In addition, you can become a valued member of a community by joining the ConsenSys Discord.
 
-Another way is by joining a project like [AirSwap](https://www.airswap.io/){target=\_blank}! AirSwap is dedicated to creating tools for frictionless trade. They have an excellent governance system and need devs like you! [Join their Discord](https://chat.airswap.io/){target=\_blank} and check out their roadmap. If NFTs are your thing, check out [Megaliths](https://www.metaliths.com/){target=\_blank}. Or check out the DAOs on DAOHaus.
+Another way is by joining a project like [AirSwap](https://www.airswap.io/){target=\_blank}! AirSwap is dedicated to creating tools for frictionless trade. They have an excellent governance system and need devs like you! [Join their Discord](https://chat.airswap.io/){target=\_blank} and check out their roadmap. If NFTs are your thing, check out [Megaliths](https://www.metaliths.com/){target=\_blank}. Or check out the DAOs on [DAOHaus](https://app.daohaus.club/explore){target=\_blank}.
 
 DAOs also need clear lines of communication, transparency of information, and an inclusive governance structure. This means a transparent voting process and consensus making mechanism.
 
@@ -39,7 +39,7 @@ The general process for creating a proposal is:
 
 Discussions start informally via chat platforms, online forums and meetings. Eventually, the ideas begin to coalesce into something tangible. The next move could be a temperature check, where a quick poll can gauge support said idea. During this process, the ideas are refined as they are still in a nascent stage.
 
-It is interesting to note that Discord and chat platforms, in general, are great for creating community building, brainstorming and getting immediate feedback. However, due to a chat platform's UX/UI, they are NOT a great place to host binding votes or establish long-form conversations.
+It is interesting to note that Discord and chat platforms, in general, are great for creating community building, brainstorming and getting immediate feedback. However, due to the chat platform's UX/UI, they are NOT a great place to host binding votes or establish long-form conversations.
 
 Discourse allows for long-form threads, which allow for more well thought out conversations. However, this comes at the cost of a lack of immediacy in response. Discourse can also be configured to be found on search engines, which help with attracting potential members.
 
@@ -67,9 +67,9 @@ There can be other tags like **On Roadmap**. Again, you can customize these as y
 
 #### Voting
 
-Usually, voting occurs with a governance token. This corresponds to 1 token = 1 vote. Although this may seem unfair, it is the only method known to prevent Sybil attacks. Perhaps once the industry figures out how to use decentralized identities, we can see more typical voting forms.
+Usually, voting occurs with a governance token. Most common is to have 1 token = 1 vote. Although this may seem unfair, it is the only method known to prevent Sybil attacks. To combat the whale dominance, quadratic voting is often used. Additional methods include delegation, conviction voting or rage quiting. Limechain provided a [good overview](https://limechain.tech/blog/dao-voting-mechanisms-explained-2022-guide/){target=\_blank} of different voting mechanisms.
 
-The leading DeFi Protocols use Snapshot as their tool of choice to avoid gas fees. However, as Layer 2 solutions begin to roll out in 2021 and onward, we shall see more on-chain voting as a result. For example, Aragon is already looking to roll out Optimism.
+The leading DeFi Protocols use Snapshot as their tool of choice to avoid gas fees. However, with Layer 2 solutions being quite prevelent, we see more on-chain voting.
 
 There are several issues with voting. One is low turnout and engagement. This plagues many protocols and DAOs as users wish to get the financial upside without commensurate voting. As a result, some protocols are turning to using vote boosting and locking mechanisms like [veCRV](https://resources.curve.fi/faq/vote-locking-boost){target=\_blank} from Curve and [oSUSHI](https://forum.sushi.com/t/sushinomics-introducing-osushi/4055){target=\_blank}.
 
@@ -81,7 +81,7 @@ Another is the frequency of votes. Too many votes in a period could wear out exi
 
 Another issue can be around voting in general. What is fairness in voting? How can one allocate resources optimally? Voting can go beyond just one entity, one vote. What about minority votes? Here is where we get into game theory, systems design and political theory, which are outside the scope of this write-up. However, there are some rabbit holes to go into and explore. Web3 has something for everyone 😁.
 
-[Vitalik Buterin](https://vitalik.ca/){target=\_blank} wrote a great piece on [quadratic voting](https://vitalik.ca/general/2019/12/07/quadratic.html){target=\_blank}, [coin voting governance](https://vitalik.ca/general/2021/08/16/voting3.html){target=\_blank}, and [blockchain voting](https://vitalik.ca/general/2021/05/25/voting2.html){target=\_blank}. A great twitter follow related to governance and funding of public goods are the awesome folks at [Gitcoin](https://twitter.com/gitcoin){target=\_blank}, especially [Kevin Owocki](https://twitter.com/owocki?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor){target=\_blank}. Check out [his website](https://owocki.com/){target=\_blank}.
+[Vitalik Buterin](https://vitalik.ca/){target=\_blank} wrote a great piece on [quadratic voting](https://vitalik.ca/general/2019/12/07/quadratic.html){target=\_blank}, [coin voting governance](https://vitalik.ca/general/2021/08/16/voting3.html){target=\_blank}, and [blockchain voting](https://vitalik.ca/general/2021/05/25/voting2.html){target=\_blank}. A great twitter follow related to governance and funding of public goods are the awesome folks at [Gitcoin](https://twitter.com/gitcoin){target=\_blank}, especially [Kevin Owocki](https://twitter.com/owocki?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor){target=\_blank}. Check out [his website](https://owocki.com/){target=\_blank}. Finally, make sure to read [DAOs are not corporations: where decentralization in autonomous organizations matters](https://vitalik.eth.limo/general/2022/09/20/daos.html){target=\_blank}. 
 
 #### Implementation
 
@@ -89,7 +89,7 @@ Once an improvement proposal is passed, it's placed on the roadmap. Having a cle
 
 Implementation can be done by the core team/organizers or by community members. Typically the more decentralized the work, the more coordination is needed. However, if done right, things can move fast. Aiming for [good communication with clear roles and responsibilities between teams helps to reduce burnout and increases engagement](https://blog.synthetix.io/an-old-dictator-appears/){target=\_blank}.
 
-Be warned that community organizing can be time-intensive and involve work. However, having clear incentives, good treasury management skills, and memes can help members step up to the plate and help while fostering community.
+Be warned that community organizing can be time-intensive and involve work. However, having clear incentives, good treasury management skills, and memes can help members step up to the plate and help while fostering community. There are some great projects that focus community management, and in a true web3 style, there even is a DAO for it - [WGMI DAO](https://www.wgmi.community/){target=\_blank}
 
 ### Treasury Management
 
