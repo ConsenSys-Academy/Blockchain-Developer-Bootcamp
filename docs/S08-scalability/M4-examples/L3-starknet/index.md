@@ -1,4 +1,4 @@
-#StarkNet Example
+# StarkNet Example
 
 ## Background
 
