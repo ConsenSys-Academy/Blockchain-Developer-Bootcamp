@@ -7,14 +7,13 @@ Three main challenges presented by the success of mainnet Ethereum:
 2. <b>Block Latency</b> is problematic in some applications
 3. Pushing gas costs to users creates friction and impacts user experience. User has to navigate rather <b>complex effects.</b>
 
-As a result, some users and products are migrating to other chains that offer lower costs. Off-chain scaling is capable of solving these problems by providing higher throughput, faster state advancement and gas cost abstraction. It can be transformative for application UX
+As a result, some users and products are migrating to other chains that offer lower costs. Off-chain scaling is capable of solving these problems by providing higher throughput, faster state advancement and gas cost abstraction. It can be transformative for application UX, but other chains lack the network effects and security offered by Ethereum.
 
-State advancement (propagating new network state) is 10-100x faster (the rate at which data can be updated on-chain). Reducing user feedback loop from 12s to <1s. High frequency transactions possible (e.g. high-fidelity price oracles, rapid orderbook management)
+Layer 2 protocols, or "rollups" promise users the ability to reduce gas costs and increase transaction throughput without sacrificing Ethereum security. At their most basic, Layer 2 protocols batch many transactions together and submit them to mainnet, saving significantly on gas costs. As we'll see in this unit, the specifics of the protocols are quite a bit more complex, and multiple implementations of this idea exist.
 
-Transactions are a fraction of the cost. Low or no-value transactions viable
-Support for native gas cost abstraction, meta-transactions, account abstraction. Subsidised gas, or gas cost is paid in relevant tokens. Better native support for smart contract wallets and features like social recovery.
+Various rollups have a lot to offer dapp developers and users. Some examples: support for native gas cost abstraction, meta-transactions, account abstraction. Subsidised gas, or gas cost is paid in relevant tokens. Better native support for smart contract wallets and features like social recovery.
 
-If Ethereum is to maintain its dominance and network effect, it must scale. 
+If Ethereum is to maintain its dominance and network effect, it must scale. Layer 2 protocols are a major part of this effort.
 
 ## Terminology
 
@@ -24,6 +23,8 @@ In this section, we'll typically refer to mainnet Ethereum as Layer 1 or L1 and 
 
 ## Conclusion
 
-These are exciting and very new topics, please be aware that they are considered *very* cutting edge and you should be extremely careful when using them. Also, please know that the documentation changes very regularly and perhaps not perceptibly. If you're currently building on a Layer 2 solution, we recommend joining the project's Discord, or wherever the community gathers, and making sure to follow their developer updates.
+These are exciting and very new topics, please be aware that they are considered *very* cutting edge and you should be extremely careful when using them. 
+
+Most of the protocols that are live on mainnet have made some compromises around decentralization and security, and it is important to be aware whether their risk profile matches your risk appetite. A good resource for learning more about particular solutions is <a href="l2beat.com" target="_blank"> L2 Beat </a>. Also, please know that the documentation changes very regularly and perhaps not perceptibly. If you're currently building on a Layer 2 solution, we recommend joining the project's Discord, or wherever the community gathers, and making sure to follow their developer updates.
 
 Let's dive in!
