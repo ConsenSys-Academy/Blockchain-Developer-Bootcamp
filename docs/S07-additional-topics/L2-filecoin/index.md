@@ -12,35 +12,16 @@ In your workspace directory, run the following commands:
 
 ## Running Filecoin Ganache
 
-Once installed, you can run Filecoin Ganache with the following command:
-    
-    npx ganache filecoin
+The easiest way to run a Filecoin environment locally is via [Filecoin-flavored Ganache](https://github.com/trufflesuite/ganache-ui/releases/tag/v2.6.0-beta.3) (which runs both a local IPFS and Lotus node). To download, select the appropriate build for your Operating System from the Assets list at the bottom of the [release page](https://github.com/trufflesuite/ganache-ui/releases/tag/v2.6.0-beta.3#user-content-2.6.0-beta.3-How-to-Upgrade).
 
+This creates 10 accounts, each loaded with 100 FIL, and displays both their account addresses and associated private keys (which can be accessed by clicking on the key icon on the right-hand side).
 
-This creates 10 accounts, each loaded with 100 FIL, and displays both their account addresses and associated private keys.
+![Ganache GUI](../../img/S07/ganache-1.png)
 
-
-
-
-    Available Accounts
-    ==================
-    (0) t3rvcqmc5otc3sh3cngqg2ttzcu7ezpco466lbafzaoygxvnzsw7e7n2zbjwhiv5fdzhs6uxm2qckwt6lp5wga (100 FIL)
-    (1) t3s3la37547tijmoeiep7ktogws3tep2eqrralh7rhi2mpe46q574gceyy467356onblzvwf7ejlelo2rdsg4q (100 FIL)
-    (2) t3wk7a46e2dcqb7qxeuz2zq7wodwycdgtbgdpr37hhvelfilf5yvssg5xbsolgusqsumomtmtqhnobh4carhyq (100 FIL)
-    ...
-
-
-It also starts the Lotus and IPFS daemons running over http and ws respectively:
-
-
+It also starts the Lotus and IPFS daemons running over `http` and `ws` respectively:
 
     Lotus RPC listening on 127.0.0.1:7777
     IPFS  RPC listening on 127.0.0.1:5001
-
-## Filecoin Ganache GUI
-An alternative to running Filecoin Ganache via the CLI is to use Filecoin Ganche UI. As per the screenshot below, this exposes all the core Filecoin protocol elements as tabs which is particularly useful if you're just starting out.
-
-![Ganache GUI](../../img/S07/ganache-1.png)
 
 ## Running the Filecoin Network Explorer
         
