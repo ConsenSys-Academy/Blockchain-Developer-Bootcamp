@@ -1,0 +1,3 @@
+Now that we have the building blocks of a trustless protocol (public key cryptography, hash functions and digital signatures), let's see how blockchains (like Ethereum) combine them to create an entirely new system.
+
+This video mentions that a consensus mechanism is an "economic" mechanism. This is true only for consensus mechanisms in public blockchains. As we'll see in the next section, consensus mechanisms are used in many different fields besides blockchain. However, blockchain does introduce a novel form of consensus, **trustless consensus,** which relies on economic mechanisms. More on that in the "Trustless Consensus" section.
