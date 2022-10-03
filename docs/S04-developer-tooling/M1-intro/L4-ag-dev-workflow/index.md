@@ -32,11 +32,14 @@ Here we see the developer (you) working mainly from their code editor, in which 
 
 The developers will be then having some private testnet tool they're using to deploy the smart contract in the early stages. This will be Ganache for us, since we're using Truffle. As we continue to become more confident in our development process, we may want to deploy to a public testnet. For this, we will use either an Ethereum node we have on our machine or we'll use a gateway service like [Infura](https://infura.io){target=_blank}, which will allow us to easily deploy to an Ethereum testnet, Ethereum mainnet, or even networks like Polygon, Arbitrum or Optimism. (If we're starting to lose you, don't worry we'll cover all these things later in the course!)
 
-## .env File
+## Environment Variables
+
 
 One thing that seems trivial but is incredibly important is the `.env` file for your project. These are the local environmental variables that allow you to deploy your application to the public blockchain network. It also is the best way to ensure you don't expose your private keys or any other sensitive information when you're developing. Particularly when you're pushing material to a git repository, it's easy for folks to forget they've included sensitive information. There are definitely bots that are continually scanning GitHub for private keys that will immediately be compromised.
 
 Please read <a href="https://consensys.net/blog/developers/how-to-avoid-uploading-your-private-key-to-github-approaches-to-prevent-making-your-secrets-public/" target="_blank" rel="noopener noreferrer">this article</a> about how to keep your development environment safe by using a `.env` file and other essential techniques!
+
+These environment variables are also useful to adapt your application to different networks. For example, you may want to use a different contract address on the mainnet than you do on a testnet. You can use environment variables to make this happen.
 
 ## Advanced Developer Tooling
 

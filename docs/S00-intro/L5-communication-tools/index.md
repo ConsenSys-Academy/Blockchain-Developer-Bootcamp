@@ -1,8 +1,15 @@
 # Communication Tools
 
-## Discord
+## Education DAO Discord
 
-Students have access to a chat app called Discord. [Here is the link to join the ConsenSys Discord channel.](https://discord.gg/Nmjbrapxv7){target=_blank}
+Students have access to a chat app called Discord. 
+- [Here is the link to join the Education DAO Discord channel.](https://join.education-dao.org/){target=_blank}
+
+The link above will take you through Noble onboarding, a Web3 tool that will assign roles within the Education DAO's Discord based on your contributions and efforts on-chain.  Once you are onboarded and have access to the Discord server, you will begin to *DAO by DAOing*.  You'll start in our 
+
+## ConsenSys Discord
+
+- [Here is the link to join the ConsenSys Discord channel.](https://discord.gg/Nmjbrapxv7){target=_blank}
 
 We have a channel specific for Bootcamp students and alumni, but there are also channels for you to talk with other developers, product owners, and those interested in the Ethereum ecosystem. As the course progresses, you may want to ask a specific ConsenSys team questions about their specific product. You can do that in this Discord server.
 

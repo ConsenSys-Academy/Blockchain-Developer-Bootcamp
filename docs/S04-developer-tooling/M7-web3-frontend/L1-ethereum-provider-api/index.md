@@ -8,7 +8,7 @@ If you go to any dApp frontend, it knows immediately that you may not have a bro
 
 If you’ve built a CRUD app with a REST API for a backend, then you had to define a function to make that API call, then supply `fetch` with an endpoint, and then based on the action you intend for your user to take, your function would use a particular [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods){target=\_blank}. If your CRUD app was just pulling in data from an API, you’d also have to supply that endpoint to fetch from.
 
-On Web3, we don’t have to do that. We’re not referencing our database with our version of on-chain events, we need the Ethereum blockchain. We need the version of events from the nodes with the longest chain because a blockchain is essentially one massive database.
+In Web3, this is less common. While we can interact with third party services, most of our data is stored on the Ethereum Blockchain. We’re not referencing our database with our version of on-chain events, we need the Ethereum blockchain. We need the version of events from the nodes with the longest chain because a blockchain is essentially one massive database.
 
 ## Where does this API come from?
 
