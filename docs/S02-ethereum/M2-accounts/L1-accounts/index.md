@@ -1,6 +1,1 @@
-  Currently on LMS
-================
-
-  This content is a video hosted on courses.consensys.net (for now)
-
- 
+In this video, we'll walk through how Ethereum uses public key cryptography to generate addresses on the network.
