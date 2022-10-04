@@ -138,7 +138,7 @@ The updated expression will look like this:
 
 Tried to click connect, connected successfully, and noticed you’re still seeing the connect button? We’re going to have to tweak our logic in the `<main></main>` element to reflect what sorcery we have going on in our app state right now.
 
-Up until this point, we had a binary condition to check for: if `window.ethereum` was injected into the browser. If you look back on `account`, it initially started as an empty string— one of the six [falsy values](freecodecamp.org/news/falsy-values-in-javascript/){target=\_blank} in JavaScript. If a user has connected, it has a value as a 42-character long hexadecimal string. Ternary operators come in handy here because we can chain them (but not much or they get hard to read 😅).
+Up until this point, we had a binary condition to check for: if `window.ethereum` was injected into the browser. If you look back on `account`, it initially started as an empty string— one of the six [falsy values](https://freecodecamp.org/news/falsy-values-in-javascript/){target=\_blank} in JavaScript. If a user has connected, it has a value as a 42-character long hexadecimal string. Ternary operators come in handy here because we can chain them (but not much or they get hard to read 😅).
 
 ```jsx
 <>

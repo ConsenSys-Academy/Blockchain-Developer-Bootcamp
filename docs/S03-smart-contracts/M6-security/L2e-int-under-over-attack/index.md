@@ -49,4 +49,4 @@ contract VulnerableContract {
 }
 ```
     
-This type of attack is easily avoidable by using [a SafeMath library such as this](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol){target=_blank}, that provides safety checks and will revert on error. The SafeMath library [now ships](https://blog.soliditylang.org/2020/12/16/solidity-v0.8.0-release-announcement/){target=_blank} with Solidity as of 0.8.x, so you do not have to include it if you're working with a compiler on 0.8.x except in very specific cases mentioned [here](S03-smart-contracts/M6-security/L2e-int-under-over-attack/index.html){target=_blank}.
+This type of attack is easily avoidable by using [a SafeMath library such as this](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol){target=_blank}, that provides safety checks and will revert on error. The SafeMath library [now ships](https://blog.soliditylang.org/2020/12/16/solidity-v0.8.0-release-announcement/){target=_blank} with Solidity as of 0.8.x, so you do not have to include it if you're working with a compiler on 0.8.x except in very specific cases.
