@@ -1,6 +1,1 @@
-  Currently on LMS
-================
-
-  This content is a video hosted on courses.consensys.net (for now)
-
- 
+Note on byte arrays: Prior to version 0.8.0, `byte` used to be an alias for `bytes1`.

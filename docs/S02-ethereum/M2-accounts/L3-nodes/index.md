@@ -1,6 +1,1 @@
-  Currently on LMS
-================
-
-  This content is a video hosted on courses.consensys.net (for now)
-
- 
+In the Fundamentals chapter, we discussed nodes in a general, distributed network context. In this video, we'll revisit that concept and see how we apply it specifically to Ethereum.
