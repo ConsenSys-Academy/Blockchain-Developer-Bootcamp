@@ -12,11 +12,11 @@ What is a Multi-signature wallet?
 
 A multi-signature wallet is an account that requires some [m-of-n quorum](https://www.sunflower-cissp.com/glossary/cissp/3455/m-of-n-control){target=_blank} of approved private keys to approve a transaction before it is executed.
 
-In Ethereum, multi-signature wallets are implemented as a smart contract, that each of the approved external accounts sends a transaction to in order to "sign" a group transaction.
+In Ethereum, multi-signature wallets are implemented as a smart contract, where each of the approved external accounts sends a transaction to in order to "sign" a group transaction.
 
 Following this project spec designed by the UPenn Blockchain Club, you will now create your own multisignature wallet contract.
 
-**Note: It is not suggested that you use this multisignature wallet with any real funds, but rather use a far more deeply audited one such as the [Gnosis multisignature wallet.](https://gnosis-safe.io/){target=_blank}**
+**Note: While it is useful to know how to create a multisignature wallet, if you ever want to use one for real world applications with real funds, make sure you use a far more deeply audited one such as the [Gnosis multisignature wallet.](https://gnosis-safe.io/){target=_blank}**
 
 Project Setup
 -------------
@@ -30,7 +30,7 @@ Copy the contents of the MultiSignatureWallet.sol file found in the project dire
 
 Let's review what this contract needs to be able to do before we start writing the code:
 
-* The contract will have **multiple owners** that will determine which transactions the contract is allowed to execute.
+* The contract will have **multiple owners** who will determine which transactions the contract is allowed to execute.
 * Contract owners need to be able to **propose transactions** that other owners can either **confirm** or **revoke**.
 * If a proposed transaction receives enough support, it will be executed.
 
@@ -45,7 +45,7 @@ Starting with the constructor, you can see that with the latest solidity compile
 constructor(address[] memory _owners, uint _required)  
 ```
 
-We are going to want to check the user inputs to the constructor to make sure that a user does not require more confirmations than there are owners, that the contract requires at least one confirmation before sending a transaction and that the owner array contains at least one address.
+We need to check the user inputs to the constructor to make sure that a user does not require more confirmations than there are owners, that the contract requires at least one confirmation before sending a transaction and that the owner array contains at least one address.
 
 We can create a modifier that checks these conditions
 
@@ -135,7 +135,7 @@ struct Transaction {
 }  
 ```
 
-We need to store the inputs to the `addTransaction` function in a Transaction struct and create a transaction id for the transaction. Let's create two more storage variables to keep track of the transaction ids and transaction mapping.
+We need to store the inputs to the `addTransaction` function in a Transaction struct and create a transaction id for the transaction. Let's create two more storage variables to keep track of the transaction IDs and transaction mapping.
 
 ```
 uint public transactionCount;      
@@ -182,7 +182,7 @@ function confirmTransaction(uint transactionId) public {}
 
 The confirm transaction function allows an owner to confirm an added transaction.
 
-This requires another storage variable, a confirmations mapping that stores a mapping of boolean values at owner addresses. This variable keeps track of which owner addresses have confirmed which transactions.
+This requires another storage variable, a confirmations mapping that stores a mapping of boolean values at owner addresses. This variable keeps track of which owner addresses has confirmed which transactions.
 
 ```
 mapping (uint => mapping (address => bool)) public confirmations;  
@@ -247,7 +247,7 @@ Then we want to verify that the transaction has at least the required number of 
 
 To do this we will loop over the owners array and count how many of the owners have confirmed the transaction. If the count reaches the required amount, we can stop counting (save gas) and just say the requirement has been reached.
 
-I define the helper function isConfirmed, which we can call from the `executeTransaction` function.
+Now define a helper function isConfirmed, which we can call from the `executeTransaction` function.
 
 
 ```
@@ -266,7 +266,7 @@ function isConfirmed(uint transactionId)
 }  
 ```
 
-It will return true if the transaction is confirmed, so in the `executeTransaction` function, we can execute the transaction at the specified if it is confirmed, otherwise do not execute it and then update the Transaction struct to reflect the state.
+It will return true if the transaction is confirmed, so in the `executeTransaction` function, we can execute the transaction if it is confirmed, otherwise do not execute it and then update the Transaction struct to reflect the state.
 
 We are updating the state, so we should log an event reflecting the change.
 
@@ -310,7 +310,7 @@ Note: If you want to execute a transaction that sends value from the MultiSig co
 Interacting with the Contract
 -----------------------------
 
-Now that we have a basic MultiSignature Wallet, let's interact with the Multisig Wallet and see how it works.
+Now that we have a basic MultiSignature Wallet, let's interact with it and see how it works.
 
 Copy the contract that we developed in Remix into the truffle project directory provided.
 
