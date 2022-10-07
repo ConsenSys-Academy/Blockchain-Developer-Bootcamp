@@ -80,10 +80,10 @@ Inside the function body, we can throw in a `try/catch` block. See the code belo
 ```jsx
 const connect = async () => {
 	try {
-		// eth_requestAccounts
+	    // eth_requestAccounts
 	}
 	catch (e) {
-		console.log(e)
+	    console.log(e)
 	}
 }
 ```
