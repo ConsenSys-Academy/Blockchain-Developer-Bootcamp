@@ -134,7 +134,7 @@ The updated expression will look like this:
 
 ### Showing the account
 
-![Gru Connect Wallet Meme](../../../img/s04/connect-wallet-gru.png)
+![Gru Connect Wallet Meme](../../../img/S04/connect-wallet-gru.png)
 
 Tried to click connect, connected successfully, and noticed you’re still seeing the connect button? We’re going to have to tweak our logic in the `<main></main>` element to reflect what sorcery we have going on in our app state right now.
 
@@ -216,7 +216,7 @@ const Account = ({ account }) => {
 
 So far, the bases you’ve covered include onboarding a user. Allowing them to connect. And showing that they’ve connected. But what about when they leave your dApp? Go ahead and refresh the page. See how it doesn’t show your address anymore? Now click connect. Notice now how MetaMask didn’t even popup, but your address shows up right away? But wait, get this. Open up MetaMask. We’re still connected?
 
-![Screenshot showing MetaMask is still connected](../../../img/s04/connect-wallet-connectivity.png)
+![Screenshot showing MetaMask is still connected](../../../img/S04/connect-wallet-connectivity.png)
 
 Try connecting to a known dApp. Now refresh. Address still there? Let’s dig around a bit, *some* of these dApps will let you disconnect. Re-read that sentence. Now try to disconnect, if there’s a button for it. You won’t see your address anymore, great. But go check MetaMask. You’re **still** connected. I know. *I know.*
 
