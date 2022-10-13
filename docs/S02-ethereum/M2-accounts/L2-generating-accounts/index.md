@@ -171,7 +171,7 @@ function getSignerAddress(signedTx){
 }
 ```
 
-Unsigned EIP1559 Ethereum transactions looks something like this - *note* the gasPrice is missing and replaced with `maxPriorityFeePerGas` and `maxFeePerGas`, and there is a `type: 2` indicating the EIP1559 transaction.
+Unsigned EIP1559 Ethereum transactions looks something like this - *note* the `gasPrice` is missing and replaced with `maxPriorityFeePerGas` and `maxFeePerGas`, and there is a `type: 2` indicating the EIP1559 transaction.
 
 ```javascript
 {
