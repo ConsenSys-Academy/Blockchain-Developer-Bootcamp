@@ -3,6 +3,8 @@ Generating Ethereum accounts in JavaScript
 
 Public key cryptography and digital signatures are a foundational technology that enable blockchains to work. In this project you are going to get your hands dirty and understand how they work at the code level. You will be using JavaScript and a simple web interface to see what is going on.
 
+For a refresher on keys, see [Public/Private Key Crypto](../../../S01-fundamentals/M1-cryptography/L1-pub-key-crypto/index.md) and the [additional resources](../../../S01-fundamentals/M1-cryptography/L2-pub-key-crypto-additional/index.md).
+
 Generate Private Key
 --------------------
 
@@ -10,11 +12,14 @@ First, we are going to generate a private key, derive public keys from the priva
 
 ```
 $ npm install
+$ npm audit fix --force # this will patch any vulnerabilities in outdated packages
 $ npm run watch # this will watch for updates in main.js and update bundle.js`
+
+# In a separate terminal/shell window in the root of the project
 $ npm run reload # this will serve the app @ localhost:8081 and refresh the page when there are updates
 ```
 
-(If you run into any problems while implementing this demo application, try opening the developer tools in the browser (Ctrl + Shift + I or F12) and checking the "Console" tab.)
+If you run into any problems while implementing this demo application, try opening the developer tools in the browser (Ctrl + Shift + I or F12) and checking the 'Console' tab. If content doesn't refresh, terminate and restart both terminal calls (`npm run watch` and `npm run reload`)
 
 In the main.js file include the [bip39 package](https://www.npmjs.com/package/bip39){target=_blank}. We will use this to generate random input to generate a private key.
 
@@ -97,20 +102,37 @@ Creating a Digital Signature With Your Key
 
 Using this private key we can sign transactions from this address and broadcast them to the network.
 
+Note: There are now two types of transactions
+1. Legacy (Pre-EIP1559) which at some point will be deprecated
+2. EIP1559 Transactions utilising the new gas fee estimation methods
+
+Both types are covered here.
+
 Nodes that are verifying transactions in the network will use the signature to determine the address of the signatory, cryptographically verifying that every transaction from this account is coming from someone who has access to the corresponding private key.
 
-You can sign transactions in the browser with the [ethereumjs-tx library](https://github.com/ethereumjs/ethereumjs-tx){target=_blank}.
+You can sign transactions in the browser with the [@ethereumjs/tx library](https://github.com/ethereumjs/ethereumjs-monorepo/tree/master/packages/tx){target=_blank}.
 
 ```
 const EthereumTx = require('ethereumjs-tx')    
 ...  
- 
-function signTx(privKey, txData){  
-    const tx = new EthereumTx(txData)  
-    tx.sign(privKey)  
-    return tx  
+
+const { FeeMarketEIP1559Transaction, Transaction } = require("@ethereumjs/tx");
+const { Chain, Hardfork, Common } = require("@ethereumjs/common");
+const { bigIntToHex } = require("@ethereumjs/util");
+
+function signLegacyTx(privKey, txData){  
+    const txParams = new Common({ chain: Chain.Mainnet, hardfork: Hardfork.Istanbul })
+    const tx = Transaction.fromTxData(txData, { txParams })
+    return tx.sign(privKey)
+}
+
+function signEIP1559Tx(privKey, txData){  
+    const txOptions = new Common({ chain: Chain.Mainnet, hardfork: Hardfork.London })
+    const tx = FeeMarketEIP1559Transaction.fromTxData(txData, { txOptions })
+    return tx.sign(privKey)
 }
 ```
+
 Unsigned Ethereum transactions look something like this:
 
 ```
@@ -139,7 +161,7 @@ And a signed transaction looks something like this:
   s: '0x29' 
 }
 ```
-Notice the main difference is the inclusion of the variables `v`, `r` and `s`. These variables are used to recover the address corresponding to the key that signed the transaction. This signed transaction is broadcast to the network to be included in a block. You can read more about these variables in [this excellent article here.](https://medium.com/mycrypto/the-magic-of-digital-signatures-on-ethereum-98fe184dc9c7){target=_blank}
+Notice the main difference between signed and unsigned transactions is the inclusion of the variables `v`, `r` and `s`. These variables are used to recover the address corresponding to the key that signed the transaction. This signed transaction is broadcast to the network to be included in a block. You can read more about these variables in [this excellent article here.](https://medium.com/mycrypto/the-magic-of-digital-signatures-on-ethereum-98fe184dc9c7){target=_blank}
 
 You can recover the sender address from the signed transaction with the following method:
 
@@ -148,7 +170,46 @@ function getSignerAddress(signedTx){
   return "0x" + signedTx.getSenderAddress().toString('hex')
 }
 ```
-That's it! You've successfully generated a private, public keypair and then used that to derive a valid Ethereum address. You've also then created the world's tiniest crypto-wallet using `signTx()` function and seen how you can recover the address from a digital signature or signed transaction.
+
+Unsigned EIP1559 Ethereum transactions looks something like this - *note* the gasPrice is missing and replaced with `maxPriorityFeePerGas` and `maxFeePerGas`, and there is a `type: 2` indicating the EIP1559 transaction.
+
+```javascript
+{
+    nonce: '0x00', 
+    type: 2, 
+    gasLimit: '0x09184e72a000', 
+    maxPriorityFeePerGas: '0x09184e72a000', 
+    maxFeePerGas: '0x09184e72a000',
+    gasLimit: '0x2710',
+    to: '0x31c1c0fec59ceb9cbe6ec474c31c1dc5b66555b6', 
+    value: '0x10', 
+    data: '0x7f7465737432000000000000000000000000000000000000000000000000000000600057',
+    chainId: 3
+}
+```
+
+And a signed EIP1559 transaction looks something like this
+
+```javascript
+{ 
+    nonce: '0x00', 
+    type: 2, 
+    gasLimit: '0x09184e72a000',
+    maxPriorityFeePerGas: '0x09184e72a000', 
+    maxFeePerGas: '0x09184e72a000',
+    to: '0x31c1c0fec59ceb9cbe6ec474c31c1dc5b66555b6', 
+    value: '0x00', 
+    data: '0x7f7465737432000000000000000000000000000000000000000000000000000000600057', 
+    chainId: 3, 
+    v: 0x29, 
+    r: 0x0172f576ab20d1616ec839b0a8a3475e8113f83f7d98cbe3822f4f4dd7bca262, 
+    s: 0x025d92c8f2d3add278c263030fb2b4195bb15ad55418141c774354a9594be972   
+}
+```
+
+Notice the main difference between signed and unsigned transaction is the inclusion of the variables `v`, `r` and `s`. These variables are used to recover the address corresponding to the key that signed the transaction.
+
+That's it! You've successfully generated a private, public keypair and then used that to derive a valid Ethereum address. You've also then created the world's tiniest crypto-wallet using `signLegacyTx()` and the `signEIP1559Tx()` functions and then seen how you can recover the address from a digital signature or signed transaction.
 
 You'll very rarely have to do this kind of crypto-primitive handling. For one, it's garbage for security. But, also, there is so much tooling available to you to do these kind of operations safely and efficiently at scale. For learning purposes, however, nothing beats coding this stuff on its own!
 
