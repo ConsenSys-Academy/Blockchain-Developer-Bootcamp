@@ -209,7 +209,7 @@ And a signed EIP1559 transaction looks something like this
 
 Notice the main difference between signed and unsigned transaction is the inclusion of the variables `v`, `r` and `s`. These variables are used to recover the address corresponding to the key that signed the transaction.
 
-That's it! You've successfully generated a private, public keypair and then used that to derive a valid Ethereum address. You've also then created the world's tiniest crypto-wallet using `signLegacyTx()` and the `signEIP1559Tx()` functions and then seen how you can recover the address from a digital signature or signed transaction.
+That's it! You've successfully generated a private, public keypair and then used that to derive a valid Ethereum address. You've also then created the world's tiniest crypto-wallet. Using the `signLegacyTx()` and the `signEIP1559Tx()` functions you have created and signed transactions. You can now also recover the address from a digital signature or signed transaction.
 
 You'll very rarely have to do this kind of crypto-primitive handling. For one, it's garbage for security. But, also, there is so much tooling available to you to do these kind of operations safely and efficiently at scale. For learning purposes, however, nothing beats coding this stuff on its own!
 
