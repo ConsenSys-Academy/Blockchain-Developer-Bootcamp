@@ -1,6 +1,4 @@
-  Currently on LMS
-================
+Additional Material:
 
-  This content is a video hosted on courses.consensys.net (for now)
-
- 
+1. [Want to Understand Blockchain? You Need to Understand State](https://consensys.net/blog/blockchain-explained/want-to-really-understand-blockchain-you-need-to-understand-state/)
+2. [Why use a blockchain](https://www.coindesk.com/information/why-use-a-blockchain/)?
