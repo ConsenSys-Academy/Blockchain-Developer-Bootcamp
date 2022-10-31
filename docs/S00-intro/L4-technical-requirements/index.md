@@ -93,6 +93,14 @@ Even if JavaScript is not your first software language, it's really important yo
 
 We strongly recommend using VSCode in this course, particularly if you're new to coding, due to its extensive plugins. Other popular editors include [Sublime Text,](https://www.sublimetext.com/){target=_blank} and [IDEA](https://www.jetbrains.com/idea/){target=_blank} (written originally for Java but now supports many languages).
 
+[Remix Project](https://remix-project.org/){target=_blank} is a platform for development tools that use a plugin architecture. It encompasses sub-projects including Remix Plugin Engine, Remix Libraries, and of course Remix IDE.
+
+Remix IDE is an open source web and desktop application. It fosters a fast development cycle and has a rich set of plugins with intuitive GUIs. Remix is used for the entire journey of contract development with Solidity language as well as a playground for learning and teaching Ethereum.
+
+Start developing using Remix on browser, visit: [Start coding online](https://remix.ethereum.org/){target=_blank}
+
+For desktop version, see releases: [Remix Desktop](https://github.com/ethereum/remix-desktop/releases){target=_blank}
+
 There is also the option of text-only editors. Many developers find them extremely productive and, while challenging to learn, make their job much easier. We'll address one here, vim, by providing this series of tutorials:
 
 *   [History and Effective Use of Vim](https://begriffs.com/posts/2019-07-19-history-use-vim.html){target=_blank}
