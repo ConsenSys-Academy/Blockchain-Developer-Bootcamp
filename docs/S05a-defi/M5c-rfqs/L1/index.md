@@ -31,7 +31,7 @@ This model exists because of Ethereum’s constraints and the issues around larg
 
 ## Supplying Liquidity
 
-Liquidity is provided by Makers who run [Servers](https://docs.airswap.io/guides/makers){target=\_blank}. These servers are discoverable via the [Registry Protocol](https://docs.airswap.io/technology/discovery){target=\_blank} which allows for price discovery.
+Liquidity is provided by Makers who run [Servers](https://about.airswap.io/technology/makers){target=\_blank}. These servers are discoverable via the [Registry Protocol](https://about.airswap.io/technology/discovery){target=\_blank} which allows for price discovery.
 
 Makers submit their prices to trade. Takers are counterparties who wish to start a trade.
 
@@ -55,7 +55,7 @@ If standing up a Server is too much, a Maker could use [Delegates](https://mediu
 
 Once discovery and off-chain negotiation are complete, the orders are settled on-chain.
 
-This is done via [atomic swaps](https://support.airswap.io/en/articles/2455935-what-is-an-atomic-swap){target=\_blank} using a Swap contract. They are called atomic because they settle or they don’t.
+This is done via [atomic swaps](https://twitter.com/airswap/status/1380219827546112004){target=\_blank} using a Swap contract. They are called atomic because they settle or they don’t.
 
 The added benefit of this is that compared to order books, off-chain negotiation makes it more likely that orders will be filled once they are accepted. It helps to eliminate slippage and front running.
 

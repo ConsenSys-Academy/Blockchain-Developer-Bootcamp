@@ -43,7 +43,7 @@ It is interesting to note that Discord and chat platforms, in general, are great
 
 Discourse allows for long-form threads, which allow for more well thought out conversations. However, this comes at the cost of a lack of immediacy in response. Discourse can also be configured to be found on search engines, which help with attracting potential members.
 
-Some Discourse forums are more technically focused on catering to their audiences, like [Ethresear.ch](https://ethresear.ch/){target=\_blank} or [research.synthetix.io](https://research.synthetix.io/categories){target=\_blank}. Others are more informal. Tailor it to suit your needs. Side note, you can customize your Discourse template to make it more UX/UI friendly and organized. That effort will go a long way.
+Some Discourse forums are more technically focused on catering to their audiences, like [Ethresear.ch](https://ethresear.ch/){target=\_blank}. Others are more informal. Tailor it to suit your needs. Side note, you can customize your Discourse template to make it more UX/UI friendly and organized. That effort will go a long way.
 
 #### Write up of Improvement Proposal
 
@@ -114,4 +114,4 @@ There is still more to learn about raising funds and such. However, let's call i
 
 🎉 🥳 You made it this far! You get an Easter Egg 🥚.
 
-Bonus! After the bootcamp check out some cool videos around [a16z’s Crypto School](https://a16z.com/crypto-startup-school/){target=\_blank} and check out [ConsenSys Tachyon](https://mesh.xyz/tachyon/){target=\_blank}, our blockchain accelerator.
+Bonus! After the bootcamp check out some cool videos around [a16z’s Crypto School](https://a16z.com/crypto-startup-school/){target=\_blank} and check out [ConsenSys Tachyon](https://www.mesh.xyz/insights/consensys-ventures-announces-tachyon-ii-accelerator-program-in-berlin/){target=\_blank}, our blockchain accelerator.

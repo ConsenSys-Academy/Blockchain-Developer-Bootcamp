@@ -10,7 +10,7 @@ Lending is a fundamental financial mechanism in finance and DeFi. Lending helps 
 
 ## Overcollateralization as a DeFi Primitive
 
-Since DeFi protocols are open and pseudonymous, uncollateralized loans are not possible. You have to put up assets to get funds. Providing collateral ensures the counterparty cannot steal the funds or default on a loan. Due to the volatility risk of crypto assets used as collateral, over-collateralization is required. Issuing [debt via over-collateralization is a typical pattern in DeFi](https://forum.openzeppelin.com/t/introduction-to-the-overcollateralized-loan-pattern-defi-primitive-and-its-security-considerations/2141){target=\_blank}. The pattern can also [help limit the amount of leverage](https://www.steemleo.com/defi/@culgin/overcollateralization-in-defi-is-it-good-or-bad){target=\_blank}, and [control risk for a protocol](https://docs.aave.com/risk/asset-risk/adding-an-asset){target=\_blank} since assets need to be greater than liabilities.
+Since DeFi protocols are open and pseudonymous, uncollateralized loans are not possible. You have to put up assets to get funds. Providing collateral ensures the counterparty cannot steal the funds or default on a loan. Due to the volatility risk of crypto assets used as collateral, over-collateralization is required. Issuing [debt via over-collateralization is a typical pattern in DeFi](https://forum.openzeppelin.com/t/introduction-to-the-overcollateralized-loan-pattern-defi-primitive-and-its-security-considerations/2141){target=\_blank}. The pattern can also [help limit the amount of leverage](https://peakd.com/defi/@culgin/overcollateralization-in-defi-is-it-good-or-bad){target=\_blank}, and [control risk for a protocol](https://docs.aave.com/risk/asset-risk/adding-an-asset){target=\_blank} since assets need to be greater than liabilities.
 
 ![solvency.gif](../../../img/S05/solvency.gif)
 
@@ -42,7 +42,7 @@ Going short means expecting the asset will lose value in price. If the user expe
 
 ## Liquidation and Incentives
 
-Liquidation involves a user's position being closed to pay the debt incurred. This happens if the collateral's value drops below the acceptable collateral ratio. Lending protocols often use an Oracle service like [ChainLink](http://chainlink){target=\_blank} and the price feed of a major exchange like Uniswap to provide real-time data about a collateral's value.
+Liquidation involves a user's position being closed to pay the debt incurred. This happens if the collateral's value drops below the acceptable collateral ratio. Lending protocols often use an Oracle service like [ChainLink](https://chain.link/){target=\_blank} and the price feed of a major exchange like Uniswap to provide real-time data about a collateral's value.
 
 ![liqudation.png](../../../img/S05/liqudation.gif)
 
