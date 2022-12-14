@@ -1,4 +1,4 @@
-## Votre idée de projet final.
+# Votre idée de projet final.
 La culmination de votre temps dans l’éducation DAO sera votre projet final, qui sera une application distribuée (ou dapp) exécutée sur le réseau Ethereum (mainnet ou testnet) avec une interface utilisateur web interactive.
 
 Nous aimerions commencer à travailler sur le projet dès que possible, mais ne vous inquiétez pas, il s'agit vraiment d'un exercice de brainstorming pour vous donner un avantage lorsque vous plongerez vraiment dans votre projet plus tard.
@@ -28,7 +28,7 @@ Certes, le projet sera codé dans toutes sortes de langages étonnants à l’ai
 
 (Remarque : nous en reparlerons plus tard, mais **vous n’avez absolument pas besoin d’écrire du code pour cet exercice**, tout sera écrit en langage simple)
 
-## Parties d’exercice
+# Parties d’exercice
 
 L’exercice est divisé en deux parties :
 
