@@ -8,11 +8,11 @@ Nous avons écrit quelques tests pour le contrat intelligent qui s’exécutera 
 
 En regardant le dépôt GitHub, vous pouvez voir si les tests réussissent ou non.  Ci-dessous, vous pouvez voir un exemple du dépôt du devoir réussissant tous ses tests :
 
-![](Aspose.Words.9809202c-1499-4330-a131-03b9ef6e9a67.001.png)
+![](chapitre3_image1.png)
 
 Voici un exemple d’un dépôt du devoir qui ne réussit pas ses tests :
 
-![](Aspose.Words.9809202c-1499-4330-a131-03b9ef6e9a67.002.png)
+![](chapitre3_image2.png)
 ### Workflow pour terminer le devoir
 1. Cliquez sur le lien du devoir pour créer votre propre dépôt GitHub du devoir
 1. Clonez le dépôt sur votre ordinateur local et complétez le code du contrat intelligent.  [Suivez ces instructions](https://github.com/ConsenSys-Academy/simple-bank-exercise#instructions) pour que tous vos tests réussissent lorsque vous exécutez le test de truffe

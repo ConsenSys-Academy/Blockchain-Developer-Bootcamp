@@ -19,13 +19,13 @@ La création de l'environnement sur votre machine locale pour un client Ethereum
 
 Pour configurer Geth, veuillez suivre les instructions de cette leçon au chapitre 2, " Qu'est-ce qu'un client Ethereum ? Exécution de Go-Ethereum (geth)" :
 
-` `![](Aspose.Words.6f18c0b1-e5f5-495f-a2c2-37257193e92f.001.png)
+` `![](chapitre2_image1.png)
 
 Si vous ne pouvez pas accéder à cette leçon, c'est très probablement parce que vous n'avez pas terminé cette leçon du chapitre 1, "Comment rester en sécurité en utilisant les crypto-monnaies", ce que vous devez faire immédiatement :
 
 
 
-![](Aspose.Words.6f18c0b1-e5f5-495f-a2c2-37257193e92f.002.png)
+![](chapitre2_image1.png)
 
 
 
