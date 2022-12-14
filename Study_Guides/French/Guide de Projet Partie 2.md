@@ -1,5 +1,5 @@
-<!-- Headings -->
-## Invite d’exercice
+
+# Invite d’exercice
 **Écrivez l’architecture Solidity (noms des fonctions et leurs entrées et sorties) pour les contrats intelligents de votre projet final. Téléchargez-le dans le dépôt GitHub que vous avez créé au chapitre 1.**
 ## Concept d’exercice
 Depuis le dernier exercice, vous avez appris : 
@@ -18,7 +18,7 @@ Pour cet exercice, nous aimerions que vous preniez votre compréhension des cont
 
 Plus précisément, nous aimerions que vous réfléchissiez au **flux de travail unique pour le futur utilisateur de votre projet** que vous avez écrit dans le premier exercice. Pour ce flux de travail, écrivez les fonctions de contrat intelligent de base qui seront requises.  Vous n’avez pas encore besoin d’écrire la logique de solidité ! 
 
-## Parties d’exercice
+# Parties d’exercice
 1.**Dans un premier temps, écrivez simplement le nom de la fonction, les entrées dont la fonction a besoin et ce qu’elle pourrait retourner. Démarrez un nouveau fichier dans votre dépôt GitHub et commencez à esquisser les fonctions.**
 
 Voici à quoi cela pourrait ressembler pour notre exemple de vote du premier exercice :
