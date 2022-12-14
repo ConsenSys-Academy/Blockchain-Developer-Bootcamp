@@ -17,9 +17,9 @@ Dans cet exercice, vous aurez besoin des fonctions de base pour les contrats int
 
 1. **Choisissez une interface front-end que vous souhaitez utiliser pour votre projet.** Par exemple : React ou bien HTML / CSS / JS.
 
-1. **Intégrer Web 3** Choisissez une bibliothèque JavaScript Web 3 que vous souhaitez utiliser. Nous avons parlé de [Web3.js](https://web3js.readthedocs.io/en/v1.4.0/) et [ethers.js](https://docs.ethers.org/v5/).
+2. **Intégrer Web 3** Choisissez une bibliothèque JavaScript Web 3 que vous souhaitez utiliser. Nous avons parlé de [Web3.js](https://web3js.readthedocs.io/en/v1.4.0/) et [ethers.js](https://docs.ethers.org/v5/).
 
-1. Construisez les méthodes JavaScript qui permettent à votre interface de **détecter la présence de MetaMask, de se connecter au compte courant, d’afficher des informations provenant de votre contrat intelligent, de soumettre une transaction a votre contrat, de surveiller l’état de la transaction** et **de mettre à jour l’interface** front-end si la transaction est réussie ou non.
+3. Construisez les méthodes JavaScript qui permettent à votre interface de **détecter la présence de MetaMask, de se connecter au compte courant, d’afficher des informations provenant de votre contrat intelligent, de soumettre une transaction a votre contrat, de surveiller l’état de la transaction** et **de mettre à jour l’interface** front-end si la transaction est réussie ou non.
 
 **Une note sur le style :** *Dans ce cours, nous nous concentrons plus sur la fonctionnalité et la sécurité plutôt que sur le style. Ce n'est pas un cours de conception d'interface, c'est un cours sur Ethereum et le développement d'applications décentralisées. Nous voulons simplement que vous montriez ce que vous avez appris tout au long du cours, même si c'est très simple.*
 
