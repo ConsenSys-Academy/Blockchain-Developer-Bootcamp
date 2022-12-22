@@ -2,7 +2,7 @@
 
 An [automated market maker (AMM)](https://academy.binance.com/en/articles/what-is-an-automated-market-maker-amm) is a smart contract that holds assets and is always willing to quote you a price between two assets. You can trade against the AMM's capital in the smart contract instead of between peers. It uses the trades to update the size of the assets and update their price accordingly. The AMM can always guarantee liquidity by raising the price for an asset according to market demand.
 
-There are [various ones](https://cipher.substack.com/p/an-introduction-to-automated-market){target=\_blank}, however we will focus on the most important features popularized by UniSwap. [Haseeb Qureshi explains UniSwap](https://medium.com/dragonfly-research/what-explains-the-rise-of-amms-7d008af1c399){target=\_blank} well here. We will cover another type of DEX protocol in a later section.
+There are [various ones](https://web.archive.org/web/20210621095532/https://cipher.substack.com/p/an-introduction-to-automated-market){target=\_blank}, however we will focus on the most important features popularized by UniSwap. [Haseeb Qureshi explains UniSwap](https://medium.com/dragonfly-research/what-explains-the-rise-of-amms-7d008af1c399){target=\_blank} well here. We will cover another type of DEX protocol in a later section.
 
 This section will give an overview of two key concepts that make AMMs possible.
 
@@ -61,6 +61,6 @@ A consequence of this is [impermanent loss](https://coinmarketcap.com/alexandria
 
 ## Additional Resources
 
-[DeFi and the Future of Finance](https://poseidon01.ssrn.com/delivery.php?ID=468065099084001018003001097015123074002033009058089053073089097071090006069068127090056119012045118056006023019023064027115112050004033058059085029023094127080025065057006114025116096023021080002103109117106113005025070080109097094005091097004025&EXT=pdf&INDEX=TRUE){target=_blank} (section 4.7.2)
-[DeFi and the Future of Finance](https://poseidon01.ssrn.com/delivery.php?ID=468065099084001018003001097015123074002033009058089053073089097071090006069068127090056119012045118056006023019023064027115112050004033058059085029023094127080025065057006114025116096023021080002103109117106113005025070080109097094005091097004025&EXT=pdf&INDEX=TRUE){target=_blank} (section 6.2)
+[DeFi and the Future of Finance](https://deliverypdf.ssrn.com/delivery.php?ID=242115122088113093099002082093099101027076009064056023123099069121090075105092011127024118056032024004118109004005120003004101021075093045010121015028097073003071000000120066003091069024020124068077109071003074114022067119100027072025098003119097&EXT=pdf&INDEX=TRUE){target=_blank} (section 4.7.2)
+[DeFi and the Future of Finance](https://deliverypdf.ssrn.com/delivery.php?ID=242115122088113093099002082093099101027076009064056023123099069121090075105092011127024118056032024004118109004005120003004101021075093045010121015028097073003071000000120066003091069024020124068077109071003074114022067119100027072025098003119097&EXT=pdf&INDEX=TRUE){target=_blank} (section 6.2)
 [Graphical Guide for Understanding Uniswap via EthHub](https://docs.ethhub.io/guides/graphical-guide-for-understanding-uniswap/){target=\_blank}

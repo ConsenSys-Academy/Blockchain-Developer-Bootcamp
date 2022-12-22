@@ -8,7 +8,7 @@ Some popular oracle sources are [Chainlink](https://chain.link/){target=\_blank}
 
 Oracles in DeFi are used for a wealth of different reasons:
 
-1. To get the value of underlying collateral (such as [Aave](https://aave.substack.com/p/pop-the-champagne-aave-protocol-is){target=\_blank}, [Synthetix](alendar.google.com/calendar/u/0/r/week/2021/7/15?tab=mc&pli=1){target=\_blank}, [Compound](https://compound.finance/governance/proposals/47){target=\_blank})
+1. To get the value of underlying collateral (such as [Aave](https://aave.substack.com/p/pop-the-champagne-aave-protocol-is){target=\_blank}, [Synthetix](https://calendar.google.com/calendar/u/0/r/week/2021/7/15?tab=mc&pli=1){target=\_blank}, [Compound](https://compound.finance/governance/proposals/47){target=\_blank})
 2. To generate a random lottery winner (such as [PoolTogether](https://medium.com/pooltogether/improving-pooltogether-with-chainlink-vrf-dcf1a3d6ea){target=\_blank}
 3. Margin Trading (such as [SushiSwap](https://medium.com/sushiswap-org/sushi-integrates-chainlink-price-feeds-to-secure-kashi-lending-and-margin-trading-markets-c1bdfc83b623){target=\_blank}
 4. [Execute decentralized event-driven tasks, so that your contracts react to events](https://chain.link/solutions/keepers)! The oracle can execute your contracts if a certain event happens.
@@ -49,7 +49,7 @@ You can use TheGraph and ChainLink described [Chainlink's description](https://w
 ## Additional Resources
 
 - [77+ Smart Contract Use Cases Enabled By Chainlink](https://blog.chain.link/44-ways-to-enhance-your-smart-contract-with-chainlink/){target=\_blank}
-- [Aave Oracles](https://docs.aave.com/developers/the-core-protocol/price-oracle){target=\_blank}
+- [Aave Oracles](https://docs.aave.com/developers/core-contracts/aaveoracle){target=\_blank}
 - [The Importance of Data Quality for DeFi Smart Contracts](https://blog.chain.link/the-importance-of-data-quality-for-defi/){target=\_blank}
 - [Flash Loans and Tamper Proof Oracles](https://blog.chain.link/flash-loans-and-the-importance-of-tamper-proof-oracles/){target=\_blank}
 - [TheGraph Academy](https://thegraph.academy/){target=\_blank} -[GraphQL tutorial via EggHead.io](https://egghead.io/q/graphql){target=\_blank}

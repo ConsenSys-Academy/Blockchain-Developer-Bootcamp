@@ -1,6 +1,6 @@
 # Why Learn Blockchain?
 
-Most people in crypto came here initially because of the allure of money. Either we missed an opportunity to buy, are looking for an opportunity to grow our salary, or see an opportunity for a killer app. There's no shame in that! We do hope you come for the money and stay for the paradigm shift, though.
+Initially, most people transitioned into the crypto space because of the vast financial opportunities. To some, they missed an opportunity to buy a token at its early, while others are looking for a chance to grow their salary base, or see an opportunity for a killer app. There's no shame in that! But we do hope you come for the money and stay for the paradigm shift as well.
 
 
 Blockchain promises to upend the current top-down information systems in our world. Currently, most users of the internet surrender their personal data to centralized databases and services.
