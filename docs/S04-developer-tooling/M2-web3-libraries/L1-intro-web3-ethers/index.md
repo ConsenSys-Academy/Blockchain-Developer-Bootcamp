@@ -2,28 +2,28 @@
 
 As we mentioned in "Where Do Users Fit in Our Mental Model?" Web 3 JavaScript APIs are critical to connecting users to our blockchain applications. There are a variety of common JavaScript libraries that you can use to connect to Ethereum and develop an interface for your users. Many of the libraries serve the same purpose and have the same functionality, but the syntax differs for each.
 
-The purpose of this lesson is to show the similarities and differences between the main two libraries,<a href="https://web3js.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer"> Web3.js</a> and <a href="https://docs.ethers.io/v5/" target="_blank" rel="noopener noreferrer">ethers.js,</a> so you gain a better understanding of what these libraries do a general level and how each one does it.
+The purpose of this lesson is to show the similarities and differences between the main two libraries,[Web3.js](https://web3js.readthedocs.io/en/latest/){target=\_blank} and [ethers.js](https://docs.ethers.io){target=\_blank}, so you gain a better understanding of what these libraries do a general level and how each one does it.
 
 If you are using the Brave browser, you may encounter conflicts with the built-in Ethereum wallet and Metamask. If this happens, try using a different browser with Metamask installed.
 
 ## Truffle
 
-Truffle is the framework that we have covered in the most depth so far in the course. Truffle will connect to a running blockchain specified in the truffle-config.js file, manage deployments via migration scripts and information stored in the truffle artifacts and abstracts away much of the complexity of interacting with contracts (via [contract abstractions](https://trufflesuite.com/docs/truffle/reference/contract-abstractions)).
+Truffle is the framework that we have covered in the most depth so far in the course. Truffle will connect to a running blockchain specified in the truffle-config.js file, manage deployments via migration scripts and information stored in the truffle artifacts and abstracts away much of the complexity of interacting with contracts (via [contract abstractions](https://trufflesuite.com/docs/truffle/reference/contract-abstractions){target=\_blank}).
 
 Other libraries handle these in different ways and have different APIs that are useful to review.
 
 ## Web3.js
 
-Web3.js is one of the most popular JavaScript libraries in Ethereum dApp development. It is currently maintained by Chainsafe, and you can visit [the Web3.js repository here.](https://github.com/ChainSafe/web3.js){target=_blank}
+Web3.js is one of the most popular JavaScript libraries in Ethereum dApp development. It is currently maintained by Chainsafe, and you can visit [the Web3.js repository here.](https://github.com/ChainSafe/web3.js){target=\_blank}.
 
-Formerly, Web3.js was the library that Metamask would injected into your browser. If you had Metamask installed in your browser, you could see the web3 object by opening your browser developer tools. Since 2020, MetaMask has deprecated the injection of Web3.js into the browser and now simply uses window.ethereum. [Read more here.](https://medium.com/metamask/breaking-changes-to-the-metamask-provider-are-here-7b11c9388be9){target=_blank}
+Formerly, Web3.js was the library that Metamask would injected into your browser. If you had Metamask installed in your browser, you could see the web3 object by opening your browser developer tools. Since 2020, MetaMask has deprecated the injection of Web3.js into the browser and now simply uses window.ethereum. [Read more here](https://medium.com/metamask/breaking-changes-to-the-metamask-provider-are-here-7b11c9388be9){target=\_blank}.
 
 Since MetaMask does not inject it anymore, let's add it ourselves using the following steps:
 
-1. Open your browser's developer console. [See this article for how to do it](https://support.happyfox.com/kb/article/882-accessing-the-browser-console-and-network-logs/){target=_blank} for major browsers in each major operating system.
+1. Open your browser's developer console. [See this article for how to do it](https://support.happyfox.com/kb/article/882-accessing-the-browser-console-and-network-logs/){target=\_blank} for major browsers in each major operating system.
 2. In the Console, add the following series of Javascript code. Press enter after each line of code:
 
-```
+```javascript
 var script = document.createElement('script');
 script.type = 'text/javascript';
 script.src = 'script.js';
@@ -37,13 +37,13 @@ Now, we need to start up a local testnet using Ganache.
 
 ## Connect to Ganache GUI
 
-Let's connect to Ganache GUI. Start [Ganache GUI](https://truffleframework.com/docs/ganache/overview) and use the gear icon to change the Ganache port to `8545`. 
+Let's connect to Ganache GUI. Start [Ganache GUI](https://truffleframework.com/docs/ganache/overview){target=\_blank} and use the gear icon to change the Ganache port to `8545`.
 
 ![finding the gear in ganache GUI](../../../img/S04/ganache-1.png)
 
 ![changing the port number in ganache GUI](../../../img/S04/ganache-2.png)
 
-connect Metamask to `Localhost 8545`
+Connect Metamask to `http://localhost:8545`
 
 ## Import Ganache Account into MetaMask
 
@@ -51,7 +51,9 @@ connect Metamask to `Localhost 8545`
 
 You can easily import Ganache GUI accounts into Metamask by importing via the private key. Click the key icon on the right side of Ganache GUI to get the associated account private key. To import the account into Metamask, select "Import Account" in the Metamask accounts dropdown, and paste in the private key.
 
-![](https://files.cdn.thinkific.com/file_uploads/205430/images/b32/51d/630/1595392067077.jpg)                ![](https://files.cdn.thinkific.com/file_uploads/205430/images/ba1/88e/3a1/1595392059006.jpg)
+![export key from ganache ui](https://files.cdn.thinkific.com/file_uploads/205430/images/b32/51d/630/1595392067077.jpg)
+
+![import account into metamask](https://files.cdn.thinkific.com/file_uploads/205430/images/ba1/88e/3a1/1595392059006.jpg)
 
 Copy the public address of another address in your Ganache GUI. This is the address we'll send our transaction to!
 
@@ -59,7 +61,7 @@ Copy the public address of another address in your Ganache GUI. This is the addr
 
 We need to connect our `web3` object to our MetaMask account. We do that by running the following commands:
 
-```
+```javascript
 ethereum.request({ method: 'eth_requestAccounts' })
 ```
 
@@ -67,10 +69,9 @@ This should pop-up a MetaMask window asking you to connect to our website, pleas
 
 Now that we have access to MetaMask, we can connect MetaMask to our `web3` object by running the following:
 
-```
+```javascript
 web3 = new Web3(window.ethereum)
 ```
-
 
 <!-- ### A Side note about Metamask
 
@@ -80,55 +81,57 @@ Connecting will make this account information accessible to the current page.
 
 ![](https://files.cdn.thinkific.com/file_uploads/205430/images/3a9/4c5/3f8/1595392059315.jpg) -->
 
-
-
 ### Checking the account
 
 Once you are connected to Ganache GUI through Metamask, you can send transactions on the Ganache GUI network through the injected web3 object in the browser console. Typing `web3.currentProvider.selectedAddress` should return your current account address.
 
-# ![](https://files.cdn.thinkific.com/file_uploads/205430/images/1bc/2e0/b89/1595392059501.jpg)
+![current address in browser console](https://files.cdn.thinkific.com/file_uploads/205430/images/1bc/2e0/b89/1595392059501.jpg)
 
 ### Sending a Transaction
 
 Grab the second public address you copied earlier from your Ganache GUI. Use the following code snippet as your transaction information.
 
-<pre>var transaction = {
+```javascript
+var transaction = {
 from: web3.currentProvider.selectedAddress,
 to: "ENTER_SECOND_ADDRESS_HERE",
 value: web3.utils.toWei("0.001", "ether")
-}</pre>
+}
+```
 
 Th "to" account is the second account that is generated by the Quickstart in Ganache GUI.
 
 Now sending a transaction is as easy as entering `ethereum.request({ method: 'eth_sendTransaction', params: [transaction]})` in the console and Metamask will pop up, asking you to sign the transaction. If you get an error, you may need to reset the web3 provider. You can do that with this line of code `web3.setProvider(web3.currentProvider)`.
 
-![](https://files.cdn.thinkific.com/file_uploads/205430/images/9b8/1ea/5f4/1595392060592.jpg)
+![sign transaction on metamask](https://files.cdn.thinkific.com/file_uploads/205430/images/9b8/1ea/5f4/1595392060592.jpg)
 
 ### Nonce Mismatch Errors
 
 If you use Metamask accounts on different development blockchains, the nonce counts may get out of sync, in which case you will see an error when trying to execute a transaction. Metamask tracks the account nonce independently so this can get out of sync with the account nonce on the blockchain network that you are trying to interact with.
 
-![](https://files.cdn.thinkific.com/file_uploads/205430/images/093/061/1f9/1595392063094.jpg)
+![incorrect nonce in metamask](https://files.cdn.thinkific.com/file_uploads/205430/images/093/061/1f9/1595392063094.jpg)
 
-If this happens, it is a simple fix. Open Metamask and click the account icon on the upper right and select "Settings". In the "Advanced" area, select "Reset Account". 
+If this happens, it is a simple fix. Open Metamask and click the account icon on the upper right and select "Settings". In the "Advanced" area, select "Reset Account".
 
-![](https://files.cdn.thinkific.com/file_uploads/205430/images/6e5/703/5bf/1595392061452.jpg)                     ![](https://files.cdn.thinkific.com/file_uploads/205430/images/e7a/aaa/8c7/1595392061366.jpg)
+![metamask settings](https://files.cdn.thinkific.com/file_uploads/205430/images/6e5/703/5bf/1595392061452.jpg)
+
+![metamask advanced settings](https://files.cdn.thinkific.com/file_uploads/205430/images/e7a/aaa/8c7/1595392061366.jpg)
 
 If you were seeing this error, reset your account and try sending the transaction again. Metamask will get the correct account nonce from the blockchain network. When the transaction succeeds, you should see the new account balances reflected on Ganache GUI.
 
-You can check the balance of these accounts with the line `let balance = await ethereum.request({ method: 'eth_getBalance', params:[web3.currentProvider.selectedAddress, "latest"]})`, this returns the account balance expressed in Wei in hexadecimal format and can be converted to ether like so `parseInt(balance) / 10**18`. 
+You can check the balance of these accounts with the line `let balance = await ethereum.request({ method: 'eth_getBalance', params:[web3.currentProvider.selectedAddress, "latest"]})`, this returns the account balance expressed in Wei in hexadecimal format and can be converted to ether like so `parseInt(balance) / 10**18`.
 
-This is just a quick intro to sending transaction with web3.js v1.0\. You can learn more about how to use it via the docs and specifically about [how to connect to a contract via this section.](https://web3js.readthedocs.io/en/1.0/web3-eth-contract.html#web3-eth-contract) 
+This is just a quick intro to sending transaction with web3.js v1.0. You can learn more about how to use it via the docs and specifically about [how to connect to a contract via this section.](https://web3js.readthedocs.io/en/1.0/web3-eth-contract.html#web3-eth-contract){target=\_blank}
 
 Keep in mind that this library is still in development, so if you run into any bugs, please report them!
 
 ## Ethers.js
 
-Let's try connecting to a different library, [the ethers.js library.](https://docs.ethers.io/v5/)
+Let's try connecting to a different library, [the ethers.js library.](https://docs.ethers.io/v5/){target=\_blank}
 
-We'll have to follow the same steps to import it as above with Web3.js: 
+We'll have to follow the same steps to import it as above with Web3.js:
 
-```
+```javascript
 var script = document.createElement('script');
 script.type = 'text/javascript';
 script.src = 'script.js';
@@ -138,20 +141,23 @@ document.head.appendChild(script);
 
 ### Connect to the Web 3 provider
 
-In the browser console, you can connect ethers.js to the current network by accessing the provider given by Metamask, then set it is as the "signer". 
+In the browser console, you can connect ethers.js to the current network by accessing the provider given by Metamask, then set it is as the "signer".
 
-<pre>// A Web3Provider wraps a standard Web3 provider, which is
+```javascript
+// A Web3Provider wraps a standard Web3 provider, which is
 // what Metamask injects as window.ethereum into each page
 const provider = new ethers.providers.Web3Provider(window.ethereum)
 
 const provider = new ethers.providers.Web3Provider(web3.currentProvider);
 
 // There is only ever up to one account in MetaMask exposed
-const signer = provider.getSigner();</pre>
+const signer = provider.getSigner();
+```
 
-Now that Metamask is set as the signer, you can send a transaction. [Check the "signer" API of ethers.js to see how to send a transaction.](https://docs.ethers.io/v5/api/signer/#Signer) Something like "signer.sendTransaction(transaction)" should work, but what does a transaction look like in ethers.js?
+Now that Metamask is set as the signer, you can send a transaction. [Check the "signer" API of ethers.js to see how to send a transaction](https://docs.ethers.io/v5/api/signer/#Signer){target=\_blank}. Something like `signer.sendTransaction(transaction)` should work, but what does a transaction look like in ethers.js?
 
-<pre>{
+```javascript
+{
     // Required unless deploying a contract (in which case omit)
     to: addressOrName,  // the target address or ENS name
 
@@ -164,24 +170,27 @@ Now that Metamask is set as the signer, you can send a transaction. [Check the "
     data: "0x",         // extra data for the transaction, or input for call
     value: 0,           // the amount (in wei) this transaction is sending
     chainId: 3          // the network ID; usually added by a signer
-}</pre>
+}
+```
 
-[You can check the docs here.](https://docs.ethers.io/v5/api/providers/types/#providers-TransactionRequest)
+[You can check the docs here](https://docs.ethers.io/v5/api/providers/types/#providers-TransactionRequest){target=\_blank}.
 
 For a simple ether transfer, you can get away with:
 
-<pre>var transaction = {
+```javascript
+var transaction = {
     to: "TO_ADDRESS_HERE",
     value: ethers.utils.parseEther("1")
-}</pre>
+}
+```
 
-And to send it, enter  `signer.sendTransaction(transaction)` in the browser console.  
+And to send it, enter  `signer.sendTransaction(transaction)` in the browser console.
 
-![](https://files.cdn.thinkific.com/file_uploads/205430/images/298/fe3/19b/1595392061279.jpg)
+![sign transaction with metamask](https://files.cdn.thinkific.com/file_uploads/205430/images/298/fe3/19b/1595392061279.jpg)
 
 Confirm the transaction and verify that the account balances have changed in Ganache GUI.
 
-[Please explore the Ether.js documentation to see all of the things that it can do.](https://docs.ethers.io/v5/api/)
+[Please explore the Ether.js documentation to see all of the things that it can do](https://docs.ethers.io/v5/api/){target=\_blank}.
 
 ## Summary
 
@@ -189,5 +198,6 @@ As a developer, you can use different JavaScript libraries to interact with Ethe
 We focus on using web3.js in this course, but introduce ethers.js because it is a popular alternative.
 
 ## Additional Material
-- <a href="https://blog.infura.io/ethereum-javascript-libraries-web3-js-vs-ethers-js-part-i/" target="_blank" rel="noopener noreferrer">Article: Web3 vs ethers Part I</a> and <a href="https://blog.infura.io/ethereum-javascript-libraries-web3-js-vs-ethers-js-part-ii/" target="_blank" rel="noopener noreferrer">Part II</a> by Academy's own Tom Hay and Robbie K.
-- <a href="https://www.chainshot.com/learn/ethers" target="_blank" rel="noopener noreferrer">Course: Learn Ethers.js (Chainshot)</a> Use Chainshot's excellent interactive interface to learn more about ethers.js
+
+- [Article: Web3 vs ethers Part I](https://blog.infura.io/ethereum-javascript-libraries-web3-js-vs-ethers-js-part-i){target=\_blank} and [Part II](https://blog.infura.io/ethereum-javascript-libraries-web3-js-vs-ethers-js-part-ii){target=\_blank} by Academy's own Tom Hay and Robbie K.
+- [Course: Learn Ethers.js (Chainshot)](https://chainshot.com/learn/ethers){target=\_blank} Use Chainshot's excellent interactive interface to learn more about ethers.js

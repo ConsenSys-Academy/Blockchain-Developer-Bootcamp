@@ -4,7 +4,7 @@
 
 We’re going to start out with one of the first things you’ll want to tackle when developing your frontend alpha: The user’s ability to connect their wallet.
 
-This presents Web3 developers with a user experience (UX) quandary because [Jakob’s Law of the Internet User Experience](https://www.nngroup.com/videos/jakobs-law-internet-ux/){target=\_blank}  dictates that people “prefer your site to work the same way as all the other sites they already know.” You’ll know you’re on a Web3-enabled frontend when you see a button in a site’s header prompting you to *connect*. This is the button you’ll be rendering in your dApp if `window.ethereum` was detected. This call to action might come as a shock to your users who are accustomed to input fields for their credentials to log in.
+This presents Web3 developers with a user experience (UX) quandary because [Jakob’s Law of the Internet User Experience](https://www.nngroup.com/videos/jakobs-law-internet-ux/){target=\_blank} dictates that people “prefer your site to work the same way as all the other sites they already know.” You’ll know you’re on a Web3-enabled frontend when you see a button in a site’s header prompting you to _connect_. This is the button you’ll be rendering in your dApp if `window.ethereum` was detected. This call to action might come as a shock to your users who are accustomed to input fields for their credentials to log in.
 
 ![[https://twitter.com/tommyk_eth/status/1481464394139815937](https://twitter.com/tommyk_eth/status/1481464394139815937)](../../../img/S04/connect-wallet-tweet.png)
 
@@ -12,20 +12,19 @@ You know how, on a traditional website, you can’t take certain actions until y
 
 Well, “Connect Wallet” is the equivalent for Web3. You won’t be able to execute writable functionality until you've connected with your wallet. The calls you make to those smart contracts require a sender to initiate and fulfill them. After all, someone has to pay the gas needed for that transaction.
 
-When you click “Connect Wallet,” MetaMask will trigger a pop-up asking you to grant that dApp permission to view your accounts, your balances, and your activity, and initiate transactions on your behalf. 
+When you click “Connect Wallet,” MetaMask will trigger a pop-up asking you to grant that dApp permission to view your accounts, your balances, and your activity, and initiate transactions on your behalf.
 
-The transactions you make will be public, but you can remain pseudonymous. You don’t exchange doxxable information. You’re able to own your data, you never surrender your private key for a database to manage. The wallet proves your identity by proving you own the accounts associated with it because all of your accounts are derived from your seed phrase. Interactions with public blockchains are intended to be permissionless and trustless. ***On Web3, your word is only as good as how much ether you have for gas.***
+The transactions you make will be public, but you can remain pseudonymous. You don’t exchange doxxable information. You’re able to own your data, you never surrender your private key for a database to manage. The wallet proves your identity by proving you own the accounts associated with it because all of your accounts are derived from your seed phrase. Interactions with public blockchains are intended to be permissionless and trustless. **_On Web3, your word is only as good as how much ether you have for gas._**
 
-> 📕 *But what does it **actually** mean to connect a wallet?* If the pop-up from MetaMask tells you that you’re granting this dApp permission to view publicly available information that is on a WHOLE blockchain for everyone to see, what’s the difference between that and someone viewing your account history on Etherscan? It comes down to trust. You can remain pseudonymous in both cases, yes. However, that person viewing your account history on Etherscan can’t initiate a contract call on your behalf, nor can they suggest one. The idea of permissions here can be reduced to a single question: *Do I trust this dApp to let me call smart contract functions in a way that is safe for me?*
-
+> 📕 _But what does it **actually** mean to connect a wallet?_ If the pop-up from MetaMask tells you that you’re granting this dApp permission to view publicly available information that is on a WHOLE blockchain for everyone to see, what’s the difference between that and someone viewing your account history on Etherscan? It comes down to trust. You can remain pseudonymous in both cases, yes. However, that person viewing your account history on Etherscan can’t initiate a contract call on your behalf, nor can they suggest one. The idea of permissions here can be reduced to a single question: _Do I trust this dApp to let me call smart contract functions in a way that is safe for me?_
 
 ## Onboarding
 
-[Websites on Web2 require onboarding of their own, but as end users, we don’t pay much mind to it because it’s something we’ve always been used to doing](https://uxdesign.cc/15-rules-of-user-sign-in-experience-ae9011d04ee3){target=\_blank}. On Web2, it starts with providing contextual information like our email address, and our names that we enter into input fields. Oh, and our phone numbers too. We play [regex gymnastics](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s19.html){target=\_blank} to generate secure passwords. These personally identifying tidbits of data are managed by a centralized entity that’ll only interact with us if it knows who we are. Sometimes, however, they need to know too much. [And we don’t always know how our data is being managed](https://www.notion.so/forbes.com/sites/marketshare/2012/03/05/if-youre-not-paying-for-it-you-become-the-product/?sh=35b534ce5d6e){target=\_blank}. 
+[Websites on Web2 require onboarding of their own, but as end users, we don’t pay much mind to it because it’s something we’ve always been used to doing](https://uxdesign.cc/15-rules-of-user-sign-in-experience-ae9011d04ee3){target=\_blank}. On Web2, it starts with providing contextual information like our email address, and our names that we enter into input fields. Oh, and our phone numbers too. We play [regex gymnastics](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s19.html){target=\_blank} to generate secure passwords. These personally identifying tidbits of data are managed by a centralized entity that’ll only interact with us if it knows who we are. Sometimes, however, they need to know too much. [And we don’t always know how our data is being managed](https://www.forbes.com/sites/forbesdigitalcovers/2018/07/30/the-backsies-billionaire-texan-builds-second-fortune-from-wreckage-of-real-estate-empire-hed-sold/?){target=\_blank}.
 
-Web3 comes with an onboarding process of its own, but it *delegates the task of identity management to applied cryptography and the Ethereum blockchain*, not just a single database managed by one big tech giant. Instead of your user creating an account from their credentials, they’ll need to have a browser wallet like MetaMask to derive an account from their private key.
+Web3 comes with an onboarding process of its own, but it _delegates the task of identity management to applied cryptography and the Ethereum blockchain_, not just a single database managed by one big tech giant. Instead of your user creating an account from their credentials, they’ll need to have a browser wallet like MetaMask to derive an account from their private key.
 
-When we begin building, we want to assume our user doesn’t have MetaMask installed, therefore the Provider Interface is non-existent, and we can’t execute any Web3 functionalities. So we want to prompt them to install it. If they do have MetaMask installed, we want to offer them the ability to connect. If they approve that request, we want to show the address of the account they’re connected with. 
+When we begin building, we want to assume our user doesn’t have MetaMask installed, therefore the Provider Interface is non-existent, and we can’t execute any Web3 functionalities. So we want to prompt them to install it. If they do have MetaMask installed, we want to offer them the ability to connect. If they approve that request, we want to show the address of the account they’re connected with.
 
 ![Connect Wallet Flow](../../../img/S04/connect-wallet-flow.png)
 
@@ -33,11 +32,11 @@ When we begin building, we want to assume our user doesn’t have MetaMask insta
 
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=forthebadge-square&logo=codesandbox)](https://codesandbox.io/s/0x0-metamask-connect-start-8csed1){target=\_blank}
 
-If you take a look at `[App.js](https://codesandbox.io/s/0x0-metamask-connect-start-8csed1?file=/src/App.js)`, you’ll see it’s been purged of the boilerplate that `yarn create react-app` generates. There are styled components and a sprinkle of Framer Motion for animations. But we don’t have any other Web3 dependencies. In the `/components` directory, there are, however, three specifically named components, and they are the only ones you’ll be using for this activity. You won’t need to create anymore.
+If you take a look at [App.js](https://codesandbox.io/s/0x0-metamask-connect-start-8csed1?file=/src/App.js){target=\_blank}, you’ll see it’s been purged of the boilerplate that `yarn create react-app` generates. There are styled components and a sprinkle of Framer Motion for animations. But we don’t have any other Web3 dependencies. In the `/components` directory, there are, however, three specifically named components, and they are the only ones you’ll be using for this activity. You won’t need to create anymore.
 
 What is important for us to have is a browser wallet like MetaMask. This is where it all begins.
 
-The first objective here is to ***conditionally render*** a button that prompts your user to **Install MetaMask** if `window.ethereum` does not exist. And we can achieve this using [ternary operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator){target=\_blank} in our JSX. We can then *[embed* JavaScript expressions in our JSX](https://reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx){target=\_blank} very easily, so long as we wrap the logic in curly braces.
+The first objective here is to **_conditionally render_** a button that prompts your user to **Install MetaMask** if `window.ethereum` does not exist. And we can achieve this using [ternary operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator){target=\_blank} in our JSX. We can then [embed JavaScript expressions in our JSX](https://reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx){target=\_blank} very easily, so long as we wrap the logic in curly braces.
 
 ```jsx
 <>
@@ -48,25 +47,20 @@ The first objective here is to ***conditionally render*** a button that prompts 
 </>
 ```
 
-Open up `App.js` and you’ll see the components `InstallMetaMask`, `ConnectButton`, and `Account` are imported, but they’re commented out. Using ternary operators, go inside `<main></main>`, get `ConnectButton` to show up if `window.ethereum` is defined. If it is not defined, render `InstallMetaMask`. Now open the code sandbox in two windows— one where you have MetaMask installed, and one where you don’t. See how on one browser there’s a call to action to install MetaMask, and the other has a call to action to ✨ *Connect* ✨?
+Open up `App.js` and you’ll see the components `InstallMetaMask`, `ConnectButton`, and `Account` are imported, but they’re commented out. Using ternary operators, go inside `<main></main>`, get `ConnectButton` to show up if `window.ethereum` is defined. If it is not defined, render `InstallMetaMask`. Now open the code sandbox in two windows— one where you have MetaMask installed, and one where you don’t. See how on one browser there’s a call to action to install MetaMask, and the other has a call to action to ✨ _Connect_ ✨?
 
 ```jsx
- <main>
-  {window.ethereum
-    ? <ConnectButton />
-    : <InstallMetaMask />
-  }
-</main>
+<main>{window.ethereum ? <ConnectButton /> : <InstallMetaMask />}</main>
 ```
 
 ### State
 
 To get users connecting to your dApp, we’ll need to call the `[eth_requestAccounts](https://docs.metamask.io/guide/rpc-api.html#restricted-methods)` JSON-RPC method from `window.ethereum`. In `App.js`, we’re importing `useState` from React. The `eth_requestAccounts` method returns a promise. When that promise to grab a user’s accounts resolves to an array, we’ll need to hold onto it with the [state hook](https://reactjs.org/docs/hooks-state.html){target=\_blank}. `useState` accepts an initial state but returns two values: the current state, and a function to update the state.
 
-Because our user hasn’t connected yet, our initial state would be an empty string. The first value will be `account`, and the second will be `setAccount`. We can define this hook in `App.js`. When the promise resolves, we get the array, we’ll want to *hold it in state*, which we’ll achieve by calling `setAccount`.
+Because our user hasn’t connected yet, our initial state would be an empty string. The first value will be `account`, and the second will be `setAccount`. We can define this hook in `App.js`. When the promise resolves, we get the array, we’ll want to _hold it in state_, which we’ll achieve by calling `setAccount`.
 
 ```jsx
-const [account, setAccount] = useState('')
+const [account, setAccount] = useState("");
 ```
 
 Now that we have that setup, we can 👀 define the function to connect 👀.
@@ -79,16 +73,15 @@ Inside the function body, we can throw in a `try/catch` block. See the code belo
 
 ```jsx
 const connect = async () => {
-	try {
-	    // eth_requestAccounts
-	}
-	catch (e) {
-	    console.log(e)
-	}
-}
+  try {
+    // eth_requestAccounts
+  } catch (e) {
+    console.log(e);
+  }
+};
 ```
 
-We can see here the connect function will now *attempt* to ask a user to connect, but anticipate failure. In the event of a failure, [it will spit out an error code](https://docs.metamask.io/guide/ethereum-provider.html#errors){target=\_blank} that can then be used to give feedback— in this case, we can prompt a user to retry connecting. If a user rejects the request to connect, this is where the `catch` will be triggered letting them know that they didn’t approve the request.
+We can see here the connect function will now _attempt_ to ask a user to connect, but anticipate failure. In the event of a failure, [it will spit out an error code](https://docs.metamask.io/guide/ethereum-provider.html#errors){target=\_blank} that can then be used to give feedback— in this case, we can prompt a user to retry connecting. If a user rejects the request to connect, this is where the `catch` will be triggered letting them know that they didn’t approve the request.
 
 Next step is to create a variable and assign the `eth_requestAccounts` method to it. See the code below:
 
@@ -96,21 +89,21 @@ Next step is to create a variable and assign the `eth_requestAccounts` method to
 const account = (await window.ethereum.request({ method: 'eth_requestAccounts' })[0]`
 ```
 
-This is where we can tie up our connect functionality. Because we have an `async` function, we’ll get to use the `await` statement on the method we’ll want to wait for. The parentheses around the `await` statement followed by the `[0]` means once this promise is resolved and we get an array, we’ll only want the first account. That’s what our `accounts` variable will return, and that’s what we’ll use the  `setAccount`  function on.
+This is where we can tie up our connect functionality. Because we have an `async` function, we’ll get to use the `await` statement on the method we’ll want to wait for. The parentheses around the `await` statement followed by the `[0]` means once this promise is resolved and we get an array, we’ll only want the first account. That’s what our `accounts` variable will return, and that’s what we’ll use the `setAccount` function on.
 
 Your function should look like this:
 
 ```jsx
-  const connect = async () => {
-    try {
-      const account = (
-        await window.ethereum.request({ method: "eth_requestAccounts" })
-      )[0];
-      setAccount(account);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+const connect = async () => {
+  try {
+    const account = (
+      await window.ethereum.request({ method: "eth_requestAccounts" })
+    )[0];
+    setAccount(account);
+  } catch (e) {
+    console.log(e);
+  }
+};
 ```
 
 Once the function is defined, switch over to `ConnectButton`. As a React functional component, it takes the prop of `connect`. The next place you’ll see `connect` being used in `ConnectButton` is in the return block, in `<Button>`, where it’s being passed into `handleClick`. `ConnectButton` will be expecting the connect function that we can pass into it when we render it in `<main></main>` like so:
@@ -123,12 +116,8 @@ The updated expression will look like this:
 
 ```jsx
 // in a server-side framework like Next.js or Vite SSR you might have to do a check to see if window is defined like typeof window !== 'undefined' && window.ethereum
- <main>
- 
-  {window.ethereum
-    ? <ConnectButton connect={connect} />
-    : <InstallMetaMask />
-  }
+<main>
+  {window.ethereum ? <ConnectButton connect={connect} /> : <InstallMetaMask />}
 </main>
 ```
 
@@ -145,8 +134,8 @@ Up until this point, we had a binary condition to check for: if `window.ethereum
   {firstCondition
     ? <Element to render if firstCondition is true>
     : secondCondition
-	  ? <Element to render if secondCondition is true>
-	  : <Element to render if secondCondition is false>
+    ? <Element to render if secondCondition is true>
+    : <Element to render if secondCondition is false>
   }
 </>
 
@@ -161,7 +150,7 @@ Your updated expression should look like this:
   ? <p>{account}</p>
   : window.ethereum
   ? <ConnectButton connect={connect} />
-	: <InstallMetaMask />
+  : <InstallMetaMask />
 )}
 ```
 
@@ -218,7 +207,7 @@ So far, the bases you’ve covered include onboarding a user. Allowing them to c
 
 ![Screenshot showing MetaMask is still connected](../../../img/S04/connect-wallet-connectivity.png)
 
-Try connecting to a known dApp. Now refresh. Address still there? Let’s dig around a bit, *some* of these dApps will let you disconnect. Re-read that sentence. Now try to disconnect, if there’s a button for it. You won’t see your address anymore, great. But go check MetaMask. You’re **still** connected. I know. *I know.*
+Try connecting to a known dApp. Now refresh. Address still there? Let’s dig around a bit, _some_ of these dApps will let you disconnect. Re-read that sentence. Now try to disconnect, if there’s a button for it. You won’t see your address anymore, great. But go check MetaMask. You’re **still** connected. I know. _I know._
 
 Your users will be expecting a button to log out, it seems only rational. And you have to look them in the eyes, wistfully, and say, no… no, I’m sorry, things work a bit differently in the wonderland that is Web3. Go look in `/components`, there’s no component for a button to log out. Not only that but your users will remain connected and you have to explain this to them because this is unlike any good experience they ever had on an application before. So what is actually going on?
 
