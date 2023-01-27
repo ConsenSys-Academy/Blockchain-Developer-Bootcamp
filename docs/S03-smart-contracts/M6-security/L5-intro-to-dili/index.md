@@ -11,7 +11,7 @@ We've gone over many of the common attack vectors, discussed smart contract best
 
 Diligence provides audits for the largest names in the blockchain sector, including <a href="https://aave.com" target="_blank" rel="noopener noreferrer">Aave,</a> <a href="https://0x.org" target="_blank" rel="noopener noreferrer">0x,</a> <a href="https://www.covantis.io/" target="_blank" rel="noopener noreferrer">Covantis,</a> <a href="https://aragon.org/" target="_blank" rel="noopener noreferrer">Aragon,</a> <a href="https://omg.network/" target="_blank" rel="noopener noreferrer">Omisego,</a> <a href="https://horizon.io/" target="_blank" rel="noopener noreferrer">Horizon</a> and more.
 
-Along with audits, Diligence also provides automated security analysis through two main tools: <b>MythX</b> and <b>Scribble</b>.
+Along with audits, Diligence also provides automated security analysis through two main tools: **MythX** and **Scribble**.
 
 ## MythX
 

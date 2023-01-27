@@ -1,11 +1,6 @@
-
-  
-  <!-- Title goes below: -->
 # Introduction to Truffle Suite
 
-<!-- Content here: -->
-
-Before we go into the Solidity section, we want to make sure you have a place where you can play around with the Solidity code you're starting to learn. Enter <a href="https://www.trufflesuite.com" target="_blank" rel="noopener noreferrer">the Truffle Suite!</a>
+Before we go into the Solidity section, we want to make sure you have a place where you can play around with the Solidity code you're starting to learn. Enter [the Truffle Suite](https://www.trufflesuite.com){target=\_blank}!
 
 Truffle is an excellent tool to learn Solidity development but, as we'll show later in the course, it's also got advanced features. Don't be deceived by how easy it is!
 
@@ -25,9 +20,9 @@ A good example of this is contract compilation (wherein you convert your high-le
 
 Additional reasons why developers might use Truffle to build their dapps include the following...
 
-- Built-in support for compiling, deploying and linking your contract</li>
-- An automated contract testing framework built on Mocha and Chai</li>
-- A built-in console that allows you to directly interact with your compiled contracts</li>
+- Built-in support for compiling, deploying and linking your contract
+- An automated contract testing framework built on Mocha and Chai
+- A built-in console that allows you to directly interact with your compiled contracts
 
 This is just scratching the surface; as you’ll see when we dive-in, the Truffle Suite and the broader tooling ecosystem makes your life as a dapp developer both productive and fun!
 
@@ -42,25 +37,25 @@ The Truffle Suite requires the following...
 - Node.js v12 or later
 - Windows, Linux or Mac OS X
 
-Truffle also requires that you have a running Ethereum client which supports the standard JSON RPC API (which is nearly all of them). While there are many clients, the Truffle Suite also ships with <a href="https://www.trufflesuite.com/ganache" target="_blank" rel="noopener noreferrer">Ganache,</a> essentially a one-click EVM-based blockchain node for local testing.
+Truffle also requires that you have a running Ethereum client which supports the standard JSON RPC API (which is nearly all of them). While there are many clients, the Truffle Suite also ships with [Ganache](https://www.trufflesuite.com/ganache){target=\_blank}, essentially a one-click EVM-based blockchain node for local testing.
 
-For installing Node, we highly recommend using `nvm`. Follow the instructions [here](https://trufflesuite.com/docs/truffle/getting-started/installation/) to download Truffle!
+For installing Node, we highly recommend using `nvm`. Follow the instructions [here](https://trufflesuite.com/docs/truffle/getting-started/installation/){target=\_blank} to download Truffle!
 
 After downloading Truffle, you can run Truffle from your command line anywhere on your machine.
 
-If you are having trouble with installation, please post in [GitHub discussions](https://github.com/orgs/trufflesuite/discussions)!
+If you are having trouble with installation, please post in [GitHub discussions](https://github.com/orgs/trufflesuite/discussions){target=\_blank}!
 
 ## Ganache
 
-Ganache has the same requirements as Truffle (as specified above). In addition, it also comes in two flavors, both a standalone CLI for more intermediate-advanced users and a UI version which is great for users that are just starting out. It’s worth noting that a version of Ganache also ships directly with Truffle which can be instantiated with the `truffle develop` command.  
+Ganache has the same requirements as Truffle (as specified above). In addition, it also comes in two flavors, both a standalone CLI for more intermediate-advanced users and a UI version which is great for users that are just starting out. It’s worth noting that a version of Ganache also ships directly with Truffle which can be instantiated with the `truffle develop` command.
 
 Ganache CLI can be installed via the following:
 
 ```bash
-$ npm install -g ganache
+npm install -g ganache
 ```
 
-Ganache UI is available as download <a href="https://www.trufflesuite.com/ganache" target="_blank" rel="noopener noreferrer">here.</a>
+Ganache UI is available as download [here](https://www.trufflesuite.com/ganache){target=\_blank}.
 
 Congratulations! You've just successfully installed Truffle and Ganache and are ready to get started developing.
 
@@ -96,9 +91,9 @@ Out of the box, Truffle supports the following:
 
 - Solidity
 - Vyper
-- <a href="https://docs.soliditylang.org/en/v0.8.6/yul.html" target="_blank" rel="noopener noreferrer">Yul</a> (experimental and not for beginners)
-  
-At the time of writing, Solidity is by far the most popular language for writing smart contracts, and as with everything in the space, things have been moving rapidly and have now witnessed some major projects built using Vyper.  
+- [Yul](https://docs.soliditylang.org/en/v0.8.6/yul.html){target=\_blank} (experimental and not for beginners)
+
+At the time of writing, Solidity is by far the most popular language for writing smart contracts, and as with everything in the space, things have been moving rapidly and have now witnessed some major projects built using Vyper.
 
 ### Core Truffle Commands
 
@@ -116,23 +111,24 @@ As you can likely infer from the commands, they map to key stages of the develop
 
 ## Truffle Boxes
 
-Up until now we’ve been writing all the code, scripts, and config ourselves, and while this follows the mantra of “learning by doing”, there’s another great resource at your disposal and that is <a href="https://www.trufflesuite.com/boxes" target="_blank" rel="noopener noreferrer">Truffle boxes</a>.
+Up until now we’ve been writing all the code, scripts, and config ourselves, and while this follows the mantra of “learning by doing”, there’s another great resource at your disposal and that is [Truffle boxes](https://www.trufflesuite.com/boxes){target=\_blank}.
 
 ### Learning with Truffle boxes
 
-As per the description, boxes are “helpful boilerplates” that comprise of sample contracts, front-end code (using a variety of different frameworks), and applied boxes that focus on a particular theme or protocol such as L2. From a learning standpoint they’re a useful to way to augment your learning by immediately getting hands-on. 
+As per the description, boxes are “helpful boilerplates” that comprise of sample contracts, front-end code (using a variety of different frameworks), and applied boxes that focus on a particular theme or protocol such as L2. From a learning standpoint they’re a useful to way to augment your learning by immediately getting hands-on.
 
 At the time of writing, here are some good boxes:
 
-- Layer 2 (examples targeting <a href="https://www.trufflesuite.com/boxes/optimism" target="_blank" rel="noopener noreferrer">Optimism </a> and <a href="https://www.trufflesuite.com/boxes/arbitrum" target="_blank" rel="noopener noreferrer">Arbitrum</a>)
-- <a href="https://trufflesuite.com/boxes/react/" target="_blank" rel="noopener noreferrer">React box example</a>
+- Layer 2 (examples targeting [Optimism](https://www.trufflesuite.com/boxes/optimism){target=\_blank} and [Arbitrum](https://www.trufflesuite.com/boxes/arbitrum){target=\_blank})
+- [React box example](https://trufflesuite.com/boxes/react/){target=\_blank}
 
 Installing a box is simply a case of using the unbox command, for example:
 
-    $ truffle unbox optimism <directory path>
+```bash
+truffle unbox optimism <directory path>
+```
 
-
-Beyond this, simply follow along with the <a href="https://github.com/truffle-box/optimism-box" target="_blank" rel="noopener noreferrer">optimism box readme</a>. You can find an example of how to use the Optimism box to build an NFT marketplace [here](https://trufflesuite.com/guides/nft-marketplace/).
+Beyond this, simply follow along with the [optimism box readme](https://github.com/truffle-box/optimism-box){target=\_blank}. You can find an example of how to use the Optimism box to build an NFT marketplace [here](https://trufflesuite.com/guides/nft-marketplace/){target=\_blank}.
 
 We'll discuss boxes more when we dive deeper into developer tooling and more advanced Truffle, but feel free to explore available boxes.
 

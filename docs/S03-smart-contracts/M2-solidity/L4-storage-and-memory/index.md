@@ -5,4 +5,4 @@
 - Local variables of struct, array or mapping type reference storage by default
 - Local variables of value type (i.e. neither array, nor struct nor mapping) are stored in the stack
 
-For more information on storage vs memory, please see [this article.](https://www.geeksforgeeks.org/storage-vs-memory-in-solidity/)
+For more information on storage vs memory, please see [this article](https://www.geeksforgeeks.org/storage-vs-memory-in-solidity/){target=\_blank}.

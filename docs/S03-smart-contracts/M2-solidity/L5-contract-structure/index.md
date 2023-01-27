@@ -2,4 +2,4 @@
 
 Additional Resources
 
-[Docs: Solidity Contract Structure](https://docs.soliditylang.org/en/develop/structure-of-a-contract.html)
+[Docs: Solidity Contract Structure](https://docs.soliditylang.org/en/develop/structure-of-a-contract.html){target=\_blank}

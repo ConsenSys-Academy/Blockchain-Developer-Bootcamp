@@ -1,7 +1,7 @@
 DoS Attack Contract
 ===================
 
-This set of contracts shows how a contract may be susceptible to a denial of service attack by an unexpected revert ([SWC-113](https://swcregistry.io/docs/SWC-113){target=_blank}).
+This set of contracts shows how a contract may be susceptible to a denial of service attack by an unexpected revert ([SWC-113](https://swcregistry.io/docs/SWC-113){target=\_blank}).
 
 The `VulnerableContract` loops over the subscribers array, making a transfer to each address. This is dangerous because when the `refundFees()` function is called and the `VulnerableContract` attempts to send funds to the `MaliciousContract`, the `MaliciousContract` fallback function is called, which stops execution and reverts. This transaction will never succeed and `refundFees()` will never successfully execute, preventing any subscribers from getting their subscription fee back.
 
