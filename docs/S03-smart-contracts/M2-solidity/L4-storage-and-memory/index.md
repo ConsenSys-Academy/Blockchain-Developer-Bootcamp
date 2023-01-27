@@ -1,3 +1,5 @@
+# Storage and memory
+
 **Notes on the usage of memory:**There are defaults for the storage location depending on which type of variable it concerns:
 
 - State variables are always in storage
