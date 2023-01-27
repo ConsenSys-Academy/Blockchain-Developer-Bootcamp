@@ -20,6 +20,5 @@ Not all DeFi protocols or blockchain applications are decentralized. If a protoc
 
 ## Additional Resources
 
-[Compound Governance Contracts Walkthrough](https://medium.com/compound-finance/building-a-governance-interface-474fc271588c){target=\_blank}
-
-[Governance and Voting](https://vitalik.ca/general/2021/08/16/voting3.html){target=\_blank}
+- [Compound Governance Contracts Walkthrough](https://medium.com/compound-finance/building-a-governance-interface-474fc271588c){target=\_blank}
+- [Governance and Voting](https://vitalik.ca/general/2021/08/16/voting3.html){target=\_blank}
