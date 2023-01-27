@@ -1,4 +1,4 @@
-# Additional Material: Upgradable Contracts
+# Upgradable Contracts: additional material
 
 We wanted to provide another example of an upgradable contract pattern. This pattern uses a separate contract to act as storage to another contract that contains the logic, also known as a "proxy delegate pattern". When you upgrade a contract, all your state is still in the old contract address. Therefore, we say the contract has "Eternal Storage."
 

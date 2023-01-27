@@ -1,4 +1,4 @@
-Additional Resources:
+# Inheritance and interfaces
 
 - [Inheritance in Solidity](https://ethereumdev.io/inheritance-in-solidity/){target=\_blank}
 - [Inheritance, from the Solidity Docs](https://solidity.readthedocs.io/en/develop/contracts.html#inheritance){target=\_blank}

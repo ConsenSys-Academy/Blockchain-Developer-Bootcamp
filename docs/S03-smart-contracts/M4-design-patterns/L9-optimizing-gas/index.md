@@ -19,7 +19,7 @@ The operators `||` and `&&` apply the common short-circuiting rules. This means 
 
 How can these functions in [Unoptimized.sol](https://gist.github.com/ConsenSys-Academy/a61670fd8796d73d8b4b7d5935f9e714){target=\_blank} be modified to reduce gas usage?
 
-```javascript
+```solidity
 function shortCircuit() public view returns(bool){
   if (oftenFalse || oftenTrue) {
     return true;
@@ -41,7 +41,7 @@ Modifying storage variables in a loop can be very expensive and should be avoide
 
 How can this function be improved, given that `loops` is a storage variable? [Here is the source file](https://gist.github.com/ConsenSys-Academy/a61670fd8796d73d8b4b7d5935f9e714#file-unoptimized-sol-L26){target=\_blank}.
 
-```javascript
+```solidity
 function looping (uint x) public returns (bool) {
   for(uint i; i < x; i++){
     loops += 1;
@@ -54,7 +54,7 @@ function looping (uint x) public returns (bool) {
 
 Zero loops is ideal, but sometimes you just have to loop. Since loops are expensive, can you reduce the number of loops in your functions?
 
-```javascript
+```solidity
 function looping2 (uint x) public pure returns(bool){
   uint m = 0;
   uint v = 0;
@@ -76,7 +76,7 @@ It is possible to use an array of bytes as `byte[]`, but it is wasting a lot of 
 
 How can this function be optimized?
 
-```javascript
+```solidity
 function byteArray() public returns(uint){
   byte[] byteArray;
   return gasleft();

@@ -287,7 +287,7 @@ Now that we have a testnet account with Ether, we need to configure Truffle to b
 
 Our recommended way of deploying contracts is through Truffle dashboard, which allows you to deploy contracts and sign transactions using your MetaMask wallet! You can watch a walkthrough on YouTube!
 
-[![Hide your Private Keys with Truffle Dashboard](https://img.youtube.com/vi/AnprU4z-q0k/maxresdefault.jpg)](https://www.youtube.com/watch?v=AnprU4z-q0k)
+[![Hide your Private Keys with Truffle Dashboard](https://img.youtube.com/vi/AnprU4z-q0k/maxresdefault.jpg)](https://www.youtube.com/watch?v=AnprU4z-q0k){target=\_blank}
 
 To deploy via dashboard, call `truffle dashboard` in another terminal. This should open up the dashboard on `localhost:24012`. Make sure you are connected to the Goerli network on your MetaMask wallet.
 

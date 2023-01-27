@@ -1,4 +1,4 @@
-Additional Resources:
+# Upgradable Contracts
 
 1. [ConsenSys: Smart contract best practices](https://consensys.github.io/smart-contract-best-practices/){target=\_blank}
 2. [Upgradeability in an Immutable World](https://blog.polymath.network/upgradability-in-an-immutable-world-27c76926629b){target=\_blank}
