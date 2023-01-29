@@ -303,7 +303,7 @@ Go to the [Infura website](https://infura.io/){target=\_blank} and sign up for a
 
 Create a `.env` file in your directory and add your private key and project id as follows:
 
-```text
+```bash
 MNEMONIC =<Your 12 phrase mnemonic>
 PROJECT_ID =<Your Infura project id>
 ```
