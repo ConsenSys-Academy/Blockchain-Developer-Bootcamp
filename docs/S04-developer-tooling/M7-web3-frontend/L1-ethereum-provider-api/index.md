@@ -12,11 +12,11 @@ In Web3, this is less common. While we can interact with third party services, m
 
 ## Where does this API come from?
 
-On a browser where you have MetaMask installed, open up Chrome Devtools, navigate to **Sources**, and then look at the **Page** panel. If you expand MetaMask, there’s a resource that loads with the page, in the screenshot, it’s `inpage.js`. 
+On a browser where you have MetaMask installed, open up Chrome Devtools, navigate to **Sources**, and then look at the **Page** panel. If you expand MetaMask, there’s a resource that loads with the page, in the screenshot, it’s `inpage.js`.
 
 ![Chrome Devtools showing ](../../../img/S04/eth-provider-1.png)
 
-`[inpage.js](https://github.com/MetaMask/metamask-extension/blob/43c33b676fe1ecece3e0543eb6ca64d3ae9aa9af/app/scripts/inpage.js){target=\_blank}` is a script that tries to declare an object globally in the browser window. If it’s successful, it’ll create a communication stream to 👀 initialize a provider 👀. Once that runs, `[contentscript.js](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js){target=\_blank}` is executed. And here’s where things get tricky but interesting. On [line 45](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js#L45){target=\_blank}, there’s an else-if statement that calls a function, seen on [line 272](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js#L272){target=\_blank}, to check if a provider should be 👀 injected 👀. 
+[inpage.js](https://github.com/MetaMask/metamask-extension/blob/43c33b676fe1ecece3e0543eb6ca64d3ae9aa9af/app/scripts/inpage.js){target=\_blank} is a script that tries to declare an object globally in the browser window. If it’s successful, it’ll create a communication stream to 👀 initialize a provider 👀. Once that runs, [contentscript.js](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js){target=\_blank} is executed. And here’s where things get tricky but interesting. On [line 45](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js#L45){target=\_blank}, there’s an else-if statement that calls a function, seen on [line 272](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js#L272){target=\_blank}, to check if a provider should be 👀 injected 👀.
 
 ```javascript
 /**
@@ -34,15 +34,15 @@ function shouldInjectProvider() {
 }
 ```
 
-This function returns a boolean and checks for conditions like if the window even exists, so if the `doctype` is HTML (`doctypeCheck()`), and if it’s an HTML node (`documentElementCheck()`). It checks if the site URL ends in `.xml` or `.pdf` (``suffixCheck()`). It checks if the site you’re currently on is not on a list of blocked domains (`!blockedDomainCheck()`). (*Check out some of those [blocked domains](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js#L332){target=\_blank}. Are some of them familiar? Are you beginning to see a pattern here?*) If all conditions pass, then MetaMask knows it can act as a client to facilitate user Web 3 interactions. This is why you get a popup whenever you try to take any action.
+This function returns a boolean and checks for conditions like if the window even exists, so if the `doctype` is HTML (`doctypeCheck()`), and if it’s an HTML node (`documentElementCheck()`). It checks if the site URL ends in `.xml` or `.pdf` (``suffixCheck()`). It checks if the site you’re currently on is not on a list of blocked domains (`!blockedDomainCheck()`). (_Check out some of those [blocked domains](https://github.com/MetaMask/metamask-extension/blob/42c8703f3e3e0fbfddcc9faa4ddb49045ce9631a/app/scripts/contentscript.js#L332){target=\_blank}. Are some of them familiar? Are you beginning to see a pattern here?_) If all conditions pass, then MetaMask knows it can act as a client to facilitate user Web 3 interactions. This is why you get a popup whenever you try to take any action.
 
-The thing to take away here is that we as developers aren’t supplying that API endpoint, or the functionality to interact with it, and it’s for the safety of the user. We’re building around its expected existence, and that’s because MetaMask and other browser wallets, per [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193){target=\_blank}, globally inject a standard provider interface as a bridge to the Ethereum blockchain into our browser. The browser wallets actually do the heavy lifting by providing the API endpoint. As developers, we just have to call it with `window.ethereum`. (*Provided, we’re not on that blocked domain list, cause we absolutely should not be.*)
+The thing to take away here is that we as developers aren’t supplying that API endpoint, or the functionality to interact with it, and it’s for the safety of the user. We’re building around its expected existence, and that’s because MetaMask and other browser wallets, per [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193){target=\_blank}, globally inject a standard provider interface as a bridge to the Ethereum blockchain into our browser. The browser wallets actually do the heavy lifting by providing the API endpoint. As developers, we just have to call it with `window.ethereum`. (_Provided, we’re not on that blocked domain list, cause we absolutely should not be._)
 
 When you switch to the Console tab, type in `window.ethereum` to see the Ethereum API methods and properties like `isMetaMask`, `chainId` or `request()`, to name a few.
 
 ![Ethereum Provider API methods and properties](../../../img/S04/eth-provider-2.png)
 
-When we call these methods, we submit a “Remote Procedure Call” request to a particular blockchain network. We need to connect to the nodes on a particular network where the target smart contract is deployed, so we’ll need a network RPC endpoint. 
+When we call these methods, we submit a “Remote Procedure Call” request to a particular blockchain network. We need to connect to the nodes on a particular network where the target smart contract is deployed, so we’ll need a network RPC endpoint.
 
 For us, it’s an endpoint we can supply to MetaMask to request blockchain data. Does that sound a bit familiar? If you look at the RPC URL I have for Ethereum Mainnet, I’m connected to the Mainnet nodes that are hosted by Infura, who is the default node provider for MetaMask.
 
@@ -59,9 +59,7 @@ You can see the whole list of methods [here](https://metamask.github.io/api-play
 
 In the next lesson we’ll start off by demystifying what it means to “Connect your Wallet”, and how you can achieve that with React and the Ethereum Provider API.
 
-
 ## Additional Reading
 
-[Ethereum Provider API](https://docs.metamask.io/guide/ethereum-provider.html){target=\_blank}
-
-[Github: MetaMask/Provider](https://github.com/MetaMask/providers){target=\_blank}
+- [Ethereum Provider API](https://docs.metamask.io/guide/ethereum-provider.html){target=\_blank}
+- [Github: MetaMask/Provider](https://github.com/MetaMask/providers){target=\_blank}

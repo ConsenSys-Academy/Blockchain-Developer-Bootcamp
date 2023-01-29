@@ -12,7 +12,7 @@ The types are ranked from most centralized/less complex to less centralized/more
 2. Commodity backed
 3. Crypto backed
 4. Algorithmic
-5. Central Bank Digital Currencies\*
+5. Central Bank Digital Currencies
 
 A good mental model for a Stablecoin is the paper money you have in your pocket. Think of it as a programmable IOU that everyone in your community would accept as payment.
 

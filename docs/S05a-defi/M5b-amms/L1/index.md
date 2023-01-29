@@ -1,6 +1,6 @@
 # Automated Market Makers - AMM
 
-An [automated market maker (AMM)](https://academy.binance.com/en/articles/what-is-an-automated-market-maker-amm) is a smart contract that holds assets and is always willing to quote you a price between two assets. You can trade against the AMM's capital in the smart contract instead of between peers. It uses the trades to update the size of the assets and update their price accordingly. The AMM can always guarantee liquidity by raising the price for an asset according to market demand.
+An [automated market maker (AMM)](https://academy.binance.com/en/articles/what-is-an-automated-market-maker-amm){target=\_blank} is a smart contract that holds assets and is always willing to quote you a price between two assets. You can trade against the AMM's capital in the smart contract instead of between peers. It uses the trades to update the size of the assets and update their price accordingly. The AMM can always guarantee liquidity by raising the price for an asset according to market demand.
 
 There are [various ones](https://web.archive.org/web/20210621095532/https://cipher.substack.com/p/an-introduction-to-automated-market){target=\_blank}, however we will focus on the most important features popularized by UniSwap. [Haseeb Qureshi explains UniSwap](https://medium.com/dragonfly-research/what-explains-the-rise-of-amms-7d008af1c399){target=\_blank} well here. We will cover another type of DEX protocol in a later section.
 
@@ -23,26 +23,28 @@ The main ideas behind liquidity pools are:
 
 - Because trades happen on-chain, bots can [front-run transactions and attempt other sorts of attacks](https://coinmarketcap.com/alexandria/glossary/front-running){target=\_blank}. This results in a user paying more than they intended.
 - [Front running](https://www.youtube.com/watch?v=Wd0at2Pu6xY){target=\_blank} occurs when bots read Ethereum's current set of unprocessed pending transactions called [the mempool](https://www.blocknative.com/blog/mempool-intro){target=\_blank} and find an opportunity to outbid a transaction to be processed by the network miner (or validator after ETH 2.0). The bots get ahead of the line, which results in a better price for them at the expense of the other traders.
-  -This stems from the [Miner Extractable Value](https://research.paradigm.xyz/MEV){target=\_blank}, where a miner can dictate when, how and where a transaction will go into an Etheruem block. When a transaction large enough to create slippage is sent to the network, bots will notice and set off a bidding war to capture the stop and front-run.
+  - This stems from the [Miner Extractable Value](https://research.paradigm.xyz/MEV){target=\_blank}, where a miner can dictate when, how and where a transaction will go into an Ethereum block. When a transaction large enough to create slippage is sent to the network, bots will notice and set off a bidding war to capture the stop and front-run.
 
 ## Bonding Curves
 
 The other key to Automated Market Makers is the bonding curve. A [bonding curve](https://yos.io/2018/11/10/bonding-curves/){target=\_blank} is a mathematical formula used to describe the relationship between the price and the supply of an asset. This can be thought of as a deterministic pricing formula. This formula is called the [**Constant Product Formula**](https://medium.com/bollinger-investment-group/constant-function-market-makers-defis-zero-to-one-innovation-968f77022159){target=\_blank} in UniSwap. This curve can be represented in a smart contract that can buy or sell the underlying token. Bonding Curves emerge out of the ability to escrow funds in a smart contract.
 
 The main ideas behind the Constant Product Formula are:
--To always ensure liquidity for any asset by modelling the demand curve in the smart contract.
 
+- To always ensure liquidity for any asset by modelling the demand curve in the smart contract.
 - Users trade against the smart contract, not between each other.
   k always has to stay the same number, no matter what x or y does. The price quoted is directly dependent on the size of the order.
 - The trade-off for assured liquidity is slippage, also known as getting less for more.
 
-x \* y = k
+```text
+x * y = k
 
 x = supply of asset 1
 y = supply of asset 2
-k = Fixed Size of Pool
+k = fixed size of pool
+```
 
-![](../../../img/S05/uniswap-market-graph.png)
+![Uniswap market graph](../../../img/S05/uniswap-market-graph.png)
 
 The downside:
 
@@ -61,6 +63,6 @@ A consequence of this is [impermanent loss](https://coinmarketcap.com/alexandria
 
 ## Additional Resources
 
-[DeFi and the Future of Finance](https://deliverypdf.ssrn.com/delivery.php?ID=242115122088113093099002082093099101027076009064056023123099069121090075105092011127024118056032024004118109004005120003004101021075093045010121015028097073003071000000120066003091069024020124068077109071003074114022067119100027072025098003119097&EXT=pdf&INDEX=TRUE){target=_blank} (section 4.7.2)
-[DeFi and the Future of Finance](https://deliverypdf.ssrn.com/delivery.php?ID=242115122088113093099002082093099101027076009064056023123099069121090075105092011127024118056032024004118109004005120003004101021075093045010121015028097073003071000000120066003091069024020124068077109071003074114022067119100027072025098003119097&EXT=pdf&INDEX=TRUE){target=_blank} (section 6.2)
-[Graphical Guide for Understanding Uniswap via EthHub](https://docs.ethhub.io/guides/graphical-guide-for-understanding-uniswap/){target=\_blank}
+- [DeFi and the Future of Finance](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3711777){target=\_blank} (section 4.7.2)
+- [DeFi and the Future of Finance](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3711777){target=\_blank} (section 6.2)
+- [Graphical Guide for Understanding Uniswap via EthHub](https://docs.ethhub.io/guides/graphical-guide-for-understanding-uniswap/){target=\_blank}

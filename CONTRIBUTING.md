@@ -4,10 +4,10 @@
 
 To lower the barriers to entry, all of our course content is in Markdown located in the `docs` directory. We then use [mkdocs](https://www.mkdocs.org/) to generate the course pages (thank you [Kevin Bluer!](https://github.com/kevinbluer)).
 
-Markdown is what this file and GitHub README.md files are written in. If you need some help with Markdown, [please see this Markdown cheatsheet.](https://www.markdownguide.org/cheat-sheet/). One note, to make sure links open in a new window, be sure to add `{target=_blank}` at the end of a link. It will look like this:
+Markdown is what this file and GitHub README.md files are written in. If you need some help with Markdown, [please see this Markdown cheatsheet](https://www.markdownguide.org/cheat-sheet/). One note, to make sure links open in a new window, be sure to add `{target=\_blank}` at the end of a link. It will look like this:
 
-```
-[Text being linked](www.linkaddresshere.com){target=_blank}
+```markdown
+[Text being linked](www.linkaddresshere.com){target=\_blank}
 ```
 
 ## Steps to GitHub PRs
@@ -32,7 +32,7 @@ If there have been updates to the `staging` branch since you forked it for your 
   
 Learn more on [how to use branches](https://www.atlassian.com/git/tutorials/using-branches) 🌳.
 
-**Please check that your PR doesn't have a conflict! If it does, please:** 
+**Please check that your PR doesn't have a conflict! If it does, please:**
 
 1. On your local machine, add the staging repo as your upstream branch using `git remote add upstream https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/tree/staging`
 2. Run `git fetch upstream`
@@ -45,7 +45,7 @@ We use [GitHub issues](https://github.com/ConsenSys-Academy/Blockchain-Developer
 
 ### Overview
 
-We use the [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow) method of open source contribution. This method allows projects to scale well with not alot of complexity.
+We use the [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow) method of open source contribution. This method allows projects to scale well with not a lot of complexity.
 
 ### Setup
 
@@ -63,7 +63,7 @@ Learn more about [working with forks](https://docs.github.com/en/github/collabor
 
 ### Issues
 
-[Open a issue](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/issues).  Issues are good! They are used to point out errors and suggest new features.
+[Open a issue](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/issues). Issues are good! They are used to point out errors and suggest new features.
 
 ### Picking up an Issue
 
@@ -88,7 +88,7 @@ Learn more on [how to use branches](https://www.atlassian.com/git/tutorials/usin
 4. Write code.
 5. Commit code. See style guide.
 6. Push the branch to `origin`.
-7. Open a pull request against `staging` with the branch. Please note, this is not `main` but `staging` to help us save on GitHub Action minutes, we're doing our best to batch-committ changes.
+7. Open a pull request against `staging` with the branch. Please note, this is not `main` but `staging` to help us save on GitHub Action minutes, we're doing our best to batch-commit changes.
 
 ## Style Guide
 
@@ -100,9 +100,9 @@ Types of branches:
 
 1. `main` - main branch that is live.
 2. `staging` - branch you make your PRs against.
-2. `feat/FEATURE` - for features.
-3. `fix/THING1` - hot fixes.
-4. `bug/THING2` - bug fixes.
+3. `feat/FEATURE` - for features.
+4. `fix/THING1` - hot fixes.
+5. `bug/THING2` - bug fixes.
 
 Make sure to:
 
@@ -116,7 +116,7 @@ Make sure to:
 2. Second `-m`: Describe the code in under 240 characters.  
 `Added x feature in sample.js and updated README.md in the section required.`
 
-```
+```bash
 git commit -m "Feature. Added GIF to README.md -m "Added the GIF was required to explain what is Solidity."
 ```
 
@@ -128,7 +128,7 @@ Example: `Closes #7 - Add CONTRIBUTING.md`
 
 ### Content style guide
 
-Keep it brief but descriptive. Use links. Avoid jargon. 
+Keep it brief but descriptive. Use links. Avoid jargon.
 
 When possible, use pictures or gifs.
 
@@ -136,5 +136,4 @@ When possible, use pictures or gifs.
 
 Open an [issue](https://github.com/ConsenSys-Academy/Blockchain-Developer-Bootcamp/issues) or [join our discord](https://bit.ly/ConsenSysDiscord).
 
-Made with ❤️ by ConsenSys and 
-![GitHub Contributors Image](https://contrib.rocks/image?repo=ConsenSys-Academy/Blockchain-Developer-Bootcamp)
+Made with ❤️ by ConsenSys and ![GitHub Contributors Image](https://contrib.rocks/image?repo=ConsenSys-Academy/Blockchain-Developer-Bootcamp)

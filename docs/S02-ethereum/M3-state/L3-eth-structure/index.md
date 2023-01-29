@@ -5,5 +5,5 @@ Required Reading
 Additional Resources:
 
 1. [Ethereum Block Architecture](https://ethereum.stackexchange.com/questions/268/ethereum-block-architecture)
-2. [Ethereum Development tutorial](https://github.com/ethereum/wiki/wiki/Ethereum-Development-Tutorial)
-3. [Ethstats](https://ethstats.net/)
+2. [Ethereum Development tutorial](https://ethereum.org/en/developers/tutorials/)
+3. [Ethstats](https://geth.ethereum.org/docs/monitoring/ethstats)

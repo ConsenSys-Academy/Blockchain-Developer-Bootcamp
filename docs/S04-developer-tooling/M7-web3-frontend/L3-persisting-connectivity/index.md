@@ -1,10 +1,10 @@
 # Persisting Connectivity in Web3 with useEffect
 
-*This lesson builds on the CodeSandbox example from “A Demystification of “Connect Wallet”*
+_This lesson builds on the CodeSandbox example from “A Demystification of “Connect Wallet”_
 
 What actually happens when you leave a dApp and why are you still connected? For this, let’s hop in a time machine.
 
-The year is 2006. You’ve just spent the last three hours fine-tuning the spaghetti code that makes up your MySpace layout to show off to all the new frens you got from that bulletin board S4S. You’re good at this, way ahead of your time. You do this all in Notepad— in plain text with no syntax highlighting. 
+The year is 2006. You’ve just spent the last three hours fine-tuning the spaghetti code that makes up your MySpace layout to show off to all the new frens you got from that bulletin board S4S. You’re good at this, way ahead of your time. You do this all in Notepad— in plain text with no syntax highlighting.
 
 Life is good until you receive a seemingly innocuous email prompting you to visit MySpace with a strange URL. On login, the site looks a little different. By the way, you did log in. It didn’t take you back to MySpace, so you open up a new window and see that now your whole bulletin board is flooded with spam from your account. The credentials you used to log in don’t work anymore. Your layout is broken now and your profile photo has changed.
 
@@ -16,15 +16,15 @@ Just because we can try to rely on auto-login doesn’t mean we should. We’re 
 
 Phishing never really went away. [It just got smarter](https://twitter.com/troyhunt/status/1508184697070780418){target=\_blank}. Now the stakes are higher because real assets are involved.
 
-If you force quit and restart your browser. Notice how the button still says ‘Connect’. Click it and it should open MetaMask, now you have to enter your password for MetaMask because you were logged out. But, do you notice how you’ve connected to the dApp again, and you didn’t have to select an account to connect with? If you don’t remember disconnecting or logging out, *it’s because you didn’t.*
+If you force quit and restart your browser. Notice how the button still says ‘Connect’. Click it and it should open MetaMask, now you have to enter your password for MetaMask because you were logged out. But, do you notice how you’ve connected to the dApp again, and you didn’t have to select an account to connect with? If you don’t remember disconnecting or logging out, _it’s because you didn’t_.
 
 Your session wasn’t retained in local storage, but after restarting your browser, you were logged out of MetaMask— this is by design. Your device can fall into the wrong hands, but unless they know your password for MetaMask, your private key, or your mnemonic phrase, they can’t do anything. They can’t even get your private key or mnemonic phrase from MetaMask because they need your password!
 
-But wait, there’s more! The only reason why you will ever need to use your private key or mnemonic phrase is if you’re importing accounts from other wallets. You don’t use it often like regular credentials and are encouraged to store it in some place like a safety deposit box, *(or entombed in concrete)*. In the meantime, here’s what your junk mailbox can get filled with.
+But wait, there’s more! The only reason why you will ever need to use your private key or mnemonic phrase is if you’re importing accounts from other wallets. You don’t use it often like regular credentials and are encouraged to store it in some place like a safety deposit box, _(or entombed in concrete)_. In the meantime, here’s what your junk mailbox can get filled with.
 
 ![https://dev-to-uploads.s3.amazonaws.com/uploads/articles/srpl360r83f2craj9wrh.png](../../img/S04/../../../img/S04/persisting-connectivity-inbox.png)
-<p style='font-style: italic' align=center><a href="https://www.youtube.com/watch?v=MK6TXMsvgQg">*Benny Hill theme intensifies*</a></p style='italic'>{target=\_blank}
 
+<p style='font-style: italic' align=center><a href="https://www.youtube.com/watch?v=MK6TXMsvgQg">*Benny Hill theme intensifies*</a></p style='italic'>{target=\_blank}
 
 By default, you’ll always be connected because you didn’t need to verify your identity for authentication. The mere fact that your account was generated from a number so large that it could not be manmade is proof enough that your account is authentic. The reason why you stay connected is that you granted this dApp permission to view your accounts, and your assets and suggest transactions on your behalf. Restarting your browser, clearing your session, and clearing your cookies and cache doesn’t disconnect you. Because MetaMask and other browser wallets act as this bridge between you and dApps, it supplies the functionality for dApps to check if you have granted permissions with your account with the Ethereum Provider API.
 
@@ -41,7 +41,7 @@ In `App.js` you’ll see we’re already importing `useEffect` from React. Now w
 ```jsx
 useEffect(() => {
   // Callback function
-}, []) // Dependency array
+}, []); // Dependency array
 ```
 
 Logic can fire off in a component where we’re using `useEffect` and it can change state, and ultimately how our components and our app look. That array is where you have a variable that needs to change before the callback function can fire off. So perhaps we’re waiting on something to exist, like say… an Ethereum provider, we can then fire off a callback function in our `useEffect` to show the address that a user has connected with.
@@ -49,10 +49,10 @@ Logic can fire off in a component where we’re using `useEffect` and it can cha
 First, you’ll need to destructure the `window` object to unpack the `ethereum` property and define it as its own variable like this:
 
 ```jsx
-const { ethereum } = window
+const { ethereum } = window;
 ```
 
-And then let’s quickly change wherever we have `window.ethereum`  to `ethereum`, like in our connect function:
+And then let’s quickly change wherever we have `window.ethereum` to `ethereum`, like in our connect function:
 
 ```jsx
 const accounts = (
@@ -65,11 +65,11 @@ And also in our `<main>` element:
 
 ```jsx
 <main>
-  {account 
-		? <Account address={account} />
-		: ethereum
-		? <ConnectButton connect={connect} />
-	  : <InstallMetaMask />
+  {account
+  ? <Account address={account} />
+  : ethereum
+  ? <ConnectButton connect={connect} />
+   : <InstallMetaMask />
   )}
 </main>
 ```
@@ -79,7 +79,7 @@ Now let’s go back to the `useEffect`. We know at some point, on load, the Ethe
 ```jsx
 useEffect(() => {
   // Logic will fire off here if Ethereum changes from undefined to defined.
-}, [ethereum])
+}, [ethereum]);
 ```
 
 ## Why did we unpack `ethereum` from `window`?
@@ -94,10 +94,10 @@ Next, we can call the JSON-RPC method: `eth_accounts`. We don’t have to reques
 
 ```jsx
 useEffect(() => {
-	(async () => {
-		// Why it look like that ser?
-	})()
-}, [ethereum])
+  (async () => {
+    // Why it look like that ser?
+  })();
+}, [ethereum]);
 ```
 
 This looks the way it does because it is an async IIFE, an [immediately invoked function expression](https://developer.mozilla.org/en-US/docs/Glossary/IIFE){target=\_blank}. The parentheses have a job title now as a ‘grouping operator’, and this is where we throw in our logic. Then the second set of parentheses at the end is where we immediately call that anonymous function. Because we aren’t reusing this function anywhere else at the moment, we don’t need to explicitly name it.
@@ -106,26 +106,26 @@ Inside our IIFE, we can throw in a `try/catch` block.
 
 ```jsx
 useEffect(() => {
-	(async () => {
-		try {
-			// You've done this before
-		} catch (e) {}
-	})()
-}, [ethereum])
+  (async () => {
+    try {
+      // You've done this before
+    } catch (e) {}
+  })();
+}, [ethereum]);
 ```
 
 And now we can make that API call:
 
 ```jsx
 useEffect(() => {
-	(async () => {
-		try {
-			const connectedAccount = (await ethereum.request({method: 'eth_accounts'})[0]
-			setAccount(connectedAccount);
-		} catch (e) {
-			console.log(e)
-		}
-	})()
+ (async () => {
+  try {
+   const connectedAccount = (await ethereum.request({method: 'eth_accounts'})[0]
+   setAccount(connectedAccount);
+  } catch (e) {
+   console.log(e)
+  }
+ })()
 }, [ethereum])
 ```
 
@@ -136,6 +136,7 @@ This might be confusing for your users who are expecting a ‘Disconnect’ butt
 If your user takes a certain action like disconnecting, and they’re doing that through MetaMask, the dApp frontend needs to know what just occurred, and what to do next. In the next lesson, we’ll cover event listeners with the Ethereum Provider API.
 
 ## Additional Reading (or just references)
+
 - [Ethereum Provider API](https://docs.metamask.io/guide/ethereum-provider.html){target=\_blank}
 - [A Guide to React's `useEffect` hook](https://blog.logrocket.com/guide-to-react-useeffect-hook/){target=\_blank}
 - [A Complete Guide to `useEffect`](https://overreacted.io/a-complete-guide-to-useeffect/){target=\_blank}

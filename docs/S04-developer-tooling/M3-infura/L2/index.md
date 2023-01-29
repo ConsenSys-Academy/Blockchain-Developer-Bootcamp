@@ -1,9 +1,9 @@
-## Using Infura to Access Ethereum Archive Data (Tutorial)
+# Using Infura to Access Ethereum Archive Data (Tutorial)
 
 This is a full-stack application that provides a reference implementation and proof-of-concept for
 various use cases that are enabled by access to Ethereum archive data.
 
-Check out the repo here:  https://github.com/anataliocs/Archive-Data-Playground
+Check out the repo [here](https://github.com/anataliocs/Archive-Data-Playground){target=\_blank}:
 
 Technologies Used:
 
@@ -14,26 +14,22 @@ Technologies Used:
 - React/Redux
 - node/npm
 
-
-### Setup and Configuration
+## Setup and Configuration
 
 The project is built with a Java/Spring Boot backend and a React front-end.
 You will need to install the following dependencies locally to run this project:
 
-- [An Infura account](https://infura.io/register)
+- [An Infura account](https://infura.io/register){target=\_blank}
 - Git
 - Node / npm
 - Java 11
 - An IDE
 
-
 **Get your API endpoint URL and Project ID**
 
-
-Head to https://infura.io/ and go to your project settings page:
+Head to [https://infura.io/](https://infura.io/){target=\_blank} and go to your project settings page:
 
 ![Infura Dashboard](https://raw.githubusercontent.com/anataliocs/Archive-Data-Playground/main/static/Infura-ui.jpeg)
-
 
 Now let’s set up our externalized configuration so that we can use our project ID without exposing those details on Github.
 The Spring Boot app uses Spring Dev Tools when running locally so we can use a `.spring-boot-devtools.properties` file for
@@ -74,7 +70,7 @@ This command will start up the Spring Boot backend in dev mode and also the Reac
 
 After the application starts up you should see the following:
 
-```
+```bash
 2022-05-31 11:21:45.262  INFO 83493 --- [  restartedMain] i.i.a.ArchiveDataPlaygroundApp           : Started ArchiveDataPlaygroundApp in 3.709 seconds (JVM running for 3.924)
 2022-05-31 11:21:45.264  INFO 83493 --- [  restartedMain] i.i.a.ArchiveDataPlaygroundApp           :
 ----------------------------------------------------------
@@ -86,31 +82,30 @@ After the application starts up you should see the following:
 <============-> 92% EXECUTING [2m 15s]
 ```
 
-Navigate to the local server in a browser at http://localhost:8080/
+Navigate to the local server in a browser at [http://localhost:8080](http://localhost:8080){target=\_blank}
+
 ![App UI](https://raw.githubusercontent.com/anataliocs/Archive-Data-Playground/main/static/app-UI-1.png)
 
 On the right-hand corner click account -> Sign-in and use the canned login and password “admin/admin”
 ![App UI](https://raw.githubusercontent.com/anataliocs/Archive-Data-Playground/main/static/app-ui-2.png)
 
-You will then have access to the application.  The login flow comes from the base Jhipster project scaffolding tool that
+You will then have access to the application. The login flow comes from the base Jhipster project scaffolding tool that
 was used to create the basic project skeleton.
 
 You can directly query Infura JSON-RPC endpoints if you navigate to
-http://localhost:8080/admin/docs or click Administration -> API
+[http://localhost:8080/admin/docs](http://localhost:8080/admin/docs){target=\_blank} or click Administration -> API
 
-This will bring you to the Swagger UI interface where you can call JSON-RPC endpoints such as getting blocks older than
-128 blocks which are available via Archive nodes with hydrated transactions.  These calls can then be used in Block Explorer style
-applications or other use cases.
+This will bring you to the Swagger UI interface where you can call JSON-RPC endpoints such as getting blocks older than 128 blocks which are available via Archive nodes with hydrated transactions. These calls can then be used in Block Explorer style applications or other use cases.
 
 ![Swagger UI](https://raw.githubusercontent.com/anataliocs/Archive-Data-Playground/main/static/swagger-ui-1.png)
 
-
 Some specific blocks of code that help enable this functionality include:
 
-https://github.com/anataliocs/Archive-Data-Playground/blob/main/src/main/java/io/infura/archivedataplayground/config/InfuraConfig.java
+[https://github.com/anataliocs/Archive-Data-Playground/blob/main/src/main/java/io/infura/archivedataplayground/config/InfuraConfig.java](https://github.com/anataliocs/Archive-Data-Playground/blob/main/src/main/java/io/infura/archivedataplayground/config/InfuraConfig.java){target=\_blank}
 
 **InfuraConfig.java**
-```
+
+```java
 @Configuration
 public class InfuraConfig {
 
@@ -125,13 +120,14 @@ This code provides a “RestTemplate” singleton which can be injected in class
 
 The `dto.infura` package contains POJO objects representing request and response JSONs used in Infura RPC calls.
 
-https://github.com/anataliocs/Archive-Data-Playground/tree/main/src/main/java/io/infura/archivedataplayground/service/dto/infura
+[https://github.com/anataliocs/Archive-Data-Playground/tree/main/src/main/java/io/infura/archivedataplayground/service/dto/infura](https://github.com/anataliocs/Archive-Data-Playground/tree/main/src/main/java/io/infura/archivedataplayground/service/dto/infura){target=\_blank}
 
 For instance, the following 3 DTO objects contain the block and hydrated transactions response from
 an `eth_getBlockByNumber` JSON-RPC call which can be used to get archive blocks from Ethereum’s history.
 
 **GetBlockByNumberResponse.java**
-```
+
+```java
 public class GetBlockByNumberResponse {
    private String jsonrpc;
    private String id;
@@ -140,10 +136,12 @@ public class GetBlockByNumberResponse {
    // Getters and setters
 }
 ```
+
 Infura POJO response to de-serialize JSON
 
 **GetBlockByNumberResult.java**
-```
+
+```java
 public class GetBlockByNumberResult {
    private String difficulty;
    private String extraData;
@@ -171,7 +169,8 @@ public class GetBlockByNumberResult {
 Infura POJO response to de-serialize JSON
 
 **Transaction.java**
-```
+
+```java
 public class Transaction {
 
    private String blockHash;
@@ -194,10 +193,10 @@ public class Transaction {
 
 The included “RestTemplate” will automatically marshal/unmarshal responses into these Object types.
 
-You could also consider using https://github.com/web3j/web3j to help facilitate Infura JSON–RPC calls made using the Spring Boot
+You could also consider using [web3.js](https://github.com/web3j/web3j){target=\_blank} to help facilitate Infura JSON–RPC calls made using the Spring Boot
 backend but this is a more heavyweight solution that contains a lot of stuff you might not need.
 
-#### The Front-end
+### The Front-end
 
 One feature that archive data enables is Block Exploration.
 
@@ -206,25 +205,29 @@ One feature that archive data enables is Block Exploration.
 This block explorer displays information about about famous blocks in Ethereum history such as:
 
 Frontier
+
 - Block height: 0
 - Genesis block
 - Jul 30 2015
 
 Frontier Thawing
+
 - Block height: 200000
 - Ethereum price: $1.24 USD
 - Sep 07 2015
 
 Homestead
+
 - Block height: 1,150,000
 - Ethereum price: $12.50 USD
 - Mar 14 2016
 
-The front-end is implemented using React and Typescript.  This form allows you to submit a block number and look up that block’s data
+The front-end is implemented using React and Typescript. This form allows you to submit a block number and look up that block’s data
 and hydrated transactions.
 
 **infura.tsx**
-```
+
+```tsx
 …
 
 <p className="lead">Explore historical Ethereum Data</p>
@@ -249,20 +252,17 @@ and hydrated transactions.
 
 …
 ```
+
 Submitting the form dispatches a request to the Spring Boot API and uses a reducer to parse the JSON returned from the backend and stores
 that state in Redux.
 
 **infura.reducer.tsx**
 
-```
-…
-
+```tsx
 export const getInfura = createAsyncThunk('infura/get_json', async (blocknumber: string) => axios.get<any>(`api/infura/${blocknumber}`), {
 serializeError: serializeAxiosError,
 });
-
-…
 ```
 
-This is only a simple example of functionality that access to archive data enables.  Using this basic framework, you could create
+This is only a simple example of functionality that access to archive data enables. Using this basic framework, you could create
 Ethereum block analytics, more detailed Block Explorers, back testing for trading algorithms and Blockchain forensics applications!
