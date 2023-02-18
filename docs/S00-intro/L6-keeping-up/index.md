@@ -18,7 +18,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 
 *   [r/Ethereum](https://www.reddit.com/r/ethereum){target=_blank}
 *   [r/EthFinance](https://www.reddit.com/r/ethfinance){target=_blank}
-*   [r/EthStakers](https://www.reddit.com/r/ethstakers){target=_blank}
+*   [r/EthStaker](https://www.reddit.com/r/ethstaker){target=_blank}
 *   [r/CryptoCurrency](https://www.reddit.com/r/CryptoCurrency/){target=_blank}
 *   [r/EthDev](https://www.reddit.com/r/ethdev/){target=_blank}
 
