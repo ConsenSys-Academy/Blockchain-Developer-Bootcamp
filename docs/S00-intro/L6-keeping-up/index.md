@@ -18,7 +18,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 
 *   [r/Ethereum](https://www.reddit.com/r/ethereum){target=_blank}
 *   [r/EthFinance](https://www.reddit.com/r/ethfinance){target=_blank}
-*   [r/EthStakers](https://www.reddit.com/r/ethstakers){target=_blank}
+*   [r/EthStaker](https://www.reddit.com/r/ethstaker){target=_blank}
 *   [r/CryptoCurrency](https://www.reddit.com/r/CryptoCurrency/){target=_blank}
 *   [r/EthDev](https://www.reddit.com/r/ethdev/){target=_blank}
 
@@ -26,7 +26,6 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 
 *   [Signal](https://share.hsforms.com/1HiFwsb55S5GUf-EOe0KP8Q2urwb?email=){target=_blank} ConsenSys' Developer Newsletter
 *   [Week In Ethereum](https://weekinethereumnews.com/){target=_blank} A weekly round-up of all things Ethereum
-*   [EthHub](https://ethhub.io/){target=_blank} Another weekly news round-up
 *   [Economics Design (detailed dives into DeFi and crypto topics)](https://economicsdesign.substack.com/){target=_blank}
 *   [Decrypt](https://decrypt.co/){target=_blank} the Web 3 news site has a newsletter you can sign up for which delivers top stories from the day
 *   [Tally](https://newsletter.withtally.com/?no_cover=true){target=_blank} Great roundup of DAO governance votes
@@ -39,6 +38,7 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Glassnode Insights](https://insights.glassnode.com/){target=_blank}
 - [The Defiant](https://thedefiant.io/){target=_blank}
 - [Decrypt](https://decrypt.co){target=_blank}
+- [Finematics](https://finematics.com/){target=_blank}
 - [Basecamp](https://www.notion.so/qtativ/Basecamp-55bd8855ed804a449985a0cec6540ae1){target=_blank} and Basecamp's [Blue Chip Defi Docs and Audits](https://www.notion.so/2438c01d787b4dfd8ba3352011f194ff?v=0e065bfd666b4bc4a27216301faf1de1&p=f0a08659cf81453996f3f1250d3cab53){target=_blank}
 - [Ethereum Stack Exchange](https://ethereum.stackexchange.com/){target=_blank}
 - [Mirror.xyz](https://consensys.net/blog/metamask/mirror-xyz-review-how-to-use-metamask-to-compete-in-the-write-race/){target=_blank} Read about this interesting writing platform here
@@ -46,9 +46,10 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 
 
 ## YouTube
-- [Finematics](https://finematics.com/){target=_blank} Critical way of learning about blockchain concepts!
+
+- [Finematics.](https://www.youtube.com/@Finematics){target=_blank} Critical way of learning about blockchain and educational videos on DeFi
 - [Bankless](https://www.youtube.com/c/Bankless/videos){target=_blank}
-- [Peep an EIP](https://www.youtube.com/watch?v=sc1x_du6UXk&list=PL4cwHXAawZxqu0PKKyMzG_3BJV_xZTi1F){target=_blank}
+- [Ethereum Cat Herders](https://www.youtube.com/watch?v=sc1x_du6UXk&list=PL4cwHXAawZxqu0PKKyMzG_3BJV_xZTi1F){target=_blank}
 - [Eat the Blocks](https://www.youtube.com/channel/UCZM8XQjNOyG2ElPpEUtNasA){target=_blank}
 - [Dapp University](https://www.youtube.com/channel/UCY0xL8V6NzzFcwzHCgB8orQ){target=_blank}
 - [Patrick Collins](https://www.youtube.com/channel/UCn-3f8tw_E1jZvhuHatROwA){target=_blank}
@@ -57,14 +58,16 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [Coin Bureau](https://www.youtube.com/channel/UCqK_GSMbpiV8spgD3ZGloSw){target=_blank}
 
 ## Podcasts
+
 - [Zero Knowledge](https://www.zeroknowledge.fm/){target=_blank}
 - [Unchained](https://unchainedpodcast.com/){target=_blank}
 - [Epicenter](https://epicenter.tv){target=_blank}
-- [Mapping out Eth 2](https://www.coindesk.com/podcasts/mapping-out-eth-2-0/){target=_blank}
+- [CoinDesk](https://www.coindesk.com){target=_blank}
 - [Bankless](https://open.spotify.com/show/41TNnXSv5ExcQSzEGLlGhy?si=5FwQQFY1QHyUlaLoN2k-lg){target=_blank}
 - [Uncommon Core](https://uncommoncore.co/podcast/){target=_blank}
 
 ## Learning Paths
+
 - [EthernautDAO](https://mint.ethernautdao.io/){target=_blank} Decentralized organization focussed on training developers to become blockchain developers and get them jobs! [Discord here](https://discord.gg/RQ5WYDxUF3){target=_blank}
 - [How to Get Into Web 3 as a Developer (Nader Dabit)](https://dev.to/dabit3/how-to-get-into-ethereum-crypto-web3-as-a-developer-9l6){target=_blank}
 - [Anett Rolikova's README for Crypto Beginners](https://github.com/anettrolikova/Crypto/blob/master/README.md){target=_blank}
