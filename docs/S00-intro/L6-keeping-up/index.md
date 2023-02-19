@@ -68,16 +68,14 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 
 ## Learning Paths
 
-- [EthernautDAO](https://mint.ethernautdao.io/){target=_blank} Decentralized organization focussed on training developers to become blockchain developers and get them jobs! [Discord here](https://discord.gg/RQ5WYDxUF3){target=_blank}
+- [EthernautDAO.](https://docs.ethernautdao.io/ethernautdao/i-want-to-learn){target=_blank}A Decentralized organization focussed on training developers to become blockchain developers and get them jobs! [Discord here](https://discord.gg/RQ5WYDxUF3){target=_blank}
 - [How to Get Into Web 3 as a Developer (Nader Dabit)](https://dev.to/dabit3/how-to-get-into-ethereum-crypto-web3-as-a-developer-9l6){target=_blank}
 - [Anett Rolikova's README for Crypto Beginners](https://github.com/anettrolikova/Crypto/blob/master/README.md){target=_blank}
-- [Learning Resources from EthernautDAO](https://github.com/ethernautdao/resources){target=_blank}
 - [DeFi Developer Roadmap](https://github.com/OffcierCia/DeFi-Developer-Road-Map){target=_blank}
 - [Ethereum.org's Developer Guide](https://ethereum.org/en/developers/){target=_blank}
 - [BuidlGuidl](https://buidlguidl.com/){target=_blank}
 - [Cleverflare](https://cleverflare.com/#/){target=_blank}
-- [Resources to Learn Web 3](https://twitter.com/wslyvh/status/1405493777347739654){target=_blank}
-- [How to Become a DeFi Developer](https://defiweekly.substack.com/p/how-to-become-a-defi-developer){target=_blank}
+- [How to Become a DeFi Developer](https://kermankohli.substack.com/p/how-to-become-a-defi-developer){target=_blank}
 - [Rabbithole.gg](https://rabbithole.gg){target=_blank} Place to learn and earn tokens
 - [KERNEL Resources](https://kernel.community/en/resources/){target=_blank} From Gitcoin's KERNEL incubator program
 - [Consensys' Ethereum Developer Tools List](https://github.com/ConsenSys/ethereum-developer-tools-list){target=_blank}
@@ -85,5 +83,5 @@ _Have suggestions you'd like to see on the list? [Edit this page here!](https://
 - [CryptoZombies](https://cryptozombies.io/){target=_blank}
 - [Visual Overview of Ethereum in 116 Slides](https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf){target=_blank}
 - [QuestBook-Learn Solidity](https://discord.gg/EwvRjGAS){target=_blank} A Discord server for beginners in Solidity
-- [Chainshot](https://www.chainshot.com/){target=_blank} Educational resources on Solidity
+- [Alchemy](https://www.alchemy.com){target=_blank} Educational resources on Solidity
 - [UseWeb3](https://www.useweb3.xyz/){target=_blank} Mega-Aggregator of Ethereum educational resources, including courses, tutorials, newsletters
