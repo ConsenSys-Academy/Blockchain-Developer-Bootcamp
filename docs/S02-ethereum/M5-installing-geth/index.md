@@ -16,11 +16,11 @@ By installing and running geth, you can take part in the Ethereum live network a
 
 Geth has several interfaces through which you can communicate with your Ethereum node.
 
-*   JavaScript Console: you can start geth with an interactive console, that provides a javascript runtime environment exposing a javascript API to interact with your node. The [JavaScript Console API](https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console){target=_blank} includes the web3 javascript Ðapp API as well as an 'admin' API.
-*   JSON-RPC server: you can start geth with a json-rpc server that exposes the [JSON-RPC API](https://github.com/ethereum/wiki/wiki/JSON-RPC){target=_blank}
-*   [Command line options](https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options){target=_blank} documents command line parameters as well as subcommands.
+*   JavaScript Console: you can start geth with an interactive console, that provides a javascript runtime environment exposing a javascript API to interact with your node. The [JavaScript Console API](https://geth.ethereum.org/docs/interacting-with-geth/javascript-console){target=_blank} includes the web3 javascript Ðapp API as well as an 'admin' API.
+*   JSON-RPC server: you can start geth with a json-rpc server that exposes the [JSON-RPC API](https://ethereum.github.io/execution-apis/api-documentation/){target=_blank}
+*   [Command line options](https://geth.ethereum.org/docs/fundamentals/command-line-options){target=_blank} documents command line parameters as well as subcommands.
 
-[See this page](https://geth.ethereum.org/docs/install-and-build/installing-geth){target=_blank} for instructions on how to install geth for your platform.
+[See this page](https://geth.ethereum.org/docs/getting-started/installing-geth){target=_blank} for instructions on how to install geth for your platform.
 
 Install geth and start interacting with our node.
 
@@ -44,7 +44,7 @@ Geth also opens an ipc endpoint through which you can connect to your node. If y
 geth attach [path to the ipc endpoint]
 ```  
 
-in another terminal window, the [geth javascript console](https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console){target=_blank} will appear. In my case, I typed
+in another terminal window, the [geth javascript console](https://geth.ethereum.org/docs/interacting-with-geth/javascript-console){target=_blank} will appear. In my case, I typed
 
 ```
 geth attach ~/.ethereum/geth.ipc
@@ -244,4 +244,4 @@ It should say 100! You have successfully sent a transaction from one account to 
 
 ## Additional Materials
 
-- [Running Geth in `dev` Mode](https://geth.ethereum.org/docs/getting-started/dev-mode) - an optimized way to run a single node for developing locally
+- [Running Geth in `dev` Mode](https://geth.ethereum.org/docs/developers/dapp-developer/dev-mode) - an optimized way to run a single node for developing locally
