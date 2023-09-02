@@ -39,7 +39,7 @@ Truffle CLI
 
 The Truffle Suite requires the following...
 
-- Node.js v12 or later
+- Node.js v14 -v18
 - Windows, Linux or Mac OS X
 
 Truffle also requires that you have a running Ethereum client which supports the standard JSON RPC API (which is nearly all of them). While there are many clients, the Truffle Suite also ships with <a href="https://www.trufflesuite.com/ganache" target="_blank" rel="noopener noreferrer">Ganache,</a> essentially a one-click EVM-based blockchain node for local testing.
@@ -96,7 +96,7 @@ Out of the box, Truffle supports the following:
 
 - Solidity
 - Vyper
-- <a href="https://docs.soliditylang.org/en/v0.8.6/yul.html" target="_blank" rel="noopener noreferrer">Yul</a> (experimental and not for beginners)
+- <a href="https://docs.soliditylang.org/en/v0.8.18/yul.html" target="_blank" rel="noopener noreferrer">Yul</a> (experimental and not for beginners)
   
 At the time of writing, Solidity is by far the most popular language for writing smart contracts, and as with everything in the space, things have been moving rapidly and have now witnessed some major projects built using Vyper.  
 
