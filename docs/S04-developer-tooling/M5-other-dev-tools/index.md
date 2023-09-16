@@ -93,14 +93,14 @@ If you <a href="https://twitter.com/austingriffith" target="_blank" rel="noopene
 
 ## Brownie
 
-As we mentioned earlier, [Brownie](https://github.com/eth-brownie/brownie){target=_blank} is a Python-based development and testing framework for smart contracts running on the EVM. It uses [Web3.py](https://web3py.readthedocs.io/en/stable/){target=_blank} as well as Solidity. It is most well-known for being the development framework the [Yearn.Finance](https://yearn.finance){target=_blank} team uses to build their powerful DeFi platform and [CRV.](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/curve-dao-token--crv-){target=_blank}
+As we mentioned earlier, [Brownie](https://github.com/eth-brownie/brownie) is a Python-based development and testing framework for smart contracts running on the EVM. It uses [Web3.py](https://web3py.readthedocs.io/en/stable/) as well as Solidity. It is most well-known for being the development framework the [Yearn.Finance](https://yearn.finance) team uses to build their powerful DeFi platform and [CRV.](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/curve-dao-token--crv-)
 
-Brownie definitely takes some notes from Truffle (they are both "sweet"){target=_blank}, including having a `brownie init` command and their equivalent of Truffle boxes, ["Brownie Mixes."](https://github.com/brownie-mix){target=_blank} This makes it an easy tool for a lot of Truffle developers familiar with Truffle.
+Brownie definitely takes some notes from Truffle (they are both "sweet"), including having a `brownie init` command and their equivalent of Truffle boxes, ["Brownie Mixes."](https://github.com/brownie-mix) This makes it an easy tool for a lot of Truffle developers familiar with Truffle.
 
 Here are some tutorials to introduce you to Brownie:
 
-* [Tutorial: Develop a DeFi Project using Python (Chainlink){target=_blank}](https://blog.chain.link/develop-python-defi-project/){target=_blank}
-* [Tutorial: Vyper and Brownie Contract Development on EVM Chains](https://medium.com/ethereum-classic/vyper-and-brownie-contract-development-on-evm-chains-85ba7fa2feef){target=_blank} An interesting tutorial walking through developing a contract using Vyper and Brownie.
+* [Tutorial: Develop a DeFi Project using Python (Chainlink)](https://blog.chain.link/develop-python-defi-project/)
+* [Tutorial: Vyper and Brownie Contract Development on EVM Chains](https://medium.com/ethereum-classic/vyper-and-brownie-contract-development-on-evm-chains-85ba7fa2feef) An interesting tutorial walking through developing a contract using Vyper and Brownie.
 
 ## Tenderly
 

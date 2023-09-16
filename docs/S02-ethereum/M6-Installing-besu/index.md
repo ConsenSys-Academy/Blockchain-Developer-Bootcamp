@@ -4,9 +4,9 @@
 ## Who is this guide for
 This guide is geared toward those who wish to set up an Ethereum Layer-1 node on a dedicated machine. This guide does not discuss using Docker or running this in a virtual machine.
 
-The example node software here is using [Besu](https://besu.hyperledger.org/en/stable/){target=_blank}, however, installating other clients such as Erigon, Geth, OpenEthereum or others will utilise a lot of the same concepts. Future material may cover specific setups for the other clients.
+The example node software here is using [Besu](https://besu.hyperledger.org/en/stable/), however, installating other clients such as Erigon, Geth, OpenEthereum or others will utilise a lot of the same concepts. Future material may cover specific setups for the other clients.
 
-Something important to consider when running a node is [client diversity](https://ethereum.org/en/developers/docs/nodes-and-clients/client-diversity/#client-diversity-importance){target=_blank}. Having diversity is important for stability of the network, specifically in the event a flaw is found in one of the clients. If those nodes had to go offline to prevent exploits, the others can continue unaffected. To see a breakdown of known clients (not all nodes appear here, but it illustrates diversity) go to [etherenodes.org](https://ethernodes.org/){target=_blank}.
+Something important to consider when running a node is [client diversity](https://ethereum.org/en/developers/docs/nodes-and-clients/client-diversity/#client-diversity-importance). Having diversity is important for stability of the network, specifically in the event a flaw is found in one of the clients. If those nodes had to go offline to prevent exploits, the others can continue unaffected. To see a breakdown of known clients (not all nodes appear here, but it illustrates diversity) go to [etherenodes.org](https://ethernodes.org/).
 
 ### Why run a node?
 - Contribute to the network and broader ecosystem
@@ -31,20 +31,20 @@ When considering hardware, there are a number of important factors:
 1. Minimum requirements for syncing and maintaining sync.
 2. How soon do you want the node to be up and running? ( Faster storage and CPU )
 3. How long do you intend on running the node for?
-4. What kind of node you are running [Besu Node Types](https://besu.hyperledger.org/en/stable/Concepts/Node-Types/){target=_blank}. Note: Other clients (e.g. Geth) may have similar and additional options.
+4. What kind of node you are running [Besu Node Types](https://besu.hyperledger.org/en/stable/Concepts/Node-Types/). Note: Other clients (e.g. Geth) may have similar and additional options.
 5. How much traffic are you personally/or your business intending on sending to the node? (can the node support many concurrent users)
 6. With everything cost is always a factor. Please consider these questions carefully weighing up future extension, whether it be storage space or CPU speed. Disk space upgrades will more than likely be the only real concern if the CPU is able to process transactions fast enough.
 7. Do you have internet speed/data allowance concerns?
 
 All of the considerations above will affect your choice in hardware and if you are able to successfully run a node.
 
-1. You will need at least 8GB of RAM and a fast hard drive [SSD/mSATA/NVME](https://www.kingston.com/unitedkingdom/en/community/articledetail/articleid/48543){target=_blank} - Sata HDDs are too slow to maintain and get to sync. Depending on your storage configuration, swap space/virtual memory may be on the same disk making HDDs even less of an option. External USB3.x SSDs have also been used to sync. Weigh up disk speed, cost, longevity, and size. At end of June 2022, a currently sync'd node with fast sync Bonsai storage is using 611GB and a Full non-Bonsai fast sync node is 980GB and growing.
+1. You will need at least 8GB of RAM and a fast hard drive [SSD/mSATA/NVME](https://www.kingston.com/unitedkingdom/en/community/articledetail/articleid/48543) - Sata HDDs are too slow to maintain and get to sync. Depending on your storage configuration, swap space/virtual memory may be on the same disk making HDDs even less of an option. External USB3.x SSDs have also been used to sync. Weigh up disk speed, cost, longevity, and size. At end of June 2022, a currently sync'd node with fast sync Bonsai storage is using 611GB and a Full non-Bonsai fast sync node is 980GB and growing.
 
 2. CPU is a bottlenecking factor - As an example, A Raspberry PI 4 overclocked to 2.147ghz sat at 100% for +-4 weeks syncing, whereas a Celeron G3930 took 10 days to sync. While it is possible to sync with a Raspberry PI, a vast amount of patience is required. As the chain grows in size, this time will increase, so depending on your timelines and usage, a Raspberry Pi may not be for you. **Note:** When rollups and sharding come into play, this may require a rethink, as CPU may need to be faster to keep up when processing rollups.
 
-3. With [EIP-4844](https://blog.developerdao.com/eip-4844-and-its-impact-on-ethereum-scalability){target=_blank} coming down the track (eta unknown), an installation may run out of storage space where you will require easily an additional 2.2TB (+-) of storage (`10mb * 5 blocks per min * 60 mins per hour * 24hrs a day * 30 days`) - you can get away with a 2TB disk to start, but will/may need more when it eventually happens depending on implementation. **Note:** the estimates here and implementation is speculative.
+3. With [EIP-4844](https://blog.developerdao.com/eip-4844-and-its-impact-on-ethereum-scalability) coming down the track (eta unknown), an installation may run out of storage space where you will require easily an additional 2.2TB (+-) of storage (`10mb * 5 blocks per min * 60 mins per hour * 24hrs a day * 30 days`) - you can get away with a 2TB disk to start, but will/may need more when it eventually happens depending on implementation. **Note:** the estimates here and implementation is speculative.
 
-4. **Note** If you run something like Geth, you can also run a "light node" [All node types](https://ethereum.org/en/developers/docs/nodes-and-clients/){target=_blank} vs. a Full or Archive Node
+4. **Note** If you run something like Geth, you can also run a "light node" [All node types](https://ethereum.org/en/developers/docs/nodes-and-clients/) vs. a Full or Archive Node
 
 5. If you are expecting many users to access your node through MetaMask or other wallets vs. just a few home users, more resources are recommended for processing and data access.
 ---
@@ -54,13 +54,13 @@ All of the considerations above will affect your choice in hardware and if you a
 - Storage drive for installation of operating system ( MicroSD for a Raspberry PI )
 - Optional drive for Node data
 - USB stick for installing
-- Software for creating a bootable USB [Balena Etcher](https://www.balena.io/etcher/){target=_blank} (Cross platform) or if you prefer [Rufus](https://rufus.ie/){target=_blank} (Windows only)
+- Software for creating a bootable USB [Balena Etcher](https://www.balena.io/etcher/) (Cross platform) or if you prefer [Rufus](https://rufus.ie/) (Windows only)
 
 ## Operating System
 
-- Download an appropriate server install image [Ubuntu Downloads](https://ubuntu.com/download/server){target=_blank} with the matching architecture (ARM is available as another option).
+- Download an appropriate server install image [Ubuntu Downloads](https://ubuntu.com/download/server) with the matching architecture (ARM is available as another option).
 
-- If you do decide to try it on a Raspberry Pi, the images can be found at [Ubuntu for Raspberry Pi](https://ubuntu.com/download/raspberry-pi){target=_blank} and the install process for ARM will need to be used.
+- If you do decide to try it on a Raspberry Pi, the images can be found at [Ubuntu for Raspberry Pi](https://ubuntu.com/download/raspberry-pi) and the install process for ARM will need to be used.
 
 ### **Installing on a Raspberry Pi**
  - burn the image to the MicroSD
@@ -70,12 +70,12 @@ All of the considerations above will affect your choice in hardware and if you a
 ### **Installing on a dedicated non-Pi machine**
 
 - Create a bootable USB stick with the operating system
-  - [Mac](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview){target=_blank}
-  - [Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#3-launch-startup-disk-creator){target=_blank}
-  - [Windows](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview){target=_blank}
+  - [Mac](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview)
+  - [Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#3-launch-startup-disk-creator)
+  - [Windows](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview)
 - Set your machine's BIOS to boot from the USB
 - Boot from the USB
-- Install the operating system enabling SSH [Install Step by Step](https://ubuntu.com/server/docs/install/step-by-step){target=_blank}. You won't need to install any snaps.
+- Install the operating system enabling SSH [Install Step by Step](https://ubuntu.com/server/docs/install/step-by-step). You won't need to install any snaps.
 - The default file format is `ext4`, if you prefer `xfs` works as well
 - When creating a user, this will be your admin user, once installation is complete and the server rebooted, a specific user will be created to run Besu with.
 ---
@@ -106,7 +106,7 @@ In order to make life easier when accessing your node/machine from other machine
      ```
 - Assign a static private IP address to your node with netplan ( see example below )
   - Edit your network configuration file (your name may differ) to create a static address for easy access (`sudo nano /etc/netplan/`) - **note** the spacing is critical. If done, and using nano press `control-o` and then after, press `enter` to save, followed by `control-x` to exit
-  - see [netplan](https://netplan.io/examples/){target=_blank} for more instructions if you get stuck or want to know about wireless configuration
+  - see [netplan](https://netplan.io/examples/) for more instructions if you get stuck or want to know about wireless configuration
 
 **An example:**
 
@@ -143,7 +143,7 @@ You should see something like
 /dev/mapper/ubuntu--vg-ubuntu--lv  109G  7.8G   96G   8% /
 ```
 
-If this does not match your drive size, you might consider extending the space: **USE WITH CAUTION** [Extend your lvm space](https://packetpushers.net/ubuntu-extend-your-default-lvm-space/){target=_blank}
+If this does not match your drive size, you might consider extending the space: **USE WITH CAUTION** [Extend your lvm space](https://packetpushers.net/ubuntu-extend-your-default-lvm-space/)
 
 ### If using an internal disk
 - add a folder to contain node data (`sudo mkdir /besu`)
@@ -165,7 +165,7 @@ I/O size (minimum/optimal): 512 bytes / 33553920 bytes
 ```
 
 Once worked out which is your disk (e.g. `/dev/sdb` here)
-- `sudo mkfs.xfs /dev/sdb` [see all formatting options](https://linux.die.net/man/8/mkfs.xfs){target=_blank}
+- `sudo mkfs.xfs /dev/sdb` [see all formatting options](https://linux.die.net/man/8/mkfs.xfs)
 - follow the prompts pressing yes where you need to (**be sure it is the correct drive**)
 
 You should see output similar to:
@@ -212,7 +212,7 @@ devpts                                0     0     0    - /dev/pts
 
 **Adjusting Swap space**
 
-Depending on how many disks you have installed and if they are internal/external, the pathing instructions below would need to be adjusted [see full instructions](https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-20-04/){target=_blank}
+Depending on how many disks you have installed and if they are internal/external, the pathing instructions below would need to be adjusted [see full instructions](https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-20-04/)
 - Swap space on some installs are added by default ( not on the Pi ), follow this if you want extra swap space 
 - Replace `/swapfile` below with `/mnt/ssd/swapfile` if you want to use the external drive - i.e if the Pi is using a slower MicroSD
 - Add swap space (generally a 1:1 with physical memory depending on how much you have) `sudo fallocate -l 8G /swapfile` (or `sudo fallocate -l 8G /swapfile`)
@@ -233,8 +233,8 @@ At this point, you should have an updated machine with swap space, a custom user
 For Raspberry Pi see:
 
 - Oracle and Java.net
-- [sdkman](https://sdkman.io/){target=_blank} 
-- [adoptium](https://adoptium.net/temurin/releases/){target=_blank}
+- [sdkman](https://sdkman.io/) 
+- [adoptium](https://adoptium.net/temurin/releases/)
 - Follow the instructions there 
 
 Once installed
@@ -259,7 +259,7 @@ cd besu (if not already)
 - Once the build steps are complete
 - Copy the `besu` folder from the build folder to `/usr/bin/` e.g. `sudo cp -r ~/code/besu/build/install/besu  /usr/bin/besu`
 - Check your besu version `/usr/bin/besu/bin/besu --version`
-- Add user to run the process under e.g. `sudo useradd username` ( e.g. `sudo useradd eth`) - for more in depth options on users: [Creating users with useradd](https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/){target=_blank}
+- Add user to run the process under e.g. `sudo useradd username` ( e.g. `sudo useradd eth`) - for more in depth options on users: [Creating users with useradd](https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/)
 
 **If using an internal disk**
 - Assign ownership of the besu folder `sudo chown -R eth:eth /besu` (replace `eth` with your chosen username) - this is needed to create and maintain files
@@ -349,7 +349,7 @@ WantedBy=multi-user.target
   - press `control-o` and then after, press `enter` to save, followed by `control-x` to exit
   - type `sudo chmod +x getBlock.sh` to allow it to be executed
   - to run it type `./getBlock.sh` - this will tell you how far it has gotten
-  - additional commands you can create scripts with (e.g. [eth_syncing](https://besu.hyperledger.org/en/stable/Reference/API-Methods/#eth_syncing){target=_blank}) - see [API](https://besu.hyperledger.org/en/stable/Reference/API-Methods/){target=_blank}
+  - additional commands you can create scripts with (e.g. [eth_syncing](https://besu.hyperledger.org/en/stable/Reference/API-Methods/#eth_syncing)) - see [API](https://besu.hyperledger.org/en/stable/Reference/API-Methods/)
 
 ### Connecting to your node with Metamask
 
@@ -366,13 +366,13 @@ Android Metamask Mobile requires an `https` site - another article will show you
 ## Final thoughts and security considerations
 
 ### Ports and port forwarding
-It is possible to sync without opening external ports into your network, however this means all peer initiation and finding will purely be from your node, which potentially will be slower. If you do decided to open a port and forward it into your network, `it should only ever be port 30303 for peering`. As with any port opening and forwarding, do so with caution. [What is port forwarding](https://cybernews.com/what-is-vpn/port-forwarding/){target=_blank}. You might consider adding in a firewall to be more secure.
+It is possible to sync without opening external ports into your network, however this means all peer initiation and finding will purely be from your node, which potentially will be slower. If you do decided to open a port and forward it into your network, `it should only ever be port 30303 for peering`. As with any port opening and forwarding, do so with caution. [What is port forwarding](https://cybernews.com/what-is-vpn/port-forwarding/). You might consider adding in a firewall to be more secure.
 
 ### Segementing internal networks
 If you are up for more advanced networking and your hardware supports it, you could consider creating different VLANs on your network disallowing the node to talk out to your internal network, but you can talk into it to use it as your RPC endpoint for your wallet (e.g. Metamask).
 
 ### Publicly exposed IP Addresses
-If you are a home user running a node, please keep in mind that your IP address will be visible to other node operators giving them a rough idea of your geolocation. Additionally, if your port forwarding is open, sites such as [ethernodes](https://ethernodes.org/){target=_blank} will index your IP. From a privacy perspective, you may want to run your node over a dedicated IP VPN. Keep in mind this may require other hardware and technical skill.
+If you are a home user running a node, please keep in mind that your IP address will be visible to other node operators giving them a rough idea of your geolocation. Additionally, if your port forwarding is open, sites such as [ethernodes](https://ethernodes.org/) will index your IP. From a privacy perspective, you may want to run your node over a dedicated IP VPN. Keep in mind this may require other hardware and technical skill.
 
 ### Outdate software and operating system
 - always check for and apply updates `sudo apt update && sudo apt upgrade -y`

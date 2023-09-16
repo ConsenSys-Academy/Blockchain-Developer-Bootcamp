@@ -3,20 +3,20 @@ Smart Contract Pitfalls and Attacks
 
 Now that we've gone through some of the attack vectors in the language and syntax of Solidity, let's move on to more general smart contract pitfalls and attacks. These are more general attack patterns which involve zooming out from a codeline level to a broader contract workflow view (*Call Known Attacks*). There are also concerns that come from a protocol level, which will require marrying the information we learned in the first few sections of the course with the smart contract knowledge you gained (Network Known Attacks).
 
-All these attack vectors (and more) are compiled in the Smart Contract Weakness Classification and Test Cases or [SWC Registry](https://swcregistry.io/){target=_blank}, we'll reference attack vectors by their SWC index number:
+All these attack vectors (and more) are compiled in the Smart Contract Weakness Classification and Test Cases or [SWC Registry](https://swcregistry.io/), we'll reference attack vectors by their SWC index number:
 
 Network Known Attacks: 
-* Front-Running ([SWC-114](https://swcregistry.io/docs/SWC-114){target=_blank})
-* Timestamp Dependence ([SWC-116](https://swcregistry.io/docs/SWC-116){target=_blank})
+* Front-Running ([SWC-114](https://swcregistry.io/docs/SWC-114))
+* Timestamp Dependence ([SWC-116](https://swcregistry.io/docs/SWC-116))
 * Network Stuffing DoS
 
 Call Known Attacks: 
-* Forcibly Sending Ether ([SWC-132](https://swcregistry.io/docs/SWC-132){target=_blank})
-* Block Gas Limit DoS ([SWC-128](https://swcregistry.io/docs/SWC-128){target=_blank}{target=_blank})
-* Reentrancy ([SWC-107](https://swcregistry.io/docs/SWC-107){target=_blank}{target=_blank})
-* Integer Overflow/Underflow ([SWC-101](https://swcregistry.io/docs/SWC-101){target=_blank}{target=_blank})
-* Unexpected Revert DoS ([SWC-113](https://swcregistry.io/docs/SWC-113){target=_blank}{target=_blank})
-* Tx.Origin Authentication ([SWC-115](https://swcregistry.io/docs/SWC-115){target=_blank})
+* Forcibly Sending Ether ([SWC-132](https://swcregistry.io/docs/SWC-132))
+* Block Gas Limit DoS ([SWC-128](https://swcregistry.io/docs/SWC-128))
+* Reentrancy ([SWC-107](https://swcregistry.io/docs/SWC-107))
+* Integer Overflow/Underflow ([SWC-101](https://swcregistry.io/docs/SWC-101))
+* Unexpected Revert DoS ([SWC-113](https://swcregistry.io/docs/SWC-113))
+* Tx.Origin Authentication ([SWC-115](https://swcregistry.io/docs/SWC-115))
 
 Frontrunning
 ------------
@@ -33,7 +33,7 @@ Protecting against this is difficult and you will likely need to devise contract
 
 Decentralized markets can mitigate concerns by implementing batch auctions or using a pre-commit scheme, where the details are submitted after the transaction is committed.
 
-More information about Transaction Order Dependence and concrete samples are available in [the corresponding SWC Registry entry.](https://swcregistry.io/docs/SWC-114){target=_blank} Due to the increased focus on MEV, we can expect to see a lot more security tips and research around frontrunning.
+More information about Transaction Order Dependence and concrete samples are available in [the corresponding SWC Registry entry.](https://swcregistry.io/docs/SWC-114) Due to the increased focus on MEV, we can expect to see a lot more security tips and research around frontrunning.
 
 Timestamp Dependence
 --------------------
@@ -42,7 +42,7 @@ Timestamp Dependence
 
 Contracts often need access to time values to perform certain types of functionality. Values such as block.timestamp, and block.number can give you a sense of the current time or a time delta, however, they are not safe to use for most purposes.
 
-In the case of block.timestamp, developers often attempt to use it to trigger time-dependent events. As Ethereum is decentralized, nodes can synchronize time only to some degree. Moreover, malicious miners can alter the timestamp of their blocks, especially if they can gain advantages by doing so. ([source](https://swcregistry.io/docs/SWC-116){target=_blank})
+In the case of block.timestamp, developers often attempt to use it to trigger time-dependent events. As Ethereum is decentralized, nodes can synchronize time only to some degree. Moreover, malicious miners can alter the timestamp of their blocks, especially if they can gain advantages by doing so. ([source](https://swcregistry.io/docs/SWC-116))
 
 Network Stuffing DoS
 --------------------
@@ -62,7 +62,7 @@ Be aware that it is possible to send ether to a contract without triggering its 
 
 Using the selfdestruct function on another contract and using the target contract as the recipient will force the destroyed contract’s funds to be sent to the target.
 
-It is also possible to pre-compute a contracts address and send ether to the address before the contract is deployed see ([CREATE2](https://docs.openzeppelin.com/cli/2.8/deploying-with-create2){target=_blank}).
+It is also possible to pre-compute a contracts address and send ether to the address before the contract is deployed see ([CREATE2](https://docs.openzeppelin.com/cli/2.8/deploying-with-create2)).
 
 The contract’s balance will be greater than 0 when it is finally deployed.
 
@@ -71,18 +71,18 @@ Block Gas Limit DoS
 
 ![block gas limit dos diagram](../../../img/S03/swc-5.png)
 
-There is a limit to how much computation can be included in a single Ethereum block, currently 10,000,000 gas worth. This means that if your smart contract reaches a state where a transaction requires more than 10,000,000 gas to execute, that transaction will never successfully execute ([SWC-128](https://swcregistry.io/docs/SWC-128){target=_blank}{target=_blank}). It will always reach the block gas limit before finishing.
+There is a limit to how much computation can be included in a single Ethereum block, currently 10,000,000 gas worth. This means that if your smart contract reaches a state where a transaction requires more than 10,000,000 gas to execute, that transaction will never successfully execute ([SWC-128](https://swcregistry.io/docs/SWC-128)). It will always reach the block gas limit before finishing.
 
-Similarly, if the require gas for the transaction is sub 8,000,000, but close to it, you may have a harder time getting your transaction included in a block by a miner. It is more likely that if you send a transaction to the network with a startGas close to 8,000,000, a miner will not pick the transaction to include in a block. You can find more info about the default mining transaction ordering options in the most popular clients [here.](https://ethereum.stackexchange.com/questions/6107/what-is-the-default-ordering-of-transactions-during-mining-in-e-g-geth/6111#6111){target=_blank}
+Similarly, if the require gas for the transaction is sub 8,000,000, but close to it, you may have a harder time getting your transaction included in a block by a miner. It is more likely that if you send a transaction to the network with a startGas close to 8,000,000, a miner will not pick the transaction to include in a block. You can find more info about the default mining transaction ordering options in the most popular clients [here.](https://ethereum.stackexchange.com/questions/6107/what-is-the-default-ordering-of-transactions-during-mining-in-e-g-geth/6111#6111)
 
-This situation becomes possible if your contract loops over an array of undetermined size. If the array becomes too large it may never execute. A concrete sample of a dynamic array potentially resulting in a denial of service is available at the [SWC Registry entry here.](https://swcregistry.io/docs/SWC-128){target=_blank}
+This situation becomes possible if your contract loops over an array of undetermined size. If the array becomes too large it may never execute. A concrete sample of a dynamic array potentially resulting in a denial of service is available at the [SWC Registry entry here.](https://swcregistry.io/docs/SWC-128)
 
 Reentrancy
 ----------
 
 ![reentrancy attack diagram](../../../img/S03/swc-6.png)
 
-Reentrancy attacks ([SWC-107](https://swcregistry.io/docs/SWC-107){target=_blank}{target=_blank}) are very well-known thanks to the infamous DAO hack that happened on the Ethereum network. In a reentrancy attack, a vulnerable contract sends ether to an unknown address that contains a fallback function. Then, a malicious code calls back repeatedly a function in the vulnerable contract before the first call be finished.
+Reentrancy attacks ([SWC-107](https://swcregistry.io/docs/SWC-107)) are very well-known thanks to the infamous DAO hack that happened on the Ethereum network. In a reentrancy attack, a vulnerable contract sends ether to an unknown address that contains a fallback function. Then, a malicious code calls back repeatedly a function in the vulnerable contract before the first call be finished.
  
 ```
 // Vulnerable contract
@@ -148,9 +148,9 @@ The first is the Check-Effect-Interaction design pattern we described earlier. I
 
 In short, you handle your internal contract state changes before calling external contracts. 
 
-A more complex solution could implement mutual exclusion, or a [mutex.](https://en.wikipedia.org/wiki/Lock_(computer_science){target=_blank}) This allows you to lock a state and only allow changes by the owner of the lock. You can see an example of a mutex in Solidity [here.](https://medium.com/coinmonks/protect-your-solidity-smart-contracts-from-reentrancy-attacks-9972c3af7c21){target=_blank}
+A more complex solution could implement mutual exclusion, or a [mutex.](https://en.wikipedia.org/wiki/Lock_(computer_science)) This allows you to lock a state and only allow changes by the owner of the lock. You can see an example of a mutex in Solidity [here.](https://medium.com/coinmonks/protect-your-solidity-smart-contracts-from-reentrancy-attacks-9972c3af7c21)
 
-You can dig deeper into known attacks such as these [here.](https://consensys.github.io/smart-contract-best-practices/known_attacks/#race-conditions42){target=_blank}
+You can dig deeper into known attacks such as these [here.](https://consensys.github.io/smart-contract-best-practices/known_attacks/#race-conditions42)
 
 Integer Under / Overflow
 ------------------------
@@ -159,7 +159,7 @@ Integer Under / Overflow
 
 **Note: With the inclusion of SafeMath natively with Solidity 0.8.x, the likelihood of writing an integer under / overflow is unlikely. However, this is still an issue that exists in the wild and there are edge cases in which it could be achieved.**
 
-Integers can underflow or overflow in the EVM ([SWC-101](https://swcregistry.io/docs/SWC-101){target=_blank}{target=_blank}). This happens when an arithmetic value oversteps the minimum or maximum size of a type.
+Integers can underflow or overflow in the EVM ([SWC-101](https://swcregistry.io/docs/SWC-101)). This happens when an arithmetic value oversteps the minimum or maximum size of a type.
 
 The max value for an unsigned integer is 2 ^ 256 - 1, which is roughly 1.15 times 10 ^ 77. If an integer overflows, the value will go back to 0. For example, a variable called score of type uint8 storing a value of 255 that is incremented by 1 will now be storing the value 0.
 
@@ -171,12 +171,12 @@ Underflow is a similar situation, but when a uint goes below its minimum value i
 
 Be careful with smaller data types like uint8, uint16, etc… they can more easily reach their maximum value
 
-More information and concrete examples can be found at [the corresponding SWC Registry entry](https://swcregistry.io/docs/SWC-101){target=_blank}
+More information and concrete examples can be found at [the corresponding SWC Registry entry](https://swcregistry.io/docs/SWC-101)
 
 Unexpected Revert DoS
 ---------------------
 
-This attack basically consists of make a vulnerable contract inoperable by forcing a failure or an awaiting situation, locking temporarily or permanently the contract execution ([SWC-113](https://swcregistry.io/docs/SWC-113){target=_blank}{target=_blank}).
+This attack basically consists of make a vulnerable contract inoperable by forcing a failure or an awaiting situation, locking temporarily or permanently the contract execution ([SWC-113](https://swcregistry.io/docs/SWC-113)).
 
 ```
 // INSECURE  
@@ -221,16 +221,16 @@ function() external payable {
 }
 ```
 
-An example of this was the [Poly Network hack,](https://twitter.com/kelvinfichter/status/1425217046636371969){target=_blank} although not on the Ethereum network.
+An example of this was the [Poly Network hack,](https://twitter.com/kelvinfichter/status/1425217046636371969) although not on the Ethereum network.
 
-There are always more attack vectors, be sure to look through the SWC registry,  [follow Diligence on Twitter](https://twitter.com/ConsenSysAudits){target=_blank}, or whatever source you need to make sure you stay up to date with security on Ethereum.
+There are always more attack vectors, be sure to look through the SWC registry,  [follow Diligence on Twitter](https://twitter.com/ConsenSysAudits), or whatever source you need to make sure you stay up to date with security on Ethereum.
 
 Additional Material
 -------------------
 
-* [Wiki: Smart Contract Best Practices](https://consensys.github.io/smart-contract-best-practices/){target=_blank} and [Recommendations](https://consensys.github.io/smart-contract-best-practices/recommendations/){target=_blank}
-* [Article: Ethereum is a Dark Forest](https://medium.com/@danrobinson/ethereum-is-a-dark-forest-ecc5f0505dff){target=_blank} A long, comprehensive article discussing frontrunning from a first-person perspective. Got a lot of people's attention in the community around the topic.
-* [Wiki: Flashbots](https://github.com/flashbots/pm){target=_blank} A collection of research and news about Miner Extracted Value and Frontrunning.
-* [Article: Smart Contract Bugs and Security Best Practices](https://sunnya97.gitbooks.io/a-beginner-s-guide-to-ethereum-and-dapp-developme/smart-contract-best-practices.html){target=_blank}
-* [Article: To Sink Frontrunners, Send in the Submarines](http://hackingdistributed.com/2017/08/28/submarine-sends/){target=_blank} An article discussing a frontrunning defense mechanism
-* [Article: Protect Your Solidity Smart Contracts from Reentrancy](https://medium.com/coinmonks/protect-your-solidity-smart-contracts-from-reentrancy-attacks-9972c3af7c21){target=_blank} Discusses mutex locks in Solidity.
+* [Wiki: Smart Contract Best Practices](https://consensys.github.io/smart-contract-best-practices/) and [Recommendations](https://consensys.github.io/smart-contract-best-practices/recommendations/)
+* [Article: Ethereum is a Dark Forest](https://medium.com/@danrobinson/ethereum-is-a-dark-forest-ecc5f0505dff) A long, comprehensive article discussing frontrunning from a first-person perspective. Got a lot of people's attention in the community around the topic.
+* [Wiki: Flashbots](https://github.com/flashbots/pm) A collection of research and news about Miner Extracted Value and Frontrunning.
+* [Article: Smart Contract Bugs and Security Best Practices](https://sunnya97.gitbooks.io/a-beginner-s-guide-to-ethereum-and-dapp-developme/smart-contract-best-practices.html)
+* [Article: To Sink Frontrunners, Send in the Submarines](http://hackingdistributed.com/2017/08/28/submarine-sends/) An article discussing a frontrunning defense mechanism
+* [Article: Protect Your Solidity Smart Contracts from Reentrancy](https://medium.com/coinmonks/protect-your-solidity-smart-contracts-from-reentrancy-attacks-9972c3af7c21) Discusses mutex locks in Solidity.

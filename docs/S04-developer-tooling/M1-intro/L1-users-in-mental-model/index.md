@@ -8,7 +8,7 @@
  Users in the Mental Model
 -------------------------
 
- The users represent a potential new element, that is to say the non-blockchain world. In an ideal world, all your users know how to use blockchain, are loyal [degens](https://www.coingecko.com/en/glossary/degen){target=_blank} on [Crypto-Twitter,](https://www.forbes.com/sites/haileylennon/2021/03/16/are-cryptocurrency-and-twitter-mutually-exclusive/?sh=7a340478614b){target=_blank} and are already onboarded to the blockchain world. if only it were so easy! In reality, we have users located on a [spectrum](https://twitter.com/CupOJoseph/status/1413334858143834114  ){target=_blank} of abilities, understanding and desires.
+ The users represent a potential new element, that is to say the non-blockchain world. In an ideal world, all your users know how to use blockchain, are loyal [degens](https://www.coingecko.com/en/glossary/degen) on [Crypto-Twitter,](https://www.forbes.com/sites/haileylennon/2021/03/16/are-cryptocurrency-and-twitter-mutually-exclusive/?sh=7a340478614b) and are already onboarded to the blockchain world. if only it were so easy! In reality, we have users located on a [spectrum](https://twitter.com/CupOJoseph/status/1413334858143834114  ) of abilities, understanding and desires.
 
  We'll build this out more as we go, but for sake of simplicity, in this section we will emphasize how the overwhelming majority of your blockchain users will interact with your application: through a JavaScript API. Below is a diagram illustrating how the typical user interacts with a distributed application (we're using Ethereum as the public blockchain, but you can imagine it to be any general public blockchain):
 
@@ -29,7 +29,7 @@
 
  ![diagram blending the two mental models](../../../img/S04/users-in-mm-3.png)
 
- The image above shows how we are combining the two mental models we've been working with. On the left-hand side, we see the user has their transaction, which has been pre-formatted by the application developer but populated and authorized by the user. To the right, we see the basic blockchain network. Effectively, when the user submits their transaction, they do so as a node in the network broadcasting any other transaction. It will be propagated throughout the network (each node that receives it checks its digital signature validity before passing it on) and eventually become part of the emergent ["mempool"](https://academy.binance.com/en/glossary/mempool){target=_blank} of unmined transactions. Once it is mined, we can then see how it will affect global network state.
+ The image above shows how we are combining the two mental models we've been working with. On the left-hand side, we see the user has their transaction, which has been pre-formatted by the application developer but populated and authorized by the user. To the right, we see the basic blockchain network. Effectively, when the user submits their transaction, they do so as a node in the network broadcasting any other transaction. It will be propagated throughout the network (each node that receives it checks its digital signature validity before passing it on) and eventually become part of the emergent ["mempool"](https://academy.binance.com/en/glossary/mempool) of unmined transactions. Once it is mined, we can then see how it will affect global network state.
 
  Assuming the user's transaction is valid (including proper gas fees, etc.), it will be included into a block by a miner. That miner will then propagate the block out into the network, requiring all the other nodes in the network to check the block and then incorporate the state changes implied by the transactions included in that block. Below, we see our user's transaction being processed by another node who has received it in a block:
 
@@ -47,7 +47,7 @@
  Additional Material
 -------------------
 
- - [Article: Building for the Blockchain](https://blog.ycombinator.com/building-for-the-blockchain/){target=_blank} Dated material but has a nice overview of the paradigm shift taking place between Web 2 and Web 3.
- - [Article: Want to Understand Blockchain? You Need to Understand State](https://consensys.net/blog/blockchain-explained/want-to-really-understand-blockchain-you-need-to-understand-state/){target=_blank} Overview discussing the integration of state from a JavaScript framework perspective to the blockchain public network perspective.
+ - [Article: Building for the Blockchain](https://blog.ycombinator.com/building-for-the-blockchain/) Dated material but has a nice overview of the paradigm shift taking place between Web 2 and Web 3.
+ - [Article: Want to Understand Blockchain? You Need to Understand State](https://consensys.net/blog/blockchain-explained/want-to-really-understand-blockchain-you-need-to-understand-state/) Overview discussing the integration of state from a JavaScript framework perspective to the blockchain public network perspective.
  
 

@@ -3,7 +3,7 @@
 
   In this chapter, we're going to dive deeper into **smart contracts**: What they are, how they work and how you can build with them safely.
 
- First, a general definition. [Smart contracts](https://en.wikipedia.org/wiki/Smart_contract){target=_blank} are programs deployed to a blockchain network that automatically execute when triggered by valid transactions. A basic analogy for a smart contract is a vending machine: The customer puts in money, punches in the code of the desired item. Assuming a valid input, the vending machine will release the desired item.
+ First, a general definition. [Smart contracts](https://en.wikipedia.org/wiki/Smart_contract) are programs deployed to a blockchain network that automatically execute when triggered by valid transactions. A basic analogy for a smart contract is a vending machine: The customer puts in money, punches in the code of the desired item. Assuming a valid input, the vending machine will release the desired item.
 
  The following properties are desired in any smart contract system: 
  - **Trustless** Meaning two or more parties can act on an agreement without relying on any intermediary to facilitate the transaction
@@ -51,9 +51,9 @@
  While there are a lot of elements to this picture, try to keep in mind we are looking at a simple state machine. State is fed into the stack, the EVM processes the stack, and the result is either saved, if it affects the network state, or discarded, if it was only necessary for the transaction execution.
 
 The state in the EVM stack is in three areas: 
-* **Memory** This is *[volatile](https://en.wikipedia.org/wiki/Volatile_memory){target=_blank}* memory, meaning that, unless it is explicitly written back into the network state, will only be accessible during the transaction execution.
+* **Memory** This is *[volatile](https://en.wikipedia.org/wiki/Volatile_memory)* memory, meaning that, unless it is explicitly written back into the network state, will only be accessible during the transaction execution.
 * **Storage** This is persistent memory taken from the network state. Read and writing to the network state is more expensive, gas-wise, than memory, since it affects the global state of the network.
-* **Stack** The information processed by the EVM stack while going through the bytecode. (Stack is a data structure used by all computer processors, you can learn more about it [here](https://en.wikipedia.org/wiki/Stack_(abstract_data_type){target=_blank}))
+* **Stack** The information processed by the EVM stack while going through the bytecode. (Stack is a data structure used by all computer processors, you can learn more about it [here](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)))
 
  
 
@@ -76,10 +76,10 @@ The state in the EVM stack is in three areas:
  Additional Material
 -------------------
 
- * [Wikipedia: Smart Contracts,](https://en.wikipedia.org/wiki/Smart_contract){target=_blank} [Stack (Abstract data type)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type){target=_blank})
-* [Video: Turing Complete (Computerphile)](https://www.youtube.com/watch?v=RPQD7-AOjMI){target=_blank} Video describing what it means for a language to be Turing complete, the difference between the Bitcoin execution environment and the EVM is the EVM is Turing complete.
-* [Wiki: Ethereum Virtual Machine (Ethereum.org)](https://ethereum.org/en/developers/docs/evm/){target=_blank} A deep dive describing the EVM
-* [Slides: Ethereum VM Illustrated (Takenobu T.)](https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf){target=_blank} A slide deck describing the Ethereum VM. Many of the diagrams in this section are from this slide deck
+ * [Wikipedia: Smart Contracts,](https://en.wikipedia.org/wiki/Smart_contract) [Stack (Abstract data type)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
+* [Video: Turing Complete (Computerphile)](https://www.youtube.com/watch?v=RPQD7-AOjMI) Video describing what it means for a language to be Turing complete, the difference between the Bitcoin execution environment and the EVM is the EVM is Turing complete.
+* [Wiki: Ethereum Virtual Machine (Ethereum.org)](https://ethereum.org/en/developers/docs/evm/) A deep dive describing the EVM
+* [Slides: Ethereum VM Illustrated (Takenobu T.)](https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf) A slide deck describing the Ethereum VM. Many of the diagrams in this section are from this slide deck
 
  
 

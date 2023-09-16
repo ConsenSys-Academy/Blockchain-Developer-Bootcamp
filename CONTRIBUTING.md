@@ -4,10 +4,10 @@
 
 To lower the barriers to entry, all of our course content is in Markdown located in the `docs` directory. We then use [mkdocs](https://www.mkdocs.org/) to generate the course pages (thank you [Kevin Bluer!](https://github.com/kevinbluer)).
 
-Markdown is what this file and GitHub README.md files are written in. If you need some help with Markdown, [please see this Markdown cheatsheet.](https://www.markdownguide.org/cheat-sheet/). One note, to make sure links open in a new window, be sure to add `{target=_blank}` at the end of a link. It will look like this:
+Markdown is what this file and GitHub README.md files are written in. If you need some help with Markdown, [please see this Markdown cheatsheet.](https://www.markdownguide.org/cheat-sheet/). One note, to make sure links open in a new window, be sure to add `` at the end of a link. It will look like this:
 
 ```
-[Text being linked](www.linkaddresshere.com){target=_blank}
+[Text being linked](www.linkaddresshere.com)
 ```
 
 ## Steps to GitHub PRs

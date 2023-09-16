@@ -24,8 +24,8 @@
  Additional Material
 -------------------
 
- * [Interactive Code: Building a Blockchain (Josh Crites, ConsenSys Academy)](https://observablehq.com/@consensys-academy/building-a-blockchain){target=_blank} We created an interactive notebook where you can deepen your understanding and experiment to see how their properties are essential for building blockchains
-* [Interactive Code: Anders Blockchain](https://andersbrownworth.com/blockchain/){target=_blank} A great, web-based interactive tutorial going over fundamentals of Proof of Work consensus including [block production through hashing](https://andersbrownworth.com/blockchain/block){target=_blank} and [distributed blockchains](https://andersbrownworth.com/blockchain/distributed){target=_blank}
-* [Code Tutorial: Build Your Own Blockchain](https://karpathy.github.io/2021/06/21/blockchain/){target=_blank} Andrej Karpathy, who's done some great machine learning tutorials, built this tutorial walking through building the Bitcoin network using Python.
+ * [Interactive Code: Building a Blockchain (Josh Crites, ConsenSys Academy)](https://observablehq.com/@consensys-academy/building-a-blockchain) We created an interactive notebook where you can deepen your understanding and experiment to see how their properties are essential for building blockchains
+* [Interactive Code: Anders Blockchain](https://andersbrownworth.com/blockchain/) A great, web-based interactive tutorial going over fundamentals of Proof of Work consensus including [block production through hashing](https://andersbrownworth.com/blockchain/block) and [distributed blockchains](https://andersbrownworth.com/blockchain/distributed)
+* [Code Tutorial: Build Your Own Blockchain](https://karpathy.github.io/2021/06/21/blockchain/) Andrej Karpathy, who's done some great machine learning tutorials, built this tutorial walking through building the Bitcoin network using Python.
 
  

@@ -6,7 +6,7 @@ Public key cryptography and digital signatures are a foundational technology tha
 Generate Private Key
 --------------------
 
-First, we are going to generate a private key, derive public keys from the private key and determine the associated accounts. To get started [clone the project](https://github.com/ConsenSys-Academy/ethereum-address-generator-js){target=_blank} and run:
+First, we are going to generate a private key, derive public keys from the private key and determine the associated accounts. To get started [clone the project](https://github.com/ConsenSys-Academy/ethereum-address-generator-js) and run:
 
 ```
 $ npm install
@@ -16,7 +16,7 @@ $ npm run reload # this will serve the app @ localhost:8081 and refresh the page
 
 (If you run into any problems while implementing this demo application, try opening the developer tools in the browser (Ctrl + Shift + I or F12) and checking the "Console" tab.)
 
-In the main.js file include the [bip39 package](https://www.npmjs.com/package/bip39){target=_blank}. We will use this to generate random input to generate a private key.
+In the main.js file include the [bip39 package](https://www.npmjs.com/package/bip39). We will use this to generate random input to generate a private key.
 
 `const BIP39 = require("bip39")` and directly below that include: 
 ```
@@ -44,14 +44,14 @@ Generate a Public / Private Keypair
 
 Using this mnemonic as a source of randomness, you can now create signing keypair.
 
-To generate a private key from the hex seed, we will to use the [ethereumjs-wallet library](https://github.com/ethereumjs/ethereumjs-wallet){target=_blank}
+To generate a private key from the hex seed, we will to use the [ethereumjs-wallet library](https://github.com/ethereumjs/ethereumjs-wallet)
 
  
 ```
 const hdkey = require("ethereumjs-wallet/hdkey")  
 ```
 
-***Explore a much more robust address derivation application at [iancoleman.io](https://iancoleman.io/bip39/){target=_blank}*** 
+***Explore a much more robust address derivation application at [iancoleman.io](https://iancoleman.io/bip39/)*** 
  
 ```
 function generatePrivKey(mnemonic){  
@@ -70,7 +70,7 @@ const Wallet = require('ethereumjs-wallet')
     return wallet.getPublicKey()    
   }
 ```
-Generating the private key and public key is the same for both Bitcoin and Ethereum as both use [secp256k1 elliptic curve cryptography](https://en.bitcoin.it/wiki/Secp256k1){target=_blank}. Deriving an account address from the public key differs slightly.
+Generating the private key and public key is the same for both Bitcoin and Ethereum as both use [secp256k1 elliptic curve cryptography](https://en.bitcoin.it/wiki/Secp256k1). Deriving an account address from the public key differs slightly.
 
  Derive the Ethereum Address From the Keypair
 --------------------------------------------
@@ -90,7 +90,7 @@ function deriveEthAddress(pubKey){
   return "0x" + address.substring(address.length - 40, address.length)    
 }
 ```
-You can check this mnemonic, private key and address against [myetherwallet](https://www.myetherwallet.com/#view-wallet-info){target=_blank}. Select restore from mnemonic or private key and verify that the derived address matches the one in this app.
+You can check this mnemonic, private key and address against [myetherwallet](https://www.myetherwallet.com/#view-wallet-info). Select restore from mnemonic or private key and verify that the derived address matches the one in this app.
 
 Creating a Digital Signature With Your Key
 ------------------------------------------
@@ -99,7 +99,7 @@ Using this private key we can sign transactions from this address and broadcast 
 
 Nodes that are verifying transactions in the network will use the signature to determine the address of the signatory, cryptographically verifying that every transaction from this account is coming from someone who has access to the corresponding private key.
 
-You can sign transactions in the browser with the [ethereumjs-tx library](https://github.com/ethereumjs/ethereumjs-tx){target=_blank}.
+You can sign transactions in the browser with the [ethereumjs-tx library](https://github.com/ethereumjs/ethereumjs-tx).
 
 ```
 const EthereumTx = require('ethereumjs-tx')    
@@ -139,7 +139,7 @@ And a signed transaction looks something like this:
   s: '0x29' 
 }
 ```
-Notice the main difference is the inclusion of the variables `v`, `r` and `s`. These variables are used to recover the address corresponding to the key that signed the transaction. This signed transaction is broadcast to the network to be included in a block. You can read more about these variables in [this excellent article here.](https://medium.com/mycrypto/the-magic-of-digital-signatures-on-ethereum-98fe184dc9c7){target=_blank}
+Notice the main difference is the inclusion of the variables `v`, `r` and `s`. These variables are used to recover the address corresponding to the key that signed the transaction. This signed transaction is broadcast to the network to be included in a block. You can read more about these variables in [this excellent article here.](https://medium.com/mycrypto/the-magic-of-digital-signatures-on-ethereum-98fe184dc9c7)
 
 You can recover the sender address from the signed transaction with the following method:
 
@@ -155,9 +155,9 @@ You'll very rarely have to do this kind of crypto-primitive handling. For one, i
  Additional links:
 -----------------
 
-* [Understanding the concept of private keys, public keys and addresses in Ethereum](https://etherworld.co/2017/11/17/understanding-the-concept-of-private-key-public-key-and-address-in-ethereum-blockchain/){target=_blank}
-* [Bitcoin wiki on Secp256k1](https://en.bitcoin.it/wiki/Secp256k1){target=_blank}
-* [Ethereum yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf){target=_blank}
-* [Article: The Magic of Digital Signatures (MyCrypto)](https://medium.com/mycrypto/the-magic-of-digital-signatures-on-ethereum-98fe184dc9c7){target=_blank}
+* [Understanding the concept of private keys, public keys and addresses in Ethereum](https://etherworld.co/2017/11/17/understanding-the-concept-of-private-key-public-key-and-address-in-ethereum-blockchain/)
+* [Bitcoin wiki on Secp256k1](https://en.bitcoin.it/wiki/Secp256k1)
+* [Ethereum yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf)
+* [Article: The Magic of Digital Signatures (MyCrypto)](https://medium.com/mycrypto/the-magic-of-digital-signatures-on-ethereum-98fe184dc9c7)
 
  

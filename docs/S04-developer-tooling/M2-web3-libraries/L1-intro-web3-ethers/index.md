@@ -14,13 +14,13 @@ Other libraries handle these in different ways and have different APIs that are 
 
 ## Web3.js
 
-Web3.js is one of the most popular JavaScript libraries in Ethereum dApp development. It is currently maintained by Chainsafe, and you can visit [the Web3.js repository here.](https://github.com/ChainSafe/web3.js){target=_blank}
+Web3.js is one of the most popular JavaScript libraries in Ethereum dApp development. It is currently maintained by Chainsafe, and you can visit [the Web3.js repository here.](https://github.com/ChainSafe/web3.js)
 
-Formerly, Web3.js was the library that Metamask would injected into your browser. If you had Metamask installed in your browser, you could see the web3 object by opening your browser developer tools. Since 2020, MetaMask has deprecated the injection of Web3.js into the browser and now simply uses window.ethereum. [Read more here.](https://medium.com/metamask/breaking-changes-to-the-metamask-provider-are-here-7b11c9388be9){target=_blank}
+Formerly, Web3.js was the library that Metamask would injected into your browser. If you had Metamask installed in your browser, you could see the web3 object by opening your browser developer tools. Since 2020, MetaMask has deprecated the injection of Web3.js into the browser and now simply uses window.ethereum. [Read more here.](https://medium.com/metamask/breaking-changes-to-the-metamask-provider-are-here-7b11c9388be9)
 
 Since MetaMask does not inject it anymore, let's add it ourselves using the following steps:
 
-1. Open your browser's developer console. [See this article for how to do it](https://support.happyfox.com/kb/article/882-accessing-the-browser-console-and-network-logs/){target=_blank} for major browsers in each major operating system.
+1. Open your browser's developer console. [See this article for how to do it](https://support.happyfox.com/kb/article/882-accessing-the-browser-console-and-network-logs/) for major browsers in each major operating system.
 2. In the Console, add the following series of Javascript code. Press enter after each line of code:
 
 ```

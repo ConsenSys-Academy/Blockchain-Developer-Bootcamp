@@ -3,7 +3,7 @@
 
   As with most things, the best way to learn is by doing, so without further ado let’s dive into a hands on example of using Truffle.
 
- In this example we’ll be leveraging some of the core Truffle commands to build the decentralized equivalent of a [“Hello World!” program,](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program){target=_blank} “SimpleStorage”. As the name suggests, this example will provide a means of both storing some on-chain data (essentially state stored indefinitely on the blockchain) and subsequently retrieving this state.
+ In this example we’ll be leveraging some of the core Truffle commands to build the decentralized equivalent of a [“Hello World!” program,](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) “SimpleStorage”. As the name suggests, this example will provide a means of both storing some on-chain data (essentially state stored indefinitely on the blockchain) and subsequently retrieving this state.
 
  *Note: If you’re going to be following along, this example assumes you followed the steps last lesson to successfully install Truffle*
 
@@ -88,7 +88,7 @@ contract SimpleStorage {
 
  *Note that you’ll also likely see some references to **Migrations.** This is a mechanism used by Truffle to store the details related to the last migration (deployment) on-chain.* 
 
- Next up we’re going to explore deploying our contract to a simulation of a blockchain network using [Ganache.](https://www.trufflesuite.com/ganache){target=_blank}
+ Next up we’re going to explore deploying our contract to a simulation of a blockchain network using [Ganache.](https://www.trufflesuite.com/ganache)
 
  Migrating (or Deploying) Your Contract
 --------------------------------------
@@ -171,7 +171,7 @@ $ truffle(develop)> migrate
 
  One of the key output values from the above is the contract address (`0x524B2860a2489E385C5e12537f58d5a09A9d33ab` in the above example). As the name might suggest, this is the address of the deployed instance of contract and the means with how you’d reference it when sending future transactions.
 
- Migrations is definitely more of a deeper topic that we’ll be covering more later. In the interim, more details on migrations can be found in Truffle’s documentation [here.](https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations){target=_blank}
+ Migrations is definitely more of a deeper topic that we’ll be covering more later. In the interim, more details on migrations can be found in Truffle’s documentation [here.](https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations)
 
  Interacting with SimpleStorage
 ------------------------------
@@ -213,7 +213,7 @@ $ truffle(develop)> (await storage.get()).toNumber()
  Ganache GUI
 -----------
 
- Ganache UI can be really helpful for folks new to smart contract development. Due to its visual nature, it’s a great way to familiarize yourself with all the core constructs of an EVM-based blockchain and help move past that stage of “not knowing what you don’t know”. It’s fully cross-platform and available to download [here.](https://www.trufflesuite.com/ganache){target=_blank}
+ Ganache UI can be really helpful for folks new to smart contract development. Due to its visual nature, it’s a great way to familiarize yourself with all the core constructs of an EVM-based blockchain and help move past that stage of “not knowing what you don’t know”. It’s fully cross-platform and available to download [here.](https://www.trufflesuite.com/ganache)
 
  ![image of ganache GUI](../../../img/S03/ganache-1.png)
 
@@ -261,7 +261,7 @@ $ truffle migrate --network development
 
  ![Contract information on Ganache GUI](../../../img/S03/ganache-4.png)
 
- Last, let’s update our contract to include an event that is emitted every time a new value is set (we'll learn about [events](https://medium.com/linum-labs/everything-you-ever-wanted-to-know-about-events-and-logs-on-ethereum-fec84ea7d0a5){target=_blank} in more detail later in this section). Copy and paste the following over your existing SimpleStorage.sol. 
+ Last, let’s update our contract to include an event that is emitted every time a new value is set (we'll learn about [events](https://medium.com/linum-labs/everything-you-ever-wanted-to-know-about-events-and-logs-on-ethereum-fec84ea7d0a5) in more detail later in this section). Copy and paste the following over your existing SimpleStorage.sol. 
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.21 <0.7.0;
@@ -337,13 +337,13 @@ Now run `$ truffle migrate --network development` to start the migration process
 
  After we go through Solidity fundamentals and Security, we're going to dive deeper into elements of development on Truffle so you can feel even more confident and capable as a developer.
 
- Before all that, though, we want to introduce one more tool to help you play around with Solidity and other smart contract development languages: [Remix.](https://remix.ethereum.org){target=_blank}
+ Before all that, though, we want to introduce one more tool to help you play around with Solidity and other smart contract development languages: [Remix.](https://remix.ethereum.org)
 
  Additional Material
 -------------------
 
- * [Docs: Truffle Suite](https://www.trufflesuite.com/docs/truffle/overview){target=_blank}
-* [Tutorial: Petshop](https://www.trufflesuite.com/tutorial){target=_blank} A great tutorial which will walk through developing a smart contract and basic frontend interface.
-* [Tutorial: Metacoin](https://www.trufflesuite.com/docs/truffle/quickstart){target=_blank} Another good starting tutorial walking through building your own ERC-20 token
+ * [Docs: Truffle Suite](https://www.trufflesuite.com/docs/truffle/overview)
+* [Tutorial: Petshop](https://www.trufflesuite.com/tutorial) A great tutorial which will walk through developing a smart contract and basic frontend interface.
+* [Tutorial: Metacoin](https://www.trufflesuite.com/docs/truffle/quickstart) Another good starting tutorial walking through building your own ERC-20 token
 
  

@@ -3,9 +3,9 @@ More Forms of Consensus
 
 We've spoken mainly about Proof of Work, since it's the current consensus mechanism for Bitcoin and Ethereum, as well as other blockchains. However, there are other consensus protocols being used by blockchain networks, such as:
 
-- **[Proof of Stake](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/){target=_blank}** A consensus protocol based on financial holdings of validator nodes in the network (similar to miner nodes in Proof of Work). Proof of Stake requires much less energy to run than Proof of Work and, for this reason, Ethereum is currently working towards this consensus mechanism.
-- **[Delegated Proof of Stake](https://www.gemini.com/cryptopedia/proof-of-stake-delegated-pos-dpos#section-delegated-proof-of-stake){target=_blank}** This is a variant of the Proof of Stake protocol in which stakeholders can elect validators to represent them in the system.
-- **Proof of Authority** This is a more traditional consensus mechanism like Raft's leader-led consensus in which only certain nodes are allowed to produce blocks at their discretion. It's meant for smaller, perhaps private networks where the participants all know each other or for lower-stake networks such as [testnets](https://en.wikipedia.org/wiki/Testnet){target=_blank} or networks securing trivial amounts of value.
+- **[Proof of Stake](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/)** A consensus protocol based on financial holdings of validator nodes in the network (similar to miner nodes in Proof of Work). Proof of Stake requires much less energy to run than Proof of Work and, for this reason, Ethereum is currently working towards this consensus mechanism.
+- **[Delegated Proof of Stake](https://www.gemini.com/cryptopedia/proof-of-stake-delegated-pos-dpos#section-delegated-proof-of-stake)** This is a variant of the Proof of Stake protocol in which stakeholders can elect validators to represent them in the system.
+- **Proof of Authority** This is a more traditional consensus mechanism like Raft's leader-led consensus in which only certain nodes are allowed to produce blocks at their discretion. It's meant for smaller, perhaps private networks where the participants all know each other or for lower-stake networks such as [testnets](https://en.wikipedia.org/wiki/Testnet) or networks securing trivial amounts of value.
 
  
 
@@ -28,12 +28,12 @@ Validators accrue rewards for making blocks and attestations when it is their tu
 
 Should a validator attempt to attack or compromise the blockchain by trying to propose a new set of data history, however, a different penalty mechanism kicks in: a substantial portion of their staked amount will be slashed (possibly up to the whole amount of stake) and they will be ejected from the network. The result is a tremendous financial risk of a failed attack by a validator. To draw an analogy to Proof of Work, it would be as if a miner who failed an attack on a PoW chain was forced to burn down her entire mining rig instead of just eating the cost of the electricity she spent on a failed attack. Furthermore, this architecture places the security of the network directly in the hands of those maintaining the network and holding its native crypto-asset in the protocol itself.
 
-Proof of Stake is used most notably in Ethereum 2.0 (more on that later) and other blockchain networks such as [Cardano](https://www.gemini.com/cryptopedia/cardano-ada-staking-blockchain){target=_blank}, [EOS](https://www.gemini.com/cryptopedia/eos-crypto-enterprise-blockchain-eosio){target=_blank} and [PolkaDot](https://www.gemini.com/cryptopedia/polkadot-crypto-dot-coin){target=_blank}. It's also used in Layer 2 solutions such as [Polygon Proof of Stake](https://consensys.net/blog/blockchain-explained/analyzing-polygons-proof-of-stake-network/){target=_blank} (we'll discuss Layer 2 solutions later as well)
+Proof of Stake is used most notably in Ethereum 2.0 (more on that later) and other blockchain networks such as [Cardano](https://www.gemini.com/cryptopedia/cardano-ada-staking-blockchain), [EOS](https://www.gemini.com/cryptopedia/eos-crypto-enterprise-blockchain-eosio) and [PolkaDot](https://www.gemini.com/cryptopedia/polkadot-crypto-dot-coin). It's also used in Layer 2 solutions such as [Polygon Proof of Stake](https://consensys.net/blog/blockchain-explained/analyzing-polygons-proof-of-stake-network/) (we'll discuss Layer 2 solutions later as well)
 
 It's important to note that a blockchain network does not have to use Proof of Work in their consensus mechanism. Bitcoin and Ethereum currently use it, but that does not mean it's the only game on the block!
 
 Additional Material
 -------------------
 
-* [Wiki: Consensus Mechanisms (Ethereum.org)](https://ethereum.org/en/developers/docs/consensus-mechanisms/){target=_blank}
-* [Article: What is Proof of Stake (ConsenSys)](https://consensys.net/blog/blockchain-explained/what-is-proof-of-stake/){target=_blank}
+* [Wiki: Consensus Mechanisms (Ethereum.org)](https://ethereum.org/en/developers/docs/consensus-mechanisms/)
+* [Article: What is Proof of Stake (ConsenSys)](https://consensys.net/blog/blockchain-explained/what-is-proof-of-stake/)

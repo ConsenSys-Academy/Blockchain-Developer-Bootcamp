@@ -45,14 +45,14 @@ The above code declares the variable `owner` and assigns that role to whoever is
 
 We then place this modifier in front of whichever functions we want to restrict access to. In this case, we're adding it to the `withdraw()` function (which makes sense, as we don't want anyone to be able to drain our contract of value!). This makes it so that the only user who can access this specific function is `owner`, all other addresses will fail.
 
-A common contract used for this is OpenZeppelin's [Ownable.sol](https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable){target=_blank}, which also lets you `transferOwnership` to another user or `renounceOwnership` if your contract only requires central authority for a certain period of time.
+A common contract used for this is OpenZeppelin's [Ownable.sol](https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable), which also lets you `transferOwnership` to another user or `renounceOwnership` if your contract only requires central authority for a certain period of time.
 
 Please note that the Ownable pattern is a bit fragile: it can become a single point of failure and is not very sophisticated in terms of Access Control.
 
 Pausable
 --------
 
-Another form of access control has to do with turning the smart contract itself into a state machine. As we mentioned earlier in the distributed consensus section, [a state machine](https://en.wikipedia.org/wiki/Finite-state_machine){target=_blank} can be in one of a finite number of states at any time.
+Another form of access control has to do with turning the smart contract itself into a state machine. As we mentioned earlier in the distributed consensus section, [a state machine](https://en.wikipedia.org/wiki/Finite-state_machine) can be in one of a finite number of states at any time.
 
 To make the smart contract a state machine, we'll use the `enum` variable type to create a series of possible states. To have access control, we'll then assign only certain functions to run when the contract is in a certain state. Here's what this looks like in Solidity, where the possible states are `Deposits` and `Withdraws` and the state changes after a time of 30 days from the contract's `creationTime`: 
 
@@ -80,7 +80,7 @@ function withdraw() public {
 
 The deposit() function can only be called when the `stage` enum is in `Deposits`. After 30 days has passed, the contract transitions into `Withdraws` whenever someone calls `withdraw()`. 
 
-For an example of this example, ["The DAO"](https://github.com/blockchainsllc/DAO){target=_blank} contract required 27 days between a successful request to split the DAO and the ability to do so. This ensured the funds were kept within the contract, increasing the likelihood of recovery.
+For an example of this example, ["The DAO"](https://github.com/blockchainsllc/DAO) contract required 27 days between a successful request to split the DAO and the ability to do so. This ensured the funds were kept within the contract, increasing the likelihood of recovery.
 
 We have another example of this form of access control with the Circuit Breaker design pattern, also called Emergency Stop or Pausable. Circuit Breakers are design patterns that allow contract functionality to be stopped. This would be desirable in situations where there is a live contract where a bug has been detected. Freezing the contract would be beneficial for reducing harm before a fix can be implemented. Here's what it looks like in Solidity: 
  
@@ -127,13 +127,13 @@ Role-Based Access Control
 
 Role-based access control is a more layered approach to access control to meet the more varied demands of a smart contract or application. It follows a similar trend in software development access: Certain individuals are administrators, others are contributors, others can just view the code.
 
-OpenZeppelin advocates using their role-based access control library, `[Roles.sol,](https://docs.openzeppelin.com/contracts/2.x/api/access#Roles){target=_blank}` instead of `Ownable.sol`. They've also implemented roles-based access control in contracts, such as ERC20Mintable.sol, which has a `MinterRole` allowed to create new tokens. You can read more about their approach to role-based access control [in this post here.](https://docs.openzeppelin.com/contracts/2.x/access-control){target=_blank}
+OpenZeppelin advocates using their role-based access control library, `[Roles.sol,](https://docs.openzeppelin.com/contracts/2.x/api/access#Roles)` instead of `Ownable.sol`. They've also implemented roles-based access control in contracts, such as ERC20Mintable.sol, which has a `MinterRole` allowed to create new tokens. You can read more about their approach to role-based access control [in this post here.](https://docs.openzeppelin.com/contracts/2.x/access-control)
 
 Role-based access control can be critical to developing code-based governance, such as in a DAO. Keep this design pattern in mind when we discuss DAOs later!
 
 Additional Resources
 --------------------
 
-* [Wiki: Access Control](https://docs.openzeppelin.com/contracts/2.x/access-control){target=_blank} A comprehensive article from OpenZeppelin about Access Control design patterns and how contracts in their repository enacts different patterns.
-* [Code: OpenZeppelin's Ownable.sol](https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable){target=_blank}
-* [Code: OpenZeppelin's Pausable.sol](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/b0cf6fbb7a70f31527f36579ad644e1cf12fdf4e/contracts/security/Pausable.sol){target=_blank}
+* [Wiki: Access Control](https://docs.openzeppelin.com/contracts/2.x/access-control) A comprehensive article from OpenZeppelin about Access Control design patterns and how contracts in their repository enacts different patterns.
+* [Code: OpenZeppelin's Ownable.sol](https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable)
+* [Code: OpenZeppelin's Pausable.sol](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/b0cf6fbb7a70f31527f36579ad644e1cf12fdf4e/contracts/security/Pausable.sol)

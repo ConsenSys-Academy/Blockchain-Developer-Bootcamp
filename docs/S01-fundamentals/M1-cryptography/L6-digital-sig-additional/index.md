@@ -30,6 +30,6 @@ The real power of digital signatures comes when the message within that digital 
  Additional Resources
 --------------------
 
- * [Article: The Magic of Digital Signatures (MyCrypto)](https://medium.com/mycrypto/the-magic-of-digital-signatures-on-ethereum-98fe184dc9c7){target=_blank}
+ * [Article: The Magic of Digital Signatures (MyCrypto)](https://medium.com/mycrypto/the-magic-of-digital-signatures-on-ethereum-98fe184dc9c7)
 
  

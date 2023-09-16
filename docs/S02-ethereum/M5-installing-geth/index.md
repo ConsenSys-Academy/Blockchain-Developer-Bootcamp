@@ -1,6 +1,6 @@
 ## Setting up Geth
 
-[Geth (Go-Ethereum)](https://geth.ethereum.org/){target=_blank} is a command line interface for running a full ethereum node implemented in Go. This is your local portal to the Ethereum network. When you are running a local Ethereum node, you do not need to rely on any 3rd party service to connect to the Ethereumblockchain. This is what makes the network “trustless”.
+[Geth (Go-Ethereum)](https://geth.ethereum.org/) is a command line interface for running a full ethereum node implemented in Go. This is your local portal to the Ethereum network. When you are running a local Ethereum node, you do not need to rely on any 3rd party service to connect to the Ethereumblockchain. This is what makes the network “trustless”.
 
 ### Capabilities
 
@@ -16,11 +16,11 @@ By installing and running geth, you can take part in the Ethereum live network a
 
 Geth has several interfaces through which you can communicate with your Ethereum node.
 
-*   JavaScript Console: you can start geth with an interactive console, that provides a javascript runtime environment exposing a javascript API to interact with your node. The [JavaScript Console API](https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console){target=_blank} includes the web3 javascript Ðapp API as well as an 'admin' API.
-*   JSON-RPC server: you can start geth with a json-rpc server that exposes the [JSON-RPC API](https://github.com/ethereum/wiki/wiki/JSON-RPC){target=_blank}
-*   [Command line options](https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options){target=_blank} documents command line parameters as well as subcommands.
+*   JavaScript Console: you can start geth with an interactive console, that provides a javascript runtime environment exposing a javascript API to interact with your node. The [JavaScript Console API](https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console) includes the web3 javascript Ðapp API as well as an 'admin' API.
+*   JSON-RPC server: you can start geth with a json-rpc server that exposes the [JSON-RPC API](https://github.com/ethereum/wiki/wiki/JSON-RPC)
+*   [Command line options](https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options) documents command line parameters as well as subcommands.
 
-[See this page](https://geth.ethereum.org/docs/install-and-build/installing-geth){target=_blank} for instructions on how to install geth for your platform.
+[See this page](https://geth.ethereum.org/docs/install-and-build/installing-geth) for instructions on how to install geth for your platform.
 
 Install geth and start interacting with our node.
 
@@ -44,7 +44,7 @@ Geth also opens an ipc endpoint through which you can connect to your node. If y
 geth attach [path to the ipc endpoint]
 ```  
 
-in another terminal window, the [geth javascript console](https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console){target=_blank} will appear. In my case, I typed
+in another terminal window, the [geth javascript console](https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console) will appear. In my case, I typed
 
 ```
 geth attach ~/.ethereum/geth.ipc
@@ -183,7 +183,7 @@ You can check the balance of an account with the `eth.getBalance()` method and e
 
 Since the private blockchain is maintaining consensus using proof of work, we need to mine new blocks to process transactions.
 
-To start mining, just run `miner.start()`. Geth needs to build a DAG before the miner starts, but once it does that it will start mining blocks on the private chain. After a few blocks are mined, stop it with `miner.stop()`. [See this link](https://ethereum.stackexchange.com/questions/1993/what-actually-is-a-dag){target=_blank} for more information about what is going on when geth is creating a DAG.
+To start mining, just run `miner.start()`. Geth needs to build a DAG before the miner starts, but once it does that it will start mining blocks on the private chain. After a few blocks are mined, stop it with `miner.stop()`. [See this link](https://ethereum.stackexchange.com/questions/1993/what-actually-is-a-dag) for more information about what is going on when geth is creating a DAG.
 
 Check the ether balance of you first account now. It should contain some ether. The first `geth` account will default to the coinbase, or etherbase account, which is the account to which mining rewards are sent. You can check this with `eth.coinbase`.
 

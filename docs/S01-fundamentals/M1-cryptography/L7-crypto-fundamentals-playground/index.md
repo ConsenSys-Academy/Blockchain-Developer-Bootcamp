@@ -8,8 +8,8 @@
    Additional Resources (Advanced)
 -------------------------------
 
- - [Bitcoin White Paper Exercises](https://github.com/cooganb/bitcoin-whitepaper-exercises){target=_blank} These are a series of exercises, built by [Kyle Simpson,](https://github.com/getify){target=_blank} for understanding some of the concepts outlined in the Bitcoin white paper. These are not easy, but if you really would like to understand these fundamentals as they apply to blockchains, this is a great place to start.
- - [CryptoHack](https://cryptohack.org/){target=_blank} "A fun free platform for learning modern cryptography"
- - [Hack the Box](https://app.hackthebox.eu/){target=_blank} A gamified, cybersecurity platform. Not cryptography, per se, but cyber security which is a related field.
- - [CryptoPals](https://cryptopals.com/){target=_blank} This is *very* advanced and intense, but real to-the-metal applied cryptography! I am putting this link in here and it scares me.
+ - [Bitcoin White Paper Exercises](https://github.com/cooganb/bitcoin-whitepaper-exercises) These are a series of exercises, built by [Kyle Simpson,](https://github.com/getify) for understanding some of the concepts outlined in the Bitcoin white paper. These are not easy, but if you really would like to understand these fundamentals as they apply to blockchains, this is a great place to start.
+ - [CryptoHack](https://cryptohack.org/) "A fun free platform for learning modern cryptography"
+ - [Hack the Box](https://app.hackthebox.eu/) A gamified, cybersecurity platform. Not cryptography, per se, but cyber security which is a related field.
+ - [CryptoPals](https://cryptopals.com/) This is *very* advanced and intense, but real to-the-metal applied cryptography! I am putting this link in here and it scares me.
  

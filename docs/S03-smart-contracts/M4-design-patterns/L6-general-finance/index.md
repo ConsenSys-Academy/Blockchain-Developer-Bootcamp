@@ -1,27 +1,27 @@
 General Finance: Multi-Sig
 ==========================
 
-This section is a tutorial setting up a Multi-Sig contract, which functions as a store of value (it's called a "wallet" in the traditional sense of something that holds money, not a crypto-wallet like MetaMask). It is based on [this project](https://github.com/ConsenSys-Academy/multisig-wallet-exercise/blob/master/Multisig_wallet_info.md){target=_blank} by Nate Rush.
+This section is a tutorial setting up a Multi-Sig contract, which functions as a store of value (it's called a "wallet" in the traditional sense of something that holds money, not a crypto-wallet like MetaMask). It is based on [this project](https://github.com/ConsenSys-Academy/multisig-wallet-exercise/blob/master/Multisig_wallet_info.md) by Nate Rush.
 
-The solution is based on [this MultiSignature Wallet](https://github.com/ConsenSys/MultiSigWallet){target=_blank} found in the ConsenSys github repository.
+The solution is based on [this MultiSignature Wallet](https://github.com/ConsenSys/MultiSigWallet) found in the ConsenSys github repository.
 
-You can find the GitHub repository for this exercise [here](https://github.com/ConsenSys-Academy/multisig-wallet-exercise){target=_blank}.
+You can find the GitHub repository for this exercise [here](https://github.com/ConsenSys-Academy/multisig-wallet-exercise).
 
 What is a Multi-signature wallet?
 ---------------------------------
 
-A multi-signature wallet is an account that requires some [m-of-n quorum](https://www.sunflower-cissp.com/glossary/cissp/3455/m-of-n-control){target=_blank} of approved private keys to approve a transaction before it is executed.
+A multi-signature wallet is an account that requires some [m-of-n quorum](https://www.sunflower-cissp.com/glossary/cissp/3455/m-of-n-control) of approved private keys to approve a transaction before it is executed.
 
 In Ethereum, multi-signature wallets are implemented as a smart contract, that each of the approved external accounts sends a transaction to in order to "sign" a group transaction.
 
 Following this project spec designed by the UPenn Blockchain Club, you will now create your own multisignature wallet contract.
 
-**Note: It is not suggested that you use this multisignature wallet with any real funds, but rather use a far more deeply audited one such as the [Gnosis multisignature wallet.](https://gnosis-safe.io/){target=_blank}**
+**Note: It is not suggested that you use this multisignature wallet with any real funds, but rather use a far more deeply audited one such as the [Gnosis multisignature wallet.](https://gnosis-safe.io/)**
 
 Project Setup
 -------------
 
-Clone this GitHub repository. The [MultiSignatureWallet.sol](https://github.com/ConsenSys-Academy/multisig-wallet-exercise/blob/master/contracts/MultiSignatureWallet.sol){target=_blank} file in the contracts directory has the structure of a multisignature wallet that you will be implementing.
+Clone this GitHub repository. The [MultiSignatureWallet.sol](https://github.com/ConsenSys-Academy/multisig-wallet-exercise/blob/master/contracts/MultiSignatureWallet.sol) file in the contracts directory has the structure of a multisignature wallet that you will be implementing.
 
 Implementing the Contract
 -------------------------
@@ -303,7 +303,7 @@ So far, we have only covered the core functionality of this MultiSignature Walle
 
 I will leave it to you to continue the exercise and explore the rest of the contract. The code is well commented and you should be able to determine and explain the purpose of each function in the contract.
 
-If you would like a further challenge, continue on to the bottom of the Solidity file and investigate the [MultiSigWalletWithDailyLimit contract](https://github.com/ConsenSys/MultiSigWallet/blob/master/MultiSigWalletWithDailyLimit.sol){target=_blank}.
+If you would like a further challenge, continue on to the bottom of the Solidity file and investigate the [MultiSigWalletWithDailyLimit contract](https://github.com/ConsenSys/MultiSigWallet/blob/master/MultiSigWalletWithDailyLimit.sol).
 
 Note: If you want to execute a transaction that sends value from the MultiSig contract, you have to make sure that the contract has enough value to make the transfer. You can deposit ether directly to the MultiSig wallet contract using the included fallback function. 
 

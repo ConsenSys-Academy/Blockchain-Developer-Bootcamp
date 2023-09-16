@@ -24,14 +24,14 @@ Other variables include:
 
  ![](../../../img/S01/blockchain-config.png)
 
- The other aspect of comparing blockchains is the concept of **crosschain compatibility** or [blockchain interoperability.](https://101blockchains.com/blockchain-interoperability/){target=_blank} This is the ability of public blockchains to share network data with each other. We're living in an increasingly multi-chain world, where there are many significant blockchain networks. Rather than trying to have one chain monopolize, blockchain interoperability seeks to leverage different strengths and minimize weaknesses of the existing chains. We'll discuss this in more detail in a later section.
+ The other aspect of comparing blockchains is the concept of **crosschain compatibility** or [blockchain interoperability.](https://101blockchains.com/blockchain-interoperability/) This is the ability of public blockchains to share network data with each other. We're living in an increasingly multi-chain world, where there are many significant blockchain networks. Rather than trying to have one chain monopolize, blockchain interoperability seeks to leverage different strengths and minimize weaknesses of the existing chains. We'll discuss this in more detail in a later section.
 
  Additional Materials
 --------------------
 
- * [Article: Secp256k1 (River Financial)](https://river.com/learn/terms/s/secp256k1/){target=_blank} Description of the Elliptic Curve used by Ethereum and Bitcoin.
-* [Chart: Cryptography Behind Cryptocurrencies](https://www.susanka.eu/coins-crypto/){target=_blank} A table of which cryptography is used with major blockchain networks.
-* [Article: Blockchain Interoperability: Why is Cross Chain Technology Important? (101 Blockchains)](https://101blockchains.com/blockchain-interoperability/){target=_blank} A brief introduction to blockchain interoperability.
-* [Article: Understanding Cross Chain Communication (Ivan on Tech)](https://academy.ivanontech.com/blog/understanding-cross-chain-communication-examining-blockchain-interoperability-and-why-it-matters){target=_blank} Another overview of cross chain communication, including bridges.
+ * [Article: Secp256k1 (River Financial)](https://river.com/learn/terms/s/secp256k1/) Description of the Elliptic Curve used by Ethereum and Bitcoin.
+* [Chart: Cryptography Behind Cryptocurrencies](https://www.susanka.eu/coins-crypto/) A table of which cryptography is used with major blockchain networks.
+* [Article: Blockchain Interoperability: Why is Cross Chain Technology Important? (101 Blockchains)](https://101blockchains.com/blockchain-interoperability/) A brief introduction to blockchain interoperability.
+* [Article: Understanding Cross Chain Communication (Ivan on Tech)](https://academy.ivanontech.com/blog/understanding-cross-chain-communication-examining-blockchain-interoperability-and-why-it-matters) Another overview of cross chain communication, including bridges.
 
  

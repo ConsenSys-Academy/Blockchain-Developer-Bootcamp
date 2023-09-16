@@ -1,7 +1,7 @@
   EIP-1559
 ========
 
-  We've talked about mining in the Ethereum as the way the network confirms and propagates state changes. However, in August 2021, the Ethereum core developer community, after many years of research, development and testing, released a major change to the mining process in Ethereum known as [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559){target=_blank} (remember Ethereum Improvement Proposals or EIPs are the way the Ethereum community incorporates changes to the protocol).
+  We've talked about mining in the Ethereum as the way the network confirms and propagates state changes. However, in August 2021, the Ethereum core developer community, after many years of research, development and testing, released a major change to the mining process in Ethereum known as [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) (remember Ethereum Improvement Proposals or EIPs are the way the Ethereum community incorporates changes to the protocol).
 
  Before EIP-1559, Ethereum transaction fees were market-driven. Meaning, the gas price, or fee, dictated how quickly a miner would include a transaction in a block. This has led to some dramatic price swings in fees and pushed network developers to find a more stable solution. Enter EIP-1559.
 
@@ -31,7 +31,7 @@ An explanation of the three variables:
 * `priorityFee` (also called a tip) A fee to entice a block producer to include the transaction.
 * **`maxFee`** The highest network fee the user is willing to pay.
 
-Here are some changes to the [Ethereum JSON-RPC format](https://eth.wiki/json-rpc/API){target=_blank} you will see on the protocol level that may affect the way you develop as well, broken down by part of the Ethereum protocol affected:
+Here are some changes to the [Ethereum JSON-RPC format](https://eth.wiki/json-rpc/API) you will see on the protocol level that may affect the way you develop as well, broken down by part of the Ethereum protocol affected:
 
 ### Blocks
 
@@ -48,24 +48,24 @@ Here are some changes to the [Ethereum JSON-RPC format](https://eth.wiki/json-rp
 
 ### Transaction Simulation
 
- * `eth_call` May require the developer to specify the gas price or new 1559 gas pricing to reflect true execution of a transaction. The Go-Ethereum (geth) developer team has more about the changes to `eth_call` [here.](https://github.com/ethereum/go-ethereum/pull/23027){target=_blank}
+ * `eth_call` May require the developer to specify the gas price or new 1559 gas pricing to reflect true execution of a transaction. The Go-Ethereum (geth) developer team has more about the changes to `eth_call` [here.](https://github.com/ethereum/go-ethereum/pull/23027)
 * `eth_estimateGas` May fail to estimate the gas if the gas price or new 1559 gas pricing is not filled in (i.e., greater than 0).
 * London Fork, which implements EIP-1559, also implements the related EIP-3198. This adds a new opcode, `BASEFEE`, that returns the base fee of the current block it is executing in. It is recommended for developers to explicitly set the gas pricing for both JSON RPC calls to avoid a failed JSON RPC call response.
 
  Additional Material
 -------------------
 
- * [Video: EIP-1559 Explained (Finematics)](https://youtu.be/MGemhK9t44Q){target=_blank}
-* [Article: What is EIP-1559? (ConsenSys)](https://consensys.net/blog/quorum/what-is-eip-1559-how-will-it-change-ethereum/){target=_blank} A great introductory explainer article we used for much of the course material.
-* [Article: What is EIP-1559? (MetaMask)](https://metamask.io/1559){target=_blank} Another introductory article, this time from the perspective of a MetaMask user
-* [Video: How To Set Transaction Priority in MetaMask](https://www.youtube.com/watch?v=gsfJywNxpi4){target=_blank} Great video walking through the ways in which MetaMask is adjusting to EIP-1559.
-* [Interactive: Ultrasound Money](https://ultrasound.money/){target=_blank} The website provides realtime updates on how much ether has been burned as part of EIP-1559
+ * [Video: EIP-1559 Explained (Finematics)](https://youtu.be/MGemhK9t44Q)
+* [Article: What is EIP-1559? (ConsenSys)](https://consensys.net/blog/quorum/what-is-eip-1559-how-will-it-change-ethereum/) A great introductory explainer article we used for much of the course material.
+* [Article: What is EIP-1559? (MetaMask)](https://metamask.io/1559) Another introductory article, this time from the perspective of a MetaMask user
+* [Video: How To Set Transaction Priority in MetaMask](https://www.youtube.com/watch?v=gsfJywNxpi4) Great video walking through the ways in which MetaMask is adjusting to EIP-1559.
+* [Interactive: Ultrasound Money](https://ultrasound.money/) The website provides realtime updates on how much ether has been burned as part of EIP-1559
 
  ### Technical
 
- * [Article: London Fork (Infura)](https://blog.infura.io/london-fork/){target=_blank} Great technical overview of the protocol changes coming to clients, specifically to the JSON-RPC API calls all Ethereum clients must use.
-* [Article: EIP-1559 JSON-RPC Changes (Tim Beiko)](https://hackmd.io/@timbeiko/1559-json-rpc){target=_blank} A more dry look at the JSON-RPC changes
-* [Wiki: 1559 Resources (Tim Beiko)](https://hackmd.io/@timbeiko/1559-resources){target=_blank} A comprehensive list of resources to explore any aspect of EIP-1559, from the UX, Security, Economics, Mining or Simulations
-* [GitHub: eth\_call invocations post 1559](https://github.com/ethereum/go-ethereum/pull/23027){target=_blank} Explainer from the Geth team about the changes to the `eth_call` JSON-RPC call
+ * [Article: London Fork (Infura)](https://blog.infura.io/london-fork/) Great technical overview of the protocol changes coming to clients, specifically to the JSON-RPC API calls all Ethereum clients must use.
+* [Article: EIP-1559 JSON-RPC Changes (Tim Beiko)](https://hackmd.io/@timbeiko/1559-json-rpc) A more dry look at the JSON-RPC changes
+* [Wiki: 1559 Resources (Tim Beiko)](https://hackmd.io/@timbeiko/1559-resources) A comprehensive list of resources to explore any aspect of EIP-1559, from the UX, Security, Economics, Mining or Simulations
+* [GitHub: eth\_call invocations post 1559](https://github.com/ethereum/go-ethereum/pull/23027) Explainer from the Geth team about the changes to the `eth_call` JSON-RPC call
 
    
