@@ -1,9 +1,9 @@
 TxOrigin Attack (SWC-115)
 -------------------------
 
-In this lesson we are going to cover a `tx.origin` attack. The global variable `tx.origin` in Solidity always references the address of the original sender of the transaction, of the full call chain. [See the reference in the docs here.](https://solidity.readthedocs.io/en/latest/units-and-global-variables.html?highlight=tx.origin#block-and-transaction-properties){target=_blank} This is different than `msg.sender` in that `msg.sender` references the address of the sender of the current call.
+In this lesson we are going to cover a `tx.origin` attack. The global variable `tx.origin` in Solidity always references the address of the original sender of the transaction, of the full call chain. [See the reference in the docs here.](https://solidity.readthedocs.io/en/latest/units-and-global-variables.html?highlight=tx.origin#block-and-transaction-properties) This is different than `msg.sender` in that `msg.sender` references the address of the sender of the current call.
 
-You should never use `tx.origin` in Solidity for authorization ([SWC-115](https://swcregistry.io/docs/SWC-115){target=_blank}). The following smart contract shows you why. It is susceptible to attack.
+You should never use `tx.origin` in Solidity for authorization ([SWC-115](https://swcregistry.io/docs/SWC-115)). The following smart contract shows you why. It is susceptible to attack.
 
 ```
 pragma solidity >0.5.0;  
@@ -38,5 +38,5 @@ In this contract, if the creator of the VulnerableContract is tricked into calli
 
 Additional Resources:
 
-* [Solidity documentation on the security considerations of tx.origin](https://solidity.readthedocs.io/en/latest/security-considerations.html?#tx-origin){target=_blank}
-* [The SWC Registry entry for Authorization through tx.origin](https://swcregistry.io/docs/SWC-115){target=_blank}
+* [Solidity documentation on the security considerations of tx.origin](https://solidity.readthedocs.io/en/latest/security-considerations.html?#tx-origin)
+* [The SWC Registry entry for Authorization through tx.origin](https://swcregistry.io/docs/SWC-115)

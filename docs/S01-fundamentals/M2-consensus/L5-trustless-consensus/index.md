@@ -21,9 +21,9 @@ We've spent the past few sections learning about how consensus protocols work to
 Double Spend and Byzantine Generals Solution
 --------------------------------------------
 
- The biggest issue facing digital money is what is called the ["double spend"](https://www.investopedia.com/terms/d/doublespending.asp){target=_blank} problem: Since digital files can be copied endlessly, how can you be sure whatever digital money you're paid with has not been previously spent?
+ The biggest issue facing digital money is what is called the ["double spend"](https://www.investopedia.com/terms/d/doublespending.asp) problem: Since digital files can be copied endlessly, how can you be sure whatever digital money you're paid with has not been previously spent?
 
- This is the critical issue Satoshi Nakamoto set out to solve in [the Bitcoin whitepaper](https://bitcoin.org/bitcoin.pdf){target=_blank}: 
+ This is the critical issue Satoshi Nakamoto set out to solve in [the Bitcoin whitepaper](https://bitcoin.org/bitcoin.pdf): 
 >  We propose a solution to the double-spending problem using a peer-to-peer network. The network timestamps transactions by hashing them into an ongoing chain of hash-based proof-of-work, forming a record that cannot be changed without redoing the proof-of-work. The longest chain not only serves as proof of the sequence of events witnessed, but proof that it came from the largest pool of CPU power. As long as a majority of CPU power is controlled by nodes that are not cooperating to attack the network, they'll generate the longest chain and outpace attackers. The network itself requires minimal structure. Messages are broadcast on a best effort basis, and nodes can leave and rejoin the network at will, accepting the longest proof-of-work chain as proof of what happened while they were gone. 
 
  
@@ -39,7 +39,7 @@ In discussing the elements comprising Proof of Work consensus, we'll pull from c
 
 In Proof of Work consensus, the fundamental message is a **transaction,** constructed using the public key cryptography and digital signatures primitives we discussed previously, "trustlessly" (cryptographically) ensuring the identity and integrity of the message.
 
-Transactions in Proof of Work consensus are **[atomic,](https://en.wikipedia.org/wiki/Atomic_commit){target=_blank}** meaning the network either accepts or rejects the transaction, there is no in-between or halfway. If the network accepts the transaction, the network state then advances to incorporate the effects of the transaction.
+Transactions in Proof of Work consensus are **[atomic,](https://en.wikipedia.org/wiki/Atomic_commit)** meaning the network either accepts or rejects the transaction, there is no in-between or halfway. If the network accepts the transaction, the network state then advances to incorporate the effects of the transaction.
 
 For example, let's say an imaginary public ledger at `State-0` says Alejandro has `1 token` and Barbarella has `0 tokens`. Alejandro then submits a transaction to the network saying he would like to pay Barbarella `0.5 tokens`. The network accepts the transaction, which creates a new state, `State-1` in which the public ledger has been updated to show Alejandro now has `0.5 tokens` and Barbarella has `0.5 tokens`.
 
@@ -68,16 +68,16 @@ Additional Materials
 
 ### Introduction
 
- - [Video & Interactive Code: ETH.Build with Byzantine Generals' Problem](https://www.youtube.com/watch?v=c7yvOlwBPoQ&list=PLJz1HruEnenCXH7KW7wBCEBnBLOVkiqIi&index=7){target=_blank} Austin Griffith walks through a [hands-on implementation](https://sandbox.eth.build/build#3f3d25b54ec9fde9b34ba3a8cd505d8306f97eec4537cd707f7e92b5d9226bf4){target=_blank} of the Byzantine Generals' Problem with his amazing ETH.Build platform
- - [Article: What is the Byzantine Generals Problem?](https://river.com/learn/what-is-the-byzantine-generals-problem/){target=_blank}
- * [Interactive Code: Anders Blockchain](https://andersbrownworth.com/blockchain/){target=_blank} A great, web-based interactive tutorial going over fundamentals of Proof of Work consensus including [block production through hashing](https://andersbrownworth.com/blockchain/block){target=_blank} and [distributed blockchains](https://andersbrownworth.com/blockchain/distributed){target=_blank}
- * [Article: How Satoshi Nakamoto Solved the Byzantine Generals Problem](https://news.bitcoin.com/triple-entry-bookkeeping-how-satoshi-nakamoto-solved-the-byzantine-generals-problem/){target=_blank}
- * [Wikipedia: Directed Acyclic Graphs](https://en.wikipedia.org/wiki/Directed_acyclic_graph){target=_blank} Because each new block embeds the hash of the previous valid block, this creates a computer science data structure known as Directed Acyclic Graphs (similar to the way Git software works!).](https://ethereum.org/en/developers/docs/nodes-and-clients/#)
+ - [Video & Interactive Code: ETH.Build with Byzantine Generals' Problem](https://www.youtube.com/watch?v=c7yvOlwBPoQ&list=PLJz1HruEnenCXH7KW7wBCEBnBLOVkiqIi&index=7) Austin Griffith walks through a [hands-on implementation](https://sandbox.eth.build/build#3f3d25b54ec9fde9b34ba3a8cd505d8306f97eec4537cd707f7e92b5d9226bf4) of the Byzantine Generals' Problem with his amazing ETH.Build platform
+ - [Article: What is the Byzantine Generals Problem?](https://river.com/learn/what-is-the-byzantine-generals-problem/)
+ * [Interactive Code: Anders Blockchain](https://andersbrownworth.com/blockchain/) A great, web-based interactive tutorial going over fundamentals of Proof of Work consensus including [block production through hashing](https://andersbrownworth.com/blockchain/block) and [distributed blockchains](https://andersbrownworth.com/blockchain/distributed)
+ * [Article: How Satoshi Nakamoto Solved the Byzantine Generals Problem](https://news.bitcoin.com/triple-entry-bookkeeping-how-satoshi-nakamoto-solved-the-byzantine-generals-problem/)
+ * [Wikipedia: Directed Acyclic Graphs](https://en.wikipedia.org/wiki/Directed_acyclic_graph) Because each new block embeds the hash of the previous valid block, this creates a computer science data structure known as Directed Acyclic Graphs (similar to the way Git software works!).](https://ethereum.org/en/developers/docs/nodes-and-clients/#)
 
 ### Advanced
 
-* [Code: Implementing Proof of Work](https://github.com/cooganb/bitcoin-whitepaper-exercises/blob/master/pow/README.md){target=_blank} A continuation of the series from Kyle Simpson
-* [Code: Implementing Mining Protocol](https://github.com/cooganb/bitcoin-whitepaper-exercises/blob/master/incentives/README.md){target=_blank} A continuation of the series from Kyle Simpson
+* [Code: Implementing Proof of Work](https://github.com/cooganb/bitcoin-whitepaper-exercises/blob/master/pow/README.md) A continuation of the series from Kyle Simpson
+* [Code: Implementing Mining Protocol](https://github.com/cooganb/bitcoin-whitepaper-exercises/blob/master/incentives/README.md) A continuation of the series from Kyle Simpson
 
  
 

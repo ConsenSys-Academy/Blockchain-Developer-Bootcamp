@@ -114,7 +114,7 @@ fallback() external {
  
 ### Checks-Effects-Interactions
 
-Avoid state changes after external calls, to avoid things like [the DAO hack:](https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#re-entrancy){target=_blank} 
+Avoid state changes after external calls, to avoid things like [the DAO hack:](https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#re-entrancy) 
 
 ```
 function withdraw(uint amount) public { // Possibly dangerous  
@@ -134,7 +134,7 @@ function withdraw(uint amount) public { // Better!
  
 ### Proper use of `call`, `delegatecall` instead of `send`, `transfer`
 
-After the Istanbul hardfork, [it's recommended](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/){target=_blank} not to use `send` and `transfer`, and instead use `call.value` 
+After the Istanbul hardfork, [it's recommended](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/) not to use `send` and `transfer`, and instead use `call.value` 
 
 ```
 contract Vulnerable { // Possibly dangerous  
@@ -179,6 +179,6 @@ addr.delegatecall(abi.encodeWithSignature("f(uint)", a));
 Additional Material
 -------------------
 
-* [Wiki: Smart Contract Best Practices (ConsenSys)](https://consensys.github.io/smart-contract-best-practices/){target=_blank}
-* [Article: Stop Using Solidity's `transfer`](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/){target=_blank} Article from ConsenSys Diligence
+* [Wiki: Smart Contract Best Practices (ConsenSys)](https://consensys.github.io/smart-contract-best-practices/)
+* [Article: Stop Using Solidity's `transfer`](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/) Article from ConsenSys Diligence
  

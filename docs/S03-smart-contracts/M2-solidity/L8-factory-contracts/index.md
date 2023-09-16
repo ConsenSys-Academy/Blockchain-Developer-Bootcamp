@@ -29,7 +29,7 @@
 
  Deploying all of these standard compliant tokens through a token factory will abstract away many of the implementation details.
 
- We can use the [factory design pattern](https://en.wikipedia.org/wiki/Factory_method_pattern){target=_blank} in Solidity.
+ We can use the [factory design pattern](https://en.wikipedia.org/wiki/Factory_method_pattern) in Solidity.
 
  In the factory contract, we need to make the standardized token contract available by *importing* it.
 
@@ -45,11 +45,11 @@
 
  This is a useful design pattern that has numerous potential use cases.
 
- The ConsenSys GitHub contains an [implementation of the EIP20 interface](https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol){target=_blank}, as well as an [EIP20 token factory.](https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20Factory.sol){target=_blank}
+ The ConsenSys GitHub contains an [implementation of the EIP20 interface](https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol), as well as an [EIP20 token factory.](https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20Factory.sol)
 
  Additional Resources:
 ---------------------
 
- * [Article: Manage several contracts with factories](https://ethereumdev.io/manage-several-contracts-with-factories/){target=_blank}
+ * [Article: Manage several contracts with factories](https://ethereumdev.io/manage-several-contracts-with-factories/)
 
  

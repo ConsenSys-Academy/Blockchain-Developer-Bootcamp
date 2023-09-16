@@ -1,7 +1,7 @@
 Reentrancy Example
 ==================
 
-This set of contracts shows what a reentrancy attack ([SWC-107](https://swcregistry.io/docs/SWC-107){target=_blank}) looks like.
+This set of contracts shows what a reentrancy attack ([SWC-107](https://swcregistry.io/docs/SWC-107)) looks like.
 
 ```
 pragma solidity 0.8.2;

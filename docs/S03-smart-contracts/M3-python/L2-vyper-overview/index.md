@@ -1,12 +1,12 @@
 Vyper Overview
 ==============
 
-Despite there being [concerns about its compiler](https://consensys.net/diligence/audits/2019/10/vyper/){target=_blank} and the slower rate of development compared to Solidity, there are still many resources and ways to build smart contracts using [Vyper.](https://vyper.readthedocs.io/en/latest/){target=_blank} In this section, we'll discuss more about the Vyper language and provide resources where you can learn more about the language. Please note, Vyper is still considered somewhat experimental.
+Despite there being [concerns about its compiler](https://consensys.net/diligence/audits/2019/10/vyper/) and the slower rate of development compared to Solidity, there are still many resources and ways to build smart contracts using [Vyper.](https://vyper.readthedocs.io/en/latest/) In this section, we'll discuss more about the Vyper language and provide resources where you can learn more about the language. Please note, Vyper is still considered somewhat experimental.
 
 Vyper Design Principles
 -----------------------
 
-Vyper has a few principles and goals that aim to make it a language that is ideal for programming smart contracts. From [its docs](https://vyper.readthedocs.io/en/latest/){target=_blank} (which we quote extensively in this section):
+Vyper has a few principles and goals that aim to make it a language that is ideal for programming smart contracts. From [its docs](https://vyper.readthedocs.io/en/latest/) (which we quote extensively in this section):
 
 * **Security** is a primary focus for any smart contract language and Vyper maintains that “it should be possible and natural to build secure smart contracts in Vyper.”
 * Vyper code should be not just human readable, but make it difficult to write misleading code. This directive is aimed at **making contract audits as successful as possible.**
@@ -39,8 +39,8 @@ Vyper is not trying to be a replacement for Solidity. It is meant to be a more s
  Additional Links
 ----------------
 
-* [Code: Simple Bank in Vyper (ConsenSys Academy)](https://github.com/ConsenSys-Academy/simple-bank-vyper){target=_blank} This is a Vyper version of our Simple Bank exercise (normally in Solidity) you'll encounter later in this section.
-* [Course: Learn Vyper (0.2)](https://www.youtube.com/watch?v=-kZpEmNnzyE&list=PLO5VPQH6OWdWOd-IJTfIzlM2a1yv1rSN-){target=_blank} A comprehensive series of videos that covers Data Types, Functions, Variables, Logic Control, Errors, Interfaces and much more.
-* [Tutorial: Develop a DeFi Project using Python (Chainlink)](https://blog.chain.link/develop-python-defi-project/){target=_blank}
-* [Tutorial: Vyper and Brownie Contract Development on EVM Chains](https://medium.com/ethereum-classic/vyper-and-brownie-contract-development-on-evm-chains-85ba7fa2feef){target=_blank} An interesting tutorial walking through developing a contract using Vyper and Brownie.
-* [Docs: Vyper by Example](https://vyper.readthedocs.io/en/stable/vyper-by-example.html){target=_blank} From the Vyper documentation, a walkthrough of common development patterns in Vyper.
+* [Code: Simple Bank in Vyper (ConsenSys Academy)](https://github.com/ConsenSys-Academy/simple-bank-vyper) This is a Vyper version of our Simple Bank exercise (normally in Solidity) you'll encounter later in this section.
+* [Course: Learn Vyper (0.2)](https://www.youtube.com/watch?v=-kZpEmNnzyE&list=PLO5VPQH6OWdWOd-IJTfIzlM2a1yv1rSN-) A comprehensive series of videos that covers Data Types, Functions, Variables, Logic Control, Errors, Interfaces and much more.
+* [Tutorial: Develop a DeFi Project using Python (Chainlink)](https://blog.chain.link/develop-python-defi-project/)
+* [Tutorial: Vyper and Brownie Contract Development on EVM Chains](https://medium.com/ethereum-classic/vyper-and-brownie-contract-development-on-evm-chains-85ba7fa2feef) An interesting tutorial walking through developing a contract using Vyper and Brownie.
+* [Docs: Vyper by Example](https://vyper.readthedocs.io/en/stable/vyper-by-example.html) From the Vyper documentation, a walkthrough of common development patterns in Vyper.

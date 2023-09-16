@@ -24,7 +24,7 @@ contract ExampleContract {
 
  You can add the **indexed** keyword to event parameters. Up to three parameters can receive the indexed attribute. This increases the searchability of events. It is possible to filter for specific values of indexed arguments in the user interface.
 
- [Here is a link to the solidity documentation on events.](https://solidity.readthedocs.io/en/latest/contracts.html#events){target=_blank}
+ [Here is a link to the solidity documentation on events.](https://solidity.readthedocs.io/en/latest/contracts.html#events)
 
  Use Cases
 ---------
@@ -74,10 +74,10 @@ contract ExampleContract {
 
  Additional Resources:
 
- * [Technical introduction to Events and Logs in Ethereum (Joseph Chow, Consensys)](https://media.consensys.net/technical-introduction-to-events-and-logs-in-ethereum-a074d65dd61e){target=_blank}
-* [Events - Solidity Docs](https://solidity.readthedocs.io/en/latest/contracts.html#events){target=_blank}
-* [Listening to events with web3.js](https://web3js.readthedocs.io/en/1.0/web3-eth-subscribe.html?highlight=events#subscribe-logs){target=_blank} or [via the contract object](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-contract.html#contract-events){target=_blank}
-* [Article: Deep Dive Into Ethereum Logs](https://codeburst.io/deep-dive-into-ethereum-logs-a8d2047c7371){target=_blank}
-* [Article: Everything You Ever Wanted to Know About Events and Logs on Ethereum](https://medium.com/linum-labs/everything-you-ever-wanted-to-know-about-events-and-logs-on-ethereum-fec84ea7d0a5){target=_blank}
+ * [Technical introduction to Events and Logs in Ethereum (Joseph Chow, Consensys)](https://media.consensys.net/technical-introduction-to-events-and-logs-in-ethereum-a074d65dd61e)
+* [Events - Solidity Docs](https://solidity.readthedocs.io/en/latest/contracts.html#events)
+* [Listening to events with web3.js](https://web3js.readthedocs.io/en/1.0/web3-eth-subscribe.html?highlight=events#subscribe-logs) or [via the contract object](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-contract.html#contract-events)
+* [Article: Deep Dive Into Ethereum Logs](https://codeburst.io/deep-dive-into-ethereum-logs-a8d2047c7371)
+* [Article: Everything You Ever Wanted to Know About Events and Logs on Ethereum](https://medium.com/linum-labs/everything-you-ever-wanted-to-know-about-events-and-logs-on-ethereum-fec84ea7d0a5)
 
   

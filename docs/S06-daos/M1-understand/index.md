@@ -54,7 +54,7 @@ You can use tools and services by [BlockScience](https://block.science/){target=
 
 ### Community Tokens, Social Tokens and Creator Economies
 
-Some level of social capital can be captured into a social token or community token. A good [breakdown of both can be found here](<https://medium.com/open-source-x/what-are-social-tokens-f594f1ae3e76#:~:text=%E2%9D%B7%20Community%20Tokens%20%E2%80%94%20issued%20and,decentralized%20autonomous%20organization%20(DAO){target=_blank}.&text=Something%20similar%20to%20this%20happened,influencers%20hyped%20dubious%20token%20projects.>){target=\_blank}.
+Some level of social capital can be captured into a social token or community token. A good [breakdown of both can be found here](<https://medium.com/open-source-x/what-are-social-tokens-f594f1ae3e76#:~:text=%E2%9D%B7%20Community%20Tokens%20%E2%80%94%20issued%20and,decentralized%20autonomous%20organization%20(DAO).&text=Something%20similar%20to%20this%20happened,influencers%20hyped%20dubious%20token%20projects.>){target=\_blank}.
 
 Learn about [social tokens and how DAOs](https://newsletter.banklesshq.com/p/the-bull-case-for-social-tokens){target=\_blank} help enable them. Listen to [a16z’s perspective on social tokens](https://future.a16z.com/podcasts/nfts-creator-economy/){target=\_blank} with Kevin Chou from [Rally](https://rally.io/){target=\_blank}. Rally is like WordPress for social tokens. Another platform can be [Fyooz](https://www.fyooz.io/){target=\_blank}.
 
@@ -89,4 +89,4 @@ Learn more about the latest DAO developments at [DAOTalk.org](https://daotalk.or
 Read more about DAOs [via DAOHaus](https://app.daohaus.club/explore){target=\_blank} or [Aragon's list of DAO in 15 different industries](https://blog.aragon.org/15-ways-the-world-is-being-transformed-by-daos/){target=\_blank}.
 
 ## Additional Resources
-- [Article: Organizational Legos, The State of DAO Tooling (Nichanan Kesonpat)](https://medium.com/1kxnetwork/organization-legos-the-state-of-dao-tooling-866b6879e93e){target=_blank} Excellent overview of available tooling for DAOs from Fall 2021
+- [Article: Organizational Legos, The State of DAO Tooling (Nichanan Kesonpat)](https://medium.com/1kxnetwork/organization-legos-the-state-of-dao-tooling-866b6879e93e) Excellent overview of available tooling for DAOs from Fall 2021

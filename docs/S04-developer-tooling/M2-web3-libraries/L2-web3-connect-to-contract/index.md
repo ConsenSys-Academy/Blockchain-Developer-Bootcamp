@@ -8,7 +8,7 @@ First, make sure that Metamask is connected to the Rinkeby network.
 
 Next, we'll have to add the Web3.js library to this site. Since MetaMask does not inject it anymore, let's add it ourselves using the following steps (from last tutorial, but we need to redo it because we changed pages!):
 
-1. Open your browser's developer console. [See this article for how to do it](https://support.happyfox.com/kb/article/882-accessing-the-browser-console-and-network-logs/){target=_blank} for major browsers in each major operating system.
+1. Open your browser's developer console. [See this article for how to do it](https://support.happyfox.com/kb/article/882-accessing-the-browser-console-and-network-logs/) for major browsers in each major operating system.
 2. In the Console, add the following series of Javascript code. Press enter after each line of code:
 
 ```
@@ -107,7 +107,7 @@ We update the contract by sending it a transaction to the "set()" function with 
 
 Running this code should trigger Metamask to ask you to sign a transaction. 
 
-Once the transaction is mined, you can check for the transaction with simpleStorage.methods.get().call().then(console.log) or you can check the contract on a Rinkeby block explorer [like the one here.](https://rinkeby.etherscan.io/address/0x49bb098e781ed5c50d85e82d85cba1a6f03fd3e6){target=_blank}
+Once the transaction is mined, you can check for the transaction with simpleStorage.methods.get().call().then(console.log) or you can check the contract on a Rinkeby block explorer [like the one here.](https://rinkeby.etherscan.io/address/0x49bb098e781ed5c50d85e82d85cba1a6f03fd3e6)
 
 ## Watch for events
 
@@ -115,7 +115,7 @@ You can easily subscribe to events with simpleStorage. Notice we have a "storage
 
 To listen for that event, run `simpleStorage.events.storageUpdate(function(error, event){console.log(event)})`
 
-[Here is a link to the relevant web3.js documentation for subscribing to events.](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-contract.html#events){target=_blank}
+[Here is a link to the relevant web3.js documentation for subscribing to events.](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-contract.html#events)
 
 To trigger this event, you will have to call the "set()" function on the contract again. Once the update transaction is mined, the event will fire. This is what it looks like in the browser console.
 
